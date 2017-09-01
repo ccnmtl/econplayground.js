@@ -6,6 +6,9 @@ $(JS_SENTINAL): package.json
 	npm install
 	touch $(JS_SENTINAL)
 
+runserver: $(JS_SENTINAL)
+	npm run start
+
 build: $(JS_SENTINAL) build/bundle.js
 	npm run build
 
