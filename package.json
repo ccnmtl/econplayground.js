@@ -1,19 +1,28 @@
 {
-  "name": "econplayground",
-  "version": "1.0.0",
+  "name": "econplayground.js",
+  "version": "0.1.0",
   "description": "Environment for authoring and interacting with economics graphs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ccnmtl/econplayground.js.git"
-  },
+  "private": true,
   "author": "Nik Nyby",
   "license": "GPL-3.0+",
   "bugs": {
     "url": "https://github.com/ccnmtl/econplayground.js/issues"
   },
-  "homepage": "https://github.com/ccnmtl/econplayground.js#readme"
+  "homepage": "https://github.com/ccnmtl/econplayground.js#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.12",
+    "vega": "^3.0.2",
+    "vega-tooltip": "^0.4.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "jsdom": "~9.12.0"
+  }
 }
