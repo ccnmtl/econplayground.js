@@ -12,18 +12,31 @@ export default class GraphEditor extends React.Component {
                 <VegaRenderer
                      vegaSpec={this.props.graph}
                      renderer={'svg'} />
-                <label>
-                    X-axis label:
-                    <input type="text"
-                           onChange={this.handleXAxisChange.bind(this)} />
-                </label>
-                <label>
-                    Y-axis label:
-                    <input type="text"
-                           onChange={this.handleYAxisChange.bind(this)} />
-                </label>
-                <br />
-                <button>Continue ➡</button>
+
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="x-axis-label">
+                            X-axis label:
+                        </label>
+                        <input id="x-axis-label"
+                               className="form-control"
+                               type="text"
+                               onChange={this.handleXAxisChange.bind(this)} />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="y-axis-label">
+                            Y-axis label:
+                        </label>
+                        <input id="y-axis-label"
+                               className="form-control"
+                               type="text"
+                               onChange={this.handleYAxisChange.bind(this)} />
+                    </div>
+
+                    <button type="button"
+                            className="btn btn-primary">Continue ➡</button>
+                </form>
             </div>
         )
     }

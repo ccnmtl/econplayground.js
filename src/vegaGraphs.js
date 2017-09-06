@@ -1,7 +1,7 @@
 export const graphs = {
     demandSupply: {
         "$schema": "https://vega.github.io/schema/vega/v3.0.json",
-        "width": 500,
+        "width": 405,
         "height": 200,
         "padding": 5,
 
@@ -88,7 +88,7 @@ export const graphs = {
     },
     laborMarket: {
         "$schema": "https://vega.github.io/schema/vega/v3.0.json",
-        "width": 500,
+        "width": 405,
         "height": 200,
         "padding": 5,
 
@@ -168,7 +168,7 @@ export const graphs = {
     },
     capitalMarket: {
         "$schema": "https://vega.github.io/schema/vega/v3.0.json",
-        "width": 500,
+        "width": 405,
         "height": 200,
         "padding": 5,
 
