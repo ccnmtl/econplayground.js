@@ -41,8 +41,16 @@ export const graphs = {
         ],
 
         "axes": [
-            {"orient": "bottom", "scale": "x"},
-            {"orient": "left", "scale": "y"}
+            {
+                "orient": "bottom",
+                "scale": "x",
+                "title": ""
+            },
+            {
+                "orient": "left",
+                "scale": "y",
+                "title": ""
+            }
         ],
 
         "marks": [
