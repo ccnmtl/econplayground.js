@@ -10,10 +10,10 @@
   },
   "homepage": "https://github.com/ccnmtl/econplayground.js#readme",
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "~15.6.1",
+    "react-dom": "~15.6.1",
     "react-scripts": "1.0.12",
-    "vega": "^3.0.2"
+    "vega": "~3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,8 +23,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "eslint-plugin-react": "^7.3.0",
+    "eslint": "~4.5.0",
+    "eslint-plugin-react": "~7.3.0",
     "jsdom": "~9.12.0"
   }
 }
