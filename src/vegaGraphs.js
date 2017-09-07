@@ -1,7 +1,7 @@
 export const graphs = {
     demandSupply: {
         "$schema": "https://vega.github.io/schema/vega/v3.0.json",
-        "width": 500,
+        "width": 405,
         "height": 200,
         "padding": 5,
 
@@ -41,8 +41,18 @@ export const graphs = {
         ],
 
         "axes": [
-            {"orient": "bottom", "scale": "x"},
-            {"orient": "left", "scale": "y"}
+            {
+                "ticks": false,
+                "labels": false,
+                "orient": "bottom",
+                "scale": "x"
+            },
+            {
+                "ticks": false,
+                "labels": false,
+                "orient": "left",
+                "scale": "y"
+            }
         ],
 
         "marks": [
@@ -80,7 +90,7 @@ export const graphs = {
     },
     laborMarket: {
         "$schema": "https://vega.github.io/schema/vega/v3.0.json",
-        "width": 500,
+        "width": 405,
         "height": 200,
         "padding": 5,
 
@@ -88,9 +98,16 @@ export const graphs = {
             {
                 "name": "table",
                 "values": [
-                    {"x": 0, "y": 100, "c": 0},
-                    {"x": 0.2, "y": 30, "c": 0},
-                    {"x": 1, "y": 0, "c": 0},
+                    {"x": 0.1, "y": 99.99, "c": 0},
+                    {"x": 0.15, "y": 44.44, "c": 0},
+                    {"x": 0.2, "y": 25, "c": 0},
+                    {"x": 0.25, "y": 16, "c": 0},
+                    {"x": 0.3, "y": 11.11, "c": 0},
+                    {"x": 0.35, "y": 8.16, "c": 0},
+                    {"x": 0.4, "y": 6.25, "c": 0},
+                    {"x": 0.5, "y": 4, "c": 0},
+                    {"x": 0.6, "y": 2.8, "c": 0},
+                    {"x": 1, "y": 1, "c": 0},
                     {"x": 0, "y": 0, "c": 1},
                     {"x": 1, "y": 100, "c": 1}
                 ]
@@ -100,7 +117,7 @@ export const graphs = {
         "scales": [
             {
                 "name": "x",
-                "type": "point",
+                "type": "linear",
                 "range": "width",
                 "domain": {"data": "table", "field": "x"}
             },
@@ -121,8 +138,18 @@ export const graphs = {
         ],
 
         "axes": [
-            {"orient": "bottom", "scale": "x"},
-            {"orient": "left", "scale": "y"}
+            {
+                "ticks": false,
+                "labels": false,
+                "orient": "bottom",
+                "scale": "x"
+            },
+            {
+                "ticks": false,
+                "labels": false,
+                "orient": "left",
+                "scale": "y"
+            }
         ],
 
         "marks": [
@@ -147,6 +174,7 @@ export const graphs = {
                                 "strokeWidth": {"value": 2}
                             },
                             "update": {
+                                "interpolate": {"value": "cardinal"},
                                 "fillOpacity": {"value": 1}
                             },
                             "hover": {
@@ -160,7 +188,7 @@ export const graphs = {
     },
     capitalMarket: {
         "$schema": "https://vega.github.io/schema/vega/v3.0.json",
-        "width": 500,
+        "width": 405,
         "height": 200,
         "padding": 5,
 
@@ -168,10 +196,18 @@ export const graphs = {
             {
                 "name": "table",
                 "values": [
-                    {"x": 0, "y": 100, "c":0},
-                    {"x": 0.5, "y": 0, "c":1},
-                    {"x": 1, "y": 0, "c":0},
-                    {"x": 0.5, "y": 100, "c":1}
+                    {"x": 0.1, "y": 99.99, "c": 0},
+                    {"x": 0.15, "y": 44.44, "c": 0},
+                    {"x": 0.2, "y": 25, "c": 0},
+                    {"x": 0.25, "y": 16, "c": 0},
+                    {"x": 0.3, "y": 11.11, "c": 0},
+                    {"x": 0.35, "y": 8.16, "c": 0},
+                    {"x": 0.4, "y": 6.25, "c": 0},
+                    {"x": 0.5, "y": 4, "c": 0},
+                    {"x": 0.6, "y": 2.8, "c": 0},
+                    {"x": 1, "y": 1, "c": 0},
+                    {"x": 0.5, "y": 0, "c": 1},
+                    {"x": 0.5, "y": 100, "c": 1}
                 ]
             }
         ],
@@ -179,7 +215,7 @@ export const graphs = {
         "scales": [
             {
                 "name": "x",
-                "type": "point",
+                "type": "linear",
                 "range": "width",
                 "domain": {"data": "table", "field": "x"}
             },
@@ -200,8 +236,18 @@ export const graphs = {
         ],
 
         "axes": [
-            {"orient": "bottom", "scale": "x"},
-            {"orient": "left", "scale": "y"}
+            {
+                "ticks": false,
+                "labels": false,
+                "orient": "bottom",
+                "scale": "x"
+            },
+            {
+                "ticks": false,
+                "labels": false,
+                "orient": "left",
+                "scale": "y"
+            }
         ],
 
         "marks": [
@@ -226,6 +272,7 @@ export const graphs = {
                                 "strokeWidth": {"value": 2}
                             },
                             "update": {
+                                "interpolate": {"value": "cardinal"},
                                 "fillOpacity": {"value": 1}
                             },
                             "hover": {
