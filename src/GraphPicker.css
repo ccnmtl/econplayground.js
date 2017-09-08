@@ -1,9 +1,5 @@
 .GraphPicker .graph-card {
     width: 40%;
     display: inline-block;
-}
-
-.GraphPicker .graph-card:hover {
-    background-color: rgba(76, 120, 168, 0.2);
-    cursor: pointer;
+    margin-bottom: 1em;
 }
