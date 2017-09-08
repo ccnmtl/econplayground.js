@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "econplayground",
+  "name": "Environment for authoring and interacting with economics graphs",
   "icons": [
     {
       "src": "favicon.ico",
