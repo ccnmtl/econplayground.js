@@ -9,11 +9,35 @@ export default class GraphEditor extends React.Component {
         }
         return (
             <div className="GraphEditor">
-                <VegaRenderer
-                     vegaSpec={this.props.graph}
-                     renderer={'svg'} />
-
                 <form>
+                    <div className="form-group">
+                        <label htmlFor="graph-title">
+                            Title
+                        </label>
+                        <input id="graph-title"
+                               className="form-control"
+                               type="text" />
+                    </div>
+                    <VegaRenderer
+                         vegaSpec={this.props.graph}
+                         renderer={'svg'} />
+
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input className="form-check-input"
+                                   type="checkbox" value="" />
+                            Blue line is movable by users
+                        </label>
+                    </div>
+
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input className="form-check-input"
+                                   type="checkbox" value="" />
+                            Orange line is movable by users
+                        </label>
+                    </div>
+
                     <div className="form-group">
                         <label htmlFor="x-axis-label">
                             X-axis label:
@@ -48,11 +72,7 @@ export default class GraphEditor extends React.Component {
                 break;
             }
         }
-        graphCopy.axes[i] = {
-            "orient": "bottom",
-            "scale": "x",
-            "title": e.target.value
-        };
+        graphCopy.axes[i].title = e.target.value;
         this.props.updateGraph(graphCopy);
     }
     handleYAxisChange(e) {
@@ -63,11 +83,7 @@ export default class GraphEditor extends React.Component {
                 break;
             }
         }
-        graphCopy.axes[i] = {
-            "orient": "left",
-            "scale": "y",
-            "title": e.target.value
-        };
+        graphCopy.axes[i].title = e.target.value;
         this.props.updateGraph(graphCopy);
     }
 }
