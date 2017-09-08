@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import VegaRenderer from './VegaRenderer.js';
 
 export default class GraphEditor extends React.Component {
     render() {
@@ -18,9 +17,6 @@ export default class GraphEditor extends React.Component {
                                className="form-control"
                                type="text" />
                     </div>
-                    <VegaRenderer
-                         vegaSpec={this.props.graph}
-                         renderer={'svg'} />
 
                     <div className="form-check">
                         <label className="form-check-label">
