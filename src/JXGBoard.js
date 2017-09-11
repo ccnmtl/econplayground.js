@@ -19,7 +19,20 @@ export default class JXGBoard extends React.Component {
 
         let board = window.JXG.JSXGraph.initBoard(
             this.id, {
-                boundingbox: [-3, 3, 3, -3]
+                axis: true,
+                defaultAxes: {
+                    x: {
+                        ticks: {visible: false}
+                    },
+                    y: {
+                        ticks: {visible: false}
+                    }
+                },
+                showCopyright: false,
+                showZoom: false,
+                showReload: false,
+                showNavigation: false,
+                boundingbox: [-0.5, 5, 5, -0.5]
             });
 
         graphTypes[this.props.type || 0](board);
