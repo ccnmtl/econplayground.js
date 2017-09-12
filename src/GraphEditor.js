@@ -23,7 +23,7 @@ export default class GraphEditor extends React.Component {
                     <JXGBoard
                          id={'editing-graph'}
                          type={this.props.graph}
-                         displayIntersection={this.props.displayIntersection} />
+                         showIntersection={this.props.showIntersection} />
 
                     <div className="form-check">
                         <label className="form-check-label">
@@ -31,7 +31,7 @@ export default class GraphEditor extends React.Component {
                                  className="form-check-input"
                                  type="checkbox"
                                  onChange={this.handleDisplayIntersectionChange.bind(this)}
-                                 defaultChecked={this.props.displayIntersection} />
+                                 defaultChecked={this.props.showIntersection} />
                             Display intersection
                         </label>
                     </div>
@@ -66,27 +66,9 @@ export default class GraphEditor extends React.Component {
             </div>
         )
     }
-    handleXAxisChange(e) {
-        let graphCopy = Object.assign({}, this.props.graph);
-        let i;
-        for (i = 0; i < graphCopy.axes.length; i++) {
-            if (graphCopy.axes[i].scale === 'x') {
-                break;
-            }
-        }
-        graphCopy.axes[i].title = e.target.value;
-        this.props.updateGraph(graphCopy);
+    handleXAxisChange() {
     }
-    handleYAxisChange(e) {
-        let graphCopy = Object.assign({}, this.props.graph);
-        let i;
-        for (i = 0; i < graphCopy.axes.length; i++) {
-            if (graphCopy.axes[i].scale === 'y') {
-                break;
-            }
-        }
-        graphCopy.axes[i].title = e.target.value;
-        this.props.updateGraph(graphCopy);
+    handleYAxisChange() {
     }
     handleDisplayIntersectionChange(e) {
         this.props.updateDisplayIntersection(e.target.checked);
@@ -97,7 +79,7 @@ export default class GraphEditor extends React.Component {
 }
 
 GraphEditor.propTypes = {
-    displayIntersection: PropTypes.bool,
+    showIntersection: PropTypes.bool,
     graph: PropTypes.number,
     updateDisplayIntersection: PropTypes.func.isRequired,
     updateGraph: PropTypes.func.isRequired,
