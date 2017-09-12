@@ -35,7 +35,12 @@ export default class JXGBoard extends React.Component {
                 boundingbox: [-0.5, 5, 5, -0.5]
             });
 
-        graphTypes[this.props.type || 0](board);
+        graphTypes[this.props.type || 0](board, {
+            showIntersection: (
+                typeof this.props.displayIntersection === 'undefined') ?
+                true :
+                this.props.displayIntersection
+        });
 
         this.setState({board: board});
     }
@@ -51,6 +56,7 @@ export default class JXGBoard extends React.Component {
 }
 
 JXGBoard.propTypes = {
+    displayIntersection: PropTypes.bool,
     id: PropTypes.string.isRequired,
     type: PropTypes.number.isRequired
 };
