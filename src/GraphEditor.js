@@ -25,6 +25,48 @@ export default class GraphEditor extends React.Component {
                          gType={this.props.gType}
                          gShowIntersection={this.props.gShowIntersection} />
 
+                    <div className="form-row">
+                        <div className="col">
+                            <label htmlFor="line-1-slope">
+                                Line 1 slope
+                            </label>
+                            <input id="line-1-slope"
+                                   className="form-control" type="number" step="0.01" />
+                        </div>
+
+                        <div className="col">
+                            <div className="form-group">
+                                <label htmlFor="line-2-slope">
+                                    Line 2 slope
+                                </label>
+                                <input id="line-2-slope"
+                                       className="form-control" type="number" step="0.01" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="form-row">
+                        <div className="col">
+                            <div className="form-group">
+                                <label htmlFor="line-1-label">
+                                    Line 1 label
+                                </label>
+                                <input id="line-1-label"
+                                       className="form-control" type="text" />
+                            </div>
+                        </div>
+
+                        <div className="col">
+                            <div className="form-group">
+                                <label htmlFor="line-2-label">
+                                    Line 2 label
+                                </label>
+                                <input id="line-2-label"
+                                       className="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="form-check">
                         <label className="form-check-label">
                             <input
@@ -38,23 +80,27 @@ export default class GraphEditor extends React.Component {
 
                     <div className="form-row">
                         <div className="col">
-                            <label htmlFor="x-axis-label">
-                                X-axis label:
-                            </label>
-                            <input id="x-axis-label"
-                                   className="form-control"
-                                   type="text"
-                                   onChange={this.handleXAxisChange.bind(this)} />
+                            <div className="form-group">
+                                <label htmlFor="x-axis-label">
+                                    X-axis label:
+                                </label>
+                                <input id="x-axis-label"
+                                       className="form-control"
+                                       type="text"
+                                       onChange={this.handleXAxisChange.bind(this)} />
+                            </div>
                         </div>
 
                         <div className="col">
-                            <label htmlFor="y-axis-label">
-                                Y-axis label:
-                            </label>
-                            <input id="y-axis-label"
-                                   className="form-control"
-                                   type="text"
-                                   onChange={this.handleYAxisChange.bind(this)} />
+                            <div className="form-group">
+                                <label htmlFor="y-axis-label">
+                                    Y-axis label:
+                                </label>
+                                <input id="y-axis-label"
+                                       className="form-control"
+                                       type="text"
+                                       onChange={this.handleYAxisChange.bind(this)} />
+                            </div>
                         </div>
                     </div>
 

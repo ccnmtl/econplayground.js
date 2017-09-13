@@ -13,6 +13,10 @@ class App extends Component {
             // Graph options
             gType: null,
             gShowIntersection: true,
+            gLine1Slope: null,
+            gLine2Slope: null,
+            gLine1Label: '',
+            gLine2Label: '',
             gXAxisLabel: '',
             gYAxisLabel: ''
         };
