@@ -6,7 +6,7 @@ import './GraphEditor.css';
 export default class GraphEditor extends React.Component {
     render() {
         if (!this.props.showing) {
-            return <span></span>;
+            return null;
         }
         return (
             <div className="GraphEditor">
@@ -22,7 +22,7 @@ export default class GraphEditor extends React.Component {
 
                     <JXGBoard
                          id={'editing-graph'}
-                         type={this.props.graph}
+                         type={this.props.graphType}
                          showIntersection={this.props.showIntersection} />
 
                     <div className="form-check">
@@ -80,7 +80,7 @@ export default class GraphEditor extends React.Component {
 
 GraphEditor.propTypes = {
     showIntersection: PropTypes.bool,
-    graph: PropTypes.number,
+    graphType: PropTypes.number,
     updateDisplayIntersection: PropTypes.func.isRequired,
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,

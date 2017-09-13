@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default class BackButton extends React.Component {
     render() {
         if (!this.props.showing) {
-            return <span></span>;
+            return null;
         }
         return (
             <button

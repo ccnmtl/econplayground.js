@@ -6,7 +6,7 @@ import './GraphPicker.css';
 export default class GraphPicker extends React.Component {
     render() {
         if (!this.props.showing) {
-            return <span></span>;
+            return null;
         }
         return (
             <div className="GraphPicker">
@@ -15,6 +15,7 @@ export default class GraphPicker extends React.Component {
                     Demand-Supply
                     <JXGBoard id={'jxg-demand-supply'} type={0} />
                     <button
+                         ref={(b1) => { this.b1 = b1; }}
                          type="button" className="btn btn-default"
                          onClick={this.handleClick1.bind(this)}>Select</button>
                 </div>
