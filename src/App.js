@@ -9,8 +9,9 @@ class App extends Component {
         super(props);
         this.state = {
             step: 0,
+            // The graph type (e.g. 1, 2, 3, 4)
             graph: null,
-            displayIntersection: true
+            showIntersection: true
         };
     }
     render() {
@@ -27,7 +28,7 @@ class App extends Component {
                     <GraphEditor
                          showing={this.state.step === 1}
                          graph={this.state.graph}
-                         displayIntersection={this.state.displayIntersection}
+                         showIntersection={this.state.showIntersection}
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
@@ -51,7 +52,7 @@ class App extends Component {
         this.setState({graph: graph});
     }
     updateDisplayIntersection(checked) {
-        this.setState({displayIntersection: checked});
+        this.setState({showIntersection: checked});
     }
 }
 

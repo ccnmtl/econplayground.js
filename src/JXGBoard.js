@@ -6,15 +6,19 @@ export default class JXGBoard extends React.Component {
     constructor(props) {
         super(props);
         this.id = this.props.id;
-        this.state = {board: null};
         this.style = {width: 405, height: 200};
+        //this.state = {board: null};
     }
 
-    componentDidMount() {
+    renderJXBoard(options) {
         // The jsxgraph npm package is out of date so I'm including
         // this package globally for now.
         if (!window.JXG) {
             return;
+        }
+
+        if (this.board) {
+            window.JXG.JSXGraph.freeBoard(this.board);
         }
 
         let board = window.JXG.JSXGraph.initBoard(
@@ -28,6 +32,7 @@ export default class JXGBoard extends React.Component {
                         ticks: {visible: false}
                     }
                 },
+                keepAspectRatio: true,
                 showCopyright: false,
                 showZoom: false,
                 showReload: false,
@@ -35,14 +40,28 @@ export default class JXGBoard extends React.Component {
                 boundingbox: [-0.5, 5, 5, -0.5]
             });
 
+        this.board = board;
+
         graphTypes[this.props.type || 0](board, {
             showIntersection: (
-                typeof this.props.displayIntersection === 'undefined') ?
+                typeof options.showIntersection === 'undefined') ?
                 true :
-                this.props.displayIntersection
+                options.showIntersection
         });
+    }
 
-        this.setState({board: board});
+    componentWillReceiveProps(nextProps) {
+        if (this.props.showIntersection !== nextProps.showIntersection) {
+            this.renderJXBoard({
+                showIntersection: nextProps.showIntersection
+            });
+        }
+    }
+
+    componentDidMount() {
+        this.renderJXBoard({
+            showIntersection: this.props.showIntersection
+        });
     }
 
     // called only if shouldComponentUpdate returns true
@@ -56,7 +75,7 @@ export default class JXGBoard extends React.Component {
 }
 
 JXGBoard.propTypes = {
-    displayIntersection: PropTypes.bool,
+    showIntersection: PropTypes.bool,
     id: PropTypes.string.isRequired,
     type: PropTypes.number.isRequired
 };
