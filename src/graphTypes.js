@@ -33,7 +33,7 @@ functionUtils.plot = function(board, func, atts) {
 let mkDemandSupply = function(board, options) {
     if (typeof options === 'undefined') {
         options = {
-            showIntersection: true
+            gShowIntersection: true
         };
     }
 
@@ -51,7 +51,7 @@ let mkDemandSupply = function(board, options) {
         strokeWidth: 2
     });
 
-    if (options.showIntersection) {
+    if (options.gShowIntersection) {
         let i = board.create('intersection', [l1, l2, 0], {
             name: options.intersectLabel || ''
         });
@@ -95,7 +95,7 @@ let mkDemandSupply = function(board, options) {
 let mkLaborMarket = function(board, options) {
     if (typeof options === 'undefined') {
         options = {
-            showIntersection: true
+            gShowIntersection: true
         };
     }
 
@@ -115,7 +115,7 @@ let mkLaborMarket = function(board, options) {
         strokeWidth: 2
     });
 
-    if (options.showIntersection) {
+    if (options.gShowIntersection) {
         let i = board.create('intersection', [l1, l2, 0], {withLabel: false});
 
         let p1 = board.create('point', [0, i.Y()], {

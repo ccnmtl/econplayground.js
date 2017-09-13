@@ -9,8 +9,12 @@ class App extends Component {
         super(props);
         this.state = {
             step: 0,
-            graphType: null,
-            showIntersection: true
+
+            // Graph options
+            gType: null,
+            gShowIntersection: true,
+            gXAxisLabel: '',
+            gYAxisLabel: ''
         };
     }
     render() {
@@ -30,8 +34,8 @@ class App extends Component {
                     <GraphEditor
                          ref={(ge) => { this.ge = ge; }}
                          showing={this.state.step === 1}
-                         graphType={this.state.graphType}
-                         showIntersection={this.state.showIntersection}
+                         gType={this.state.gType}
+                         gShowIntersection={this.state.gShowIntersection}
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
@@ -42,20 +46,30 @@ class App extends Component {
     reset() {
         this.setState({step: 0});
     }
-    onSelectGraph(graphType) {
+    onSelectGraph(type) {
         this.setState({
             step: 1,
-            graphType: graphType
+            gType: type
         });
     }
-    handleSaveGraph() {
-        // TODO: xhr request
+    /**
+     * Returns the current graph settings as a persistable JSON object.
+     */
+    exportGraph() {
+        return {
+            type: this.state.gType,
+            showIntersection: this.state.gShowIntersection,
+            xAxisLabel: this.state.gXAxisLabel,
+            yAxisLabel: this.state.gYAxisLabel
+        };
     }
-    handleGraphUpdate(graphType) {
-        this.setState({graphType: graphType});
+    handleSaveGraph() {
+    }
+    handleGraphUpdate(type) {
+        this.setState({gType: type});
     }
     updateDisplayIntersection(checked) {
-        this.setState({showIntersection: checked});
+        this.setState({gShowIntersection: checked});
     }
 }
 

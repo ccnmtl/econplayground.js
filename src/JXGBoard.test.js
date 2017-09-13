@@ -9,7 +9,7 @@ it('renders without crashing', () => {
     ReactDOM.render(
         <JXGBoard
              id={'id-test'}
-             type={0}
-             showIntersection={true} />,
+             gType={0}
+             gShowIntersection={true} />,
         div);
 });

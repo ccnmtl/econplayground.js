@@ -7,7 +7,6 @@ export default class JXGBoard extends React.Component {
         super(props);
         this.id = this.props.id;
         this.style = {width: 405, height: 200};
-        //this.state = {board: null};
     }
 
     renderJXBoard(options) {
@@ -42,25 +41,25 @@ export default class JXGBoard extends React.Component {
 
         this.board = board;
 
-        graphTypes[this.props.type || 0](board, {
-            showIntersection: (
-                typeof options.showIntersection === 'undefined') ?
+        graphTypes[this.props.gType || 0](board, {
+            gShowIntersection: (
+                typeof options.gShowIntersection === 'undefined') ?
                 true :
-                options.showIntersection
+                options.gShowIntersection
         });
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.showIntersection !== nextProps.showIntersection) {
+        if (this.props.gShowIntersection !== nextProps.gShowIntersection) {
             this.renderJXBoard({
-                showIntersection: nextProps.showIntersection
+                gShowIntersection: nextProps.gShowIntersection
             });
         }
     }
 
     componentDidMount() {
         this.renderJXBoard({
-            showIntersection: this.props.showIntersection
+            gShowIntersection: this.props.gShowIntersection
         });
     }
 
@@ -75,7 +74,7 @@ export default class JXGBoard extends React.Component {
 }
 
 JXGBoard.propTypes = {
-    showIntersection: PropTypes.bool,
-    id: PropTypes.string.isRequired,
-    type: PropTypes.number.isRequired
+    gShowIntersection: PropTypes.bool,
+    gType: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired
 };

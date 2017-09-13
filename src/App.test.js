@@ -22,8 +22,20 @@ it('renders with children in the expected visibility state', () => {
         expect(ReactTestUtils.isCompositeComponent(this.ge)).toBe(true);
 
         expect(this.state.step).toBe(0);
+        expect(this.state.gType).toBe(null);
         ReactTestUtils.Simulate.click(this.gp.b1);
         expect(this.state.step).toBe(1);
-        expect(this.state.graphType).toBe(0);
+        expect(this.state.gType).toBe(0);
     });
 });
+
+it('exports its graph state', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div, function() {
+        let o = this.exportGraph();
+        expect(o.type).toBe(null);
+        expect(o.showIntersection).toBe(true);
+        expect(o.xAxisLabel).toBe('');
+        expect(o.yAxisLabel).toBe('');
+    });
+})

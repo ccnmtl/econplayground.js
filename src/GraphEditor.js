@@ -22,8 +22,8 @@ export default class GraphEditor extends React.Component {
 
                     <JXGBoard
                          id={'editing-graph'}
-                         type={this.props.graphType}
-                         showIntersection={this.props.showIntersection} />
+                         gType={this.props.gType}
+                         gShowIntersection={this.props.gShowIntersection} />
 
                     <div className="form-check">
                         <label className="form-check-label">
@@ -31,7 +31,7 @@ export default class GraphEditor extends React.Component {
                                  className="form-check-input"
                                  type="checkbox"
                                  onChange={this.handleDisplayIntersectionChange.bind(this)}
-                                 defaultChecked={this.props.showIntersection} />
+                                 defaultChecked={this.props.gShowIntersection} />
                             Display intersection
                         </label>
                     </div>
@@ -79,8 +79,9 @@ export default class GraphEditor extends React.Component {
 }
 
 GraphEditor.propTypes = {
-    showIntersection: PropTypes.bool,
-    graphType: PropTypes.number,
+    gShowIntersection: PropTypes.bool,
+    gType: PropTypes.number,
+
     updateDisplayIntersection: PropTypes.func.isRequired,
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,

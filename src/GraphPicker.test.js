@@ -9,7 +9,7 @@ it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
         <GraphPicker
-             graph={0}
+             gType={0}
              showing={true}
              onSelectGraph={function() {}} />,
         div);
@@ -19,7 +19,7 @@ it('can be clicked', () => {
     const div = document.createElement('div');
     ReactDOM.render(
         <GraphPicker
-             graph={0}
+             gType={0}
              showing={true}
              onSelectGraph={function() {}} />,
         div,

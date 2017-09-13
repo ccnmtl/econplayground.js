@@ -8,7 +8,7 @@ it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
         <GraphEditor
-             graphType={0}
+             gType={0}
              showing={true}
              updateDisplayIntersection={function() {}}
              updateGraph={function() {}}
