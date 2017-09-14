@@ -9,26 +9,37 @@ class App extends Component {
         super(props);
         this.state = {
             step: 0,
-            // The graph type (e.g. 1, 2, 3, 4)
-            graph: null,
-            showIntersection: true
+
+            // Graph options
+            gType: null,
+            gShowIntersection: true,
+            gLine1Slope: null,
+            gLine2Slope: null,
+            gLine1Label: '',
+            gLine2Label: '',
+            gXAxisLabel: '',
+            gYAxisLabel: ''
         };
     }
     render() {
         return (
             <div className="App">
                 <h2>econplayground</h2>
-                <div className="App-container">
+                <div className="App-container" ref={(test) => { this.test = test; }}>
+                    <div ref={(clickme) => { this.clickme = clickme; }}></div>
                     <BackButton
+                         ref={(backbutton) => { this.backbutton = backbutton; }}
                          showing={this.state.step !== 0}
                          onClick={this.reset.bind(this)} />
                     <GraphPicker
+                         ref={(gp) => { this.gp = gp; }}
                          showing={this.state.step === 0}
                          onSelectGraph={this.onSelectGraph.bind(this)} />
                     <GraphEditor
+                         ref={(ge) => { this.ge = ge; }}
                          showing={this.state.step === 1}
-                         graph={this.state.graph}
-                         showIntersection={this.state.showIntersection}
+                         gType={this.state.gType}
+                         gShowIntersection={this.state.gShowIntersection}
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
@@ -39,20 +50,30 @@ class App extends Component {
     reset() {
         this.setState({step: 0});
     }
-    onSelectGraph(graph) {
+    onSelectGraph(type) {
         this.setState({
             step: 1,
-            graph: graph
+            gType: type
         });
     }
-    handleSaveGraph() {
-        // TODO: xhr request
+    /**
+     * Returns the current graph settings as a persistable JSON object.
+     */
+    exportGraph() {
+        return {
+            type: this.state.gType,
+            showIntersection: this.state.gShowIntersection,
+            xAxisLabel: this.state.gXAxisLabel,
+            yAxisLabel: this.state.gYAxisLabel
+        };
     }
-    handleGraphUpdate(graph) {
-        this.setState({graph: graph});
+    handleSaveGraph() {
+    }
+    handleGraphUpdate(type) {
+        this.setState({gType: type});
     }
     updateDisplayIntersection(checked) {
-        this.setState({showIntersection: checked});
+        this.setState({gShowIntersection: checked});
     }
 }
 

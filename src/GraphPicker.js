@@ -6,63 +6,64 @@ import './GraphPicker.css';
 export default class GraphPicker extends React.Component {
     render() {
         if (!this.props.showing) {
-            return <span></span>;
+            return null;
         }
         return (
             <div className="GraphPicker">
                 <p>Pick a graph type:</p>
                 <div className="graph-card">
                     Demand-Supply
-                    <JXGBoard id={'jxg-demand-supply'} type={0} />
+                    <JXGBoard id={'jxg-demand-supply'} gType={0} />
                     <button
+                         ref={(b1) => { this.b1 = b1; }}
                          type="button" className="btn btn-default"
                          onClick={this.handleClick1.bind(this)}>Select</button>
                 </div>
                 <div className="graph-card">
                     Labor Market
-                    <JXGBoard id={'jxg-labor-market'} type={1} />
+                    <JXGBoard id={'jxg-labor-market'} gType={1} />
                     <button
                          type="button" className="btn btn-default"
                          onClick={this.handleClick2.bind(this)}>Select</button>
                 </div>
                 <div className="graph-card">
                     Labor Market (perfectly inelastic)
-                    <JXGBoard id={'jxg-labor-market-inelastic'} type={2} />
+                    <JXGBoard id={'jxg-labor-market-inelastic'} gType={2} />
                     <button
                          type="button" className="btn btn-default"
                          onClick={this.handleClick3.bind(this)}>Select</button>
                 </div>
                 <div className="graph-card">
                     Cobb-Douglas
-                    <JXGBoard id={'jxg-cobb-douglas'} type={3} />
+                    <JXGBoard id={'jxg-cobb-douglas'} gType={3} />
                     <button
                          type="button" className="btn btn-default"
                          onClick={this.handleClick4.bind(this)}>Select</button>
                 </div>
                 <div className="graph-card">
                     Labor Supply
-                    <JXGBoard id={'jxg-labor-supply'} type={4} />
+                    <JXGBoard id={'jxg-labor-supply'} gType={4} />
                     <button
                          type="button" className="btn btn-default"
                          onClick={this.handleClick5.bind(this)}>Select</button>
                 </div>
                 <div className="graph-card">
                     Consumption - Saving
-                    <JXGBoard id={'jxg-consumption-saving'} type={5} />
+                    <JXGBoard id={'jxg-consumption-saving'} gType={5} />
                     <button
                          type="button" className="btn btn-default"
                          onClick={this.handleClick6.bind(this)}>Select</button>
                 </div>
                 <div className="graph-card">
                     Saving - Investment
-                    <JXGBoard id={'jxg-saving-investment'} type={6} />
+                    <JXGBoard id={'jxg-saving-investment'} gType={6} />
                     <button
                          type="button" className="btn btn-default"
                          onClick={this.handleClick7.bind(this)}>Select</button>
                 </div>
                 <div className="graph-card">
                     Money Market
-                    <JXGBoard id={'jxg-money-market'} type={7} />
+                    <JXGBoard id={'jxg-money-market'} gType={7} />
                     <button
                          type="button" className="btn btn-default"
                          onClick={this.handleClick8.bind(this)}>Select</button>
