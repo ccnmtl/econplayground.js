@@ -23,24 +23,30 @@ export default class GraphEditor extends React.Component {
                     <JXGBoard
                          id={'editing-graph'}
                          gType={this.props.gType}
+                         gLine1Label={this.props.gLine1Label}
+                         gLine2Label={this.props.gLine2Label}
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <div className="form-row">
                         <div className="col">
-                            <label htmlFor="line-1-slope">
+                            <label htmlFor="gLine1Slope">
                                 Line 1 slope
                             </label>
-                            <input id="line-1-slope"
-                                   className="form-control" type="number" step="0.01" />
+                            <input id="gLine1Slope"
+                                   onChange={this.handleFormUpdate.bind(this)}
+                                   className="form-control"
+                                   type="number" step="0.01" />
                         </div>
 
                         <div className="col">
                             <div className="form-group">
-                                <label htmlFor="line-2-slope">
+                                <label htmlFor="gLine2Slope">
                                     Line 2 slope
                                 </label>
-                                <input id="line-2-slope"
-                                       className="form-control" type="number" step="0.01" />
+                                <input id="gLine2Slope"
+                                       onChange={this.handleFormUpdate.bind(this)}
+                                       className="form-control"
+                                       type="number" step="0.01" />
                             </div>
                         </div>
                     </div>
@@ -48,20 +54,22 @@ export default class GraphEditor extends React.Component {
                     <div className="form-row">
                         <div className="col">
                             <div className="form-group">
-                                <label htmlFor="line-1-label">
+                                <label htmlFor="gLine1Label">
                                     Line 1 label
                                 </label>
-                                <input id="line-1-label"
+                                <input id="gLine1Label"
+                                       onChange={this.handleFormUpdate.bind(this)}
                                        className="form-control" type="text" />
                             </div>
                         </div>
 
                         <div className="col">
                             <div className="form-group">
-                                <label htmlFor="line-2-label">
+                                <label htmlFor="gLine2Label">
                                     Line 2 label
                                 </label>
-                                <input id="line-2-label"
+                                <input id="gLine2Label"
+                                       onChange={this.handleFormUpdate.bind(this)}
                                        className="form-control" type="text" />
                             </div>
                         </div>
@@ -70,9 +78,10 @@ export default class GraphEditor extends React.Component {
                     <div className="form-check">
                         <label className="form-check-label">
                             <input
+                                 id="gShowIntersection"
                                  className="form-check-input"
                                  type="checkbox"
-                                 onChange={this.handleDisplayIntersectionChange.bind(this)}
+                                 onChange={this.handleFormUpdate.bind(this)}
                                  defaultChecked={this.props.gShowIntersection} />
                             Display intersection
                         </label>
@@ -81,25 +90,25 @@ export default class GraphEditor extends React.Component {
                     <div className="form-row">
                         <div className="col">
                             <div className="form-group">
-                                <label htmlFor="x-axis-label">
+                                <label htmlFor="gXAxisLabel">
                                     X-axis label:
                                 </label>
-                                <input id="x-axis-label"
+                                <input id="gXAxisLabel"
                                        className="form-control"
                                        type="text"
-                                       onChange={this.handleXAxisChange.bind(this)} />
+                                       onChange={this.handleFormUpdate.bind(this)} />
                             </div>
                         </div>
 
                         <div className="col">
                             <div className="form-group">
-                                <label htmlFor="y-axis-label">
+                                <label htmlFor="gYAxisLabel">
                                     Y-axis label:
                                 </label>
-                                <input id="y-axis-label"
+                                <input id="gYAxisLabel"
                                        className="form-control"
                                        type="text"
-                                       onChange={this.handleYAxisChange.bind(this)} />
+                                       onChange={this.handleFormUpdate.bind(this)} />
                             </div>
                         </div>
                     </div>
@@ -112,9 +121,21 @@ export default class GraphEditor extends React.Component {
             </div>
         )
     }
-    handleXAxisChange() {
-    }
-    handleYAxisChange() {
+    handleFormUpdate(e) {
+        let obj = {};
+
+        switch(e.target.type) {
+        case 'checkbox':
+            obj[e.target.id] = e.target.checked;
+            break;
+        case 'number':
+            obj[e.target.id] = parseFloat(e.target.value);
+            break;
+        default:
+            obj[e.target.id] = e.target.value;
+        }
+
+        this.props.updateGraph(obj);
     }
     handleDisplayIntersectionChange(e) {
         this.props.updateDisplayIntersection(e.target.checked);
@@ -126,6 +147,8 @@ export default class GraphEditor extends React.Component {
 
 GraphEditor.propTypes = {
     gShowIntersection: PropTypes.bool,
+    gLine1Label: PropTypes.string,
+    gLine2Label: PropTypes.string,
     gType: PropTypes.number,
 
     updateDisplayIntersection: PropTypes.func.isRequired,

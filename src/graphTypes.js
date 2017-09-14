@@ -40,6 +40,8 @@ let mkDemandSupply = function(board, options) {
     board.create('point', [2.5, 2.5], {name: 'a', size: 0, withLabel: false});
     board.create('point', [5, 0], {name: 'b', size: 0, withLabel: false});
     let l1 = board.create('line', ['a', 'b'], {
+        name: options.gLine1Label,
+        withLabel: true,
         strokeColor: 'rgb(255, 127, 14)',
         strokeWidth: 2
     });
@@ -47,6 +49,8 @@ let mkDemandSupply = function(board, options) {
     board.create('point', [0, 0], {name: 'c', size: 0, withLabel: false});
     board.create('point', [5, 5], {name: 'd', size: 0, withLabel: false});
     let l2 = board.create('line', ['c', 'd'], {
+        name: options.gLine2Label,
+        withLabel: true,
         strokeColor: 'steelblue',
         strokeWidth: 2
     });
@@ -104,6 +108,8 @@ let mkLaborMarket = function(board, options) {
     };
 
     let l1 = functionUtils.plot(board, f, {
+        name: options.gLine1Label,
+        withLabel: true,
         strokeWidth: 2,
         strokeColor: 'rgb(255, 127, 14)'
     });
@@ -111,6 +117,8 @@ let mkLaborMarket = function(board, options) {
     board.create('point', [0, 0], {name: 'a', size: 0, withLabel: false});
     board.create('point', [5, 5], {name: 'b', size: 0, withLabel: false});
     let l2 = board.create('line', ['a', 'b'], {
+        name: options.gLine2Label,
+        withLabel: true,
         strokeColor: 'steelblue',
         strokeWidth: 2
     });
@@ -154,12 +162,14 @@ let mkLaborMarket = function(board, options) {
     }
 };
 
-let mkLaborMarketPerfectlyInelastic = function(board) {
+let mkLaborMarketPerfectlyInelastic = function(board, options) {
     let f = function(x) {
         return (-Math.log2(x)) + 2;
     };
 
     functionUtils.plot(board, f, {
+        name: options.gLine1Label,
+        withLabel: true,
         strokeWidth: 2,
         strokeColor: 'rgb(255, 127, 14)'
     });
@@ -167,44 +177,54 @@ let mkLaborMarketPerfectlyInelastic = function(board) {
     board.create('point', [2.5, 0], {name: 'a', size: 0, withLabel: false});
     board.create('point', [2.5, 5], {name: 'b', size: 0, withLabel: false});
     board.create('line', ['a', 'b'], {
+        name: options.gLine2Label,
+        withLabel: true,
         strokeColor: 'steelblue',
         strokeWidth: 2
     });
 };
 
-let mkCobbDouglas = function(board) {
+let mkCobbDouglas = function(board, options) {
     let f = function(x) {
         return 2.01 * ((x ** 0.75) * (x ** -0.25));
     };
 
     functionUtils.plot(board, f, {
+        name: options.gLine1Label,
+        withLabel: true,
         strokeWidth: 2,
         strokeColor: 'steelBlue'
     });
 };
 
-let mkLaborSupply = function(board) {
+let mkLaborSupply = function(board, options) {
     board.create('point', [0, 5], {name: 'a', size: 0, withLabel: false});
     board.create('point', [5, 0], {name: 'b', size: 0, withLabel: false});
     board.create('line', ['a', 'b'], {
+        name: options.gLine1Label,
+        withLabel: true,
         strokeColor: 'rgb(255, 127, 14)',
         strokeWidth: 2
     });
 };
 
-let mkConsumptionSaving = function(board) {
+let mkConsumptionSaving = function(board, options) {
     board.create('point', [0, 5], {name: 'a', size: 0, withLabel: false});
     board.create('point', [5, 0], {name: 'b', size: 0, withLabel: false});
     board.create('line', ['a', 'b'], {
+        name: options.gLine1Label,
+        withLabel: true,
         strokeColor: 'rgb(255, 127, 14)',
         strokeWidth: 2
     });
 };
 
-let mkSavingInvestment = function(board) {
+let mkSavingInvestment = function(board, options) {
     board.create('point', [0, 5], {name: 'a', size: 0, withLabel: false});
     board.create('point', [5, 0], {name: 'b', size: 0, withLabel: false});
     board.create('line', ['a', 'b'], {
+        name: options.gLine1Label,
+        withLabel: true,
         strokeColor: 'rgb(255, 127, 14)',
         strokeWidth: 2
     });
@@ -212,15 +232,19 @@ let mkSavingInvestment = function(board) {
     board.create('point', [0, 0], {name: 'c', size: 0, withLabel: false});
     board.create('point', [5, 5], {name: 'd', size: 0, withLabel: false});
     board.create('line', ['c', 'd'], {
+        name: options.gLine2Label,
+        withLabel: true,
         strokeColor: 'steelblue',
         strokeWidth: 2
     });
 };
 
-let mkMoneyMarket = function(board) {
+let mkMoneyMarket = function(board, options) {
     board.create('point', [0, 5], {name: 'a', size: 0, withLabel: false});
     board.create('point', [5, 0], {name: 'b', size: 0, withLabel: false});
     board.create('line', ['a', 'b'], {
+        name: options.gLine1Label,
+        withLabel: true,
         strokeColor: 'rgb(255, 127, 14)',
         strokeWidth: 2
     });
@@ -228,6 +252,8 @@ let mkMoneyMarket = function(board) {
     board.create('point', [0, 0], {name: 'c', size: 0, withLabel: false});
     board.create('point', [5, 5], {name: 'd', size: 0, withLabel: false});
     board.create('line', ['c', 'd'], {
+        name: options.gLine2Label,
+        withLabel: true,
         strokeColor: 'steelblue',
         strokeWidth: 2
     });

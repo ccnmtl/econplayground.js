@@ -40,6 +40,8 @@ class App extends Component {
                          showing={this.state.step === 1}
                          gType={this.state.gType}
                          gShowIntersection={this.state.gShowIntersection}
+                         gLine1Label={this.state.gLine1Label}
+                         gLine2Label={this.state.gLine2Label}
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
@@ -69,8 +71,8 @@ class App extends Component {
     }
     handleSaveGraph() {
     }
-    handleGraphUpdate(type) {
-        this.setState({gType: type});
+    handleGraphUpdate(obj) {
+        this.setState(obj);
     }
     updateDisplayIntersection(checked) {
         this.setState({gShowIntersection: checked});
