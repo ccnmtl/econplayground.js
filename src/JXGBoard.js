@@ -45,21 +45,42 @@ export default class JXGBoard extends React.Component {
             gShowIntersection: (
                 typeof options.gShowIntersection === 'undefined') ?
                 true :
-                options.gShowIntersection
+                options.gShowIntersection,
+            gLine1Label: options.gLine1Label,
+            gLine2Label: options.gLine2Label
         });
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.gShowIntersection !== nextProps.gShowIntersection) {
+        const updateProps = [
+            'gShowIntersection',
+            'gLine1Label',
+            'gLine2Label'
+        ];
+
+        let needsUpdate = false;
+        for (let i = 0; i < updateProps.length; i++) {
+            let prop = updateProps[i];
+            if (this.props[prop] !== nextProps[prop]) {
+                needsUpdate = true;
+                break;
+            }
+        }
+
+        if (needsUpdate) {
             this.renderJXBoard({
-                gShowIntersection: nextProps.gShowIntersection
+                gShowIntersection: nextProps.gShowIntersection,
+                gLine1Label: nextProps.gLine1Label,
+                gLine2Label: nextProps.gLine2Label
             });
         }
     }
 
     componentDidMount() {
         this.renderJXBoard({
-            gShowIntersection: this.props.gShowIntersection
+            gShowIntersection: this.props.gShowIntersection,
+            gLine1Label: this.props.gLine1Label,
+            gLine2Label: this.props.gLine2Label
         });
     }
 
@@ -75,6 +96,8 @@ export default class JXGBoard extends React.Component {
 
 JXGBoard.propTypes = {
     gShowIntersection: PropTypes.bool,
+    gLine1Label: PropTypes.string,
+    gLine2Label: PropTypes.string,
     gType: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired
 };
