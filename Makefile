@@ -9,7 +9,7 @@ $(JS_SENTINAL): package.json
 runserver: $(JS_SENTINAL)
 	npm run start
 
-build: $(JS_SENTINAL) build/bundle.js
+build: $(JS_SENTINAL)
 	npm run build
 
 dev: $(JS_SENTINAL)
