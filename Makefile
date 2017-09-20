@@ -10,7 +10,7 @@ runserver: $(JS_SENTINAL)
 	npm run start
 
 build: $(JS_SENTINAL)
-	npm run build
+	GENERATE_SOURCEMAP="false" npm run build
 
 dev: $(JS_SENTINAL)
 	npm run dev
@@ -22,6 +22,6 @@ test: $(JS_SENTINAL)
 	npm run test
 
 clean:
-	rm -rf $(NODE_MODULES)
+	rm -rf $(NODE_MODULES) build
 
 .PHONY: clean
