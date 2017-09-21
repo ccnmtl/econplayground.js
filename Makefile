@@ -6,9 +6,6 @@ $(JS_SENTINAL): package.json
 	npm install
 	touch $(JS_SENTINAL)
 
-runserver: $(JS_SENTINAL)
-	npm run start
-
 build: $(JS_SENTINAL)
 	GENERATE_SOURCEMAP="false" npm run build
 
