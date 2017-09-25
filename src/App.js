@@ -11,6 +11,7 @@ class App extends Component {
         this.state = {
             step: 0,
             user: null,
+            alertText: '',
 
             // Graph options
             gType: null,
@@ -28,7 +29,11 @@ class App extends Component {
             <div className="App">
                 <h2>econplayground</h2>
                 <div className="App-container" ref={(test) => { this.test = test; }}>
-                    <div ref={(clickme) => { this.clickme = clickme; }}></div>
+                    <div className="alert alert-danger"
+                         hidden={this.state.alertText ? false : true}
+                         role="alert">
+                        {this.state.alertText}
+                    </div>
                     <BackButton
                          ref={(backbutton) => { this.backbutton = backbutton; }}
                          showing={this.state.step !== 0}
@@ -82,6 +87,7 @@ class App extends Component {
 
         const token = Cookies.get('csrftoken');
 
+        const me = this;
         fetch('/api/graphs/', {
             method: 'post',
             headers: {
@@ -92,6 +98,13 @@ class App extends Component {
             },
             body: JSON.stringify(data),
             credentials: 'same-origin'
+        }).then(function(response) {
+            if (response.status === 200) {
+                me.setState({step: 2});
+            } else {
+                me.setState({alertText: response.statusText});
+                return response.body;
+            }
         });
     }
     handleGraphUpdate(obj) {
