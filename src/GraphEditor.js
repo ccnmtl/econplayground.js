@@ -16,6 +16,7 @@ export default class GraphEditor extends React.Component {
                             Title
                         </label>
                         <input id="graph-title"
+                               ref={(title) => { this.title = title; }}
                                className="form-control"
                                type="text" />
                     </div>
@@ -141,7 +142,7 @@ export default class GraphEditor extends React.Component {
         this.props.updateDisplayIntersection(e.target.checked);
     }
     handleSaveGraph() {
-        this.props.saveGraph();
+        this.props.saveGraph(this.title.value);
     }
 }
 

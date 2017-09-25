@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Cookies from 'js-cookie';
 import BackButton from './BackButton.js';
 import GraphEditor from './GraphEditor.js';
 import GraphPicker from './GraphPicker.js';
@@ -9,6 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             step: 0,
+            user: null,
 
             // Graph options
             gType: null,
@@ -63,13 +65,34 @@ class App extends Component {
      */
     exportGraph() {
         return {
-            type: this.state.gType,
-            showIntersection: this.state.gShowIntersection,
-            xAxisLabel: this.state.gXAxisLabel,
-            yAxisLabel: this.state.gYAxisLabel
+            graph_type: this.state.gType,
+            show_intersection: this.state.gShowIntersection,
+            line_1_slope: this.state.gLine1Slope,
+            line_2_slope: this.state.gLine2Slope,
+            line_1_label: this.state.gLine1Label,
+            line_2_label: this.state.gLine2Label,
+            x_axis_label: this.state.gXAxisLabel,
+            y_axis_label: this.state.gYAxisLabel
         };
     }
-    handleSaveGraph() {
+    handleSaveGraph(title) {
+        let data = this.exportGraph();
+        data.author = window.EconPlayground.user;
+        data.title = title;
+
+        const token = Cookies.get('csrftoken');
+
+        fetch('/api/graphs/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': token
+            },
+            body: JSON.stringify(data),
+            credentials: 'same-origin'
+        });
     }
     handleGraphUpdate(obj) {
         this.setState(obj);

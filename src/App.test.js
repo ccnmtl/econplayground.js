@@ -33,9 +33,9 @@ it('exports its graph state', () => {
     const div = document.createElement('div');
     ReactDOM.render(<App />, div, function() {
         let o = this.exportGraph();
-        expect(o.type).toBe(null);
-        expect(o.showIntersection).toBe(true);
-        expect(o.xAxisLabel).toBe('');
-        expect(o.yAxisLabel).toBe('');
+        expect(o.graph_type).toBe(null);
+        expect(o.show_intersection).toBe(true);
+        expect(o.x_axis_label).toBe('');
+        expect(o.y_axis_label).toBe('');
     });
 })
