@@ -49,6 +49,8 @@ class App extends Component {
                          gShowIntersection={this.state.gShowIntersection}
                          gLine1Label={this.state.gLine1Label}
                          gLine2Label={this.state.gLine2Label}
+                         gLine1Slope={this.state.gLine1Slope}
+                         gLine2Slope={this.state.gLine2Slope}
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />

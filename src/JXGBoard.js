@@ -47,7 +47,9 @@ export default class JXGBoard extends React.Component {
                 true :
                 options.gShowIntersection,
             gLine1Label: options.gLine1Label,
-            gLine2Label: options.gLine2Label
+            gLine2Label: options.gLine2Label,
+            gLine1Slope: options.gLine1Slope,
+            gLine2Slope: options.gLine2Slope
         });
     }
 
@@ -55,7 +57,9 @@ export default class JXGBoard extends React.Component {
         const updateProps = [
             'gShowIntersection',
             'gLine1Label',
-            'gLine2Label'
+            'gLine2Label',
+            'gLine1Slope',
+            'gLine2Slope'
         ];
 
         let needsUpdate = false;
@@ -71,7 +75,9 @@ export default class JXGBoard extends React.Component {
             this.renderJXBoard({
                 gShowIntersection: nextProps.gShowIntersection,
                 gLine1Label: nextProps.gLine1Label,
-                gLine2Label: nextProps.gLine2Label
+                gLine2Label: nextProps.gLine2Label,
+                gLine1Slope: nextProps.gLine1Slope,
+                gLine2Slope: nextProps.gLine2Slope
             });
         }
     }
@@ -80,7 +86,9 @@ export default class JXGBoard extends React.Component {
         this.renderJXBoard({
             gShowIntersection: this.props.gShowIntersection,
             gLine1Label: this.props.gLine1Label,
-            gLine2Label: this.props.gLine2Label
+            gLine2Label: this.props.gLine2Label,
+            gLine1Slope: this.props.gLine1Slope,
+            gLine2Slope: this.props.gLine2Slope
         });
     }
 
@@ -98,6 +106,8 @@ JXGBoard.propTypes = {
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
+    gLine1Slope: PropTypes.number,
+    gLine2Slope: PropTypes.number,
     gType: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired
 };
