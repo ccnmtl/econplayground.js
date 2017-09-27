@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import JXG from 'jsxgraph';
 import {graphTypes} from './graphTypes.js';
 
 export default class JXGBoard extends React.Component {
@@ -10,17 +11,11 @@ export default class JXGBoard extends React.Component {
     }
 
     renderJXBoard(options) {
-        // The jsxgraph npm package is out of date so I'm including
-        // this package globally for now.
-        if (!window.JXG) {
-            return;
-        }
-
         if (this.board) {
-            window.JXG.JSXGraph.freeBoard(this.board);
+            JXG.JSXGraph.freeBoard(this.board);
         }
 
-        let board = window.JXG.JSXGraph.initBoard(
+        let board = JXG.JSXGraph.initBoard(
             this.id, {
                 axis: true,
                 defaultAxes: {
