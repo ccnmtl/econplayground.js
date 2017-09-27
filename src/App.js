@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import BackButton from './BackButton.js';
 import GraphEditor from './GraphEditor.js';
 import GraphPicker from './GraphPicker.js';
+import GraphViewer from './GraphViewer.js';
 import './App.css';
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
         this.state = {
             step: 0,
             user: null,
-            alertText: '',
+            alertText: null,
 
             // Graph options
             gType: null,
@@ -52,6 +53,13 @@ class App extends Component {
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
+                    <GraphViewer
+                         ref={(gv) => { this.gv = gv; }}
+                         showing={this.state.step === 2}
+                         gType={this.state.gType}
+                         gShowIntersection={this.state.gShowIntersection}
+                         gLine1Label={this.state.gLine1Label}
+                         gLine2Label={this.state.gLine2Label} />
                 </div>
             </div>
         );
@@ -99,11 +107,16 @@ class App extends Component {
             body: JSON.stringify(data),
             credentials: 'same-origin'
         }).then(function(response) {
-            if (response.status === 200) {
-                me.setState({step: 2});
+            if (response.status === 201) {
+                me.setState({
+                    alertText: null,
+                    step: 2
+                });
             } else {
-                me.setState({alertText: response.statusText});
-                return response.body;
+                me.setState({
+                    alertText: response.statusText
+                });
+                window.scrollTo(0, 0);
             }
         });
     }
