@@ -26,6 +26,8 @@ export default class GraphEditor extends React.Component {
                          gType={this.props.gType}
                          gLine1Label={this.props.gLine1Label}
                          gLine2Label={this.props.gLine2Label}
+                         gLine1Slope={this.props.gLine1Slope}
+                         gLine2Slope={this.props.gLine2Slope}
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <div className="form-row">
@@ -116,8 +118,7 @@ export default class GraphEditor extends React.Component {
 
                     <button type="button"
                             className="btn btn-primary"
-                            onClick={this.handleSaveGraph.bind(this)}
-                            >Save</button>
+                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
                 </form>
             </div>
         )
@@ -150,6 +151,8 @@ GraphEditor.propTypes = {
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
+    gLine1Slope: PropTypes.number,
+    gLine2Slope: PropTypes.number,
     gType: PropTypes.number,
 
     updateDisplayIntersection: PropTypes.func.isRequired,
