@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import JXG from 'jsxgraph';
@@ -11,6 +13,25 @@ export default class JXGBoard extends React.Component {
     }
 
     renderJXBoard(options) {
+        // Don't render JSXGraph in jest. This should be possible since I'm
+        // using jsdom, but jsxgraph can't find the element when I try and
+        // initialize it like this:
+        //
+        // const div = document.createElement('div');
+        // div.setAttribute('id', 'id-test');
+        // ReactDOM.render(
+        //     <JXGBoard
+        //          id={'id-test'}
+        //          gType={0}
+        //          gShowIntersection={true} />,
+        //     div);
+        //
+        if (typeof process !== 'undefined' &&
+            process.env.NODE_ENV === 'test'
+           ) {
+            return;
+        }
+
         if (this.board) {
             JXG.JSXGraph.freeBoard(this.board);
         }
