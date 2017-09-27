@@ -29,16 +29,37 @@ functionUtils.plot = function(board, func, atts) {
     }
 };
 
+let applyDefaults = function(obj, defaults) {
+    let o = {};
+    for (var key in obj) {
+        if (typeof obj[key] === 'undefined') {
+            o[key] = defaults[key];
+        } else {
+            o[key] = obj[key];
+        }
+    }
+    return o;
+};
 
 let mkDemandSupply = function(board, options) {
+    const defaults = {
+        gShowIntersection: true,
+        gLine1Slope: -1,
+        gLine2Slope: 1
+    };
+
     if (typeof options === 'undefined') {
-        options = {
-            gShowIntersection: true
-        };
+        options = {};
     }
 
+    options = applyDefaults(options, defaults);
+
     board.create('point', [2.5, 2.5], {name: 'a', size: 0, withLabel: false});
-    board.create('point', [5, 0], {name: 'b', size: 0, withLabel: false});
+    board.create('point', [3.5, 2.5 + options.gLine1Slope], {
+        name: 'b',
+        size: 0,
+        withLabel: false
+    });
     let l1 = board.create('line', ['a', 'b'], {
         name: options.gLine1Label,
         withLabel: true,
@@ -46,8 +67,12 @@ let mkDemandSupply = function(board, options) {
         strokeWidth: 2
     });
 
-    board.create('point', [0, 0], {name: 'c', size: 0, withLabel: false});
-    board.create('point', [5, 5], {name: 'd', size: 0, withLabel: false});
+    board.create('point', [2.5, 2.5], {name: 'c', size: 0, withLabel: false});
+    board.create('point', [3.5, 2.5 + options.gLine2Slope], {
+        name: 'd',
+        size: 0,
+        withLabel: false
+    });
     let l2 = board.create('line', ['c', 'd'], {
         name: options.gLine2Label,
         withLabel: true,
