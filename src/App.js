@@ -17,8 +17,8 @@ class App extends Component {
             // Graph options
             gType: null,
             gShowIntersection: true,
-            gLine1Slope: null,
-            gLine2Slope: null,
+            gLine1Slope: 1,
+            gLine2Slope: -1,
             gLine1Label: '',
             gLine2Label: '',
             gXAxisLabel: '',
@@ -113,6 +113,11 @@ class App extends Component {
                 me.setState({
                     alertText: null,
                     step: 2
+                });
+
+                response.json().then(function(graph) {
+                    const url = `/graph/${graph.id}/`;
+                    window.location.href = url;
                 });
             } else {
                 me.setState({

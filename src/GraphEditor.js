@@ -38,6 +38,7 @@ export default class GraphEditor extends React.Component {
                             <input id="gLine1Slope"
                                    onChange={this.handleFormUpdate.bind(this)}
                                    className="form-control"
+                                   value={this.props.gLine1Slope}
                                    type="number" step="0.01" />
                         </div>
 
@@ -49,6 +50,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gLine2Slope"
                                        onChange={this.handleFormUpdate.bind(this)}
                                        className="form-control"
+                                       value={this.props.gLine2Slope}
                                        type="number" step="0.01" />
                             </div>
                         </div>
@@ -148,11 +150,11 @@ export default class GraphEditor extends React.Component {
 }
 
 GraphEditor.propTypes = {
-    gShowIntersection: PropTypes.bool,
-    gLine1Label: PropTypes.string,
-    gLine2Label: PropTypes.string,
-    gLine1Slope: PropTypes.number,
-    gLine2Slope: PropTypes.number,
+    gShowIntersection: PropTypes.bool.isRequired,
+    gLine1Label: PropTypes.string.isRequired,
+    gLine2Label: PropTypes.string.isRequired,
+    gLine1Slope: PropTypes.number.isRequired,
+    gLine2Slope: PropTypes.number.isRequired,
     gType: PropTypes.number,
 
     updateDisplayIntersection: PropTypes.func.isRequired,
