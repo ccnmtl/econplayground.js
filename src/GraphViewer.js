@@ -7,9 +7,6 @@ import JXGBoard from './JXGBoard.js';
  */
 export default class GraphViewer extends React.Component {
     render() {
-        if (!this.props.showing) {
-            return null;
-        }
         return (
             <div className="GraphViewer">
                 <form>
@@ -25,6 +22,8 @@ export default class GraphViewer extends React.Component {
                          gType={this.props.gType}
                          gLine1Label={this.props.gLine1Label}
                          gLine2Label={this.props.gLine2Label}
+                         gLine1Slope={this.props.gLine1Slope}
+                         gLine2Slope={this.props.gLine2Slope}
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <div className="form-row">
@@ -58,7 +57,7 @@ GraphViewer.propTypes = {
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
-    gType: PropTypes.number,
-
-    showing: PropTypes.bool.isRequired
+    gLine1Slope: PropTypes.number,
+    gLine2Slope: PropTypes.number,
+    gType: PropTypes.number
 }

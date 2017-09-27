@@ -3,7 +3,6 @@ import Cookies from 'js-cookie';
 import BackButton from './BackButton.js';
 import GraphEditor from './GraphEditor.js';
 import GraphPicker from './GraphPicker.js';
-import GraphViewer from './GraphViewer.js';
 import './App.css';
 
 class App extends Component {
@@ -55,13 +54,6 @@ class App extends Component {
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
-                    <GraphViewer
-                         ref={(gv) => { this.gv = gv; }}
-                         showing={this.state.step === 2}
-                         gType={this.state.gType}
-                         gShowIntersection={this.state.gShowIntersection}
-                         gLine1Label={this.state.gLine1Label}
-                         gLine2Label={this.state.gLine2Label} />
                 </div>
             </div>
         );
