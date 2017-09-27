@@ -114,6 +114,11 @@ class App extends Component {
                     alertText: null,
                     step: 2
                 });
+
+                response.json().then(function(graph) {
+                    const url = `/graph/${graph.id}/`;
+                    window.location.href = url;
+                });
             } else {
                 me.setState({
                     alertText: response.statusText
