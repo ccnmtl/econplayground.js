@@ -12,6 +12,11 @@ it('renders without crashing', () => {
              showing={true}
              updateDisplayIntersection={function() {}}
              updateGraph={function() {}}
+             gShowIntersection={true}
+             gLine1Label={''}
+             gLine2Label={''}
+             gLine1Slope={-1}
+             gLine2Slope={1}
              saveGraph={function() {}} />,
         div);
 });
