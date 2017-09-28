@@ -145,7 +145,7 @@ let mkDemandSupply = function(board, options) {
 class LaborMarketGraph extends Graph {
     make() {
         let f = function(x) {
-            return (-Math.log2(x)) + 2;
+            return 1 / x;
         };
 
         let l1 = functionUtils.plot(this.board, f, {
@@ -215,7 +215,7 @@ let mkLaborMarket = function(board, options) {
 class LaborMarketPerfectlyInelasticGraph extends Graph {
     make() {
         let f = function(x) {
-            return (-Math.log2(x)) + 2;
+            return 1 / x;
         };
 
         functionUtils.plot(this.board, f, {
