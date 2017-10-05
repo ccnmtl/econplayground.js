@@ -31,6 +31,7 @@ class Viewer extends Component {
         gLine2Label={this.state.gLine2Label}
         gLine1Slope={this.state.gLine1Slope}
         gLine2Slope={this.state.gLine2Slope}
+        updateGraph={this.handleGraphUpdate.bind(this)}
             />
             </div>;
     }
@@ -48,11 +49,15 @@ class Viewer extends Component {
                 gType: json.graph_type,
                 gLine1Label: json.line_1_label,
                 gLine2Label: json.line_2_label,
-                gLine1Slope: window.parseInt(json.line_1_slope),
-                gLine2Slope: window.parseInt(json.line_2_slope),
+                gLine1Slope: window.parseFloat(json.line_1_slope),
+                gLine2Slope: window.parseFloat(json.line_2_slope),
                 gShowIntersection: true
             });
         });
+    }
+
+    handleGraphUpdate(obj) {
+        this.setState(obj);
     }
 }
 
