@@ -16,9 +16,21 @@ export default class GraphEditor extends React.Component {
                             Title
                         </label>
                         <input id="graph-title"
+                               onChange={this.handleFormUpdate.bind(this)}
                                ref={(title) => { this.title = title; }}
-                               className="form-control"
-                               type="text" />
+                            className="form-control"
+                            type="text" />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="graph-description">
+                            Description
+                        </label>
+                        <textarea id="graph-description"
+                                  onChange={this.handleFormUpdate.bind(this)}
+                                  ref={(description) => { this.description = description; }}
+                            className="form-control">
+                        </textarea>
                     </div>
 
                     <JXGBoard
@@ -150,6 +162,8 @@ export default class GraphEditor extends React.Component {
 }
 
 GraphEditor.propTypes = {
+    gTitle: PropTypes.string,
+    gDescription: PropTypes.string,
     gShowIntersection: PropTypes.bool.isRequired,
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,

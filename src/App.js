@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
-import BackButton from './BackButton.js';
-import GraphEditor from './GraphEditor.js';
-import GraphPicker from './GraphPicker.js';
+import BackButton from './BackButton';
+import GraphEditor from './GraphEditor';
+import GraphPicker from './GraphPicker';
 import './App.css';
 
 class App extends Component {
@@ -72,6 +72,8 @@ class App extends Component {
      */
     exportGraph() {
         return {
+            title: this.state.gTitle,
+            description: this.state.gDescription,
             graph_type: this.state.gType,
             show_intersection: this.state.gShowIntersection,
             line_1_slope: this.state.gLine1Slope,
