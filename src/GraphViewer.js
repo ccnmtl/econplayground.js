@@ -9,14 +9,9 @@ export default class GraphViewer extends React.Component {
     render() {
         return (
             <div className="GraphViewer">
+                <h1>{this.props.gTitle}</h1>
+                <p>{this.props.gDescription}</p>
                 <form>
-                    <div className="form-group">
-                        <label htmlFor="graph-title">
-                            Title
-                        </label>
-                        <h4>Graph Viewer</h4>
-                    </div>
-
                     <JXGBoard
                          id={'editing-graph'}
                          gType={this.props.gType}
@@ -74,6 +69,8 @@ export default class GraphViewer extends React.Component {
 }
 
 GraphViewer.propTypes = {
+    gTitle: PropTypes.string,
+    gDescription: PropTypes.string,
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
