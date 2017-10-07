@@ -21,7 +21,11 @@ class App extends Component {
             gLine1Label: '',
             gLine2Label: '',
             gXAxisLabel: '',
-            gYAxisLabel: ''
+            gYAxisLabel: '',
+            gLine1FeedbackIncrease: '',
+            gLine1FeedbackDecrease: '',
+            gLine2FeedbackIncrease: '',
+            gLine2FeedbackDecrease: ''
         };
     }
     render() {
@@ -51,6 +55,10 @@ class App extends Component {
                          gLine2Label={this.state.gLine2Label}
                          gLine1Slope={this.state.gLine1Slope}
                          gLine2Slope={this.state.gLine2Slope}
+                         gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
+                         gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
+                         gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
+                         gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
@@ -80,6 +88,10 @@ class App extends Component {
             line_2_slope: this.state.gLine2Slope,
             line_1_label: this.state.gLine1Label,
             line_2_label: this.state.gLine2Label,
+            line_1_feedback_increase: this.state.gLine1FeedbackIncrease,
+            line_1_feedback_decrease: this.state.gLine1FeedbackDecrease,
+            line_2_feedback_increase: this.state.gLine2FeedbackIncrease,
+            line_2_feedback_decrease: this.state.gLine2FeedbackDecrease,
             x_axis_label: this.state.gXAxisLabel,
             y_axis_label: this.state.gYAxisLabel
         };

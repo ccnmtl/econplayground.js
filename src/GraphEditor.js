@@ -42,8 +42,8 @@ export default class GraphEditor extends React.Component {
                          gLine2Slope={this.props.gLine2Slope}
                          gShowIntersection={this.props.gShowIntersection} />
 
-                    <div className="form-row">
-                        <div className="col">
+                    <div className="row">
+                        <div className="col-sm-5">
                             <label htmlFor="gLine1Slope">
                                 Line 1 slope
                             </label>
@@ -54,7 +54,7 @@ export default class GraphEditor extends React.Component {
                                    type="number" step="0.01" />
                         </div>
 
-                        <div className="col">
+                        <div className="col-sm-5">
                             <div className="form-group">
                                 <label htmlFor="gLine2Slope">
                                     Line 2 slope
@@ -68,8 +68,8 @@ export default class GraphEditor extends React.Component {
                         </div>
                     </div>
 
-                    <div className="form-row">
-                        <div className="col">
+                    <div className="row">
+                        <div className="col-sm-5">
                             <div className="form-group">
                                 <label htmlFor="gLine1Label">
                                     Line 1 label
@@ -80,7 +80,7 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
 
-                        <div className="col">
+                        <div className="col-sm-5">
                             <div className="form-group">
                                 <label htmlFor="gLine2Label">
                                     Line 2 label
@@ -88,6 +88,54 @@ export default class GraphEditor extends React.Component {
                                 <input id="gLine2Label"
                                        onChange={this.handleFormUpdate.bind(this)}
                                        className="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-sm-5">
+                            <div className="form-group">
+                                <label htmlFor="gLine1FeedbackIncreaseLabel">
+                                    Line 1 feedback when moved up
+                                </label>
+                                <textarea id="gLine1FeedbackIncreaseLabel"
+                                       onChange={this.handleFormUpdate.bind(this)}
+                                       className="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div className="col-sm-5">
+                            <div className="form-group">
+                                <label htmlFor="gLine2FeedbackIncreaseLabel">
+                                    Line 2 feedback when moved up
+                                </label>
+                                <textarea id="gLine2FeedbackIncreaseLabel"
+                                       onChange={this.handleFormUpdate.bind(this)}
+                                       className="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-sm-5">
+                            <div className="form-group">
+                                <label htmlFor="gLine1FeedbackDecreaseLabel">
+                                    Line 1 feedback when moved down
+                                </label>
+                                <textarea id="gLine1FeedbackDecreaseLabel"
+                                       onChange={this.handleFormUpdate.bind(this)}
+                                       className="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div className="col-sm-5">
+                            <div className="form-group">
+                                <label htmlFor="gLine2FeedbackDecreaseLabel">
+                                    Line 2 feedback when moved down
+                                </label>
+                                <textarea id="gLine2FeedbackDecreaseLabel"
+                                       onChange={this.handleFormUpdate.bind(this)}
+                                       className="form-control"></textarea>
                             </div>
                         </div>
                     </div>
@@ -104,8 +152,8 @@ export default class GraphEditor extends React.Component {
                         </label>
                     </div>
 
-                    <div className="form-row">
-                        <div className="col">
+                    <div className="row">
+                        <div className="col-sm-5">
                             <div className="form-group">
                                 <label htmlFor="gXAxisLabel">
                                     X-axis label:
@@ -117,7 +165,7 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
 
-                        <div className="col">
+                        <div className="col-sm-5">
                             <div className="form-group">
                                 <label htmlFor="gYAxisLabel">
                                     Y-axis label:
@@ -169,6 +217,10 @@ GraphEditor.propTypes = {
     gLine2Label: PropTypes.string.isRequired,
     gLine1Slope: PropTypes.number.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
+    gLine1FeedbackIncrease: PropTypes.string.isRequired,
+    gLine1FeedbackDecrease: PropTypes.string.isRequired,
+    gLine2FeedbackIncrease: PropTypes.string.isRequired,
+    gLine2FeedbackDecrease: PropTypes.string.isRequired,
     gType: PropTypes.number,
 
     updateDisplayIntersection: PropTypes.func.isRequired,
