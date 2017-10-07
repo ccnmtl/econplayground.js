@@ -11,26 +11,33 @@ export default class GraphEditor extends React.Component {
         return (
             <div className="GraphEditor">
                 <form>
-                    <div className="form-group">
-                        <label htmlFor="graph-title">
-                            Title
-                        </label>
-                        <input id="graph-title"
-                               onChange={this.handleFormUpdate.bind(this)}
-                               ref={(title) => { this.title = title; }}
-                            className="form-control"
-                            type="text" />
-                    </div>
 
-                    <div className="form-group">
-                        <label htmlFor="graph-description">
-                            Description
-                        </label>
-                        <textarea id="graph-description"
-                                  onChange={this.handleFormUpdate.bind(this)}
-                                  ref={(description) => { this.description = description; }}
-                            className="form-control">
-                        </textarea>
+                    <div className="row">
+                        <div className="col-sm-5">
+                            <div className="form-group">
+                                <label htmlFor="graph-title">
+                                    Title
+                                </label>
+                                <input id="graph-title"
+                                       onChange={this.handleFormUpdate.bind(this)}
+                                       ref={(title) => { this.title = title; }}
+                                    className="form-control"
+                                    type="text" />
+                            </div>
+                        </div>
+
+                        <div className="col-sm-5">
+                            <div className="form-group">
+                                <label htmlFor="graph-description">
+                                    Description
+                                </label>
+                                <textarea id="graph-description"
+                                          onChange={this.handleFormUpdate.bind(this)}
+                                          ref={(description) => { this.description = description; }}
+                                    className="form-control">
+                                </textarea>
+                            </div>
+                        </div>
                     </div>
 
                     <JXGBoard

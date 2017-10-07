@@ -8,7 +8,7 @@ class Viewer extends Component {
         super(props);
 
         // TODO
-        this.graphId = 11;
+        this.graphId = window.location.pathname.split('/')[2];
 
         this.state = {
             // Graph options
@@ -19,7 +19,11 @@ class Viewer extends Component {
             gLine1Label: '',
             gLine2Label: '',
             gXAxisLabel: '',
-            gYAxisLabel: ''
+            gYAxisLabel: '',
+            gLine1FeedbackIncrease: '',
+            gLine1FeedbackDecrease: '',
+            gLine2FeedbackIncrease: '',
+            gLine2FeedbackDecrease: ''
         };
     }
 
@@ -34,6 +38,10 @@ class Viewer extends Component {
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
+            gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
+            gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
+            gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
+            gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
             saveGraph={this.handleSaveGraph.bind(this)}

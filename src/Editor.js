@@ -3,9 +3,9 @@ import Cookies from 'js-cookie';
 import BackButton from './BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
-import './App.css';
+import './Editor.css';
 
-class App extends Component {
+class Editor extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,9 +30,9 @@ class App extends Component {
     }
     render() {
         return (
-            <div className="App">
+            <div className="Editor">
                 <h2>econplayground</h2>
-                <div className="App-container" ref={(test) => { this.test = test; }}>
+                <div className="Editor-container" ref={(test) => { this.test = test; }}>
                     <div className="alert alert-danger"
                          hidden={this.state.alertText ? false : true}
                          role="alert">
@@ -141,4 +141,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Editor;
