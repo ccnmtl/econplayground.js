@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import BackButton from './BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
+import { exportGraph } from './Graph';
 import './Editor.css';
 
 class Editor extends Component {
@@ -75,31 +76,9 @@ class Editor extends Component {
             gType: type
         });
     }
-    /**
-     * Returns the current graph settings as a persistable JSON object.
-     */
-    exportGraph() {
-        return {
-            title: this.state.gTitle,
-            description: this.state.gDescription,
-            graph_type: this.state.gType,
-            show_intersection: this.state.gShowIntersection,
-            line_1_slope: this.state.gLine1Slope,
-            line_2_slope: this.state.gLine2Slope,
-            line_1_label: this.state.gLine1Label,
-            line_2_label: this.state.gLine2Label,
-            line_1_feedback_increase: this.state.gLine1FeedbackIncrease,
-            line_1_feedback_decrease: this.state.gLine1FeedbackDecrease,
-            line_2_feedback_increase: this.state.gLine2FeedbackIncrease,
-            line_2_feedback_decrease: this.state.gLine2FeedbackDecrease,
-            x_axis_label: this.state.gXAxisLabel,
-            y_axis_label: this.state.gYAxisLabel
-        };
-    }
-    handleSaveGraph(title) {
-        let data = this.exportGraph();
+    handleSaveGraph() {
+        let data = exportGraph(this.state);
         data.author = window.EconPlayground.user;
-        data.title = title;
 
         const token = Cookies.get('csrftoken');
 

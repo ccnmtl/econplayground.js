@@ -17,6 +17,10 @@ it('renders without crashing', () => {
              gLine2Label={''}
              gLine1Slope={-1}
              gLine2Slope={1}
+             gLine1FeedbackDecrease={''}
+             gLine1FeedbackIncrease={''}
+             gLine2FeedbackDecrease={''}
+             gLine2FeedbackIncrease={''}
              saveGraph={function() {}} />,
         div);
 });

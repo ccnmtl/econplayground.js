@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
+import { exportGraph, importGraph } from './Graph';
 
 class Viewer extends Component {
     constructor(props) {
         super(props);
 
-        // TODO
         this.graphId = window.location.pathname.split('/')[2];
 
         this.state = {
@@ -32,6 +32,8 @@ class Viewer extends Component {
             return <GraphEditor
             ref={(ge) => { this.ge = ge; }}
             showing={true}
+            gTitle={this.state.gTitle}
+            gDescription={this.state.gDescription}
             gType={this.state.gType}
             gShowIntersection={this.state.gShowIntersection}
             gLine1Label={this.state.gLine1Label}
@@ -49,6 +51,8 @@ class Viewer extends Component {
         } else {
             return <GraphViewer
             ref={(gv) => { this.gv = gv; }}
+            gTitle={this.state.gTitle}
+            gDescription={this.state.gDescription}
             gType={this.state.gType}
             gShowIntersection={this.state.gShowIntersection}
             gLine1Label={this.state.gLine1Label}
@@ -69,26 +73,18 @@ class Viewer extends Component {
         fetch(`/api/graphs/${this.graphId}`).then(function(response) {
             return response.json();
         }).then(function(json) {
-            me.setState({
-                gType: json.graph_type,
-                gLine1Label: json.line_1_label,
-                gLine2Label: json.line_2_label,
-                gLine1Slope: window.parseFloat(json.line_1_slope),
-                gLine2Slope: window.parseFloat(json.line_2_slope),
-                gShowIntersection: true
-            });
+            importGraph(json, me);
         });
     }
 
-    handleSaveGraph(title) {
-        let data = this.exportGraph();
+    handleSaveGraph() {
+        let data = exportGraph(this.state);
         data.author = window.EconPlayground.user;
-        data.title = title;
 
         const token = Cookies.get('csrftoken');
 
         const me = this;
-        fetch('/api/graphs/', {
+        fetch('/api/graphs/' + this.graphId + '/', {
             method: 'put',
             headers: {
                 'Accept': 'application/json, text/plain, */*',

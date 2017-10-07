@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Editor from './Editor';
 import ReactTestUtils from 'react-dom/test-utils';
+import { exportGraph } from './Graph';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -31,7 +32,7 @@ it('renders with children in the expected visibility state', () => {
 it('exports its graph state', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Editor />, div, function() {
-        let o = this.exportGraph();
+        let o = exportGraph(this.state);
         expect(o.graph_type).toBe(null);
         expect(o.show_intersection).toBe(true);
         expect(o.line_1_slope).toBe(1);
