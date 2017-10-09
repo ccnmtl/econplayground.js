@@ -2,17 +2,18 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Editor from './Editor';
 import ReactTestUtils from 'react-dom/test-utils';
+import { exportGraph } from './Graph';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
+    ReactDOM.render(<Editor />, div);
 });
 
 it('renders with children in the expected visibility state', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<App />, div, function() {
+    ReactDOM.render(<Editor />, div, function() {
         expect(this.backbutton.props.showing).toBe(false);
         expect(this.gp.props.showing).toBe(true);
         expect(this.ge.props.showing).toBe(false);
@@ -30,10 +31,19 @@ it('renders with children in the expected visibility state', () => {
 
 it('exports its graph state', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<App />, div, function() {
-        let o = this.exportGraph();
+    ReactDOM.render(<Editor />, div, function() {
+        let o = exportGraph(this.state);
         expect(o.graph_type).toBe(null);
         expect(o.show_intersection).toBe(true);
+        expect(o.line_1_slope).toBe(1);
+        expect(o.line_2_slope).toBe(-1);
+        expect(o.line_1_label).toBe('');
+        expect(o.line_2_label).toBe('');
+        expect(o.line_1_feedback_increase).toBe('');
+        expect(o.line_1_feedback_decrease).toBe('');
+        expect(o.line_2_feedback_increase).toBe('');
+        expect(o.line_2_feedback_decrease).toBe('');
+        expect(o.y_axis_label).toBe('');
         expect(o.x_axis_label).toBe('');
         expect(o.y_axis_label).toBe('');
     });

@@ -3,9 +3,10 @@ import Cookies from 'js-cookie';
 import BackButton from './BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
-import './App.css';
+import { exportGraph } from './Graph';
+import './Editor.css';
 
-class App extends Component {
+class Editor extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,14 +22,18 @@ class App extends Component {
             gLine1Label: '',
             gLine2Label: '',
             gXAxisLabel: '',
-            gYAxisLabel: ''
+            gYAxisLabel: '',
+            gLine1FeedbackIncrease: '',
+            gLine1FeedbackDecrease: '',
+            gLine2FeedbackIncrease: '',
+            gLine2FeedbackDecrease: ''
         };
     }
     render() {
         return (
-            <div className="App">
+            <div className="Editor">
                 <h2>econplayground</h2>
-                <div className="App-container" ref={(test) => { this.test = test; }}>
+                <div className="Editor-container" ref={(test) => { this.test = test; }}>
                     <div className="alert alert-danger"
                          hidden={this.state.alertText ? false : true}
                          role="alert">
@@ -51,6 +56,10 @@ class App extends Component {
                          gLine2Label={this.state.gLine2Label}
                          gLine1Slope={this.state.gLine1Slope}
                          gLine2Slope={this.state.gLine2Slope}
+                         gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
+                         gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
+                         gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
+                         gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
@@ -67,27 +76,9 @@ class App extends Component {
             gType: type
         });
     }
-    /**
-     * Returns the current graph settings as a persistable JSON object.
-     */
-    exportGraph() {
-        return {
-            title: this.state.gTitle,
-            description: this.state.gDescription,
-            graph_type: this.state.gType,
-            show_intersection: this.state.gShowIntersection,
-            line_1_slope: this.state.gLine1Slope,
-            line_2_slope: this.state.gLine2Slope,
-            line_1_label: this.state.gLine1Label,
-            line_2_label: this.state.gLine2Label,
-            x_axis_label: this.state.gXAxisLabel,
-            y_axis_label: this.state.gYAxisLabel
-        };
-    }
-    handleSaveGraph(title) {
-        let data = this.exportGraph();
+    handleSaveGraph() {
+        let data = exportGraph(this.state);
         data.author = window.EconPlayground.user;
-        data.title = title;
 
         const token = Cookies.get('csrftoken');
 
@@ -129,4 +120,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Editor;

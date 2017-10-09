@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
+import { exportGraph, importGraph } from './Graph';
 
 class Viewer extends Component {
     constructor(props) {
         super(props);
 
-        // TODO
-        this.graphId = 11;
+        this.graphId = window.location.pathname.split('/')[2];
 
         this.state = {
             // Graph options
@@ -19,7 +19,11 @@ class Viewer extends Component {
             gLine1Label: '',
             gLine2Label: '',
             gXAxisLabel: '',
-            gYAxisLabel: ''
+            gYAxisLabel: '',
+            gLine1FeedbackIncrease: '',
+            gLine1FeedbackDecrease: '',
+            gLine2FeedbackIncrease: '',
+            gLine2FeedbackDecrease: ''
         };
     }
 
@@ -28,12 +32,18 @@ class Viewer extends Component {
             return <GraphEditor
             ref={(ge) => { this.ge = ge; }}
             showing={true}
+            gTitle={this.state.gTitle}
+            gDescription={this.state.gDescription}
             gType={this.state.gType}
             gShowIntersection={this.state.gShowIntersection}
             gLine1Label={this.state.gLine1Label}
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
+            gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
+            gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
+            gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
+            gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
             saveGraph={this.handleSaveGraph.bind(this)}
@@ -41,6 +51,8 @@ class Viewer extends Component {
         } else {
             return <GraphViewer
             ref={(gv) => { this.gv = gv; }}
+            gTitle={this.state.gTitle}
+            gDescription={this.state.gDescription}
             gType={this.state.gType}
             gShowIntersection={this.state.gShowIntersection}
             gLine1Label={this.state.gLine1Label}
@@ -61,26 +73,18 @@ class Viewer extends Component {
         fetch(`/api/graphs/${this.graphId}`).then(function(response) {
             return response.json();
         }).then(function(json) {
-            me.setState({
-                gType: json.graph_type,
-                gLine1Label: json.line_1_label,
-                gLine2Label: json.line_2_label,
-                gLine1Slope: window.parseFloat(json.line_1_slope),
-                gLine2Slope: window.parseFloat(json.line_2_slope),
-                gShowIntersection: true
-            });
+            importGraph(json, me);
         });
     }
 
-    handleSaveGraph(title) {
-        let data = this.exportGraph();
+    handleSaveGraph() {
+        let data = exportGraph(this.state);
         data.author = window.EconPlayground.user;
-        data.title = title;
 
         const token = Cookies.get('csrftoken');
 
         const me = this;
-        fetch('/api/graphs/', {
+        fetch('/api/graphs/' + this.graphId + '/', {
             method: 'put',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
