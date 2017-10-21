@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/ccnmtl/econplayground.js#readme",
   "dependencies": {
-    "autoprefixer": "7.1.5",
+    "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "8.0.1",
     "babel-jest": "21.2.0",
