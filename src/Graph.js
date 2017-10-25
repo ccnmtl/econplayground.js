@@ -5,6 +5,7 @@ let exportGraph = function(state) {
     return {
         title: state.gTitle,
         description: state.gDescription,
+        instructor_notes: state.gInstructorNotes,
         graph_type: state.gType,
         show_intersection: state.gShowIntersection,
         line_1_slope: state.gLine1Slope,
@@ -27,6 +28,7 @@ let importGraph = function(json, obj) {
     obj.setState({
         gTitle: json.title,
         gDescription: json.description,
+        gInstructorNotes: json.instructor_notes,
         gType: json.graph_type,
         gShowIntersection: true,
         gLine1Slope: window.parseFloat(json.line_1_slope),
