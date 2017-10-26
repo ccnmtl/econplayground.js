@@ -29,7 +29,13 @@ class Viewer extends Component {
 
     render() {
         if (window.EconPlayground.is_staff) {
-            return <GraphEditor
+            return <div>
+                <div className="alert alert-info"
+            hidden={this.state.alertText ? false : true}
+            role="alert">
+                {this.state.alertText}
+            </div>
+                <GraphEditor
             ref={(ge) => { this.ge = ge; }}
             showing={true}
             gTitle={this.state.gTitle}
@@ -47,8 +53,8 @@ class Viewer extends Component {
             gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
-            saveGraph={this.handleSaveGraph.bind(this)}
-                />;
+            saveGraph={this.handleSaveGraph.bind(this)} />
+                </div>;
         } else {
             return <GraphViewer
             ref={(gv) => { this.gv = gv; }}
@@ -96,16 +102,12 @@ class Viewer extends Component {
             body: JSON.stringify(data),
             credentials: 'same-origin'
         }).then(function(response) {
-            if (response.status === 201) {
+            if (response.status === 200) {
                 me.setState({
-                    alertText: null,
-                    step: 2
+                    alertText: 'Graph saved'
                 });
 
-                response.json().then(function(graph) {
-                    const url = `/graph/${graph.id}/`;
-                    window.location.href = url;
-                });
+                window.scrollTo(0, 0);
             } else {
                 me.setState({
                     alertText: response.statusText
