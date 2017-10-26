@@ -27,6 +27,20 @@ export default class GraphEditor extends React.Component {
 
                         <div className="col-sm-5">
                             <div className="form-group">
+                                <label htmlFor="graph-instructor-notes">
+                                    Instructor Notes
+                                </label>
+                                <textarea id="gInstructorNotes"
+                                          onChange={this.handleFormUpdate.bind(this)}
+                                          value={this.props.gInstructorNotes}
+                                          className="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-sm-10">
+                            <div className="form-group">
                                 <label htmlFor="graph-description">
                                     Description
                                 </label>
@@ -222,14 +236,15 @@ GraphEditor.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
     gShowIntersection: PropTypes.bool.isRequired,
+    gInstructorNotes: PropTypes.string,
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
     gLine1Slope: PropTypes.number.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
-    gLine1FeedbackIncrease: PropTypes.string.isRequired,
-    gLine1FeedbackDecrease: PropTypes.string.isRequired,
-    gLine2FeedbackIncrease: PropTypes.string.isRequired,
-    gLine2FeedbackDecrease: PropTypes.string.isRequired,
+    gLine1FeedbackIncrease: PropTypes.string,
+    gLine1FeedbackDecrease: PropTypes.string,
+    gLine2FeedbackIncrease: PropTypes.string,
+    gLine2FeedbackDecrease: PropTypes.string,
     gType: PropTypes.number,
 
     updateDisplayIntersection: PropTypes.func.isRequired,
