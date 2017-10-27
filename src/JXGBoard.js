@@ -9,7 +9,7 @@ export default class JXGBoard extends React.Component {
     constructor(props) {
         super(props);
         this.id = this.props.id;
-        this.style = {width: 375, height: 200};
+        this.style = {width: 600, height: 400};
     }
 
     renderJXBoard(options) {
