@@ -28,7 +28,7 @@ export default class GraphViewer extends React.Component {
                             </label>
                             <input id="gLine1Slope"
                                    onChange={this.handleFormUpdate.bind(this)}
-                                   className="form-control"
+                                   className="form-control form-control-sm"
                                    value={this.props.gLine1Slope}
                                    type="number" step="0.01" />
                         </div>
@@ -40,7 +40,7 @@ export default class GraphViewer extends React.Component {
                                 </label>
                                 <input id="gLine2Slope"
                                        onChange={this.handleFormUpdate.bind(this)}
-                                       className="form-control"
+                                       className="form-control form-control-sm"
                                        value={this.props.gLine2Slope}
                                        type="number" step="0.01" />
                             </div>

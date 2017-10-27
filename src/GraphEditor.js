@@ -12,7 +12,7 @@ export default class GraphEditor extends React.Component {
             <div className="GraphEditor">
                 <form>
                     <div className="row">
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="graph-title">
                                     Title
@@ -20,12 +20,12 @@ export default class GraphEditor extends React.Component {
                                 <input id="gTitle"
                                        onChange={this.handleFormUpdate.bind(this)}
                                        value={this.props.gTitle}
-                                       className="form-control"
+                                       className="form-control form-control-sm"
                                        type="text" />
                             </div>
                         </div>
 
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="graph-instructor-notes">
                                     Instructor Notes
@@ -33,13 +33,13 @@ export default class GraphEditor extends React.Component {
                                 <textarea id="gInstructorNotes"
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gInstructorNotes}
-                                          className="form-control" />
+                                          className="form-control form-control-sm" />
                             </div>
                         </div>
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-10">
+                        <div className="col-sm-12">
                             <div className="form-group">
                                 <label htmlFor="graph-description">
                                     Description
@@ -47,7 +47,7 @@ export default class GraphEditor extends React.Component {
                                 <textarea id="gDescription"
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gDescription}
-                                          className="form-control" />
+                                          className="form-control form-control-sm" />
                             </div>
                         </div>
                     </div>
@@ -62,25 +62,25 @@ export default class GraphEditor extends React.Component {
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <div className="row">
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <label htmlFor="gLine1Slope">
                                 Line 1 slope
                             </label>
                             <input id="gLine1Slope"
                                    onChange={this.handleFormUpdate.bind(this)}
-                                   className="form-control"
+                                   className="form-control form-control-sm"
                                    value={this.props.gLine1Slope}
                                    type="number" step="0.01" />
                         </div>
 
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine2Slope">
                                     Line 2 slope
                                 </label>
                                 <input id="gLine2Slope"
                                        onChange={this.handleFormUpdate.bind(this)}
-                                       className="form-control"
+                                       className="form-control form-control-sm"
                                        value={this.props.gLine2Slope}
                                        type="number" step="0.01" />
                             </div>
@@ -88,31 +88,31 @@ export default class GraphEditor extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine1Label">
                                     Line 1 label
                                 </label>
                                 <input id="gLine1Label"
                                        onChange={this.handleFormUpdate.bind(this)}
-                                       className="form-control" type="text" />
+                                       className="form-control form-control-sm" type="text" />
                             </div>
                         </div>
 
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine2Label">
                                     Line 2 label
                                 </label>
                                 <input id="gLine2Label"
                                        onChange={this.handleFormUpdate.bind(this)}
-                                       className="form-control" type="text" />
+                                       className="form-control form-control-sm" type="text" />
                             </div>
                         </div>
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine1FeedbackIncrease">
                                     Line 1 feedback when moved up
@@ -120,11 +120,11 @@ export default class GraphEditor extends React.Component {
                                 <textarea id="gLine1FeedbackIncrease"
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gLine1FeedbackIncrease}
-                                          className="form-control"></textarea>
+                                          className="form-control form-control-sm"></textarea>
                             </div>
                         </div>
 
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine2FeedbackIncrease">
                                     Line 2 feedback when moved up
@@ -132,13 +132,13 @@ export default class GraphEditor extends React.Component {
                                 <textarea id="gLine2FeedbackIncrease"
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gLine2FeedbackIncrease}
-                                          className="form-control" />
+                                          className="form-control form-control-sm" />
                             </div>
                         </div>
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine1FeedbackDecrease">
                                     Line 1 feedback when moved down
@@ -146,11 +146,11 @@ export default class GraphEditor extends React.Component {
                                 <textarea id="gLine1FeedbackDecrease"
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gLine1FeedbackDecrease}
-                                          className="form-control" />
+                                          className="form-control form-control-sm" />
                             </div>
                         </div>
 
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine2FeedbackDecrease">
                                     Line 2 feedback when moved down
@@ -158,7 +158,7 @@ export default class GraphEditor extends React.Component {
                                 <textarea id="gLine2FeedbackDecrease"
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gLine2FeedbackDecrease}
-                                          className="form-control"></textarea>
+                                          className="form-control form-control-sm"></textarea>
                             </div>
                         </div>
                     </div>
@@ -176,25 +176,25 @@ export default class GraphEditor extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gXAxisLabel">
                                     X-axis label:
                                 </label>
                                 <input id="gXAxisLabel"
-                                       className="form-control"
+                                       className="form-control form-control-sm"
                                        type="text"
                                        onChange={this.handleFormUpdate.bind(this)} />
                             </div>
                         </div>
 
-                        <div className="col-sm-5">
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gYAxisLabel">
                                     Y-axis label:
                                 </label>
                                 <input id="gYAxisLabel"
-                                       className="form-control"
+                                       className="form-control form-control-sm"
                                        type="text"
                                        onChange={this.handleFormUpdate.bind(this)} />
                             </div>
