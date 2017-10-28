@@ -8,7 +8,7 @@ export default class BackButton extends React.Component {
         }
         return (
             <button
-                 className="btn btn-default"
+                 className="btn btn-default btn-sm"
                  onClick={this.onClick.bind(this)}>⬅ Back</button>
         )
     }

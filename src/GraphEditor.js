@@ -202,7 +202,7 @@ export default class GraphEditor extends React.Component {
                     </div>
 
                     <button type="button"
-                            className="btn btn-primary"
+                            className="btn btn-primary btn-sm"
                             onClick={this.handleSaveGraph.bind(this)}>Save</button>
                 </form>
             </div>
