@@ -54,6 +54,8 @@ export default class GraphEditor extends React.Component {
 
                     <JXGBoard
                          id={'editing-graph'}
+                         width={562.5}
+                         height={300}
                          gType={this.props.gType}
                          gLine1Label={this.props.gLine1Label}
                          gLine2Label={this.props.gLine2Label}

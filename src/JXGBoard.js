@@ -9,7 +9,10 @@ export default class JXGBoard extends React.Component {
     constructor(props) {
         super(props);
         this.id = this.props.id;
-        this.style = {width: 600, height: 400};
+        this.style = {
+            width: this.props.width || 450,
+            height: this.props.height || 240
+        };
     }
 
     renderJXBoard(options) {
@@ -119,6 +122,8 @@ export default class JXGBoard extends React.Component {
 }
 
 JXGBoard.propTypes = {
+    width: PropTypes.number,
+    height: PropTypes.number,
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
