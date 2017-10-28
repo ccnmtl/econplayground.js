@@ -102,6 +102,7 @@ class DemandSupplyGraph extends Graph {
                 dash: 1,
                 strokeColor: 'black',
                 strokeWidth: 1,
+                straightFirst: false,
                 straightLast: false
             });
 
@@ -115,10 +116,10 @@ class DemandSupplyGraph extends Graph {
                 dash: 1,
                 strokeColor: 'black',
                 strokeWidth: 1,
+                straightFirst: false,
                 straightLast: false
             });
 
-            // Keep the dashed lines perpendicular to axes.
             l1.on('drag', function() {
                 p1.moveTo([0, i.Y()]);
                 p2.moveTo([i.X(), 0]);
@@ -172,6 +173,7 @@ class LaborMarketGraph extends Graph {
                 dash: 1,
                 strokeColor: 'black',
                 strokeWidth: 1,
+                straightFirst: false,
                 straightLast: false
             });
 
@@ -185,6 +187,7 @@ class LaborMarketGraph extends Graph {
                 dash: 1,
                 strokeColor: 'black',
                 strokeWidth: 1,
+                straightFirst: false,
                 straightLast: false
             });
 
