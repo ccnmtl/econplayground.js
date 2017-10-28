@@ -67,64 +67,59 @@ class Graph {
 
 class DemandSupplyGraph extends Graph {
     make() {
-        this.board.create('point', [2.5, 2.5], {
-            name: 'a', size: 0, withLabel: false});
-        this.board.create('point', [3.5, 2.5 + this.options.gLine1Slope], {
-            name: 'b',
-            size: 0,
-            withLabel: false
-        });
-        let l1 = this.board.create('line', ['a', 'b'], {
-            name: this.options.gLine1Label,
-            withLabel: true,
-            strokeColor: 'rgb(255, 127, 14)',
-            strokeWidth: 2
-        });
+        let l1 = this.board.create(
+            'line',
+            [[2.5, 2.5], [3.5, 2.5 + this.options.gLine1Slope]], {
+                name: this.options.gLine1Label,
+                withLabel: true,
+                strokeColor: 'rgb(255, 127, 14)',
+                strokeWidth: 2
+            });
 
-        this.board.create('point', [2.5, 2.5], {
-            name: 'c', size: 0, withLabel: false});
-        this.board.create('point', [3.5, 2.5 + this.options.gLine2Slope], {
-            name: 'd',
-            size: 0,
-            withLabel: false
-        });
-        let l2 = this.board.create('line', ['c', 'd'], {
-            name: this.options.gLine2Label,
-            withLabel: true,
-            strokeColor: 'steelblue',
-            strokeWidth: 2
-        });
+        let l2 = this.board.create(
+            'line',
+            [[2.5, 2.5], [3.5, 2.5 + this.options.gLine2Slope]], {
+                name: this.options.gLine2Label,
+                withLabel: true,
+                strokeColor: 'steelblue',
+                strokeWidth: 2
+            });
 
         if (this.options.gShowIntersection) {
             let i = this.board.create('intersection', [l1, l2, 0], {
-                name: this.options.intersectLabel || ''
+                name: this.options.intersectLabel || '',
+                fixed: true,
+                showInfobox: false
             });
 
             let p1 = this.board.create('point', [0, i.Y()], {
                 size: 0,
                 name: this.options.yIntersectLabel || '',
-                fixed: true
+                fixed: true,
+                showInfobox: false
             });
             this.board.create('line', [p1, i], {
                 dash: 1,
                 strokeColor: 'black',
                 strokeWidth: 1,
+                straightFirst: false,
                 straightLast: false
             });
 
             let p2 = this.board.create('point', [i.X(), 0], {
                 size: 0,
                 name: this.options.xIntersectLabel || '',
-                fixed: true
+                fixed: true,
+                showInfobox: false
             });
             this.board.create('line', [p2, i], {
                 dash: 1,
                 strokeColor: 'black',
                 strokeWidth: 1,
+                straightFirst: false,
                 straightLast: false
             });
 
-            // Keep the dashed lines perpendicular to axes.
             l1.on('drag', function() {
                 p1.moveTo([0, i.Y()]);
                 p2.moveTo([i.X(), 0]);
@@ -155,11 +150,7 @@ class LaborMarketGraph extends Graph {
             strokeColor: 'rgb(255, 127, 14)'
         });
 
-        this.board.create('point', [0, 0], {
-            name: 'a', size: 0, withLabel: false});
-        this.board.create('point', [5, 5], {
-            name: 'b', size: 0, withLabel: false});
-        let l2 = this.board.create('line', ['a', 'b'], {
+        let l2 = this.board.create('line', [[0, 0], [5, 5]], {
             name: this.options.gLine2Label,
             withLabel: true,
             strokeColor: 'steelblue',
@@ -168,29 +159,35 @@ class LaborMarketGraph extends Graph {
 
         if (this.options.gShowIntersection) {
             let i = this.board.create('intersection', [l1, l2, 0], {
-                withLabel: false});
+                showInfobox: false,
+                withLabel: false
+            });
 
             let p1 = this.board.create('point', [0, i.Y()], {
                 size: 0,
                 withLabel: false,
-                fixed: true
+                fixed: true,
+                showInfobox: false
             });
             this.board.create('line', [p1, i], {
                 dash: 1,
                 strokeColor: 'black',
                 strokeWidth: 1,
+                straightFirst: false,
                 straightLast: false
             });
 
             let p2 = this.board.create('point', [i.X(), 0], {
                 size: 0,
                 withLabel: false,
-                fixed: true
+                fixed: true,
+                showInfobox: false
             });
             this.board.create('line', [p2, i], {
                 dash: 1,
                 strokeColor: 'black',
                 strokeWidth: 1,
+                straightFirst: false,
                 straightLast: false
             });
 
@@ -263,11 +260,7 @@ let mkCobbDouglas = function(board, options) {
 
 class LaborSupplyGraph extends Graph {
     make() {
-        this.board.create('point', [0, 5], {
-            name: 'a', size: 0, withLabel: false});
-        this.board.create('point', [5, 0], {
-            name: 'b', size: 0, withLabel: false});
-        this.board.create('line', ['a', 'b'], {
+        this.board.create('line', [[0, 5], [5, 0]], {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeColor: 'rgb(255, 127, 14)',
@@ -283,11 +276,7 @@ let mkLaborSupply = function(board, options) {
 
 class ConsumptionSavingGraph extends Graph {
     make() {
-        this.board.create('point', [0, 5], {
-            name: 'a', size: 0, withLabel: false});
-        this.board.create('point', [5, 0], {
-            name: 'b', size: 0, withLabel: false});
-        this.board.create('line', ['a', 'b'], {
+        this.board.create('line', [[0, 5], [5, 0]], {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeColor: 'rgb(255, 127, 14)',
@@ -303,22 +292,14 @@ let mkConsumptionSaving = function(board, options) {
 
 class SavingInvestmentGraph extends Graph {
     make() {
-        this.board.create('point', [0, 5], {
-            name: 'a', size: 0, withLabel: false});
-        this.board.create('point', [5, 0], {
-            name: 'b', size: 0, withLabel: false});
-        this.board.create('line', ['a', 'b'], {
+        this.board.create('line', [[0, 5], [5, 0]], {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeColor: 'rgb(255, 127, 14)',
             strokeWidth: 2
         });
 
-        this.board.create('point', [0, 0], {
-            name: 'c', size: 0, withLabel: false});
-        this.board.create('point', [5, 5], {
-            name: 'd', size: 0, withLabel: false});
-        this.board.create('line', ['c', 'd'], {
+        this.board.create('line', [[0, 0], [5, 5]], {
             name: this.options.gLine2Label,
             withLabel: true,
             strokeColor: 'steelblue',
@@ -334,22 +315,14 @@ let mkSavingInvestment = function(board, options) {
 
 class MoneyMarketGraph extends Graph {
     make() {
-        this.board.create('point', [0, 5], {
-            name: 'a', size: 0, withLabel: false});
-        this.board.create('point', [5, 0], {
-            name: 'b', size: 0, withLabel: false});
-        this.board.create('line', ['a', 'b'], {
+        this.board.create('line', [[0, 5], [5, 0]], {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeColor: 'rgb(255, 127, 14)',
             strokeWidth: 2
         });
 
-        this.board.create('point', [0, 0], {
-            name: 'c', size: 0, withLabel: false});
-        this.board.create('point', [5, 5], {
-            name: 'd', size: 0, withLabel: false});
-        this.board.create('line', ['c', 'd'], {
+        this.board.create('line', [[0, 0], [5, 5]], {
             name: this.options.gLine2Label,
             withLabel: true,
             strokeColor: 'steelblue',
