@@ -72,6 +72,7 @@ class DemandSupplyGraph extends Graph {
             [[2.5, 2.5], [3.5, 2.5 + this.options.gLine1Slope]], {
                 name: this.options.gLine1Label,
                 withLabel: true,
+                label: { position: 'rt', offset: [-10, -20] },
                 strokeColor: 'rgb(255, 127, 14)',
                 strokeWidth: 2
             });
@@ -81,6 +82,7 @@ class DemandSupplyGraph extends Graph {
             [[2.5, 2.5], [3.5, 2.5 + this.options.gLine2Slope]], {
                 name: this.options.gLine2Label,
                 withLabel: true,
+                label: { position: 'rt', offset: [0, 20] },
                 strokeColor: 'steelblue',
                 strokeWidth: 2
             });
@@ -153,6 +155,7 @@ class LaborMarketGraph extends Graph {
         let l2 = this.board.create('line', [[0, 0], [5, 5]], {
             name: this.options.gLine2Label,
             withLabel: true,
+            label: { position: 'rt', offset: [10, -20] },
             strokeColor: 'steelblue',
             strokeWidth: 2
         });
@@ -263,6 +266,7 @@ class LaborSupplyGraph extends Graph {
         this.board.create('line', [[0, 5], [5, 0]], {
             name: this.options.gLine1Label,
             withLabel: true,
+            label: { position: 'rt', offset: [-10, 20] },
             strokeColor: 'rgb(255, 127, 14)',
             strokeWidth: 2
         });
@@ -279,6 +283,7 @@ class ConsumptionSavingGraph extends Graph {
         this.board.create('line', [[0, 5], [5, 0]], {
             name: this.options.gLine1Label,
             withLabel: true,
+            label: { position: 'rt', offset: [-10, 20] },
             strokeColor: 'rgb(255, 127, 14)',
             strokeWidth: 2
         });
@@ -295,6 +300,7 @@ class SavingInvestmentGraph extends Graph {
         this.board.create('line', [[0, 5], [5, 0]], {
             name: this.options.gLine1Label,
             withLabel: true,
+            label: { position: 'rt', offset: [-10, 20] },
             strokeColor: 'rgb(255, 127, 14)',
             strokeWidth: 2
         });
@@ -302,6 +308,7 @@ class SavingInvestmentGraph extends Graph {
         this.board.create('line', [[0, 0], [5, 5]], {
             name: this.options.gLine2Label,
             withLabel: true,
+            label: { position: 'rt', offset: [0, 0] },
             strokeColor: 'steelblue',
             strokeWidth: 2
         });
@@ -318,6 +325,7 @@ class MoneyMarketGraph extends Graph {
         this.board.create('line', [[0, 5], [5, 0]], {
             name: this.options.gLine1Label,
             withLabel: true,
+            label: { position: 'rt', offset: [-10, 20] },
             strokeColor: 'rgb(255, 127, 14)',
             strokeWidth: 2
         });
@@ -325,6 +333,7 @@ class MoneyMarketGraph extends Graph {
         this.board.create('line', [[0, 0], [5, 5]], {
             name: this.options.gLine2Label,
             withLabel: true,
+            label: { position: 'rt', offset: [0, 0] },
             strokeColor: 'steelblue',
             strokeWidth: 2
         });
