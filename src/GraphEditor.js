@@ -66,7 +66,7 @@ export default class GraphEditor extends React.Component {
                     <div className="row">
                         <div className="col-sm-6">
                             <label htmlFor="gLine1Slope">
-                                Line 1 slope
+                                Orange line slope
                             </label>
                             <input id="gLine1Slope"
                                    onChange={this.handleFormUpdate.bind(this)}
@@ -78,7 +78,7 @@ export default class GraphEditor extends React.Component {
                         <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine2Slope">
-                                    Line 2 slope
+                                    Blue line slope
                                 </label>
                                 <input id="gLine2Slope"
                                        onChange={this.handleFormUpdate.bind(this)}
@@ -93,7 +93,7 @@ export default class GraphEditor extends React.Component {
                         <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine1Label">
-                                    Line 1 label
+                                    Orange line label
                                 </label>
                                 <input id="gLine1Label"
                                        onChange={this.handleFormUpdate.bind(this)}
@@ -104,7 +104,7 @@ export default class GraphEditor extends React.Component {
                         <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine2Label">
-                                    Line 2 label
+                                    Blue line label
                                 </label>
                                 <input id="gLine2Label"
                                        onChange={this.handleFormUpdate.bind(this)}
@@ -117,7 +117,7 @@ export default class GraphEditor extends React.Component {
                         <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine1FeedbackIncrease">
-                                    Line 1 feedback when moved up
+                                    Orange line feedback when moved up
                                 </label>
                                 <textarea id="gLine1FeedbackIncrease"
                                           onChange={this.handleFormUpdate.bind(this)}
@@ -129,7 +129,7 @@ export default class GraphEditor extends React.Component {
                         <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine2FeedbackIncrease">
-                                    Line 2 feedback when moved up
+                                    Blue line feedback when moved up
                                 </label>
                                 <textarea id="gLine2FeedbackIncrease"
                                           onChange={this.handleFormUpdate.bind(this)}
@@ -143,7 +143,7 @@ export default class GraphEditor extends React.Component {
                         <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine1FeedbackDecrease">
-                                    Line 1 feedback when moved down
+                                    Orange line feedback when moved down
                                 </label>
                                 <textarea id="gLine1FeedbackDecrease"
                                           onChange={this.handleFormUpdate.bind(this)}
@@ -155,7 +155,7 @@ export default class GraphEditor extends React.Component {
                         <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine2FeedbackDecrease">
-                                    Line 2 feedback when moved down
+                                    Blue line feedback when moved down
                                 </label>
                                 <textarea id="gLine2FeedbackDecrease"
                                           onChange={this.handleFormUpdate.bind(this)}
