@@ -12,7 +12,7 @@ class Viewer extends Component {
 
         this.state = {
             // Graph options
-            gType: 0,
+            gType: null,
             gShowIntersection: true,
             gLine1Slope: 1,
             gLine2Slope: -1,
