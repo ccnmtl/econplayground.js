@@ -26,7 +26,7 @@ export default class GraphViewer extends React.Component {
                     <div className="form-row">
                         <div className="col">
                             <label htmlFor="gLine1Slope">
-                                Line 1 slope
+                                Orange line slope
                             </label>
                             <input id="gLine1Slope"
                                    onChange={this.handleFormUpdate.bind(this)}
@@ -38,7 +38,7 @@ export default class GraphViewer extends React.Component {
                         <div className="col">
                             <div className="form-group">
                                 <label htmlFor="gLine2Slope">
-                                    Line 2 slope
+                                    Blue line slope
                                 </label>
                                 <input id="gLine2Slope"
                                        onChange={this.handleFormUpdate.bind(this)}
