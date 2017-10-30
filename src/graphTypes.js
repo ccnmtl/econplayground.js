@@ -60,6 +60,73 @@ class Graph {
         this.options = applyDefaults(options, defaults);
         this.board = board;
     }
+    /**
+     * Updates the intersection point at this.i.
+     *
+     * Expects this.i and this.p1, this.p2 to be set.
+     */
+    updateIntersection() {
+        this.p1.moveTo([0, this.i.Y()]);
+        this.p2.moveTo([this.i.X(), 0]);
+    }
+    /**
+     * Set up intersection display for l1 and l2.
+     *
+     * Sets this.i, this.p1, and this.p2.
+     */
+    showIntersection(l1, l2) {
+        let i = this.board.create('intersection', [l1, l2, 0], {
+            name: this.options.intersectLabel || '',
+            fixed: true,
+            showInfobox: false
+        });
+        this.i = i;
+
+        let p1 = this.board.create('point', [0, i.Y()], {
+            size: 0,
+            name: this.options.yIntersectLabel || '',
+            fixed: true,
+            showInfobox: false
+        });
+        this.p1 = p1;
+        this.board.create('line', [p1, i], {
+            dash: 1,
+            strokeColor: 'black',
+            strokeWidth: 1,
+            straightFirst: false,
+            straightLast: false
+        });
+
+        let p2 = this.board.create('point', [i.X(), 0], {
+            size: 0,
+            name: this.options.xIntersectLabel || '',
+            fixed: true,
+            showInfobox: false
+        });
+        this.p2 = p2;
+        this.board.create('line', [p2, i], {
+            dash: 1,
+            strokeColor: 'black',
+            strokeWidth: 1,
+            straightFirst: false,
+            straightLast: false
+        });
+
+        // Keep the dashed intersection lines perpendicular to the axes.
+        const me = this;
+        l1.on('up', function() {
+            me.updateIntersection();
+        });
+        l1.on('drag', function() {
+            me.updateIntersection();
+        });
+        l2.on('up', function() {
+            me.updateIntersection();
+        });
+        l2.on('drag', function() {
+            me.updateIntersection();
+        });
+    }
     make() {
         // unimplemented
     }
@@ -74,7 +141,8 @@ class DemandSupplyGraph extends Graph {
                 withLabel: true,
                 label: { position: 'rt', offset: [-10, -20] },
                 strokeColor: 'rgb(255, 127, 14)',
-                strokeWidth: 2
+                strokeWidth: 2,
+                snapToGrid: true
             });
 
         let l2 = this.board.create(
@@ -84,52 +152,12 @@ class DemandSupplyGraph extends Graph {
                 withLabel: true,
                 label: { position: 'rt', offset: [0, 20] },
                 strokeColor: 'steelblue',
-                strokeWidth: 2
+                strokeWidth: 2,
+                snapToGrid: true
             });
 
         if (this.options.gShowIntersection) {
-            let i = this.board.create('intersection', [l1, l2, 0], {
-                name: this.options.intersectLabel || '',
-                fixed: true,
-                showInfobox: false
-            });
-
-            let p1 = this.board.create('point', [0, i.Y()], {
-                size: 0,
-                name: this.options.yIntersectLabel || '',
-                fixed: true,
-                showInfobox: false
-            });
-            this.board.create('line', [p1, i], {
-                dash: 1,
-                strokeColor: 'black',
-                strokeWidth: 1,
-                straightFirst: false,
-                straightLast: false
-            });
-
-            let p2 = this.board.create('point', [i.X(), 0], {
-                size: 0,
-                name: this.options.xIntersectLabel || '',
-                fixed: true,
-                showInfobox: false
-            });
-            this.board.create('line', [p2, i], {
-                dash: 1,
-                strokeColor: 'black',
-                strokeWidth: 1,
-                straightFirst: false,
-                straightLast: false
-            });
-
-            l1.on('drag', function() {
-                p1.moveTo([0, i.Y()]);
-                p2.moveTo([i.X(), 0]);
-            });
-            l2.on('drag', function() {
-                p1.moveTo([0, i.Y()]);
-                p2.moveTo([i.X(), 0]);
-            });
+            this.showIntersection(l1, l2);
         }
     }
 }
@@ -157,52 +185,12 @@ class LaborMarketGraph extends Graph {
             withLabel: true,
             label: { position: 'rt', offset: [10, -20] },
             strokeColor: 'steelblue',
-            strokeWidth: 2
+            strokeWidth: 2,
+            snapToGrid: true
         });
 
         if (this.options.gShowIntersection) {
-            let i = this.board.create('intersection', [l1, l2, 0], {
-                showInfobox: false,
-                withLabel: false
-            });
-
-            let p1 = this.board.create('point', [0, i.Y()], {
-                size: 0,
-                withLabel: false,
-                fixed: true,
-                showInfobox: false
-            });
-            this.board.create('line', [p1, i], {
-                dash: 1,
-                strokeColor: 'black',
-                strokeWidth: 1,
-                straightFirst: false,
-                straightLast: false
-            });
-
-            let p2 = this.board.create('point', [i.X(), 0], {
-                size: 0,
-                withLabel: false,
-                fixed: true,
-                showInfobox: false
-            });
-            this.board.create('line', [p2, i], {
-                dash: 1,
-                strokeColor: 'black',
-                strokeWidth: 1,
-                straightFirst: false,
-                straightLast: false
-            });
-
-            // Keep the dashed lines perpendicular to axes.
-            l1.on('drag', function() {
-                p1.moveTo([0, i.Y()]);
-                p2.moveTo([i.X(), 0]);
-            });
-            l2.on('drag', function() {
-                p1.moveTo([0, i.Y()]);
-                p2.moveTo([i.X(), 0]);
-            });
+            this.showIntersection(l1, l2);
         }
     }
 }
@@ -231,7 +219,8 @@ class LaborMarketPerfectlyInelasticGraph extends Graph {
             name: this.options.gLine2Label,
             withLabel: true,
             strokeColor: 'steelblue',
-            strokeWidth: 2
+            strokeWidth: 2,
+            snapToGrid: true
         });
     }
 }
