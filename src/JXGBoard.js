@@ -60,20 +60,23 @@ export default class JXGBoard extends React.Component {
 
         this.board = board;
 
-        graphTypes[this.props.gType || 0](board, {
-            gShowIntersection: (
-                typeof options.gShowIntersection === 'undefined') ?
-                true :
-                options.gShowIntersection,
-            gLine1Label: options.gLine1Label,
-            gLine2Label: options.gLine2Label,
-            gLine1Slope: options.gLine1Slope,
-            gLine2Slope: options.gLine2Slope
-        });
+        if (typeof options.gType === 'number') {
+            graphTypes[options.gType](board, {
+                gShowIntersection: (
+                    typeof options.gShowIntersection === 'undefined') ?
+                    true :
+                    options.gShowIntersection,
+                gLine1Label: options.gLine1Label,
+                gLine2Label: options.gLine2Label,
+                gLine1Slope: options.gLine1Slope,
+                gLine2Slope: options.gLine2Slope
+            });
+        }
     }
 
     componentWillReceiveProps(nextProps) {
         const updateProps = [
+            'gType',
             'gShowIntersection',
             'gLine1Label',
             'gLine2Label',
@@ -92,6 +95,7 @@ export default class JXGBoard extends React.Component {
 
         if (needsUpdate) {
             this.renderJXBoard({
+                gType: nextProps.gType,
                 gShowIntersection: nextProps.gShowIntersection,
                 gLine1Label: nextProps.gLine1Label,
                 gLine2Label: nextProps.gLine2Label,
@@ -103,6 +107,7 @@ export default class JXGBoard extends React.Component {
 
     componentDidMount() {
         this.renderJXBoard({
+            gType: this.props.gType,
             gShowIntersection: this.props.gShowIntersection,
             gLine1Label: this.props.gLine1Label,
             gLine2Label: this.props.gLine2Label,
@@ -129,6 +134,6 @@ JXGBoard.propTypes = {
     gLine2Label: PropTypes.string,
     gLine1Slope: PropTypes.number,
     gLine2Slope: PropTypes.number,
-    gType: PropTypes.number.isRequired,
+    gType: PropTypes.number,
     id: PropTypes.string.isRequired
 };
