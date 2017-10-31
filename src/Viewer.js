@@ -23,7 +23,8 @@ class Viewer extends Component {
             gLine1FeedbackIncrease: '',
             gLine1FeedbackDecrease: '',
             gLine2FeedbackIncrease: '',
-            gLine2FeedbackDecrease: ''
+            gLine2FeedbackDecrease: '',
+            gLineMovement: null
         };
     }
 
@@ -66,6 +67,7 @@ class Viewer extends Component {
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
+            gLineMovement={this.state.gLineMovement}
             updateGraph={this.handleGraphUpdate.bind(this)}
                 />;
         }

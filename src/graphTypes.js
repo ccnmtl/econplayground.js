@@ -49,7 +49,8 @@ class Graph {
                 gLine1Label1: '',
                 gLine1Label2: '',
                 gLine1Slope: -1,
-                gLine2Slope: 1
+                gLine2Slope: 1,
+                gLineMovement: null
             };
         }
 
@@ -155,6 +156,8 @@ class DemandSupplyGraph extends Graph {
                 strokeWidth: 2,
                 snapToGrid: true
             });
+
+        // TODO: move line position based on gLineMovement
 
         if (this.options.gShowIntersection) {
             this.showIntersection(l1, l2);
