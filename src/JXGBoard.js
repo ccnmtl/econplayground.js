@@ -69,7 +69,8 @@ export default class JXGBoard extends React.Component {
                 gLine1Label: options.gLine1Label,
                 gLine2Label: options.gLine2Label,
                 gLine1Slope: options.gLine1Slope,
-                gLine2Slope: options.gLine2Slope
+                gLine2Slope: options.gLine2Slope,
+                gLineMovement: options.gLineMovement
             });
         }
     }
@@ -81,7 +82,8 @@ export default class JXGBoard extends React.Component {
             'gLine1Label',
             'gLine2Label',
             'gLine1Slope',
-            'gLine2Slope'
+            'gLine2Slope',
+            'gLineMovement'
         ];
 
         let needsUpdate = false;
@@ -100,7 +102,8 @@ export default class JXGBoard extends React.Component {
                 gLine1Label: nextProps.gLine1Label,
                 gLine2Label: nextProps.gLine2Label,
                 gLine1Slope: nextProps.gLine1Slope,
-                gLine2Slope: nextProps.gLine2Slope
+                gLine2Slope: nextProps.gLine2Slope,
+                gLineMovement: nextProps.gLineMovement
             });
         }
     }
@@ -112,7 +115,8 @@ export default class JXGBoard extends React.Component {
             gLine1Label: this.props.gLine1Label,
             gLine2Label: this.props.gLine2Label,
             gLine1Slope: this.props.gLine1Slope,
-            gLine2Slope: this.props.gLine2Slope
+            gLine2Slope: this.props.gLine2Slope,
+            gLineMovement: this.props.gLineMovement
         });
     }
 
@@ -134,6 +138,7 @@ JXGBoard.propTypes = {
     gLine2Label: PropTypes.string,
     gLine1Slope: PropTypes.number,
     gLine2Slope: PropTypes.number,
+    gLineMovement: PropTypes.number,
     gType: PropTypes.number,
     id: PropTypes.string.isRequired
 };

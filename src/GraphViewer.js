@@ -9,7 +9,7 @@ export default class GraphViewer extends React.Component {
     render() {
         return (
             <div className="GraphViewer">
-                <h1>{this.props.gTitle}</h1>
+                <h5>{this.props.gTitle}</h5>
                 <p>{this.props.gDescription}</p>
                 <form>
                     <JXGBoard
@@ -21,6 +21,7 @@ export default class GraphViewer extends React.Component {
                          gLine2Label={this.props.gLine2Label}
                          gLine1Slope={this.props.gLine1Slope}
                          gLine2Slope={this.props.gLine2Slope}
+                         gLineMovement={this.props.gLineMovement}
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <div className="form-row">
@@ -48,6 +49,22 @@ export default class GraphViewer extends React.Component {
                             </div>
                         </div>
                     </div>
+
+                    <hr />
+
+                    <select id="gLineMovement"
+                            className="form-control"
+                            onChange={this.handleFormUpdate.bind(this)}>
+                        <option>(Choose line movement)</option>
+                        <option value="0">Move orange line up</option>
+                        <option value="1">Move orange line down</option>
+                        <option value="2">Move blue line up</option>
+                        <option value="3">Move blue line down</option>
+                    </select>
+
+                    <button className="btn btn-primary"
+                            style={{marginTop: '1em'}}
+                            type="submit">Submit</button>
                 </form>
             </div>
         )
@@ -63,7 +80,11 @@ export default class GraphViewer extends React.Component {
             obj[e.target.id] = parseFloat(e.target.value);
             break;
         default:
-            obj[e.target.id] = e.target.value;
+            if (e.target.id === 'gLineMovement') {
+                obj[e.target.id] = parseInt(e.target.value, 10);
+            } else {
+                obj[e.target.id] = e.target.value;
+            }
         }
 
         this.props.updateGraph(obj);
@@ -78,6 +99,7 @@ GraphViewer.propTypes = {
     gLine2Label: PropTypes.string,
     gLine1Slope: PropTypes.number,
     gLine2Slope: PropTypes.number,
+    gLineMovement: PropTypes.number,
     gType: PropTypes.number,
     updateGraph: PropTypes.func.isRequired
 };
