@@ -58,8 +58,41 @@ class Graph {
             options = {};
         }
 
+        // Line 1 and line 2
+        this.l1 = null;
+        this.l2 = null;
+
         this.options = applyDefaults(options, defaults);
         this.board = board;
+    }
+    /**
+     * Handle initialization that happens after the custom make() step.
+     */
+    postMake() {
+        this.initialL1Y = this.l1.getRise();
+        this.initialL2Y = this.l2.getRise();
+
+        this.l1.on('mouseup', function() {
+            // TODO: emit event for each case
+            // let event = new Event('linemove');
+            // me.board.dispatchEvent(event);
+            /*if (this.getRise() > me.initialL1Y) {
+
+            } else if (this.getRise() < me.initialL1Y) {
+
+            } else {
+
+            }*/
+        });
+        this.l2.on('mouseup', function() {
+            /*if (this.getRise() > me.initialL2Y) {
+
+            } else if (this.getRise() < me.initialL2Y) {
+
+            } else {
+
+            }*/
+        });
     }
     /**
      * Updates the intersection point at this.i.
@@ -145,6 +178,7 @@ class DemandSupplyGraph extends Graph {
                 strokeWidth: 2,
                 snapToGrid: true
             });
+        this.l1 = l1;
 
         let l2 = this.board.create(
             'line',
@@ -156,6 +190,7 @@ class DemandSupplyGraph extends Graph {
                 strokeWidth: 2,
                 snapToGrid: true
             });
+        this.l2 = l2;
 
         // TODO: move line position based on gLineMovement
 
@@ -168,6 +203,8 @@ class DemandSupplyGraph extends Graph {
 let mkDemandSupply = function(board, options) {
     let g = new DemandSupplyGraph(board, options);
     g.make();
+    g.postMake();
+    return g;
 };
 
 class LaborMarketGraph extends Graph {
@@ -201,6 +238,8 @@ class LaborMarketGraph extends Graph {
 let mkLaborMarket = function(board, options) {
     let g = new LaborMarketGraph(board, options);
     g.make();
+    g.postMake();
+    return g;
 };
 
 class LaborMarketPerfectlyInelasticGraph extends Graph {
@@ -231,6 +270,8 @@ class LaborMarketPerfectlyInelasticGraph extends Graph {
 let mkLaborMarketPerfectlyInelastic = function(board, options) {
     let g = new LaborMarketPerfectlyInelasticGraph(board, options);
     g.make();
+    g.postMake();
+    return g;
 };
 
 class CobbDouglasGraph extends Graph {
@@ -251,6 +292,8 @@ class CobbDouglasGraph extends Graph {
 let mkCobbDouglas = function(board, options) {
     let g = new CobbDouglasGraph(board, options);
     g.make();
+    g.postMake();
+    return g;
 };
 
 class LaborSupplyGraph extends Graph {
@@ -268,6 +311,8 @@ class LaborSupplyGraph extends Graph {
 let mkLaborSupply = function(board, options) {
     let g = new LaborSupplyGraph(board, options);
     g.make();
+    g.postMake();
+    return g;
 };
 
 class ConsumptionSavingGraph extends Graph {
@@ -285,6 +330,8 @@ class ConsumptionSavingGraph extends Graph {
 let mkConsumptionSaving = function(board, options) {
     let g = new ConsumptionSavingGraph(board, options);
     g.make();
+    g.postMake();
+    return g;
 };
 
 class SavingInvestmentGraph extends Graph {
@@ -310,6 +357,8 @@ class SavingInvestmentGraph extends Graph {
 let mkSavingInvestment = function(board, options) {
     let g = new SavingInvestmentGraph(board, options);
     g.make();
+    g.postMake();
+    return g;
 };
 
 class MoneyMarketGraph extends Graph {
@@ -335,6 +384,8 @@ class MoneyMarketGraph extends Graph {
 let mkMoneyMarket = function(board, options) {
     let g = new MoneyMarketGraph(board, options);
     g.make();
+    g.postMake();
+    return g;
 };
 
 export const graphTypes = [
