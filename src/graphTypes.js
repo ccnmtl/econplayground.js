@@ -69,6 +69,10 @@ class Graph {
      * Handle initialization that happens after the custom make() step.
      */
     postMake() {
+        if (!this.l1 || !this.l2) {
+            return;
+        }
+
         this.initialL1Y = this.l1.getRise();
         this.initialL2Y = this.l2.getRise();
 
