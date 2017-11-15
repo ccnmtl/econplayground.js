@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import JXGBoard from './JXGBoard.js';
 
@@ -7,11 +8,26 @@ import JXGBoard from './JXGBoard.js';
  */
 export default class GraphViewer extends React.Component {
     render() {
+        let action = '';
+        if (window.EconPlayground && window.EconPlayground.LTIPostGrade) {
+            action = window.EconPlayground.LTIPostGrade;
+        }
+
+        let successUrl = '/';
+        if (window.EconPlayground && window.EconPlayground.EmbedSuccess) {
+            successUrl = window.EconPlayground.EmbedSuccess;
+        }
+
+        const token = Cookies.get('csrftoken');
+
         return (
             <div className="GraphViewer">
                 <h5>{this.props.gTitle}</h5>
                 <p>{this.props.gDescription}</p>
-                <form>
+                <form action={action} method="post">
+                    <input type="hidden" name="csrfmiddlewaretoken" value={token} />
+                    <input type="input" name="score" value=".55" />
+                    <input type="hidden" name="next" value={successUrl} />
                     <JXGBoard
                          id={'editing-graph'}
                          width={562.5}
@@ -61,6 +77,10 @@ export default class GraphViewer extends React.Component {
                         <option value="2">Move blue line up</option>
                         <option value="3">Move blue line down</option>
                     </select>
+
+                    <button className="btn btn-primary"
+                            style={{marginTop: '1em'}}
+                            type="submit">Submit</button>
                 </form>
             </div>
         )
