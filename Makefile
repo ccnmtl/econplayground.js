@@ -21,4 +21,4 @@ test: $(JS_SENTINAL)
 clean:
 	rm -rf $(NODE_MODULES) build
 
-.PHONY: clean
+.PHONY: clean build
