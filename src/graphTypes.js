@@ -69,34 +69,54 @@ class Graph {
      * Handle initialization that happens after the custom make() step.
      */
     postMake() {
-        if (!this.l1 || !this.l2) {
-            return;
+        // Make two white lines to block the curves from displaying
+        // below 0. A more straightforward way to do this would be
+        // better.
+        this.board.create('line', [[-0.2, 0], [-0.2, 5]], {
+            dash: 0,
+            highlight: false,
+            fixed: true,
+            strokeColor: 'white',
+            strokeWidth: this.board.canvasWidth / 27,
+            straightFirst: true,
+            straightLast: true
+        });
+        this.board.create('line', [[0, -0.2], [5, -0.2]], {
+            dash: 0,
+            highlight: false,
+            fixed: true,
+            strokeColor: 'white',
+            strokeWidth: this.board.canvasWidth / 27,
+            straightFirst: true,
+            straightLast: true
+        });
+
+        if (this.l1 && this.l2) {
+            this.initialL1Y = this.l1.getRise();
+            this.initialL2Y = this.l2.getRise();
+
+            this.l1.on('mouseup', function() {
+                // TODO: emit event for each case
+                // let event = new Event('linemove');
+                // me.board.dispatchEvent(event);
+                /*if (this.getRise() > me.initialL1Y) {
+
+                 } else if (this.getRise() < me.initialL1Y) {
+
+                 } else {
+
+                 }*/
+            });
+            this.l2.on('mouseup', function() {
+                /*if (this.getRise() > me.initialL2Y) {
+
+                 } else if (this.getRise() < me.initialL2Y) {
+
+                 } else {
+
+                 }*/
+            });
         }
-
-        this.initialL1Y = this.l1.getRise();
-        this.initialL2Y = this.l2.getRise();
-
-        this.l1.on('mouseup', function() {
-            // TODO: emit event for each case
-            // let event = new Event('linemove');
-            // me.board.dispatchEvent(event);
-            /*if (this.getRise() > me.initialL1Y) {
-
-            } else if (this.getRise() < me.initialL1Y) {
-
-            } else {
-
-            }*/
-        });
-        this.l2.on('mouseup', function() {
-            /*if (this.getRise() > me.initialL2Y) {
-
-            } else if (this.getRise() < me.initialL2Y) {
-
-            } else {
-
-            }*/
-        });
     }
     /**
      * Updates the intersection point at this.i.
