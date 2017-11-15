@@ -31,7 +31,7 @@ const publicUrl = publicPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
 
 // Note: defined here because it will be used more than once.
-const cssFilename = 'static/css/[name].css';
+const cssFilename = '[name].css';
 
 // ExtractTextPlugin expects the build output to be flat.
 // (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
@@ -62,8 +62,8 @@ module.exports = {
         // Generated JS file names (with nested folders).
         // There will be one main bundle, and one file per asynchronous chunk.
         // We don't currently advertise code splitting but Webpack supports it.
-        filename: 'static/js/[name].js',
-        chunkFilename: 'static/js/[name].chunk.js',
+        filename: '[name].js',
+        chunkFilename: '[name].chunk.js',
         // We inferred the "public path" (such as / or /my-project) from homepage.
         publicPath: publicPath,
         // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -139,7 +139,7 @@ module.exports = {
                         loader: require.resolve('url-loader'),
                         options: {
                             limit: 10000,
-                            name: 'static/media/[name].[ext]',
+                            name: '[name].[ext]',
                         },
                     },
                     // Process JS with Babel.
@@ -218,7 +218,7 @@ module.exports = {
                         // by webpacks internal loaders.
                         exclude: [/\.js$/, /\.html$/, /\.json$/],
                         options: {
-                            name: 'static/media/[name].[ext]',
+                            name: '[name].[ext]',
                         },
                     },
                     // ** STOP ** Are you adding a new loader?
