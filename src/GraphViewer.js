@@ -26,7 +26,7 @@ export default class GraphViewer extends React.Component {
                 <p>{this.props.gDescription}</p>
                 <form action={action} method="post">
                     <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                    <input type="input" name="score" value=".55" />
+                    <input type="hidden" name="score" value="1" />
                     <input type="hidden" name="next" value={successUrl} />
                     <JXGBoard
                          id={'editing-graph'}
