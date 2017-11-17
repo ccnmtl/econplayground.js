@@ -1,7 +1,8 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
-import JXGBoard from './JXGBoard.js';
+import JXGBoard from './JXGBoard';
+import Feedback from './Feedback';
 
 /**
  * This component is used to view an econgraph object.
@@ -40,6 +41,13 @@ export default class GraphViewer extends React.Component {
                          gLineMovement={this.props.gLineMovement}
                          gNeedsSubmit={this.props.gNeedsSubmit}
                          gShowIntersection={this.props.gShowIntersection} />
+
+                    <Feedback
+                         value={this.props.value}
+                         gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
+                         gLine1FeedbackIncrease={this.props.gLine1FeedbackIncrease}
+                         gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease}
+                         gLine2FeedbackIncrease={this.props.gLine2FeedbackIncrease} />
 
                     <div className="form-row">
                         <div className="col">
@@ -117,6 +125,10 @@ GraphViewer.propTypes = {
     gLine2Label: PropTypes.string,
     gLine1Slope: PropTypes.number,
     gLine2Slope: PropTypes.number,
+    gLine1FeedbackDecrease: PropTypes.string,
+    gLine1FeedbackIncrease: PropTypes.string,
+    gLine2FeedbackDecrease: PropTypes.string,
+    gLine2FeedbackIncrease: PropTypes.string,
     gLineMovement: PropTypes.number,
     gType: PropTypes.number,
     updateGraph: PropTypes.func.isRequired,

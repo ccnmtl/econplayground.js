@@ -72,6 +72,10 @@ class Viewer extends Component {
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
+            gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
+            gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
+            gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
+            gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
             gLineMovement={this.state.gLineMovement}
             updateGraph={this.handleGraphUpdate.bind(this)}
             value={this.state.value}
