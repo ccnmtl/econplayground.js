@@ -100,6 +100,12 @@ class Viewer extends Component {
         document.addEventListener('l2down', function() {
             me.handleCase4();
         });
+        document.addEventListener('l1initial', function() {
+            me.handleInitial();
+        });
+        document.addEventListener('l2initial', function() {
+            me.handleInitial();
+        });
     }
 
     getGraph() {
@@ -160,6 +166,9 @@ class Viewer extends Component {
     }
     handleCase4() {
         this.setState({value: '4'});
+    }
+    handleInitial() {
+        this.setState({value: ''});
     }
 }
 

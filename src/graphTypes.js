@@ -101,6 +101,8 @@ class Graph {
                     document.dispatchEvent(new Event('l1up'));
                 } else if (this.getRise() < me.initialL1Y) {
                     document.dispatchEvent(new Event('l1down'));
+                } else {
+                    document.dispatchEvent(new Event('l1initial'));
                 }
             });
             this.l2.on('mouseup', function() {
@@ -108,6 +110,8 @@ class Graph {
                     document.dispatchEvent(new Event('l2up'));
                 } else if (this.getRise() < me.initialL2Y) {
                     document.dispatchEvent(new Event('l2down'));
+                } else {
+                    document.dispatchEvent(new Event('l2initial'));
                 }
             });
         }
