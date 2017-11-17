@@ -88,7 +88,10 @@ export default class GraphViewer extends React.Component {
                     </select>
 
                     <button className="btn btn-primary"
-                            style={{marginTop: '1em'}}
+                            style={{
+                                marginTop: '1em',
+                                display: this.props.gNeedsSubmit ? 'inherit' : 'none'
+                            }}
                             type="submit">Submit</button>
                 </form>
             </div>

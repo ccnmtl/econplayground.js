@@ -248,6 +248,7 @@ GraphEditor.propTypes = {
     gLine2FeedbackIncrease: PropTypes.string,
     gLine2FeedbackDecrease: PropTypes.string,
     gType: PropTypes.number,
+    gNeedsSubmit: PropTypes.bool,
 
     updateDisplayIntersection: PropTypes.func.isRequired,
     updateGraph: PropTypes.func.isRequired,
