@@ -95,26 +95,20 @@ class Graph {
             this.initialL1Y = this.l1.getRise();
             this.initialL2Y = this.l2.getRise();
 
+            const me = this;
             this.l1.on('mouseup', function() {
-                // TODO: emit event for each case
-                // let event = new Event('linemove');
-                // me.board.dispatchEvent(event);
-                /*if (this.getRise() > me.initialL1Y) {
-
-                 } else if (this.getRise() < me.initialL1Y) {
-
-                 } else {
-
-                 }*/
+                if (this.getRise() > me.initialL1Y) {
+                    document.dispatchEvent(new Event('l1up'));
+                } else if (this.getRise() < me.initialL1Y) {
+                    document.dispatchEvent(new Event('l1down'));
+                }
             });
             this.l2.on('mouseup', function() {
-                /*if (this.getRise() > me.initialL2Y) {
-
-                 } else if (this.getRise() < me.initialL2Y) {
-
-                 } else {
-
-                 }*/
+                if (this.getRise() > me.initialL2Y) {
+                    document.dispatchEvent(new Event('l2up'));
+                } else if (this.getRise() < me.initialL2Y) {
+                    document.dispatchEvent(new Event('l2down'));
+                }
             });
         }
     }

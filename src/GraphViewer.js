@@ -26,7 +26,7 @@ export default class GraphViewer extends React.Component {
                 <p>{this.props.gDescription}</p>
                 <form action={action} method="post">
                     <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                    <input type="hidden" name="score" value="1" />
+                    <input type="hidden" name="score" value={this.props.value} />
                     <input type="hidden" name="next" value={successUrl} />
                     <JXGBoard
                          id={'editing-graph'}
@@ -38,6 +38,7 @@ export default class GraphViewer extends React.Component {
                          gLine1Slope={this.props.gLine1Slope}
                          gLine2Slope={this.props.gLine2Slope}
                          gLineMovement={this.props.gLineMovement}
+                         gNeedsSubmit={this.props.gNeedsSubmit}
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <div className="form-row">
@@ -110,6 +111,7 @@ export default class GraphViewer extends React.Component {
 GraphViewer.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
+    gNeedsSubmit: PropTypes.bool,
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
@@ -117,5 +119,6 @@ GraphViewer.propTypes = {
     gLine2Slope: PropTypes.number,
     gLineMovement: PropTypes.number,
     gType: PropTypes.number,
-    updateGraph: PropTypes.func.isRequired
+    updateGraph: PropTypes.func.isRequired,
+    value: PropTypes.string
 };
