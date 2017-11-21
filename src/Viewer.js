@@ -13,6 +13,7 @@ class Viewer extends Component {
         this.state = {
             // Graph options
             gType: null,
+            gNeedsSubmit: null,
             gShowIntersection: true,
             gLine1Slope: 1,
             gLine2Slope: -1,
@@ -24,7 +25,10 @@ class Viewer extends Component {
             gLine1FeedbackDecrease: '',
             gLine2FeedbackIncrease: '',
             gLine2FeedbackDecrease: '',
-            gLineMovement: null
+            gLineMovement: null,
+
+            value: '',
+            submitted: false
         };
     }
 
@@ -43,6 +47,7 @@ class Viewer extends Component {
             gDescription={this.state.gDescription}
             gInstructorNotes={this.state.gInstructorNotes}
             gType={this.state.gType}
+            gNeedsSubmit={this.state.gNeedsSubmit}
             gShowIntersection={this.state.gShowIntersection}
             gLine1Label={this.state.gLine1Label}
             gLine2Label={this.state.gLine2Label}
@@ -62,19 +67,46 @@ class Viewer extends Component {
             gTitle={this.state.gTitle}
             gDescription={this.state.gDescription}
             gType={this.state.gType}
+            gNeedsSubmit={this.state.gNeedsSubmit}
             gShowIntersection={this.state.gShowIntersection}
             gLine1Label={this.state.gLine1Label}
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
+            gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
+            gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
+            gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
+            gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
             gLineMovement={this.state.gLineMovement}
             updateGraph={this.handleGraphUpdate.bind(this)}
+            value={this.state.value}
                 />;
         }
     }
 
     componentDidMount() {
         this.getGraph();
+
+        // Add graph feedback event handlers
+        const me = this;
+        document.addEventListener('l1up', function() {
+            me.handleCase1();
+        });
+        document.addEventListener('l1down', function() {
+            me.handleCase2();
+        });
+        document.addEventListener('l2up', function() {
+            me.handleCase3();
+        });
+        document.addEventListener('l2down', function() {
+            me.handleCase4();
+        });
+        document.addEventListener('l1initial', function() {
+            me.handleInitial();
+        });
+        document.addEventListener('l2initial', function() {
+            me.handleInitial();
+        });
     }
 
     getGraph() {
@@ -123,6 +155,21 @@ class Viewer extends Component {
     }
     updateDisplayIntersection(checked) {
         this.setState({gShowIntersection: checked});
+    }
+    handleCase1() {
+        this.setState({value: '1'});
+    }
+    handleCase2() {
+        this.setState({value: '2'});
+    }
+    handleCase3() {
+        this.setState({value: '3'});
+    }
+    handleCase4() {
+        this.setState({value: '4'});
+    }
+    handleInitial() {
+        this.setState({value: ''});
     }
 }
 

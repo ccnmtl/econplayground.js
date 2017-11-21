@@ -1,7 +1,8 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
-import JXGBoard from './JXGBoard.js';
+import JXGBoard from './JXGBoard';
+import Feedback from './Feedback';
 
 /**
  * This component is used to view an econgraph object.
@@ -26,7 +27,7 @@ export default class GraphViewer extends React.Component {
                 <p>{this.props.gDescription}</p>
                 <form action={action} method="post">
                     <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                    <input type="hidden" name="score" value="1" />
+                    <input type="hidden" name="score" value={this.props.value} />
                     <input type="hidden" name="next" value={successUrl} />
                     <JXGBoard
                          id={'editing-graph'}
@@ -38,7 +39,15 @@ export default class GraphViewer extends React.Component {
                          gLine1Slope={this.props.gLine1Slope}
                          gLine2Slope={this.props.gLine2Slope}
                          gLineMovement={this.props.gLineMovement}
+                         gNeedsSubmit={this.props.gNeedsSubmit}
                          gShowIntersection={this.props.gShowIntersection} />
+
+                    <Feedback
+                         value={this.props.value}
+                         gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
+                         gLine1FeedbackIncrease={this.props.gLine1FeedbackIncrease}
+                         gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease}
+                         gLine2FeedbackIncrease={this.props.gLine2FeedbackIncrease} />
 
                     <div className="form-row">
                         <div className="col">
@@ -79,7 +88,10 @@ export default class GraphViewer extends React.Component {
                     </select>
 
                     <button className="btn btn-primary"
-                            style={{marginTop: '1em'}}
+                            style={{
+                                marginTop: '1em',
+                                display: this.props.gNeedsSubmit ? 'inherit' : 'none'
+                            }}
                             type="submit">Submit</button>
                 </form>
             </div>
@@ -110,12 +122,18 @@ export default class GraphViewer extends React.Component {
 GraphViewer.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
+    gNeedsSubmit: PropTypes.bool,
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
     gLine1Slope: PropTypes.number,
     gLine2Slope: PropTypes.number,
+    gLine1FeedbackDecrease: PropTypes.string,
+    gLine1FeedbackIncrease: PropTypes.string,
+    gLine2FeedbackDecrease: PropTypes.string,
+    gLine2FeedbackIncrease: PropTypes.string,
     gLineMovement: PropTypes.number,
     gType: PropTypes.number,
-    updateGraph: PropTypes.func.isRequired
+    updateGraph: PropTypes.func.isRequired,
+    value: PropTypes.string
 };
