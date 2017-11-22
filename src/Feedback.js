@@ -7,16 +7,16 @@ export default class Feedback extends React.Component {
             let msg = '';
             switch (this.props.value) {
             case '1':
-                msg = this.props.gLine1FeedbackDecrease;
-                break;
-            case '2':
                 msg = this.props.gLine1FeedbackIncrease;
                 break;
+            case '2':
+                msg = this.props.gLine1FeedbackDecrease;
+                break;
             case '3':
-                msg = this.props.gLine2FeedbackDecrease;
+                msg = this.props.gLine2FeedbackIncrease;
                 break;
             case '4':
-                msg = this.props.gLine2FeedbackIncrease;
+                msg = this.props.gLine2FeedbackDecrease;
                 break;
             }
             return <div className="alert alert-primary" role="alert">
