@@ -25,7 +25,7 @@ export default class GraphViewer extends React.Component {
             <div className="GraphViewer">
                 <h5>{this.props.gTitle}</h5>
                 <p>{this.props.gDescription}</p>
-                <form action={action} method="post">
+                <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                     <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                     <input type="hidden" name="score" value={this.props.value} />
                     <input type="hidden" name="next" value={successUrl} />
@@ -117,9 +117,50 @@ export default class GraphViewer extends React.Component {
 
         this.props.updateGraph(obj);
     }
+    createSubmission(data) {
+        const token = Cookies.get('csrftoken');
+        const me = this;
+        return fetch('/api/submissions/', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': token
+            },
+            body: JSON.stringify(data),
+            credentials: 'same-origin'
+        }).then(function(response) {
+            if (response.status === 201) {
+                me.setState({
+                    alertText: response.statusText
+                });
+                window.scrollTo(0, 0);
+            } else {
+                me.setState({
+                    alertText: response.statusText
+                });
+                window.scrollTo(0, 0);
+                throw 'Submission not created';
+            }
+        });
+    }
+    handleSubmit(event) {
+        // Make the Submission obj in Django, then submit to Canvas
+        // with LTI.
+        event.preventDefault();
+        const form = event.target;
+        this.createSubmission({
+            graph: this.props.gId,
+            choice: this.props.value
+        }).then(function() {
+            form.submit();
+        });
+    }
 }
 
 GraphViewer.propTypes = {
+    gId: PropTypes.number,
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
     gNeedsSubmit: PropTypes.bool,

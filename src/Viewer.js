@@ -12,6 +12,7 @@ class Viewer extends Component {
 
         this.state = {
             // Graph options
+            gId: null,
             gType: null,
             gNeedsSubmit: null,
             gShowIntersection: true,
@@ -43,6 +44,7 @@ class Viewer extends Component {
                 <GraphEditor
             ref={(ge) => { this.ge = ge; }}
             showing={true}
+            gId={this.state.gId}
             gTitle={this.state.gTitle}
             gDescription={this.state.gDescription}
             gInstructorNotes={this.state.gInstructorNotes}
@@ -64,6 +66,7 @@ class Viewer extends Component {
         } else {
             return <GraphViewer
             ref={(gv) => { this.gv = gv; }}
+            gId={this.state.gId}
             gTitle={this.state.gTitle}
             gDescription={this.state.gDescription}
             gType={this.state.gType}
