@@ -27,6 +27,7 @@ let exportGraph = function(state) {
  */
 let importGraph = function(json, obj) {
     obj.setState({
+        gId: json.id,
         gTitle: json.title,
         gDescription: json.description,
         gInstructorNotes: json.instructor_notes,

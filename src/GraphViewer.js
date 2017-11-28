@@ -150,13 +150,17 @@ export default class GraphViewer extends React.Component {
         // with LTI.
         event.preventDefault();
         const form = event.target;
-        this.createSubmission({}).then(function() {
+        this.createSubmission({
+            graph: this.props.gId,
+            choice: this.props.value
+        }).then(function() {
             form.submit();
         });
     }
 }
 
 GraphViewer.propTypes = {
+    gId: PropTypes.number,
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
     gNeedsSubmit: PropTypes.bool,
