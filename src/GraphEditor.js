@@ -123,6 +123,19 @@ export default class GraphEditor extends React.Component {
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gLine1FeedbackIncrease}
                                           className="form-control form-control-sm"></textarea>
+
+                                <div className="form-inline mt-sm-1">
+                                    <label htmlFor="gLine1IncreaseScore">
+                                        Score:
+                                    </label>
+                                    <input id="gLine1IncreaseScore"
+                                           type="number"
+                                           step="1"
+                                           min="0"
+                                           onChange={this.handleFormUpdate.bind(this)}
+                                           value={this.props.gLine1IncreaseScore}
+                                           className="form-control form-control-sm ml-sm-2" />
+                                </div>
                             </div>
                         </div>
 
@@ -135,6 +148,19 @@ export default class GraphEditor extends React.Component {
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gLine2FeedbackIncrease}
                                           className="form-control form-control-sm" />
+
+                                <div className="form-inline mt-sm-1">
+                                    <label htmlFor="gLine2IncreaseScore">
+                                        Score:
+                                    </label>
+                                    <input id="gLine2IncreaseScore"
+                                           type="number"
+                                           step="1"
+                                           min="0"
+                                           onChange={this.handleFormUpdate.bind(this)}
+                                           value={this.props.gLine2IncreaseScore}
+                                           className="form-control form-control-sm ml-sm-2" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -149,6 +175,19 @@ export default class GraphEditor extends React.Component {
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gLine1FeedbackDecrease}
                                           className="form-control form-control-sm" />
+
+                                <div className="form-inline mt-sm-1">
+                                    <label htmlFor="gLine1DecreaseScore">
+                                        Score:
+                                    </label>
+                                    <input id="gLine1DecreaseScore"
+                                           type="number"
+                                           step="1"
+                                           min="0"
+                                           onChange={this.handleFormUpdate.bind(this)}
+                                           value={this.props.gLine1DecreaseScore}
+                                           className="form-control form-control-sm ml-sm-2" />
+                                </div>
                             </div>
                         </div>
 
@@ -161,6 +200,19 @@ export default class GraphEditor extends React.Component {
                                           onChange={this.handleFormUpdate.bind(this)}
                                           value={this.props.gLine2FeedbackDecrease}
                                           className="form-control form-control-sm"></textarea>
+
+                                <div className="form-inline mt-sm-1">
+                                    <label htmlFor="gLine2DecreaseScore">
+                                        Score:
+                                    </label>
+                                    <input id="gLine2DecreaseScore"
+                                           type="number"
+                                           step="1"
+                                           min="0"
+                                           onChange={this.handleFormUpdate.bind(this)}
+                                           value={this.props.gLine2DecreaseScore}
+                                           className="form-control form-control-sm ml-sm-2" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -244,9 +296,13 @@ GraphEditor.propTypes = {
     gLine1Slope: PropTypes.number.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
     gLine1FeedbackIncrease: PropTypes.string,
+    gLine1IncreaseScore: PropTypes.number,
     gLine1FeedbackDecrease: PropTypes.string,
+    gLine1DecreaseScore: PropTypes.number,
     gLine2FeedbackIncrease: PropTypes.string,
+    gLine2IncreaseScore: PropTypes.number,
     gLine2FeedbackDecrease: PropTypes.string,
+    gLine2DecreaseScore: PropTypes.number,
     gType: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
 
