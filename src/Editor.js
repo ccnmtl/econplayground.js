@@ -57,9 +57,13 @@ class Editor extends Component {
                          gLine1Slope={this.state.gLine1Slope}
                          gLine2Slope={this.state.gLine2Slope}
                          gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
+                         gLine1DecreaseScore={this.state.gLine1DecreaseScore}
                          gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
+                         gLine1IncreaseScore={this.state.gLine1IncreaseScore}
                          gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
+                         gLine2DecreaseScore={this.state.gLine2DecreaseScore}
                          gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
+                         gLine2IncreaseScore={this.state.gLine2IncreaseScore}
                          updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
