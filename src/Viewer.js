@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Cookies from 'js-cookie';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
 import { exportGraph, importGraph } from './Graph';
+import { authedFetch } from './utils';
 
 class Viewer extends Component {
     constructor(props) {
@@ -29,7 +29,8 @@ class Viewer extends Component {
             gLineMovement: null,
 
             value: '',
-            submitted: false
+            submitted: false,
+            submission: null
         };
     }
 
@@ -96,10 +97,15 @@ class Viewer extends Component {
     }
 
     componentDidMount() {
-        this.getGraph();
+        // Load graph and submission data
+        const me = this;
+        this.getGraph().then(function() {
+            return me.getSubmission();
+        }).then(function(s) {
+            me.setState({'submission': s});
+        });
 
         // Add graph feedback event handlers
-        const me = this;
         document.addEventListener('l1up', function() {
             me.handleCase1();
         });
@@ -122,10 +128,27 @@ class Viewer extends Component {
 
     getGraph() {
         const me = this;
-        fetch(`/api/graphs/${this.graphId}`).then(function(response) {
+        return authedFetch(`/api/graphs/${this.graphId}/`).then(
+            function(response) {
+                return response.json();
+            }).then(function(json) {
+                importGraph(json, me);
+            });
+    }
+
+    getSubmission() {
+        const me = this;
+        return authedFetch('/api/submissions/').then(function(response) {
             return response.json();
         }).then(function(json) {
-            importGraph(json, me);
+            let submission = null;
+            json.some(function(e) {
+                if (e.graph === me.state.gId) {
+                    submission = e;
+                    return true;
+                }
+            });
+            return submission;
         });
     }
 
@@ -133,33 +156,24 @@ class Viewer extends Component {
         let data = exportGraph(this.state);
         data.author = window.EconPlayground.user;
 
-        const token = Cookies.get('csrftoken');
-
         const me = this;
-        fetch('/api/graphs/' + this.graphId + '/', {
-            method: 'put',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFToken': token
-            },
-            body: JSON.stringify(data),
-            credentials: 'same-origin'
-        }).then(function(response) {
-            if (response.status === 200) {
-                me.setState({
-                    alertText: 'Graph saved'
-                });
+        authedFetch('/api/graphs/' + this.graphId + '/',
+                    'put',
+                    JSON.stringify(data))
+            .then(function(response) {
+                if (response.status === 200) {
+                    me.setState({
+                        alertText: 'Graph saved'
+                    });
 
-                window.scrollTo(0, 0);
-            } else {
-                me.setState({
-                    alertText: response.statusText
-                });
-                window.scrollTo(0, 0);
-            }
-        });
+                    window.scrollTo(0, 0);
+                } else {
+                    me.setState({
+                        alertText: response.statusText
+                    });
+                    window.scrollTo(0, 0);
+                }
+            });
     }
     handleGraphUpdate(obj) {
         this.setState(obj);

@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
+import { authedFetch } from './utils';
 
 /**
  * This component is used to view an econgraph object.
@@ -118,32 +119,22 @@ export default class GraphViewer extends React.Component {
         this.props.updateGraph(obj);
     }
     createSubmission(data) {
-        const token = Cookies.get('csrftoken');
         const me = this;
-        return fetch('/api/submissions/', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFToken': token
-            },
-            body: JSON.stringify(data),
-            credentials: 'same-origin'
-        }).then(function(response) {
-            if (response.status === 201) {
-                me.setState({
-                    alertText: response.statusText
-                });
-                window.scrollTo(0, 0);
-            } else {
-                me.setState({
-                    alertText: response.statusText
-                });
-                window.scrollTo(0, 0);
-                throw 'Submission not created';
-            }
-        });
+        return authedFetch('/api/submissions/', 'post', JSON.stringify(data))
+            .then(function(response) {
+                if (response.status === 201) {
+                    me.setState({
+                        alertText: response.statusText
+                    });
+                    window.scrollTo(0, 0);
+                } else {
+                    me.setState({
+                        alertText: response.statusText
+                    });
+                    window.scrollTo(0, 0);
+                    throw 'Submission not created';
+                }
+            });
     }
     handleSubmit(event) {
         // Make the Submission obj in Django, then submit to Canvas
