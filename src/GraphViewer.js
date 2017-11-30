@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
-import { authedFetch } from './utils';
+import { authedFetch, getOrCreateSubmission } from './utils';
 
 /**
  * This component is used to view an econgraph object.
@@ -141,7 +141,7 @@ export default class GraphViewer extends React.Component {
         // with LTI.
         event.preventDefault();
         const form = event.target;
-        this.createSubmission({
+        getOrCreateSubmission({
             graph: this.props.gId,
             choice: this.props.choice,
             score: this.props.value
