@@ -33,6 +33,11 @@ class Viewer extends Component {
             submitted: false,
             submission: null
         };
+
+        // TODO: clean up this regex
+        if (window.location.href.match(/submitted=1/)) {
+            this.state.alertText = 'Submitted.';
+        }
     }
 
     render() {
@@ -70,7 +75,13 @@ class Viewer extends Component {
             saveGraph={this.handleSaveGraph.bind(this)} />
                 </div>;
         } else {
-            return <GraphViewer
+            return <div>
+                <div className="alert alert-info"
+            hidden={this.state.alertText ? false : true}
+            role="alert">
+                {this.state.alertText}
+            </div>
+                <GraphViewer
             ref={(gv) => { this.gv = gv; }}
             gId={this.state.gId}
             gTitle={this.state.gTitle}
@@ -94,7 +105,8 @@ class Viewer extends Component {
             updateGraph={this.handleGraphUpdate.bind(this)}
             choice={this.state.choice}
             value={this.state.value}
-                />;
+                />
+                </div>;
         }
     }
 
