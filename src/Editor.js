@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Cookies from 'js-cookie';
 import BackButton from './BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
 import { exportGraph } from './Graph';
+import { authedFetch } from './utils';
 import './Editor.css';
 
 class Editor extends Component {
@@ -84,37 +84,26 @@ class Editor extends Component {
         let data = exportGraph(this.state);
         data.author = window.EconPlayground.user;
 
-        const token = Cookies.get('csrftoken');
-
         const me = this;
-        fetch('/api/graphs/', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFToken': token
-            },
-            body: JSON.stringify(data),
-            credentials: 'same-origin'
-        }).then(function(response) {
-            if (response.status === 201) {
-                me.setState({
-                    alertText: null,
-                    step: 2
-                });
+        authedFetch('/api/graphs/', 'post', JSON.stringify(data))
+            .then(function(response) {
+                if (response.status === 201) {
+                    me.setState({
+                        alertText: null,
+                        step: 2
+                    });
 
-                response.json().then(function(graph) {
-                    const url = `/graph/${graph.id}/`;
-                    window.location.href = url;
-                });
-            } else {
-                me.setState({
-                    alertText: response.statusText
-                });
-                window.scrollTo(0, 0);
-            }
-        });
+                    response.json().then(function(graph) {
+                        const url = `/graph/${graph.id}/`;
+                        window.location.href = url;
+                    });
+                } else {
+                    me.setState({
+                        alertText: response.statusText
+                    });
+                    window.scrollTo(0, 0);
+                }
+            });
     }
     handleGraphUpdate(obj) {
         this.setState(obj);

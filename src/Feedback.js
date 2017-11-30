@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 
 export default class Feedback extends React.Component {
     render() {
-        if (this.props.value) {
+        if (this.props.choice) {
             let msg = '';
-            switch (this.props.value) {
-            case '1':
+            switch (this.props.choice) {
+            case 1:
                 msg = this.props.gLine1FeedbackIncrease;
                 break;
-            case '2':
+            case 2:
                 msg = this.props.gLine1FeedbackDecrease;
                 break;
-            case '3':
+            case 3:
                 msg = this.props.gLine2FeedbackIncrease;
                 break;
-            case '4':
+            case 4:
                 msg = this.props.gLine2FeedbackDecrease;
                 break;
             }
@@ -29,7 +29,7 @@ export default class Feedback extends React.Component {
 }
 
 Feedback.propTypes = {
-    value: PropTypes.string,
+    choice: PropTypes.number,
     gLine1FeedbackDecrease: PropTypes.string,
     gLine1FeedbackIncrease: PropTypes.string,
     gLine2FeedbackDecrease: PropTypes.string,
