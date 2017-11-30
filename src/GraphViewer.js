@@ -143,7 +143,8 @@ export default class GraphViewer extends React.Component {
         const form = event.target;
         this.createSubmission({
             graph: this.props.gId,
-            choice: this.props.value
+            choice: this.props.choice,
+            score: this.props.value
         }).then(function() {
             form.submit();
         });
