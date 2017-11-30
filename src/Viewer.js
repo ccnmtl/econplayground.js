@@ -28,6 +28,7 @@ class Viewer extends Component {
             gLine2FeedbackDecrease: '',
             gLineMovement: null,
 
+            choice: null,
             value: '',
             submitted: false,
             submission: null
@@ -56,14 +57,14 @@ class Viewer extends Component {
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
-            gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
-            gLine1DecreaseScore={this.state.gLine1DecreaseScore}
             gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
             gLine1IncreaseScore={this.state.gLine1IncreaseScore}
-            gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
-            gLine2DecreaseScore={this.state.gLine2DecreaseScore}
+            gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
+            gLine1DecreaseScore={this.state.gLine1DecreaseScore}
             gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
             gLine2IncreaseScore={this.state.gLine2IncreaseScore}
+            gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
+            gLine2DecreaseScore={this.state.gLine2DecreaseScore}
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
             saveGraph={this.handleSaveGraph.bind(this)} />
@@ -91,6 +92,7 @@ class Viewer extends Component {
             gLine2IncreaseScore={this.state.gLine2IncreaseScore}
             gLineMovement={this.state.gLineMovement}
             updateGraph={this.handleGraphUpdate.bind(this)}
+            choice={this.state.choice}
             value={this.state.value}
                 />;
         }
@@ -182,19 +184,31 @@ class Viewer extends Component {
         this.setState({gShowIntersection: checked});
     }
     handleCase1() {
-        this.setState({value: '1'});
+        this.setState({
+            choice: 1,
+            value: this.state.gLine1IncreaseScore.toString()
+        });
     }
     handleCase2() {
-        this.setState({value: '2'});
+        this.setState({
+            choice: 2,
+            value: this.state.gLine1DecreaseScore.toString()
+        });
     }
     handleCase3() {
-        this.setState({value: '3'});
+        this.setState({
+            choice: 3,
+            value: this.state.gLine2IncreaseScore.toString()
+        });
     }
     handleCase4() {
-        this.setState({value: '4'});
+        this.setState({
+            choice: 4,
+            value: this.state.gLine2DecreaseScore.toString()
+        });
     }
     handleInitial() {
-        this.setState({value: ''});
+        this.setState({value: '0'});
     }
 }
 

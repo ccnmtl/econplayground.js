@@ -44,7 +44,7 @@ export default class GraphViewer extends React.Component {
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <Feedback
-                         value={this.props.value}
+                         choice={this.props.choice}
                          gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
                          gLine1FeedbackIncrease={this.props.gLine1FeedbackIncrease}
                          gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease}
@@ -171,5 +171,6 @@ GraphViewer.propTypes = {
     gLineMovement: PropTypes.number,
     gType: PropTypes.number,
     updateGraph: PropTypes.func.isRequired,
+    choice: PropTypes.number,
     value: PropTypes.string
 };
