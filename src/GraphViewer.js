@@ -45,6 +45,7 @@ export default class GraphViewer extends React.Component {
 
                     <Feedback
                          choice={this.props.choice}
+                         gNeedsSubmit={this.props.gNeedsSubmit}
                          gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
                          gLine1FeedbackIncrease={this.props.gLine1FeedbackIncrease}
                          gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease}

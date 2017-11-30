@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 export default class Feedback extends React.Component {
     render() {
+        if (this.props.gNeedsSubmit) {
+            return null;
+        }
+
         if (this.props.choice) {
             let msg = '';
             switch (this.props.choice) {
@@ -30,6 +34,7 @@ export default class Feedback extends React.Component {
 
 Feedback.propTypes = {
     choice: PropTypes.number,
+    gNeedsSubmit: PropTypes.bool,
     gLine1FeedbackDecrease: PropTypes.string,
     gLine1FeedbackIncrease: PropTypes.string,
     gLine2FeedbackDecrease: PropTypes.string,
