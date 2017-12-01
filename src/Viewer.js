@@ -62,6 +62,8 @@ class Viewer extends Component {
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
+            gXAxisLabel={this.state.gXAxisLabel}
+            gYAxisLabel={this.state.gYAxisLabel}
             gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
             gLine1IncreaseScore={this.state.gLine1IncreaseScore}
             gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}

@@ -44,10 +44,24 @@ export default class JXGBoard extends React.Component {
                 axis: true,
                 defaultAxes: {
                     x: {
-                        ticks: {visible: false}
+                        name: options.gXAxisLabel ? options.gXAxisLabel : 'x',
+                        label: {
+                            offset: [50, 5]
+                        },
+                        withLabel: options.gXAxisLabel ? true : false,
+                        ticks: {
+                            visible: false
+                        }
                     },
                     y: {
-                        ticks: {visible: false}
+                        name: options.gYAxisLabel ? options.gYAxisLabel : 'y',
+                        label: {
+                            offset: [-5, 100]
+                        },
+                        withLabel: options.gYAxisLabel ? true : false,
+                        ticks: {
+                            visible: false
+                        }
                     }
                 },
                 keepAspectRatio: true,
@@ -101,6 +115,8 @@ export default class JXGBoard extends React.Component {
                 gShowIntersection: nextProps.gShowIntersection,
                 gLine1Label: nextProps.gLine1Label,
                 gLine2Label: nextProps.gLine2Label,
+                gXAxisLabel: nextProps.gXAxisLabel,
+                gYAxisLabel: nextProps.gYAxisLabel,
                 gLine1Slope: nextProps.gLine1Slope,
                 gLine2Slope: nextProps.gLine2Slope,
                 gLineMovement: nextProps.gLineMovement
@@ -114,6 +130,8 @@ export default class JXGBoard extends React.Component {
             gShowIntersection: this.props.gShowIntersection,
             gLine1Label: this.props.gLine1Label,
             gLine2Label: this.props.gLine2Label,
+            gXAxisLabel: this.props.gXAxisLabel,
+            gYAxisLabel: this.props.gYAxisLabel,
             gLine1Slope: this.props.gLine1Slope,
             gLine2Slope: this.props.gLine2Slope,
             gLineMovement: this.props.gLineMovement
@@ -136,6 +154,8 @@ JXGBoard.propTypes = {
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
+    gXAxisLabel: PropTypes.string,
+    gYAxisLabel: PropTypes.string,
     gLine1Slope: PropTypes.number,
     gLine2Slope: PropTypes.number,
     gLineMovement: PropTypes.number,

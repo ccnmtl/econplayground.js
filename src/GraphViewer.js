@@ -37,6 +37,8 @@ export default class GraphViewer extends React.Component {
                          gType={this.props.gType}
                          gLine1Label={this.props.gLine1Label}
                          gLine2Label={this.props.gLine2Label}
+                         gXAxisLabel={this.props.gXAxisLabel}
+                         gYAxisLabel={this.props.gYAxisLabel}
                          gLine1Slope={this.props.gLine1Slope}
                          gLine2Slope={this.props.gLine2Slope}
                          gLineMovement={this.props.gLineMovement}
@@ -160,6 +162,8 @@ GraphViewer.propTypes = {
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
+    gXAxisLabel: PropTypes.string,
+    gYAxisLabel: PropTypes.string,
     gLine1Slope: PropTypes.number,
     gLine2Slope: PropTypes.number,
     gLine1FeedbackIncrease: PropTypes.string,

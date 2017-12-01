@@ -71,6 +71,8 @@ export default class GraphEditor extends React.Component {
                          gType={this.props.gType}
                          gLine1Label={this.props.gLine1Label}
                          gLine2Label={this.props.gLine2Label}
+                         gXAxisLabel={this.props.gXAxisLabel}
+                         gYAxisLabel={this.props.gYAxisLabel}
                          gLine1Slope={this.props.gLine1Slope}
                          gLine2Slope={this.props.gLine2Slope}
                          gShowIntersection={this.props.gShowIntersection} />
@@ -259,6 +261,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gXAxisLabel"
                                        className="form-control form-control-sm"
                                        type="text"
+                                       value={this.props.gXAxisLabel}
                                        onChange={this.handleFormUpdate.bind(this)} />
                             </div>
                         </div>
@@ -271,6 +274,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gYAxisLabel"
                                        className="form-control form-control-sm"
                                        type="text"
+                                       value={this.props.gYAxisLabel}
                                        onChange={this.handleFormUpdate.bind(this)} />
                             </div>
                         </div>
@@ -307,7 +311,7 @@ export default class GraphEditor extends React.Component {
 GraphEditor.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
-    gShowIntersection: PropTypes.bool.isRequired,
+    gShowIntersection: PropTypes.bool,
     gInstructorNotes: PropTypes.string,
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
@@ -321,6 +325,8 @@ GraphEditor.propTypes = {
     gLine2IncreaseScore: PropTypes.number,
     gLine2FeedbackDecrease: PropTypes.string,
     gLine2DecreaseScore: PropTypes.number,
+    gXAxisLabel: PropTypes.string.isRequired,
+    gYAxisLabel: PropTypes.string.isRequired,
     gType: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
 

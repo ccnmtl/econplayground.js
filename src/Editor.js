@@ -56,6 +56,8 @@ class Editor extends Component {
                          gLine2Label={this.state.gLine2Label}
                          gLine1Slope={this.state.gLine1Slope}
                          gLine2Slope={this.state.gLine2Slope}
+                         gXAxisLabel={this.state.gXAxisLabel}
+                         gYAxisLabel={this.state.gYAxisLabel}
                          gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
                          gLine1DecreaseScore={this.state.gLine1DecreaseScore}
                          gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
