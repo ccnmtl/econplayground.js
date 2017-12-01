@@ -64,7 +64,6 @@ class Editor extends Component {
                          gLine2DecreaseScore={this.state.gLine2DecreaseScore}
                          gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
                          gLine2IncreaseScore={this.state.gLine2IncreaseScore}
-                         updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
                          updateGraph={this.handleGraphUpdate.bind(this)}
                          saveGraph={this.handleSaveGraph.bind(this)} />
                 </div>
@@ -107,9 +106,6 @@ class Editor extends Component {
     }
     handleGraphUpdate(obj) {
         this.setState(obj);
-    }
-    updateDisplayIntersection(checked) {
-        this.setState({gShowIntersection: checked});
     }
 }
 
