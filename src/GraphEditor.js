@@ -52,6 +52,18 @@ export default class GraphEditor extends React.Component {
                         </div>
                     </div>
 
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input
+                                 id="gNeedsSubmit"
+                                 className="form-check-input"
+                                 type="checkbox"
+                                 onChange={this.handleFormUpdate.bind(this)}
+                                 checked={this.props.gNeedsSubmit} />
+                            Requires submission
+                        </label>
+                    </div>
+
                     <JXGBoard
                          id={'editing-graph'}
                          width={562.5}
@@ -224,7 +236,7 @@ export default class GraphEditor extends React.Component {
                                  className="form-check-input"
                                  type="checkbox"
                                  onChange={this.handleFormUpdate.bind(this)}
-                                 defaultChecked={this.props.gShowIntersection} />
+                                 checked={this.props.gShowIntersection} />
                             Display intersection
                         </label>
                     </div>
@@ -278,9 +290,6 @@ export default class GraphEditor extends React.Component {
 
         this.props.updateGraph(obj);
     }
-    handleDisplayIntersectionChange(e) {
-        this.props.updateDisplayIntersection(e.target.checked);
-    }
     handleSaveGraph() {
         this.props.saveGraph();
     }
@@ -306,7 +315,6 @@ GraphEditor.propTypes = {
     gType: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
 
-    updateDisplayIntersection: PropTypes.func.isRequired,
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,
     showing: PropTypes.bool.isRequired
