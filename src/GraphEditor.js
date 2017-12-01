@@ -142,11 +142,17 @@ export default class GraphEditor extends React.Component {
                                     </label>
                                     <input id="gLine1IncreaseScore"
                                            type="number"
-                                           step="1"
+                                           step="0.01"
                                            min="0"
+                                           max="1"
                                            onChange={this.handleFormUpdate.bind(this)}
                                            value={this.props.gLine1IncreaseScore}
+                                           aria-describedby="gLine1IncreaseScoreHelpBlock"
                                            className="form-control form-control-sm ml-sm-2" />
+                                    <small id="gLine1IncreaseScoreHelpBlock"
+                                           className="form-text text-muted ml-sm-2">
+                                        Percentage of total between 0 and 1. e.g.: 0.8 = 80%
+                                    </small>
                                 </div>
                             </div>
                         </div>
@@ -167,8 +173,9 @@ export default class GraphEditor extends React.Component {
                                     </label>
                                     <input id="gLine2IncreaseScore"
                                            type="number"
-                                           step="1"
+                                           step="0.01"
                                            min="0"
+                                           max="1"
                                            onChange={this.handleFormUpdate.bind(this)}
                                            value={this.props.gLine2IncreaseScore}
                                            className="form-control form-control-sm ml-sm-2" />
@@ -194,8 +201,9 @@ export default class GraphEditor extends React.Component {
                                     </label>
                                     <input id="gLine1DecreaseScore"
                                            type="number"
-                                           step="1"
+                                           step="0.01"
                                            min="0"
+                                           max="1"
                                            onChange={this.handleFormUpdate.bind(this)}
                                            value={this.props.gLine1DecreaseScore}
                                            className="form-control form-control-sm ml-sm-2" />
@@ -219,8 +227,9 @@ export default class GraphEditor extends React.Component {
                                     </label>
                                     <input id="gLine2DecreaseScore"
                                            type="number"
-                                           step="1"
+                                           step="0.01"
                                            min="0"
+                                           max="1"
                                            onChange={this.handleFormUpdate.bind(this)}
                                            value={this.props.gLine2DecreaseScore}
                                            className="form-control form-control-sm ml-sm-2" />
