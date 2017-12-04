@@ -51,8 +51,9 @@ class Editor extends Component {
                          ref={(ge) => { this.ge = ge; }}
                          showing={this.state.step === 1}
                          gType={this.state.gType}
-                         gIsPublished={this.state.gIsPublished}
                          gShowIntersection={this.state.gShowIntersection}
+                         gIsPublished={this.state.gIsPublished}
+                         gDisplayFeedback={this.state.gDisplayFeedback}
                          gLine1Label={this.state.gLine1Label}
                          gLine2Label={this.state.gLine2Label}
                          gLine1Slope={this.state.gLine1Slope}

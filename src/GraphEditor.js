@@ -270,6 +270,18 @@ export default class GraphEditor extends React.Component {
                         </div>
                     </div>
 
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input
+                                 id="gDisplayFeedback"
+                                 className="form-check-input"
+                                 type="checkbox"
+                                 onChange={this.handleFormUpdate.bind(this)}
+                                 checked={this.props.gDisplayFeedback} />
+                            Display feedback
+                        </label>
+                    </div>
+
                     <div className="row">
                         <div className="col-sm-6">
                             <div className="form-group">
@@ -331,6 +343,7 @@ GraphEditor.propTypes = {
     gDescription: PropTypes.string,
     gShowIntersection: PropTypes.bool,
     gIsPublished: PropTypes.bool,
+    gDisplayFeedback: PropTypes.bool,
     gInstructorNotes: PropTypes.string,
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
