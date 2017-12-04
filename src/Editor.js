@@ -19,6 +19,8 @@ class Editor extends Component {
             gShowIntersection: true,
             gLine1Slope: 1,
             gLine2Slope: -1,
+            gLine1Offset: 0,
+            gLine2Offset: 0,
             gLine1Label: '',
             gLine2Label: '',
             gXAxisLabel: '',
@@ -60,6 +62,8 @@ class Editor extends Component {
                          gLine2Slope={this.state.gLine2Slope}
                          gXAxisLabel={this.state.gXAxisLabel}
                          gYAxisLabel={this.state.gYAxisLabel}
+                         gLine1Offset={this.state.gLine1Offset}
+                         gLine2Offset={this.state.gLine2Offset}
                          gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
                          gLine1DecreaseScore={this.state.gLine1DecreaseScore}
                          gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}

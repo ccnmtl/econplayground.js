@@ -84,6 +84,8 @@ export default class JXGBoard extends React.Component {
                 gLine2Label: options.gLine2Label,
                 gLine1Slope: options.gLine1Slope,
                 gLine2Slope: options.gLine2Slope,
+                gLine1Offset: options.gLine1Offset,
+                gLine2Offset: options.gLine2Offset,
                 gLineMovement: options.gLineMovement
             });
         }
@@ -97,6 +99,8 @@ export default class JXGBoard extends React.Component {
             'gLine2Label',
             'gLine1Slope',
             'gLine2Slope',
+            'gLine1Offset',
+            'gLine2Offset',
             'gLineMovement'
         ];
 
@@ -119,6 +123,8 @@ export default class JXGBoard extends React.Component {
                 gYAxisLabel: nextProps.gYAxisLabel,
                 gLine1Slope: nextProps.gLine1Slope,
                 gLine2Slope: nextProps.gLine2Slope,
+                gLine1Offset: nextProps.gLine1Offset,
+                gLine2Offset: nextProps.gLine2Offset,
                 gLineMovement: nextProps.gLineMovement
             });
         }
@@ -134,6 +140,8 @@ export default class JXGBoard extends React.Component {
             gYAxisLabel: this.props.gYAxisLabel,
             gLine1Slope: this.props.gLine1Slope,
             gLine2Slope: this.props.gLine2Slope,
+            gLine1Offset: this.props.gLine1Offset,
+            gLine2Offset: this.props.gLine2Offset,
             gLineMovement: this.props.gLineMovement
         });
     }
@@ -158,6 +166,8 @@ JXGBoard.propTypes = {
     gYAxisLabel: PropTypes.string,
     gLine1Slope: PropTypes.number,
     gLine2Slope: PropTypes.number,
+    gLine1Offset: PropTypes.number,
+    gLine2Offset: PropTypes.number,
     gLineMovement: PropTypes.number,
     gType: PropTypes.number,
     id: PropTypes.string.isRequired

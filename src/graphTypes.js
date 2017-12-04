@@ -50,6 +50,8 @@ class Graph {
                 gLine1Label2: '',
                 gLine1Slope: -1,
                 gLine2Slope: 1,
+                gLine1Offset: 0,
+                gLine2Offset: 0,
                 gLineMovement: null
             };
         }
@@ -91,12 +93,18 @@ class Graph {
             straightLast: true
         });
 
-        if (this.l1 && this.l2) {
-            this.initialL1Y = this.l1.getRise();
-            this.initialL2Y = this.l2.getRise();
+        const me = this;
 
-            const me = this;
+        if (this.l1) {
+            this.initialL1Y = this.l1.getRise();
+
             this.l1.on('mouseup', function() {
+                const offset = Math.round(me.l1.getRise() - me.initialL1Y);
+                let offsetEvt = new CustomEvent('l1offset', {
+                    detail: offset
+                });
+                document.dispatchEvent(offsetEvt);
+
                 if (this.getRise() > me.initialL1Y) {
                     document.dispatchEvent(new Event('l1up'));
                 } else if (this.getRise() < me.initialL1Y) {
@@ -105,7 +113,18 @@ class Graph {
                     document.dispatchEvent(new Event('l1initial'));
                 }
             });
+        }
+
+        if (this.l2) {
+            this.initialL2Y = this.l2.getRise();
+
             this.l2.on('mouseup', function() {
+                const offset = Math.round(me.l2.getRise() - me.initialL2Y);
+                let offsetEvt = new CustomEvent('l2offset', {
+                    detail: offset
+                });
+                document.dispatchEvent(offsetEvt);
+
                 if (this.getRise() > me.initialL2Y) {
                     document.dispatchEvent(new Event('l2up'));
                 } else if (this.getRise() < me.initialL2Y) {
@@ -192,7 +211,11 @@ class DemandSupplyGraph extends Graph {
     make() {
         let l1 = this.board.create(
             'line',
-            [[2.5, 2.5], [3.5, 2.5 + this.options.gLine1Slope]], {
+            [
+                [2.5, 2.5 + this.options.gLine1Offset],
+                [3.5, 2.5 + this.options.gLine1Offset +
+                 this.options.gLine1Slope]
+            ], {
                 name: this.options.gLine1Label,
                 withLabel: true,
                 label: { position: 'rt', offset: [-10, -20] },
@@ -204,7 +227,11 @@ class DemandSupplyGraph extends Graph {
 
         let l2 = this.board.create(
             'line',
-            [[2.5, 2.5], [3.5, 2.5 + this.options.gLine2Slope]], {
+            [
+                [2.5, 2.5 + this.options.gLine2Offset],
+                [3.5, 2.5 + this.options.gLine2Offset +
+                 this.options.gLine2Slope]
+            ], {
                 name: this.options.gLine2Label,
                 withLabel: true,
                 label: { position: 'rt', offset: [0, 20] },
@@ -242,7 +269,10 @@ class LaborMarketGraph extends Graph {
             strokeColor: 'rgb(255, 127, 14)'
         });
 
-        let l2 = this.board.create('line', [[0, 0], [5, 5]], {
+        let l2 = this.board.create('line', [
+            [0, 0 + this.options.gLine2Offset],
+            [5, 5 + this.options.gLine2Offset]
+        ], {
             name: this.options.gLine2Label,
             withLabel: true,
             label: { position: 'rt', offset: [10, -20] },
@@ -277,8 +307,12 @@ class LaborMarketPerfectlyInelasticGraph extends Graph {
             strokeColor: 'rgb(255, 127, 14)'
         });
 
-        this.board.create('point', [2.5, 0], {name: 'a', size: 0, withLabel: false});
-        this.board.create('point', [2.5, 5], {name: 'b', size: 0, withLabel: false});
+        this.board.create(
+            'point', [2.5 + this.options.gLine2Offset, 0], {
+                name: 'a', size: 0, withLabel: false});
+        this.board.create(
+            'point', [2.5 + this.options.gLine2Offset, 5], {
+                name: 'b', size: 0, withLabel: false});
         this.board.create('line', ['a', 'b'], {
             name: this.options.gLine2Label,
             withLabel: true,
@@ -320,13 +354,17 @@ let mkCobbDouglas = function(board, options) {
 
 class LaborSupplyGraph extends Graph {
     make() {
-        this.board.create('line', [[0, 5], [5, 0]], {
-            name: this.options.gLine1Label,
-            withLabel: true,
-            label: { position: 'rt', offset: [-10, 20] },
-            strokeColor: 'rgb(255, 127, 14)',
-            strokeWidth: 2
-        });
+        this.board.create(
+            'line', [
+                [0, 5 + this.options.gLine1Offset],
+                [5, 0 + this.options.gLine1Offset]
+            ], {
+                name: this.options.gLine1Label,
+                withLabel: true,
+                label: { position: 'rt', offset: [-10, 20] },
+                strokeColor: 'rgb(255, 127, 14)',
+                strokeWidth: 2
+            });
     }
 }
 
@@ -339,13 +377,17 @@ let mkLaborSupply = function(board, options) {
 
 class ConsumptionSavingGraph extends Graph {
     make() {
-        this.board.create('line', [[0, 5], [5, 0]], {
-            name: this.options.gLine1Label,
-            withLabel: true,
-            label: { position: 'rt', offset: [-10, 20] },
-            strokeColor: 'rgb(255, 127, 14)',
-            strokeWidth: 2
-        });
+        this.board.create(
+            'line', [
+                [0, 5 + this.options.gLine1Offset],
+                [5, 0 + this.options.gLine1Offset]
+            ], {
+                name: this.options.gLine1Label,
+                withLabel: true,
+                label: { position: 'rt', offset: [-10, 20] },
+                strokeColor: 'rgb(255, 127, 14)',
+                strokeWidth: 2
+            });
     }
 }
 
@@ -358,21 +400,29 @@ let mkConsumptionSaving = function(board, options) {
 
 class SavingInvestmentGraph extends Graph {
     make() {
-        this.board.create('line', [[0, 5], [5, 0]], {
-            name: this.options.gLine1Label,
-            withLabel: true,
-            label: { position: 'rt', offset: [-10, 20] },
-            strokeColor: 'rgb(255, 127, 14)',
-            strokeWidth: 2
-        });
+        this.board.create(
+            'line', [
+                [0, 5 + this.options.gLine1Offset],
+                [5, 0 + this.options.gLine1Offset]
+            ], {
+                name: this.options.gLine1Label,
+                withLabel: true,
+                label: { position: 'rt', offset: [-10, 20] },
+                strokeColor: 'rgb(255, 127, 14)',
+                strokeWidth: 2
+            });
 
-        this.board.create('line', [[0, 0], [5, 5]], {
-            name: this.options.gLine2Label,
-            withLabel: true,
-            label: { position: 'rt', offset: [0, 0] },
-            strokeColor: 'steelblue',
-            strokeWidth: 2
-        });
+        this.board.create(
+            'line', [
+                [0, 0 + this.options.gLine2Offset],
+                [5, 5 + this.options.gLine2Offset]
+            ], {
+                name: this.options.gLine2Label,
+                withLabel: true,
+                label: { position: 'rt', offset: [0, 0] },
+                strokeColor: 'steelblue',
+                strokeWidth: 2
+            });
     }
 }
 
@@ -385,21 +435,29 @@ let mkSavingInvestment = function(board, options) {
 
 class MoneyMarketGraph extends Graph {
     make() {
-        this.board.create('line', [[0, 5], [5, 0]], {
-            name: this.options.gLine1Label,
-            withLabel: true,
-            label: { position: 'rt', offset: [-10, 20] },
-            strokeColor: 'rgb(255, 127, 14)',
-            strokeWidth: 2
-        });
+        this.board.create(
+            'line', [
+                [0, 5 + this.options.gLine1Offset],
+                [5, 0 + this.options.gLine1Offset]
+            ], {
+                name: this.options.gLine1Label,
+                withLabel: true,
+                label: { position: 'rt', offset: [-10, 20] },
+                strokeColor: 'rgb(255, 127, 14)',
+                strokeWidth: 2
+            });
 
-        this.board.create('line', [[0, 0], [5, 5]], {
-            name: this.options.gLine2Label,
-            withLabel: true,
-            label: { position: 'rt', offset: [0, 0] },
-            strokeColor: 'steelblue',
-            strokeWidth: 2
-        });
+        this.board.create(
+            'line', [
+                [0, 0 + this.options.gLine2Offset],
+                [5, 5 + this.options.gLine2Offset]
+            ], {
+                name: this.options.gLine2Label,
+                withLabel: true,
+                label: { position: 'rt', offset: [0, 0] },
+                strokeColor: 'steelblue',
+                strokeWidth: 2
+            });
     }
 }
 
