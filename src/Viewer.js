@@ -58,10 +58,14 @@ class Viewer extends Component {
             gType={this.state.gType}
             gNeedsSubmit={this.state.gNeedsSubmit}
             gShowIntersection={this.state.gShowIntersection}
+            gIsPublished={this.state.gIsPublished}
+            gDisplayFeedback={this.state.gDisplayFeedback}
             gLine1Label={this.state.gLine1Label}
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
+            gXAxisLabel={this.state.gXAxisLabel}
+            gYAxisLabel={this.state.gYAxisLabel}
             gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
             gLine1IncreaseScore={this.state.gLine1IncreaseScore}
             gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}

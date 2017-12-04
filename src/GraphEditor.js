@@ -71,6 +71,8 @@ export default class GraphEditor extends React.Component {
                          gType={this.props.gType}
                          gLine1Label={this.props.gLine1Label}
                          gLine2Label={this.props.gLine2Label}
+                         gXAxisLabel={this.props.gXAxisLabel}
+                         gYAxisLabel={this.props.gYAxisLabel}
                          gLine1Slope={this.props.gLine1Slope}
                          gLine2Slope={this.props.gLine2Slope}
                          gShowIntersection={this.props.gShowIntersection} />
@@ -238,15 +240,45 @@ export default class GraphEditor extends React.Component {
                         </div>
                     </div>
 
+                    <div className="row">
+                        <div className="col-sm-6">
+                            <div className="form-check">
+                                <label className="form-check-label">
+                                    <input
+                                         id="gShowIntersection"
+                                         className="form-check-input"
+                                         type="checkbox"
+                                         onChange={this.handleFormUpdate.bind(this)}
+                                         checked={this.props.gShowIntersection} />
+                                    Display intersection
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="col-sm-6">
+                            <div className="form-check">
+                                <label className="form-check-label">
+                                    <input
+                                         id="gIsPublished"
+                                         className="form-check-input"
+                                         type="checkbox"
+                                         onChange={this.handleFormUpdate.bind(this)}
+                                         checked={this.props.gIsPublished} />
+                                    Published
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="form-check">
                         <label className="form-check-label">
                             <input
-                                 id="gShowIntersection"
+                                 id="gDisplayFeedback"
                                  className="form-check-input"
                                  type="checkbox"
                                  onChange={this.handleFormUpdate.bind(this)}
-                                 checked={this.props.gShowIntersection} />
-                            Display intersection
+                                 checked={this.props.gDisplayFeedback} />
+                            Display feedback
                         </label>
                     </div>
 
@@ -259,6 +291,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gXAxisLabel"
                                        className="form-control form-control-sm"
                                        type="text"
+                                       value={this.props.gXAxisLabel}
                                        onChange={this.handleFormUpdate.bind(this)} />
                             </div>
                         </div>
@@ -271,6 +304,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gYAxisLabel"
                                        className="form-control form-control-sm"
                                        type="text"
+                                       value={this.props.gYAxisLabel}
                                        onChange={this.handleFormUpdate.bind(this)} />
                             </div>
                         </div>
@@ -307,7 +341,9 @@ export default class GraphEditor extends React.Component {
 GraphEditor.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
-    gShowIntersection: PropTypes.bool.isRequired,
+    gShowIntersection: PropTypes.bool,
+    gIsPublished: PropTypes.bool,
+    gDisplayFeedback: PropTypes.bool,
     gInstructorNotes: PropTypes.string,
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
@@ -321,6 +357,8 @@ GraphEditor.propTypes = {
     gLine2IncreaseScore: PropTypes.number,
     gLine2FeedbackDecrease: PropTypes.string,
     gLine2DecreaseScore: PropTypes.number,
+    gXAxisLabel: PropTypes.string.isRequired,
+    gYAxisLabel: PropTypes.string.isRequired,
     gType: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
 
