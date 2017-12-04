@@ -37,6 +37,7 @@ let importGraph = function(json, obj) {
         gDescription: json.description,
         gInstructorNotes: json.instructor_notes,
         gType: json.graph_type,
+        gIsPublished: json.is_published,
         gNeedsSubmit: json.needs_submit,
         gShowIntersection: json.show_intersection,
         gLine1Slope: window.parseFloat(json.line_1_slope),

@@ -240,16 +240,34 @@ export default class GraphEditor extends React.Component {
                         </div>
                     </div>
 
-                    <div className="form-check">
-                        <label className="form-check-label">
-                            <input
-                                 id="gShowIntersection"
-                                 className="form-check-input"
-                                 type="checkbox"
-                                 onChange={this.handleFormUpdate.bind(this)}
-                                 checked={this.props.gShowIntersection} />
-                            Display intersection
-                        </label>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            <div className="form-check">
+                                <label className="form-check-label">
+                                    <input
+                                         id="gShowIntersection"
+                                         className="form-check-input"
+                                         type="checkbox"
+                                         onChange={this.handleFormUpdate.bind(this)}
+                                         checked={this.props.gShowIntersection} />
+                                    Display intersection
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="col-sm-6">
+                            <div className="form-check">
+                                <label className="form-check-label">
+                                    <input
+                                         id="gIsPublished"
+                                         className="form-check-input"
+                                         type="checkbox"
+                                         onChange={this.handleFormUpdate.bind(this)}
+                                         checked={this.props.gIsPublished} />
+                                    Published
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="row">
@@ -312,6 +330,7 @@ GraphEditor.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
     gShowIntersection: PropTypes.bool,
+    gIsPublished: PropTypes.bool,
     gInstructorNotes: PropTypes.string,
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
