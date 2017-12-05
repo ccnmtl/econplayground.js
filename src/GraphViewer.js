@@ -81,22 +81,14 @@ export default class GraphViewer extends React.Component {
                         </div>
                     </div>
 
-                    <hr />
-
-                    <select id="gLineMovement"
-                            className="form-control"
-                            onChange={this.handleFormUpdate.bind(this)}>
-                        <option>(Choose line movement)</option>
-                        <option value="0">Move orange line up</option>
-                        <option value="1">Move orange line down</option>
-                        <option value="2">Move blue line up</option>
-                        <option value="3">Move blue line down</option>
-                    </select>
+                    <hr style={{
+                            display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
+                        }} />
 
                     <button className="btn btn-primary"
                             style={{
                                 marginTop: '1em',
-                                display: this.props.gNeedsSubmit ? 'inherit' : 'none'
+                                display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
                             }}
                             type="submit">Submit</button>
                 </form>
@@ -180,6 +172,7 @@ GraphViewer.propTypes = {
     gLine2DecreaseScore: PropTypes.number,
     gLineMovement: PropTypes.number,
     gType: PropTypes.number,
+    submission: PropTypes.object,
     updateGraph: PropTypes.func.isRequired,
     choice: PropTypes.number,
     value: PropTypes.string
