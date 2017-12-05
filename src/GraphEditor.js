@@ -75,6 +75,8 @@ export default class GraphEditor extends React.Component {
                          gYAxisLabel={this.props.gYAxisLabel}
                          gLine1Slope={this.props.gLine1Slope}
                          gLine2Slope={this.props.gLine2Slope}
+                         gLine1Offset={this.props.gLine1Offset}
+                         gLine2Offset={this.props.gLine2Offset}
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <div className="row">
@@ -349,6 +351,8 @@ GraphEditor.propTypes = {
     gLine2Label: PropTypes.string.isRequired,
     gLine1Slope: PropTypes.number.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
+    gLine1Offset: PropTypes.number.isRequired,
+    gLine2Offset: PropTypes.number.isRequired,
     gLine1FeedbackIncrease: PropTypes.string,
     gLine1IncreaseScore: PropTypes.number,
     gLine1FeedbackDecrease: PropTypes.string,

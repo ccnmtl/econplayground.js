@@ -18,6 +18,8 @@ class Viewer extends Component {
             gShowIntersection: true,
             gLine1Slope: 1,
             gLine2Slope: -1,
+            gLine1Offset: 0,
+            gLine2Offset: 0,
             gLine1Label: '',
             gLine2Label: '',
             gXAxisLabel: '',
@@ -66,6 +68,8 @@ class Viewer extends Component {
             gLine2Slope={this.state.gLine2Slope}
             gXAxisLabel={this.state.gXAxisLabel}
             gYAxisLabel={this.state.gYAxisLabel}
+            gLine1Offset={this.state.gLine1Offset}
+            gLine2Offset={this.state.gLine2Offset}
             gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
             gLine1IncreaseScore={this.state.gLine1IncreaseScore}
             gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
@@ -97,6 +101,8 @@ class Viewer extends Component {
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
+            gLine1Offset={this.state.gLine1Offset}
+            gLine2Offset={this.state.gLine2Offset}
             gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
             gLine1DecreaseScore={this.state.gLine1DecreaseScore}
             gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
@@ -141,6 +147,15 @@ class Viewer extends Component {
         });
         document.addEventListener('l2initial', function() {
             me.handleInitial();
+        });
+
+        document.addEventListener('l1offset', function(e) {
+            const offset = e.detail;
+            me.setState({gLine1Offset: offset});
+        });
+        document.addEventListener('l2offset', function(e) {
+            const offset = e.detail;
+            me.setState({gLine2Offset: offset});
         });
     }
 
