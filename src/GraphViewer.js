@@ -48,12 +48,13 @@ export default class GraphViewer extends React.Component {
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <Feedback
-                         choice={this.props.choice}
+                         submission={this.props.submission}
+                         isSubmitted={!!this.props.submission}
                          gNeedsSubmit={this.props.gNeedsSubmit}
-                         gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
                          gLine1FeedbackIncrease={this.props.gLine1FeedbackIncrease}
-                         gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease}
-                         gLine2FeedbackIncrease={this.props.gLine2FeedbackIncrease} />
+                         gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
+                         gLine2FeedbackIncrease={this.props.gLine2FeedbackIncrease}
+                         gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease} />
 
                     <div className="form-row">
                         <div className="col">
