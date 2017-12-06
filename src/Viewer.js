@@ -28,7 +28,6 @@ class Viewer extends Component {
             gLine1FeedbackDecrease: '',
             gLine2FeedbackIncrease: '',
             gLine2FeedbackDecrease: '',
-            gLineMovement: null,
 
             choice: null,
             value: '',
@@ -110,7 +109,6 @@ class Viewer extends Component {
             gLine2DecreaseScore={this.state.gLine2DecreaseScore}
             gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
             gLine2IncreaseScore={this.state.gLine2IncreaseScore}
-            gLineMovement={this.state.gLineMovement}
             submission={this.state.submission}
             updateGraph={this.handleGraphUpdate.bind(this)}
             choice={this.state.choice}

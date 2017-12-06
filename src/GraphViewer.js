@@ -44,7 +44,6 @@ export default class GraphViewer extends React.Component {
                          gLine2Slope={this.props.gLine2Slope}
                          gLine1Offset={this.props.gLine1Offset}
                          gLine2Offset={this.props.gLine2Offset}
-                         gLineMovement={this.props.gLineMovement}
                          gNeedsSubmit={this.props.gNeedsSubmit}
                          gShowIntersection={this.props.gShowIntersection} />
 
@@ -107,11 +106,7 @@ export default class GraphViewer extends React.Component {
             obj[e.target.id] = parseFloat(e.target.value);
             break;
         default:
-            if (e.target.id === 'gLineMovement') {
-                obj[e.target.id] = parseInt(e.target.value, 10);
-            } else {
-                obj[e.target.id] = e.target.value;
-            }
+            obj[e.target.id] = e.target.value;
         }
 
         this.props.updateGraph(obj);
@@ -171,7 +166,6 @@ GraphViewer.propTypes = {
     gLine2IncreaseScore: PropTypes.number,
     gLine2FeedbackDecrease: PropTypes.string,
     gLine2DecreaseScore: PropTypes.number,
-    gLineMovement: PropTypes.number,
     gType: PropTypes.number,
     submission: PropTypes.object,
     updateGraph: PropTypes.func.isRequired,

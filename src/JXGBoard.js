@@ -3,7 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import JXG from 'jsxgraph';
-import {graphTypes} from './graphTypes.js';
+import {graphTypes} from './graphTypes';
+import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 
 export default class JXGBoard extends React.Component {
     constructor(props) {
@@ -86,7 +87,9 @@ export default class JXGBoard extends React.Component {
                 gLine2Slope: options.gLine2Slope,
                 gLine1Offset: options.gLine1Offset,
                 gLine2Offset: options.gLine2Offset,
-                gLineMovement: options.gLineMovement,
+                l1SubmissionOffset: getL1SubmissionOffset(options.submission),
+                l2SubmissionOffset: getL2SubmissionOffset(options.submission),
+                submission: options.submission,
                 isSubmitted: options.isSubmitted
             });
         }
@@ -102,7 +105,6 @@ export default class JXGBoard extends React.Component {
             'gLine2Slope',
             'gLine1Offset',
             'gLine2Offset',
-            'gLineMovement',
             'submission'
         ];
 
@@ -127,7 +129,9 @@ export default class JXGBoard extends React.Component {
                 gLine2Slope: nextProps.gLine2Slope,
                 gLine1Offset: nextProps.gLine1Offset,
                 gLine2Offset: nextProps.gLine2Offset,
-                gLineMovement: nextProps.gLineMovement,
+                l1SubmissionOffset: getL1SubmissionOffset(nextProps.submission),
+                l2SubmissionOffset: getL2SubmissionOffset(nextProps.submission),
+                submission: nextProps.submission,
                 isSubmitted: !!nextProps.submission
             });
         }
@@ -145,7 +149,9 @@ export default class JXGBoard extends React.Component {
             gLine2Slope: this.props.gLine2Slope,
             gLine1Offset: this.props.gLine1Offset,
             gLine2Offset: this.props.gLine2Offset,
-            gLineMovement: this.props.gLineMovement,
+            l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
+            l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
+            submission: this.props.submission,
             isSubmitted: !!this.props.submission
         });
     }
@@ -173,7 +179,6 @@ JXGBoard.propTypes = {
     gLine2Slope: PropTypes.number,
     gLine1Offset: PropTypes.number,
     gLine2Offset: PropTypes.number,
-    gLineMovement: PropTypes.number,
     gType: PropTypes.number,
     id: PropTypes.string.isRequired
 };
