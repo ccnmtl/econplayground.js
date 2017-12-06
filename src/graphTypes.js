@@ -210,7 +210,6 @@ class Graph {
 
 class DemandSupplyGraph extends Graph {
     make() {
-        console.log('!', this.options.isSubmitted);
         let l1 = this.board.create(
             'line',
             [
