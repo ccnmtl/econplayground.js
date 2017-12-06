@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
 import { exportGraph, importGraph } from './Graph';
-import { authedFetch } from './utils';
+import { authedFetch, getSubmission } from './utils';
 
 class Viewer extends Component {
     constructor(props) {
@@ -32,7 +32,6 @@ class Viewer extends Component {
 
             choice: null,
             value: '',
-            submitted: false,
             submission: null
         };
 
@@ -112,6 +111,7 @@ class Viewer extends Component {
             gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
             gLine2IncreaseScore={this.state.gLine2IncreaseScore}
             gLineMovement={this.state.gLineMovement}
+            submission={this.state.submission}
             updateGraph={this.handleGraphUpdate.bind(this)}
             choice={this.state.choice}
             value={this.state.value}
@@ -170,19 +170,7 @@ class Viewer extends Component {
     }
 
     getSubmission() {
-        const me = this;
-        return authedFetch('/api/submissions/').then(function(response) {
-            return response.json();
-        }).then(function(json) {
-            let submission = null;
-            json.some(function(e) {
-                if (e.graph === me.state.gId) {
-                    submission = e;
-                    return true;
-                }
-            });
-            return submission;
-        });
+        return getSubmission(this.state.gId);
     }
 
     handleSaveGraph() {

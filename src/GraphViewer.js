@@ -180,6 +180,7 @@ GraphViewer.propTypes = {
     gLine2DecreaseScore: PropTypes.number,
     gLineMovement: PropTypes.number,
     gType: PropTypes.number,
+    submission: PropTypes.object,
     updateGraph: PropTypes.func.isRequired,
     choice: PropTypes.number,
     value: PropTypes.string
