@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 export default class Feedback extends React.Component {
     render() {
-        if (this.props.gNeedsSubmit) {
+        if (this.props.gNeedsSubmit && !this.props.submission) {
             return null;
         }
 
-        if (this.props.choice) {
-            let msg = '';
-            switch (this.props.choice) {
+        let msg = '';
+
+        if (this.props.submission) {
+            switch (this.props.submission.choice) {
             case 1:
                 msg = this.props.gLine1FeedbackIncrease;
                 break;
@@ -23,17 +24,21 @@ export default class Feedback extends React.Component {
                 msg = this.props.gLine2FeedbackDecrease;
                 break;
             }
+            msg = 'Submitted. ' + msg;
+        }
+
+        if (msg) {
             return <div className="alert alert-primary" role="alert">
                 {msg}
             </div>;
-        } else {
-            return null;
         }
+
+        return null;
     }
 }
 
 Feedback.propTypes = {
-    choice: PropTypes.number,
+    submission: PropTypes.object,
     gNeedsSubmit: PropTypes.bool,
     gLine1FeedbackDecrease: PropTypes.string,
     gLine1FeedbackIncrease: PropTypes.string,
