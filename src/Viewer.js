@@ -126,7 +126,10 @@ class Viewer extends Component {
         this.getGraph().then(function() {
             return me.getSubmission();
         }).then(function(s) {
-            me.setState({'submission': s});
+            me.setState({
+                alertText: 'Submitted.',
+                submission: s
+            });
         });
 
         // Add graph feedback event handlers
