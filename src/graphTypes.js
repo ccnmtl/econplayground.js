@@ -52,8 +52,9 @@ class Graph {
                 gLine2Slope: 1,
                 gLine1Offset: 0,
                 gLine2Offset: 0,
-                gLineMovement: null,
-                isSubmitted: false
+                isSubmitted: false,
+                l1SubmissionOffset: 0,
+                l2SubmissionOffset: 0
             };
         }
 
@@ -66,6 +67,7 @@ class Graph {
         this.l2 = null;
 
         this.options = applyDefaults(options, defaults);
+
         this.board = board;
     }
     /**
@@ -213,9 +215,10 @@ class DemandSupplyGraph extends Graph {
         let l1 = this.board.create(
             'line',
             [
-                [2.5, 2.5 + this.options.gLine1Offset],
+                [2.5, 2.5 + this.options.gLine1Offset +
+                 this.options.l1SubmissionOffset],
                 [3.5, 2.5 + this.options.gLine1Offset +
-                 this.options.gLine1Slope]
+                 this.options.gLine1Slope + this.options.l1SubmissionOffset]
             ], {
                 name: this.options.gLine1Label,
                 withLabel: true,
@@ -230,9 +233,10 @@ class DemandSupplyGraph extends Graph {
         let l2 = this.board.create(
             'line',
             [
-                [2.5, 2.5 + this.options.gLine2Offset],
+                [2.5, 2.5 + this.options.gLine2Offset +
+                 this.options.l2SubmissionOffset],
                 [3.5, 2.5 + this.options.gLine2Offset +
-                 this.options.gLine2Slope]
+                 this.options.gLine2Slope + this.options.l2SubmissionOffset]
             ], {
                 name: this.options.gLine2Label,
                 withLabel: true,
@@ -243,8 +247,6 @@ class DemandSupplyGraph extends Graph {
                 fixed: this.options.isSubmitted
             });
         this.l2 = l2;
-
-        // TODO: move line position based on gLineMovement
 
         if (this.options.gShowIntersection) {
             this.showIntersection(l1, l2);
@@ -362,8 +364,10 @@ class LaborSupplyGraph extends Graph {
     make() {
         this.board.create(
             'line', [
-                [0, 5 + this.options.gLine1Offset],
-                [5, 0 + this.options.gLine1Offset]
+                [0, 5 + this.options.gLine1Offset +
+                 this.options.l1SubmissionOffset],
+                [5, 0 + this.options.gLine1Offset +
+                 this.options.l1SubmissionOffset]
             ], {
                 name: this.options.gLine1Label,
                 withLabel: true,
@@ -386,8 +390,10 @@ class ConsumptionSavingGraph extends Graph {
     make() {
         this.board.create(
             'line', [
-                [0, 5 + this.options.gLine1Offset],
-                [5, 0 + this.options.gLine1Offset]
+                [0, 5 + this.options.gLine1Offset +
+                 this.options.l1SubmissionOffset],
+                [5, 0 + this.options.gLine1Offset +
+                 this.options.l1SubmissionOffset]
             ], {
                 name: this.options.gLine1Label,
                 withLabel: true,
@@ -410,8 +416,10 @@ class SavingInvestmentGraph extends Graph {
     make() {
         this.board.create(
             'line', [
-                [0, 5 + this.options.gLine1Offset],
-                [5, 0 + this.options.gLine1Offset]
+                [0, 5 + this.options.gLine1Offset +
+                 this.options.l1SubmissionOffset],
+                [5, 0 + this.options.gLine1Offset +
+                this.options.l1SubmissionOffset]
             ], {
                 name: this.options.gLine1Label,
                 withLabel: true,
@@ -423,8 +431,10 @@ class SavingInvestmentGraph extends Graph {
 
         this.board.create(
             'line', [
-                [0, 0 + this.options.gLine2Offset],
-                [5, 5 + this.options.gLine2Offset]
+                [0, 0 + this.options.gLine2Offset +
+                 this.options.l2SubmissionOffset],
+                [5, 5 + this.options.gLine2Offset +
+                 this.options.l2SubmissionOffset]
             ], {
                 name: this.options.gLine2Label,
                 withLabel: true,
@@ -447,8 +457,10 @@ class MoneyMarketGraph extends Graph {
     make() {
         this.board.create(
             'line', [
-                [0, 5 + this.options.gLine1Offset],
-                [5, 0 + this.options.gLine1Offset]
+                [0, 5 + this.options.gLine1Offset +
+                 this.options.l1SubmissionOffset],
+                [5, 0 + this.options.gLine1Offset +
+                 this.options.l1SubmissionOffset]
             ], {
                 name: this.options.gLine1Label,
                 withLabel: true,
@@ -460,8 +472,10 @@ class MoneyMarketGraph extends Graph {
 
         this.board.create(
             'line', [
-                [0, 0 + this.options.gLine2Offset],
-                [5, 5 + this.options.gLine2Offset]
+                [0, 0 + this.options.gLine2Offset +
+                 this.options.l2SubmissionOffset],
+                [5, 5 + this.options.gLine2Offset +
+                 this.options.l2SubmissionOffset]
             ], {
                 name: this.options.gLine2Label,
                 withLabel: true,

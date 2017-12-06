@@ -56,4 +56,33 @@ let getOrCreateSubmission = function(data) {
         });
 };
 
-export { authedFetch, getSubmission, createSubmission, getOrCreateSubmission };
+let getL1SubmissionOffset = function(submission) {
+    if (!submission) {
+        return 0;
+    }
+
+    if (submission.choice === 1) {
+        return 1;
+    } else if (submission.choice === 2) {
+        return -1;
+    }
+    return 0;
+};
+
+let getL2SubmissionOffset = function(submission) {
+    if (!submission) {
+        return 0;
+    }
+
+    if (submission.choice === 3) {
+        return 1;
+    } else if (submission.choice === 4) {
+        return -1;
+    }
+    return 0;
+};
+
+export {
+    authedFetch, getSubmission, createSubmission, getOrCreateSubmission,
+    getL1SubmissionOffset, getL2SubmissionOffset
+};
