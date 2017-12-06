@@ -20,6 +20,11 @@ export default class GraphViewer extends React.Component {
             successUrl = window.EconPlayground.EmbedSuccess;
         }
 
+        let isStaff = false;
+        if (window.EconPlayground && window.EconPlayground.isStaff) {
+            isStaff = window.EconPlayground.isStaff.toLowerCase() === 'true';
+        }
+
         const token = Cookies.get('csrftoken');
 
         return (
@@ -86,10 +91,10 @@ export default class GraphViewer extends React.Component {
                             display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
                         }} />
 
-                    <button className="btn btn-primary"
+                    <button className="btn btn-primary btn-sm"
                             style={{
                                 marginTop: '1em',
-                                display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
+                                display: (!isStaff && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
                             }}
                             type="submit">Submit</button>
                 </form>
