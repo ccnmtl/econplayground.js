@@ -52,7 +52,8 @@ class Graph {
                 gLine2Slope: 1,
                 gLine1Offset: 0,
                 gLine2Offset: 0,
-                gLineMovement: null
+                gLineMovement: null,
+                isSubmitted: false
             };
         }
 
@@ -95,7 +96,7 @@ class Graph {
 
         const me = this;
 
-        if (this.l1) {
+        if (this.l1 && !this.options.isSubmitted) {
             this.initialL1Y = this.l1.getRise();
 
             this.l1.on('mouseup', function() {
@@ -115,7 +116,7 @@ class Graph {
             });
         }
 
-        if (this.l2) {
+        if (this.l2 && !this.options.isSubmitted) {
             this.initialL2Y = this.l2.getRise();
 
             this.l2.on('mouseup', function() {
@@ -209,6 +210,7 @@ class Graph {
 
 class DemandSupplyGraph extends Graph {
     make() {
+        console.log('!', this.options.isSubmitted);
         let l1 = this.board.create(
             'line',
             [
@@ -221,7 +223,8 @@ class DemandSupplyGraph extends Graph {
                 label: { position: 'rt', offset: [-10, -20] },
                 strokeColor: 'rgb(255, 127, 14)',
                 strokeWidth: 2,
-                snapToGrid: true
+                snapToGrid: true,
+                fixed: this.options.isSubmitted
             });
         this.l1 = l1;
 
@@ -237,7 +240,8 @@ class DemandSupplyGraph extends Graph {
                 label: { position: 'rt', offset: [0, 20] },
                 strokeColor: 'steelblue',
                 strokeWidth: 2,
-                snapToGrid: true
+                snapToGrid: true,
+                fixed: this.options.isSubmitted
             });
         this.l2 = l2;
 
@@ -266,7 +270,8 @@ class LaborMarketGraph extends Graph {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeWidth: 2,
-            strokeColor: 'rgb(255, 127, 14)'
+            strokeColor: 'rgb(255, 127, 14)',
+            fixed: this.options.isSubmitted
         });
 
         let l2 = this.board.create('line', [
@@ -278,7 +283,8 @@ class LaborMarketGraph extends Graph {
             label: { position: 'rt', offset: [10, -20] },
             strokeColor: 'steelblue',
             strokeWidth: 2,
-            snapToGrid: true
+            snapToGrid: true,
+            fixed: this.options.isSubmitted
         });
 
         if (this.options.gShowIntersection) {
@@ -318,7 +324,8 @@ class LaborMarketPerfectlyInelasticGraph extends Graph {
             withLabel: true,
             strokeColor: 'steelblue',
             strokeWidth: 2,
-            snapToGrid: true
+            snapToGrid: true,
+            fixed: this.options.isSubmitted
         });
     }
 }
@@ -363,7 +370,8 @@ class LaborSupplyGraph extends Graph {
                 withLabel: true,
                 label: { position: 'rt', offset: [-10, 20] },
                 strokeColor: 'rgb(255, 127, 14)',
-                strokeWidth: 2
+                strokeWidth: 2,
+                fixed: this.options.isSubmitted
             });
     }
 }
@@ -386,7 +394,8 @@ class ConsumptionSavingGraph extends Graph {
                 withLabel: true,
                 label: { position: 'rt', offset: [-10, 20] },
                 strokeColor: 'rgb(255, 127, 14)',
-                strokeWidth: 2
+                strokeWidth: 2,
+                fixed: this.options.isSubmitted
             });
     }
 }
@@ -409,7 +418,8 @@ class SavingInvestmentGraph extends Graph {
                 withLabel: true,
                 label: { position: 'rt', offset: [-10, 20] },
                 strokeColor: 'rgb(255, 127, 14)',
-                strokeWidth: 2
+                strokeWidth: 2,
+                fixed: this.options.isSubmitted
             });
 
         this.board.create(
@@ -421,7 +431,8 @@ class SavingInvestmentGraph extends Graph {
                 withLabel: true,
                 label: { position: 'rt', offset: [0, 0] },
                 strokeColor: 'steelblue',
-                strokeWidth: 2
+                strokeWidth: 2,
+                fixed: this.options.isSubmitted
             });
     }
 }
@@ -444,7 +455,8 @@ class MoneyMarketGraph extends Graph {
                 withLabel: true,
                 label: { position: 'rt', offset: [-10, 20] },
                 strokeColor: 'rgb(255, 127, 14)',
-                strokeWidth: 2
+                strokeWidth: 2,
+                fixed: this.options.isSubmitted
             });
 
         this.board.create(
@@ -456,7 +468,8 @@ class MoneyMarketGraph extends Graph {
                 withLabel: true,
                 label: { position: 'rt', offset: [0, 0] },
                 strokeColor: 'steelblue',
-                strokeWidth: 2
+                strokeWidth: 2,
+                fixed: this.options.isSubmitted
             });
     }
 }

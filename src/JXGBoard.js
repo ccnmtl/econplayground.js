@@ -86,7 +86,8 @@ export default class JXGBoard extends React.Component {
                 gLine2Slope: options.gLine2Slope,
                 gLine1Offset: options.gLine1Offset,
                 gLine2Offset: options.gLine2Offset,
-                gLineMovement: options.gLineMovement
+                gLineMovement: options.gLineMovement,
+                isSubmitted: options.isSubmitted
             });
         }
     }
@@ -101,7 +102,8 @@ export default class JXGBoard extends React.Component {
             'gLine2Slope',
             'gLine1Offset',
             'gLine2Offset',
-            'gLineMovement'
+            'gLineMovement',
+            'submission'
         ];
 
         let needsUpdate = false;
@@ -125,7 +127,8 @@ export default class JXGBoard extends React.Component {
                 gLine2Slope: nextProps.gLine2Slope,
                 gLine1Offset: nextProps.gLine1Offset,
                 gLine2Offset: nextProps.gLine2Offset,
-                gLineMovement: nextProps.gLineMovement
+                gLineMovement: nextProps.gLineMovement,
+                isSubmitted: !!nextProps.submission
             });
         }
     }
@@ -142,7 +145,8 @@ export default class JXGBoard extends React.Component {
             gLine2Slope: this.props.gLine2Slope,
             gLine1Offset: this.props.gLine1Offset,
             gLine2Offset: this.props.gLine2Offset,
-            gLineMovement: this.props.gLineMovement
+            gLineMovement: this.props.gLineMovement,
+            isSubmitted: !!this.props.submission
         });
     }
 
@@ -159,6 +163,7 @@ export default class JXGBoard extends React.Component {
 JXGBoard.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
+    submission: PropTypes.object,
     gShowIntersection: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,

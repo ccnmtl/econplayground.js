@@ -34,6 +34,7 @@ export default class GraphViewer extends React.Component {
                          id={'editing-graph'}
                          width={562.5}
                          height={300}
+                         submission={this.props.submission}
                          gType={this.props.gType}
                          gLine1Label={this.props.gLine1Label}
                          gLine2Label={this.props.gLine2Label}
