@@ -95,6 +95,7 @@ class Viewer extends Component {
             gType={this.state.gType}
             gNeedsSubmit={this.state.gNeedsSubmit}
             gShowIntersection={this.state.gShowIntersection}
+            gDisplayFeedback={this.state.gDisplayFeedback}
             gLine1Label={this.state.gLine1Label}
             gLine2Label={this.state.gLine2Label}
             gLine1Slope={this.state.gLine1Slope}
