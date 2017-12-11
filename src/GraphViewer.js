@@ -53,9 +53,11 @@ export default class GraphViewer extends React.Component {
                          gShowIntersection={this.props.gShowIntersection} />
 
                     <Feedback
+                         choice={this.props.choice}
                          submission={this.props.submission}
                          isSubmitted={!!this.props.submission}
                          gNeedsSubmit={this.props.gNeedsSubmit}
+                         gDisplayFeedback={this.props.gDisplayFeedback}
                          gLine1FeedbackIncrease={this.props.gLine1FeedbackIncrease}
                          gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
                          gLine2FeedbackIncrease={this.props.gLine2FeedbackIncrease}
@@ -156,6 +158,7 @@ GraphViewer.propTypes = {
     gDescription: PropTypes.string,
     gNeedsSubmit: PropTypes.bool,
     gShowIntersection: PropTypes.bool,
+    gDisplayFeedback: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
     gXAxisLabel: PropTypes.string,

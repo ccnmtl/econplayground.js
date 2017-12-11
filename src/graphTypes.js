@@ -98,7 +98,10 @@ class Graph {
 
         const me = this;
 
-        if (this.l1 && !this.options.isSubmitted) {
+        if (
+            this.l1 && (typeof this.l1.getRise === 'function') &&
+                !this.options.isSubmitted
+        ) {
             this.initialL1Y = this.l1.getRise();
 
             this.l1.on('mouseup', function() {
@@ -118,7 +121,10 @@ class Graph {
             });
         }
 
-        if (this.l2 && !this.options.isSubmitted) {
+        if (
+            this.l2 && (typeof this.l2.getRise === 'function') &&
+                !this.options.isSubmitted
+        ) {
             this.initialL2Y = this.l2.getRise();
 
             this.l2.on('mouseup', function() {
@@ -212,7 +218,7 @@ class Graph {
 
 class DemandSupplyGraph extends Graph {
     make() {
-        let l1 = this.board.create(
+        this.l1 = this.board.create(
             'line',
             [
                 [2.5, 2.5 + this.options.gLine1Offset +
@@ -228,9 +234,8 @@ class DemandSupplyGraph extends Graph {
                 snapToGrid: true,
                 fixed: this.options.isSubmitted
             });
-        this.l1 = l1;
 
-        let l2 = this.board.create(
+        this.l2 = this.board.create(
             'line',
             [
                 [2.5, 2.5 + this.options.gLine2Offset +
@@ -246,10 +251,9 @@ class DemandSupplyGraph extends Graph {
                 snapToGrid: true,
                 fixed: this.options.isSubmitted
             });
-        this.l2 = l2;
 
         if (this.options.gShowIntersection) {
-            this.showIntersection(l1, l2);
+            this.showIntersection(this.l1, this.l2);
         }
     }
 }
@@ -267,7 +271,7 @@ class LaborMarketGraph extends Graph {
             return 1 / x;
         };
 
-        let l1 = functionUtils.plot(this.board, f, {
+        this.l1 = functionUtils.plot(this.board, f, {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeWidth: 2,
@@ -275,7 +279,7 @@ class LaborMarketGraph extends Graph {
             fixed: this.options.isSubmitted
         });
 
-        let l2 = this.board.create('line', [
+        this.l2 = this.board.create('line', [
             [0, 0 + this.options.gLine2Offset],
             [5, 5 + this.options.gLine2Offset]
         ], {
@@ -289,7 +293,7 @@ class LaborMarketGraph extends Graph {
         });
 
         if (this.options.gShowIntersection) {
-            this.showIntersection(l1, l2);
+            this.showIntersection(this.l1, this.l2);
         }
     }
 }
@@ -314,20 +318,21 @@ class LaborMarketPerfectlyInelasticGraph extends Graph {
             strokeColor: 'rgb(255, 127, 14)'
         });
 
-        this.board.create(
-            'point', [2.5 + this.options.gLine2Offset, 0], {
-                name: 'a', size: 0, withLabel: false});
-        this.board.create(
-            'point', [2.5 + this.options.gLine2Offset, 5], {
-                name: 'b', size: 0, withLabel: false});
-        this.board.create('line', ['a', 'b'], {
-            name: this.options.gLine2Label,
-            withLabel: true,
-            strokeColor: 'steelblue',
-            strokeWidth: 2,
-            snapToGrid: true,
-            fixed: this.options.isSubmitted
-        });
+        this.l2 = this.board.create(
+            'line',
+            [
+                [2.5, 2.5 + this.options.gLine2Offset +
+                 this.options.l2SubmissionOffset],
+                [3.5, 2.5 + this.options.gLine2Offset +
+                 this.options.gLine2Slope + this.options.l2SubmissionOffset]
+            ], {
+                name: this.options.gLine2Label,
+                withLabel: true,
+                strokeColor: 'steelblue',
+                strokeWidth: 2,
+                snapToGrid: true,
+                fixed: this.options.isSubmitted
+            });
     }
 }
 
