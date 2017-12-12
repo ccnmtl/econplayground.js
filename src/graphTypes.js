@@ -275,8 +275,7 @@ class LaborMarketGraph extends Graph {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeWidth: 2,
-            strokeColor: 'rgb(255, 127, 14)',
-            fixed: this.options.isSubmitted
+            strokeColor: 'rgb(255, 127, 14)'
         });
 
         this.l2 = this.board.create('line', [
@@ -311,7 +310,7 @@ class LaborMarketPerfectlyInelasticGraph extends Graph {
             return 1 / x;
         };
 
-        functionUtils.plot(this.board, f, {
+        this.l1 = functionUtils.plot(this.board, f, {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeWidth: 2,
@@ -367,7 +366,7 @@ let mkCobbDouglas = function(board, options) {
 
 class LaborSupplyGraph extends Graph {
     make() {
-        this.board.create(
+        this.l1 = this.board.create(
             'line', [
                 [0, 5 + this.options.gLine1Offset +
                  this.options.l1SubmissionOffset],
@@ -419,7 +418,7 @@ let mkConsumptionSaving = function(board, options) {
 
 class SavingInvestmentGraph extends Graph {
     make() {
-        this.board.create(
+        this.l1 = this.board.create(
             'line', [
                 [0, 5 + this.options.gLine1Offset +
                  this.options.l1SubmissionOffset],
@@ -434,7 +433,7 @@ class SavingInvestmentGraph extends Graph {
                 fixed: this.options.isSubmitted
             });
 
-        this.board.create(
+        this.l2 = this.board.create(
             'line', [
                 [0, 0 + this.options.gLine2Offset +
                  this.options.l2SubmissionOffset],
@@ -460,7 +459,7 @@ let mkSavingInvestment = function(board, options) {
 
 class MoneyMarketGraph extends Graph {
     make() {
-        this.board.create(
+        this.l1 = this.board.create(
             'line', [
                 [0, 5 + this.options.gLine1Offset +
                  this.options.l1SubmissionOffset],
@@ -475,7 +474,7 @@ class MoneyMarketGraph extends Graph {
                 fixed: this.options.isSubmitted
             });
 
-        this.board.create(
+        this.l2 = this.board.create(
             'line', [
                 [0, 0 + this.options.gLine2Offset +
                  this.options.l2SubmissionOffset],
