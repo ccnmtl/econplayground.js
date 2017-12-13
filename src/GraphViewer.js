@@ -64,7 +64,7 @@ export default class GraphViewer extends React.Component {
                          gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease} />
 
                     <div className="form-row">
-                        <div className="col">
+                        <div className={"col " + (this.props.gLine1SlopeEditable ? '' : 'd-none')}>
                             <label htmlFor="gLine1Slope">
                                 Orange line slope
                             </label>
@@ -75,7 +75,7 @@ export default class GraphViewer extends React.Component {
                                    type="number" step="0.01" />
                         </div>
 
-                        <div className="col">
+                        <div className={"col " + (this.props.gLine2SlopeEditable ? '' : 'd-none')}>
                             <div className="form-group">
                                 <label htmlFor="gLine2Slope">
                                     Blue line slope
@@ -85,6 +85,55 @@ export default class GraphViewer extends React.Component {
                                        className="form-control form-control-sm"
                                        value={this.props.gLine2Slope}
                                        type="number" step="0.01" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className={"col " + (this.props.gLine1LabelEditable ? '' : 'd-none')}>
+                            <div className="form-group">
+                                <label htmlFor="gLine1Label">
+                                    Orange line label
+                                </label>
+                                <input id="gLine1Label"
+                                       value={this.props.gLine1Label}
+                                       className="form-control form-control-sm" type="text" />
+                            </div>
+                        </div>
+                        <div className={"col " + (this.props.gLine2LabelEditable ? '' : 'd-none')}>
+                            <div className="form-group">
+                                <label htmlFor="gLine2Label">
+                                    Blue line label
+                                </label>
+                                <input id="gLine2Label"
+                                       value={this.props.gLine2Label}
+                                       className="form-control form-control-sm" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className={"col " + (this.props.gXAxisLabelEditable ? '' : 'd-none')}>
+                            <div className="form-group">
+                                <label htmlFor="gXAxisLabel">
+                                    X-axis label:
+                                </label>
+                                <input id="gXAxisLabel"
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       value={this.props.gXAxisLabel} />
+                            </div>
+                        </div>
+
+                        <div className={"col " + (this.props.gYAxisLabelEditable ? '' : 'd-none')}>
+                            <div className="form-group">
+                                <label htmlFor="gYAxisLabel">
+                                    Y-axis label:
+                                </label>
+                                <input id="gYAxisLabel"
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       value={this.props.gYAxisLabel} />
                             </div>
                         </div>
                     </div>
@@ -160,11 +209,17 @@ GraphViewer.propTypes = {
     gShowIntersection: PropTypes.bool,
     gDisplayFeedback: PropTypes.bool,
     gLine1Label: PropTypes.string,
+    gLine1LabelEditable: PropTypes.bool,
     gLine2Label: PropTypes.string,
+    gLine2LabelEditable: PropTypes.bool,
     gXAxisLabel: PropTypes.string,
+    gXAxisLabelEditable: PropTypes.bool,
     gYAxisLabel: PropTypes.string,
+    gYAxisLabelEditable: PropTypes.bool,
     gLine1Slope: PropTypes.number,
+    gLine1SlopeEditable: PropTypes.bool,
     gLine2Slope: PropTypes.number,
+    gLine2SlopeEditable: PropTypes.bool,
     gLine1Offset: PropTypes.number,
     gLine2Offset: PropTypes.number,
     gLine1FeedbackIncrease: PropTypes.string,

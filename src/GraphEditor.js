@@ -189,6 +189,7 @@ export default class GraphEditor extends React.Component {
                                     Orange line label
                                 </label>
                                 <input id="gLine1Label"
+                                       value={this.props.gLine1Label}
                                        onChange={this.handleFormUpdate.bind(this)}
                                        className="form-control form-control-sm" type="text" />
                             </div>
@@ -214,6 +215,7 @@ export default class GraphEditor extends React.Component {
                                     Blue line label
                                 </label>
                                 <input id="gLine2Label"
+                                       value={this.props.gLine2Label}
                                        onChange={this.handleFormUpdate.bind(this)}
                                        className="form-control form-control-sm" type="text" />
                             </div>
