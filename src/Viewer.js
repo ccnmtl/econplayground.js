@@ -103,9 +103,17 @@ class Viewer extends Component {
             gShowIntersection={this.state.gShowIntersection}
             gDisplayFeedback={this.state.gDisplayFeedback}
             gLine1Label={this.state.gLine1Label}
+            gLine1LabelEditable={this.state.gLine1LabelEditable}
             gLine2Label={this.state.gLine2Label}
+            gLine2LabelEditable={this.state.gLine2LabelEditable}
             gLine1Slope={this.state.gLine1Slope}
+            gLine1SlopeEditable={this.state.gLine1SlopeEditable}
             gLine2Slope={this.state.gLine2Slope}
+            gLine2SlopeEditable={this.state.gLine2SlopeEditable}
+            gXAxisLabel={this.state.gXAxisLabel}
+            gXAxisLabelEditable={this.state.gXAxisLabelEditable}
+            gYAxisLabel={this.state.gYAxisLabel}
+            gYAxisLabelEditable={this.state.gYAxisLabelEditable}
             gLine1Offset={this.state.gLine1Offset}
             gLine2Offset={this.state.gLine2Offset}
             gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
