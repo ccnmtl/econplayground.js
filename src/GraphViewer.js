@@ -3,7 +3,10 @@ import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
-import { authedFetch, getOrCreateSubmission } from './utils';
+import SlopeEditor from './SlopeEditor';
+import {
+    authedFetch, getOrCreateSubmission, handleFormUpdate
+} from './utils';
 
 /**
  * This component is used to view an econgraph object.
@@ -68,8 +71,13 @@ export default class GraphViewer extends React.Component {
                             <label htmlFor="gLine1Slope">
                                 Orange line slope
                             </label>
+                            <SlopeEditor
+                                 dataId="gLine1Slope"
+                                 value={this.props.gLine1Slope}
+                                 handler={handleFormUpdate.bind(this)} />
+
                             <input id="gLine1Slope"
-                                   onChange={this.handleFormUpdate.bind(this)}
+                                   onChange={handleFormUpdate.bind(this)}
                                    className="form-control form-control-sm"
                                    value={this.props.gLine1Slope}
                                    type="number" step="0.01" />
@@ -80,8 +88,12 @@ export default class GraphViewer extends React.Component {
                                 <label htmlFor="gLine2Slope">
                                     Blue line slope
                                 </label>
+                                <SlopeEditor
+                                     dataId="gLine2Slope"
+                                     value={this.props.gLine2Slope}
+                                     handler={handleFormUpdate.bind(this)} />
                                 <input id="gLine2Slope"
-                                       onChange={this.handleFormUpdate.bind(this)}
+                                       onChange={handleFormUpdate.bind(this)}
                                        className="form-control form-control-sm"
                                        value={this.props.gLine2Slope}
                                        type="number" step="0.01" />
@@ -151,22 +163,6 @@ export default class GraphViewer extends React.Component {
                 </form>
             </div>
         )
-    }
-    handleFormUpdate(e) {
-        let obj = {};
-
-        switch(e.target.type) {
-        case 'checkbox':
-            obj[e.target.id] = e.target.checked;
-            break;
-        case 'number':
-            obj[e.target.id] = parseFloat(e.target.value);
-            break;
-        default:
-            obj[e.target.id] = e.target.value;
-        }
-
-        this.props.updateGraph(obj);
     }
     createSubmission(data) {
         const me = this;
