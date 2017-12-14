@@ -47,7 +47,7 @@ export default class JXGBoard extends React.Component {
                     x: {
                         name: options.gXAxisLabel ? options.gXAxisLabel : 'x',
                         label: {
-                            offset: [50, 5]
+                            offset: [440, 20]
                         },
                         withLabel: options.gXAxisLabel ? true : false,
                         ticks: {
@@ -57,7 +57,7 @@ export default class JXGBoard extends React.Component {
                     y: {
                         name: options.gYAxisLabel ? options.gYAxisLabel : 'y',
                         label: {
-                            offset: [-5, 100]
+                            offset: [5, 260]
                         },
                         withLabel: options.gYAxisLabel ? true : false,
                         ticks: {
