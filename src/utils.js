@@ -82,7 +82,32 @@ let getL2SubmissionOffset = function(submission) {
     return 0;
 };
 
+/**
+ * Propagate a form update to a callback.
+ */
+let handleFormUpdate = function(e) {
+    let obj = {};
+
+    // Use the element's id as the attribute name, and fall
+    // back to data-id.
+    const id = e.target.id || e.target.dataset.id;
+
+    switch(e.target.type) {
+    case 'checkbox':
+        obj[id] = e.target.checked;
+        break;
+    case 'number':
+    case 'range':
+        obj[id] = parseFloat(e.target.value);
+        break;
+    default:
+        obj[id] = e.target.value;
+    }
+
+    this.props.updateGraph(obj);
+};
+
 export {
     authedFetch, getSubmission, createSubmission, getOrCreateSubmission,
-    getL1SubmissionOffset, getL2SubmissionOffset
+    getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate
 };

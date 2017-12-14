@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import JXGBoard from './JXGBoard.js';
+import JXGBoard from './JXGBoard';
+import SlopeEditor from './SlopeEditor';
+import {handleFormUpdate} from './utils';
 import './GraphEditor.css';
 
 export default class GraphEditor extends React.Component {
@@ -18,7 +20,7 @@ export default class GraphEditor extends React.Component {
                                     Title
                                 </label>
                                 <input id="gTitle"
-                                       onChange={this.handleFormUpdate.bind(this)}
+                                       onChange={handleFormUpdate.bind(this)}
                                        value={this.props.gTitle}
                                        className="form-control form-control-sm"
                                        type="text" />
@@ -31,7 +33,7 @@ export default class GraphEditor extends React.Component {
                                     Instructor Notes
                                 </label>
                                 <textarea id="gInstructorNotes"
-                                          onChange={this.handleFormUpdate.bind(this)}
+                                          onChange={handleFormUpdate.bind(this)}
                                           value={this.props.gInstructorNotes}
                                           className="form-control form-control-sm" />
                             </div>
@@ -45,7 +47,7 @@ export default class GraphEditor extends React.Component {
                                     Description
                                 </label>
                                 <textarea id="gDescription"
-                                          onChange={this.handleFormUpdate.bind(this)}
+                                          onChange={handleFormUpdate.bind(this)}
                                           value={this.props.gDescription}
                                           className="form-control form-control-sm" />
                             </div>
@@ -60,7 +62,7 @@ export default class GraphEditor extends React.Component {
                                          id="gNeedsSubmit"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gNeedsSubmit} />
                                     Requires submission
                                 </label>
@@ -74,7 +76,7 @@ export default class GraphEditor extends React.Component {
                                          id="gDisplayFeedback"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gDisplayFeedback} />
                                     Display feedback
                                 </label>
@@ -90,7 +92,7 @@ export default class GraphEditor extends React.Component {
                                          id="gShowIntersection"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gShowIntersection} />
                                     Display intersection
                                 </label>
@@ -104,7 +106,7 @@ export default class GraphEditor extends React.Component {
                                          id="gIsPublished"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gIsPublished} />
                                     Published
                                 </label>
@@ -133,11 +135,10 @@ export default class GraphEditor extends React.Component {
                             <label htmlFor="gLine1Slope">
                                 Orange line slope
                             </label>
-                            <input id="gLine1Slope"
-                                   onChange={this.handleFormUpdate.bind(this)}
-                                   className="form-control form-control-sm"
-                                   value={this.props.gLine1Slope}
-                                   type="number" step="0.01" />
+                            <SlopeEditor
+                                 dataId="gLine1Slope"
+                                 value={this.props.gLine1Slope}
+                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                         <div className="col-sm-2">
                             <label></label>
@@ -147,7 +148,7 @@ export default class GraphEditor extends React.Component {
                                          id="gLine1SlopeEditable"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gLine1SlopeEditable} />
                                     Student editable
                                 </label>
@@ -159,11 +160,10 @@ export default class GraphEditor extends React.Component {
                                 <label htmlFor="gLine2Slope">
                                     Blue line slope
                                 </label>
-                                <input id="gLine2Slope"
-                                       onChange={this.handleFormUpdate.bind(this)}
-                                       className="form-control form-control-sm"
-                                       value={this.props.gLine2Slope}
-                                       type="number" step="0.01" />
+                                <SlopeEditor
+                                     dataId="gLine2Slope"
+                                     value={this.props.gLine2Slope}
+                                     handler={handleFormUpdate.bind(this)} />
                             </div>
                         </div>
                         <div className="col-sm-2">
@@ -174,7 +174,7 @@ export default class GraphEditor extends React.Component {
                                          id="gLine2SlopeEditable"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gLine2SlopeEditable} />
                                     Student editable
                                 </label>
@@ -190,7 +190,7 @@ export default class GraphEditor extends React.Component {
                                 </label>
                                 <input id="gLine1Label"
                                        value={this.props.gLine1Label}
-                                       onChange={this.handleFormUpdate.bind(this)}
+                                       onChange={handleFormUpdate.bind(this)}
                                        className="form-control form-control-sm" type="text" />
                             </div>
                         </div>
@@ -202,7 +202,7 @@ export default class GraphEditor extends React.Component {
                                          id="gLine1LabelEditable"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gLine1LabelEditable} />
                                     Student editable
                                 </label>
@@ -216,7 +216,7 @@ export default class GraphEditor extends React.Component {
                                 </label>
                                 <input id="gLine2Label"
                                        value={this.props.gLine2Label}
-                                       onChange={this.handleFormUpdate.bind(this)}
+                                       onChange={handleFormUpdate.bind(this)}
                                        className="form-control form-control-sm" type="text" />
                             </div>
                         </div>
@@ -228,7 +228,7 @@ export default class GraphEditor extends React.Component {
                                          id="gLine2LabelEditable"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gLine2LabelEditable} />
                                     Student editable
                                 </label>
@@ -246,7 +246,7 @@ export default class GraphEditor extends React.Component {
                                        className="form-control form-control-sm"
                                        type="text"
                                        value={this.props.gXAxisLabel}
-                                       onChange={this.handleFormUpdate.bind(this)} />
+                                       onChange={handleFormUpdate.bind(this)} />
                             </div>
                         </div>
                         <div className="col-sm-2">
@@ -257,7 +257,7 @@ export default class GraphEditor extends React.Component {
                                          id="gXAxisLabelEditable"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gXAxisLabelEditable} />
                                     Student editable
                                 </label>
@@ -273,7 +273,7 @@ export default class GraphEditor extends React.Component {
                                        className="form-control form-control-sm"
                                        type="text"
                                        value={this.props.gYAxisLabel}
-                                       onChange={this.handleFormUpdate.bind(this)} />
+                                       onChange={handleFormUpdate.bind(this)} />
                             </div>
                         </div>
                         <div className="col-sm-2">
@@ -284,7 +284,7 @@ export default class GraphEditor extends React.Component {
                                          id="gYAxisLabelEditable"
                                          className="form-check-input"
                                          type="checkbox"
-                                         onChange={this.handleFormUpdate.bind(this)}
+                                         onChange={handleFormUpdate.bind(this)}
                                          checked={this.props.gYAxisLabelEditable} />
                                     Student editable
                                 </label>
@@ -299,7 +299,7 @@ export default class GraphEditor extends React.Component {
                                     Orange line feedback when moved up
                                 </label>
                                 <textarea id="gLine1FeedbackIncrease"
-                                          onChange={this.handleFormUpdate.bind(this)}
+                                          onChange={handleFormUpdate.bind(this)}
                                           value={this.props.gLine1FeedbackIncrease}
                                           className="form-control form-control-sm"></textarea>
 
@@ -312,7 +312,7 @@ export default class GraphEditor extends React.Component {
                                            step="0.01"
                                            min="0"
                                            max="1"
-                                           onChange={this.handleFormUpdate.bind(this)}
+                                           onChange={handleFormUpdate.bind(this)}
                                            value={this.props.gLine1IncreaseScore}
                                            aria-describedby="gLine1IncreaseScoreHelpBlock"
                                            className="form-control form-control-sm ml-sm-2" />
@@ -330,7 +330,7 @@ export default class GraphEditor extends React.Component {
                                     Blue line feedback when moved up
                                 </label>
                                 <textarea id="gLine2FeedbackIncrease"
-                                          onChange={this.handleFormUpdate.bind(this)}
+                                          onChange={handleFormUpdate.bind(this)}
                                           value={this.props.gLine2FeedbackIncrease}
                                           className="form-control form-control-sm" />
 
@@ -343,7 +343,7 @@ export default class GraphEditor extends React.Component {
                                            step="0.01"
                                            min="0"
                                            max="1"
-                                           onChange={this.handleFormUpdate.bind(this)}
+                                           onChange={handleFormUpdate.bind(this)}
                                            value={this.props.gLine2IncreaseScore}
                                            className="form-control form-control-sm ml-sm-2" />
                                 </div>
@@ -358,7 +358,7 @@ export default class GraphEditor extends React.Component {
                                     Orange line feedback when moved down
                                 </label>
                                 <textarea id="gLine1FeedbackDecrease"
-                                          onChange={this.handleFormUpdate.bind(this)}
+                                          onChange={handleFormUpdate.bind(this)}
                                           value={this.props.gLine1FeedbackDecrease}
                                           className="form-control form-control-sm" />
 
@@ -371,7 +371,7 @@ export default class GraphEditor extends React.Component {
                                            step="0.01"
                                            min="0"
                                            max="1"
-                                           onChange={this.handleFormUpdate.bind(this)}
+                                           onChange={handleFormUpdate.bind(this)}
                                            value={this.props.gLine1DecreaseScore}
                                            className="form-control form-control-sm ml-sm-2" />
                                 </div>
@@ -384,7 +384,7 @@ export default class GraphEditor extends React.Component {
                                     Blue line feedback when moved down
                                 </label>
                                 <textarea id="gLine2FeedbackDecrease"
-                                          onChange={this.handleFormUpdate.bind(this)}
+                                          onChange={handleFormUpdate.bind(this)}
                                           value={this.props.gLine2FeedbackDecrease}
                                           className="form-control form-control-sm"></textarea>
 
@@ -397,7 +397,7 @@ export default class GraphEditor extends React.Component {
                                            step="0.01"
                                            min="0"
                                            max="1"
-                                           onChange={this.handleFormUpdate.bind(this)}
+                                           onChange={handleFormUpdate.bind(this)}
                                            value={this.props.gLine2DecreaseScore}
                                            className="form-control form-control-sm ml-sm-2" />
                                 </div>
@@ -411,22 +411,6 @@ export default class GraphEditor extends React.Component {
                 </form>
             </div>
         )
-    }
-    handleFormUpdate(e) {
-        let obj = {};
-
-        switch(e.target.type) {
-        case 'checkbox':
-            obj[e.target.id] = e.target.checked;
-            break;
-        case 'number':
-            obj[e.target.id] = parseFloat(e.target.value);
-            break;
-        default:
-            obj[e.target.id] = e.target.value;
-        }
-
-        this.props.updateGraph(obj);
     }
     handleSaveGraph() {
         this.props.saveGraph();
