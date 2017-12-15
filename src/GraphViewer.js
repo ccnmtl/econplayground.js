@@ -75,12 +75,6 @@ export default class GraphViewer extends React.Component {
                                  dataId="gLine1Slope"
                                  value={this.props.gLine1Slope}
                                  handler={handleFormUpdate.bind(this)} />
-
-                            <input id="gLine1Slope"
-                                   onChange={handleFormUpdate.bind(this)}
-                                   className="form-control form-control-sm"
-                                   value={this.props.gLine1Slope}
-                                   type="number" step="0.01" />
                         </div>
 
                         <div className={"col " + (this.props.gLine2SlopeEditable ? '' : 'd-none')}>
@@ -92,11 +86,6 @@ export default class GraphViewer extends React.Component {
                                      dataId="gLine2Slope"
                                      value={this.props.gLine2Slope}
                                      handler={handleFormUpdate.bind(this)} />
-                                <input id="gLine2Slope"
-                                       onChange={handleFormUpdate.bind(this)}
-                                       className="form-control form-control-sm"
-                                       value={this.props.gLine2Slope}
-                                       type="number" step="0.01" />
                             </div>
                         </div>
                     </div>
