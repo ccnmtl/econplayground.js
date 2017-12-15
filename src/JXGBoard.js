@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import JXG from 'jsxgraph';
-import {graphTypes} from './graphTypes';
+import {graphTypes} from './Graph';
 import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 
 export default class JXGBoard extends React.Component {

@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Editor from './Editor';
 import ReactTestUtils from 'react-dom/test-utils';
-import { exportGraph } from './Graph';
+import { exportGraph } from './GraphMapping';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');

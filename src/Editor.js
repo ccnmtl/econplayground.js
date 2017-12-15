@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import BackButton from './BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
-import { exportGraph } from './Graph';
+import { exportGraph } from './GraphMapping';
 import { authedFetch } from './utils';
 import './Editor.css';
 
