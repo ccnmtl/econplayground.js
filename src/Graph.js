@@ -68,6 +68,9 @@ class Graph {
 
         this.options = applyDefaults(options, defaults);
 
+        this.areLinesFixed = this.options.isSubmitted ||
+            (this.options.interactionType === 2);
+
         this.board = board;
     }
     /**
@@ -233,7 +236,7 @@ class DemandSupplyGraph extends Graph {
                 strokeColor: 'rgb(255, 127, 14)',
                 strokeWidth: 2,
                 snapToGrid: true,
-                fixed: this.options.isSubmitted
+                fixed: this.areLinesFixed
             });
 
         this.l2 = this.board.create(
@@ -250,7 +253,7 @@ class DemandSupplyGraph extends Graph {
                 strokeColor: 'steelblue',
                 strokeWidth: 2,
                 snapToGrid: true,
-                fixed: this.options.isSubmitted
+                fixed: this.areLinesFixed
             });
 
         if (this.options.gShowIntersection) {
@@ -289,7 +292,7 @@ class LaborMarketGraph extends Graph {
             strokeColor: 'steelblue',
             strokeWidth: 2,
             snapToGrid: true,
-            fixed: this.options.isSubmitted
+            fixed: this.areLinesFixed
         });
 
         if (this.options.gShowIntersection) {
@@ -331,7 +334,7 @@ class LaborMarketPerfectlyInelasticGraph extends Graph {
                 strokeColor: 'steelblue',
                 strokeWidth: 2,
                 snapToGrid: true,
-                fixed: this.options.isSubmitted
+                fixed: this.areLinesFixed
             });
     }
 }
@@ -379,7 +382,7 @@ class LaborSupplyGraph extends Graph {
                 label: { position: 'rt', offset: [-10, 20] },
                 strokeColor: 'rgb(255, 127, 14)',
                 strokeWidth: 2,
-                fixed: this.options.isSubmitted
+                fixed: this.areLinesFixed
             });
     }
 }
@@ -405,7 +408,7 @@ class ConsumptionSavingGraph extends Graph {
                 label: { position: 'rt', offset: [-10, 20] },
                 strokeColor: 'rgb(255, 127, 14)',
                 strokeWidth: 2,
-                fixed: this.options.isSubmitted
+                fixed: this.areLinesFixed
             });
     }
 }
@@ -431,7 +434,7 @@ class SavingInvestmentGraph extends Graph {
                 label: { position: 'rt', offset: [-10, 20] },
                 strokeColor: 'rgb(255, 127, 14)',
                 strokeWidth: 2,
-                fixed: this.options.isSubmitted
+                fixed: this.areLinesFixed
             });
 
         this.l2 = this.board.create(
@@ -446,7 +449,7 @@ class SavingInvestmentGraph extends Graph {
                 label: { position: 'rt', offset: [0, 0] },
                 strokeColor: 'steelblue',
                 strokeWidth: 2,
-                fixed: this.options.isSubmitted
+                fixed: this.areLinesFixed
             });
     }
 }
@@ -472,7 +475,7 @@ class MoneyMarketGraph extends Graph {
                 label: { position: 'rt', offset: [-10, 20] },
                 strokeColor: 'rgb(255, 127, 14)',
                 strokeWidth: 2,
-                fixed: this.options.isSubmitted
+                fixed: this.areLinesFixed
             });
 
         this.l2 = this.board.create(
@@ -487,7 +490,7 @@ class MoneyMarketGraph extends Graph {
                 label: { position: 'rt', offset: [0, 0] },
                 strokeColor: 'steelblue',
                 strokeWidth: 2,
-                fixed: this.options.isSubmitted
+                fixed: this.areLinesFixed
             });
     }
 }
