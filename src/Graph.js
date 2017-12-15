@@ -71,7 +71,8 @@ class Graph {
         this.board = board;
     }
     /**
-     * Handle initialization that happens after the custom make() step.
+     * Handle common initialization that happens after the custom
+     * make() step.
      */
     postMake() {
         // Make two white lines to block the curves from displaying
