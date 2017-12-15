@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
-import { exportGraph, importGraph } from './Graph';
+import { exportGraph, importGraph } from './GraphMapping';
 import { authedFetch, getSubmission } from './utils';
 
 class Viewer extends Component {
