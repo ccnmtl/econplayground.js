@@ -169,12 +169,18 @@ class Viewer extends Component {
         });
 
         document.addEventListener('l1offset', function(e) {
-            const offset = e.detail;
-            me.setState({gLine1Offset: offset});
+            // The saved line offset attribute isn't editable by
+            // students, even though they can move the lines.
+            if (window.EconPlayground.is_staff) {
+                const offset = e.detail;
+                me.setState({gLine1Offset: offset});
+            }
         });
         document.addEventListener('l2offset', function(e) {
-            const offset = e.detail;
-            me.setState({gLine2Offset: offset});
+            if (window.EconPlayground.is_staff) {
+                const offset = e.detail;
+                me.setState({gLine2Offset: offset});
+            }
         });
     }
 
