@@ -108,21 +108,26 @@ class Graph {
         ) {
             this.initialL1Y = this.l1.getRise();
 
-            this.l1.on('mouseup', function() {
-                const offset = Math.round(me.l1.getRise() - me.initialL1Y);
-                let offsetEvt = new CustomEvent('l1offset', {
-                    detail: offset
+            if (window.EconPlayground.is_staff) {
+                this.l1.on('mouseup', function() {
+                    const offset = Math.round(me.l1.getRise());
+                    let offsetEvt = new CustomEvent('l1offset', {
+                        detail: offset
+                    });
+                    document.dispatchEvent(offsetEvt);
                 });
-                document.dispatchEvent(offsetEvt);
-
-                if (this.getRise() > me.initialL1Y) {
-                    document.dispatchEvent(new Event('l1up'));
-                } else if (this.getRise() < me.initialL1Y) {
-                    document.dispatchEvent(new Event('l1down'));
-                } else {
-                    document.dispatchEvent(new Event('l1initial'));
-                }
-            });
+            } else {
+                this.l1.on('mouseup', function() {
+                    // TODO: redraw line 2 here
+                    if (this.getRise() > me.initialL1Y) {
+                        document.dispatchEvent(new Event('l1up'));
+                    } else if (this.getRise() < me.initialL1Y) {
+                        document.dispatchEvent(new Event('l1down'));
+                    } else {
+                        document.dispatchEvent(new Event('l1initial'));
+                    }
+                });
+            }
         }
 
         if (
@@ -131,21 +136,26 @@ class Graph {
         ) {
             this.initialL2Y = this.l2.getRise();
 
-            this.l2.on('mouseup', function() {
-                const offset = Math.round(me.l2.getRise() - me.initialL2Y);
-                let offsetEvt = new CustomEvent('l2offset', {
-                    detail: offset
+            if (window.EconPlayground.is_staff) {
+                this.l2.on('mouseup', function() {
+                    const offset = Math.round(me.l2.getRise());
+                    let offsetEvt = new CustomEvent('l2offset', {
+                        detail: offset
+                    });
+                    document.dispatchEvent(offsetEvt);
                 });
-                document.dispatchEvent(offsetEvt);
-
-                if (this.getRise() > me.initialL2Y) {
-                    document.dispatchEvent(new Event('l2up'));
-                } else if (this.getRise() < me.initialL2Y) {
-                    document.dispatchEvent(new Event('l2down'));
-                } else {
-                    document.dispatchEvent(new Event('l2initial'));
-                }
-            });
+            } else {
+                this.l2.on('mouseup', function() {
+                    // TODO: redraw line 1 here
+                    if (this.getRise() > me.initialL2Y) {
+                        document.dispatchEvent(new Event('l2up'));
+                    } else if (this.getRise() < me.initialL2Y) {
+                        document.dispatchEvent(new Event('l2down'));
+                    } else {
+                        document.dispatchEvent(new Event('l2initial'));
+                    }
+                });
+            }
         }
     }
     /**
