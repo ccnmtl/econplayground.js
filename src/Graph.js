@@ -73,6 +73,30 @@ class Graph {
 
         this.board = board;
     }
+    resetLine1() {
+        if (!this.l1) {
+            return;
+        }
+        this.l1.point1.moveTo([
+            2.5,
+            2.5 + this.options.gLine1Offset]);
+        this.l1.point2.moveTo([
+            3.5,
+            2.5 + this.options.gLine1Offset +
+                this.options.gLine1Slope]);
+    }
+    resetLine2() {
+        if (!this.l2) {
+            return;
+        }
+        this.l2.point1.moveTo([
+            2.5,
+            2.5 + this.options.gLine2Offset]);
+        this.l2.point2.moveTo([
+            3.5,
+            2.5 + this.options.gLine2Offset +
+                this.options.gLine2Slope]);
+    }
     /**
      * Handle common initialization that happens after the custom
      * make() step.
@@ -118,7 +142,7 @@ class Graph {
                 });
             } else {
                 this.l1.on('mouseup', function() {
-                    // TODO: redraw line 2 here
+                    me.resetLine2();
                     if (this.getRise() > me.initialL1Y) {
                         document.dispatchEvent(new Event('l1up'));
                     } else if (this.getRise() < me.initialL1Y) {
@@ -146,7 +170,7 @@ class Graph {
                 });
             } else {
                 this.l2.on('mouseup', function() {
-                    // TODO: redraw line 1 here
+                    me.resetLine1();
                     if (this.getRise() > me.initialL2Y) {
                         document.dispatchEvent(new Event('l2up'));
                     } else if (this.getRise() < me.initialL2Y) {
