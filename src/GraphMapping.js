@@ -18,7 +18,15 @@ let exportGraph = function(state) {
         is_published: state.gIsPublished,
         display_feedback: state.gDisplayFeedback,
         needs_submit: state.gNeedsSubmit,
+
         show_intersection: state.gShowIntersection,
+        intersection_label: state.gIntersectionLabel,
+        intersection_label_editable: state.gIntersectionLabelEditable,
+        intersection_horiz_line_label: state.gIntersectionHorizLineLabel,
+        intersection_horiz_line_label_editable: state.gIntersectionHorizLineLabelEditable,
+        intersection_vert_line_label: state.gIntersectionVertLineLabel,
+        intersection_vert_line_label_editable: state.gIntersectionVertLineLabelEditable,
+
         line_1_slope: state.gLine1Slope,
         line_1_slope_editable: state.gLine1SlopeEditable,
         line_2_slope: state.gLine2Slope,
@@ -37,6 +45,7 @@ let exportGraph = function(state) {
         line_2_increase_score: state.gLine2IncreaseScore,
         line_2_feedback_decrease: state.gLine2FeedbackDecrease,
         line_2_decrease_score: state.gLine2DecreaseScore,
+
         x_axis_label: state.gXAxisLabel,
         x_axis_label_editable: state.gXAxisLabelEditable,
         y_axis_label: state.gYAxisLabel,
@@ -58,7 +67,15 @@ let importGraph = function(json, obj) {
         gIsPublished: json.is_published,
         gDisplayFeedback: json.display_feedback,
         gNeedsSubmit: json.needs_submit,
+
         gShowIntersection: json.show_intersection,
+        gIntersectionLabel: json.intersection_label,
+        gIntersectionLabelEditable: json.intersection_label_editable,
+        gIntersectionHorizLineLabel: json.intersection_horiz_line_label,
+        gIntersectionHorizLineLabelEditable: json.intersection_horiz_line_label_editable,
+        gIntersectionVertLineLabel: json.intersection_vert_line_label,
+        gIntersectionVertLineLabelEditable: json.intersection_vert_line_label_editable,
+
         gLine1Slope: window.parseFloat(json.line_1_slope),
         gLine1SlopeEditable: json.line_1_slope_editable,
         gLine2Slope: window.parseFloat(json.line_2_slope),
@@ -77,6 +94,7 @@ let importGraph = function(json, obj) {
         gLine2IncreaseScore: window.parseFloat(json.line_2_increase_score),
         gLine2FeedbackDecrease: json.line_2_feedback_decrease,
         gLine2DecreaseScore: window.parseFloat(json.line_2_decrease_score),
+
         gXAxisLabel: json.x_axis_label,
         gXAxisLabelEditable: json.x_axis_label_editable,
         gYAxisLabel: json.y_axis_label,

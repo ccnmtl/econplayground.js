@@ -293,6 +293,91 @@ export default class GraphEditor extends React.Component {
                     </div>
 
                     <div className="row">
+                        <div className="col-sm-4">
+                            <div className="form-group">
+                                <label htmlFor="gIntersectionLabel">
+                                    Intersection point label:
+                                </label>
+                                <input id="gIntersectionLabel"
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       value={this.props.gIntersectionLabel}
+                                       onChange={handleFormUpdate.bind(this)} />
+                            </div>
+                        </div>
+                        <div className="col-sm-2">
+                            <label></label>
+                            <div className="form-check">
+                                <label className="form-check-label">
+                                    <input
+                                         id="gIntersectionLabelEditable"
+                                         className="form-check-input"
+                                         type="checkbox"
+                                         onChange={handleFormUpdate.bind(this)}
+                                         checked={this.props.gIntersectionLabelEditable} />
+                                    Student editable
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-sm-4">
+                            <div className="form-group">
+                                <label htmlFor="gIntersectionHorizLineLabel">
+                                    Intersection&apos;s horizontal line label:
+                                </label>
+                                <input id="gIntersectionHorizLineLabel"
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       value={this.props.gIntersectionHorizLineLabel}
+                                       onChange={handleFormUpdate.bind(this)} />
+                            </div>
+                        </div>
+                        <div className="col-sm-2">
+                            <label></label>
+                            <div className="form-check">
+                                <label className="form-check-label">
+                                    <input
+                                         id="gIntersectionHorizLineLabelEditable"
+                                         className="form-check-input"
+                                         type="checkbox"
+                                         onChange={handleFormUpdate.bind(this)}
+                                         checked={this.props.gIntersectionHorizLineLabelEditable} />
+                                    Student editable
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="col-sm-4">
+                            <div className="form-group">
+                                <label htmlFor="gIntersectionVertLineLabel">
+                                    Intersection&apos;s vertical line label:
+                                </label>
+                                <input id="gIntersectionVertLineLabel"
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       value={this.props.gIntersectionVertLineLabel}
+                                       onChange={handleFormUpdate.bind(this)} />
+                            </div>
+                        </div>
+                        <div className="col-sm-2">
+                            <label></label>
+                            <div className="form-check">
+                                <label className="form-check-label">
+                                    <input
+                                         id="gIntersectionVertLineLabelEditable"
+                                         className="form-check-input"
+                                         type="checkbox"
+                                         onChange={handleFormUpdate.bind(this)}
+                                         checked={this.props.gIntersectionVertLineLabelEditable} />
+                                    Student editable
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
                         <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gLine1FeedbackIncrease">
@@ -421,6 +506,12 @@ GraphEditor.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
     gShowIntersection: PropTypes.bool,
+    gIntersectionLabel: PropTypes.string,
+    gIntersectionLabelEditable: PropTypes.bool,
+    gIntersectionHorizLineLabel: PropTypes.string,
+    gIntersectionHorizLineLabelEditable: PropTypes.bool,
+    gIntersectionVertLineLabel: PropTypes.string,
+    gIntersectionVertLineLabelEditable: PropTypes.bool,
     gIsPublished: PropTypes.bool,
     gDisplayFeedback: PropTypes.bool,
     gInstructorNotes: PropTypes.string,

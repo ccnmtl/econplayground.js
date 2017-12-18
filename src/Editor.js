@@ -51,35 +51,41 @@ class Editor extends Component {
                          onSelectGraph={this.onSelectGraph.bind(this)} />
                     <GraphEditor
                          ref={(ge) => { this.ge = ge; }}
-                         showing={this.state.step === 1}
-                         gType={this.state.gType}
-                         gShowIntersection={this.state.gShowIntersection}
-                         gIsPublished={this.state.gIsPublished}
-                         gDisplayFeedback={this.state.gDisplayFeedback}
-                         gLine1Label={this.state.gLine1Label}
-                         gLine1LabelEditable={this.state.gLine1LabelEditable}
-                         gLine2Label={this.state.gLine2Label}
-                         gLine2LabelEditable={this.state.gLine2LabelEditable}
-                         gLine1Slope={this.state.gLine1Slope}
-                         gLine1SlopeEditable={this.state.gLine1SlopeEditable}
-                         gLine2Slope={this.state.gLine2Slope}
-                         gLine2SlopeEditable={this.state.gLine2SlopeEditable}
-                         gXAxisLabel={this.state.gXAxisLabel}
-                         gXAxisLabelEditable={this.state.gXAxisLabelEditable}
-                         gYAxisLabel={this.state.gYAxisLabel}
-                         gYAxisLabelEditable={this.state.gYAxisLabelEditable}
-                         gLine1Offset={this.state.gLine1Offset}
-                         gLine2Offset={this.state.gLine2Offset}
-                         gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
-                         gLine1DecreaseScore={this.state.gLine1DecreaseScore}
-                         gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
-                         gLine1IncreaseScore={this.state.gLine1IncreaseScore}
-                         gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
-                         gLine2DecreaseScore={this.state.gLine2DecreaseScore}
-                         gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
-                         gLine2IncreaseScore={this.state.gLine2IncreaseScore}
-                         updateGraph={this.handleGraphUpdate.bind(this)}
-                         saveGraph={this.handleSaveGraph.bind(this)} />
+                        showing={this.state.step === 1}
+                        gType={this.state.gType}
+                        gShowIntersection={this.state.gShowIntersection}
+                        gIntersectionLabel={this.state.gIntersectionLabel}
+                        gIntersectionLabelEditable={this.state.gIntersectionLabelEditable}
+                        gIntersectionHorizLineLabel={this.state.gIntersectionHorizLineLabel}
+                        gIntersectionHorizLineLabelEditable={this.state.gIntersectionHorizLineLabelEditable}
+                        gIntersectionVertLineLabel={this.state.gIntersectionVertLineLabel}
+                        gIntersectionVertLineLabelEditable={this.state.gIntersectionVertLineLabelEditable}
+                        gIsPublished={this.state.gIsPublished}
+                        gDisplayFeedback={this.state.gDisplayFeedback}
+                        gLine1Label={this.state.gLine1Label}
+                        gLine1LabelEditable={this.state.gLine1LabelEditable}
+                        gLine2Label={this.state.gLine2Label}
+                        gLine2LabelEditable={this.state.gLine2LabelEditable}
+                        gLine1Slope={this.state.gLine1Slope}
+                        gLine1SlopeEditable={this.state.gLine1SlopeEditable}
+                        gLine2Slope={this.state.gLine2Slope}
+                        gLine2SlopeEditable={this.state.gLine2SlopeEditable}
+                        gXAxisLabel={this.state.gXAxisLabel}
+                        gXAxisLabelEditable={this.state.gXAxisLabelEditable}
+                        gYAxisLabel={this.state.gYAxisLabel}
+                        gYAxisLabelEditable={this.state.gYAxisLabelEditable}
+                        gLine1Offset={this.state.gLine1Offset}
+                        gLine2Offset={this.state.gLine2Offset}
+                        gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
+                        gLine1DecreaseScore={this.state.gLine1DecreaseScore}
+                        gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
+                        gLine1IncreaseScore={this.state.gLine1IncreaseScore}
+                        gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
+                        gLine2DecreaseScore={this.state.gLine2DecreaseScore}
+                        gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
+                        gLine2IncreaseScore={this.state.gLine2IncreaseScore}
+                        updateGraph={this.handleGraphUpdate.bind(this)}
+                        saveGraph={this.handleSaveGraph.bind(this)} />
                 </div>
             </div>
         );

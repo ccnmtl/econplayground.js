@@ -58,6 +58,12 @@ class Viewer extends Component {
             gType={this.state.gType}
             gNeedsSubmit={this.state.gNeedsSubmit}
             gShowIntersection={this.state.gShowIntersection}
+            gIntersectionLabel={this.state.gIntersectionLabel}
+            gIntersectionLabelEditable={this.state.gIntersectionLabelEditable}
+            gIntersectionHorizLineLabel={this.state.gIntersectionHorizLineLabel}
+            gIntersectionHorizLineLabelEditable={this.state.gIntersectionHorizLineLabelEditable}
+            gIntersectionVertLineLabel={this.state.gIntersectionVertLineLabel}
+            gIntersectionVertLineLabelEditable={this.state.gIntersectionVertLineLabelEditable}
             gIsPublished={this.state.gIsPublished}
             gDisplayFeedback={this.state.gDisplayFeedback}
             gLine1Label={this.state.gLine1Label}
