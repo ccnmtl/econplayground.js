@@ -107,7 +107,17 @@ let handleFormUpdate = function(e) {
     this.props.updateGraph(obj);
 };
 
+/*
+ * Given a line's slope and y-intercept, return its
+ * y-offset at x-value n.
+ */
+let getOffset = function(slope, y, n) {
+    const xpos = (slope * n) + y;
+    return xpos - n;
+};
+
 export {
     authedFetch, getSubmission, createSubmission, getOrCreateSubmission,
-    getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate
+    getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
+    getOffset
 };
