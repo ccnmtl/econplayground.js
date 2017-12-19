@@ -73,6 +73,30 @@ class Graph {
 
         this.board = board;
     }
+    resetLine1() {
+        if (!this.l1) {
+            return;
+        }
+        this.l1.point1.moveTo([
+            2.5,
+            2.5 + this.options.gLine1Offset]);
+        this.l1.point2.moveTo([
+            3.5,
+            2.5 + this.options.gLine1Offset +
+                this.options.gLine1Slope]);
+    }
+    resetLine2() {
+        if (!this.l2) {
+            return;
+        }
+        this.l2.point1.moveTo([
+            2.5,
+            2.5 + this.options.gLine2Offset]);
+        this.l2.point2.moveTo([
+            3.5,
+            2.5 + this.options.gLine2Offset +
+                this.options.gLine2Slope]);
+    }
     /**
      * Handle common initialization that happens after the custom
      * make() step.
@@ -108,21 +132,26 @@ class Graph {
         ) {
             this.initialL1Y = this.l1.getRise();
 
-            this.l1.on('mouseup', function() {
-                const offset = Math.round(me.l1.getRise() - me.initialL1Y);
-                let offsetEvt = new CustomEvent('l1offset', {
-                    detail: offset
+            if (window.EconPlayground.is_staff) {
+                this.l1.on('mouseup', function() {
+                    const offset = Math.round(me.l1.getRise());
+                    let offsetEvt = new CustomEvent('l1offset', {
+                        detail: offset
+                    });
+                    document.dispatchEvent(offsetEvt);
                 });
-                document.dispatchEvent(offsetEvt);
-
-                if (this.getRise() > me.initialL1Y) {
-                    document.dispatchEvent(new Event('l1up'));
-                } else if (this.getRise() < me.initialL1Y) {
-                    document.dispatchEvent(new Event('l1down'));
-                } else {
-                    document.dispatchEvent(new Event('l1initial'));
-                }
-            });
+            } else {
+                this.l1.on('mouseup', function() {
+                    me.resetLine2();
+                    if (this.getRise() > me.initialL1Y) {
+                        document.dispatchEvent(new Event('l1up'));
+                    } else if (this.getRise() < me.initialL1Y) {
+                        document.dispatchEvent(new Event('l1down'));
+                    } else {
+                        document.dispatchEvent(new Event('l1initial'));
+                    }
+                });
+            }
         }
 
         if (
@@ -131,21 +160,26 @@ class Graph {
         ) {
             this.initialL2Y = this.l2.getRise();
 
-            this.l2.on('mouseup', function() {
-                const offset = Math.round(me.l2.getRise() - me.initialL2Y);
-                let offsetEvt = new CustomEvent('l2offset', {
-                    detail: offset
+            if (window.EconPlayground.is_staff) {
+                this.l2.on('mouseup', function() {
+                    const offset = Math.round(me.l2.getRise());
+                    let offsetEvt = new CustomEvent('l2offset', {
+                        detail: offset
+                    });
+                    document.dispatchEvent(offsetEvt);
                 });
-                document.dispatchEvent(offsetEvt);
-
-                if (this.getRise() > me.initialL2Y) {
-                    document.dispatchEvent(new Event('l2up'));
-                } else if (this.getRise() < me.initialL2Y) {
-                    document.dispatchEvent(new Event('l2down'));
-                } else {
-                    document.dispatchEvent(new Event('l2initial'));
-                }
-            });
+            } else {
+                this.l2.on('mouseup', function() {
+                    me.resetLine1();
+                    if (this.getRise() > me.initialL2Y) {
+                        document.dispatchEvent(new Event('l2up'));
+                    } else if (this.getRise() < me.initialL2Y) {
+                        document.dispatchEvent(new Event('l2down'));
+                    } else {
+                        document.dispatchEvent(new Event('l2initial'));
+                    }
+                });
+            }
         }
     }
     /**
