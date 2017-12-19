@@ -53,7 +53,11 @@ export default class GraphViewer extends React.Component {
                          gLine1Offset={this.props.gLine1Offset}
                          gLine2Offset={this.props.gLine2Offset}
                          gNeedsSubmit={this.props.gNeedsSubmit}
-                         gShowIntersection={this.props.gShowIntersection} />
+                         gShowIntersection={this.props.gShowIntersection}
+                         gIntersectionLabel={this.props.gIntersectionLabel}
+                         gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                         gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                         />
 
                     <Feedback
                          choice={this.props.choice}

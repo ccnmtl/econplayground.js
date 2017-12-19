@@ -128,7 +128,11 @@ export default class GraphEditor extends React.Component {
                          gLine2Slope={this.props.gLine2Slope}
                          gLine1Offset={this.props.gLine1Offset}
                          gLine2Offset={this.props.gLine2Offset}
-                         gShowIntersection={this.props.gShowIntersection} />
+                         gShowIntersection={this.props.gShowIntersection}
+                         gIntersectionLabel={this.props.gIntersectionLabel}
+                         gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                         gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                         />
 
                     <div className="row">
                         <div className="col-sm-4">

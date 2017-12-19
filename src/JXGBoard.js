@@ -81,6 +81,9 @@ export default class JXGBoard extends React.Component {
                     typeof options.gShowIntersection === 'undefined') ?
                     true :
                     options.gShowIntersection,
+                gIntersectionLabel: options.gIntersectionLabel,
+                gIntersectionHorizLineLabel: options.gIntersectionHorizLineLabel,
+                gIntersectionVertLineLabel: options.gIntersectionVertLineLabel,
                 gLine1Label: options.gLine1Label,
                 gLine2Label: options.gLine2Label,
                 gLine1Slope: options.gLine1Slope,
@@ -99,6 +102,9 @@ export default class JXGBoard extends React.Component {
         const updateProps = [
             'gType',
             'gShowIntersection',
+            'gIntersectionLabel',
+            'gIntersectionHorizLineLabel',
+            'gIntersectionVertLineLabel',
             'gLine1Label',
             'gLine2Label',
             'gLine1Slope',
@@ -121,6 +127,14 @@ export default class JXGBoard extends React.Component {
             this.renderJXBoard({
                 gType: nextProps.gType,
                 gShowIntersection: nextProps.gShowIntersection,
+                gIntersectionLabel: nextProps.gIntersectionLabel,
+
+                gIntersectionHorizLineLabel:
+                nextProps.gIntersectionHorizLineLabel,
+
+                gIntersectionVertLineLabel:
+                nextProps.gIntersectionVertLineLabel,
+
                 gLine1Label: nextProps.gLine1Label,
                 gLine2Label: nextProps.gLine2Label,
                 gXAxisLabel: nextProps.gXAxisLabel,
@@ -141,6 +155,9 @@ export default class JXGBoard extends React.Component {
         this.renderJXBoard({
             gType: this.props.gType,
             gShowIntersection: this.props.gShowIntersection,
+            gIntersectionLabel: this.props.gIntersectionLabel,
+            gIntersectionHorizLineLabel: this.props.gIntersectionHorizLineLabel,
+            gIntersectionVertLineLabel: this.props.gIntersectionVertLineLabel,
             gLine1Label: this.props.gLine1Label,
             gLine2Label: this.props.gLine2Label,
             gXAxisLabel: this.props.gXAxisLabel,
@@ -171,6 +188,9 @@ JXGBoard.propTypes = {
     height: PropTypes.number,
     submission: PropTypes.object,
     gShowIntersection: PropTypes.bool,
+    gIntersectionLabel: PropTypes.string,
+    gIntersectionHorizLineLabel: PropTypes.string,
+    gIntersectionVertLineLabel: PropTypes.string,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
     gXAxisLabel: PropTypes.string,
