@@ -505,6 +505,7 @@ export default class GraphEditor extends React.Component {
 GraphEditor.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
+
     gShowIntersection: PropTypes.bool,
     gIntersectionLabel: PropTypes.string,
     gIntersectionLabelEditable: PropTypes.bool,
@@ -512,6 +513,7 @@ GraphEditor.propTypes = {
     gIntersectionHorizLineLabelEditable: PropTypes.bool,
     gIntersectionVertLineLabel: PropTypes.string,
     gIntersectionVertLineLabelEditable: PropTypes.bool,
+
     gIsPublished: PropTypes.bool,
     gDisplayFeedback: PropTypes.bool,
     gInstructorNotes: PropTypes.string,
