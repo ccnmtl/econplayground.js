@@ -4,6 +4,8 @@
  * Each graph type is a sub-class of the common Graph class.
  */
 
+import {getOffset} from './utils';
+
 /**
  * Some utilities for plotting functions in JSXGraph.
  *
@@ -134,7 +136,8 @@ class Graph {
 
             if (window.EconPlayground.is_staff) {
                 this.l1.on('mouseup', function() {
-                    const offset = Math.round(me.l1.getRise());
+                    const offset = getOffset(
+                        me.l1.getSlope(), me.l1.getRise(), 2.5);
                     let offsetEvt = new CustomEvent('l1offset', {
                         detail: offset
                     });
@@ -162,7 +165,8 @@ class Graph {
 
             if (window.EconPlayground.is_staff) {
                 this.l2.on('mouseup', function() {
-                    const offset = Math.round(me.l2.getRise());
+                    const offset = getOffset(
+                        me.l2.getSlope(), me.l2.getRise(), 2.5);
                     let offsetEvt = new CustomEvent('l2offset', {
                         detail: offset
                     });
@@ -269,7 +273,6 @@ class DemandSupplyGraph extends Graph {
                 label: { position: 'rt', offset: [-10, -20] },
                 strokeColor: 'rgb(255, 127, 14)',
                 strokeWidth: 2,
-                snapToGrid: true,
                 fixed: this.areLinesFixed
             });
 
@@ -286,7 +289,6 @@ class DemandSupplyGraph extends Graph {
                 label: { position: 'rt', offset: [0, 20] },
                 strokeColor: 'steelblue',
                 strokeWidth: 2,
-                snapToGrid: true,
                 fixed: this.areLinesFixed
             });
 
@@ -325,7 +327,6 @@ class LaborMarketGraph extends Graph {
             label: { position: 'rt', offset: [10, -20] },
             strokeColor: 'steelblue',
             strokeWidth: 2,
-            snapToGrid: true,
             fixed: this.areLinesFixed
         });
 
@@ -367,7 +368,6 @@ class LaborMarketPerfectlyInelasticGraph extends Graph {
                 withLabel: true,
                 strokeColor: 'steelblue',
                 strokeWidth: 2,
-                snapToGrid: true,
                 fixed: this.areLinesFixed
             });
     }
