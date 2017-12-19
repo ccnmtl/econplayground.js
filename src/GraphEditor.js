@@ -128,7 +128,11 @@ export default class GraphEditor extends React.Component {
                          gLine2Slope={this.props.gLine2Slope}
                          gLine1Offset={this.props.gLine1Offset}
                          gLine2Offset={this.props.gLine2Offset}
-                         gShowIntersection={this.props.gShowIntersection} />
+                         gShowIntersection={this.props.gShowIntersection}
+                         gIntersectionLabel={this.props.gIntersectionLabel}
+                         gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                         gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                         />
 
                     <div className="row">
                         <div className="col-sm-4">
@@ -505,6 +509,7 @@ export default class GraphEditor extends React.Component {
 GraphEditor.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
+
     gShowIntersection: PropTypes.bool,
     gIntersectionLabel: PropTypes.string,
     gIntersectionLabelEditable: PropTypes.bool,
@@ -512,6 +517,7 @@ GraphEditor.propTypes = {
     gIntersectionHorizLineLabelEditable: PropTypes.bool,
     gIntersectionVertLineLabel: PropTypes.string,
     gIntersectionVertLineLabelEditable: PropTypes.bool,
+
     gIsPublished: PropTypes.bool,
     gDisplayFeedback: PropTypes.bool,
     gInstructorNotes: PropTypes.string,

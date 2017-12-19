@@ -53,7 +53,11 @@ export default class GraphViewer extends React.Component {
                          gLine1Offset={this.props.gLine1Offset}
                          gLine2Offset={this.props.gLine2Offset}
                          gNeedsSubmit={this.props.gNeedsSubmit}
-                         gShowIntersection={this.props.gShowIntersection} />
+                         gShowIntersection={this.props.gShowIntersection}
+                         gIntersectionLabel={this.props.gIntersectionLabel}
+                         gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                         gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                         />
 
                     <Feedback
                          choice={this.props.choice}
@@ -139,6 +143,49 @@ export default class GraphViewer extends React.Component {
                         </div>
                     </div>
 
+                    <div className="row">
+                        <div className={"col-sm-6 " + (this.props.gIntersectionLabelEditable ? '' : 'd-none')}>
+                            <div className="form-group">
+                                <label htmlFor="gIntersectionLabel">
+                                    Intersection point label:
+                                </label>
+                                <input id="gIntersectionLabel"
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       value={this.props.gIntersectionLabel}
+                                       onChange={handleFormUpdate.bind(this)} />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className={"col " + (this.props.gIntersectionHorizLineLabelEditable ? '' : 'd-none')}>
+                            <div className="form-group">
+                                <label htmlFor="gIntersectionHorizLineLabel">
+                                    Intersection&apos;s horizontal line label:
+                                </label>
+                                <input id="gIntersectionHorizLineLabel"
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       value={this.props.gIntersectionHorizLineLabel}
+                                       onChange={handleFormUpdate.bind(this)} />
+                            </div>
+                        </div>
+
+                        <div className={"col " + (this.props.gIntersectionVertLineLabelEditable ? '' : 'd-none')}>
+                            <div className="form-group">
+                                <label htmlFor="gIntersectionVertLineLabel">
+                                    Intersection&apos;s vertical line label:
+                                </label>
+                                <input id="gIntersectionVertLineLabel"
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       value={this.props.gIntersectionVertLineLabel}
+                                       onChange={handleFormUpdate.bind(this)} />
+                            </div>
+                        </div>
+                    </div>
+
                     <hr style={{
                             display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
                         }} />
@@ -191,7 +238,15 @@ GraphViewer.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
     gNeedsSubmit: PropTypes.bool,
+
     gShowIntersection: PropTypes.bool,
+    gIntersectionLabel: PropTypes.string,
+    gIntersectionLabelEditable: PropTypes.bool,
+    gIntersectionHorizLineLabel: PropTypes.string,
+    gIntersectionHorizLineLabelEditable: PropTypes.bool,
+    gIntersectionVertLineLabel: PropTypes.string,
+    gIntersectionVertLineLabelEditable: PropTypes.bool,
+
     gDisplayFeedback: PropTypes.bool,
     gLine1Label: PropTypes.string,
     gLine1LabelEditable: PropTypes.bool,
