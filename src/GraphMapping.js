@@ -4,6 +4,7 @@
  * Mapping to and from a graph's react.js state and its
  * json representation in django-rest-framework.
  */
+import { exportFloat } from './utils';
 
 /**
  * Returns the current graph settings as a persistable JSON object.
@@ -27,24 +28,24 @@ let exportGraph = function(state) {
         intersection_vert_line_label: state.gIntersectionVertLineLabel,
         intersection_vert_line_label_editable: state.gIntersectionVertLineLabelEditable,
 
-        line_1_slope: state.gLine1Slope,
+        line_1_slope: exportFloat(state.gLine1Slope),
         line_1_slope_editable: state.gLine1SlopeEditable,
-        line_2_slope: state.gLine2Slope,
+        line_2_slope: exportFloat(state.gLine2Slope),
         line_2_slope_editable: state.gLine2SlopeEditable,
-        line_1_offset: state.gLine1Offset,
-        line_2_offset: state.gLine2Offset,
+        line_1_offset: exportFloat(state.gLine1Offset),
+        line_2_offset: exportFloat(state.gLine2Offset),
         line_1_label: state.gLine1Label,
         line_1_label_editable: state.gLine1LabelEditable,
         line_2_label: state.gLine2Label,
         line_2_label_editable: state.gLine2LabelEditable,
         line_1_feedback_increase: state.gLine1FeedbackIncrease,
-        line_1_increase_score: state.gLine1IncreaseScore,
+        line_1_increase_score: exportFloat(state.gLine1IncreaseScore),
         line_1_feedback_decrease: state.gLine1FeedbackDecrease,
-        line_1_decrease_score: state.gLine1DecreaseScore,
+        line_1_decrease_score: exportFloat(state.gLine1DecreaseScore),
         line_2_feedback_increase: state.gLine2FeedbackIncrease,
-        line_2_increase_score: state.gLine2IncreaseScore,
+        line_2_increase_score: exportFloat(state.gLine2IncreaseScore),
         line_2_feedback_decrease: state.gLine2FeedbackDecrease,
-        line_2_decrease_score: state.gLine2DecreaseScore,
+        line_2_decrease_score: exportFloat(state.gLine2DecreaseScore),
 
         x_axis_label: state.gXAxisLabel,
         x_axis_label_editable: state.gXAxisLabelEditable,

@@ -116,8 +116,16 @@ let getOffset = function(slope, y, n) {
     return xpos - n;
 };
 
+/*
+ * Exports a float value that will be acceptable to the Django API's
+ * DecimalFields. This is currently capped to 2 decimal places.
+ */
+let exportFloat = function(n) {
+    return Math.round(n * 100) / 100;
+};
+
 export {
     authedFetch, getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
-    getOffset
+    getOffset, exportFloat
 };
