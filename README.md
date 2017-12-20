@@ -35,7 +35,7 @@ Viewer.js gives them a GraphEditor, not a GraphViewer, because
 instructors can edit graphs.
 
 I'm not using [react-redux](https://github.com/reactjs/react-redux)
-for XHR calls. To me, redux has seems like a complicated solution to
+for XHR calls. To me, redux seems like a complicated solution to
 very simple problems: GET, PUT, and POST requests. I realize there are
 more complicated situations where I'm sure it's indispensable, but for
 now, I've been fine without it. But again, I need to branch out more
