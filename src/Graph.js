@@ -202,7 +202,7 @@ class Graph {
      */
     showIntersection(l1, l2) {
         let i = this.board.create('intersection', [l1, l2, 0], {
-            name: this.options.intersectLabel || '',
+            name: this.options.gIntersectionLabel || '',
             fixed: true,
             showInfobox: false
         });
@@ -210,7 +210,7 @@ class Graph {
 
         let p1 = this.board.create('point', [0, i.Y()], {
             size: 0,
-            name: this.options.yIntersectLabel || '',
+            name: this.options.gIntersectionHorizLineLabel || '',
             fixed: true,
             showInfobox: false
         });
@@ -225,7 +225,7 @@ class Graph {
 
         let p2 = this.board.create('point', [i.X(), 0], {
             size: 0,
-            name: this.options.xIntersectLabel || '',
+            name: this.options.gIntersectionVertLineLabel || '',
             fixed: true,
             showInfobox: false
         });
