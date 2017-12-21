@@ -90,6 +90,10 @@ export default class JXGBoard extends React.Component {
                 gLine2Slope: options.gLine2Slope,
                 gLine1Offset: options.gLine1Offset,
                 gLine2Offset: options.gLine2Offset,
+                gCobbDouglasA: options.gCobbDouglasA,
+                gCobbDouglasL: options.gCobbDouglasL,
+                gCobbDouglasK: options.gCobbDouglasK,
+                gCobbDouglasAlpha: options.gCobbDouglasAlpha,
                 l1SubmissionOffset: getL1SubmissionOffset(options.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(options.submission),
                 submission: options.submission,
@@ -111,6 +115,10 @@ export default class JXGBoard extends React.Component {
             'gLine2Slope',
             'gLine1Offset',
             'gLine2Offset',
+            'gCobbDouglasA',
+            'gCobbDouglasL',
+            'gCobbDouglasK',
+            'gCobbDouglasAlpha',
             'submission'
         ];
 
@@ -143,6 +151,10 @@ export default class JXGBoard extends React.Component {
                 gLine2Slope: nextProps.gLine2Slope,
                 gLine1Offset: nextProps.gLine1Offset,
                 gLine2Offset: nextProps.gLine2Offset,
+                gCobbDouglasA: nextProps.gCobbDouglasA,
+                gCobbDouglasL: nextProps.gCobbDouglasL,
+                gCobbDouglasK: nextProps.gCobbDouglasK,
+                gCobbDouglasAlpha: nextProps.gCobbDouglasAlpha,
                 l1SubmissionOffset: getL1SubmissionOffset(nextProps.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(nextProps.submission),
                 submission: nextProps.submission,
@@ -166,6 +178,10 @@ export default class JXGBoard extends React.Component {
             gLine2Slope: this.props.gLine2Slope,
             gLine1Offset: this.props.gLine1Offset,
             gLine2Offset: this.props.gLine2Offset,
+            gCobbDouglasA: this.props.gCobbDouglasA,
+            gCobbDouglasL: this.props.gCobbDouglasL,
+            gCobbDouglasK: this.props.gCobbDouglasK,
+            gCobbDouglasAlpha: this.props.gCobbDouglasAlpha,
             l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
             l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
             submission: this.props.submission,
@@ -200,5 +216,10 @@ JXGBoard.propTypes = {
     gLine1Offset: PropTypes.number,
     gLine2Offset: PropTypes.number,
     gType: PropTypes.number,
+    gCobbDouglasA: PropTypes.number,
+    gCobbDouglasL: PropTypes.number,
+    gCobbDouglasK: PropTypes.number,
+    gCobbDouglasAlpha: PropTypes.number,
+
     id: PropTypes.string.isRequired
 };

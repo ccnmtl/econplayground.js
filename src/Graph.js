@@ -54,6 +54,10 @@ class Graph {
                 gLine2Slope: 1,
                 gLine1Offset: 0,
                 gLine2Offset: 0,
+                gCobbDouglasA: 2,
+                gCobbDouglasL: 0,
+                gCobbDouglasK: 1,
+                gCobbDouglasAlpha: 0.65,
                 isSubmitted: false,
                 l1SubmissionOffset: 0,
                 l2SubmissionOffset: 0
@@ -382,15 +386,18 @@ let mkLaborMarketPerfectlyInelastic = function(board, options) {
 
 class CobbDouglasGraph extends Graph {
     make() {
+        const me = this;
         let f = function(x) {
-            return 2.01 * ((x ** 0.75) * (x ** -0.25));
+            return me.options.gCobbDouglasA *
+                (me.options.gCobbDouglasK ** me.options.gCobbDouglasAlpha) *
+                (x ** (1 - me.options.gCobbDouglasAlpha));
         };
 
         functionUtils.plot(this.board, f, {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeWidth: 2,
-            strokeColor: 'steelBlue'
+            strokeColor: 'rgb(255, 127, 14)'
         });
     }
 }

@@ -50,7 +50,12 @@ let exportGraph = function(state) {
         x_axis_label: state.gXAxisLabel,
         x_axis_label_editable: state.gXAxisLabelEditable,
         y_axis_label: state.gYAxisLabel,
-        y_axis_label_editable: state.gYAxisLabelEditable
+        y_axis_label_editable: state.gYAxisLabelEditable,
+
+        cobb_douglas_a: exportFloat(state.gCobbDouglasA),
+        cobb_douglas_l: exportFloat(state.gCobbDouglasL),
+        cobb_douglas_k: exportFloat(state.gCobbDouglasK),
+        cobb_douglas_alpha: exportFloat(state.gCobbDouglasAlpha)
     };
 };
 
@@ -99,7 +104,12 @@ let importGraph = function(json, obj) {
         gXAxisLabel: json.x_axis_label,
         gXAxisLabelEditable: json.x_axis_label_editable,
         gYAxisLabel: json.y_axis_label,
-        gYAxisLabelEditable: json.y_axis_label_editable
+        gYAxisLabelEditable: json.y_axis_label_editable,
+
+        gCobbDouglasA: window.parseFloat(json.cobb_douglas_a),
+        gCobbDouglasL: window.parseFloat(json.cobb_douglas_l),
+        gCobbDouglasK: window.parseFloat(json.cobb_douglas_k),
+        gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha)
     });
 };
 

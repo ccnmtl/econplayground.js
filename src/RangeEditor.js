@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class SlopeEditor extends React.Component {
+export default class RangeEditor extends React.Component {
     render() {
         return <div className="slope-editor row">
             <div className="col">
@@ -12,8 +12,8 @@ export default class SlopeEditor extends React.Component {
         onChange={this.props.handler}
         value={this.props.value}
         step="0.01"
-        min="-5"
-        max="5"
+        min={this.props.min}
+        max={this.props.max}
             />
             </div>
 
@@ -31,8 +31,15 @@ export default class SlopeEditor extends React.Component {
     }
 }
 
-SlopeEditor.propTypes = {
+RangeEditor.defaultProps = {
+    min: -5,
+    max: 5
+};
+
+RangeEditor.propTypes = {
     dataId: PropTypes.string.isRequired,
     handler: PropTypes.func.isRequired,
-    value: PropTypes.number.isRequired
+    value: PropTypes.number.isRequired,
+    min: PropTypes.number,
+    max: PropTypes.number
 };

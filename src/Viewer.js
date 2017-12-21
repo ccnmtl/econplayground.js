@@ -88,6 +88,12 @@ class Viewer extends Component {
             gLine2IncreaseScore={this.state.gLine2IncreaseScore}
             gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
             gLine2DecreaseScore={this.state.gLine2DecreaseScore}
+
+            gCobbDouglasA={this.state.gCobbDouglasA}
+            gCobbDouglasL={this.state.gCobbDouglasL}
+            gCobbDouglasK={this.state.gCobbDouglasK}
+            gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
+
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
             saveGraph={this.handleSaveGraph.bind(this)} />
@@ -136,6 +142,12 @@ class Viewer extends Component {
             gLine2DecreaseScore={this.state.gLine2DecreaseScore}
             gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
             gLine2IncreaseScore={this.state.gLine2IncreaseScore}
+
+            gCobbDouglasA={this.state.gCobbDouglasA}
+            gCobbDouglasL={this.state.gCobbDouglasL}
+            gCobbDouglasK={this.state.gCobbDouglasK}
+            gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
+
             submission={this.state.submission}
             updateGraph={this.handleGraphUpdate.bind(this)}
             choice={this.state.choice}
