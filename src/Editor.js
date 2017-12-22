@@ -84,6 +84,12 @@ class Editor extends Component {
                         gLine2DecreaseScore={this.state.gLine2DecreaseScore}
                         gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
                         gLine2IncreaseScore={this.state.gLine2IncreaseScore}
+
+                        gCobbDouglasA={this.state.gCobbDouglasA}
+                        gCobbDouglasL={this.state.gCobbDouglasL}
+                        gCobbDouglasK={this.state.gCobbDouglasK}
+                        gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
+
                         updateGraph={this.handleGraphUpdate.bind(this)}
                         saveGraph={this.handleSaveGraph.bind(this)} />
                 </div>

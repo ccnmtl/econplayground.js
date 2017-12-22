@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
-import SlopeEditor from './SlopeEditor';
+import RangeEditor from './RangeEditor';
 import {
     authedFetch, getOrCreateSubmission, handleFormUpdate
 } from './utils';
@@ -75,7 +75,7 @@ export default class GraphViewer extends React.Component {
                             <label htmlFor="gLine1Slope">
                                 Orange line slope
                             </label>
-                            <SlopeEditor
+                            <RangeEditor
                                  dataId="gLine1Slope"
                                  value={this.props.gLine1Slope}
                                  handler={handleFormUpdate.bind(this)} />
@@ -86,7 +86,7 @@ export default class GraphViewer extends React.Component {
                                 <label htmlFor="gLine2Slope">
                                     Blue line slope
                                 </label>
-                                <SlopeEditor
+                                <RangeEditor
                                      dataId="gLine2Slope"
                                      value={this.props.gLine2Slope}
                                      handler={handleFormUpdate.bind(this)} />
