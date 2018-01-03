@@ -23,6 +23,11 @@ export default class GraphViewer extends React.Component {
             successUrl = window.EconPlayground.EmbedSuccess;
         }
 
+        let launchUrl = '';
+        if (window.EconPlayground && window.EconPlayground.EmbedLaunchUrl) {
+            launchUrl = window.EconPlayground.EmbedLaunchUrl;
+        }
+
         let isStaff = false;
         if (window.EconPlayground && window.EconPlayground.isStaff) {
             isStaff = window.EconPlayground.isStaff.toLowerCase() === 'true';
@@ -38,6 +43,7 @@ export default class GraphViewer extends React.Component {
                     <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                     <input type="hidden" name="score" value={this.props.value} />
                     <input type="hidden" name="next" value={successUrl} />
+                    <input type="hidden" name="launchUrl" value={launchUrl} />
                     <JXGBoard
                          id={'editing-graph'}
                          width={562.5}
