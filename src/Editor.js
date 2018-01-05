@@ -28,7 +28,12 @@ class Editor extends Component {
             gLine1FeedbackIncrease: '',
             gLine1FeedbackDecrease: '',
             gLine2FeedbackIncrease: '',
-            gLine2FeedbackDecrease: ''
+            gLine2FeedbackDecrease: '',
+
+            gCobbDouglasA: 2,
+            gCobbDouglasL: 0,
+            gCobbDouglasK: 1,
+            gCobbDouglasAlpha: 0.65
         };
     }
     render() {
