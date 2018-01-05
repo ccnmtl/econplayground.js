@@ -293,6 +293,7 @@ export default class GraphViewer extends React.Component {
                         }} />
 
                     <button className="btn btn-primary btn-sm"
+                            disabled={!this.props.choice}
                             style={{
                                 marginTop: '1em',
                                 display: (!isStaff && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
