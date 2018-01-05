@@ -231,7 +231,7 @@ export default class GraphEditor extends React.Component {
                         </div>
                     </div>
 
-                    <div className={'row ' + (this.props.gType !== 3 ? '' : 'd-none')}>
+                    <div className={'form-row ' + (this.props.gType !== 3 ? '' : 'd-none')}>
                         <div className="col-sm-4">
                             <label htmlFor="gLine1Slope">
                                 Orange line slope
@@ -310,7 +310,7 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
 
-                        <div className="col-sm-4">
+                        <div className={(this.props.gType !== 3 ? 'col-sm-4' : 'd-none')}>
                             <div className="form-group">
                                 <label htmlFor="gLine2Label">
                                     Blue line label
