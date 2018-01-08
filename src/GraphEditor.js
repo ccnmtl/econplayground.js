@@ -165,7 +165,7 @@ export default class GraphEditor extends React.Component {
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
-                                         id="gLine1SlopeEditable"
+                                         id="gCobbDouglasAEditable"
                                          className="form-check-input"
                                          type="checkbox"
                                          onChange={handleFormUpdate.bind(this)}
@@ -192,7 +192,7 @@ export default class GraphEditor extends React.Component {
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
-                                         id="gLine2SlopeEditable"
+                                         id="gCobbDouglasKEditable"
                                          className="form-check-input"
                                          type="checkbox"
                                          onChange={handleFormUpdate.bind(this)}
@@ -220,7 +220,7 @@ export default class GraphEditor extends React.Component {
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
-                                         id="gLine1SlopeEditable"
+                                         id="gCobbDouglasAlphaEditable"
                                          className="form-check-input"
                                          type="checkbox"
                                          onChange={handleFormUpdate.bind(this)}
