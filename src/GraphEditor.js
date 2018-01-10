@@ -32,8 +32,8 @@ export default class GraphEditor extends React.Component {
             gType={this.props.gType}
             gLine1Label={this.props.gLine1Label}
             gLine2Label={this.props.gLine2Label}
-            gXAxisLabel={this.props.gXAxisLabel}
-            gYAxisLabel={this.props.gYAxisLabel}
+            gXAxisLabel={'L' || this.props.gCobbDouglasKName}
+            gYAxisLabel={'Y'}
             gLine1Slope={this.props.gLine1Slope}
             gLine2Slope={this.props.gLine2Slope}
             gLine1Offset={this.props.gLine1Offset}
@@ -44,9 +44,12 @@ export default class GraphEditor extends React.Component {
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
             gCobbDouglasA={this.props.gCobbDouglasA}
+            gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
             gCobbDouglasL={this.props.gCobbDouglasL}
             gCobbDouglasK={this.props.gCobbDouglasK}
+            gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+            gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
 
                 />
                 <CobbDouglasEditor
@@ -97,12 +100,6 @@ export default class GraphEditor extends React.Component {
                          gIntersectionLabel={this.props.gIntersectionLabel}
                          gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                          gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-
-                         gCobbDouglasA={this.props.gCobbDouglasA}
-                         gCobbDouglasL={this.props.gCobbDouglasL}
-                         gCobbDouglasK={this.props.gCobbDouglasK}
-                         gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-
                          />
 
                     <div className="form-row">
@@ -518,11 +515,15 @@ GraphEditor.propTypes = {
     gNeedsSubmit: PropTypes.bool,
 
     gCobbDouglasA: PropTypes.number,
+    gCobbDouglasAName: PropTypes.string,
     gCobbDouglasAEditable: PropTypes.bool,
     gCobbDouglasL: PropTypes.number,
+    gCobbDouglasLName: PropTypes.string,
     gCobbDouglasK: PropTypes.number,
+    gCobbDouglasKName: PropTypes.string,
     gCobbDouglasKEditable: PropTypes.bool,
     gCobbDouglasAlpha: PropTypes.number,
+    gCobbDouglasAlphaName: PropTypes.string,
     gCobbDouglasAlphaEditable: PropTypes.bool,
 
     updateGraph: PropTypes.func.isRequired,
