@@ -399,6 +399,28 @@ class CobbDouglasGraph extends Graph {
             strokeWidth: 2,
             strokeColor: 'rgb(255, 127, 14)'
         });
+
+        let p = this.board.create('point', [
+            me.options.gCobbDouglasL,
+            f(me.options.gCobbDouglasL)], {
+                name: 'f(L)'
+            });
+
+        this.board.create('line', [p, [p.X(), 0]], {
+            dash: 1,
+            strokeColor: 'black',
+            strokeWidth: 1,
+            straightFirst: false,
+            straightLast: false
+        });
+
+        this.board.create('line', [[0, p.Y()], p], {
+            dash: 1,
+            strokeColor: 'black',
+            strokeWidth: 1,
+            straightFirst: false,
+            straightLast: false
+        });
     }
 }
 
