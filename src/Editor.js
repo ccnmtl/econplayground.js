@@ -91,9 +91,17 @@ class Editor extends Component {
                         gLine2IncreaseScore={this.state.gLine2IncreaseScore}
 
                         gCobbDouglasA={this.state.gCobbDouglasA}
+                        gCobbDouglasAName={this.state.gCobbDouglasAName}
+                        gCobbDouglasAEditable={this.state.gCobbDouglasAEditable}
                         gCobbDouglasL={this.state.gCobbDouglasL}
+                        gCobbDouglasLName={this.state.gCobbDouglasLName}
+                        gCobbDouglasLEditable={this.state.gCobbDouglasLEditable}
                         gCobbDouglasK={this.state.gCobbDouglasK}
+                        gCobbDouglasKName={this.state.gCobbDouglasKName}
+                        gCobbDouglasKEditable={this.state.gCobbDouglasKEditable}
                         gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
+                        gCobbDouglasAlphaName={this.state.gCobbDouglasAlphaName}
+                        gCobbDouglasAlphaEditable={this.state.gCobbDouglasAlphaEditable}
 
                         updateGraph={this.handleGraphUpdate.bind(this)}
                         saveGraph={this.handleSaveGraph.bind(this)} />

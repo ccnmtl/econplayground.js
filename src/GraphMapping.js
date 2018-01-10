@@ -10,7 +10,7 @@ import { exportFloat } from './utils';
  * Returns the current graph settings as a persistable JSON object.
  */
 let exportGraph = function(state) {
-    return {
+    let obj = {
         title: state.gTitle,
         description: state.gDescription,
         instructor_notes: state.gInstructorNotes,
@@ -38,32 +38,53 @@ let exportGraph = function(state) {
         line_1_label_editable: state.gLine1LabelEditable,
         line_2_label: state.gLine2Label,
         line_2_label_editable: state.gLine2LabelEditable,
-        line_1_feedback_increase: state.gLine1FeedbackIncrease,
-        line_1_increase_score: exportFloat(state.gLine1IncreaseScore),
-        line_1_feedback_decrease: state.gLine1FeedbackDecrease,
-        line_1_decrease_score: exportFloat(state.gLine1DecreaseScore),
-        line_2_feedback_increase: state.gLine2FeedbackIncrease,
-        line_2_increase_score: exportFloat(state.gLine2IncreaseScore),
-        line_2_feedback_decrease: state.gLine2FeedbackDecrease,
-        line_2_decrease_score: exportFloat(state.gLine2DecreaseScore),
 
         x_axis_label: state.gXAxisLabel,
         x_axis_label_editable: state.gXAxisLabelEditable,
         y_axis_label: state.gYAxisLabel,
-        y_axis_label_editable: state.gYAxisLabelEditable,
+        y_axis_label_editable: state.gYAxisLabelEditable
+    }
 
-        cobb_douglas_a: exportFloat(state.gCobbDouglasA),
-        cobb_douglas_l: exportFloat(state.gCobbDouglasL),
-        cobb_douglas_k: exportFloat(state.gCobbDouglasK),
-        cobb_douglas_alpha: exportFloat(state.gCobbDouglasAlpha)
-    };
+    if (state.gType === 3) {
+        // Don't send all these cobb-douglas related fields if not
+        // saving a cobb-douglas graph.
+        const cobb = {
+            cobb_douglas_a: exportFloat(state.gCobbDouglasA),
+            cobb_douglas_a_name: state.gCobbDouglasAName,
+            cobb_douglas_a_editable: state.gCobbDouglasAEditable,
+            cobb_douglas_l: exportFloat(state.gCobbDouglasL),
+            cobb_douglas_l_name: state.gCobbDouglasLName,
+            cobb_douglas_l_editable: state.gCobbDouglasLEditable,
+            cobb_douglas_k: exportFloat(state.gCobbDouglasK),
+            cobb_douglas_k_name: state.gCobbDouglasKName,
+            cobb_douglas_k_editable: state.gCobbDouglasKEditable,
+            cobb_douglas_alpha: exportFloat(state.gCobbDouglasAlpha),
+            cobb_douglas_alpha_name: state.gCobbDouglasAlphaName,
+            cobb_douglas_alpha_editable: state.gCobbDouglasAlphaEditable
+        };
+        Object.assign(obj, cobb);
+    } else {
+        const demandSupplyScore = {
+            line_1_feedback_increase: state.gLine1FeedbackIncrease,
+            line_1_increase_score: exportFloat(state.gLine1IncreaseScore),
+            line_1_feedback_decrease: state.gLine1FeedbackDecrease,
+            line_1_decrease_score: exportFloat(state.gLine1DecreaseScore),
+            line_2_feedback_increase: state.gLine2FeedbackIncrease,
+            line_2_increase_score: exportFloat(state.gLine2IncreaseScore),
+            line_2_feedback_decrease: state.gLine2FeedbackDecrease,
+            line_2_decrease_score: exportFloat(state.gLine2DecreaseScore)
+        };
+        Object.assign(obj, demandSupplyScore);
+    }
+
+    return obj;
 };
 
 /**
  * Import the json graph into the current state.
  */
 let importGraph = function(json, obj) {
-    obj.setState({
+    const updateObj = {
         gId: json.id,
         gTitle: json.title,
         gDescription: json.description,
@@ -107,10 +128,19 @@ let importGraph = function(json, obj) {
         gYAxisLabelEditable: json.y_axis_label_editable,
 
         gCobbDouglasA: window.parseFloat(json.cobb_douglas_a),
+        gCobbDouglasAName: json.cobb_douglas_a_name,
+        gCobbDouglasAEditable: json.cobb_douglas_a_editable,
         gCobbDouglasL: window.parseFloat(json.cobb_douglas_l),
+        gCobbDouglasLName: json.cobb_douglas_l_name,
+        gCobbDouglasLEditable: json.cobb_douglas_l_editable,
         gCobbDouglasK: window.parseFloat(json.cobb_douglas_k),
-        gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha)
-    });
+        gCobbDouglasKName: json.cobb_douglas_k_name,
+        gCobbDouglasKEditable: json.cobb_douglas_k_editable,
+        gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
+        gCobbDouglasAlphaName: json.cobb_douglas_alpha_name,
+        gCobbDouglasAlphaEditable: json.cobb_douglas_alpha_editable
+    };
+    obj.setState(updateObj);
 };
 
 export { exportGraph, importGraph };
