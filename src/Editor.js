@@ -31,7 +31,7 @@ class Editor extends Component {
             gLine2FeedbackDecrease: '',
 
             gCobbDouglasA: 2,
-            gCobbDouglasL: 0,
+            gCobbDouglasL: 5,
             gCobbDouglasK: 1,
             gCobbDouglasAlpha: 0.65
         };

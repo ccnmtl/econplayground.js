@@ -94,6 +94,32 @@ export default class CobbDouglasEditor extends React.Component {
                             </label>
                         </div>
                     </div>
+
+                    <div className="col-sm-4">
+                        <label htmlFor="gCobbDouglasL">
+                            L
+                        </label>
+                        <RangeEditor
+                            dataId="gCobbDouglasL"
+                            value={this.props.gCobbDouglasL}
+                            handler={handleFormUpdate.bind(this)}
+                            min={0}
+                            max={10} />
+                    </div>
+                    <div className="col-sm-2">
+                        <label></label>
+                        <div className="form-check">
+                            <label className="form-check-label">
+                                <input
+                                    id="gCobbDouglasLEditable"
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    checked={this.props.gCobbDouglasLEditable} />
+                                Student editable
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -106,6 +132,7 @@ CobbDouglasEditor.propTypes = {
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasAEditable: PropTypes.bool,
     gCobbDouglasL: PropTypes.number,
+    gCobbDouglasLEditable: PropTypes.bool,
     gCobbDouglasK: PropTypes.number,
     gCobbDouglasKEditable: PropTypes.bool,
     gCobbDouglasAlpha: PropTypes.number,
