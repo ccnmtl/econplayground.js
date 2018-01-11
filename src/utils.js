@@ -121,6 +121,10 @@ let getOffset = function(slope, y, n) {
  * DecimalFields. This is currently capped to 2 decimal places.
  */
 let exportFloat = function(n) {
+    n = Number(n)
+    if (isNaN(n) || typeof n === 'undefined') {
+        n = 0;
+    }
     return Math.round(n * 100) / 100;
 };
 
