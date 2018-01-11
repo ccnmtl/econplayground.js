@@ -12,7 +12,7 @@ export default class GraphPicker extends React.Component {
             <div className="GraphPicker">
                 <p>Pick a graph type:</p>
                 <div className="graph-card">
-                    Demand-Supply
+                    Linear Demand and Supply
                     <JXGBoard id={'jxg-demand-supply'} gType={0} />
                     <button
                          ref={(b1) => { this.b1 = b1; }}
