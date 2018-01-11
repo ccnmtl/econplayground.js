@@ -204,6 +204,7 @@ export default class GraphViewer extends React.Component {
                                 </label>
                                 <input id="gLine1Label"
                                        value={this.props.gLine1Label}
+                                       onChange={handleFormUpdate.bind(this)}
                                        className="form-control form-control-sm" type="text" />
                             </div>
                         </div>
@@ -214,6 +215,7 @@ export default class GraphViewer extends React.Component {
                                 </label>
                                 <input id="gLine2Label"
                                        value={this.props.gLine2Label}
+                                       onChange={handleFormUpdate.bind(this)}
                                        className="form-control form-control-sm" type="text" />
                             </div>
                         </div>
@@ -228,7 +230,9 @@ export default class GraphViewer extends React.Component {
                                 <input id="gXAxisLabel"
                                        className="form-control form-control-sm"
                                        type="text"
-                                       value={this.props.gXAxisLabel} />
+                                       value={this.props.gXAxisLabel}
+                                       onChange={handleFormUpdate.bind(this)}
+                                       />
                             </div>
                         </div>
 
@@ -240,7 +244,9 @@ export default class GraphViewer extends React.Component {
                                 <input id="gYAxisLabel"
                                        className="form-control form-control-sm"
                                        type="text"
-                                       value={this.props.gYAxisLabel} />
+                                       value={this.props.gYAxisLabel}
+                                       onChange={handleFormUpdate.bind(this)}
+                                       />
                             </div>
                         </div>
                     </div>
@@ -255,7 +261,8 @@ export default class GraphViewer extends React.Component {
                                        className="form-control form-control-sm"
                                        type="text"
                                        value={this.props.gIntersectionLabel}
-                                       onChange={handleFormUpdate.bind(this)} />
+                                       onChange={handleFormUpdate.bind(this)}
+                                       />
                             </div>
                         </div>
                     </div>
