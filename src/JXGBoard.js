@@ -94,6 +94,7 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasL: options.gCobbDouglasL,
                 gCobbDouglasK: options.gCobbDouglasK,
                 gCobbDouglasAlpha: options.gCobbDouglasAlpha,
+                gNeedsSubmit: options.gNeedsSubmit,
                 l1SubmissionOffset: getL1SubmissionOffset(options.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(options.submission),
                 submission: options.submission,
@@ -119,6 +120,7 @@ export default class JXGBoard extends React.Component {
             'gCobbDouglasL',
             'gCobbDouglasK',
             'gCobbDouglasAlpha',
+            'gNeedsSubmit',
             'submission'
         ];
 
@@ -155,6 +157,8 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasL: nextProps.gCobbDouglasL,
                 gCobbDouglasK: nextProps.gCobbDouglasK,
                 gCobbDouglasAlpha: nextProps.gCobbDouglasAlpha,
+                gNeedsSubmit: nextProps.gNeedsSubmit,
+
                 l1SubmissionOffset: getL1SubmissionOffset(nextProps.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(nextProps.submission),
                 submission: nextProps.submission,
@@ -182,6 +186,7 @@ export default class JXGBoard extends React.Component {
             gCobbDouglasL: this.props.gCobbDouglasL,
             gCobbDouglasK: this.props.gCobbDouglasK,
             gCobbDouglasAlpha: this.props.gCobbDouglasAlpha,
+            gNeedsSubmit: this.props.gNeedsSubmit,
             l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
             l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
             submission: this.props.submission,
@@ -215,6 +220,7 @@ JXGBoard.propTypes = {
     gLine2Slope: PropTypes.number,
     gLine1Offset: PropTypes.number,
     gLine2Offset: PropTypes.number,
+    gNeedsSubmit: PropTypes.bool,
     gType: PropTypes.number,
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasL: PropTypes.number,

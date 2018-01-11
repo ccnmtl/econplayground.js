@@ -149,7 +149,13 @@ class Graph {
                 });
             } else {
                 this.l1.on('mouseup', function() {
-                    me.resetLine2();
+                    // Only do this line reset functionality if this
+                    // is a quiz graph. Otherwise, students should be
+                    // able to play freely.
+                    if (me.options.gNeedsSubmit) {
+                        me.resetLine2();
+                    }
+
                     if (this.getRise() > me.initialL1Y) {
                         document.dispatchEvent(new Event('l1up'));
                     } else if (this.getRise() < me.initialL1Y) {
@@ -178,7 +184,13 @@ class Graph {
                 });
             } else {
                 this.l2.on('mouseup', function() {
-                    me.resetLine1();
+                    // Only do this line reset functionality if this
+                    // is a quiz graph. Otherwise, students should be
+                    // able to play freely.
+                    if (me.options.gNeedsSubmit) {
+                        me.resetLine1();
+                    }
+
                     if (this.getRise() > me.initialL2Y) {
                         document.dispatchEvent(new Event('l2up'));
                     } else if (this.getRise() < me.initialL2Y) {
