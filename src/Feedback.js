@@ -32,8 +32,7 @@ export default class Feedback extends React.Component {
         let msg = '';
 
         if (this.props.submission) {
-            msg = 'Submitted. ' +
-                this.getFeedback(this.props.submission.choice);
+            msg = this.getFeedback(this.props.submission.choice);
         } else if (this.props.choice) {
             msg = this.getFeedback(this.props.choice);
         }
