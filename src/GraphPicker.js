@@ -15,58 +15,82 @@ export default class GraphPicker extends React.Component {
                     Linear Demand and Supply
                     <JXGBoard id={'jxg-demand-supply'} gType={0} />
                     <button
-                         ref={(b1) => { this.b1 = b1; }}
-                         type="button" className="btn btn-default btn-sm"
-                         onClick={this.handleClick1.bind(this)}>Select</button>
+                        ref={(b1) => { this.b1 = b1; }}
+                        type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick1.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
                 </div>
                 <div className="graph-card">
                     Labor Market
                     <JXGBoard id={'jxg-labor-market'} gType={1} />
                     <button
-                         type="button" className="btn btn-default btn-sm"
-                         onClick={this.handleClick2.bind(this)}>Select</button>
+                         type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick2.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
                 </div>
                 <div className="graph-card">
                     Labor Market (perfectly inelastic)
                     <JXGBoard id={'jxg-labor-market-inelastic'} gType={2} />
                     <button
-                         type="button" className="btn btn-default btn-sm"
-                         onClick={this.handleClick3.bind(this)}>Select</button>
+                         type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick3.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
                 </div>
                 <div className="graph-card">
                     Cobb-Douglas
                     <JXGBoard id={'jxg-cobb-douglas'} gType={3} />
                     <button
-                         type="button" className="btn btn-default btn-sm"
-                         onClick={this.handleClick4.bind(this)}>Select</button>
+                         type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick4.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
                 </div>
                 <div className="graph-card">
                     Labor Supply
                     <JXGBoard id={'jxg-labor-supply'} gType={4} />
                     <button
-                         type="button" className="btn btn-default btn-sm"
-                         onClick={this.handleClick5.bind(this)}>Select</button>
+                         type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick5.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
                 </div>
                 <div className="graph-card">
                     Consumption - Saving
                     <JXGBoard id={'jxg-consumption-saving'} gType={5} />
                     <button
-                         type="button" className="btn btn-default btn-sm"
-                         onClick={this.handleClick6.bind(this)}>Select</button>
+                         type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick6.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
                 </div>
                 <div className="graph-card">
                     Saving - Investment
                     <JXGBoard id={'jxg-saving-investment'} gType={6} />
                     <button
-                         type="button" className="btn btn-default btn-sm"
-                         onClick={this.handleClick7.bind(this)}>Select</button>
+                         type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick7.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
                 </div>
                 <div className="graph-card">
                     Money Market
                     <JXGBoard id={'jxg-money-market'} gType={7} />
                     <button
-                         type="button" className="btn btn-default btn-sm"
-                         onClick={this.handleClick8.bind(this)}>Select</button>
+                        type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick8.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
                 </div>
             </div>
         )
