@@ -138,7 +138,7 @@ class Graph {
         ) {
             this.initialL1Y = this.l1.getRise();
 
-            if (window.EconPlayground.is_staff) {
+            if (window.EconPlayground.isInstructor) {
                 this.l1.on('mouseup', function() {
                     const offset = getOffset(
                         me.l1.getSlope(), me.l1.getRise(), 2.5);
@@ -173,7 +173,7 @@ class Graph {
         ) {
             this.initialL2Y = this.l2.getRise();
 
-            if (window.EconPlayground.is_staff) {
+            if (window.EconPlayground.isInstructor) {
                 this.l2.on('mouseup', function() {
                     const offset = getOffset(
                         me.l2.getSlope(), me.l2.getRise(), 2.5);
