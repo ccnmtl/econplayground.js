@@ -178,9 +178,11 @@ export default class GraphViewer extends React.Component {
                                 Orange line slope
                             </label>
                             <RangeEditor
-                                 dataId="gLine1Slope"
-                                 value={this.props.gLine1Slope}
-                                 handler={handleFormUpdate.bind(this)} />
+                                dataId="gLine1Slope"
+                                value={this.props.gLine1Slope}
+                                min={0}
+                                max={5}
+                                handler={handleFormUpdate.bind(this)} />
                         </div>
 
                         <div className={"col " + (this.props.gLine2SlopeEditable ? '' : 'd-none')}>
@@ -189,9 +191,11 @@ export default class GraphViewer extends React.Component {
                                     Blue line slope
                                 </label>
                                 <RangeEditor
-                                     dataId="gLine2Slope"
-                                     value={this.props.gLine2Slope}
-                                     handler={handleFormUpdate.bind(this)} />
+                                    dataId="gLine2Slope"
+                                    value={this.props.gLine2Slope}
+                                    min={-5}
+                                    max={0}
+                                    handler={handleFormUpdate.bind(this)} />
                             </div>
                         </div>
                     </div>
