@@ -55,7 +55,7 @@ class Graph {
                 gLine1Offset: 0,
                 gLine2Offset: 0,
                 gCobbDouglasA: 2,
-                gCobbDouglasL: 0,
+                gCobbDouglasL: 5,
                 gCobbDouglasK: 1,
                 gCobbDouglasAlpha: 0.65,
                 isSubmitted: false,
@@ -415,7 +415,8 @@ class CobbDouglasGraph extends Graph {
         let p = this.board.create('point', [
             me.options.gCobbDouglasL,
             f(me.options.gCobbDouglasL)], {
-                name: 'f(L)'
+                name: 'f(L)',
+                fixed: true
             });
 
         this.board.create('line', [p, [p.X(), 0]], {
