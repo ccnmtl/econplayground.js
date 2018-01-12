@@ -41,7 +41,7 @@ class Viewer extends Component {
     }
 
     render() {
-        if (window.EconPlayground.is_staff) {
+        if (window.EconPlayground.isInstructor) {
             return <div>
                 <div className="alert alert-info"
             hidden={this.state.alertText ? false : true}

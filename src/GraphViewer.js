@@ -28,9 +28,9 @@ export default class GraphViewer extends React.Component {
             launchUrl = window.EconPlayground.EmbedLaunchUrl;
         }
 
-        let isStaff = false;
-        if (window.EconPlayground && window.EconPlayground.isStaff) {
-            isStaff = window.EconPlayground.isStaff.toLowerCase() === 'true';
+        let isInstructor = false;
+        if (window.EconPlayground && window.EconPlayground.isInstructor) {
+            isInstructor = window.EconPlayground.isInstructor.toLowerCase() === 'true';
         }
 
         const token = Cookies.get('csrftoken');
@@ -303,7 +303,7 @@ export default class GraphViewer extends React.Component {
                             disabled={!this.props.choice}
                             style={{
                                 marginTop: '1em',
-                                display: (!isStaff && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
+                                display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
                             }}
                             type="submit">Submit</button>
                 </form>
