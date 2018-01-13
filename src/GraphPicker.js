@@ -13,7 +13,7 @@ export default class GraphPicker extends React.Component {
                 <p>Pick a graph type:</p>
                 <div className="graph-card">
                     Linear Demand and Supply
-                    <JXGBoard id={'jxg-demand-supply'} gType={0} />
+                    <JXGBoard id={'jxg-demand-supply'} gType={0} locked={true} />
                     <button
                         ref={(b1) => { this.b1 = b1; }}
                         type="button" className="btn btn-primary btn-sm"
@@ -24,7 +24,7 @@ export default class GraphPicker extends React.Component {
                 </div>
                 <div className="graph-card">
                     Labor Market
-                    <JXGBoard id={'jxg-labor-market'} gType={1} />
+                    <JXGBoard id={'jxg-labor-market'} gType={1} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
                         onClick={this.handleClick2.bind(this)}>
@@ -34,7 +34,7 @@ export default class GraphPicker extends React.Component {
                 </div>
                 <div className="graph-card">
                     Labor Market (perfectly inelastic)
-                    <JXGBoard id={'jxg-labor-market-inelastic'} gType={2} />
+                    <JXGBoard id={'jxg-labor-market-inelastic'} gType={2} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
                         onClick={this.handleClick3.bind(this)}>
@@ -44,7 +44,7 @@ export default class GraphPicker extends React.Component {
                 </div>
                 <div className="graph-card">
                     Cobb-Douglas
-                    <JXGBoard id={'jxg-cobb-douglas'} gType={3} />
+                    <JXGBoard id={'jxg-cobb-douglas'} gType={3} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
                         onClick={this.handleClick4.bind(this)}>
@@ -54,7 +54,7 @@ export default class GraphPicker extends React.Component {
                 </div>
                 <div className="graph-card">
                     Labor Supply
-                    <JXGBoard id={'jxg-labor-supply'} gType={4} />
+                    <JXGBoard id={'jxg-labor-supply'} gType={4} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
                         onClick={this.handleClick5.bind(this)}>
@@ -64,7 +64,7 @@ export default class GraphPicker extends React.Component {
                 </div>
                 <div className="graph-card">
                     Consumption - Saving
-                    <JXGBoard id={'jxg-consumption-saving'} gType={5} />
+                    <JXGBoard id={'jxg-consumption-saving'} gType={5} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
                         onClick={this.handleClick6.bind(this)}>
@@ -74,7 +74,7 @@ export default class GraphPicker extends React.Component {
                 </div>
                 <div className="graph-card">
                     Saving - Investment
-                    <JXGBoard id={'jxg-saving-investment'} gType={6} />
+                    <JXGBoard id={'jxg-saving-investment'} gType={6} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
                         onClick={this.handleClick7.bind(this)}>
@@ -84,7 +84,7 @@ export default class GraphPicker extends React.Component {
                 </div>
                 <div className="graph-card">
                     Money Market
-                    <JXGBoard id={'jxg-money-market'} gType={7} />
+                    <JXGBoard id={'jxg-money-market'} gType={7} locked={true} />
                     <button
                         type="button" className="btn btn-primary btn-sm"
                         onClick={this.handleClick8.bind(this)}>

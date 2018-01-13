@@ -74,7 +74,8 @@ class Graph {
 
         this.options = applyDefaults(options, defaults);
 
-        this.areLinesFixed = this.options.isSubmitted ||
+        this.areLinesFixed = this.options.locked ||
+            this.options.isSubmitted ||
             (this.options.interactionType === 2);
 
         this.board = board;

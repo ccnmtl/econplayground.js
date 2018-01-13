@@ -100,7 +100,8 @@ export default class JXGBoard extends React.Component {
                 l1SubmissionOffset: getL1SubmissionOffset(options.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(options.submission),
                 submission: options.submission,
-                isSubmitted: options.isSubmitted
+                isSubmitted: options.isSubmitted,
+                locked: this.props.locked
             });
         }
     }
@@ -231,5 +232,6 @@ JXGBoard.propTypes = {
     gCobbDouglasK: PropTypes.number,
     gCobbDouglasAlpha: PropTypes.number,
 
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    locked: PropTypes.bool
 };
