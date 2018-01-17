@@ -71,7 +71,7 @@ export default class JXGBoard extends React.Component {
                 showZoom: false,
                 showReload: false,
                 showNavigation: false,
-                boundingbox: [-0.2, 5, 5, -0.4]
+                boundingbox: [-0.4, 5, 5, -0.4]
             });
 
         this.board = board;
