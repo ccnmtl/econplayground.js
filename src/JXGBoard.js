@@ -11,6 +11,7 @@ export default class JXGBoard extends React.Component {
         super(props);
         this.id = this.props.id;
         this.style = {
+            // The defaults provided here are used by the GraphPicker
             width: this.props.width || 450,
             height: this.props.height || 240
         };
@@ -47,7 +48,7 @@ export default class JXGBoard extends React.Component {
                     x: {
                         name: options.gXAxisLabel ? options.gXAxisLabel : 'x',
                         label: {
-                            offset: [440, 20]
+                            offset: [440, -12]
                         },
                         withLabel: options.gXAxisLabel ? true : false,
                         ticks: {
@@ -57,7 +58,7 @@ export default class JXGBoard extends React.Component {
                     y: {
                         name: options.gYAxisLabel ? options.gYAxisLabel : 'y',
                         label: {
-                            offset: [5, 260]
+                            offset: [-12, 260]
                         },
                         withLabel: options.gYAxisLabel ? true : false,
                         ticks: {
@@ -70,7 +71,7 @@ export default class JXGBoard extends React.Component {
                 showZoom: false,
                 showReload: false,
                 showNavigation: false,
-                boundingbox: [-0.2, 5, 5, -0.2]
+                boundingbox: [-0.2, 5, 5, -0.4]
             });
 
         this.board = board;
