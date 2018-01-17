@@ -416,7 +416,7 @@ class CobbDouglasGraph extends Graph {
         let p = this.board.create('point', [
             me.options.gCobbDouglasL,
             f(me.options.gCobbDouglasL)], {
-                name: 'f(L)',
+                name: 'f(A,K,L)',
                 fixed: true
             });
 
