@@ -117,7 +117,7 @@ class Graph {
             highlight: false,
             fixed: true,
             strokeColor: 'white',
-            strokeWidth: this.board.canvasWidth / 27,
+            strokeWidth: this.board.canvasWidth / 25.5,
             straightFirst: true,
             straightLast: true
         });
@@ -126,7 +126,7 @@ class Graph {
             highlight: false,
             fixed: true,
             strokeColor: 'white',
-            strokeWidth: this.board.canvasWidth / 27,
+            strokeWidth: this.board.canvasWidth / 25.5,
             straightFirst: true,
             straightLast: true
         });
@@ -303,7 +303,7 @@ class DemandSupplyGraph extends Graph {
             ], {
                 name: this.options.gLine2Label,
                 withLabel: true,
-                label: { position: 'rt', offset: [0, 20] },
+                label: { position: 'rt', offset: [0, 35] },
                 strokeColor: 'steelblue',
                 strokeWidth: 2,
                 fixed: this.areLinesFixed
