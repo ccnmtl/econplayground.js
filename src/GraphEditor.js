@@ -163,7 +163,10 @@ export default class GraphEditor extends React.Component {
                                 <input id="gLine1Label"
                                        value={this.props.gLine1Label}
                                        onChange={handleFormUpdate.bind(this)}
-                                       className="form-control form-control-sm" type="text" />
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       maxLength="60"
+                                       />
                             </div>
                         </div>
                         <div className="col-sm-2">
@@ -189,7 +192,10 @@ export default class GraphEditor extends React.Component {
                                 <input id="gLine2Label"
                                        value={this.props.gLine2Label}
                                        onChange={handleFormUpdate.bind(this)}
-                                       className="form-control form-control-sm" type="text" />
+                                       className="form-control form-control-sm"
+                                       type="text"
+                                       maxLength="60"
+                                       />
                             </div>
                         </div>
                         <div className="col-sm-2">
@@ -217,6 +223,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gXAxisLabel"
                                        className="form-control form-control-sm"
                                        type="text"
+                                       maxLength="60"
                                        value={this.props.gXAxisLabel}
                                        onChange={handleFormUpdate.bind(this)} />
                             </div>
@@ -244,6 +251,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gYAxisLabel"
                                        className="form-control form-control-sm"
                                        type="text"
+                                       maxLength="60"
                                        value={this.props.gYAxisLabel}
                                        onChange={handleFormUpdate.bind(this)} />
                             </div>
@@ -273,6 +281,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gIntersectionLabel"
                                        className="form-control form-control-sm"
                                        type="text"
+                                       maxLength="60"
                                        value={this.props.gIntersectionLabel}
                                        onChange={handleFormUpdate.bind(this)} />
                             </div>
@@ -302,6 +311,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gIntersectionHorizLineLabel"
                                        className="form-control form-control-sm"
                                        type="text"
+                                       maxLength="60"
                                        value={this.props.gIntersectionHorizLineLabel}
                                        onChange={handleFormUpdate.bind(this)} />
                             </div>
@@ -329,6 +339,7 @@ export default class GraphEditor extends React.Component {
                                 <input id="gIntersectionVertLineLabel"
                                        className="form-control form-control-sm"
                                        type="text"
+                                       maxLength="60"
                                        value={this.props.gIntersectionVertLineLabel}
                                        onChange={handleFormUpdate.bind(this)} />
                             </div>

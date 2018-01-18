@@ -20,7 +20,9 @@ export default class CommonGraphEditor extends React.Component {
                                    onChange={handleFormUpdate.bind(this)}
                                    value={this.props.gTitle}
                                    className="form-control form-control-sm"
-                                   type="text" />
+                                   type="text"
+                                   maxLength="140"
+                                   />
                         </div>
                     </div>
 
