@@ -64,11 +64,14 @@ export default class GraphViewer extends React.Component {
                          gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                          gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
-                         gCobbDouglasA={this.props.gCobbDouglasA}
-                         gCobbDouglasL={this.props.gCobbDouglasL}
-                         gCobbDouglasK={this.props.gCobbDouglasK}
-                         gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                         />
+                        gCobbDouglasA={this.props.gCobbDouglasA}
+                        gCobbDouglasAName={this.props.gCobbDouglasAName}
+                        gCobbDouglasL={this.props.gCobbDouglasL}
+                        gCobbDouglasLName={this.props.gCobbDouglasLName}
+                        gCobbDouglasK={this.props.gCobbDouglasK}
+                        gCobbDouglasKName={this.props.gCobbDouglasKName}
+                        gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                        />
 
                     <Feedback
                          choice={this.props.choice}
@@ -398,8 +401,11 @@ GraphViewer.propTypes = {
     gType: PropTypes.number,
 
     gCobbDouglasA: PropTypes.number,
+    gCobbDouglasAName: PropTypes.string,
     gCobbDouglasL: PropTypes.number,
+    gCobbDouglasLName: PropTypes.string,
     gCobbDouglasK: PropTypes.number,
+    gCobbDouglasKName: PropTypes.string,
     gCobbDouglasAlpha: PropTypes.number,
 
     submission: PropTypes.object,

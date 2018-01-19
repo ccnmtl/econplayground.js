@@ -44,9 +44,13 @@ export default class GraphEditor extends React.Component {
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
             gCobbDouglasA={this.props.gCobbDouglasA}
+            gCobbDouglasAName={this.props.gCobbDouglasAName}
             gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
             gCobbDouglasL={this.props.gCobbDouglasL}
+            gCobbDouglasLName={this.props.gCobbDouglasLName}
+            gCobbDouglasLEditable={this.props.gCobbDouglasLEditable}
             gCobbDouglasK={this.props.gCobbDouglasK}
+            gCobbDouglasKName={this.props.gCobbDouglasKName}
             gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
             gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
@@ -54,9 +58,13 @@ export default class GraphEditor extends React.Component {
                 />
                 <CobbDouglasEditor
             gCobbDouglasA={this.props.gCobbDouglasA}
+            gCobbDouglasAName={this.props.gCobbDouglasAName}
             gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
             gCobbDouglasL={this.props.gCobbDouglasL}
+            gCobbDouglasLName={this.props.gCobbDouglasLName}
+            gCobbDouglasLEditable={this.props.gCobbDouglasLEditable}
             gCobbDouglasK={this.props.gCobbDouglasK}
+            gCobbDouglasKName={this.props.gCobbDouglasKName}
             gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
             gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
@@ -100,6 +108,14 @@ export default class GraphEditor extends React.Component {
                          gIntersectionLabel={this.props.gIntersectionLabel}
                          gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                          gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                        gCobbDouglasA={this.props.gCobbDouglasA}
+                        gCobbDouglasAName={this.props.gCobbDouglasAName}
+                        gCobbDouglasL={this.props.gCobbDouglasL}
+                        gCobbDouglasLName={this.props.gCobbDouglasLName}
+                        gCobbDouglasK={this.props.gCobbDouglasK}
+                        gCobbDouglasKName={this.props.gCobbDouglasKName}
+                        gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                          />
 
                     <div className="form-row">
@@ -530,6 +546,7 @@ GraphEditor.propTypes = {
     gCobbDouglasAEditable: PropTypes.bool,
     gCobbDouglasL: PropTypes.number,
     gCobbDouglasLName: PropTypes.string,
+    gCobbDouglasLEditable: PropTypes.bool,
     gCobbDouglasK: PropTypes.number,
     gCobbDouglasKName: PropTypes.string,
     gCobbDouglasKEditable: PropTypes.bool,

@@ -57,6 +57,9 @@ class Graph {
                 gCobbDouglasA: 2,
                 gCobbDouglasL: 5,
                 gCobbDouglasK: 1,
+                gCobbDouglasAName: 'A',
+                gCobbDouglasLName: 'L',
+                gCobbDouglasKName: 'K',
                 gCobbDouglasAlpha: 0.65,
                 isSubmitted: false,
                 l1SubmissionOffset: 0,
@@ -413,10 +416,14 @@ class CobbDouglasGraph extends Graph {
             strokeColor: 'rgb(255, 127, 14)'
         });
 
+        const pName = 'f(' + me.options.gCobbDouglasAName + ',' +
+              me.options.gCobbDouglasKName + ',' +
+              me.options.gCobbDouglasLName + ')';
+
         let p = this.board.create('point', [
             me.options.gCobbDouglasL,
             f(me.options.gCobbDouglasL)], {
-                name: 'f(A,K,L)',
+                name: pName,
                 fixed: true
             });
 

@@ -40,8 +40,11 @@ class Editor extends Component {
             gLine2FeedbackDecrease: '',
 
             gCobbDouglasA: 2,
+            gCobbDouglasAName: 'A',
             gCobbDouglasL: 5,
+            gCobbDouglasLName: 'L',
             gCobbDouglasK: 1,
+            gCobbDouglasKName: 'K',
             gCobbDouglasAlpha: 0.65
         };
     }

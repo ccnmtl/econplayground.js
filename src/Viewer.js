@@ -29,6 +29,14 @@ class Viewer extends Component {
             gLine2FeedbackIncrease: '',
             gLine2FeedbackDecrease: '',
 
+            gCobbDouglasA: 2,
+            gCobbDouglasAName: 'A',
+            gCobbDouglasL: 5,
+            gCobbDouglasLName: 'L',
+            gCobbDouglasK: 1,
+            gCobbDouglasKName: 'K',
+            gCobbDouglasAlpha: 0.65,
+
             choice: null,
             value: '',
             submission: null
@@ -90,8 +98,11 @@ class Viewer extends Component {
             gLine2DecreaseScore={this.state.gLine2DecreaseScore}
 
             gCobbDouglasA={this.state.gCobbDouglasA}
+            gCobbDouglasAName={this.state.gCobbDouglasAName}
             gCobbDouglasL={this.state.gCobbDouglasL}
+            gCobbDouglasLName={this.state.gCobbDouglasLName}
             gCobbDouglasK={this.state.gCobbDouglasK}
+            gCobbDouglasKName={this.state.gCobbDouglasKName}
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
 
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
