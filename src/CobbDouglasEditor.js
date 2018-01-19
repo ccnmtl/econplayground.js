@@ -17,7 +17,13 @@ export default class CobbDouglasEditor extends React.Component {
                 <div className="row">
                     <div className="col-sm-4">
                         <label htmlFor="gCobbDouglasA">
-                            A
+                            <input type="text"
+                                   id="gCobbDouglasAName"
+                                   maxLength="1"
+                                   className="form-control form-control-sm"
+                                   value={this.props.gCobbDouglasAName}
+                                   onChange={handleFormUpdate.bind(this)}
+                                   />
                         </label>
                         <RangeEditor
                              dataId="gCobbDouglasA"
@@ -43,7 +49,13 @@ export default class CobbDouglasEditor extends React.Component {
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gCobbDouglasK">
-                                K
+                                <input type="text"
+                                       id="gCobbDouglasKName"
+                                       maxLength="1"
+                                       className="form-control form-control-sm"
+                                       value={this.props.gCobbDouglasKName}
+                                       onChange={handleFormUpdate.bind(this)}
+                                       />
                             </label>
                             <RangeEditor
                                  dataId="gCobbDouglasK"
@@ -97,7 +109,13 @@ export default class CobbDouglasEditor extends React.Component {
 
                     <div className="col-sm-4">
                         <label htmlFor="gCobbDouglasL">
-                            L
+                            <input type="text"
+                                   id="gCobbDouglasLName"
+                                   maxLength="1"
+                                   className="form-control form-control-sm"
+                                   value={this.props.gCobbDouglasLName}
+                                   onChange={handleFormUpdate.bind(this)}
+                                   />
                         </label>
                         <RangeEditor
                             dataId="gCobbDouglasL"
@@ -130,10 +148,13 @@ CobbDouglasEditor.propTypes = {
     gTitle: PropTypes.string,
     gType: PropTypes.number,
     gCobbDouglasA: PropTypes.number,
+    gCobbDouglasAName: PropTypes.string,
     gCobbDouglasAEditable: PropTypes.bool,
     gCobbDouglasL: PropTypes.number,
+    gCobbDouglasLName: PropTypes.string,
     gCobbDouglasLEditable: PropTypes.bool,
     gCobbDouglasK: PropTypes.number,
+    gCobbDouglasKName: PropTypes.string,
     gCobbDouglasKEditable: PropTypes.bool,
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasAlphaEditable: PropTypes.bool
