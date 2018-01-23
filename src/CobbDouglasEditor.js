@@ -123,6 +123,9 @@ export default class CobbDouglasEditor extends React.Component {
                             handler={handleFormUpdate.bind(this)}
                             min={0}
                             max={10} />
+                        <small className="form-text text-muted ml-sm-2">
+                            This variable is plotted along the X-axis.
+                        </small>
                     </div>
                     <div className="col-sm-2">
                         <label></label>
