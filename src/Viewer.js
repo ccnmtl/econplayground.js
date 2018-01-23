@@ -99,11 +99,15 @@ class Viewer extends Component {
 
             gCobbDouglasA={this.state.gCobbDouglasA}
             gCobbDouglasAName={this.state.gCobbDouglasAName}
+            gCobbDouglasAEditable={this.state.gCobbDouglasAEditable}
             gCobbDouglasL={this.state.gCobbDouglasL}
             gCobbDouglasLName={this.state.gCobbDouglasLName}
+            gCobbDouglasLEditable={this.state.gCobbDouglasLEditable}
             gCobbDouglasK={this.state.gCobbDouglasK}
             gCobbDouglasKName={this.state.gCobbDouglasKName}
+            gCobbDouglasKEditable={this.state.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
+            gCobbDouglasAlphaEditable={this.state.gCobbDouglasAlphaEditable}
 
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
@@ -155,9 +159,16 @@ class Viewer extends Component {
             gLine2IncreaseScore={this.state.gLine2IncreaseScore}
 
             gCobbDouglasA={this.state.gCobbDouglasA}
+            gCobbDouglasAName={this.state.gCobbDouglasAName}
+            gCobbDouglasAEditable={this.state.gCobbDouglasAEditable}
             gCobbDouglasL={this.state.gCobbDouglasL}
+            gCobbDouglasLName={this.state.gCobbDouglasLName}
+            gCobbDouglasLEditable={this.state.gCobbDouglasLEditable}
             gCobbDouglasK={this.state.gCobbDouglasK}
+            gCobbDouglasKName={this.state.gCobbDouglasKName}
+            gCobbDouglasKEditable={this.state.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
+            gCobbDouglasAlphaEditable={this.state.gCobbDouglasAlphaEditable}
 
             submission={this.state.submission}
             updateGraph={this.handleGraphUpdate.bind(this)}
