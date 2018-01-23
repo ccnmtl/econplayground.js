@@ -41,12 +41,19 @@ export default class JXGBoard extends React.Component {
             JXG.JSXGraph.freeBoard(this.board);
         }
 
+        let xAxisLabel = '';
+        if (options.gType === 3) {
+            xAxisLabel = options.gCobbDouglasLName;
+        } else {
+            xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
+        }
+
         let board = JXG.JSXGraph.initBoard(
             this.id, {
                 axis: true,
                 defaultAxes: {
                     x: {
-                        name: options.gXAxisLabel ? options.gXAxisLabel : 'x',
+                        name: xAxisLabel,
                         label: {
                             offset: [440, -12]
                         },
