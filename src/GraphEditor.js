@@ -68,6 +68,8 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
             gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
+            gCobbDouglasCorrectScenario={this.props.gCobbDouglasCorrectScenario}
+
             isInstructor={true}
             updateGraph={this.props.updateGraph}
                 />
@@ -554,6 +556,7 @@ GraphEditor.propTypes = {
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasAlphaName: PropTypes.string,
     gCobbDouglasAlphaEditable: PropTypes.bool,
+    gCobbDouglasCorrectScenario: PropTypes.number,
 
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,

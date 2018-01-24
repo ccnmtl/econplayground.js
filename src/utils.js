@@ -90,18 +90,21 @@ let handleFormUpdate = function(e) {
 
     // Use the element's id as the attribute name, and fall
     // back to data-id.
-    const id = e.target.id || e.target.dataset.id;
+    const id = e.target.id || e.target.dataset.id || e.target.name;
 
     switch(e.target.type) {
-    case 'checkbox':
-        obj[id] = e.target.checked;
-        break;
-    case 'number':
-    case 'range':
-        obj[id] = parseFloat(e.target.value);
-        break;
-    default:
-        obj[id] = e.target.value;
+        case 'checkbox':
+            obj[id] = e.target.checked;
+            break;
+        case 'number':
+        case 'range':
+            obj[id] = parseFloat(e.target.value);
+            break;
+        case 'select-one':
+            obj[id] = parseInt(e.target.value, 10);
+            break;
+        default:
+            obj[id] = e.target.value;
     }
 
     this.props.updateGraph(obj);
