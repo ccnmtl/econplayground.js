@@ -108,6 +108,7 @@ class Viewer extends Component {
             gCobbDouglasKEditable={this.state.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
             gCobbDouglasAlphaEditable={this.state.gCobbDouglasAlphaEditable}
+            gCobbDouglasCorrectScenario={this.state.gCobbDouglasCorrectScenario}
 
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}

@@ -60,7 +60,8 @@ let exportGraph = function(state) {
             cobb_douglas_k_editable: state.gCobbDouglasKEditable,
             cobb_douglas_alpha: exportFloat(state.gCobbDouglasAlpha),
             cobb_douglas_alpha_name: state.gCobbDouglasAlphaName,
-            cobb_douglas_alpha_editable: state.gCobbDouglasAlphaEditable
+            cobb_douglas_alpha_editable: state.gCobbDouglasAlphaEditable,
+            cobb_douglas_correct_scenario: state.gCobbDouglasCorrectScenario
         };
         Object.assign(obj, cobb);
     } else {
@@ -138,7 +139,8 @@ let importGraph = function(json, obj) {
         gCobbDouglasKEditable: json.cobb_douglas_k_editable,
         gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
         gCobbDouglasAlphaName: json.cobb_douglas_alpha_name,
-        gCobbDouglasAlphaEditable: json.cobb_douglas_alpha_editable
+        gCobbDouglasAlphaEditable: json.cobb_douglas_alpha_editable,
+        gCobbDouglasCorrectScenario: json.cobb_douglas_correct_scenario
     };
     obj.setState(updateObj);
 };
