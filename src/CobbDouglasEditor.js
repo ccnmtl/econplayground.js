@@ -181,28 +181,31 @@ export default class CobbDouglasEditor extends React.Component {
                 )}
                     </div>
                 </div>
-                <div className="col-sm-4 mb-4">
-                <label htmlFor="gCobbDouglasCorrectScenario">
-                Correct student scenario:
-            </label>
-                <select
-            id="gCobbDouglasCorrectScenario"
-            name="gCobbDouglasCorrectScenario"
-            className="custom-select form-control-sm"
-            value={this.props.gCobbDouglasCorrectScenario}
-            onChange={handleFormUpdate.bind(this)}>
-                <option value="0">{this.props.gCobbDouglasAName} increased</option>
-                <option value="1">{this.props.gCobbDouglasAName} decreased</option>
-                <option value="2">{this.props.gCobbDouglasKName} increased</option>
-                <option value="3">{this.props.gCobbDouglasKName} decreased</option>
-                <option value="4">&alpha; increased</option>
-                <option value="5">&alpha; decreased</option>
-                <option value="6">{this.props.gCobbDouglasLName} increased</option>
-                <option value="7">{this.props.gCobbDouglasLName} decreased</option>
-                </select>
-                </div>
 
+            {this.props.isInstructor && (
+                <div className="col-sm-4 mb-4">
+                    <label htmlFor="gCobbDouglasCorrectScenario">
+                        Correct student scenario:
+                    </label>
+                    <select
+                        id="gCobbDouglasCorrectScenario"
+                        name="gCobbDouglasCorrectScenario"
+                        className="custom-select form-control-sm"
+                        value={this.props.gCobbDouglasCorrectScenario}
+                        onChange={handleFormUpdate.bind(this)}>
+                        <option value="0">{this.props.gCobbDouglasAName} increased</option>
+                        <option value="1">{this.props.gCobbDouglasAName} decreased</option>
+                        <option value="2">{this.props.gCobbDouglasKName} increased</option>
+                        <option value="3">{this.props.gCobbDouglasKName} decreased</option>
+                        <option value="4">&alpha; increased</option>
+                        <option value="5">&alpha; decreased</option>
+                        <option value="6">{this.props.gCobbDouglasLName} increased</option>
+                        <option value="7">{this.props.gCobbDouglasLName} decreased</option>
+                    </select>
                 </div>
+            )}
+
+            </div>
         );
     }
 }
