@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CobbDouglasEditor from './CobbDouglasEditor';
+import NonLinearDemandSupplyEditor from './NonLinearDemandSupplyEditor';
 import CommonGraphEditor from './CommonGraphEditor';
 import JXGBoard from './JXGBoard';
 import RangeEditor from './RangeEditor';
@@ -11,6 +12,62 @@ export default class GraphEditor extends React.Component {
     render() {
         if (!this.props.showing) {
             return null;
+        }
+        if (this.props.gType === 1) {
+            return <div className="GraphEditor">
+                <form>
+                <CommonGraphEditor
+            gTitle={this.props.gTitle}
+            gInstructorNotes={this.props.gInstructorNotes}
+            gDescription={this.props.gDescription}
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            gDisplayFeedback={this.props.gDisplayFeedback}
+            gShowIntersection={this.props.gShowIntersection}
+            gIsPublished={this.props.gIsPublished}
+            updateGraph={this.props.updateGraph}
+                />
+                <JXGBoard
+            id={'editing-graph'}
+            width={562.5}
+            height={300}
+            gType={this.props.gType}
+            gLine1Label={this.props.gLine1Label}
+            gLine2Label={this.props.gLine2Label}
+            gXAxisLabel={'L' || this.props.gCobbDouglasKName}
+            gYAxisLabel={'Y'}
+            gLine1Slope={this.props.gLine1Slope}
+            gLine2Slope={this.props.gLine2Slope}
+            gLine1Offset={this.props.gLine1Offset}
+            gLine2Offset={this.props.gLine2Offset}
+            gShowIntersection={this.props.gShowIntersection}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+            gCobbDouglasA={this.props.gCobbDouglasA}
+            gCobbDouglasAName={this.props.gCobbDouglasAName}
+            gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
+            gCobbDouglasL={this.props.gCobbDouglasL}
+            gCobbDouglasLName={this.props.gCobbDouglasLName}
+            gCobbDouglasLEditable={this.props.gCobbDouglasLEditable}
+            gCobbDouglasK={this.props.gCobbDouglasK}
+            gCobbDouglasKName={this.props.gCobbDouglasKName}
+            gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
+            gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+            gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
+
+                />
+                <NonLinearDemandSupplyEditor
+            isInstructor={true}
+            updateGraph={this.props.updateGraph}
+                />
+
+                <button type="button"
+            className="btn btn-primary btn-sm"
+            onClick={this.handleSaveGraph.bind(this)}>Save</button>
+
+                </form>
+                </div>;
         }
         if (this.props.gType === 3) {
             return <div className="GraphEditor">
