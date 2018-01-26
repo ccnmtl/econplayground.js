@@ -50,8 +50,8 @@ class Graph {
                 gShowIntersection: true,
                 gLine1Label1: '',
                 gLine1Label2: '',
-                gLine1Slope: -1,
-                gLine2Slope: 1,
+                gLine1Slope: 1,
+                gLine2Slope: -1,
                 gLine1Offset: 0,
                 gLine2Offset: 0,
                 gCobbDouglasA: 2,
@@ -325,29 +325,35 @@ let mkDemandSupply = function(board, options) {
     return g;
 };
 
+/**
+ * Non-linear demand and supply graph
+ */
 class LaborMarketGraph extends Graph {
     make() {
         let f = function(x) {
             return 1 / x;
         };
 
-        this.l1 = functionUtils.plot(this.board, f, {
+        this.l1 = this.board.create('line', [
+            [2.5, 2.5 + this.options.gLine1Offset +
+             this.options.l1SubmissionOffset],
+            [3.5, 2.5 + this.options.gLine1Offset +
+             this.options.gLine1Slope + this.options.l1SubmissionOffset]
+        ], {
             name: this.options.gLine1Label,
             withLabel: true,
-            strokeWidth: 2,
-            strokeColor: 'rgb(255, 127, 14)'
-        });
-
-        this.l2 = this.board.create('line', [
-            [0, 0 + this.options.gLine2Offset],
-            [5, 5 + this.options.gLine2Offset]
-        ], {
-            name: this.options.gLine2Label,
-            withLabel: true,
             label: { position: 'rt', offset: [10, -20] },
-            strokeColor: 'steelblue',
+            strokeColor: 'rgb(255, 127, 14)',
             strokeWidth: 2,
             fixed: this.areLinesFixed
+        });
+
+        this.l2 = functionUtils.plot(this.board, f, {
+            name: this.options.gLine2Label,
+            withLabel: true,
+            strokeWidth: 2,
+            strokeColor: 'steelblue'
+
         });
 
         if (this.options.gShowIntersection) {
