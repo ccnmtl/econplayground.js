@@ -129,15 +129,20 @@ let importGraph = function(json, obj) {
         gYAxisLabelEditable: json.y_axis_label_editable,
 
         gCobbDouglasA: window.parseFloat(json.cobb_douglas_a),
+        // Save some initial state here for the shadow feature
+        gCobbDouglasAInitial: window.parseFloat(json.cobb_douglas_a),
         gCobbDouglasAName: json.cobb_douglas_a_name,
         gCobbDouglasAEditable: json.cobb_douglas_a_editable,
         gCobbDouglasL: window.parseFloat(json.cobb_douglas_l),
+        gCobbDouglasLInitial: window.parseFloat(json.cobb_douglas_l),
         gCobbDouglasLName: json.cobb_douglas_l_name,
         gCobbDouglasLEditable: json.cobb_douglas_l_editable,
         gCobbDouglasK: window.parseFloat(json.cobb_douglas_k),
+        gCobbDouglasKInitial: window.parseFloat(json.cobb_douglas_k),
         gCobbDouglasKName: json.cobb_douglas_k_name,
         gCobbDouglasKEditable: json.cobb_douglas_k_editable,
         gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
+        gCobbDouglasAlphaInitial: window.parseFloat(json.cobb_douglas_alpha),
         gCobbDouglasAlphaName: json.cobb_douglas_alpha_name,
         gCobbDouglasAlphaEditable: json.cobb_douglas_alpha_editable,
         gCobbDouglasCorrectScenario: json.cobb_douglas_correct_scenario

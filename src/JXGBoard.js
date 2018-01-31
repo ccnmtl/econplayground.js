@@ -101,18 +101,23 @@ export default class JXGBoard extends React.Component {
                 gLine1Offset: options.gLine1Offset,
                 gLine2Offset: options.gLine2Offset,
                 gCobbDouglasA: options.gCobbDouglasA,
+                gCobbDouglasAInitial: options.gCobbDouglasAInitial,
                 gCobbDouglasAName: options.gCobbDouglasAName,
                 gCobbDouglasL: options.gCobbDouglasL,
+                gCobbDouglasLInitial: options.gCobbDouglasLInitial,
                 gCobbDouglasLName: options.gCobbDouglasLName,
                 gCobbDouglasK: options.gCobbDouglasK,
+                gCobbDouglasKInitial: options.gCobbDouglasKInitial,
                 gCobbDouglasKName: options.gCobbDouglasKName,
                 gCobbDouglasAlpha: options.gCobbDouglasAlpha,
+                gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
                 gNeedsSubmit: options.gNeedsSubmit,
                 l1SubmissionOffset: getL1SubmissionOffset(options.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(options.submission),
                 submission: options.submission,
                 isSubmitted: options.isSubmitted,
-                locked: this.props.locked
+                locked: this.props.locked,
+                shadow: this.props.shadow
             });
         }
     }
@@ -133,14 +138,19 @@ export default class JXGBoard extends React.Component {
             'gLine1Offset',
             'gLine2Offset',
             'gCobbDouglasA',
+            'gCobbDouglasAInitial',
             'gCobbDouglasAName',
             'gCobbDouglasL',
+            'gCobbDouglasLInitial',
             'gCobbDouglasLName',
             'gCobbDouglasK',
+            'gCobbDouglasKInitial',
             'gCobbDouglasKName',
             'gCobbDouglasAlpha',
+            'gCobbDouglasAlphaInitial',
             'gNeedsSubmit',
-            'submission'
+            'submission',
+            'shadow'
         ];
 
         let needsUpdate = false;
@@ -173,18 +183,24 @@ export default class JXGBoard extends React.Component {
                 gLine1Offset: nextProps.gLine1Offset,
                 gLine2Offset: nextProps.gLine2Offset,
                 gCobbDouglasA: nextProps.gCobbDouglasA,
+                gCobbDouglasAInitial: nextProps.gCobbDouglasAInitial,
                 gCobbDouglasAName: nextProps.gCobbDouglasAName,
                 gCobbDouglasL: nextProps.gCobbDouglasL,
+                gCobbDouglasLInitial: nextProps.gCobbDouglasLInitial,
                 gCobbDouglasLName: nextProps.gCobbDouglasLName,
                 gCobbDouglasK: nextProps.gCobbDouglasK,
+                gCobbDouglasKInitial: nextProps.gCobbDouglasKInitial,
                 gCobbDouglasKName: nextProps.gCobbDouglasKName,
                 gCobbDouglasAlpha: nextProps.gCobbDouglasAlpha,
+                gCobbDouglasAlphaInitial: nextProps.gCobbDouglasAlphaInitial,
                 gNeedsSubmit: nextProps.gNeedsSubmit,
 
                 l1SubmissionOffset: getL1SubmissionOffset(nextProps.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(nextProps.submission),
                 submission: nextProps.submission,
-                isSubmitted: !!nextProps.submission
+                isSubmitted: !!nextProps.submission,
+
+                shadow: nextProps.shadow
             });
         }
     }
@@ -205,17 +221,22 @@ export default class JXGBoard extends React.Component {
             gLine1Offset: this.props.gLine1Offset,
             gLine2Offset: this.props.gLine2Offset,
             gCobbDouglasA: this.props.gCobbDouglasA,
+            gCobbDouglasAInitial: this.props.gCobbDouglasAInitial,
             gCobbDouglasAName: this.props.gCobbDouglasAName,
             gCobbDouglasL: this.props.gCobbDouglasL,
+            gCobbDouglasLInitial: this.props.gCobbDouglasLInitial,
             gCobbDouglasLName: this.props.gCobbDouglasLName,
             gCobbDouglasK: this.props.gCobbDouglasK,
+            gCobbDouglasKInitial: this.props.gCobbDouglasKInitial,
             gCobbDouglasKName: this.props.gCobbDouglasKName,
             gCobbDouglasAlpha: this.props.gCobbDouglasAlpha,
+            gCobbDouglasAlphaInitial: this.props.gCobbDouglasAlphaInitial,
             gNeedsSubmit: this.props.gNeedsSubmit,
             l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
             l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
             submission: this.props.submission,
-            isSubmitted: !!this.props.submission
+            isSubmitted: !!this.props.submission,
+            shadow: this.props.shadow
         });
     }
 
@@ -233,6 +254,8 @@ JXGBoard.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
     submission: PropTypes.object,
+    shadow: PropTypes.bool,
+
     gShowIntersection: PropTypes.bool,
     gIntersectionLabel: PropTypes.string,
     gIntersectionHorizLineLabel: PropTypes.string,
@@ -247,13 +270,18 @@ JXGBoard.propTypes = {
     gLine2Offset: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
     gType: PropTypes.number,
+
     gCobbDouglasA: PropTypes.number,
+    gCobbDouglasAInitial: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,
     gCobbDouglasL: PropTypes.number,
+    gCobbDouglasLInitial: PropTypes.number,
     gCobbDouglasLName: PropTypes.string,
     gCobbDouglasK: PropTypes.number,
+    gCobbDouglasKInitial: PropTypes.number,
     gCobbDouglasKName: PropTypes.string,
     gCobbDouglasAlpha: PropTypes.number,
+    gCobbDouglasAlphaInitial: PropTypes.number,
 
     id: PropTypes.string.isRequired,
     locked: PropTypes.bool

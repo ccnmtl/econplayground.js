@@ -422,6 +422,23 @@ class CobbDouglasGraph extends Graph {
             strokeColor: 'rgb(255, 127, 14)'
         });
 
+        if (me.options.shadow) {
+            // Display the initial curve set by the instructor.
+            let fShadow = function(x) {
+                return me.options.gCobbDouglasAInitial *
+                    (me.options.gCobbDouglasKInitial **
+                     me.options.gCobbDouglasAlphaInitial) *
+                    (x ** (1 - me.options.gCobbDouglasAlphaInitial));
+            };
+
+            functionUtils.plot(this.board, fShadow, {
+                name: this.options.gLine1Label,
+                withLabel: false,
+                strokeWidth: 2,
+                strokeColor: 'rgb(100, 100, 100)'
+            });
+        }
+
         const pName = 'f(' + me.options.gCobbDouglasAName + ',' +
               me.options.gCobbDouglasKName + ',' +
               me.options.gCobbDouglasLName + ')';
