@@ -5,16 +5,20 @@ import NonLinearDemandSupplyEditor from './NonLinearDemandSupplyEditor';
 import CommonGraphEditor from './CommonGraphEditor';
 import JXGBoard from './JXGBoard';
 import RangeEditor from './RangeEditor';
-import {handleFormUpdate} from './utils';
+import {handleFormUpdate, displayGraphType} from './utils';
 import './GraphEditor.css';
 
 export default class GraphEditor extends React.Component {
+    title() {
+        return <h2>{displayGraphType(this.props.gType)}</h2>;
+    }
     render() {
         if (!this.props.showing) {
             return null;
         }
         if (this.props.gType === 1) {
             return <div className="GraphEditor">
+                {this.title()}
                 <form>
                 <CommonGraphEditor
             gTitle={this.props.gTitle}
@@ -71,6 +75,7 @@ export default class GraphEditor extends React.Component {
         }
         if (this.props.gType === 3) {
             return <div className="GraphEditor">
+                {this.title()}
                 <form>
                 <CommonGraphEditor
             gTitle={this.props.gTitle}
@@ -140,6 +145,7 @@ export default class GraphEditor extends React.Component {
         }
         return (
             <div className="GraphEditor">
+                {this.title()}
                 <form>
                     <CommonGraphEditor
                          gTitle={this.props.gTitle}

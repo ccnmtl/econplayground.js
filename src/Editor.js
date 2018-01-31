@@ -51,7 +51,6 @@ class Editor extends Component {
     render() {
         return (
             <div className="Editor">
-                <h2>econpractice</h2>
                 <div className="Editor-container" ref={(test) => { this.test = test; }}>
                     <div className="alert alert-danger"
                          hidden={this.state.alertText ? false : true}
