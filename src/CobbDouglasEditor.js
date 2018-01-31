@@ -18,8 +18,9 @@ export default class CobbDouglasEditor extends React.Component {
         return (
             <div>
                 <div>
-                    This is a projection of the Cobb-Douglas
-                    function with L plotted along the X-axis.
+                    This is a projection of the Cobb-Douglas function
+                    with {this.props.gCobbDouglasLName} plotted along
+                    the X-axis.
                     <div className="ml-2 mb-2">
                         <MathJax.Context
                             script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"
@@ -182,26 +183,32 @@ export default class CobbDouglasEditor extends React.Component {
                     </div>
                 </div>
 
+
+
             {this.props.isInstructor && (
-                <div className="col-sm-4 mb-4">
-                    <label htmlFor="gCobbDouglasCorrectScenario">
-                        Correct student scenario:
-                    </label>
-                    <select
-                        id="gCobbDouglasCorrectScenario"
-                        name="gCobbDouglasCorrectScenario"
-                        className="custom-select form-control-sm"
-                        value={this.props.gCobbDouglasCorrectScenario}
-                        onChange={handleFormUpdate.bind(this)}>
-                        <option value="0">{this.props.gCobbDouglasAName} increased</option>
-                        <option value="1">{this.props.gCobbDouglasAName} decreased</option>
-                        <option value="2">{this.props.gCobbDouglasKName} increased</option>
-                        <option value="3">{this.props.gCobbDouglasKName} decreased</option>
-                        <option value="4">&alpha; increased</option>
-                        <option value="5">&alpha; decreased</option>
-                        <option value="6">{this.props.gCobbDouglasLName} increased</option>
-                        <option value="7">{this.props.gCobbDouglasLName} decreased</option>
-                    </select>
+                <div>
+                    <hr />
+                    <h4>Feedback</h4>
+                    <div className="col-sm-4 mb-4">
+                        <label htmlFor="gCobbDouglasCorrectScenario">
+                            Correct student scenario:
+                        </label>
+                        <select
+                            id="gCobbDouglasCorrectScenario"
+                            name="gCobbDouglasCorrectScenario"
+                            className="custom-select form-control-sm"
+                            value={this.props.gCobbDouglasCorrectScenario}
+                            onChange={handleFormUpdate.bind(this)}>
+                            <option value="0">{this.props.gCobbDouglasAName} increased</option>
+                            <option value="1">{this.props.gCobbDouglasAName} decreased</option>
+                            <option value="2">{this.props.gCobbDouglasKName} increased</option>
+                            <option value="3">{this.props.gCobbDouglasKName} decreased</option>
+                            <option value="4">&alpha; increased</option>
+                            <option value="5">&alpha; decreased</option>
+                            <option value="6">{this.props.gCobbDouglasLName} increased</option>
+                            <option value="7">{this.props.gCobbDouglasLName} decreased</option>
+                        </select>
+                    </div>
                 </div>
             )}
 

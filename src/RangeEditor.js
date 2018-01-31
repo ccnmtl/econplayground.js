@@ -25,6 +25,8 @@ export default class RangeEditor extends React.Component {
         onChange={this.props.handler}
         value={this.props.value}
         step="0.01"
+        min={this.props.min}
+        max={this.props.max}
             />
             </div>
             </div>;
