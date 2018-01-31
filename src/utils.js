@@ -131,8 +131,29 @@ let exportFloat = function(n) {
     return Math.round(n * 100) / 100;
 };
 
+let displayGraphType = function(gType) {
+    let name = '';
+    switch (gType) {
+        case 0:
+            name = 'Linear Demand and Supply';
+            break;
+        case 1:
+            name = 'Non-Linear Demand and Supply';
+            break;
+        case 3:
+            name = 'Cobb-Douglas';
+            break;
+        case 5:
+            name = 'Optimal Individual Choice';
+            break;
+        default:
+            break;
+    }
+    return name;
+};
+
 export {
     authedFetch, getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
-    getOffset, exportFloat
+    getOffset, exportFloat, displayGraphType
 };
