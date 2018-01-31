@@ -352,8 +352,8 @@ class LaborMarketGraph extends Graph {
             name: this.options.gLine2Label,
             withLabel: true,
             strokeWidth: 2,
-            strokeColor: 'steelblue'
-
+            strokeColor: 'steelblue',
+            fixed: this.areLinesFixed
         });
 
         if (this.options.gShowIntersection) {
