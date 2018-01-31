@@ -157,6 +157,17 @@ class Editor extends Component {
     handleGraphUpdate(obj) {
         this.setState(obj);
     }
+    componentDidMount() {
+        const me = this;
+        document.addEventListener('l1offset', function(e) {
+            const offset = e.detail;
+            me.setState({gLine1Offset: offset});
+        });
+        document.addEventListener('l2offset', function(e) {
+            const offset = e.detail;
+            me.setState({gLine2Offset: offset});
+        });
+    }
 }
 
 export default Editor;
