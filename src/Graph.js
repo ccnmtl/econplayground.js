@@ -439,7 +439,7 @@ class CobbDouglasGraph extends Graph {
             });
         }
 
-        const pName = 'f(' + me.options.gCobbDouglasAName + ',' +
+        const pName = 'F(' + me.options.gCobbDouglasAName + ',' +
               me.options.gCobbDouglasKName + ',' +
               me.options.gCobbDouglasLName + ')';
 
