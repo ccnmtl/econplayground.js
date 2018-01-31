@@ -160,15 +160,19 @@ class Viewer extends Component {
             gLine2IncreaseScore={this.state.gLine2IncreaseScore}
 
             gCobbDouglasA={this.state.gCobbDouglasA}
+            gCobbDouglasAInitial={this.state.gCobbDouglasAInitial}
             gCobbDouglasAName={this.state.gCobbDouglasAName}
             gCobbDouglasAEditable={this.state.gCobbDouglasAEditable}
             gCobbDouglasL={this.state.gCobbDouglasL}
+            gCobbDouglasLInitial={this.state.gCobbDouglasLInitial}
             gCobbDouglasLName={this.state.gCobbDouglasLName}
             gCobbDouglasLEditable={this.state.gCobbDouglasLEditable}
             gCobbDouglasK={this.state.gCobbDouglasK}
+            gCobbDouglasKInitial={this.state.gCobbDouglasKInitial}
             gCobbDouglasKName={this.state.gCobbDouglasKName}
             gCobbDouglasKEditable={this.state.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
+            gCobbDouglasAlphaInitial={this.state.gCobbDouglasAlphaInitial}
             gCobbDouglasAlphaEditable={this.state.gCobbDouglasAlphaEditable}
 
             submission={this.state.submission}

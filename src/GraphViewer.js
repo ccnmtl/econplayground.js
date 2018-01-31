@@ -51,6 +51,8 @@ export default class GraphViewer extends React.Component {
                             width={562.5}
                             height={300}
                             submission={this.props.submission}
+                            shadow={!isInstructor}
+
                             gType={this.props.gType}
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
@@ -67,12 +69,16 @@ export default class GraphViewer extends React.Component {
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
                             gCobbDouglasA={this.props.gCobbDouglasA}
+                            gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
                             gCobbDouglasAName={this.props.gCobbDouglasAName}
                             gCobbDouglasL={this.props.gCobbDouglasL}
+                            gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
                             gCobbDouglasLName={this.props.gCobbDouglasLName}
                             gCobbDouglasK={this.props.gCobbDouglasK}
+                            gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
                             gCobbDouglasKName={this.props.gCobbDouglasKName}
                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                            gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
                             />
 
                         <Feedback
@@ -393,15 +399,19 @@ GraphViewer.propTypes = {
     gType: PropTypes.number,
 
     gCobbDouglasA: PropTypes.number,
+    gCobbDouglasAInitial: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,
     gCobbDouglasAEditable: PropTypes.bool,
     gCobbDouglasL: PropTypes.number,
+    gCobbDouglasLInitial: PropTypes.number,
     gCobbDouglasLName: PropTypes.string,
     gCobbDouglasLEditable: PropTypes.bool,
     gCobbDouglasK: PropTypes.number,
+    gCobbDouglasKInitial: PropTypes.number,
     gCobbDouglasKName: PropTypes.string,
     gCobbDouglasKEditable: PropTypes.bool,
     gCobbDouglasAlpha: PropTypes.number,
+    gCobbDouglasAlphaInitial: PropTypes.number,
     gCobbDouglasAlphaEditable: PropTypes.bool,
 
     submission: PropTypes.object,
