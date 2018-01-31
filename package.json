@@ -32,7 +32,7 @@
     "fs-extra": "~5.0.0",
     "jest": "~22.1.0",
     "js-cookie": "~2.1.4",
-    "jsxgraph": "~0.99.6",
+    "jsxgraph": "github:jsxgraph/jsxgraph#881c44e05ab618c57316e29d2b2a47eaaff9adb0",
     "object-assign": "~4.1.1",
     "postcss-flexbugs-fixes": "~3.3.0",
     "postcss-loader": "~2.0.9",
