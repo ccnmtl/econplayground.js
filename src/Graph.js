@@ -154,8 +154,8 @@ class Graph {
             } else {
                 this.l1.on('mouseup', function() {
                     // Only do this line reset functionality if this
-                    // is a quiz graph. Otherwise, students should be
-                    // able to play freely.
+                    // is a submittable graph. Otherwise, students
+                    // should be able to play freely.
                     if (me.options.gNeedsSubmit) {
                         me.resetLine2();
                     }
@@ -189,8 +189,8 @@ class Graph {
             } else {
                 this.l2.on('mouseup', function() {
                     // Only do this line reset functionality if this
-                    // is a quiz graph. Otherwise, students should be
-                    // able to play freely.
+                    // is a submittable graph. Otherwise, students
+                    // should be able to play freely.
                     if (me.options.gNeedsSubmit) {
                         me.resetLine1();
                     }
