@@ -49,10 +49,11 @@ export default class CobbDouglasEditor extends React.Component {
 
                         </label>
                         <RangeEditor
-                             dataId="gCobbDouglasA"
-                             value={this.props.gCobbDouglasA}
-                             handler={handleFormUpdate.bind(this)}
-                             min={0} />
+            dataId="gCobbDouglasA"
+            value={this.props.gCobbDouglasA}
+            handler={handleFormUpdate.bind(this)}
+            hideNumber={!this.props.isInstructor}
+            min={0} />
                 </div>
 
                 <div className="col-sm-2">
@@ -88,10 +89,11 @@ export default class CobbDouglasEditor extends React.Component {
                 )}
                             </label>
                             <RangeEditor
-                                 dataId="gCobbDouglasK"
-                                 value={this.props.gCobbDouglasK}
-                                 handler={handleFormUpdate.bind(this)}
-                                 min={0} />
+            dataId="gCobbDouglasK"
+            value={this.props.gCobbDouglasK}
+            handler={handleFormUpdate.bind(this)}
+            hideNumber={!this.props.isInstructor}
+            min={0} />
                         </div>
                     </div>
                     <div className="col-sm-2">
@@ -118,11 +120,12 @@ export default class CobbDouglasEditor extends React.Component {
                             &alpha;
                         </label>
                         <RangeEditor
-                             dataId="gCobbDouglasAlpha"
-                             value={this.props.gCobbDouglasAlpha}
-                             handler={handleFormUpdate.bind(this)}
-                             min={0}
-                             max={1} />
+            dataId="gCobbDouglasAlpha"
+            value={this.props.gCobbDouglasAlpha}
+            handler={handleFormUpdate.bind(this)}
+            hideNumber={!this.props.isInstructor}
+            min={0}
+            max={1} />
                     </div>
                     <div className="col-sm-2">
                 <label></label>
@@ -156,11 +159,12 @@ export default class CobbDouglasEditor extends React.Component {
                 )}
                         </label>
                         <RangeEditor
-                            dataId="gCobbDouglasL"
-                            value={this.props.gCobbDouglasL}
-                            handler={handleFormUpdate.bind(this)}
-                            min={0}
-                            max={10} />
+            dataId="gCobbDouglasL"
+            value={this.props.gCobbDouglasL}
+            handler={handleFormUpdate.bind(this)}
+            hideNumber={!this.props.isInstructor}
+            min={0}
+            max={10} />
                         <small className="form-text text-muted ml-sm-2">
                             This variable is plotted along the X-axis.
                         </small>
