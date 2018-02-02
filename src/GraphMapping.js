@@ -18,6 +18,8 @@ let exportGraph = function(state) {
         interaction_type: state.gInteractionType,
         is_published: state.gIsPublished,
         display_feedback: state.gDisplayFeedback,
+        correct_feedback: state.gCorrectFeedback,
+        incorrect_feedback: state.gIncorrectFeedback,
         needs_submit: state.gNeedsSubmit,
 
         show_intersection: state.gShowIntersection,
@@ -94,6 +96,8 @@ let importGraph = function(json, obj) {
         gInteractionType: json.interaction_type,
         gIsPublished: json.is_published,
         gDisplayFeedback: json.display_feedback,
+        gCorrectFeedback: json.correct_feedback,
+        gIncorrectFeedback: json.incorrect_feedback,
         gNeedsSubmit: json.needs_submit,
 
         gShowIntersection: json.show_intersection,

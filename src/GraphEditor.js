@@ -143,6 +143,9 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasYName={this.props.gCobbDouglasYName}
             gCobbDouglasCorrectScenario={this.props.gCobbDouglasCorrectScenario}
 
+            gCorrectFeedback={this.props.gCorrectFeedback}
+            gIncorrectFeedback={this.props.gIncorrectFeedback}
+
             isInstructor={true}
             updateGraph={this.props.updateGraph}
                 />
@@ -605,6 +608,8 @@ GraphEditor.propTypes = {
 
     gIsPublished: PropTypes.bool,
     gDisplayFeedback: PropTypes.bool,
+    gCorrectFeedback: PropTypes.string,
+    gIncorrectFeedback: PropTypes.string,
     gInstructorNotes: PropTypes.string,
     gLine1Label: PropTypes.string.isRequired,
     gLine1LabelEditable: PropTypes.bool,
