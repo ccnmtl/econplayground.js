@@ -16,21 +16,6 @@ export default class RangeEditor extends React.Component {
         max={this.props.max}
             />
             </div>
-
-        {!this.props.hideNumber &&
-         <div className="col-4">
-         <input
-         className="form-control form-control-sm"
-         data-id={this.props.dataId}
-         type="number"
-         onChange={this.props.handler}
-         value={this.props.value}
-         step="0.01"
-         min={this.props.min}
-         max={this.props.max}
-         />
-         </div>
-        }
             </div>;
     }
 }

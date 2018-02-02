@@ -193,7 +193,7 @@ export default class GraphEditor extends React.Component {
                                 dataId="gLine1Slope"
                                 value={this.props.gLine1Slope}
                                 min={0}
-                                max={100}
+                                max={20}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                         <div className="col-sm-2">
@@ -218,7 +218,7 @@ export default class GraphEditor extends React.Component {
                                 </label>
                                 <RangeEditor
                                     dataId="gLine2Slope"
-                                    min={-100}
+                                    min={-20}
                                     max={0}
                                     value={this.props.gLine2Slope}
                                     handler={handleFormUpdate.bind(this)} />
