@@ -45,7 +45,8 @@ class Editor extends Component {
             gCobbDouglasLName: 'L',
             gCobbDouglasK: 1,
             gCobbDouglasKName: 'K',
-            gCobbDouglasAlpha: 0.65
+            gCobbDouglasAlpha: 0.65,
+            gCobbDouglasYName: 'Y'
         };
     }
     render() {
@@ -111,8 +112,8 @@ class Editor extends Component {
                         gCobbDouglasKName={this.state.gCobbDouglasKName}
                         gCobbDouglasKEditable={this.state.gCobbDouglasKEditable}
                         gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
-                        gCobbDouglasAlphaName={this.state.gCobbDouglasAlphaName}
                         gCobbDouglasAlphaEditable={this.state.gCobbDouglasAlphaEditable}
+                        gCobbDouglasYName={this.state.gCobbDouglasYName}
 
                         updateGraph={this.handleGraphUpdate.bind(this)}
                         saveGraph={this.handleSaveGraph.bind(this)} />

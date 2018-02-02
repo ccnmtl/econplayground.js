@@ -36,6 +36,7 @@ class Viewer extends Component {
             gCobbDouglasK: 1,
             gCobbDouglasKName: 'K',
             gCobbDouglasAlpha: 0.65,
+            gCobbDouglasYName: 'Y',
 
             choice: null,
             value: '',
@@ -108,6 +109,7 @@ class Viewer extends Component {
             gCobbDouglasKEditable={this.state.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
             gCobbDouglasAlphaEditable={this.state.gCobbDouglasAlphaEditable}
+            gCobbDouglasYName={this.state.gCobbDouglasYName}
             gCobbDouglasCorrectScenario={this.state.gCobbDouglasCorrectScenario}
 
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
@@ -174,6 +176,7 @@ class Viewer extends Component {
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
             gCobbDouglasAlphaInitial={this.state.gCobbDouglasAlphaInitial}
             gCobbDouglasAlphaEditable={this.state.gCobbDouglasAlphaEditable}
+            gCobbDouglasYName={this.state.gCobbDouglasYName}
 
             submission={this.state.submission}
             updateGraph={this.handleGraphUpdate.bind(this)}

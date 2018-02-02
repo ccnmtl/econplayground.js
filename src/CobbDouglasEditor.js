@@ -9,11 +9,15 @@ export default class CobbDouglasEditor extends React.Component {
         // eslint thinks these \a characters are unnecessary escapes,
         // but it's actually latex syntax.
         /* eslint-disable */
-        let tex = 'Y = ' + this.props.gCobbDouglasAName +
+        let tex = '= ' + this.props.gCobbDouglasAName +
             this.props.gCobbDouglasKName +
             '^\a' + this.props.gCobbDouglasLName +
             '^{1 - \a}';
         /* eslint-enable */
+
+        if (!this.props.isInstructor) {
+            tex = this.props.gCobbDouglasYName + ' ' + tex;
+        }
 
         return (
             <div>
@@ -21,7 +25,17 @@ export default class CobbDouglasEditor extends React.Component {
                     This is a projection of the Cobb-Douglas function
                     with {this.props.gCobbDouglasLName} plotted along
                     the X-axis.
-                    <div className="ml-2 mb-2">
+                    <div className="form-inline">
+                        {this.props.isInstructor && (
+                            <input type="text"
+                                   className="form-control form-control-sm mr-2"
+                                   data-id="gCobbDouglasYName"
+                                   value={this.props.gCobbDouglasYName}
+                                   maxLength="1"
+                                   size="1"
+                                   onChange={handleFormUpdate.bind(this)}
+                                   />
+                        )}
                         <MathJax.Context
                             script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"
                             input="tex"
@@ -36,19 +50,20 @@ export default class CobbDouglasEditor extends React.Component {
                     <div className="col-sm-4">
                         <label htmlFor="gCobbDouglasA">
                             {this.props.isInstructor ? (
-                            <input type="text"
-                                   id="gCobbDouglasAName"
-                                   maxLength="1"
-                                   className="form-control form-control-sm"
-                                   value={this.props.gCobbDouglasAName}
-                                   onChange={handleFormUpdate.bind(this)}
-                                   />
+                                <input type="text"
+                                       id="gCobbDouglasAName"
+                                       maxLength="1"
+                                       size="1"
+                                       className="form-control form-control-sm"
+                                       value={this.props.gCobbDouglasAName}
+                                       onChange={handleFormUpdate.bind(this)}
+                                       />
                             ) : (
                                 this.props.gCobbDouglasAName
                             )}
 
-                        </label>
-                        <RangeEditor
+            </label>
+                <RangeEditor
             dataId="gCobbDouglasA"
             value={this.props.gCobbDouglasA}
             handler={handleFormUpdate.bind(this)}
@@ -72,13 +87,14 @@ export default class CobbDouglasEditor extends React.Component {
                 }
             </div>
 
-                    <div className="col-sm-4">
-                        <div className="form-group">
+                <div className="col-sm-4">
+                <div className="form-group">
                 <label htmlFor="gCobbDouglasK">
                 {this.props.isInstructor ? (
                     <input type="text"
                            id="gCobbDouglasKName"
                            maxLength="1"
+                           size="1"
                            className="form-control form-control-sm"
                            value={this.props.gCobbDouglasKName}
                            onChange={handleFormUpdate.bind(this)}
@@ -86,15 +102,15 @@ export default class CobbDouglasEditor extends React.Component {
                 ) : (
                     this.props.gCobbDouglasKName
                 )}
-                            </label>
-                            <RangeEditor
+            </label>
+                <RangeEditor
             dataId="gCobbDouglasK"
             value={this.props.gCobbDouglasK}
             handler={handleFormUpdate.bind(this)}
             min={0} />
-                        </div>
-                    </div>
-                    <div className="col-sm-2">
+                </div>
+                </div>
+                <div className="col-sm-2">
                 <label></label>
                 {this.props.isInstructor &&
                  <div className="form-check">
@@ -109,22 +125,22 @@ export default class CobbDouglasEditor extends React.Component {
                  </label>
                  </div>
                 }
-                    </div>
+            </div>
                 </div>
 
                 <div className="row">
-                    <div className="col-sm-4">
-                        <label htmlFor="gCobbDouglasAlpha">
-                            &alpha;
-                        </label>
-                        <RangeEditor
+                <div className="col-sm-4">
+                <label htmlFor="gCobbDouglasAlpha">
+                &alpha;
+            </label>
+                <RangeEditor
             dataId="gCobbDouglasAlpha"
             value={this.props.gCobbDouglasAlpha}
             handler={handleFormUpdate.bind(this)}
             min={0}
             max={1} />
-                    </div>
-                    <div className="col-sm-2">
+                </div>
+                <div className="col-sm-2">
                 <label></label>
                 {this.props.isInstructor &&
                  <div className="form-check">
@@ -139,14 +155,15 @@ export default class CobbDouglasEditor extends React.Component {
                  </label>
                  </div>
                 }
-                    </div>
+            </div>
 
-                    <div className="col-sm-4">
+                <div className="col-sm-4">
                 <label htmlFor="gCobbDouglasL">
                 {this.props.isInstructor ? (
                     <input type="text"
                            id="gCobbDouglasLName"
                            maxLength="1"
+                           size="1"
                            className="form-control form-control-sm"
                            value={this.props.gCobbDouglasLName}
                            onChange={handleFormUpdate.bind(this)}
@@ -154,8 +171,8 @@ export default class CobbDouglasEditor extends React.Component {
                 ) : (
                     this.props.gCobbDouglasLName
                 )}
-                        </label>
-                        <RangeEditor
+            </label>
+                <RangeEditor
             dataId="gCobbDouglasL"
             value={this.props.gCobbDouglasL}
             handler={handleFormUpdate.bind(this)}
@@ -166,23 +183,23 @@ export default class CobbDouglasEditor extends React.Component {
                         This variable is plotted along the X-axis.
                     </small>
                 )}
-                    </div>
-                    <div className="col-sm-2">
+            </div>
+                <div className="col-sm-2">
                 <label></label>
                 {this.props.isInstructor && (
-                 <div className="form-check">
-                 <label className="form-check-label">
-                 <input
-                 id="gCobbDouglasLEditable"
-                 className="form-check-input"
-                 type="checkbox"
-                 onChange={handleFormUpdate.bind(this)}
-                 checked={this.props.gCobbDouglasLEditable} />
-                 Student editable
-                 </label>
-                 </div>
-                )}
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input
+                                id="gCobbDouglasLEditable"
+                                className="form-check-input"
+                                type="checkbox"
+                                onChange={handleFormUpdate.bind(this)}
+                                checked={this.props.gCobbDouglasLEditable} />
+                            Student editable
+                        </label>
                     </div>
+                )}
+            </div>
                 </div>
 
 
@@ -233,6 +250,7 @@ CobbDouglasEditor.propTypes = {
     gCobbDouglasKEditable: PropTypes.bool,
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasAlphaEditable: PropTypes.bool,
+    gCobbDouglasYName: PropTypes.string,
     gCobbDouglasCorrectScenario: PropTypes.number,
 
     isInstructor: PropTypes.bool.isRequired
