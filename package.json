@@ -35,7 +35,7 @@
     "jsxgraph": "github:jsxgraph/jsxgraph#881c44e05ab618c57316e29d2b2a47eaaff9adb0",
     "object-assign": "~4.1.1",
     "postcss-flexbugs-fixes": "~3.3.0",
-    "postcss-loader": "~2.0.9",
+    "postcss-loader": "~2.1.0",
     "promise": "~8.0.1",
     "react": "~16.2.0",
     "react-dev-utils": "~5.0.0",
