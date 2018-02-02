@@ -59,6 +59,7 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
             gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
+            gCobbDouglasYName={this.props.gCobbDouglasYName}
 
                 />
                 <NonLinearDemandSupplyEditor
@@ -94,8 +95,8 @@ export default class GraphEditor extends React.Component {
             gType={this.props.gType}
             gLine1Label={this.props.gLine1Label}
             gLine2Label={this.props.gLine2Label}
-            gXAxisLabel={'L' || this.props.gCobbDouglasKName}
-            gYAxisLabel={'Y'}
+            gXAxisLabel={this.props.gCobbDouglasLName}
+            gYAxisLabel={this.props.gCobbDouglasYName}
             gLine1Slope={this.props.gLine1Slope}
             gLine2Slope={this.props.gLine2Slope}
             gLine1Offset={this.props.gLine1Offset}
@@ -116,7 +117,6 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
             gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
-
                 />
                 <CobbDouglasEditor
             gCobbDouglasA={this.props.gCobbDouglasA}
@@ -130,6 +130,7 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
             gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
+            gCobbDouglasYName={this.props.gCobbDouglasYName}
             gCobbDouglasCorrectScenario={this.props.gCobbDouglasCorrectScenario}
 
             isInstructor={true}
@@ -630,9 +631,9 @@ GraphEditor.propTypes = {
     gCobbDouglasKName: PropTypes.string,
     gCobbDouglasKEditable: PropTypes.bool,
     gCobbDouglasAlpha: PropTypes.number,
-    gCobbDouglasAlphaName: PropTypes.string,
     gCobbDouglasAlphaEditable: PropTypes.bool,
     gCobbDouglasCorrectScenario: PropTypes.number,
+    gCobbDouglasYName: PropTypes.string,
 
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,

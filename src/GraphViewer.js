@@ -56,8 +56,8 @@ export default class GraphViewer extends React.Component {
                             gType={this.props.gType}
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={'L' || this.props.gCobbDouglasKName}
-                            gYAxisLabel={'Y'}
+                            gXAxisLabel={this.props.gCobbDouglasLName}
+                            gYAxisLabel={this.props.gCobbDouglasYName}
                             gLine1Slope={this.props.gLine1Slope}
                             gLine2Slope={this.props.gLine2Slope}
                             gLine1Offset={this.props.gLine1Offset}
@@ -79,6 +79,7 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasKName={this.props.gCobbDouglasKName}
                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                             gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
+                            gCobbDouglasYName={this.props.gCobbDouglasYName}
                             />
 
                         <Feedback
@@ -105,6 +106,7 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                             gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
+                            gCobbDouglasYName={this.props.gCobbDouglasYName}
                             updateGraph={this.props.updateGraph}
                             />
 
@@ -413,6 +415,7 @@ GraphViewer.propTypes = {
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasAlphaInitial: PropTypes.number,
     gCobbDouglasAlphaEditable: PropTypes.bool,
+    gCobbDouglasYName: PropTypes.string,
 
     submission: PropTypes.object,
     updateGraph: PropTypes.func.isRequired,
