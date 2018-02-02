@@ -94,7 +94,11 @@ let handleFormUpdate = function(e) {
 
     switch(e.target.type) {
         case 'checkbox':
-            obj[id] = e.target.checked;
+            if (e.target.className.includes('override')) {
+                obj[id] = parseFloat(e.target.dataset.override);
+            } else {
+                obj[id] = e.target.checked;
+            }
             break;
         case 'number':
         case 'range':

@@ -52,7 +52,6 @@ export default class CobbDouglasEditor extends React.Component {
             dataId="gCobbDouglasA"
             value={this.props.gCobbDouglasA}
             handler={handleFormUpdate.bind(this)}
-            hideNumber={!this.props.isInstructor}
             min={0} />
                 </div>
 
@@ -92,7 +91,6 @@ export default class CobbDouglasEditor extends React.Component {
             dataId="gCobbDouglasK"
             value={this.props.gCobbDouglasK}
             handler={handleFormUpdate.bind(this)}
-            hideNumber={!this.props.isInstructor}
             min={0} />
                         </div>
                     </div>
@@ -123,7 +121,6 @@ export default class CobbDouglasEditor extends React.Component {
             dataId="gCobbDouglasAlpha"
             value={this.props.gCobbDouglasAlpha}
             handler={handleFormUpdate.bind(this)}
-            hideNumber={!this.props.isInstructor}
             min={0}
             max={1} />
                     </div>
@@ -162,7 +159,6 @@ export default class CobbDouglasEditor extends React.Component {
             dataId="gCobbDouglasL"
             value={this.props.gCobbDouglasL}
             handler={handleFormUpdate.bind(this)}
-            hideNumber={!this.props.isInstructor}
             min={0}
             max={10} />
                 {this.props.isInstructor && (

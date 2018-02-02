@@ -16,14 +16,30 @@ export default class RangeEditor extends React.Component {
         max={this.props.max}
             />
             </div>
-            </div>;
+            {this.props.showOverrideCheckbox && (
+                <div className="col-4">
+                    <label className="form-check-label">
+                        <input
+                            data-id={this.props.dataId}
+                            data-override={this.props.overrideValue}
+                            className="form-check-input override"
+                            type="checkbox"
+                            onChange={this.props.handler}
+                            checked={this.props.value === this.props.overrideValue} />
+                        {this.props.overrideLabel}
+                    </label>
+                </div>
+            )}
+        </div>;
     }
 }
 
 RangeEditor.defaultProps = {
     min: -5,
     max: 5,
-    hideNumber: false
+    showOverrideCheckbox: false,
+    overrideLabel: '',
+    overrideValue: 0
 };
 
 RangeEditor.propTypes = {
@@ -32,5 +48,7 @@ RangeEditor.propTypes = {
     value: PropTypes.number.isRequired,
     min: PropTypes.number,
     max: PropTypes.number,
-    hideNumber: PropTypes.bool
+    showOverrideCheckbox: PropTypes.bool,
+    overrideLabel: PropTypes.string,
+    overrideValue: PropTypes.number
 };
