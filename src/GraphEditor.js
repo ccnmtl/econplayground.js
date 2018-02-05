@@ -64,6 +64,16 @@ export default class GraphEditor extends React.Component {
                 />
                 <NonLinearDemandSupplyEditor
             isInstructor={true}
+            gLine1Label={this.props.gLine1Label}
+            gLine2Label={this.props.gLine2Label}
+            gXAxisLabel={'L' || this.props.gCobbDouglasKName}
+            gYAxisLabel={'Y'}
+            gLine1Slope={this.props.gLine1Slope}
+            gLine1Offset={this.props.gLine1Offset}
+            gShowIntersection={this.props.gShowIntersection}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
             updateGraph={this.props.updateGraph}
                 />
 

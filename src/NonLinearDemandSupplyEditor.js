@@ -15,6 +15,9 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         <RangeEditor
                             dataId="gLine1Slope"
                             value={this.props.gLine1Slope}
+                            showOverrideCheckbox={true}
+                            overrideLabel='Vertical'
+                            overrideValue={999}
                             handler={handleFormUpdate.bind(this)} />
                     </div>
                     <div className="col-sm-2">
