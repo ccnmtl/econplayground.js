@@ -73,7 +73,9 @@ class Graph {
 
         // Line 1 and line 2
         this.l1 = null;
+        this.l1Color = 'rgb(255, 127, 14)';
         this.l2 = null;
+        this.l2Color = 'steelblue';
 
         this.options = applyDefaults(options, defaults);
 
@@ -291,7 +293,7 @@ class DemandSupplyGraph extends Graph {
                 name: this.options.gLine1Label,
                 withLabel: true,
                 label: { position: 'rt', offset: [-10, -20] },
-                strokeColor: 'rgb(255, 127, 14)',
+                strokeColor: this.l1Color,
                 strokeWidth: 2,
                 fixed: this.areLinesFixed
             });
@@ -307,7 +309,7 @@ class DemandSupplyGraph extends Graph {
                 name: this.options.gLine2Label,
                 withLabel: true,
                 label: { position: 'rt', offset: [0, 35] },
-                strokeColor: 'steelblue',
+                strokeColor: this.l2Color,
                 strokeWidth: 2,
                 fixed: this.areLinesFixed
             });
@@ -325,13 +327,11 @@ let mkDemandSupply = function(board, options) {
     return g;
 };
 
-/**
- * Non-linear demand and supply graph
- */
-class LaborMarketGraph extends Graph {
+class NonLinearDemandSupplyGraph extends Graph {
     make() {
         let f = function(x) {
-            return 1 / x;
+            const alpha = 0.3;
+            return (1 - alpha) * (1 ** alpha) * (x ** -alpha);
         };
 
         this.l1 = this.board.create('line', [
@@ -343,7 +343,7 @@ class LaborMarketGraph extends Graph {
             name: this.options.gLine1Label,
             withLabel: true,
             label: { position: 'rt', offset: [10, -20] },
-            strokeColor: 'rgb(255, 127, 14)',
+            strokeColor: this.l1Color,
             strokeWidth: 2,
             fixed: this.areLinesFixed
         });
@@ -352,7 +352,7 @@ class LaborMarketGraph extends Graph {
             name: this.options.gLine2Label,
             withLabel: true,
             strokeWidth: 2,
-            strokeColor: 'steelblue',
+            strokeColor: this.l2Color,
             fixed: this.areLinesFixed
         });
 
@@ -362,45 +362,8 @@ class LaborMarketGraph extends Graph {
     }
 }
 
-let mkLaborMarket = function(board, options) {
-    let g = new LaborMarketGraph(board, options);
-    g.make();
-    g.postMake();
-    return g;
-};
-
-class LaborMarketPerfectlyInelasticGraph extends Graph {
-    make() {
-        let f = function(x) {
-            return 1 / x;
-        };
-
-        this.l1 = functionUtils.plot(this.board, f, {
-            name: this.options.gLine1Label,
-            withLabel: true,
-            strokeWidth: 2,
-            strokeColor: 'rgb(255, 127, 14)'
-        });
-
-        this.l2 = this.board.create(
-            'line',
-            [
-                [2.5, 2.5 + this.options.gLine2Offset +
-                 this.options.l2SubmissionOffset],
-                [3.5, 2.5 + this.options.gLine2Offset +
-                 this.options.gLine2Slope + this.options.l2SubmissionOffset]
-            ], {
-                name: this.options.gLine2Label,
-                withLabel: true,
-                strokeColor: 'steelblue',
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
-            });
-    }
-}
-
-let mkLaborMarketPerfectlyInelastic = function(board, options) {
-    let g = new LaborMarketPerfectlyInelasticGraph(board, options);
+let mkNonLinearDemandSupply = function(board, options) {
+    let g = new NonLinearDemandSupplyGraph(board, options);
     g.make();
     g.postMake();
     return g;
@@ -419,7 +382,7 @@ class CobbDouglasGraph extends Graph {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeWidth: 2,
-            strokeColor: 'rgb(255, 127, 14)'
+            strokeColor: this.l1Color
         });
 
         if (me.options.shadow) {
@@ -475,33 +438,7 @@ let mkCobbDouglas = function(board, options) {
     return g;
 };
 
-class LaborSupplyGraph extends Graph {
-    make() {
-        this.l1 = this.board.create(
-            'line', [
-                [0, 5 + this.options.gLine1Offset +
-                 this.options.l1SubmissionOffset],
-                [5, 0 + this.options.gLine1Offset +
-                 this.options.l1SubmissionOffset]
-            ], {
-                name: this.options.gLine1Label,
-                withLabel: true,
-                label: { position: 'rt', offset: [-10, 20] },
-                strokeColor: 'rgb(255, 127, 14)',
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
-            });
-    }
-}
-
-let mkLaborSupply = function(board, options) {
-    let g = new LaborSupplyGraph(board, options);
-    g.make();
-    g.postMake();
-    return g;
-};
-
-class ConsumptionSavingGraph extends Graph {
+class OptimalIndividualChoiceGraph extends Graph {
     make() {
         this.board.create(
             'line', [
@@ -513,105 +450,27 @@ class ConsumptionSavingGraph extends Graph {
                 name: this.options.gLine1Label,
                 withLabel: true,
                 label: { position: 'rt', offset: [-10, 20] },
-                strokeColor: 'rgb(255, 127, 14)',
+                strokeColor: this.l1Color,
                 strokeWidth: 2,
                 fixed: this.areLinesFixed
             });
     }
 }
 
-let mkConsumptionSaving = function(board, options) {
-    let g = new ConsumptionSavingGraph(board, options);
-    g.make();
-    g.postMake();
-    return g;
-};
-
-class SavingInvestmentGraph extends Graph {
-    make() {
-        this.l1 = this.board.create(
-            'line', [
-                [0, 5 + this.options.gLine1Offset +
-                 this.options.l1SubmissionOffset],
-                [5, 0 + this.options.gLine1Offset +
-                this.options.l1SubmissionOffset]
-            ], {
-                name: this.options.gLine1Label,
-                withLabel: true,
-                label: { position: 'rt', offset: [-10, 20] },
-                strokeColor: 'rgb(255, 127, 14)',
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
-            });
-
-        this.l2 = this.board.create(
-            'line', [
-                [0, 0 + this.options.gLine2Offset +
-                 this.options.l2SubmissionOffset],
-                [5, 5 + this.options.gLine2Offset +
-                 this.options.l2SubmissionOffset]
-            ], {
-                name: this.options.gLine2Label,
-                withLabel: true,
-                label: { position: 'rt', offset: [0, 0] },
-                strokeColor: 'steelblue',
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
-            });
-    }
-}
-
-let mkSavingInvestment = function(board, options) {
-    let g = new SavingInvestmentGraph(board, options);
-    g.make();
-    g.postMake();
-    return g;
-};
-
-class MoneyMarketGraph extends Graph {
-    make() {
-        this.l1 = this.board.create(
-            'line', [
-                [0, 5 + this.options.gLine1Offset +
-                 this.options.l1SubmissionOffset],
-                [5, 0 + this.options.gLine1Offset +
-                 this.options.l1SubmissionOffset]
-            ], {
-                name: this.options.gLine1Label,
-                withLabel: true,
-                label: { position: 'rt', offset: [-10, 20] },
-                strokeColor: 'rgb(255, 127, 14)',
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
-            });
-
-        this.l2 = this.board.create(
-            'line', [
-                [0, 0 + this.options.gLine2Offset +
-                 this.options.l2SubmissionOffset],
-                [5, 5 + this.options.gLine2Offset +
-                 this.options.l2SubmissionOffset]
-            ], {
-                name: this.options.gLine2Label,
-                withLabel: true,
-                label: { position: 'rt', offset: [0, 0] },
-                strokeColor: 'steelblue',
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
-            });
-    }
-}
-
-let mkMoneyMarket = function(board, options) {
-    let g = new MoneyMarketGraph(board, options);
+let mkOptimalIndividualChoice = function(board, options) {
+    let g = new OptimalIndividualChoiceGraph(board, options);
     g.make();
     g.postMake();
     return g;
 };
 
 export const graphTypes = [
-    mkDemandSupply, mkLaborMarket,
-    mkLaborMarketPerfectlyInelastic, mkCobbDouglas,
-    mkLaborSupply, mkConsumptionSaving,
-    mkSavingInvestment, mkMoneyMarket
+    // There are some null graph types here because the number of
+    // total graphs in the system has been reduced since it was
+    // originally designed, and I haven't updated the graph type
+    // numerical values to reflect that yet.
+    mkDemandSupply, mkNonLinearDemandSupply,
+    null, mkCobbDouglas,
+    null, mkOptimalIndividualChoice,
+    null, null
 ];
