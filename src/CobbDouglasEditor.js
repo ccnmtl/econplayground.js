@@ -244,7 +244,7 @@ export default class CobbDouglasEditor extends React.Component {
                             </textarea>
                         </div>
                         <div className="col-sm-4 mb-4">
-                            <label htmlFor="gCorrectFeedback">
+                            <label htmlFor="gIncorrectFeedback">
                                 Incorrect student feedback
                             </label>
                             <textarea
