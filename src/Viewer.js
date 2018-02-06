@@ -75,6 +75,8 @@ class Viewer extends Component {
             gIntersectionVertLineLabelEditable={this.state.gIntersectionVertLineLabelEditable}
             gIsPublished={this.state.gIsPublished}
             gDisplayFeedback={this.state.gDisplayFeedback}
+            gCorrectFeedback={this.state.gCorrectFeedback}
+            gIncorrectFeedback={this.state.gIncorrectFeedback}
             gLine1Label={this.state.gLine1Label}
             gLine1LabelEditable={this.state.gLine1LabelEditable}
             gLine2Label={this.state.gLine2Label}

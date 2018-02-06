@@ -208,25 +208,53 @@ export default class CobbDouglasEditor extends React.Component {
                 <div>
                     <hr />
                     <h4>Feedback</h4>
-                    <div className="col-sm-4 mb-4">
-                        <label htmlFor="gCobbDouglasCorrectScenario">
-                            Correct student scenario:
-                        </label>
-                        <select
-                            id="gCobbDouglasCorrectScenario"
-                            name="gCobbDouglasCorrectScenario"
-                            className="custom-select form-control-sm"
-                            value={this.props.gCobbDouglasCorrectScenario}
-                            onChange={handleFormUpdate.bind(this)}>
-                            <option value="0">{this.props.gCobbDouglasAName} increased</option>
-                            <option value="1">{this.props.gCobbDouglasAName} decreased</option>
-                            <option value="2">{this.props.gCobbDouglasKName} increased</option>
-                            <option value="3">{this.props.gCobbDouglasKName} decreased</option>
-                            <option value="4">&alpha; increased</option>
-                            <option value="5">&alpha; decreased</option>
-                            <option value="6">{this.props.gCobbDouglasLName} increased</option>
-                            <option value="7">{this.props.gCobbDouglasLName} decreased</option>
-                        </select>
+                    <div className="row">
+                        <div className="col-sm-4 mb-4">
+                            <label htmlFor="gCobbDouglasCorrectScenario">
+                                Correct student scenario
+                            </label>
+                            <select
+                                id="gCobbDouglasCorrectScenario"
+                                name="gCobbDouglasCorrectScenario"
+                                className="custom-select form-control-sm"
+                                value={this.props.gCobbDouglasCorrectScenario}
+                                onChange={handleFormUpdate.bind(this)}>
+                                <option value="0">{this.props.gCobbDouglasAName} increased</option>
+                                <option value="1">{this.props.gCobbDouglasAName} decreased</option>
+                                <option value="2">{this.props.gCobbDouglasKName} increased</option>
+                                <option value="3">{this.props.gCobbDouglasKName} decreased</option>
+                                <option value="4">&alpha; increased</option>
+                                <option value="5">&alpha; decreased</option>
+                                <option value="6">{this.props.gCobbDouglasLName} increased</option>
+                                <option value="7">{this.props.gCobbDouglasLName} decreased</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-4 mb-4">
+                            <label htmlFor="gCorrectFeedback">
+                                Correct student feedback
+                            </label>
+                            <textarea
+                                id="gCorrectFeedback"
+                                name="gCorrectFeedback"
+                                className="form-control form-control-sm"
+                                onChange={handleFormUpdate.bind(this)}>
+                                {this.props.gCorrectFeedback}
+                            </textarea>
+                        </div>
+                        <div className="col-sm-4 mb-4">
+                            <label htmlFor="gIncorrectFeedback">
+                                Incorrect student feedback
+                            </label>
+                            <textarea
+                                id="gIncorrectFeedback"
+                                name="gIncorrectFeedback"
+                                className="form-control form-control-sm"
+                                onChange={handleFormUpdate.bind(this)}>
+                                {this.props.gIncorrectFeedback}
+                            </textarea>
+                        </div>
                     </div>
                 </div>
             )}
@@ -239,6 +267,8 @@ export default class CobbDouglasEditor extends React.Component {
 CobbDouglasEditor.propTypes = {
     gTitle: PropTypes.string,
     gType: PropTypes.number,
+    gCorrectFeedback: PropTypes.string,
+    gIncorrectFeedback: PropTypes.string,
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,
     gCobbDouglasAEditable: PropTypes.bool,
