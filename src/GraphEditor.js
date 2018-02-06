@@ -43,6 +43,7 @@ export default class GraphEditor extends React.Component {
             gLine2Slope={this.props.gLine2Slope}
             gLine1Offset={this.props.gLine1Offset}
             gLine2Offset={this.props.gLine2Offset}
+            gAlpha={this.props.gAlpha}
             gShowIntersection={this.props.gShowIntersection}
             gIntersectionLabel={this.props.gIntersectionLabel}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
@@ -68,6 +69,7 @@ export default class GraphEditor extends React.Component {
             gLine2Label={this.props.gLine2Label}
             gXAxisLabel={'L' || this.props.gCobbDouglasKName}
             gYAxisLabel={'Y'}
+            gAlpha={this.props.gAlpha}
             gLine1Slope={this.props.gLine1Slope}
             gLine1Offset={this.props.gLine1Offset}
             gShowIntersection={this.props.gShowIntersection}
@@ -214,7 +216,6 @@ export default class GraphEditor extends React.Component {
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                         <div className="col-sm-2">
-                            <label></label>
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
@@ -245,7 +246,6 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
                         <div className="col-sm-2">
-                            <label></label>
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
@@ -276,7 +276,6 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
                         <div className="col-sm-2">
-                            <label></label>
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
@@ -305,7 +304,6 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
                         <div className="col-sm-2">
-                            <label></label>
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
@@ -335,7 +333,6 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
                         <div className="col-sm-2">
-                            <label></label>
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
@@ -363,7 +360,6 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
                         <div className="col-sm-2">
-                            <label></label>
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
@@ -393,7 +389,6 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
                         <div className="col-sm-2">
-                            <label></label>
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
@@ -423,7 +418,6 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
                         <div className="col-sm-2">
-                            <label></label>
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
@@ -451,7 +445,6 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </div>
                         <div className="col-sm-2">
-                            <label></label>
                             <div className="form-check">
                                 <label className="form-check-label">
                                     <input
@@ -635,6 +628,8 @@ GraphEditor.propTypes = {
     gYAxisLabelEditable: PropTypes.bool,
     gType: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
+
+    gAlpha: PropTypes.number,
 
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,

@@ -4,7 +4,8 @@
  * Each graph type is a sub-class of the common Graph class.
  */
 
-import {getOffset} from './utils';
+import { defaultGraph } from './GraphMapping';
+import { getOffset } from './utils';
 
 /**
  * Some utilities for plotting functions in JSXGraph.
@@ -46,25 +47,7 @@ let applyDefaults = function(obj, defaults) {
 class Graph {
     constructor(board, options, defaults) {
         if (typeof defaults === 'undefined') {
-            defaults = {
-                gShowIntersection: true,
-                gLine1Label1: '',
-                gLine1Label2: '',
-                gLine1Slope: 1,
-                gLine2Slope: -1,
-                gLine1Offset: 0,
-                gLine2Offset: 0,
-                gCobbDouglasA: 2,
-                gCobbDouglasL: 5,
-                gCobbDouglasK: 1,
-                gCobbDouglasAName: 'A',
-                gCobbDouglasLName: 'L',
-                gCobbDouglasKName: 'K',
-                gCobbDouglasAlpha: 0.65,
-                isSubmitted: false,
-                l1SubmissionOffset: 0,
-                l2SubmissionOffset: 0
-            };
+            defaults = defaultGraph;
         }
 
         if (typeof options === 'undefined') {
@@ -329,9 +312,11 @@ let mkDemandSupply = function(board, options) {
 
 class NonLinearDemandSupplyGraph extends Graph {
     make() {
+        const me = this;
+
         let f = function(x) {
-            const alpha = 0.3;
-            return (1 - alpha) * (1 ** alpha) * (x ** -alpha);
+            return (1 - me.options.gAlpha) * (1 ** me.options.gAlpha) *
+                (x ** -me.options.gAlpha);
         };
 
         this.l1 = this.board.create('line', [

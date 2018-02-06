@@ -71,7 +71,6 @@ export default class CobbDouglasEditor extends React.Component {
                 </div>
 
                 <div className="col-sm-2">
-                <label></label>
                 {this.props.isInstructor &&
                  <div className="form-check">
                  <label className="form-check-label">
@@ -111,7 +110,6 @@ export default class CobbDouglasEditor extends React.Component {
                 </div>
                 </div>
                 <div className="col-sm-2">
-                <label></label>
                 {this.props.isInstructor &&
                  <div className="form-check">
                  <label className="form-check-label">
@@ -141,7 +139,6 @@ export default class CobbDouglasEditor extends React.Component {
             max={1} />
                 </div>
                 <div className="col-sm-2">
-                <label></label>
                 {this.props.isInstructor &&
                  <div className="form-check">
                  <label className="form-check-label">
@@ -185,7 +182,6 @@ export default class CobbDouglasEditor extends React.Component {
                 )}
             </div>
                 <div className="col-sm-2">
-                <label></label>
                 {this.props.isInstructor && (
                     <div className="form-check">
                         <label className="form-check-label">

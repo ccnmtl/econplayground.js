@@ -66,6 +66,7 @@ class Viewer extends Component {
             gYAxisLabelEditable={this.state.gYAxisLabelEditable}
             gLine1Offset={this.state.gLine1Offset}
             gLine2Offset={this.state.gLine2Offset}
+            gAlpha={this.state.gAlpha}
             gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
             gLine1IncreaseScore={this.state.gLine1IncreaseScore}
             gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
@@ -129,6 +130,7 @@ class Viewer extends Component {
             gYAxisLabelEditable={this.state.gYAxisLabelEditable}
             gLine1Offset={this.state.gLine1Offset}
             gLine2Offset={this.state.gLine2Offset}
+            gAlpha={this.state.gAlpha}
             gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
             gLine1DecreaseScore={this.state.gLine1DecreaseScore}
             gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}

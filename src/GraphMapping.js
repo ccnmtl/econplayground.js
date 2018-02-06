@@ -183,7 +183,7 @@ const defaultGraph = {
     gLine2FeedbackIncrease: '',
     gLine2FeedbackDecrease: '',
 
-    alpha: 0.3,
+    gAlpha: 0.3,
 
     gCobbDouglasA: 2,
     gCobbDouglasAName: 'A',
