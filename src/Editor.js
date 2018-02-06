@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import BackButton from './BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
-import { exportGraph } from './GraphMapping';
+import { exportGraph, defaultGraph } from './GraphMapping';
 import { authedFetch } from './utils';
 import './Editor.css';
 
@@ -12,42 +12,10 @@ class Editor extends Component {
         this.state = {
             step: 0,
             user: null,
-            alertText: null,
-
-            // Graph options
-            gType: null,
-            gShowIntersection: true,
-            gLine1Slope: 1,
-            gLine1Editable: false,
-            gLine2Slope: -1,
-            gLine2Editable: false,
-            gLine1Offset: 0,
-            gLine2Offset: 0,
-            gLine1Label: '',
-            gLine1LabelEditable: false,
-            gLine2Label: '',
-            gLine2LabelEditable: false,
-            gXAxisLabel: '',
-            gXAxisLabelEditable: false,
-            gYAxisLabel: '',
-            gYAxisLabelEditable: false,
-            gIntersectionLabelEditable: false,
-            gIntersectionHorizLineLabelEditable: false,
-            gIntersectionVertLineLabelEditable: false,
-            gLine1FeedbackIncrease: '',
-            gLine1FeedbackDecrease: '',
-            gLine2FeedbackIncrease: '',
-            gLine2FeedbackDecrease: '',
-
-            gCobbDouglasA: 2,
-            gCobbDouglasAName: 'A',
-            gCobbDouglasL: 5,
-            gCobbDouglasLName: 'L',
-            gCobbDouglasK: 1,
-            gCobbDouglasKName: 'K',
-            gCobbDouglasAlpha: 0.65,
-            gCobbDouglasYName: 'Y'
+            alertText: null
         };
+
+        Object.assign(this.state, defaultGraph);
     }
     render() {
         return (

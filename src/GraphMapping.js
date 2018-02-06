@@ -41,6 +41,8 @@ let exportGraph = function(state) {
         line_2_label: state.gLine2Label,
         line_2_label_editable: state.gLine2LabelEditable,
 
+        alpha: exportFloat(state.gAlpha),
+
         x_axis_label: state.gXAxisLabel,
         x_axis_label_editable: state.gXAxisLabelEditable,
         y_axis_label: state.gYAxisLabel,
@@ -127,6 +129,8 @@ let importGraph = function(json, obj) {
         gLine2FeedbackDecrease: json.line_2_feedback_decrease,
         gLine2DecreaseScore: window.parseFloat(json.line_2_decrease_score),
 
+        gAlpha: window.parseFloat(json.alpha),
+
         gXAxisLabel: json.x_axis_label,
         gXAxisLabelEditable: json.x_axis_label_editable,
         gYAxisLabel: json.y_axis_label,
@@ -154,4 +158,41 @@ let importGraph = function(json, obj) {
     obj.setState(updateObj);
 };
 
-export { exportGraph, importGraph };
+const defaultGraph = {
+    // Graph options
+    gId: null,
+    gType: null,
+    gTitle: '',
+    gDescription: '',
+    gInstructorNotes: '',
+    gNeedsSubmit: false,
+    gShowIntersection: true,
+    gIntersectionLabel: '',
+    gIntersectionHorizLineLabel: '',
+    gIntersectionVertLineLabel: '',
+    gLine1Slope: 1,
+    gLine2Slope: -1,
+    gLine1Offset: 0,
+    gLine2Offset: 0,
+    gLine1Label: '',
+    gLine2Label: '',
+    gXAxisLabel: '',
+    gYAxisLabel: '',
+    gLine1FeedbackIncrease: '',
+    gLine1FeedbackDecrease: '',
+    gLine2FeedbackIncrease: '',
+    gLine2FeedbackDecrease: '',
+
+    alpha: 0.3,
+
+    gCobbDouglasA: 2,
+    gCobbDouglasAName: 'A',
+    gCobbDouglasL: 5,
+    gCobbDouglasLName: 'L',
+    gCobbDouglasK: 1,
+    gCobbDouglasKName: 'K',
+    gCobbDouglasAlpha: 0.65,
+    gCobbDouglasYName: 'Y'
+};
+
+export { exportGraph, importGraph, defaultGraph };
