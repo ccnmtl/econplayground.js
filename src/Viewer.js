@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
-import { exportGraph, importGraph } from './GraphMapping';
+import { exportGraph, importGraph, defaultGraph } from './GraphMapping';
 import { authedFetch, getSubmission } from './utils';
 
 class Viewer extends Component {
@@ -11,37 +11,12 @@ class Viewer extends Component {
         this.graphId = window.location.pathname.split('/')[2];
 
         this.state = {
-            // Graph options
-            gId: null,
-            gType: null,
-            gNeedsSubmit: null,
-            gShowIntersection: true,
-            gLine1Slope: 1,
-            gLine2Slope: -1,
-            gLine1Offset: 0,
-            gLine2Offset: 0,
-            gLine1Label: '',
-            gLine2Label: '',
-            gXAxisLabel: '',
-            gYAxisLabel: '',
-            gLine1FeedbackIncrease: '',
-            gLine1FeedbackDecrease: '',
-            gLine2FeedbackIncrease: '',
-            gLine2FeedbackDecrease: '',
-
-            gCobbDouglasA: 2,
-            gCobbDouglasAName: 'A',
-            gCobbDouglasL: 5,
-            gCobbDouglasLName: 'L',
-            gCobbDouglasK: 1,
-            gCobbDouglasKName: 'K',
-            gCobbDouglasAlpha: 0.65,
-            gCobbDouglasYName: 'Y',
-
             choice: null,
             value: '',
             submission: null
         };
+
+        Object.assign(this.state, defaultGraph);
 
         // TODO: clean up this regex
         if (window.location.href.match(/submitted=1/)) {
