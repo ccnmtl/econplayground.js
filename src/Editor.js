@@ -62,7 +62,11 @@ class Editor extends Component {
                         gYAxisLabel={this.state.gYAxisLabel}
                         gYAxisLabelEditable={this.state.gYAxisLabelEditable}
                         gLine1Offset={this.state.gLine1Offset}
+                        gLine1OffsetX={this.state.gLine1OffsetX}
+                        gLine1OffsetY={this.state.gLine1OffsetY}
                         gLine2Offset={this.state.gLine2Offset}
+                        gLine2OffsetX={this.state.gLine2OffsetX}
+                        gLine2OffsetY={this.state.gLine2OffsetY}
                         gAlpha={this.state.gAlpha}
                         gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
                         gLine1DecreaseScore={this.state.gLine1DecreaseScore}
