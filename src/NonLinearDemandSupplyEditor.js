@@ -21,7 +21,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                             handler={handleFormUpdate.bind(this)} />
                     </div>
                     <div className="col-sm-2">
-                        <label></label>
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input
@@ -33,6 +32,17 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 Student editable
                             </label>
                         </div>
+                    </div>
+                    <div className="col">
+                        <label htmlFor="gAlpha">
+                            &alpha;
+                        </label>
+                        <RangeEditor
+                            dataId="gAlpha"
+                            value={this.props.gAlpha}
+                            handler={handleFormUpdate.bind(this)}
+                            min={0}
+                            max={1} />
                     </div>
                 </div>
 
@@ -52,7 +62,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         </div>
                     </div>
                     <div className="col-sm-2">
-                        <label></label>
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input
@@ -81,7 +90,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         </div>
                     </div>
                     <div className="col-sm-2">
-                        <label></label>
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input
@@ -111,7 +119,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         </div>
                     </div>
                     <div className="col-sm-2">
-                        <label></label>
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input
@@ -139,7 +146,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         </div>
                     </div>
                     <div className="col-sm-2">
-                        <label></label>
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input
@@ -169,7 +175,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         </div>
                     </div>
                     <div className="col-sm-2">
-                        <label></label>
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input
@@ -199,7 +204,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         </div>
                     </div>
                     <div className="col-sm-2">
-                        <label></label>
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input
@@ -227,7 +231,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         </div>
                     </div>
                     <div className="col-sm-2">
-                        <label></label>
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input
@@ -254,6 +257,8 @@ NonLinearDemandSupplyEditor.propTypes = {
     gIntersectionHorizLineLabelEditable: PropTypes.bool,
     gIntersectionVertLineLabel: PropTypes.string,
     gIntersectionVertLineLabelEditable: PropTypes.bool,
+
+    gAlpha: PropTypes.number,
 
     gLine1Label: PropTypes.string.isRequired,
     gLine1LabelEditable: PropTypes.bool,
