@@ -6,7 +6,6 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
@@ -257,12 +256,6 @@ module.exports = {
         // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
         new ExtractTextPlugin({
             filename: cssFilename,
-        }),
-        // Generate a manifest file which contains a mapping of all asset filenames
-        // to their corresponding output file so that tools can pick it up without
-        // having to parse `index.html`.
-        new ManifestPlugin({
-            fileName: 'asset-manifest.json',
         }),
         // Moment.js is an extremely popular library that bundles large locale files
         // by default due to how Webpack interprets its code. This is a practical
