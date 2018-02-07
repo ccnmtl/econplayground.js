@@ -72,6 +72,10 @@ export default class GraphEditor extends React.Component {
             gAlpha={this.props.gAlpha}
             gLine1Slope={this.props.gLine1Slope}
             gLine1Offset={this.props.gLine1Offset}
+            gLine1OffsetX={this.props.gLine1OffsetX}
+            gLine1OffsetY={this.props.gLine1OffsetY}
+            gLine2OffsetX={this.props.gLine2OffsetX}
+            gLine2OffsetY={this.props.gLine2OffsetY}
             gShowIntersection={this.props.gShowIntersection}
             gIntersectionLabel={this.props.gIntersectionLabel}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
@@ -613,7 +617,11 @@ GraphEditor.propTypes = {
     gLine2Slope: PropTypes.number.isRequired,
     gLine2SlopeEditable: PropTypes.bool,
     gLine1Offset: PropTypes.number.isRequired,
+    gLine1OffsetX: PropTypes.number.isRequired,
+    gLine1OffsetY: PropTypes.number.isRequired,
     gLine2Offset: PropTypes.number.isRequired,
+    gLine2OffsetX: PropTypes.number.isRequired,
+    gLine2OffsetY: PropTypes.number.isRequired,
     gLine1FeedbackIncrease: PropTypes.string,
     gLine1IncreaseScore: PropTypes.number,
     gLine1FeedbackDecrease: PropTypes.string,

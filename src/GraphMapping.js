@@ -4,7 +4,7 @@
  * Mapping to and from a graph's react.js state and its
  * json representation in django-rest-framework.
  */
-import { exportFloat } from './utils';
+import { forceFloat } from './utils';
 
 /**
  * Returns the current graph settings as a persistable JSON object.
@@ -30,18 +30,22 @@ let exportGraph = function(state) {
         intersection_vert_line_label: state.gIntersectionVertLineLabel,
         intersection_vert_line_label_editable: state.gIntersectionVertLineLabelEditable,
 
-        line_1_slope: exportFloat(state.gLine1Slope),
+        line_1_slope: forceFloat(state.gLine1Slope),
         line_1_slope_editable: state.gLine1SlopeEditable,
-        line_2_slope: exportFloat(state.gLine2Slope),
+        line_2_slope: forceFloat(state.gLine2Slope),
         line_2_slope_editable: state.gLine2SlopeEditable,
-        line_1_offset: exportFloat(state.gLine1Offset),
-        line_2_offset: exportFloat(state.gLine2Offset),
+        line_1_offset: forceFloat(state.gLine1Offset),
+        line_1_offset_x: forceFloat(state.gLine1OffsetX),
+        line_1_offset_y: forceFloat(state.gLine1OffsetY),
+        line_2_offset: forceFloat(state.gLine2Offset),
+        line_2_offset_x: forceFloat(state.gLine2OffsetX),
+        line_2_offset_y: forceFloat(state.gLine2OffsetY),
         line_1_label: state.gLine1Label,
         line_1_label_editable: state.gLine1LabelEditable,
         line_2_label: state.gLine2Label,
         line_2_label_editable: state.gLine2LabelEditable,
 
-        alpha: exportFloat(state.gAlpha),
+        alpha: forceFloat(state.gAlpha),
 
         x_axis_label: state.gXAxisLabel,
         x_axis_label_editable: state.gXAxisLabelEditable,
@@ -53,16 +57,16 @@ let exportGraph = function(state) {
         // Don't send all these cobb-douglas related fields if not
         // saving a cobb-douglas graph.
         const cobb = {
-            cobb_douglas_a: exportFloat(state.gCobbDouglasA),
+            cobb_douglas_a: forceFloat(state.gCobbDouglasA),
             cobb_douglas_a_name: state.gCobbDouglasAName,
             cobb_douglas_a_editable: state.gCobbDouglasAEditable,
-            cobb_douglas_l: exportFloat(state.gCobbDouglasL),
+            cobb_douglas_l: forceFloat(state.gCobbDouglasL),
             cobb_douglas_l_name: state.gCobbDouglasLName,
             cobb_douglas_l_editable: state.gCobbDouglasLEditable,
-            cobb_douglas_k: exportFloat(state.gCobbDouglasK),
+            cobb_douglas_k: forceFloat(state.gCobbDouglasK),
             cobb_douglas_k_name: state.gCobbDouglasKName,
             cobb_douglas_k_editable: state.gCobbDouglasKEditable,
-            cobb_douglas_alpha: exportFloat(state.gCobbDouglasAlpha),
+            cobb_douglas_alpha: forceFloat(state.gCobbDouglasAlpha),
             cobb_douglas_alpha_editable: state.gCobbDouglasAlphaEditable,
             cobb_douglas_y_name: state.gCobbDouglasYName,
             cobb_douglas_correct_scenario: state.gCobbDouglasCorrectScenario
@@ -71,13 +75,13 @@ let exportGraph = function(state) {
     } else {
         const demandSupplyScore = {
             line_1_feedback_increase: state.gLine1FeedbackIncrease,
-            line_1_increase_score: exportFloat(state.gLine1IncreaseScore),
+            line_1_increase_score: forceFloat(state.gLine1IncreaseScore),
             line_1_feedback_decrease: state.gLine1FeedbackDecrease,
-            line_1_decrease_score: exportFloat(state.gLine1DecreaseScore),
+            line_1_decrease_score: forceFloat(state.gLine1DecreaseScore),
             line_2_feedback_increase: state.gLine2FeedbackIncrease,
-            line_2_increase_score: exportFloat(state.gLine2IncreaseScore),
+            line_2_increase_score: forceFloat(state.gLine2IncreaseScore),
             line_2_feedback_decrease: state.gLine2FeedbackDecrease,
-            line_2_decrease_score: exportFloat(state.gLine2DecreaseScore)
+            line_2_decrease_score: forceFloat(state.gLine2DecreaseScore)
         };
         Object.assign(obj, demandSupplyScore);
     }
@@ -115,7 +119,11 @@ let importGraph = function(json, obj) {
         gLine2Slope: window.parseFloat(json.line_2_slope),
         gLine2SlopeEditable: json.line_2_slope_editable,
         gLine1Offset: window.parseFloat(json.line_1_offset),
+        gLine1OffsetX: window.parseFloat(json.line_1_offset_x),
+        gLine1OffsetY: window.parseFloat(json.line_1_offset_y),
         gLine2Offset: window.parseFloat(json.line_2_offset),
+        gLine2OffsetX: window.parseFloat(json.line_2_offset_x),
+        gLine2OffsetY: window.parseFloat(json.line_2_offset_y),
         gLine1Label: json.line_1_label,
         gLine1LabelEditable: json.line_1_label_editable,
         gLine2Label: json.line_2_label,
@@ -173,7 +181,11 @@ const defaultGraph = {
     gLine1Slope: 1,
     gLine2Slope: -1,
     gLine1Offset: 0,
+    gLine1OffsetX: 0,
+    gLine1OffsetY: 0,
     gLine2Offset: 0,
+    gLine2OffsetX: 0,
+    gLine2OffsetY: 0,
     gLine1Label: '',
     gLine2Label: '',
     gXAxisLabel: '',

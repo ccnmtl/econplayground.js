@@ -127,10 +127,10 @@ let getOffset = function(slope, y, n) {
 };
 
 /*
- * Exports a float value that will be acceptable to the Django API's
- * DecimalFields. This is currently capped to 2 decimal places.
+ * Force a value into a float that will be acceptable to the Django
+ * API's DecimalFields. This is currently capped to 2 decimal places.
  */
-let exportFloat = function(n) {
+let forceFloat = function(n) {
     n = Number(n)
     if (isNaN(n) || typeof n === 'undefined') {
         n = 0;
@@ -162,5 +162,5 @@ let displayGraphType = function(gType) {
 export {
     authedFetch, getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
-    getOffset, exportFloat, displayGraphType
+    getOffset, forceFloat, displayGraphType
 };

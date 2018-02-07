@@ -5,7 +5,7 @@
  */
 
 import { defaultGraph } from './GraphMapping';
-import { getOffset } from './utils';
+import { forceFloat, getOffset } from './utils';
 
 /**
  * Some utilities for plotting functions in JSXGraph.
@@ -340,6 +340,14 @@ class NonLinearDemandSupplyGraph extends Graph {
             strokeColor: this.l2Color,
             fixed: this.areLinesFixed
         });
+
+        this.l2.setPosition(window.JXG.COORDS_BY_USER, [
+            forceFloat(this.options.gLine2OffsetX),
+            forceFloat(this.options.gLine2OffsetY)
+        ]);
+        // This is necessary, because otherwise the setPosition call
+        // won't have an effect until the graph is interacted with.
+        this.l2.fullUpdate(true);
 
         if (this.options.gShowIntersection) {
             this.showIntersection(this.l1, this.l2);
