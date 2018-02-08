@@ -6,7 +6,6 @@ import CommonGraphEditor from './CommonGraphEditor';
 import JXGBoard from './JXGBoard';
 import RangeEditor from './RangeEditor';
 import {handleFormUpdate, displayGraphType} from './utils';
-import './GraphEditor.css';
 
 export default class GraphEditor extends React.Component {
     title() {

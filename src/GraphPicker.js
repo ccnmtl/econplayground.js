@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import JXGBoard from './JXGBoard.js';
-import './GraphPicker.css';
 
 export default class GraphPicker extends React.Component {
     render() {

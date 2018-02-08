@@ -4,7 +4,6 @@ import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
 import { exportGraph, defaultGraph } from './GraphMapping';
 import { authedFetch } from './utils';
-import './Editor.css';
 
 class Editor extends Component {
     constructor(props) {
