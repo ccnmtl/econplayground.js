@@ -60,7 +60,8 @@ export default class JXGBoard extends React.Component {
                         withLabel: options.gXAxisLabel ? true : false,
                         ticks: {
                             visible: false
-                        }
+                        },
+                        layer: 9
                     },
                     y: {
                         name: options.gYAxisLabel ? options.gYAxisLabel : 'y',
@@ -70,7 +71,8 @@ export default class JXGBoard extends React.Component {
                         withLabel: options.gYAxisLabel ? true : false,
                         ticks: {
                             visible: false
-                        }
+                        },
+                        layer: 9
                     }
                 },
                 keepAspectRatio: true,
