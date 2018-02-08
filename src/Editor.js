@@ -136,11 +136,25 @@ class Editor extends Component {
         const me = this;
         document.addEventListener('l1offset', function(e) {
             const offset = e.detail;
-            me.setState({gLine1Offset: offset});
+            if (typeof offset === 'object') {
+                me.setState({
+                    gLine1OffsetX: offset.x,
+                    gLine1OffsetY: offset.y
+                });
+            } else {
+                me.setState({gLine1Offset: offset});
+            }
         });
         document.addEventListener('l2offset', function(e) {
             const offset = e.detail;
-            me.setState({gLine2Offset: offset});
+            if (typeof offset === 'object') {
+                me.setState({
+                    gLine2OffsetX: offset.x,
+                    gLine2OffsetY: offset.y
+                });
+            } else {
+                me.setState({gLine2Offset: offset});
+            }
         });
     }
 }

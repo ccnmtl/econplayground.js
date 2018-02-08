@@ -131,7 +131,7 @@ class Graph {
                 this.l1.on('mouseup', function() {
                     const offset = getOffset(
                         me.l1.getSlope(), me.l1.getRise(), 2.5);
-                    let offsetEvt = new CustomEvent('l1offset', {
+                    const offsetEvt = new CustomEvent('l1offset', {
                         detail: offset
                     });
                     document.dispatchEvent(offsetEvt);
@@ -166,7 +166,7 @@ class Graph {
                 this.l2.on('mouseup', function() {
                     const offset = getOffset(
                         me.l2.getSlope(), me.l2.getRise(), 2.5);
-                    let offsetEvt = new CustomEvent('l2offset', {
+                    const offsetEvt = new CustomEvent('l2offset', {
                         detail: offset
                     });
                     document.dispatchEvent(offsetEvt);
@@ -348,6 +348,18 @@ class NonLinearDemandSupplyGraph extends Graph {
         // This is necessary, because otherwise the setPosition call
         // won't have an effect until the graph is interacted with.
         this.l2.fullUpdate(true);
+
+        this.l2.on('mouseup', function() {
+            const xOffset = me.l2.transformations[0].matrix[1][0];
+            const yOffset = me.l2.transformations[0].matrix[2][0];
+            const offsetEvt = new CustomEvent('l2offset', {
+                detail: {
+                    x: xOffset,
+                    y: yOffset
+                }
+            });
+            document.dispatchEvent(offsetEvt);
+        });
 
         if (this.options.gShowIntersection) {
             this.showIntersection(this.l1, this.l2);
