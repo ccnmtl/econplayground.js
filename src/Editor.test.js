@@ -39,12 +39,7 @@ it('exports its graph state', () => {
         expect(o.line_2_slope).toBe(-1);
         expect(o.line_1_label).toBe('');
         expect(o.line_2_label).toBe('');
-        expect(o.line_1_feedback_increase).toBe('');
-        expect(o.line_1_feedback_decrease).toBe('');
-        expect(o.line_2_feedback_increase).toBe('');
-        expect(o.line_2_feedback_decrease).toBe('');
         expect(o.y_axis_label).toBe('');
         expect(o.x_axis_label).toBe('');
-        expect(o.y_axis_label).toBe('');
     });
 })

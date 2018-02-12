@@ -315,8 +315,11 @@ class NonLinearDemandSupplyGraph extends Graph {
         const me = this;
 
         let f = function(x) {
-            return (1 - me.options.gAlpha) * (1 ** me.options.gAlpha) *
-                (x ** -me.options.gAlpha);
+            const alpha = 0.3;
+            return (1 - alpha) *
+                (me.options.gCobbDouglasA *
+                 me.options.gCobbDouglasK ** alpha) *
+                (x ** -alpha);
         };
 
         this.l1 = this.board.create('line', [

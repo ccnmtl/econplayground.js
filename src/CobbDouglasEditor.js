@@ -11,8 +11,8 @@ export default class CobbDouglasEditor extends React.Component {
         /* eslint-disable */
         let tex = '= ' + this.props.gCobbDouglasAName +
             this.props.gCobbDouglasKName +
-            '^\a' + this.props.gCobbDouglasLName +
-            '^{1 - \a}';
+            '^α' + this.props.gCobbDouglasLName +
+            '^{1 - α}';
         /* eslint-enable */
 
         if (!this.props.isInstructor) {
@@ -37,7 +37,7 @@ export default class CobbDouglasEditor extends React.Component {
                                    />
                         )}
                         <MathJax.Context
-                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"
+                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"
                             input="tex"
                             options={{
                                 displayAlign: 'left'

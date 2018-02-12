@@ -42,10 +42,17 @@ export default class JXGBoard extends React.Component {
         }
 
         let xAxisLabel = '';
+        let yAxisLabel = '';
         if (options.gType === 3) {
             xAxisLabel = options.gCobbDouglasLName;
+            yAxisLabel = options.gYAxisLabel || options.gCobbDouglasYName;
+        } else if (options.gType === 1) {
+            // Non-linear demand-supply
+            xAxisLabel = 'N';
+            yAxisLabel = 'MP<sub>n</sub>';
         } else {
             xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
+            yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
         }
 
         let board = JXG.JSXGraph.initBoard(
@@ -57,18 +64,18 @@ export default class JXGBoard extends React.Component {
                         label: {
                             offset: [440, -12]
                         },
-                        withLabel: options.gXAxisLabel ? true : false,
+                        withLabel: xAxisLabel ? true : false,
                         ticks: {
                             visible: false
                         },
                         layer: 9
                     },
                     y: {
-                        name: options.gYAxisLabel ? options.gYAxisLabel : 'y',
+                        name: yAxisLabel,
                         label: {
-                            offset: [-12, 260]
+                            offset: [-22, 260]
                         },
-                        withLabel: options.gYAxisLabel ? true : false,
+                        withLabel: yAxisLabel ? true : false,
                         ticks: {
                             visible: false
                         },
@@ -307,6 +314,7 @@ JXGBoard.propTypes = {
     gCobbDouglasK: PropTypes.number,
     gCobbDouglasKInitial: PropTypes.number,
     gCobbDouglasKName: PropTypes.string,
+    gCobbDouglasYName: PropTypes.string,
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasAlphaInitial: PropTypes.number,
 

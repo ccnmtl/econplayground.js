@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MathJax from 'react-mathjax'
 import RangeEditor from './RangeEditor';
 import {handleFormUpdate} from './utils';
 
 export default class NonLinearDemandSupplyEditor extends React.Component {
     render() {
+        const tex = 'MP_N = (1 - α)AK^α N^{-α}';
         return (
             <div>
+                <MathJax.Context
+                    script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"
+                    input="tex"
+                    options={{
+                        displayAlign: 'left'
+                    }}>
+                    <MathJax.Node>{tex}</MathJax.Node>
+                </MathJax.Context>
                 <div className="form-row">
                     <div className="col-sm-4">
                         <label htmlFor="gLine1Slope">
@@ -33,16 +43,31 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                             </label>
                         </div>
                     </div>
+
+                </div>
+
+                <div className="row">
                     <div className="col">
-                        <label htmlFor="gAlpha">
-                            &alpha;
+                        <label htmlFor="gCobbDouglasA">
+                            A
                         </label>
                         <RangeEditor
-                            dataId="gAlpha"
-                            value={this.props.gAlpha}
+                            dataId="gCobbDouglasA"
+                            value={this.props.gCobbDouglasA}
                             handler={handleFormUpdate.bind(this)}
-                            min={0}
-                            max={1} />
+                            min={0.1}
+                            max={5} />
+                    </div>
+                    <div className="col">
+                        <label htmlFor="gCobbDouglasK">
+                            K
+                        </label>
+                        <RangeEditor
+                            dataId="gCobbDouglasK"
+                            value={this.props.gCobbDouglasK}
+                            handler={handleFormUpdate.bind(this)}
+                            min={0.1}
+                            max={5} />
                     </div>
                 </div>
 
@@ -98,62 +123,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                     type="checkbox"
                                     onChange={handleFormUpdate.bind(this)}
                                     checked={this.props.gLine2LabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="col-sm-4">
-                        <div className="form-group">
-                            <label htmlFor="gXAxisLabel">
-                                X-axis label:
-                            </label>
-                            <input id="gXAxisLabel"
-                                   className="form-control form-control-sm"
-                                   type="text"
-                                   maxLength="60"
-                                   value={this.props.gXAxisLabel}
-                                   onChange={handleFormUpdate.bind(this)} />
-                        </div>
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gXAxisLabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gXAxisLabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
-
-                    <div className="col-sm-4">
-                        <div className="form-group">
-                            <label htmlFor="gYAxisLabel">
-                                Y-axis label:
-                            </label>
-                            <input id="gYAxisLabel"
-                                   className="form-control form-control-sm"
-                                   type="text"
-                                   maxLength="60"
-                                   value={this.props.gYAxisLabel}
-                                   onChange={handleFormUpdate.bind(this)} />
-                        </div>
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gYAxisLabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gYAxisLabelEditable} />
                                 Student editable
                             </label>
                         </div>
@@ -258,7 +227,8 @@ NonLinearDemandSupplyEditor.propTypes = {
     gIntersectionVertLineLabel: PropTypes.string,
     gIntersectionVertLineLabelEditable: PropTypes.bool,
 
-    gAlpha: PropTypes.number,
+    gCobbDouglasA: PropTypes.number,
+    gCobbDouglasK: PropTypes.number,
 
     gLine1Label: PropTypes.string.isRequired,
     gLine1LabelEditable: PropTypes.bool,
@@ -267,10 +237,6 @@ NonLinearDemandSupplyEditor.propTypes = {
     gLine1Slope: PropTypes.number.isRequired,
     gLine1SlopeEditable: PropTypes.bool,
     gLine1Offset: PropTypes.number.isRequired,
-    gXAxisLabel: PropTypes.string.isRequired,
-    gXAxisLabelEditable: PropTypes.bool,
-    gYAxisLabel: PropTypes.string.isRequired,
-    gYAxisLabelEditable: PropTypes.bool,
 
     isInstructor: PropTypes.bool.isRequired
 }
