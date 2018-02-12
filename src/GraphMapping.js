@@ -149,23 +149,28 @@ let importGraph = function(json, obj) {
         gYAxisLabelEditable: json.y_axis_label_editable,
 
         gCobbDouglasA: window.parseFloat(json.cobb_douglas_a),
-        // Save some initial state here for the shadow feature
-        gCobbDouglasAInitial: window.parseFloat(json.cobb_douglas_a),
         gCobbDouglasAName: json.cobb_douglas_a_name,
         gCobbDouglasAEditable: json.cobb_douglas_a_editable,
         gCobbDouglasL: window.parseFloat(json.cobb_douglas_l),
-        gCobbDouglasLInitial: window.parseFloat(json.cobb_douglas_l),
         gCobbDouglasLName: json.cobb_douglas_l_name,
         gCobbDouglasLEditable: json.cobb_douglas_l_editable,
         gCobbDouglasK: window.parseFloat(json.cobb_douglas_k),
-        gCobbDouglasKInitial: window.parseFloat(json.cobb_douglas_k),
         gCobbDouglasKName: json.cobb_douglas_k_name,
         gCobbDouglasKEditable: json.cobb_douglas_k_editable,
         gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
-        gCobbDouglasAlphaInitial: window.parseFloat(json.cobb_douglas_alpha),
         gCobbDouglasAlphaEditable: json.cobb_douglas_alpha_editable,
         gCobbDouglasYName: json.cobb_douglas_y_name,
-        gCobbDouglasCorrectScenario: json.cobb_douglas_correct_scenario
+        gCobbDouglasCorrectScenario: json.cobb_douglas_correct_scenari,
+
+        // Save some initial state here for the shadow feature
+        gLine1OffsetInitial: window.parseFloat(json.line_1_offset),
+        gLine1SlopeInitial: window.parseFloat(json.line_1_slope),
+        gLine2OffsetXInitial: window.parseFloat(json.line_2_offset_x),
+        gLine2OffsetYInitial: window.parseFloat(json.line_2_offset_y),
+        gCobbDouglasAInitial: window.parseFloat(json.cobb_douglas_a),
+        gCobbDouglasLInitial: window.parseFloat(json.cobb_douglas_l),
+        gCobbDouglasKInitial: window.parseFloat(json.cobb_douglas_k),
+        gCobbDouglasAlphaInitial: window.parseFloat(json.cobb_douglas_alpha)
     };
     obj.setState(updateObj);
 };

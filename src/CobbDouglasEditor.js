@@ -6,14 +6,10 @@ import {handleFormUpdate} from './utils';
 
 export default class CobbDouglasEditor extends React.Component {
     render() {
-        // eslint thinks these \a characters are unnecessary escapes,
-        // but it's actually latex syntax.
-        /* eslint-disable */
         let tex = '= ' + this.props.gCobbDouglasAName +
             this.props.gCobbDouglasKName +
             '^α' + this.props.gCobbDouglasLName +
             '^{1 - α}';
-        /* eslint-enable */
 
         if (!this.props.isInstructor) {
             tex = this.props.gCobbDouglasYName + ' ' + tex;
