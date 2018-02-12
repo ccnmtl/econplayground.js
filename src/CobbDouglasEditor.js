@@ -6,14 +6,10 @@ import {handleFormUpdate} from './utils';
 
 export default class CobbDouglasEditor extends React.Component {
     render() {
-        // eslint thinks these \a characters are unnecessary escapes,
-        // but it's actually latex syntax.
-        /* eslint-disable */
         let tex = '= ' + this.props.gCobbDouglasAName +
             this.props.gCobbDouglasKName +
-            '^\a' + this.props.gCobbDouglasLName +
-            '^{1 - \a}';
-        /* eslint-enable */
+            '^α' + this.props.gCobbDouglasLName +
+            '^{1 - α}';
 
         if (!this.props.isInstructor) {
             tex = this.props.gCobbDouglasYName + ' ' + tex;
@@ -37,7 +33,7 @@ export default class CobbDouglasEditor extends React.Component {
                                    />
                         )}
                         <MathJax.Context
-                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"
+                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"
                             input="tex"
                             options={{
                                 displayAlign: 'left'

@@ -50,20 +50,24 @@ let exportGraph = function(state) {
         x_axis_label: state.gXAxisLabel,
         x_axis_label_editable: state.gXAxisLabelEditable,
         y_axis_label: state.gYAxisLabel,
-        y_axis_label_editable: state.gYAxisLabelEditable
+        y_axis_label_editable: state.gYAxisLabelEditable,
+
+        // I'm using these A and K fields for the non-linear
+        // demand-supply graph and the cobb-douglas graph. The names
+        // should be generalized.
+        cobb_douglas_a: forceFloat(state.gCobbDouglasA),
+        cobb_douglas_k: forceFloat(state.gCobbDouglasK)
     }
 
     if (state.gType === 3) {
         // Don't send all these cobb-douglas related fields if not
         // saving a cobb-douglas graph.
         const cobb = {
-            cobb_douglas_a: forceFloat(state.gCobbDouglasA),
             cobb_douglas_a_name: state.gCobbDouglasAName,
             cobb_douglas_a_editable: state.gCobbDouglasAEditable,
             cobb_douglas_l: forceFloat(state.gCobbDouglasL),
             cobb_douglas_l_name: state.gCobbDouglasLName,
             cobb_douglas_l_editable: state.gCobbDouglasLEditable,
-            cobb_douglas_k: forceFloat(state.gCobbDouglasK),
             cobb_douglas_k_name: state.gCobbDouglasKName,
             cobb_douglas_k_editable: state.gCobbDouglasKEditable,
             cobb_douglas_alpha: forceFloat(state.gCobbDouglasAlpha),
@@ -72,7 +76,7 @@ let exportGraph = function(state) {
             cobb_douglas_correct_scenario: state.gCobbDouglasCorrectScenario
         };
         Object.assign(obj, cobb);
-    } else {
+    } else if (state.gType === 0) {
         const demandSupplyScore = {
             line_1_feedback_increase: state.gLine1FeedbackIncrease,
             line_1_increase_score: forceFloat(state.gLine1IncreaseScore),
@@ -145,23 +149,28 @@ let importGraph = function(json, obj) {
         gYAxisLabelEditable: json.y_axis_label_editable,
 
         gCobbDouglasA: window.parseFloat(json.cobb_douglas_a),
-        // Save some initial state here for the shadow feature
-        gCobbDouglasAInitial: window.parseFloat(json.cobb_douglas_a),
         gCobbDouglasAName: json.cobb_douglas_a_name,
         gCobbDouglasAEditable: json.cobb_douglas_a_editable,
         gCobbDouglasL: window.parseFloat(json.cobb_douglas_l),
-        gCobbDouglasLInitial: window.parseFloat(json.cobb_douglas_l),
         gCobbDouglasLName: json.cobb_douglas_l_name,
         gCobbDouglasLEditable: json.cobb_douglas_l_editable,
         gCobbDouglasK: window.parseFloat(json.cobb_douglas_k),
-        gCobbDouglasKInitial: window.parseFloat(json.cobb_douglas_k),
         gCobbDouglasKName: json.cobb_douglas_k_name,
         gCobbDouglasKEditable: json.cobb_douglas_k_editable,
         gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
-        gCobbDouglasAlphaInitial: window.parseFloat(json.cobb_douglas_alpha),
         gCobbDouglasAlphaEditable: json.cobb_douglas_alpha_editable,
         gCobbDouglasYName: json.cobb_douglas_y_name,
-        gCobbDouglasCorrectScenario: json.cobb_douglas_correct_scenario
+        gCobbDouglasCorrectScenario: json.cobb_douglas_correct_scenari,
+
+        // Save some initial state here for the shadow feature
+        gLine1OffsetInitial: window.parseFloat(json.line_1_offset),
+        gLine1SlopeInitial: window.parseFloat(json.line_1_slope),
+        gLine2OffsetXInitial: window.parseFloat(json.line_2_offset_x),
+        gLine2OffsetYInitial: window.parseFloat(json.line_2_offset_y),
+        gCobbDouglasAInitial: window.parseFloat(json.cobb_douglas_a),
+        gCobbDouglasLInitial: window.parseFloat(json.cobb_douglas_l),
+        gCobbDouglasKInitial: window.parseFloat(json.cobb_douglas_k),
+        gCobbDouglasAlphaInitial: window.parseFloat(json.cobb_douglas_alpha)
     };
     obj.setState(updateObj);
 };
