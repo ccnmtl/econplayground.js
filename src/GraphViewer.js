@@ -136,32 +136,47 @@ export default class GraphViewer extends React.Component {
                     <input type="hidden" name="next" value={successUrl} />
                     <input type="hidden" name="launchUrl" value={launchUrl} />
                     <JXGBoard
-                         id={'editing-graph'}
-                         width={562.5}
-                         height={300}
-                         submission={this.props.submission}
-                         gType={this.props.gType}
-                         gLine1Label={this.props.gLine1Label}
-                         gLine2Label={this.props.gLine2Label}
-                         gXAxisLabel={this.props.gXAxisLabel}
-                         gYAxisLabel={this.props.gYAxisLabel}
-                         gLine1Slope={this.props.gLine1Slope}
-                         gLine2Slope={this.props.gLine2Slope}
-                         gLine1Offset={this.props.gLine1Offset}
-                         gLine2Offset={this.props.gLine2Offset}
-                         gNeedsSubmit={this.props.gNeedsSubmit}
-                         gShowIntersection={this.props.gShowIntersection}
-                         gIntersectionLabel={this.props.gIntersectionLabel}
-                         gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                         gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                        id={'editing-graph'}
+                        width={562.5}
+                        height={300}
+                        submission={this.props.submission}
+                        shadow={!isInstructor}
+
+                        gType={this.props.gType}
+                        gLine1Label={this.props.gLine1Label}
+                        gLine2Label={this.props.gLine2Label}
+                        gXAxisLabel={this.props.gXAxisLabel}
+                        gYAxisLabel={this.props.gYAxisLabel}
+                        gLine1Slope={this.props.gLine1Slope}
+                        gLine2Slope={this.props.gLine2Slope}
+                        gLine1SlopeInitial={this.props.gLine1SlopeInitial}
+                        gLine2SlopeInitial={this.props.gLine2SlopeInitial}
+                        gLine1Offset={this.props.gLine1Offset}
+                        gLine1OffsetX={this.props.gLine1OffsetX}
+                        gLine1OffsetY={this.props.gLine1OffsetY}
+                        gLine1OffsetInitial={this.props.gLine1OffsetInitial}
+                        gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
+                        gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
+                        gLine2Offset={this.props.gLine2Offset}
+                        gLine2OffsetX={this.props.gLine2OffsetX}
+                        gLine2OffsetY={this.props.gLine2OffsetY}
+                        gLine2OffsetInitial={this.props.gLine2OffsetInitial}
+                        gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
+                        gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
+                        gNeedsSubmit={this.props.gNeedsSubmit}
+                        gShowIntersection={this.props.gShowIntersection}
+                        gIntersectionLabel={this.props.gIntersectionLabel}
+                        gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                        gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
                         gCobbDouglasA={this.props.gCobbDouglasA}
-                        gCobbDouglasAName={this.props.gCobbDouglasAName}
+                        gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
                         gCobbDouglasL={this.props.gCobbDouglasL}
-                        gCobbDouglasLName={this.props.gCobbDouglasLName}
+                        gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
                         gCobbDouglasK={this.props.gCobbDouglasK}
-                        gCobbDouglasKName={this.props.gCobbDouglasKName}
+                        gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
                         gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                        gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
                         />
 
                     <Feedback
@@ -385,11 +400,23 @@ GraphViewer.propTypes = {
     gYAxisLabel: PropTypes.string,
     gYAxisLabelEditable: PropTypes.bool,
     gLine1Slope: PropTypes.number,
+    gLine1SlopeInitial: PropTypes.number,
     gLine1SlopeEditable: PropTypes.bool,
     gLine2Slope: PropTypes.number,
+    gLine2SlopeInitial: PropTypes.number,
     gLine2SlopeEditable: PropTypes.bool,
     gLine1Offset: PropTypes.number,
+    gLine1OffsetX: PropTypes.number,
+    gLine1OffsetY: PropTypes.number,
+    gLine1OffsetInitial: PropTypes.number,
+    gLine1OffsetXInitial: PropTypes.number,
+    gLine1OffsetYInitial: PropTypes.number,
     gLine2Offset: PropTypes.number,
+    gLine2OffsetX: PropTypes.number,
+    gLine2OffsetY: PropTypes.number,
+    gLine2OffsetInitial: PropTypes.number,
+    gLine2OffsetXInitial: PropTypes.number,
+    gLine2OffsetYInitial: PropTypes.number,
     gLine1FeedbackIncrease: PropTypes.string,
     gLine1IncreaseScore: PropTypes.number,
     gLine1FeedbackDecrease: PropTypes.string,

@@ -315,27 +315,42 @@ class NonLinearDemandSupplyGraph extends Graph {
         const me = this;
         const alpha = 0.3;
 
-        let f = function(x) {
-            return (1 - alpha) *
-                (me.options.gCobbDouglasA *
-                 me.options.gCobbDouglasK ** alpha) *
-                (x ** -alpha);
-        };
-
         if (me.options.shadow) {
-            // Display the initial curve set by the instructor.
-            let fShadow = function(x) {
+            // Display the initial curves set by the instructor.
+            this.l1 = this.board.create('line', [
+                [2.5, 2.5 + this.options.gLine1OffsetInitial],
+                [3.5, 2.5 + this.options.gLine1OffsetInitial +
+                 this.options.gLine1SlopeInitial]
+            ], {
+                withLabel: false,
+                strokeColor: 'rgb(100, 100, 100)',
+                strokeWidth: 2,
+                fixed: true,
+                layer: 4
+            });
+
+            const fShadow = function(x) {
                 return (1 - alpha) *
                     (me.options.gCobbDouglasAInitial *
                      me.options.gCobbDouglasKInitial ** alpha) *
                     (x ** -alpha);
             };
 
-            functionUtils.plot(this.board, fShadow, {
+            const lfShadow = functionUtils.plot(this.board, fShadow, {
                 withLabel: false,
                 strokeWidth: 2,
-                strokeColor: 'rgb(100, 100, 100)'
+                strokeColor: 'rgb(100, 100, 100)',
+                fixed: true,
+                layer: 4
             });
+
+            lfShadow.setPosition(window.JXG.COORDS_BY_USER, [
+                forceFloat(this.options.gLine2OffsetXInitial),
+                forceFloat(this.options.gLine2OffsetYInitial)
+            ]);
+            // This is necessary, because otherwise the setPosition call
+            // won't have an effect until the graph is interacted with.
+            lfShadow.fullUpdate(true);
         }
 
         this.l1 = this.board.create('line', [
@@ -351,6 +366,13 @@ class NonLinearDemandSupplyGraph extends Graph {
             strokeWidth: 2,
             fixed: this.areLinesFixed
         });
+
+        const f = function(x) {
+            return (1 - alpha) *
+                (me.options.gCobbDouglasA *
+                 me.options.gCobbDouglasK ** alpha) *
+                (x ** -alpha);
+        };
 
         this.l2 = functionUtils.plot(this.board, f, {
             name: this.options.gLine2Label,
@@ -396,7 +418,7 @@ let mkNonLinearDemandSupply = function(board, options) {
 class CobbDouglasGraph extends Graph {
     make() {
         const me = this;
-        let f = function(x) {
+        const f = function(x) {
             return me.options.gCobbDouglasA *
                 (me.options.gCobbDouglasK ** me.options.gCobbDouglasAlpha) *
                 (x ** (1 - me.options.gCobbDouglasAlpha));
@@ -411,7 +433,7 @@ class CobbDouglasGraph extends Graph {
 
         if (me.options.shadow) {
             // Display the initial curve set by the instructor.
-            let fShadow = function(x) {
+            const fShadow = function(x) {
                 return me.options.gCobbDouglasAInitial *
                     (me.options.gCobbDouglasKInitial **
                      me.options.gCobbDouglasAlphaInitial) *
@@ -422,7 +444,9 @@ class CobbDouglasGraph extends Graph {
                 name: this.options.gLine1Label,
                 withLabel: false,
                 strokeWidth: 2,
-                strokeColor: 'rgb(100, 100, 100)'
+                strokeColor: 'rgb(100, 100, 100)',
+                // Under the main line layer
+                layer: 4
             });
         }
 
