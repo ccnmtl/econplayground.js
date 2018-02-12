@@ -313,14 +313,30 @@ let mkDemandSupply = function(board, options) {
 class NonLinearDemandSupplyGraph extends Graph {
     make() {
         const me = this;
+        const alpha = 0.3;
 
         let f = function(x) {
-            const alpha = 0.3;
             return (1 - alpha) *
                 (me.options.gCobbDouglasA *
                  me.options.gCobbDouglasK ** alpha) *
                 (x ** -alpha);
         };
+
+        if (me.options.shadow) {
+            // Display the initial curve set by the instructor.
+            let fShadow = function(x) {
+                return (1 - alpha) *
+                    (me.options.gCobbDouglasAInitial *
+                     me.options.gCobbDouglasKInitial ** alpha) *
+                    (x ** -alpha);
+            };
+
+            functionUtils.plot(this.board, fShadow, {
+                withLabel: false,
+                strokeWidth: 2,
+                strokeColor: 'rgb(100, 100, 100)'
+            });
+        }
 
         this.l1 = this.board.create('line', [
             [2.5, 2.5 + this.options.gLine1Offset +
