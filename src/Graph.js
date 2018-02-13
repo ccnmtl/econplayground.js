@@ -7,30 +7,6 @@
 import { defaultGraph } from './GraphMapping';
 import { forceFloat, getOffset } from './utils';
 
-/**
- * Some utilities for plotting functions in JSXGraph.
- *
- * Based on:
- *
- *   http://jsxgraph.uni-bayreuth.de/wiki/index.php/Simple_function_plotter
- *
- */
-let functionUtils = {};
-
-// Macro function plotter
-functionUtils.addCurve = function(board, func, atts) {
-    var f = board.create('functiongraph', [func], atts);
-    return f;
-};
-
-// Simplified plotting of function
-functionUtils.plot = function(board, func, atts) {
-    if (!atts) {
-        return functionUtils.addCurve(board, func, {strokewidth: 2});
-    } else {
-        return functionUtils.addCurve(board, func, atts);
-    }
-};
 
 let applyDefaults = function(obj, defaults) {
     let o = {};
@@ -203,7 +179,8 @@ class Graph {
     /**
      * Set up intersection display for l1 and l2.
      *
-     * Sets this.i, this.p1, and this.p2.
+     * Sets this.i, this.p1, and this.p2. i is the intersection,
+     * and p1 and p2 are its X and Y intercepts.
      */
     showIntersection(l1, l2) {
         let i = this.board.create('intersection', [l1, l2, 0], {
@@ -336,7 +313,7 @@ class NonLinearDemandSupplyGraph extends Graph {
                     (x ** -alpha);
             };
 
-            const lfShadow = functionUtils.plot(this.board, fShadow, {
+            const lfShadow = this.board.create('functiongraph', [fShadow], {
                 withLabel: false,
                 strokeWidth: 2,
                 strokeColor: 'rgb(100, 100, 100)',
@@ -353,17 +330,16 @@ class NonLinearDemandSupplyGraph extends Graph {
             lfShadow.fullUpdate(true);
         }
 
-        this.l1 = this.board.create('line', [
-            [2.5, 2.5 + this.options.gLine1Offset +
-             this.options.l1SubmissionOffset],
-            [3.5, 2.5 + this.options.gLine1Offset +
-             this.options.gLine1Slope + this.options.l1SubmissionOffset]
-        ], {
+        const f1 = function(x) {
+            const slope = me.options.gLine1Slope || 1;
+            return x * slope;
+        }
+
+        this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
             name: this.options.gLine1Label,
             withLabel: true,
-            label: { position: 'rt', offset: [10, -20] },
-            strokeColor: this.l1Color,
             strokeWidth: 2,
+            strokeColor: this.l1Color,
             fixed: this.areLinesFixed
         });
 
@@ -374,7 +350,7 @@ class NonLinearDemandSupplyGraph extends Graph {
                 (x ** -alpha);
         };
 
-        this.l2 = functionUtils.plot(this.board, f, {
+        this.l2 = this.board.create('functiongraph', [f, -30, 30], {
             name: this.options.gLine2Label,
             withLabel: true,
             strokeWidth: 2,
@@ -382,13 +358,33 @@ class NonLinearDemandSupplyGraph extends Graph {
             fixed: this.areLinesFixed
         });
 
+        this.l1.setPosition(window.JXG.COORDS_BY_USER, [
+            forceFloat(this.options.gLine1OffsetX),
+            forceFloat(this.options.gLine1OffsetY)
+        ]);
         this.l2.setPosition(window.JXG.COORDS_BY_USER, [
             forceFloat(this.options.gLine2OffsetX),
             forceFloat(this.options.gLine2OffsetY)
         ]);
+
         // This is necessary, because otherwise the setPosition call
         // won't have an effect until the graph is interacted with.
+        this.l1.fullUpdate(true);
         this.l2.fullUpdate(true);
+
+        this.l1.on('mouseup', function() {
+            const xOffset = me.options.gLine1OffsetX +
+                  me.l1.transformations[0].matrix[1][0];
+            const yOffset = me.options.gLine1OffsetY +
+                  me.l1.transformations[0].matrix[2][0];
+            const offsetEvt = new CustomEvent('l1offset', {
+                detail: {
+                    x: xOffset,
+                    y: yOffset
+                }
+            });
+            document.dispatchEvent(offsetEvt);
+        });
 
         this.l2.on('mouseup', function() {
             const xOffset = me.l2.transformations[0].matrix[1][0];
@@ -424,7 +420,7 @@ class CobbDouglasGraph extends Graph {
                 (x ** (1 - me.options.gCobbDouglasAlpha));
         };
 
-        functionUtils.plot(this.board, f, {
+        this.board.create('functiongraph', [f], {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeWidth: 2,
@@ -440,7 +436,7 @@ class CobbDouglasGraph extends Graph {
                     (x ** (1 - me.options.gCobbDouglasAlphaInitial));
             };
 
-            functionUtils.plot(this.board, fShadow, {
+            this.board.create('functiongraph', [fShadow], {
                 name: this.options.gLine1Label,
                 withLabel: false,
                 strokeWidth: 2,

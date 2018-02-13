@@ -41,6 +41,8 @@ export default class GraphEditor extends React.Component {
             gLine1Slope={this.props.gLine1Slope}
             gLine2Slope={this.props.gLine2Slope}
             gLine1Offset={this.props.gLine1Offset}
+            gLine1OffsetX={this.props.gLine1OffsetX}
+            gLine1OffsetY={this.props.gLine1OffsetY}
             gLine2Offset={this.props.gLine2Offset}
             gLine2OffsetX={this.props.gLine2OffsetX}
             gLine2OffsetY={this.props.gLine2OffsetY}
