@@ -40,10 +40,8 @@ export default class GraphEditor extends React.Component {
             gYAxisLabel={'Y'}
             gLine1Slope={this.props.gLine1Slope}
             gLine2Slope={this.props.gLine2Slope}
-            gLine1Offset={this.props.gLine1Offset}
             gLine1OffsetX={this.props.gLine1OffsetX}
             gLine1OffsetY={this.props.gLine1OffsetY}
-            gLine2Offset={this.props.gLine2Offset}
             gLine2OffsetX={this.props.gLine2OffsetX}
             gLine2OffsetY={this.props.gLine2OffsetY}
             gAlpha={this.props.gAlpha}
@@ -73,7 +71,6 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasA={this.props.gCobbDouglasA}
             gCobbDouglasK={this.props.gCobbDouglasK}
             gLine1Slope={this.props.gLine1Slope}
-            gLine1Offset={this.props.gLine1Offset}
             gLine1OffsetX={this.props.gLine1OffsetX}
             gLine1OffsetY={this.props.gLine1OffsetY}
             gLine2OffsetX={this.props.gLine2OffsetX}
@@ -117,8 +114,10 @@ export default class GraphEditor extends React.Component {
             gYAxisLabel={this.props.gCobbDouglasYName}
             gLine1Slope={this.props.gLine1Slope}
             gLine2Slope={this.props.gLine2Slope}
-            gLine1Offset={this.props.gLine1Offset}
-            gLine2Offset={this.props.gLine2Offset}
+            gLine1OffsetX={this.props.gLine1OffsetX}
+            gLine1OffsetY={this.props.gLine1OffsetY}
+            gLine2OffsetX={this.props.gLine2OffsetX}
+            gLine2OffsetY={this.props.gLine2OffsetY}
             gShowIntersection={this.props.gShowIntersection}
             gIntersectionLabel={this.props.gIntersectionLabel}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
@@ -190,8 +189,10 @@ export default class GraphEditor extends React.Component {
                          gYAxisLabel={this.props.gYAxisLabel}
                          gLine1Slope={this.props.gLine1Slope}
                          gLine2Slope={this.props.gLine2Slope}
-                         gLine1Offset={this.props.gLine1Offset}
-                         gLine2Offset={this.props.gLine2Offset}
+                         gLine1OffsetX={this.props.gLine1OffsetX}
+                         gLine1OffsetY={this.props.gLine1OffsetY}
+                         gLine2OffsetX={this.props.gLine2OffsetX}
+                         gLine2OffsetY={this.props.gLine2OffsetY}
                          gShowIntersection={this.props.gShowIntersection}
                          gIntersectionLabel={this.props.gIntersectionLabel}
                          gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
@@ -618,10 +619,8 @@ GraphEditor.propTypes = {
     gLine1SlopeEditable: PropTypes.bool,
     gLine2Slope: PropTypes.number.isRequired,
     gLine2SlopeEditable: PropTypes.bool,
-    gLine1Offset: PropTypes.number.isRequired,
     gLine1OffsetX: PropTypes.number.isRequired,
     gLine1OffsetY: PropTypes.number.isRequired,
-    gLine2Offset: PropTypes.number.isRequired,
     gLine2OffsetX: PropTypes.number.isRequired,
     gLine2OffsetY: PropTypes.number.isRequired,
     gLine1FeedbackIncrease: PropTypes.string,

@@ -64,10 +64,8 @@ class Viewer extends Component {
             gXAxisLabelEditable={this.state.gXAxisLabelEditable}
             gYAxisLabel={this.state.gYAxisLabel}
             gYAxisLabelEditable={this.state.gYAxisLabelEditable}
-            gLine1Offset={this.state.gLine1Offset}
             gLine1OffsetX={this.state.gLine1OffsetX}
             gLine1OffsetY={this.state.gLine1OffsetY}
-            gLine2Offset={this.state.gLine2Offset}
             gLine2OffsetX={this.state.gLine2OffsetX}
             gLine2OffsetY={this.state.gLine2OffsetY}
             gAlpha={this.state.gAlpha}
@@ -134,16 +132,12 @@ class Viewer extends Component {
             gXAxisLabelEditable={this.state.gXAxisLabelEditable}
             gYAxisLabel={this.state.gYAxisLabel}
             gYAxisLabelEditable={this.state.gYAxisLabelEditable}
-            gLine1Offset={this.state.gLine1Offset}
             gLine1OffsetX={this.state.gLine1OffsetX}
             gLine1OffsetY={this.state.gLine1OffsetY}
-            gLine1OffsetInitial={this.state.gLine1OffsetInitial}
             gLine1OffsetXInitial={this.state.gLine1OffsetXInitial}
             gLine1OffsetYInitial={this.state.gLine1OffsetYInitial}
-            gLine2Offset={this.state.gLine2Offset}
             gLine2OffsetX={this.state.gLine2OffsetX}
             gLine2OffsetY={this.state.gLine2OffsetY}
-            gLine2OffsetInitial={this.state.gLine2OffsetInitial}
             gLine2OffsetXInitial={this.state.gLine2OffsetXInitial}
             gLine2OffsetYInitial={this.state.gLine2OffsetYInitial}
             gAlpha={this.state.gAlpha}
@@ -213,25 +207,17 @@ class Viewer extends Component {
 
         document.addEventListener('l1offset', function(e) {
             const offset = e.detail;
-            if (typeof offset === 'object') {
-                me.setState({
-                    gLine1OffsetX: offset.x,
-                    gLine1OffsetY: offset.y
-                });
-            } else {
-                me.setState({gLine1Offset: offset});
-            }
+            me.setState({
+                gLine1OffsetX: offset.x,
+                gLine1OffsetY: offset.y
+            });
         });
         document.addEventListener('l2offset', function(e) {
             const offset = e.detail;
-            if (typeof offset === 'object') {
-                me.setState({
-                    gLine2OffsetX: offset.x,
-                    gLine2OffsetY: offset.y
-                });
-            } else {
-                me.setState({gLine2Offset: offset});
-            }
+            me.setState({
+                gLine2OffsetX: offset.x,
+                gLine2OffsetY: offset.y
+            });
         });
     }
 

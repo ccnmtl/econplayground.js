@@ -60,8 +60,10 @@ export default class GraphViewer extends React.Component {
                             gYAxisLabel={this.props.gCobbDouglasYName}
                             gLine1Slope={this.props.gLine1Slope}
                             gLine2Slope={this.props.gLine2Slope}
-                            gLine1Offset={this.props.gLine1Offset}
-                            gLine2Offset={this.props.gLine2Offset}
+                            gLine1OffsetX={this.props.gLine1OffsetX}
+                            gLine1OffsetY={this.props.gLine1OffsetY}
+                            gLine2OffsetX={this.props.gLine2OffsetX}
+                            gLine2OffsetY={this.props.gLine2OffsetY}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             gShowIntersection={this.props.gShowIntersection}
                             gIntersectionLabel={this.props.gIntersectionLabel}
@@ -151,16 +153,12 @@ export default class GraphViewer extends React.Component {
                         gLine2Slope={this.props.gLine2Slope}
                         gLine1SlopeInitial={this.props.gLine1SlopeInitial}
                         gLine2SlopeInitial={this.props.gLine2SlopeInitial}
-                        gLine1Offset={this.props.gLine1Offset}
                         gLine1OffsetX={this.props.gLine1OffsetX}
                         gLine1OffsetY={this.props.gLine1OffsetY}
-                        gLine1OffsetInitial={this.props.gLine1OffsetInitial}
                         gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
                         gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
-                        gLine2Offset={this.props.gLine2Offset}
                         gLine2OffsetX={this.props.gLine2OffsetX}
                         gLine2OffsetY={this.props.gLine2OffsetY}
-                        gLine2OffsetInitial={this.props.gLine2OffsetInitial}
                         gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
                         gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
                         gNeedsSubmit={this.props.gNeedsSubmit}
@@ -405,16 +403,12 @@ GraphViewer.propTypes = {
     gLine2Slope: PropTypes.number,
     gLine2SlopeInitial: PropTypes.number,
     gLine2SlopeEditable: PropTypes.bool,
-    gLine1Offset: PropTypes.number,
     gLine1OffsetX: PropTypes.number,
     gLine1OffsetY: PropTypes.number,
-    gLine1OffsetInitial: PropTypes.number,
     gLine1OffsetXInitial: PropTypes.number,
     gLine1OffsetYInitial: PropTypes.number,
-    gLine2Offset: PropTypes.number,
     gLine2OffsetX: PropTypes.number,
     gLine2OffsetY: PropTypes.number,
-    gLine2OffsetInitial: PropTypes.number,
     gLine2OffsetXInitial: PropTypes.number,
     gLine2OffsetYInitial: PropTypes.number,
     gLine1FeedbackIncrease: PropTypes.string,

@@ -50,10 +50,10 @@ class Graph {
         }
         this.l1.point1.moveTo([
             2.5,
-            2.5 + this.options.gLine1Offset]);
+            2.5 + this.options.gLine1OffsetY]);
         this.l1.point2.moveTo([
             3.5,
-            2.5 + this.options.gLine1Offset +
+            2.5 + this.options.gLine1OffsetY +
                 this.options.gLine1Slope]);
     }
     resetLine2() {
@@ -62,10 +62,10 @@ class Graph {
         }
         this.l2.point1.moveTo([
             2.5,
-            2.5 + this.options.gLine2Offset]);
+            2.5 + this.options.gLine2OffsetY]);
         this.l2.point2.moveTo([
             3.5,
-            2.5 + this.options.gLine2Offset +
+            2.5 + this.options.gLine2OffsetY +
                 this.options.gLine2Slope]);
     }
     /**
@@ -108,7 +108,10 @@ class Graph {
                     const offset = getOffset(
                         me.l1.getSlope(), me.l1.getRise(), 2.5);
                     const offsetEvt = new CustomEvent('l1offset', {
-                        detail: offset
+                        detail: {
+                            x: 0,
+                            y: offset
+                        }
                     });
                     document.dispatchEvent(offsetEvt);
                 });
@@ -143,7 +146,10 @@ class Graph {
                     const offset = getOffset(
                         me.l2.getSlope(), me.l2.getRise(), 2.5);
                     const offsetEvt = new CustomEvent('l2offset', {
-                        detail: offset
+                        detail: {
+                            x: 0,
+                            y: offset
+                        }
                     });
                     document.dispatchEvent(offsetEvt);
                 });
@@ -245,12 +251,62 @@ class Graph {
 
 class DemandSupplyGraph extends Graph {
     make() {
+        const me = this;
+
+        if (this.options.shadow) {
+            // Display the initial curves set by the instructor.
+            const f1Shadow = function(x) {
+                const slope = me.options.gLine1SlopeInitial || 1;
+                return x * slope;
+            }
+
+            const l1fShadow = this.board.create(
+                'functiongraph',
+                [f1Shadow, -30, 30], {
+                    withLabel: false,
+                    strokeWidth: 2,
+                    strokeColor: 'rgb(100, 100, 100)',
+                    fixed: true,
+                    layer: 4
+                });
+
+            const fShadow = function(x) {
+                const slope = me.options.gLine2SlopeInitial || -1;
+                return x * slope + 5;
+            };
+
+            const lfShadow = this.board.create(
+                'functiongraph',
+                [fShadow, -30, 30], {
+                    withLabel: false,
+                    strokeWidth: 2,
+                    strokeColor: 'rgb(100, 100, 100)',
+                    fixed: true,
+                    layer: 4
+                });
+
+            l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
+                forceFloat(this.options.gLine1OffsetXInitial),
+                forceFloat(this.options.gLine1OffsetYInitial)
+            ]);
+            lfShadow.setPosition(window.JXG.COORDS_BY_USER, [
+                forceFloat(this.options.gLine2OffsetXInitial),
+                forceFloat(this.options.gLine2OffsetYInitial)
+            ]);
+            // This is necessary, because otherwise the setPosition call
+            // won't have an effect until the graph is interacted with.
+            l1fShadow.fullUpdate(true);
+            lfShadow.fullUpdate(true);
+
+            this.showIntersection(l1fShadow, lfShadow, true);
+        }
+
         this.l1 = this.board.create(
             'line',
             [
-                [2.5, 2.5 + this.options.gLine1Offset +
+                [2.5, 2.5 + this.options.gLine1OffsetY +
                  this.options.l1SubmissionOffset],
-                [3.5, 2.5 + this.options.gLine1Offset +
+                [3.5, 2.5 + this.options.gLine1OffsetY +
                  this.options.gLine1Slope + this.options.l1SubmissionOffset]
             ], {
                 name: this.options.gLine1Label,
@@ -264,9 +320,9 @@ class DemandSupplyGraph extends Graph {
         this.l2 = this.board.create(
             'line',
             [
-                [2.5, 2.5 + this.options.gLine2Offset +
+                [2.5, 2.5 + this.options.gLine2OffsetY +
                  this.options.l2SubmissionOffset],
-                [3.5, 2.5 + this.options.gLine2Offset +
+                [3.5, 2.5 + this.options.gLine2OffsetY +
                  this.options.gLine2Slope + this.options.l2SubmissionOffset]
             ], {
                 name: this.options.gLine2Label,
@@ -295,7 +351,7 @@ class NonLinearDemandSupplyGraph extends Graph {
         const me = this;
         const alpha = 0.3;
 
-        if (me.options.shadow) {
+        if (this.options.shadow) {
             // Display the initial curves set by the instructor.
             const f1Shadow = function(x) {
                 const slope = me.options.gLine1SlopeInitial || 1;
@@ -319,13 +375,15 @@ class NonLinearDemandSupplyGraph extends Graph {
                     (x ** -alpha);
             };
 
-            const lfShadow = this.board.create('functiongraph', [fShadow], {
-                withLabel: false,
-                strokeWidth: 2,
-                strokeColor: 'rgb(100, 100, 100)',
-                fixed: true,
-                layer: 4
-            });
+            const lfShadow = this.board.create(
+                'functiongraph',
+                [fShadow, -30, 30], {
+                    withLabel: false,
+                    strokeWidth: 2,
+                    strokeColor: 'rgb(100, 100, 100)',
+                    fixed: true,
+                    layer: 4
+                });
 
             l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
                 forceFloat(this.options.gLine1OffsetXInitial),
@@ -438,7 +496,7 @@ class CobbDouglasGraph extends Graph {
             strokeColor: this.l1Color
         });
 
-        if (me.options.shadow) {
+        if (this.options.shadow) {
             // Display the initial curve set by the instructor.
             const fShadow = function(x) {
                 return me.options.gCobbDouglasAInitial *
@@ -447,7 +505,7 @@ class CobbDouglasGraph extends Graph {
                     (x ** (1 - me.options.gCobbDouglasAlphaInitial));
             };
 
-            this.board.create('functiongraph', [fShadow], {
+            this.board.create('functiongraph', [fShadow, -30, 30], {
                 name: this.options.gLine1Label,
                 withLabel: false,
                 strokeWidth: 2,
@@ -497,9 +555,9 @@ class OptimalIndividualChoiceGraph extends Graph {
     make() {
         this.board.create(
             'line', [
-                [0, 5 + this.options.gLine1Offset +
+                [0, 5 + this.options.gLine1OffsetY +
                  this.options.l1SubmissionOffset],
-                [5, 0 + this.options.gLine1Offset +
+                [5, 0 + this.options.gLine1OffsetY +
                  this.options.l1SubmissionOffset]
             ], {
                 name: this.options.gLine1Label,
