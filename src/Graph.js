@@ -294,17 +294,20 @@ class NonLinearDemandSupplyGraph extends Graph {
 
         if (me.options.shadow) {
             // Display the initial curves set by the instructor.
-            this.l1 = this.board.create('line', [
-                [2.5, 2.5 + this.options.gLine1OffsetInitial],
-                [3.5, 2.5 + this.options.gLine1OffsetInitial +
-                 this.options.gLine1SlopeInitial]
-            ], {
-                withLabel: false,
-                strokeColor: 'rgb(100, 100, 100)',
-                strokeWidth: 2,
-                fixed: true,
-                layer: 4
-            });
+            const f1Shadow = function(x) {
+                const slope = me.options.gLine1SlopeInitial || 1;
+                return x * slope;
+            }
+
+            const l1fShadow = this.board.create(
+                'functiongraph',
+                [f1Shadow, -30, 30], {
+                    withLabel: false,
+                    strokeWidth: 2,
+                    strokeColor: 'rgb(100, 100, 100)',
+                    fixed: true,
+                    layer: 4
+                });
 
             const fShadow = function(x) {
                 return (1 - alpha) *
@@ -321,12 +324,17 @@ class NonLinearDemandSupplyGraph extends Graph {
                 layer: 4
             });
 
+            l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
+                forceFloat(this.options.gLine1OffsetXInitial),
+                forceFloat(this.options.gLine1OffsetYInitial)
+            ]);
             lfShadow.setPosition(window.JXG.COORDS_BY_USER, [
                 forceFloat(this.options.gLine2OffsetXInitial),
                 forceFloat(this.options.gLine2OffsetYInitial)
             ]);
             // This is necessary, because otherwise the setPosition call
             // won't have an effect until the graph is interacted with.
+            l1fShadow.fullUpdate(true);
             lfShadow.fullUpdate(true);
         }
 

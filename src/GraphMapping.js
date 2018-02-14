@@ -164,9 +164,12 @@ let importGraph = function(json, obj) {
 
         // Save some initial state here for the shadow feature
         gLine1OffsetInitial: window.parseFloat(json.line_1_offset),
+        gLine1OffsetXInitial: window.parseFloat(json.line_1_offset_x),
+        gLine1OffsetYInitial: window.parseFloat(json.line_1_offset_y),
         gLine1SlopeInitial: window.parseFloat(json.line_1_slope),
         gLine2OffsetXInitial: window.parseFloat(json.line_2_offset_x),
         gLine2OffsetYInitial: window.parseFloat(json.line_2_offset_y),
+        gLine2SlopeInitial: window.parseFloat(json.line_2_slope),
         gCobbDouglasAInitial: window.parseFloat(json.cobb_douglas_a),
         gCobbDouglasLInitial: window.parseFloat(json.cobb_douglas_l),
         gCobbDouglasKInitial: window.parseFloat(json.cobb_douglas_k),
