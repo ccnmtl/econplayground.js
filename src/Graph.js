@@ -168,39 +168,40 @@ class Graph {
         }
     }
     /**
-     * Updates the intersection point at this.i.
-     *
-     * Expects this.i and this.p1, this.p2 to be set.
+     * Updates the intersection point at i.
      */
-    updateIntersection() {
-        this.p1.moveTo([0, this.i.Y()]);
-        this.p2.moveTo([this.i.X(), 0]);
+    updateIntersection(i, p1, p2) {
+        p1.moveTo([0, i.Y()]);
+        p2.moveTo([i.X(), 0]);
     }
     /**
      * Set up intersection display for l1 and l2.
      *
-     * Sets this.i, this.p1, and this.p2. i is the intersection,
-     * and p1 and p2 are its X and Y intercepts.
+     * i is the intersection, and p1 and p2 are its X and Y
+     * intercepts.
      */
-    showIntersection(l1, l2) {
+    showIntersection(l1, l2, isShadow) {
         let i = this.board.create('intersection', [l1, l2, 0], {
             name: this.options.gIntersectionLabel || '',
+            withLabel: !isShadow,
             fixed: true,
-            showInfobox: false
+            showInfobox: false,
+            size: 1,
+            fillColor: isShadow ? 'black' : 'red',
+            strokeColor: isShadow ? 'black' : 'red'
         });
-        this.i = i;
 
         let p1 = this.board.create('point', [0, i.Y()], {
             size: 0,
             name: this.options.gIntersectionHorizLineLabel || '',
+            withLabel: !isShadow,
             fixed: true,
             showInfobox: false
         });
-        this.p1 = p1;
         this.board.create('line', [p1, i], {
             dash: 1,
             strokeColor: 'black',
-            strokeWidth: 1,
+            strokeWidth: isShadow ? 0.5 : 1,
             straightFirst: false,
             straightLast: false
         });
@@ -208,32 +209,34 @@ class Graph {
         let p2 = this.board.create('point', [i.X(), 0], {
             size: 0,
             name: this.options.gIntersectionVertLineLabel || '',
+            withLabel: !isShadow,
             fixed: true,
             showInfobox: false
         });
-        this.p2 = p2;
         this.board.create('line', [p2, i], {
             dash: 1,
             strokeColor: 'black',
-            strokeWidth: 1,
+            strokeWidth: isShadow ? 0.5 : 1,
             straightFirst: false,
             straightLast: false
         });
 
-        // Keep the dashed intersection lines perpendicular to the axes.
-        const me = this;
-        l1.on('up', function() {
-            me.updateIntersection();
-        });
-        l1.on('drag', function() {
-            me.updateIntersection();
-        });
-        l2.on('up', function() {
-            me.updateIntersection();
-        });
-        l2.on('drag', function() {
-            me.updateIntersection();
-        });
+        if (!isShadow) {
+            // Keep the dashed intersection lines perpendicular to the axes.
+            const me = this;
+            l1.on('up', function() {
+                me.updateIntersection(i, p1, p2);
+            });
+            l1.on('drag', function() {
+                me.updateIntersection(i, p1, p2);
+            });
+            l2.on('up', function() {
+                me.updateIntersection(i, p1, p2);
+            });
+            l2.on('drag', function() {
+                me.updateIntersection(i, p1, p2);
+            });
+        }
     }
     make() {
         // unimplemented
@@ -336,6 +339,8 @@ class NonLinearDemandSupplyGraph extends Graph {
             // won't have an effect until the graph is interacted with.
             l1fShadow.fullUpdate(true);
             lfShadow.fullUpdate(true);
+
+            this.showIntersection(l1fShadow, lfShadow, true);
         }
 
         const f1 = function(x) {
