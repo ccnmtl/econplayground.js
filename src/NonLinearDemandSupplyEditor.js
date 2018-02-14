@@ -236,7 +236,6 @@ NonLinearDemandSupplyEditor.propTypes = {
     gLine2LabelEditable: PropTypes.bool,
     gLine1Slope: PropTypes.number.isRequired,
     gLine1SlopeEditable: PropTypes.bool,
-    gLine1Offset: PropTypes.number.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
 }

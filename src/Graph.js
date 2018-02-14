@@ -7,30 +7,6 @@
 import { defaultGraph } from './GraphMapping';
 import { forceFloat, getOffset } from './utils';
 
-/**
- * Some utilities for plotting functions in JSXGraph.
- *
- * Based on:
- *
- *   http://jsxgraph.uni-bayreuth.de/wiki/index.php/Simple_function_plotter
- *
- */
-let functionUtils = {};
-
-// Macro function plotter
-functionUtils.addCurve = function(board, func, atts) {
-    var f = board.create('functiongraph', [func], atts);
-    return f;
-};
-
-// Simplified plotting of function
-functionUtils.plot = function(board, func, atts) {
-    if (!atts) {
-        return functionUtils.addCurve(board, func, {strokewidth: 2});
-    } else {
-        return functionUtils.addCurve(board, func, atts);
-    }
-};
 
 let applyDefaults = function(obj, defaults) {
     let o = {};
@@ -192,38 +168,40 @@ class Graph {
         }
     }
     /**
-     * Updates the intersection point at this.i.
-     *
-     * Expects this.i and this.p1, this.p2 to be set.
+     * Updates the intersection point at i.
      */
-    updateIntersection() {
-        this.p1.moveTo([0, this.i.Y()]);
-        this.p2.moveTo([this.i.X(), 0]);
+    updateIntersection(i, p1, p2) {
+        p1.moveTo([0, i.Y()]);
+        p2.moveTo([i.X(), 0]);
     }
     /**
      * Set up intersection display for l1 and l2.
      *
-     * Sets this.i, this.p1, and this.p2.
+     * i is the intersection, and p1 and p2 are its X and Y
+     * intercepts.
      */
-    showIntersection(l1, l2) {
+    showIntersection(l1, l2, isShadow) {
         let i = this.board.create('intersection', [l1, l2, 0], {
             name: this.options.gIntersectionLabel || '',
+            withLabel: !isShadow,
             fixed: true,
-            showInfobox: false
+            showInfobox: false,
+            size: 1,
+            fillColor: isShadow ? 'black' : 'red',
+            strokeColor: isShadow ? 'black' : 'red'
         });
-        this.i = i;
 
         let p1 = this.board.create('point', [0, i.Y()], {
             size: 0,
             name: this.options.gIntersectionHorizLineLabel || '',
+            withLabel: !isShadow,
             fixed: true,
             showInfobox: false
         });
-        this.p1 = p1;
         this.board.create('line', [p1, i], {
             dash: 1,
             strokeColor: 'black',
-            strokeWidth: 1,
+            strokeWidth: isShadow ? 0.5 : 1,
             straightFirst: false,
             straightLast: false
         });
@@ -231,32 +209,34 @@ class Graph {
         let p2 = this.board.create('point', [i.X(), 0], {
             size: 0,
             name: this.options.gIntersectionVertLineLabel || '',
+            withLabel: !isShadow,
             fixed: true,
             showInfobox: false
         });
-        this.p2 = p2;
         this.board.create('line', [p2, i], {
             dash: 1,
             strokeColor: 'black',
-            strokeWidth: 1,
+            strokeWidth: isShadow ? 0.5 : 1,
             straightFirst: false,
             straightLast: false
         });
 
-        // Keep the dashed intersection lines perpendicular to the axes.
-        const me = this;
-        l1.on('up', function() {
-            me.updateIntersection();
-        });
-        l1.on('drag', function() {
-            me.updateIntersection();
-        });
-        l2.on('up', function() {
-            me.updateIntersection();
-        });
-        l2.on('drag', function() {
-            me.updateIntersection();
-        });
+        if (!isShadow) {
+            // Keep the dashed intersection lines perpendicular to the axes.
+            const me = this;
+            l1.on('up', function() {
+                me.updateIntersection(i, p1, p2);
+            });
+            l1.on('drag', function() {
+                me.updateIntersection(i, p1, p2);
+            });
+            l2.on('up', function() {
+                me.updateIntersection(i, p1, p2);
+            });
+            l2.on('drag', function() {
+                me.updateIntersection(i, p1, p2);
+            });
+        }
     }
     make() {
         // unimplemented
@@ -317,17 +297,20 @@ class NonLinearDemandSupplyGraph extends Graph {
 
         if (me.options.shadow) {
             // Display the initial curves set by the instructor.
-            this.l1 = this.board.create('line', [
-                [2.5, 2.5 + this.options.gLine1OffsetInitial],
-                [3.5, 2.5 + this.options.gLine1OffsetInitial +
-                 this.options.gLine1SlopeInitial]
-            ], {
-                withLabel: false,
-                strokeColor: 'rgb(100, 100, 100)',
-                strokeWidth: 2,
-                fixed: true,
-                layer: 4
-            });
+            const f1Shadow = function(x) {
+                const slope = me.options.gLine1SlopeInitial || 1;
+                return x * slope;
+            }
+
+            const l1fShadow = this.board.create(
+                'functiongraph',
+                [f1Shadow, -30, 30], {
+                    withLabel: false,
+                    strokeWidth: 2,
+                    strokeColor: 'rgb(100, 100, 100)',
+                    fixed: true,
+                    layer: 4
+                });
 
             const fShadow = function(x) {
                 return (1 - alpha) *
@@ -336,7 +319,7 @@ class NonLinearDemandSupplyGraph extends Graph {
                     (x ** -alpha);
             };
 
-            const lfShadow = functionUtils.plot(this.board, fShadow, {
+            const lfShadow = this.board.create('functiongraph', [fShadow], {
                 withLabel: false,
                 strokeWidth: 2,
                 strokeColor: 'rgb(100, 100, 100)',
@@ -344,26 +327,32 @@ class NonLinearDemandSupplyGraph extends Graph {
                 layer: 4
             });
 
+            l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
+                forceFloat(this.options.gLine1OffsetXInitial),
+                forceFloat(this.options.gLine1OffsetYInitial)
+            ]);
             lfShadow.setPosition(window.JXG.COORDS_BY_USER, [
                 forceFloat(this.options.gLine2OffsetXInitial),
                 forceFloat(this.options.gLine2OffsetYInitial)
             ]);
             // This is necessary, because otherwise the setPosition call
             // won't have an effect until the graph is interacted with.
+            l1fShadow.fullUpdate(true);
             lfShadow.fullUpdate(true);
+
+            this.showIntersection(l1fShadow, lfShadow, true);
         }
 
-        this.l1 = this.board.create('line', [
-            [2.5, 2.5 + this.options.gLine1Offset +
-             this.options.l1SubmissionOffset],
-            [3.5, 2.5 + this.options.gLine1Offset +
-             this.options.gLine1Slope + this.options.l1SubmissionOffset]
-        ], {
+        const f1 = function(x) {
+            const slope = me.options.gLine1Slope || 1;
+            return x * slope;
+        }
+
+        this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
             name: this.options.gLine1Label,
             withLabel: true,
-            label: { position: 'rt', offset: [10, -20] },
-            strokeColor: this.l1Color,
             strokeWidth: 2,
+            strokeColor: this.l1Color,
             fixed: this.areLinesFixed
         });
 
@@ -374,7 +363,7 @@ class NonLinearDemandSupplyGraph extends Graph {
                 (x ** -alpha);
         };
 
-        this.l2 = functionUtils.plot(this.board, f, {
+        this.l2 = this.board.create('functiongraph', [f, -30, 30], {
             name: this.options.gLine2Label,
             withLabel: true,
             strokeWidth: 2,
@@ -382,13 +371,31 @@ class NonLinearDemandSupplyGraph extends Graph {
             fixed: this.areLinesFixed
         });
 
+        this.l1.setPosition(window.JXG.COORDS_BY_USER, [
+            forceFloat(this.options.gLine1OffsetX),
+            forceFloat(this.options.gLine1OffsetY)
+        ]);
         this.l2.setPosition(window.JXG.COORDS_BY_USER, [
             forceFloat(this.options.gLine2OffsetX),
             forceFloat(this.options.gLine2OffsetY)
         ]);
+
         // This is necessary, because otherwise the setPosition call
         // won't have an effect until the graph is interacted with.
+        this.l1.fullUpdate(true);
         this.l2.fullUpdate(true);
+
+        this.l1.on('mouseup', function() {
+            const xOffset = me.l1.transformations[0].matrix[1][0];
+            const yOffset = me.l1.transformations[0].matrix[2][0];
+            const offsetEvt = new CustomEvent('l1offset', {
+                detail: {
+                    x: xOffset,
+                    y: yOffset
+                }
+            });
+            document.dispatchEvent(offsetEvt);
+        });
 
         this.l2.on('mouseup', function() {
             const xOffset = me.l2.transformations[0].matrix[1][0];
@@ -424,7 +431,7 @@ class CobbDouglasGraph extends Graph {
                 (x ** (1 - me.options.gCobbDouglasAlpha));
         };
 
-        functionUtils.plot(this.board, f, {
+        this.board.create('functiongraph', [f], {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeWidth: 2,
@@ -440,7 +447,7 @@ class CobbDouglasGraph extends Graph {
                     (x ** (1 - me.options.gCobbDouglasAlphaInitial));
             };
 
-            functionUtils.plot(this.board, fShadow, {
+            this.board.create('functiongraph', [fShadow], {
                 name: this.options.gLine1Label,
                 withLabel: false,
                 strokeWidth: 2,
