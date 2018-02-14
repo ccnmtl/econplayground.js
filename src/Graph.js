@@ -373,10 +373,8 @@ class NonLinearDemandSupplyGraph extends Graph {
         this.l2.fullUpdate(true);
 
         this.l1.on('mouseup', function() {
-            const xOffset = me.options.gLine1OffsetX +
-                  me.l1.transformations[0].matrix[1][0];
-            const yOffset = me.options.gLine1OffsetY +
-                  me.l1.transformations[0].matrix[2][0];
+            const xOffset = me.l1.transformations[0].matrix[1][0];
+            const yOffset = me.l1.transformations[0].matrix[2][0];
             const offsetEvt = new CustomEvent('l1offset', {
                 detail: {
                     x: xOffset,
