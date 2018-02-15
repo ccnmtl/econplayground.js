@@ -219,7 +219,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
 }
 
 NonLinearDemandSupplyEditor.propTypes = {
-    gShowIntersection: PropTypes.bool,
     gIntersectionLabel: PropTypes.string,
     gIntersectionLabelEditable: PropTypes.bool,
     gIntersectionHorizLineLabel: PropTypes.string,

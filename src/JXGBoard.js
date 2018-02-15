@@ -100,10 +100,8 @@ export default class JXGBoard extends React.Component {
 
         if (typeof options.gType === 'number') {
             graphTypes[options.gType](board, {
-                gShowIntersection: (
-                    typeof options.gShowIntersection === 'undefined') ?
-                    true :
-                    options.gShowIntersection,
+                gShowIntersection: options.gShowIntersection,
+                gDisplayShadow: options.gDisplayShadow,
                 gIntersectionLabel: options.gIntersectionLabel,
                 gIntersectionHorizLineLabel: options.gIntersectionHorizLineLabel,
                 gIntersectionVertLineLabel: options.gIntersectionVertLineLabel,
@@ -149,6 +147,7 @@ export default class JXGBoard extends React.Component {
         const updateProps = [
             'gType',
             'gShowIntersection',
+            'gDisplayShadow',
             'gIntersectionLabel',
             'gIntersectionHorizLineLabel',
             'gIntersectionVertLineLabel',
@@ -197,6 +196,7 @@ export default class JXGBoard extends React.Component {
             this.renderJXBoard({
                 gType: nextProps.gType,
                 gShowIntersection: nextProps.gShowIntersection,
+                gDisplayShadow: nextProps.gDisplayShadow,
                 gIntersectionLabel: nextProps.gIntersectionLabel,
 
                 gIntersectionHorizLineLabel:
@@ -248,6 +248,7 @@ export default class JXGBoard extends React.Component {
         this.renderJXBoard({
             gType: this.props.gType,
             gShowIntersection: this.props.gShowIntersection,
+            gDisplayShadow: this.props.gDisplayShadow,
             gIntersectionLabel: this.props.gIntersectionLabel,
             gIntersectionHorizLineLabel: this.props.gIntersectionHorizLineLabel,
             gIntersectionVertLineLabel: this.props.gIntersectionVertLineLabel,
@@ -304,6 +305,7 @@ JXGBoard.propTypes = {
     shadow: PropTypes.bool,
 
     gShowIntersection: PropTypes.bool,
+    gDisplayShadow: PropTypes.bool,
     gIntersectionLabel: PropTypes.string,
     gIntersectionHorizLineLabel: PropTypes.string,
     gIntersectionVertLineLabel: PropTypes.string,

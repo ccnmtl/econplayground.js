@@ -253,7 +253,7 @@ class DemandSupplyGraph extends Graph {
     make() {
         const me = this;
 
-        if (this.options.shadow) {
+        if (this.options.shadow && this.options.gDisplayShadow) {
             // Display the initial curves set by the instructor.
             const f1Shadow = function(x) {
                 const slope = me.options.gLine1SlopeInitial || 1;
@@ -351,7 +351,7 @@ class NonLinearDemandSupplyGraph extends Graph {
         const me = this;
         const alpha = 0.3;
 
-        if (this.options.shadow) {
+        if (this.options.shadow && this.options.gDisplayShadow) {
             // Display the initial curves set by the instructor.
             const f1Shadow = function(x) {
                 const slope = me.options.gLine1SlopeInitial || 1;
@@ -496,7 +496,7 @@ class CobbDouglasGraph extends Graph {
             strokeColor: this.l1Color
         });
 
-        if (this.options.shadow) {
+        if (this.options.shadow && this.options.gDisplayShadow) {
             // Display the initial curve set by the instructor.
             const fShadow = function(x) {
                 return me.options.gCobbDouglasAInitial *

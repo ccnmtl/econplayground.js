@@ -76,7 +76,6 @@ export default class GraphEditor extends React.Component {
             gLine1OffsetY={this.props.gLine1OffsetY}
             gLine2OffsetX={this.props.gLine2OffsetX}
             gLine2OffsetY={this.props.gLine2OffsetY}
-            gShowIntersection={this.props.gShowIntersection}
             gIntersectionLabel={this.props.gIntersectionLabel}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
@@ -101,6 +100,7 @@ export default class GraphEditor extends React.Component {
             gNeedsSubmit={this.props.gNeedsSubmit}
             gDisplayFeedback={this.props.gDisplayFeedback}
             gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
             gIsPublished={this.props.gIsPublished}
             updateGraph={this.props.updateGraph}
                 />
@@ -176,6 +176,7 @@ export default class GraphEditor extends React.Component {
                          gNeedsSubmit={this.props.gNeedsSubmit}
                          gDisplayFeedback={this.props.gDisplayFeedback}
                          gShowIntersection={this.props.gShowIntersection}
+                         gDisplayShadow={this.props.gDisplayShadow}
                          gIsPublished={this.props.gIsPublished}
                          updateGraph={this.props.updateGraph}
                          />

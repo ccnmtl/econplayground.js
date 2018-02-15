@@ -66,6 +66,7 @@ export default class GraphViewer extends React.Component {
                             gLine2OffsetY={this.props.gLine2OffsetY}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             gShowIntersection={this.props.gShowIntersection}
+                            gDisplayShadow={this.props.gDisplayShadow}
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
@@ -163,6 +164,7 @@ export default class GraphViewer extends React.Component {
                         gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
                         gNeedsSubmit={this.props.gNeedsSubmit}
                         gShowIntersection={this.props.gShowIntersection}
+                        gDisplayShadow={this.props.gDisplayShadow}
                         gIntersectionLabel={this.props.gIntersectionLabel}
                         gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                         gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
@@ -381,6 +383,7 @@ GraphViewer.propTypes = {
     gNeedsSubmit: PropTypes.bool,
 
     gShowIntersection: PropTypes.bool,
+    gDisplayShadow: PropTypes.bool,
     gIntersectionLabel: PropTypes.string,
     gIntersectionLabelEditable: PropTypes.bool,
     gIntersectionHorizLineLabel: PropTypes.string,
