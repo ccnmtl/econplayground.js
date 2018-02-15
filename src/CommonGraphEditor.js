@@ -112,6 +112,21 @@ export default class CommonGraphEditor extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div className="row">
+                    <div className="col-sm-6">
+                        <div className="form-check">
+                            <label className="form-check-label">
+                                <input
+                                     id="gDisplayShadow"
+                                     className="form-check-input"
+                                     type="checkbox"
+                                     onChange={handleFormUpdate.bind(this)}
+                                     checked={this.props.gDisplayShadow} />
+                                Display shadow on student view
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -124,6 +139,7 @@ CommonGraphEditor.propTypes = {
     gNeedsSubmit: PropTypes.bool,
     gDisplayFeedback: PropTypes.bool,
     gShowIntersection: PropTypes.bool,
+    gDisplayShadow: PropTypes.bool,
     gIsPublished: PropTypes.bool,
 
     updateGraph: PropTypes.func.isRequired
