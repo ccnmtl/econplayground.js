@@ -26,6 +26,7 @@ export default class GraphEditor extends React.Component {
             gNeedsSubmit={this.props.gNeedsSubmit}
             gDisplayFeedback={this.props.gDisplayFeedback}
             gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
             gIsPublished={this.props.gIsPublished}
             updateGraph={this.props.updateGraph}
                 />
@@ -599,6 +600,7 @@ GraphEditor.propTypes = {
     gDescription: PropTypes.string,
 
     gShowIntersection: PropTypes.bool,
+    gDisplayShadow: PropTypes.bool,
     gIntersectionLabel: PropTypes.string,
     gIntersectionLabelEditable: PropTypes.bool,
     gIntersectionHorizLineLabel: PropTypes.string,
