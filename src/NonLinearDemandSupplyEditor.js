@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MathJax from 'react-mathjax'
+import MathJax from 'react-mathjax2'
 import RangeEditor from './RangeEditor';
 import {handleFormUpdate} from './utils';
 
