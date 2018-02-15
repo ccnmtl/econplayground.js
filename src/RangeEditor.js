@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * RangeEditor is a re-usable component that creates an <input> with
+ * type="range". Also, it optionally displays an "override" checkbox
+ * to allow the user to override that value.
+ */
 export default class RangeEditor extends React.Component {
     render() {
         return <div className="slope-editor row">

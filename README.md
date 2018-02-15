@@ -2,6 +2,15 @@
 
 Environment for authoring and interacting with economics graphs
 
+## Requirements
+You need to install these packages in order to build
+econplayground. These are all requirements of mathjax.
+* `libfreetype6-dev`
+* `pkg-config`
+* `libcairo2-dev`
+* `g++`
+* `libjpeg-dev`
+
 ## Development Notes
 Here's how to develop econplayground.js in the econplayground django application:
 
