@@ -35,6 +35,7 @@ class Graph {
         this.l1Color = 'rgb(255, 127, 14)';
         this.l2 = null;
         this.l2Color = 'steelblue';
+        this.shadowColor = 'rgb(200, 200, 200)';
 
         this.options = applyDefaults(options, defaults);
 
@@ -191,10 +192,11 @@ class Graph {
             name: this.options.gIntersectionLabel || '',
             withLabel: !isShadow,
             fixed: true,
+            highlight: false,
             showInfobox: false,
             size: 1,
-            fillColor: isShadow ? 'black' : 'red',
-            strokeColor: isShadow ? 'black' : 'red'
+            fillColor: isShadow ? 'rgb(150, 150, 150)' : 'red',
+            strokeColor: isShadow ? 'rgb(150, 150, 150)' : 'red'
         });
 
         let p1 = this.board.create('point', [0, i.Y()], {
@@ -202,10 +204,12 @@ class Graph {
             name: this.options.gIntersectionHorizLineLabel || '',
             withLabel: !isShadow,
             fixed: true,
+            highlight: false,
             showInfobox: false
         });
         this.board.create('line', [p1, i], {
             dash: 1,
+            highlight: false,
             strokeColor: 'black',
             strokeWidth: isShadow ? 0.5 : 1,
             straightFirst: false,
@@ -217,10 +221,12 @@ class Graph {
             name: this.options.gIntersectionVertLineLabel || '',
             withLabel: !isShadow,
             fixed: true,
+            highlight: false,
             showInfobox: false
         });
         this.board.create('line', [p2, i], {
             dash: 1,
+            highlight: false,
             strokeColor: 'black',
             strokeWidth: isShadow ? 0.5 : 1,
             straightFirst: false,
@@ -265,7 +271,8 @@ class DemandSupplyGraph extends Graph {
                 [f1Shadow, -30, 30], {
                     withLabel: false,
                     strokeWidth: 2,
-                    strokeColor: 'rgb(100, 100, 100)',
+                    strokeColor: this.shadowColor,
+                    highlight: false,
                     fixed: true,
                     layer: 4
                 });
@@ -280,7 +287,8 @@ class DemandSupplyGraph extends Graph {
                 [fShadow, -30, 30], {
                     withLabel: false,
                     strokeWidth: 2,
-                    strokeColor: 'rgb(100, 100, 100)',
+                    strokeColor: this.shadowColor,
+                    highlight: false,
                     fixed: true,
                     layer: 4
                 });
@@ -363,7 +371,8 @@ class NonLinearDemandSupplyGraph extends Graph {
                 [f1Shadow, -30, 30], {
                     withLabel: false,
                     strokeWidth: 2,
-                    strokeColor: 'rgb(100, 100, 100)',
+                    strokeColor: this.shadowColor,
+                    highlight: false,
                     fixed: true,
                     layer: 4
                 });
@@ -380,7 +389,8 @@ class NonLinearDemandSupplyGraph extends Graph {
                 [fShadow, -30, 30], {
                     withLabel: false,
                     strokeWidth: 2,
-                    strokeColor: 'rgb(100, 100, 100)',
+                    strokeColor: this.shadowColor,
+                    highlight: false,
                     fixed: true,
                     layer: 4
                 });
@@ -509,7 +519,8 @@ class CobbDouglasGraph extends Graph {
                 name: this.options.gLine1Label,
                 withLabel: false,
                 strokeWidth: 2,
-                strokeColor: 'rgb(100, 100, 100)',
+                strokeColor: this.shadowColor,
+                highlight: false,
                 // Under the main line layer
                 layer: 4
             });
