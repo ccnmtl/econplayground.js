@@ -136,10 +136,10 @@ CommonGraphEditor.propTypes = {
     gTitle: PropTypes.string,
     gInstructorNotes: PropTypes.string,
     gDescription: PropTypes.string,
-    gNeedsSubmit: PropTypes.bool,
+    gNeedsSubmit: PropTypes.bool.isRequired,
     gDisplayFeedback: PropTypes.bool,
-    gShowIntersection: PropTypes.bool,
-    gDisplayShadow: PropTypes.bool,
+    gShowIntersection: PropTypes.bool.isRequired,
+    gDisplayShadow: PropTypes.bool.isRequired,
     gIsPublished: PropTypes.bool,
 
     updateGraph: PropTypes.func.isRequired
