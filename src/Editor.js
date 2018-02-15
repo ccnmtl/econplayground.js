@@ -38,6 +38,8 @@ class Editor extends Component {
                         showing={this.state.step === 1}
                         gType={this.state.gType}
                         gShowIntersection={this.state.gShowIntersection}
+                        gDisplayShadow={this.state.gDisplayShadow}
+                        gNeedsSubmit={this.state.gNeedsSubmit}
                         gIntersectionLabel={this.state.gIntersectionLabel}
                         gIntersectionLabelEditable={this.state.gIntersectionLabelEditable}
                         gIntersectionHorizLineLabel={this.state.gIntersectionHorizLineLabel}
