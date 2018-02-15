@@ -18,6 +18,7 @@ macOS / homebrew:
 * `pkg-config`
 * `cairo`
 * `jpeg-turbo`
+* You will also need a C++ compiler, which can be installed through Apple's "Command Line Development Tools" download.
 
 ## Development Notes
 Here's how to develop econplayground.js in the econplayground django application:
