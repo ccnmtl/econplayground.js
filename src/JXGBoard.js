@@ -6,6 +6,12 @@ import JXG from 'jsxgraph';
 import {graphTypes} from './Graph';
 import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 
+/**
+ * The JXGBoard component manages JSXGraph's Board class, which
+ * is used to create the graph scene.
+ *
+ * https://jsxgraph.org/docs/symbols/JXG.Board.html
+ */
 export default class JXGBoard extends React.Component {
     constructor(props) {
         super(props);
