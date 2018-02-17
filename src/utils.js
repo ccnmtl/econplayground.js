@@ -151,7 +151,7 @@ let displayGraphType = function(gType) {
             name = 'Cobb-Douglas';
             break;
         case 5:
-            name = 'Optimal Individual Choice';
+            name = 'Consumption-Leisure';
             break;
         default:
             break;

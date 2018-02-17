@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CobbDouglasEditor from './CobbDouglasEditor';
-import NonLinearDemandSupplyEditor from './NonLinearDemandSupplyEditor';
-import CommonGraphEditor from './CommonGraphEditor';
+import CobbDouglasEditor from './editors/CobbDouglasEditor';
+import NonLinearDemandSupplyEditor from './editors/NonLinearDemandSupplyEditor';
+import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
+import CommonGraphEditor from './editors/CommonGraphEditor';
 import JXGBoard from './JXGBoard';
 import RangeEditor from './RangeEditor';
 import {handleFormUpdate, displayGraphType} from './utils';
@@ -88,8 +89,7 @@ export default class GraphEditor extends React.Component {
 
                 </form>
                 </div>;
-        }
-        if (this.props.gType === 3) {
+        } else if (this.props.gType === 3) {
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
@@ -151,6 +151,56 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasYName={this.props.gCobbDouglasYName}
             gCobbDouglasCorrectScenario={this.props.gCobbDouglasCorrectScenario}
 
+            gCorrectFeedback={this.props.gCorrectFeedback}
+            gIncorrectFeedback={this.props.gIncorrectFeedback}
+
+            isInstructor={true}
+            updateGraph={this.props.updateGraph}
+                />
+
+                <button type="button"
+            className="btn btn-primary btn-sm"
+            onClick={this.handleSaveGraph.bind(this)}>Save</button>
+
+                </form>
+                </div>;
+        } else if (this.props.gType === 5) {
+            return <div className="GraphEditor">
+                {this.title()}
+                <form>
+                <CommonGraphEditor
+            gTitle={this.props.gTitle}
+            gInstructorNotes={this.props.gInstructorNotes}
+            gDescription={this.props.gDescription}
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            gDisplayFeedback={this.props.gDisplayFeedback}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
+            gIsPublished={this.props.gIsPublished}
+            updateGraph={this.props.updateGraph}
+                />
+                <JXGBoard
+            id={'editing-graph'}
+            width={562.5}
+            height={300}
+            gType={this.props.gType}
+            gLine1Label={this.props.gLine1Label}
+            gLine2Label={this.props.gLine2Label}
+            gXAxisLabel={this.props.gCobbDouglasLName}
+            gYAxisLabel={this.props.gCobbDouglasYName}
+            gLine1Slope={this.props.gLine1Slope}
+            gLine2Slope={this.props.gLine2Slope}
+            gLine1OffsetX={this.props.gLine1OffsetX}
+            gLine1OffsetY={this.props.gLine1OffsetY}
+            gLine2OffsetX={this.props.gLine2OffsetX}
+            gLine2OffsetY={this.props.gLine2OffsetY}
+            gShowIntersection={this.props.gShowIntersection}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                />
+                <ConsumptionLeisureEditor
+            gLine1Label={this.props.gLine1Label}
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
 

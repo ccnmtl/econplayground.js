@@ -42,7 +42,7 @@ export default class GraphPicker extends React.Component {
                     </button>
                 </div>
                 <div className="graph-card">
-                    Optimal Individual Choice
+                    Consumption-Leisure
                     <JXGBoard id={'jxg-opt-ind-choice'} gType={5} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
