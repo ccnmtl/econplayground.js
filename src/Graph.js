@@ -213,7 +213,8 @@ class Graph {
             strokeColor: 'black',
             strokeWidth: isShadow ? 0.5 : 1,
             straightFirst: false,
-            straightLast: false
+            straightLast: false,
+            layer: 4
         });
 
         let p2 = this.board.create('point', [i.X(), 0], {
@@ -230,7 +231,8 @@ class Graph {
             strokeColor: 'black',
             strokeWidth: isShadow ? 0.5 : 1,
             straightFirst: false,
-            straightLast: false
+            straightLast: false,
+            layer: 4
         });
 
         if (!isShadow) {
@@ -363,7 +365,7 @@ class NonLinearDemandSupplyGraph extends Graph {
             // Display the initial curves set by the instructor.
             const f1Shadow = function(x) {
                 const slope = me.options.gLine1SlopeInitial || 1;
-                return x * slope;
+                return (x - 2.5) * slope + 2.5;
             }
 
             const l1fShadow = this.board.create(
@@ -413,7 +415,7 @@ class NonLinearDemandSupplyGraph extends Graph {
 
         const f1 = function(x) {
             const slope = me.options.gLine1Slope || 1;
-            return x * slope;
+            return (x - 2.5) * slope + 2.5;
         }
 
         this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
