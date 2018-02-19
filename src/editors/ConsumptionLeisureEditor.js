@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RangeEditor from '../RangeEditor';
 import {handleFormUpdate} from '../utils';
 
 export default class ConsumptionLeisureEditor extends React.Component {
@@ -19,6 +20,33 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                    type="text"
                                    maxLength="60"
                                    />
+                        </div>
+                    </div>
+                    <div className="col-sm-2">
+                        <div className="form-check">
+                            <label className="form-check-label">
+                                <input
+                                    id="gLine1LabelEditable"
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    checked={this.props.gLine1LabelEditable} />
+                                Student editable
+                            </label>
+                        </div>
+                    </div>
+                    <div className="col-sm-4">
+                        <div className="form-group">
+                            <label htmlFor="gLine1Omega">
+                                &omega;
+                            </label>
+                            <RangeEditor
+                                id="gLine1Omega"
+                                dataId="gLine1Omega"
+                                value={this.props.gLine1Omega}
+                                min={0}
+                                max={999}
+                                handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
                     <div className="col-sm-2">
@@ -133,6 +161,7 @@ ConsumptionLeisureEditor.propTypes = {
     gIntersectionVertLineLabel: PropTypes.string,
     gIntersectionVertLineLabelEditable: PropTypes.bool,
 
+    gLine1Omega: PropTypes.number,
     gLine1Label: PropTypes.string.isRequired,
     gLine1LabelEditable: PropTypes.bool,
 
