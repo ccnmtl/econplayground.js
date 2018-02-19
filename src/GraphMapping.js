@@ -45,6 +45,13 @@ let exportGraph = function(state) {
         line_2_label_editable: state.gLine2LabelEditable,
 
         alpha: forceFloat(state.gAlpha),
+        omega: forceFloat(state.gOmega),
+
+        a: forceFloat(state.gA),
+        k: forceFloat(state.gK),
+        r: forceFloat(state.gR),
+        y1: forceFloat(state.gY1),
+        y2: forceFloat(state.gY2),
 
         x_axis_label: state.gXAxisLabel,
         x_axis_label_editable: state.gXAxisLabelEditable,
@@ -140,6 +147,13 @@ let importGraph = function(json, obj) {
         gLine2DecreaseScore: window.parseFloat(json.line_2_decrease_score),
 
         gAlpha: window.parseFloat(json.alpha),
+        gOmega: window.parseFloat(json.omega),
+
+        gA: window.parseFloat(json.a),
+        gK: window.parseFloat(json.k),
+        gR: window.parseFloat(json.r),
+        gY1: window.parseFloat(json.y1),
+        gY2: window.parseFloat(json.y2),
 
         gXAxisLabel: json.x_axis_label,
         gXAxisLabelEditable: json.x_axis_label_editable,
@@ -205,6 +219,13 @@ const defaultGraph = {
     gLine2FeedbackDecrease: '',
 
     gAlpha: 0.3,
+    gOmega: 0,
+
+    gA: 3,
+    gK: 2,
+    gR: 0,
+    gY1: 0,
+    gY2: 0,
 
     gCobbDouglasA: 2,
     gCobbDouglasAName: 'A',

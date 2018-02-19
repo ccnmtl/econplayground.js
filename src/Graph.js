@@ -564,7 +564,7 @@ let mkCobbDouglas = function(board, options) {
     return g;
 };
 
-class OptimalIndividualChoiceGraph extends Graph {
+class ConsumptionLeisureGraph extends Graph {
     make() {
         this.board.create(
             'line', [
@@ -583,8 +583,8 @@ class OptimalIndividualChoiceGraph extends Graph {
     }
 }
 
-let mkOptimalIndividualChoice = function(board, options) {
-    let g = new OptimalIndividualChoiceGraph(board, options);
+let mkConsumptionLeisure = function(board, options) {
+    let g = new ConsumptionLeisureGraph(board, options);
     g.make();
     g.postMake();
     return g;
@@ -597,6 +597,6 @@ export const graphTypes = [
     // numerical values to reflect that yet.
     mkDemandSupply, mkNonLinearDemandSupply,
     null, mkCobbDouglas,
-    null, mkOptimalIndividualChoice,
+    null, mkConsumptionLeisure,
     null, null
 ];

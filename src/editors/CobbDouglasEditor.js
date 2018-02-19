@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MathJax from 'react-mathjax2'
-import RangeEditor from './RangeEditor';
-import {handleFormUpdate} from './utils';
+import RangeEditor from '../RangeEditor';
+import {handleFormUpdate} from '../utils';
 
 export default class CobbDouglasEditor extends React.Component {
     render() {

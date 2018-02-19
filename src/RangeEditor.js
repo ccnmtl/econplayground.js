@@ -12,6 +12,7 @@ export default class RangeEditor extends React.Component {
             <div className="col">
             <input
         className="form-control form-control-sm"
+        id={this.props.id}
         data-id={this.props.dataId}
         type="range"
         onChange={this.props.handler}
@@ -48,6 +49,7 @@ RangeEditor.defaultProps = {
 };
 
 RangeEditor.propTypes = {
+    id: PropTypes.string,
     dataId: PropTypes.string.isRequired,
     handler: PropTypes.func.isRequired,
     value: PropTypes.number.isRequired,

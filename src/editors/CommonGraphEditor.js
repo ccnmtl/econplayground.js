@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {handleFormUpdate} from './utils';
+import {handleFormUpdate} from '../utils';
 
 /**
  * This component contains the form fields common to all graph types,
