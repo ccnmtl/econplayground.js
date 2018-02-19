@@ -10,16 +10,16 @@ export default class ConsumptionLeisureEditor extends React.Component {
                 <div className="row">
                     <div className="col-sm-4">
                         <div className="form-group">
-                            <label htmlFor="gLine1Label">
-                                Orange line label
+                            <label htmlFor="gK">
+                                X-intercept&apos;s value
                             </label>
-                            <input id="gLine1Label"
-                                   value={this.props.gLine1Label}
-                                   onChange={handleFormUpdate.bind(this)}
-                                   className="form-control form-control-sm"
-                                   type="text"
-                                   maxLength="60"
-                                   />
+                            <RangeEditor
+                                id="gK"
+                                dataId="gK"
+                                value={this.props.gK}
+                                min={0}
+                                max={5}
+                                handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
                     <div className="col-sm-2">
@@ -35,18 +35,49 @@ export default class ConsumptionLeisureEditor extends React.Component {
                             </label>
                         </div>
                     </div>
+
                     <div className="col-sm-4">
                         <div className="form-group">
-                            <label htmlFor="gLine1Omega">
+                            <label htmlFor="gOmega">
                                 &omega;
                             </label>
                             <RangeEditor
-                                id="gLine1Omega"
-                                dataId="gLine1Omega"
-                                value={this.props.gLine1Omega}
-                                min={0}
-                                max={999}
+                                id="gOmega"
+                                dataId="gOmega"
+                                value={this.props.gOmega}
+                                min={0.01}
+                                max={5}
                                 handler={handleFormUpdate.bind(this)} />
+                        </div>
+                    </div>
+                    <div className="col-sm-2">
+                        <div className="form-check">
+                            <label className="form-check-label">
+                                <input
+                                    id="gLine1LabelEditable"
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    checked={this.props.gLine1LabelEditable} />
+                                Student editable
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-sm-4">
+                        <div className="form-group">
+                            <label htmlFor="gLine1Label">
+                                Orange line label
+                            </label>
+                            <input id="gLine1Label"
+                                   value={this.props.gLine1Label}
+                                   onChange={handleFormUpdate.bind(this)}
+                                   className="form-control form-control-sm"
+                                   type="text"
+                                   maxLength="60"
+                                   />
                         </div>
                     </div>
                     <div className="col-sm-2">
@@ -161,7 +192,8 @@ ConsumptionLeisureEditor.propTypes = {
     gIntersectionVertLineLabel: PropTypes.string,
     gIntersectionVertLineLabelEditable: PropTypes.bool,
 
-    gLine1Omega: PropTypes.number,
+    gOmega: PropTypes.number.isRequired,
+    gK: PropTypes.number.isRequired,
     gLine1Label: PropTypes.string.isRequired,
     gLine1LabelEditable: PropTypes.bool,
 

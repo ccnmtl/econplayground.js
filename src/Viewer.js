@@ -70,6 +70,12 @@ class Viewer extends Component {
             gLine2OffsetX={this.state.gLine2OffsetX}
             gLine2OffsetY={this.state.gLine2OffsetY}
             gAlpha={this.state.gAlpha}
+            gOmega={this.state.gOmega}
+            gA={this.state.gA}
+            gK={this.state.gK}
+            gR={this.state.gR}
+            gY1={this.state.gY1}
+            gY2={this.state.gY2}
             gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
             gLine1IncreaseScore={this.state.gLine1IncreaseScore}
             gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
@@ -143,6 +149,12 @@ class Viewer extends Component {
             gLine2OffsetXInitial={this.state.gLine2OffsetXInitial}
             gLine2OffsetYInitial={this.state.gLine2OffsetYInitial}
             gAlpha={this.state.gAlpha}
+            gOmega={this.state.gOmega}
+            gA={this.state.gA}
+            gK={this.state.gK}
+            gR={this.state.gR}
+            gY1={this.state.gY1}
+            gY2={this.state.gY2}
             gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
             gLine1DecreaseScore={this.state.gLine1DecreaseScore}
             gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
