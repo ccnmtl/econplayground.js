@@ -588,7 +588,7 @@ class ConsumptionLeisureGraph extends Graph {
                 'intersection',
                 [this.l1, this.board.defaultAxes.x, 0], {
                     name: this.options.gIntersectionLabel || '',
-                    withLabel: false,
+                    withLabel: true,
                     fixed: true,
                     highlight: false,
                     showInfobox: false,
