@@ -9,7 +9,7 @@ import { forceFloat } from './utils';
 /**
  * Returns the current graph settings as a persistable JSON object.
  */
-let exportGraph = function(state) {
+const exportGraph = function(state) {
     let obj = {
         title: state.gTitle,
         description: state.gDescription,
@@ -102,7 +102,7 @@ let exportGraph = function(state) {
 /**
  * Import the json graph into the current state.
  */
-let importGraph = function(json, obj) {
+const importGraph = function(json, obj) {
     const updateObj = {
         gId: json.id,
         gTitle: json.title,
