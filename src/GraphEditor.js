@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CobbDouglasEditor from './editors/CobbDouglasEditor';
 import NonLinearDemandSupplyEditor from './editors/NonLinearDemandSupplyEditor';
 import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
+import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import JXGBoard from './JXGBoard';
 import RangeEditor from './RangeEditor';
@@ -202,6 +203,60 @@ export default class GraphEditor extends React.Component {
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                 />
                 <ConsumptionLeisureEditor
+            gK={this.props.gK}
+            gOmega={this.props.gOmega}
+            gLine1Label={this.props.gLine1Label}
+            gCorrectFeedback={this.props.gCorrectFeedback}
+            gIncorrectFeedback={this.props.gIncorrectFeedback}
+
+            isInstructor={true}
+            updateGraph={this.props.updateGraph}
+                />
+
+                <button type="button"
+            className="btn btn-primary btn-sm"
+            onClick={this.handleSaveGraph.bind(this)}>Save</button>
+
+                </form>
+                </div>;
+        } else if (this.props.gType === 7) {
+            return <div className="GraphEditor">
+                {this.title()}
+                <form>
+                <CommonGraphEditor
+            gTitle={this.props.gTitle}
+            gInstructorNotes={this.props.gInstructorNotes}
+            gDescription={this.props.gDescription}
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            gDisplayFeedback={this.props.gDisplayFeedback}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
+            gIsPublished={this.props.gIsPublished}
+            updateGraph={this.props.updateGraph}
+                />
+                <JXGBoard
+            id={'editing-graph'}
+            width={562.5}
+            height={300}
+            gType={this.props.gType}
+            gK={this.props.gK}
+            gOmega={this.props.gOmega}
+            gLine1Label={this.props.gLine1Label}
+            gLine2Label={this.props.gLine2Label}
+            gXAxisLabel={this.props.gXAxisLabel}
+            gYAxisLabel={this.props.gYAxisLabel}
+            gLine1Slope={this.props.gLine1Slope}
+            gLine2Slope={this.props.gLine2Slope}
+            gLine1OffsetX={this.props.gLine1OffsetX}
+            gLine1OffsetY={this.props.gLine1OffsetY}
+            gLine2OffsetX={this.props.gLine2OffsetX}
+            gLine2OffsetY={this.props.gLine2OffsetY}
+            gShowIntersection={this.props.gShowIntersection}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                />
+                <ConsumptionSavingEditor
             gK={this.props.gK}
             gOmega={this.props.gOmega}
             gLine1Label={this.props.gLine1Label}
