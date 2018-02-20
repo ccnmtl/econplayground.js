@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 /**
  * A wrapper for `fetch` that passes along auth credentials.
  */
-let authedFetch = function(url, method = 'get', data = null) {
+const authedFetch = function(url, method = 'get', data = null) {
     const token = Cookies.get('csrftoken');
     return fetch(url, {
         method: method,
@@ -22,7 +22,7 @@ let authedFetch = function(url, method = 'get', data = null) {
  * Returns a Promise containing the submission for the current user
  * and given graph id, if it exists.
  */
-let getSubmission = function(graphId) {
+const getSubmission = function(graphId) {
     return authedFetch(`/api/submissions/${graphId}/`)
         .then(function(response) {
             if (response.status === 200) {
@@ -33,7 +33,7 @@ let getSubmission = function(graphId) {
         });
 };
 
-let createSubmission = function(data) {
+const createSubmission = function(data) {
     return authedFetch('/api/submissions/', 'post', JSON.stringify(data))
         .then(function(response) {
             if (response.status === 201) {
@@ -45,7 +45,7 @@ let createSubmission = function(data) {
         });
 };
 
-let getOrCreateSubmission = function(data) {
+const getOrCreateSubmission = function(data) {
     return authedFetch(`/api/submissions/${data.graph}/`)
         .then(function(response) {
             if (response.status === 200) {
@@ -56,7 +56,7 @@ let getOrCreateSubmission = function(data) {
         });
 };
 
-let getL1SubmissionOffset = function(submission) {
+const getL1SubmissionOffset = function(submission) {
     if (!submission) {
         return 0;
     }
@@ -69,7 +69,7 @@ let getL1SubmissionOffset = function(submission) {
     return 0;
 };
 
-let getL2SubmissionOffset = function(submission) {
+const getL2SubmissionOffset = function(submission) {
     if (!submission) {
         return 0;
     }
@@ -85,7 +85,7 @@ let getL2SubmissionOffset = function(submission) {
 /**
  * Propagate a form update to a callback.
  */
-let handleFormUpdate = function(e) {
+const handleFormUpdate = function(e) {
     let obj = {};
 
     // Use the element's id as the attribute name, and fall
@@ -121,7 +121,7 @@ let handleFormUpdate = function(e) {
  * Given a line's slope and y-intercept, return its
  * y-offset at x-value n.
  */
-let getOffset = function(slope, y, n) {
+const getOffset = function(slope, y, n) {
     const xpos = (slope * n) + y;
     return xpos - n;
 };
@@ -130,7 +130,7 @@ let getOffset = function(slope, y, n) {
  * Force a value into a float that will be acceptable to the Django
  * API's DecimalFields. This is currently capped to 2 decimal places.
  */
-let forceFloat = function(n) {
+const forceFloat = function(n) {
     n = Number(n)
     if (isNaN(n) || typeof n === 'undefined') {
         n = 0;
@@ -138,7 +138,7 @@ let forceFloat = function(n) {
     return Math.round(n * 100) / 100;
 };
 
-let displayGraphType = function(gType) {
+const displayGraphType = function(gType) {
     let name = '';
     switch (gType) {
         case 0:

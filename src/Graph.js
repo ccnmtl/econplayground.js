@@ -8,7 +8,7 @@ import { defaultGraph } from './GraphMapping';
 import { forceFloat, getOffset } from './utils';
 
 
-let applyDefaults = function(obj, defaults) {
+const applyDefaults = function(obj, defaults) {
     let o = {};
     for (var key in obj) {
         if (typeof obj[key] === 'undefined') {
@@ -349,7 +349,7 @@ class DemandSupplyGraph extends Graph {
     }
 }
 
-let mkDemandSupply = function(board, options) {
+const mkDemandSupply = function(board, options) {
     let g = new DemandSupplyGraph(board, options);
     g.make();
     g.postMake();
@@ -485,7 +485,7 @@ class NonLinearDemandSupplyGraph extends Graph {
     }
 }
 
-let mkNonLinearDemandSupply = function(board, options) {
+const mkNonLinearDemandSupply = function(board, options) {
     let g = new NonLinearDemandSupplyGraph(board, options);
     g.make();
     g.postMake();
@@ -557,7 +557,7 @@ class CobbDouglasGraph extends Graph {
     }
 }
 
-let mkCobbDouglas = function(board, options) {
+const mkCobbDouglas = function(board, options) {
     let g = new CobbDouglasGraph(board, options);
     g.make();
     g.postMake();
@@ -585,7 +585,7 @@ class ConsumptionLeisureGraph extends Graph {
     }
 }
 
-let mkConsumptionLeisure = function(board, options) {
+const mkConsumptionLeisure = function(board, options) {
     let g = new ConsumptionLeisureGraph(board, options);
     g.make();
     g.postMake();
