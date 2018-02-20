@@ -1,12 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MathJax from 'react-mathjax2'
 import RangeEditor from '../RangeEditor';
 import {handleFormUpdate} from '../utils';
 
 export default class ConsumptionLeisureEditor extends React.Component {
     render() {
+        // I'm using K for the x-intercept's value just as a general
+        // place to store this number.
+        // TODO: I've learned that these graph values should really be
+        // consolidated in the model and called something like
+        //   n1, n2, n3, n4, n5, etc.
+        // Instead of named values like gCobbDouglasA and gY. Each graph type
+        // can then use these arbitrary slots as needed.
+        const tex = 'y = (' + this.props.gK + ' - x)ω';
+
         return (
             <div>
+                {this.props.isInstructor &&
+                    (<MathJax.Context
+                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"
+                            input="tex"
+                            options={{
+                                displayAlign: 'left'
+                            }}>
+                            <MathJax.Node>{tex}</MathJax.Node>
+                        </MathJax.Context>
+                )}
                 <div className="row">
                     <div className="col-sm-4">
                         <div className="form-group">
@@ -18,7 +38,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                 dataId="gK"
                                 value={this.props.gK}
                                 min={0}
-                                max={5}
+                                max={9}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
