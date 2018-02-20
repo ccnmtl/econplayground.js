@@ -582,6 +582,21 @@ class ConsumptionLeisureGraph extends Graph {
             fixed: true,
             highlight: false
         });
+
+        if (this.options.gShowIntersection) {
+            this.board.create(
+                'intersection',
+                [this.l1, this.board.defaultAxes.x, 0], {
+                    name: this.options.gIntersectionLabel || '',
+                    withLabel: true,
+                    fixed: true,
+                    highlight: false,
+                    showInfobox: false,
+                    size: 1,
+                    fillColor: 'red',
+                    strokeColor: 'red'
+                });
+        }
     }
 }
 
