@@ -416,7 +416,7 @@ class NonLinearDemandSupplyGraph extends Graph {
         const f1 = function(x) {
             const slope = me.options.gLine1Slope || 1;
             return (x - 2.5) * slope + 2.5;
-        }
+        };
 
         this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
             name: this.options.gLine1Label,
@@ -566,20 +566,22 @@ let mkCobbDouglas = function(board, options) {
 
 class ConsumptionLeisureGraph extends Graph {
     make() {
-        this.board.create(
-            'line', [
-                [0, 5 + this.options.gLine1OffsetY +
-                 this.options.l1SubmissionOffset],
-                [5, 0 + this.options.gLine1OffsetY +
-                 this.options.l1SubmissionOffset]
-            ], {
-                name: this.options.gLine1Label,
-                withLabel: true,
-                label: { position: 'rt', offset: [-10, 20] },
-                strokeColor: this.l1Color,
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
-            });
+        const me = this;
+
+        const f1 = function(x) {
+            return (me.options.gK - x) * me.options.gOmega;
+        };
+
+        this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
+            name: this.options.gLine1Label,
+            withLabel: true,
+            strokeWidth: 2,
+            strokeColor: this.l1Color,
+            // This graph is only moved by its RangeEditors, not by
+            // dragging.
+            fixed: true,
+            highlight: false
+        });
     }
 }
 

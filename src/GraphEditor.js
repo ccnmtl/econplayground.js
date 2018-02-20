@@ -184,10 +184,12 @@ export default class GraphEditor extends React.Component {
             width={562.5}
             height={300}
             gType={this.props.gType}
+            gK={this.props.gK}
+            gOmega={this.props.gOmega}
             gLine1Label={this.props.gLine1Label}
             gLine2Label={this.props.gLine2Label}
-            gXAxisLabel={this.props.gCobbDouglasLName}
-            gYAxisLabel={this.props.gCobbDouglasYName}
+            gXAxisLabel={this.props.gXAxisLabel}
+            gYAxisLabel={this.props.gYAxisLabel}
             gLine1Slope={this.props.gLine1Slope}
             gLine2Slope={this.props.gLine2Slope}
             gLine1OffsetX={this.props.gLine1OffsetX}
@@ -200,6 +202,8 @@ export default class GraphEditor extends React.Component {
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                 />
                 <ConsumptionLeisureEditor
+            gK={this.props.gK}
+            gOmega={this.props.gOmega}
             gLine1Label={this.props.gLine1Label}
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
@@ -692,6 +696,8 @@ GraphEditor.propTypes = {
     gNeedsSubmit: PropTypes.bool,
 
     gAlpha: PropTypes.number,
+    gOmega: PropTypes.number,
+    gK: PropTypes.number,
 
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,

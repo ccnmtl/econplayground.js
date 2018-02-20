@@ -219,7 +219,7 @@ const defaultGraph = {
     gLine2FeedbackDecrease: '',
 
     gAlpha: 0.3,
-    gOmega: 0,
+    gOmega: 1,
 
     gA: 3,
     gK: 2,
