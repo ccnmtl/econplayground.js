@@ -568,6 +568,22 @@ class ConsumptionLeisureGraph extends Graph {
     make() {
         const me = this;
 
+        if (this.options.shadow && this.options.gDisplayShadow) {
+            const f1Shadow = function(x) {
+                return (me.options.gA1Initial - x) * me.options.gA2Initial;
+            }
+
+            this.board.create('functiongraph', [f1Shadow, -30, 30], {
+                name: this.options.gLine1Label,
+                withLabel: false,
+                strokeWidth: 2,
+                strokeColor: this.shadowColor,
+                highlight: false,
+                // Under the main line layer
+                layer: 4
+            });
+        }
+
         const f1 = function(x) {
             return (me.options.gA1 - x) * me.options.gA2;
         };

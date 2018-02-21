@@ -153,8 +153,10 @@ class Viewer extends Component {
             gLine2OffsetYInitial={this.state.gLine2OffsetYInitial}
             gAlpha={this.state.gAlpha}
             gA1={this.state.gA1}
+            gA1Initial={this.state.gA1Initial}
             gA1Editable={this.state.gA1Editable}
             gA2={this.state.gA2}
+            gA2Initial={this.state.gA2Initial}
             gA2Editable={this.state.gA2Editable}
             gA={this.state.gA}
             gK={this.state.gK}
