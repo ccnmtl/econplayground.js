@@ -43,10 +43,20 @@ export default class GraphPicker extends React.Component {
                 </div>
                 <div className="graph-card">
                     Consumption-Leisure
-                    <JXGBoard id={'jxg-opt-ind-choice'} gType={5} locked={true} />
+                    <JXGBoard id={'jxg-cons-leisure-choice'} gType={5} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
                         onClick={this.handleClick6.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
+                </div>
+                <div className="graph-card">
+                    Consumption-Saving
+                    <JXGBoard id={'jxg-cons-saving-choice'} gType={7} locked={true} />
+                    <button
+                         type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick8.bind(this)}>
                         Select
                         <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
                     </button>

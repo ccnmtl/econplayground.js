@@ -607,6 +607,33 @@ const mkConsumptionLeisure = function(board, options) {
     return g;
 };
 
+class ConsumptionSavingGraph extends Graph {
+    make() {
+        const f1 = function(x) {
+            // c2 = y2 + (1 + r)(y1 + omega - c1)
+            return 0 + (1 + 1) * (0 + 1 - x);
+        };
+
+        this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
+            name: this.options.gLine1Label,
+            withLabel: true,
+            strokeWidth: 2,
+            strokeColor: this.l1Color,
+            // This graph is only moved by its RangeEditors, not by
+            // dragging.
+            fixed: true,
+            highlight: false
+        });
+    }
+}
+
+const mkConsumptionSaving = function(board, options) {
+    let g = new ConsumptionSavingGraph(board, options);
+    g.make();
+    g.postMake();
+    return g;
+};
+
 export const graphTypes = [
     // There are some null graph types here because the number of
     // total graphs in the system has been reduced since it was
@@ -615,5 +642,5 @@ export const graphTypes = [
     mkDemandSupply, mkNonLinearDemandSupply,
     null, mkCobbDouglas,
     null, mkConsumptionLeisure,
-    null, null
+    null, mkConsumptionSaving
 ];

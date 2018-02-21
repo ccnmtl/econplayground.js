@@ -153,6 +153,9 @@ const displayGraphType = function(gType) {
         case 5:
             name = 'Consumption-Leisure';
             break;
+        case 7:
+            name = 'Consumption-Saving';
+            break;
         default:
             break;
     }

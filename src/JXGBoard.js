@@ -49,22 +49,31 @@ export default class JXGBoard extends React.Component {
 
         let xAxisLabel = '';
         let yAxisLabel = '';
-        if (options.gType === 3) {
-            xAxisLabel = options.gCobbDouglasLName;
-            yAxisLabel = options.gYAxisLabel || options.gCobbDouglasYName;
-        } else if (options.gType === 1) {
-            // Non-linear demand-supply
-            xAxisLabel = 'N';
-            yAxisLabel = 'MP<sub>n</sub>';
-            if (this.props.locked) {
-                options.gCobbDouglasA = 3.4;
-                options.gCobbDouglasK = 2.3;
-                options.gLine2OffsetX = 0.5;
-                options.gLine2OffsetY = -0.8;
-            }
-        } else {
-            xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
-            yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
+        switch (options.gType) {
+            case 1:
+                // Non-linear demand-supply
+                xAxisLabel = 'N';
+                yAxisLabel = 'MP<sub>n</sub>';
+                if (this.props.locked) {
+                    options.gCobbDouglasA = 3.4;
+                    options.gCobbDouglasK = 2.3;
+                    options.gLine2OffsetX = 0.5;
+                    options.gLine2OffsetY = -0.8;
+                }
+                break;
+            case 3:
+                xAxisLabel = options.gCobbDouglasLName;
+                yAxisLabel = options.gYAxisLabel || options.gCobbDouglasYName;
+                break;
+            case 7:
+                // Consumption-Saving
+                xAxisLabel = 'c1';
+                yAxisLabel = 'c2';
+                break;
+            default:
+                xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
+                yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
+                break;
         }
 
         let board = JXG.JSXGraph.initBoard(
