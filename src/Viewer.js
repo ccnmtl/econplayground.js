@@ -70,10 +70,16 @@ class Viewer extends Component {
             gLine2OffsetX={this.state.gLine2OffsetX}
             gLine2OffsetY={this.state.gLine2OffsetY}
             gAlpha={this.state.gAlpha}
+
             gA1={this.state.gA1}
             gA1Editable={this.state.gA1Editable}
             gA2={this.state.gA2}
             gA2Editable={this.state.gA2Editable}
+            gA3={this.state.gA3}
+            gA3Editable={this.state.gA3Editable}
+            gA4={this.state.gA4}
+            gA4Editable={this.state.gA4Editable}
+
             gA={this.state.gA}
             gK={this.state.gK}
             gR={this.state.gR}
@@ -152,10 +158,16 @@ class Viewer extends Component {
             gLine2OffsetXInitial={this.state.gLine2OffsetXInitial}
             gLine2OffsetYInitial={this.state.gLine2OffsetYInitial}
             gAlpha={this.state.gAlpha}
+
             gA1={this.state.gA1}
             gA1Editable={this.state.gA1Editable}
             gA2={this.state.gA2}
             gA2Editable={this.state.gA2Editable}
+            gA3={this.state.gA3}
+            gA3Editable={this.state.gA3Editable}
+            gA4={this.state.gA4}
+            gA4Editable={this.state.gA4Editable}
+
             gA={this.state.gA}
             gK={this.state.gK}
             gR={this.state.gR}

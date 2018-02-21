@@ -245,6 +245,8 @@ export default class GraphEditor extends React.Component {
             gType={this.props.gType}
             gA1={this.props.gA1}
             gA2={this.props.gA2}
+            gA3={this.props.gA3}
+            gA4={this.props.gA4}
             gLine1Label={this.props.gLine1Label}
             gLine2Label={this.props.gLine2Label}
             gXAxisLabel={this.props.gXAxisLabel}
@@ -265,6 +267,10 @@ export default class GraphEditor extends React.Component {
             gA1Editable={this.props.gA1Editable}
             gA2={this.props.gA2}
             gA2Editable={this.props.gA2Editable}
+            gA3={this.props.gA3}
+            gA3Editable={this.props.gA3Editable}
+            gA4={this.props.gA4}
+            gA4Editable={this.props.gA4Editable}
             gLine1Label={this.props.gLine1Label}
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
@@ -762,6 +768,10 @@ GraphEditor.propTypes = {
     gA1Editable: PropTypes.bool,
     gA2: PropTypes.number,
     gA2Editable: PropTypes.bool,
+    gA3: PropTypes.number,
+    gA3Editable: PropTypes.bool,
+    gA4: PropTypes.number,
+    gA4Editable: PropTypes.bool,
 
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,

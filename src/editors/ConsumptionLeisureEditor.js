@@ -6,13 +6,6 @@ import {handleFormUpdate} from '../utils';
 
 export default class ConsumptionLeisureEditor extends React.Component {
     render() {
-        // I'm using K for the x-intercept's value just as a general
-        // place to store this number.
-        // TODO: I've learned that these graph values should really be
-        // consolidated in the model and called something like
-        //   n1, n2, n3, n4, n5, etc.
-        // Instead of named values like gCobbDouglasA and gY. Each graph type
-        // can then use these arbitrary slots as needed.
         const tex = 'y = (' + this.props.gA1 + ' - x)ω';
 
         return (
