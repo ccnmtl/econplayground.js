@@ -65,6 +65,12 @@ export default class JXGBoard extends React.Component {
                 xAxisLabel = options.gCobbDouglasLName;
                 yAxisLabel = options.gYAxisLabel || options.gCobbDouglasYName;
                 break;
+            case 5:
+                if (this.props.locked) {
+                    options.gA1 = 4;
+                    options.gA2 = 1;
+                }
+                break;
             case 7:
                 // Consumption-Saving
                 xAxisLabel = 'c1';
@@ -136,7 +142,11 @@ export default class JXGBoard extends React.Component {
                 gLine2OffsetXInitial: options.gLine2OffsetXInitial,
                 gLine2OffsetYInitial: options.gLine2OffsetYInitial,
                 gAlpha: options.gAlpha,
-                gOmega: options.gOmega,
+                gA1: options.gA1,
+                gA2: options.gA2,
+                gA3: options.gA3,
+                gA4: options.gA4,
+                gA5: options.gA5,
                 gA: options.gA,
                 gK: options.gK,
                 gR: options.gR,
@@ -188,7 +198,11 @@ export default class JXGBoard extends React.Component {
             'gLine2OffsetXInitial',
             'gLine2OffsetYInitial',
             'gAlpha',
-            'gOmega',
+            'gA1',
+            'gA2',
+            'gA3',
+            'gA4',
+            'gA5',
             'gA',
             'gK',
             'gR',
@@ -248,7 +262,11 @@ export default class JXGBoard extends React.Component {
                 gLine2OffsetXInitial: nextProps.gLine2OffsetXInitial,
                 gLine2OffsetYInitial: nextProps.gLine2OffsetYInitial,
                 gAlpha: nextProps.gAlpha,
-                gOmega: nextProps.gOmega,
+                gA1: nextProps.gA1,
+                gA2: nextProps.gA2,
+                gA3: nextProps.gA3,
+                gA4: nextProps.gA4,
+                gA5: nextProps.gA5,
                 gA: nextProps.gA,
                 gK: nextProps.gK,
                 gR: nextProps.gR,
@@ -301,7 +319,11 @@ export default class JXGBoard extends React.Component {
             gLine2OffsetXInitial: this.props.gLine2OffsetXInitial,
             gLine2OffsetYInitial: this.props.gLine2OffsetYInitial,
             gAlpha: this.props.gAlpha,
-            gOmega: this.props.gOmega,
+            gA1: this.props.gA1,
+            gA2: this.props.gA2,
+            gA3: this.props.gA3,
+            gA4: this.props.gA4,
+            gA5: this.props.gA5,
             gA: this.props.gA,
             gK: this.props.gK,
             gR: this.props.gR,
@@ -364,7 +386,13 @@ JXGBoard.propTypes = {
     gLine2OffsetXInitial: PropTypes.number,
     gLine2OffsetYInitial: PropTypes.number,
     gAlpha: PropTypes.number,
-    gOmega: PropTypes.number,
+
+    gA1: PropTypes.number,
+    gA2: PropTypes.number,
+    gA3: PropTypes.number,
+    gA4: PropTypes.number,
+    gA5: PropTypes.number,
+
     gA: PropTypes.number,
     gK: PropTypes.number,
     gR: PropTypes.number,

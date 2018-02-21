@@ -185,8 +185,8 @@ export default class GraphEditor extends React.Component {
             width={562.5}
             height={300}
             gType={this.props.gType}
-            gK={this.props.gK}
-            gOmega={this.props.gOmega}
+            gA1={this.props.gA1}
+            gA2={this.props.gA2}
             gLine1Label={this.props.gLine1Label}
             gLine2Label={this.props.gLine2Label}
             gXAxisLabel={this.props.gXAxisLabel}
@@ -203,8 +203,10 @@ export default class GraphEditor extends React.Component {
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                 />
                 <ConsumptionLeisureEditor
-            gK={this.props.gK}
-            gOmega={this.props.gOmega}
+            gA1={this.props.gA1}
+            gA1Editable={this.props.gA1Editable}
+            gA2={this.props.gA2}
+            gA2Editable={this.props.gA2Editable}
             gLine1Label={this.props.gLine1Label}
             gIntersectionLabel={this.props.gIntersectionLabel}
             gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
@@ -241,8 +243,8 @@ export default class GraphEditor extends React.Component {
             width={562.5}
             height={300}
             gType={this.props.gType}
-            gK={this.props.gK}
-            gOmega={this.props.gOmega}
+            gA1={this.props.gA1}
+            gA2={this.props.gA2}
             gLine1Label={this.props.gLine1Label}
             gLine2Label={this.props.gLine2Label}
             gXAxisLabel={this.props.gXAxisLabel}
@@ -259,8 +261,10 @@ export default class GraphEditor extends React.Component {
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                 />
                 <ConsumptionSavingEditor
-            gK={this.props.gK}
-            gOmega={this.props.gOmega}
+            gA1={this.props.gA1}
+            gA1Editable={this.props.gA1Editable}
+            gA2={this.props.gA2}
+            gA2Editable={this.props.gA2Editable}
             gLine1Label={this.props.gLine1Label}
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
@@ -753,8 +757,11 @@ GraphEditor.propTypes = {
     gNeedsSubmit: PropTypes.bool,
 
     gAlpha: PropTypes.number,
-    gOmega: PropTypes.number,
-    gK: PropTypes.number,
+
+    gA1: PropTypes.number,
+    gA1Editable: PropTypes.bool,
+    gA2: PropTypes.number,
+    gA2Editable: PropTypes.bool,
 
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,

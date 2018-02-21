@@ -2,6 +2,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import CobbDouglasEditor from './editors/CobbDouglasEditor';
+import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
 import RangeEditor from './RangeEditor';
@@ -127,6 +128,73 @@ export default class GraphViewer extends React.Component {
                     </form>
                 </div>
             );
+        } else if (this.props.gType === 5) {
+            return (
+                <div className="GraphViewer">
+                    <h5>{this.props.gTitle}</h5>
+                    <p>{this.props.gDescription}</p>
+                    <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
+                        <input type="hidden" name="csrfmiddlewaretoken" value={token} />
+                        <input type="hidden" name="score" value={this.props.value} />
+                        <input type="hidden" name="next" value={successUrl} />
+                        <input type="hidden" name="launchUrl" value={launchUrl} />
+                        <JXGBoard
+                            id={'editing-graph'}
+                            width={562.5}
+                            height={300}
+                            submission={this.props.submission}
+                            shadow={!isInstructor}
+
+                            gType={this.props.gType}
+                            gA1={this.props.gA1}
+                            gA2={this.props.gA2}
+                            gLine1Label={this.props.gLine1Label}
+                            gLine2Label={this.props.gLine2Label}
+                            gXAxisLabel={this.props.gCobbDouglasLName}
+                            gYAxisLabel={this.props.gCobbDouglasYName}
+                            gLine1Slope={this.props.gLine1Slope}
+                            gLine2Slope={this.props.gLine2Slope}
+                            gLine1OffsetX={this.props.gLine1OffsetX}
+                            gLine1OffsetY={this.props.gLine1OffsetY}
+                            gLine2OffsetX={this.props.gLine2OffsetX}
+                            gLine2OffsetY={this.props.gLine2OffsetY}
+                            gNeedsSubmit={this.props.gNeedsSubmit}
+                            gShowIntersection={this.props.gShowIntersection}
+                            gDisplayShadow={this.props.gDisplayShadow}
+                            gIntersectionLabel={this.props.gIntersectionLabel}
+                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                            />
+
+
+                        <ConsumptionLeisureEditor
+                            isInstructor={isInstructor}
+                            gA1={this.props.gA1}
+                            gA1Editable={this.props.gA1Editable}
+                            gA2={this.props.gA2}
+                            gA2Editable={this.props.gA2Editable}
+                            gLine1Label={this.props.gLine1Label}
+                            gLine1LabelEditable={this.props.gLine1LabelEditable}
+                            gIntersectionLabel={this.props.gIntersectionLabel}
+                            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
+
+                            updateGraph={this.props.updateGraph}
+                            />
+
+                        <hr style={{
+                                display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
+                            }} />
+
+                        <button className="btn btn-primary btn-sm"
+                                disabled={!this.props.choice}
+                                style={{
+                                    marginTop: '1em',
+                                    display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
+                                }}
+                                type="submit">Submit</button>
+                    </form>
+                </div>
+            );
         }
 
         return (
@@ -170,7 +238,12 @@ export default class GraphViewer extends React.Component {
                         gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
                         gAlpha={this.props.gAlpha}
-                        gOmega={this.props.gOmega}
+
+                        gA1={this.props.gA1}
+                        gA1Editable={this.props.gA1Editable}
+                        gA2={this.props.gA2}
+                        gA2Editable={this.props.gA2Editable}
+
                         gA={this.props.gA}
                         gK={this.props.gK}
                         gR={this.props.gR}
@@ -433,7 +506,12 @@ GraphViewer.propTypes = {
     gType: PropTypes.number,
 
     gAlpha: PropTypes.number,
-    gOmega: PropTypes.number,
+
+    gA1: PropTypes.number,
+    gA1Editable: PropTypes.bool,
+    gA2: PropTypes.number,
+    gA2Editable: PropTypes.bool,
+
     gA: PropTypes.number,
     gK: PropTypes.number,
     gR: PropTypes.number,

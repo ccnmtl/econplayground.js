@@ -13,7 +13,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
         //   n1, n2, n3, n4, n5, etc.
         // Instead of named values like gCobbDouglasA and gY. Each graph type
         // can then use these arbitrary slots as needed.
-        const tex = 'y = (' + this.props.gK + ' - x)ω';
+        const tex = 'y = (' + this.props.gA1 + ' - x)ω';
 
         return (
             <div>
@@ -29,64 +29,73 @@ export default class ConsumptionLeisureEditor extends React.Component {
                         </MathJax.Context>
                 )}
                 <div className="row">
+                {(this.props.isInstructor || this.props.gA1Editable) &&
                     <div className="col-sm-4">
                         <div className="form-group">
-                            <label htmlFor="gK">
+                            <label htmlFor="gA1">
                                 X-intercept&apos;s value
                             </label>
                             <RangeEditor
-                                id="gK"
-                                dataId="gK"
-                                value={this.props.gK}
+                                id="gA1"
+                                dataId="gA1"
+                                value={this.props.gA1}
                                 min={0}
                                 max={9}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine1LabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine1LabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                 </div>
+                }
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gA1Editable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gA1Editable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
+            </div>
 
-                    <div className="col-sm-4">
+                <div className="col-sm-4">
+                {(this.props.isInstructor || this.props.gA2Editable) &&
                         <div className="form-group">
                             <label htmlFor="gOmega">
                                 &omega;
                             </label>
                             <RangeEditor
-                                id="gOmega"
-                                dataId="gOmega"
-                                value={this.props.gOmega}
+                                id="gA2"
+                                dataId="gA2"
+                                value={this.props.gA2}
                                 min={0.01}
                                 max={5}
                                 handler={handleFormUpdate.bind(this)} />
-                        </div>
+                 </div>
+                }
                     </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine1LabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine1LabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gA2Editable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gA2Editable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
+            </div>
                 </div>
 
                 <div className="row">
+                {(this.props.isInstructor || this.props.gLine1LabelEditable) &&
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gLine1Label">
@@ -100,23 +109,27 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                    maxLength="60"
                                    />
                         </div>
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine1LabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine1LabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
+                 </div>
+                }
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gLine1LabelEditable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gLine1LabelEditable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
                     </div>
                 </div>
 
                 <div className="row">
+                {(this.props.isInstructor || this.props.gIntersectionLabelEditable) &&
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gIntersectionLabel">
@@ -129,19 +142,22 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                    value={this.props.gIntersectionLabel}
                                    onChange={handleFormUpdate.bind(this)} />
                         </div>
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gIntersectionLabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gIntersectionLabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
+                 </div>
+                }
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gIntersectionLabelEditable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gIntersectionLabelEditable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
                     </div>
                 </div>
             </div>
@@ -157,8 +173,11 @@ ConsumptionLeisureEditor.propTypes = {
     gIntersectionVertLineLabel: PropTypes.string,
     gIntersectionVertLineLabelEditable: PropTypes.bool,
 
-    gOmega: PropTypes.number.isRequired,
-    gK: PropTypes.number.isRequired,
+    gA1: PropTypes.number.isRequired,
+    gA1Editable: PropTypes.bool.isRequired,
+    gA2: PropTypes.number.isRequired,
+    gA2Editable: PropTypes.bool.isRequired,
+
     gLine1Label: PropTypes.string.isRequired,
     gLine1LabelEditable: PropTypes.bool,
 
