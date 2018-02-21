@@ -609,9 +609,12 @@ const mkConsumptionLeisure = function(board, options) {
 
 class ConsumptionSavingGraph extends Graph {
     make() {
+        const me = this;
+
         const f1 = function(x) {
             // c2 = y2 + (1 + r)(y1 + omega - c1)
-            return 0 + (1 + 1) * (0 + 1 - x);
+            return me.options.gA2 + (1 + me.options.gA4) *
+                (me.options.gA1 + me.options.gA3 - x);
         };
 
         this.l1 = this.board.create('functiongraph', [f1, -30, 30], {

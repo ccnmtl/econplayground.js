@@ -73,8 +73,12 @@ export default class JXGBoard extends React.Component {
                 break;
             case 7:
                 // Consumption-Saving
-                xAxisLabel = 'c1';
-                yAxisLabel = 'c2';
+                xAxisLabel = 'c_1';
+                yAxisLabel = 'c_2';
+                if (this.props.locked) {
+                    options.gA1 = 4;
+                    options.gA2 = 1;
+                }
                 break;
             default:
                 xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
