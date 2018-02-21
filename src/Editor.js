@@ -67,7 +67,10 @@ class Editor extends Component {
                         gLine2OffsetX={this.state.gLine2OffsetX}
                         gLine2OffsetY={this.state.gLine2OffsetY}
                         gAlpha={this.state.gAlpha}
-                        gOmega={this.state.gOmega}
+                        gA1={this.state.gA1}
+                        gA1Editable={this.state.gA1Editable}
+                        gA2={this.state.gA2}
+                        gA2Editable={this.state.gA2Editable}
                         gA={this.state.gA}
                         gK={this.state.gK}
                         gR={this.state.gR}
@@ -105,9 +108,29 @@ class Editor extends Component {
         this.setState({step: 0});
     }
     onSelectGraph(type) {
+        let gA1default = 0;
+        let gA2default = 0;
+
+        // Initialize different graph types with their own default
+        // values.
+        //
+        // TODO: unify this with the switch/case statement in
+        // JXGBoard.
+        //
+        switch (type) {
+            case 5:
+                gA1default = 4;
+                gA2default = 1;
+                break;
+            default:
+                break;
+        }
+
         this.setState({
             step: 1,
-            gType: type
+            gType: type,
+            gA1: gA1default,
+            gA2: gA2default
         });
     }
     handleSaveGraph() {

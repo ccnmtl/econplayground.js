@@ -47,6 +47,17 @@ const exportGraph = function(state) {
         alpha: forceFloat(state.gAlpha),
         omega: forceFloat(state.gOmega),
 
+        a1: forceFloat(state.gA1),
+        a1_editable: state.gA1Editable,
+        a2: forceFloat(state.gA2),
+        a2_editable: state.gA2Editable,
+        a3: forceFloat(state.gA3),
+        a3_editable: state.gA3Editable,
+        a4: forceFloat(state.gA4),
+        a4_editable: state.gA4Editable,
+        a5: forceFloat(state.gA5),
+        a5_editable: state.gA5Editable,
+
         a: forceFloat(state.gA),
         k: forceFloat(state.gK),
         r: forceFloat(state.gR),
@@ -149,6 +160,17 @@ const importGraph = function(json, obj) {
         gAlpha: window.parseFloat(json.alpha),
         gOmega: window.parseFloat(json.omega),
 
+        gA1: window.parseFloat(json.a1),
+        gA1Editable: json.a1_editable,
+        gA2: window.parseFloat(json.a2),
+        gA2Editable: json.a2_editable,
+        gA3: window.parseFloat(json.a3),
+        gA3Editable: json.a3_editable,
+        gA4: window.parseFloat(json.a4),
+        gA4Editable: json.a4_editable,
+        gA5: window.parseFloat(json.a5),
+        gA5Editable: json.a5_editable,
+
         gA: window.parseFloat(json.a),
         gK: window.parseFloat(json.k),
         gR: window.parseFloat(json.r),
@@ -220,6 +242,17 @@ const defaultGraph = {
 
     gAlpha: 0.3,
     gOmega: 1,
+
+    gA1: 0,
+    gA1Editable: true,
+    gA2: 0,
+    gA2Editable: true,
+    gA3: 0,
+    gA3Editable: true,
+    gA4: 0,
+    gA4Editable: true,
+    gA5: 0,
+    gA5Editable: true,
 
     gA: 3,
     gK: 2,

@@ -569,7 +569,7 @@ class ConsumptionLeisureGraph extends Graph {
         const me = this;
 
         const f1 = function(x) {
-            return (me.options.gK - x) * me.options.gOmega;
+            return (me.options.gA1 - x) * me.options.gA2;
         };
 
         this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
