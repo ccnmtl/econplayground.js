@@ -53,7 +53,7 @@ export default class JXGBoard extends React.Component {
             case 1:
                 // Non-linear demand-supply
                 xAxisLabel = 'N';
-                yAxisLabel = 'MP<sub>n</sub>';
+                yAxisLabel = 'MP<sub>N</sub>';
                 if (this.props.locked) {
                     options.gCobbDouglasA = 3.4;
                     options.gCobbDouglasK = 2.3;
@@ -104,7 +104,7 @@ export default class JXGBoard extends React.Component {
                     y: {
                         name: yAxisLabel,
                         label: {
-                            offset: [(options.gType === 1) ? -1 : -5, 260]
+                            offset: [(options.gType === 1) ? 0 : -5, 260]
                         },
                         withLabel: yAxisLabel ? true : false,
                         ticks: {
