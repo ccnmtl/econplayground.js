@@ -6,7 +6,7 @@ import {handleFormUpdate} from '../utils';
 
 export default class ConsumptionLeisureEditor extends React.Component {
     render() {
-        const tex = 'y = (' + this.props.gA1 + ' - x)ω';
+        const tex = 'y = (' + this.props.gA1 + ' - x)w';
 
         return (
             <div>
@@ -57,8 +57,8 @@ export default class ConsumptionLeisureEditor extends React.Component {
                 <div className="col-sm-4">
                 {(this.props.isInstructor || this.props.gA2Editable) &&
                         <div className="form-group">
-                            <label htmlFor="gOmega">
-                                &omega;
+                            <label htmlFor="gA2">
+                                w
                             </label>
                             <RangeEditor
                                 id="gA2"
