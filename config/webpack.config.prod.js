@@ -4,7 +4,6 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
@@ -95,23 +94,6 @@ module.exports = {
             // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
             // { parser: { requireEnsure: false } },
 
-            // First, run the linter.
-            // It's important to do this before Babel processes the JS.
-            {
-                test: /\.(js|jsx)$/,
-                enforce: 'pre',
-                use: [
-                    {
-                        options: {
-                            formatter: eslintFormatter,
-                            eslintPath: require.resolve('eslint'),
-
-                        },
-                        loader: require.resolve('eslint-loader'),
-                    },
-                ],
-                include: paths.appSrc,
-            },
             {
                 // "oneOf" will traverse all following loaders until one will
                 // match the requirements. When no loader matches it will fall
@@ -164,24 +146,6 @@ module.exports = {
         // It is absolutely essential that NODE_ENV was set to production here.
         // Otherwise React will be compiled in the very slow development mode.
         new webpack.DefinePlugin(env.stringified),
-        // Minify the code.
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                // Disabled because of an issue with Uglify breaking seemingly valid code:
-                // https://github.com/facebookincubator/create-react-app/issues/2376
-                // Pending further investigation:
-                // https://github.com/mishoo/UglifyJS2/issues/2011
-                comparisons: false,
-            },
-            output: {
-                comments: false,
-                // Turned on because emoji and regex is not minified properly using default
-                // https://github.com/facebookincubator/create-react-app/issues/2488
-                ascii_only: true,
-            },
-            sourceMap: shouldUseSourceMap,
-        }),
         // Moment.js is an extremely popular library that bundles large locale files
         // by default due to how Webpack interprets its code. This is a practical
         // solution that requires the user to opt into importing specific locales.
