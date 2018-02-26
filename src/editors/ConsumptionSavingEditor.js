@@ -20,7 +20,26 @@ export default class ConsumptionSavingEditor extends React.Component {
                             }}>
                             <MathJax.Node>{tex}</MathJax.Node>
                         </MathJax.Context>
-                )}
+                    )}
+
+                <div className="row">
+                <div className="col-sm-6">
+                </div>
+                <div className="col-sm-4">
+                <div className="form-check">
+                <label className="form-check-label">
+                <input
+            id="gShowIntersection"
+            className="form-check-input"
+            type="checkbox"
+            onChange={handleFormUpdate.bind(this)}
+            checked={this.props.gShowIntersection} />
+                Show endowment point
+            </label>
+                </div>
+                </div>
+                </div>
+
                 <div className="row">
                     <div className="col-sm-4">
                         <div className="form-group">
@@ -36,19 +55,21 @@ export default class ConsumptionSavingEditor extends React.Component {
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gA1Editable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gA1Editable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gA1Editable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gA1Editable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
+            </div>
 
                     <div className="col-sm-4">
                         <div className="form-group">
@@ -64,19 +85,21 @@ export default class ConsumptionSavingEditor extends React.Component {
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gA2Editable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gA2Editable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gA2Editable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gA2Editable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
+            </div>
                 </div>
 
                 <div className="row">
@@ -94,19 +117,21 @@ export default class ConsumptionSavingEditor extends React.Component {
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gA3Editable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gA3Editable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gA3Editable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gA3Editable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
+            </div>
 
                     <div className="col-sm-4">
                         <div className="form-group">
@@ -122,19 +147,21 @@ export default class ConsumptionSavingEditor extends React.Component {
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gA4Editable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gA4Editable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gA4Editable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gA4Editable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
+            </div>
                 </div>
 
                 <div className="row">
@@ -152,26 +179,28 @@ export default class ConsumptionSavingEditor extends React.Component {
                                    />
                         </div>
                     </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine1LabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine1LabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gLine1LabelEditable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gLine1LabelEditable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
+            </div>
                 </div>
 
                 <div className="row">
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gIntersectionLabel">
-                                Intersection point label:
+                                Endowment point label:
                             </label>
                             <input id="gIntersectionLabel"
                                    className="form-control form-control-sm"
@@ -181,7 +210,8 @@ export default class ConsumptionSavingEditor extends React.Component {
                                    onChange={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
-                    <div className="col-sm-2">
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input
@@ -192,15 +222,16 @@ export default class ConsumptionSavingEditor extends React.Component {
                                     checked={this.props.gIntersectionLabelEditable} />
                                 Student editable
                             </label>
-                        </div>
-                    </div>
+                 </div>
+                }
+            </div>
                 </div>
 
                 <div className="row">
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gIntersectionHorizLineLabel">
-                                Intersection&apos;s horizontal line label:
+                                Endowment point&apos;s horizontal line label:
                             </label>
                             <input id="gIntersectionHorizLineLabel"
                                    className="form-control form-control-sm"
@@ -210,24 +241,26 @@ export default class ConsumptionSavingEditor extends React.Component {
                                    onChange={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gIntersectionHorizLineLabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gIntersectionHorizLineLabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gIntersectionHorizLineLabelEditable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gIntersectionHorizLineLabelEditable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
                     </div>
 
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gIntersectionVertLineLabel">
-                                Intersection&apos;s vertical line label:
+                                Endowment point&apos;s vertical line label:
                             </label>
                             <input id="gIntersectionVertLineLabel"
                                    className="form-control form-control-sm"
@@ -237,19 +270,21 @@ export default class ConsumptionSavingEditor extends React.Component {
                                    onChange={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gIntersectionVertLineLabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gIntersectionVertLineLabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                <div className="col-sm-2">
+                {this.props.isInstructor &&
+                 <div className="form-check">
+                 <label className="form-check-label">
+                 <input
+                 id="gIntersectionVertLineLabelEditable"
+                 className="form-check-input"
+                 type="checkbox"
+                 onChange={handleFormUpdate.bind(this)}
+                 checked={this.props.gIntersectionVertLineLabelEditable} />
+                 Student editable
+                 </label>
+                 </div>
+                }
+            </div>
                 </div>
             </div>
         );
@@ -257,6 +292,7 @@ export default class ConsumptionSavingEditor extends React.Component {
 }
 
 ConsumptionSavingEditor.propTypes = {
+    gShowIntersection: PropTypes.bool,
     gIntersectionLabel: PropTypes.string,
     gIntersectionLabelEditable: PropTypes.bool,
     gIntersectionHorizLineLabel: PropTypes.string,
