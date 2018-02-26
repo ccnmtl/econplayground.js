@@ -132,6 +132,16 @@ class Graph {
                     } else {
                         document.dispatchEvent(new Event('l1initial'));
                     }
+
+                    const offset = getOffset(
+                        me.l1.getSlope(), me.l1.getRise(), 2.5);
+                    const offsetEvt = new CustomEvent('l1offset', {
+                        detail: {
+                            x: 0,
+                            y: offset
+                        }
+                    });
+                    document.dispatchEvent(offsetEvt);
                 });
             }
         }
@@ -170,6 +180,16 @@ class Graph {
                     } else {
                         document.dispatchEvent(new Event('l2initial'));
                     }
+
+                    const offset = getOffset(
+                        me.l2.getSlope(), me.l2.getRise(), 2.5);
+                    const offsetEvt = new CustomEvent('l2offset', {
+                        detail: {
+                            x: 0,
+                            y: offset
+                        }
+                    });
+                    document.dispatchEvent(offsetEvt);
                 });
             }
         }

@@ -39,6 +39,23 @@ export default class GraphViewer extends React.Component {
 
         const token = Cookies.get('csrftoken');
 
+        const initialState = {
+            gCobbDouglasA: this.props.gCobbDouglasAInitial,
+            gCobbDouglasL: this.props.gCobbDouglasLInitial,
+            gCobbDouglasK: this.props.gCobbDouglasKInitial,
+            gCobbDouglasAlpha: this.props.gCobbDouglasAlphaInitial,
+            gA1: this.props.gA1Initial,
+            gA2: this.props.gA2Initial,
+            gA3: this.props.gA3Initial,
+            gA4: this.props.gA4Initial,
+            gLine1OffsetX: this.props.gLine1OffsetXInitial,
+            gLine1OffsetY: this.props.gLine1OffsetYInitial,
+            gLine2OffsetX: this.props.gLine2OffsetXInitial,
+            gLine2OffsetY: this.props.gLine2OffsetYInitial,
+            gLine1Slope: this.props.gLine1SlopeInitial,
+            gLine2Slope: this.props.gLine2SlopeInitial
+        };
+
         if (this.props.gType === 3) {
             return (
                 <div className="GraphViewer">
@@ -116,6 +133,10 @@ export default class GraphViewer extends React.Component {
                             updateGraph={this.props.updateGraph}
                             />
 
+                        <ResetGraphButton
+                            initialState={initialState}
+                            updateGraph={this.props.updateGraph} />
+
                         <hr style={{
                                 display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
                             }} />
@@ -131,10 +152,7 @@ export default class GraphViewer extends React.Component {
                 </div>
             );
         } else if (this.props.gType === 5) {
-            let initialState = {
-                gA1: this.props.gA1Initial,
-                gA2: this.props.gA2Initial
-            };
+
             return (
                 <div className="GraphViewer">
                     <h5>{this.props.gTitle}</h5>
@@ -264,6 +282,10 @@ export default class GraphViewer extends React.Component {
 
                             updateGraph={this.props.updateGraph}
                             />
+
+                        <ResetGraphButton
+                            initialState={initialState}
+                            updateGraph={this.props.updateGraph} />
 
                         <hr style={{
                                 display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
@@ -493,6 +515,10 @@ export default class GraphViewer extends React.Component {
                         </div>
                     </div>
 
+                    <ResetGraphButton
+                        initialState={initialState}
+                        updateGraph={this.props.updateGraph} />
+
                     <hr style={{
                             display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
                         }} />
@@ -598,8 +624,10 @@ GraphViewer.propTypes = {
     gA2Initial: PropTypes.number,
     gA2Editable: PropTypes.bool,
     gA3: PropTypes.number,
+    gA3Initial: PropTypes.number,
     gA3Editable: PropTypes.bool,
     gA4: PropTypes.number,
+    gA4Initial: PropTypes.number,
     gA4Editable: PropTypes.bool,
 
     gA: PropTypes.number,
