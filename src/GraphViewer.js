@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CobbDouglasEditor from './editors/CobbDouglasEditor';
 import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
+import ResetGraphButton from './ResetGraphButton';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
 import RangeEditor from './RangeEditor';
@@ -130,6 +131,10 @@ export default class GraphViewer extends React.Component {
                 </div>
             );
         } else if (this.props.gType === 5) {
+            let initialState = {
+                gA1: this.props.gA1Initial,
+                gA2: this.props.gA2Initial
+            };
             return (
                 <div className="GraphViewer">
                     <h5>{this.props.gTitle}</h5>
@@ -183,6 +188,10 @@ export default class GraphViewer extends React.Component {
 
                             updateGraph={this.props.updateGraph}
                             />
+
+                        <ResetGraphButton
+                            initialState={initialState}
+                            updateGraph={this.props.updateGraph} />
 
                         <hr style={{
                                 display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
