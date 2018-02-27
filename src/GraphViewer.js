@@ -246,6 +246,8 @@ export default class GraphViewer extends React.Component {
                             gType={this.props.gType}
                             gA1={this.props.gA1}
                             gA2={this.props.gA2}
+                            gA3={this.props.gA3}
+                            gA4={this.props.gA4}
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
                             gXAxisLabel={this.props.gCobbDouglasLName}
@@ -277,6 +279,7 @@ export default class GraphViewer extends React.Component {
                             gA4Editable={this.props.gA4Editable}
                             gLine1Label={this.props.gLine1Label}
                             gLine1LabelEditable={this.props.gLine1LabelEditable}
+                            gShowIntersection={this.props.gShowIntersection}
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
 

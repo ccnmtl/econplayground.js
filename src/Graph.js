@@ -686,6 +686,47 @@ class ConsumptionSavingGraph extends Graph {
             fixed: true,
             highlight: false
         });
+
+        if (this.options.gShowIntersection) {
+            const p1 = this.board.create('point', [this.options.gA1 + this.options.gA3, 0], {
+                name: 'y<sub>1</sub> + w',
+                size: 1,
+                fixed: true,
+                highlight: false,
+                showInfobox: false
+            });
+
+            const p2 = this.board.create('point', [0, this.options.gA2], {
+                name: 'y<sub>2</sub>',
+                size: 1,
+                fixed: true,
+                highlight: false,
+                showInfobox: false
+            });
+
+            const l1 = this.board.create('line', [p1, [p1.X(), p2.Y()]], {
+                straightFirst: false,
+                straightLast: false,
+                dash: 1,
+                highlight: false,
+                strokeColor: 'black'
+            });
+            const l2 = this.board.create('line', [p2, [p1.X(), p2.Y()]], {
+                straightFirst: false,
+                straightLast: false,
+                dash: 1,
+                highlight: false,
+                strokeColor: 'black'
+            });
+
+            this.board.create('intersection', [l1, l2], {
+                name: 'EP',
+                size: 1,
+                fixed: true,
+                highlight: false,
+                showInfobox: false
+            });
+        }
     }
 }
 
