@@ -24,13 +24,12 @@ macOS / homebrew:
 Here's how to develop econplayground.js in the econplayground django application:
 
 * `cd econplayground`
-* `rm media/econplayground.js/main.js`
-* `ln -s ~/public_html/econplayground.js/build/main.js media/econplayground.js/main.js`
+* `./scripts/link.sh`
 * `make runserver`
 
 Then, in a new terminal:
 
-* `cd ~/public_html/econplayground`
+* `cd ~/public_html/econplayground.js`
 * `make dev`
 
 Now you can make changes in the econplayground.js repository, and the
