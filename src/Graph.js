@@ -684,6 +684,61 @@ class ConsumptionSavingGraph extends Graph {
                 // Under the main line layer
                 layer: 4
             });
+
+            if (this.options.gShowIntersection) {
+                const p1Shadow = this.board.create('point', [
+                    this.options.gA1Initial + this.options.gA3Initial, 0], {
+                        name: 'y<sub>1</sub> + w',
+                        withLabel: false,
+                        size: 1,
+                        strokeColor: this.shadowColor,
+                        fillColor: this.shadowColor,
+                        fixed: true,
+                        highlight: false,
+                        showInfobox: false
+                    });
+
+                const p2Shadow = this.board.create('point', [
+                    0, this.options.gA2Initial], {
+                        name: 'y<sub>2</sub>',
+                        withLabel: false,
+                        size: 1,
+                        strokeColor: this.shadowColor,
+                        fillColor: this.shadowColor,
+                        fixed: true,
+                        highlight: false,
+                        showInfobox: false
+                    });
+
+                const l1Shadow = this.board.create('line', [
+                    p1Shadow, [p1Shadow.X(), p2Shadow.Y()]], {
+                        withLabel: false,
+                        straightFirst: false,
+                        straightLast: false,
+                        dash: 1,
+                        strokeColor: this.shadowColor,
+                        highlight: false
+                    });
+                const l2Shadow = this.board.create('line', [
+                    p2Shadow, [p1Shadow.X(), p2Shadow.Y()]], {
+                        withLabel: false,
+                        straightFirst: false,
+                        straightLast: false,
+                        dash: 1,
+                        strokeColor: this.shadowColor,
+                        highlight: false
+                    });
+
+                this.board.create('intersection', [l1Shadow, l2Shadow], {
+                    withLabel: false,
+                    size: 1,
+                    strokeColor: this.shadowColor,
+                    fillColor: this.shadowColor,
+                    fixed: true,
+                    highlight: false,
+                    showInfobox: false
+                });
+            }
         }
 
         const f1 = function(x) {
