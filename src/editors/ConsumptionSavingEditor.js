@@ -6,7 +6,7 @@ import {handleFormUpdate} from '../utils';
 
 export default class ConsumptionSavingEditor extends React.Component {
     render() {
-        const tex = 'c_2 = y_2 + (1 + r) (y_1 + w - c_1)';
+        const tex = 'c_2 = y_2 + (1 + r) (y_1 + W - c_1)';
 
         return (
             <div>
@@ -106,7 +106,7 @@ export default class ConsumptionSavingEditor extends React.Component {
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gA3">
-                                w
+                                W
                             </label>
                             <RangeEditor
                                 id="gA3"

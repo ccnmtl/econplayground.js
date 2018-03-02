@@ -657,14 +657,14 @@ class ConsumptionSavingGraph extends Graph {
     /**
      * This graph displays the function:
      *
-     *   c2 = y2 + (1 + r)(y1 + w - c1)
+     *   c2 = y2 + (1 + r)(y1 + W - c1)
      *
      * With c1 plotted as X. To store these values,
      * I'm using:
      *
      *   y1 -> gA1
      *   y2 -> gA2
-     *   w -> gA3
+     *   W -> gA3
      *   r -> gA4
      */
     make() {
@@ -688,7 +688,7 @@ class ConsumptionSavingGraph extends Graph {
             if (this.options.gShowIntersection) {
                 const p1Shadow = this.board.create('point', [
                     this.options.gA1Initial + this.options.gA3Initial, 0], {
-                        name: 'y<sub>1</sub> + w',
+                        name: 'y<sub>1</sub> + W',
                         withLabel: false,
                         size: 1,
                         strokeColor: this.shadowColor,
@@ -742,7 +742,7 @@ class ConsumptionSavingGraph extends Graph {
         }
 
         const f1 = function(x) {
-            // c2 = y2 + (1 + r)(y1 + w - c1)
+            // c2 = y2 + (1 + r)(y1 + W - c1)
             return me.options.gA2 + (1 + me.options.gA4) *
                 (me.options.gA1 + me.options.gA3 - x);
         };
@@ -760,7 +760,7 @@ class ConsumptionSavingGraph extends Graph {
 
         if (this.options.gShowIntersection) {
             const p1 = this.board.create('point', [this.options.gA1 + this.options.gA3, 0], {
-                name: 'y<sub>1</sub> + w',
+                name: 'y<sub>1</sub> + W',
                 size: 1,
                 fixed: true,
                 highlight: false,
