@@ -70,10 +70,13 @@ export default class GraphEditor extends React.Component {
                 <NonLinearDemandSupplyEditor
             isInstructor={true}
             gLine1Label={this.props.gLine1Label}
+            gLine1LabelEditable={this.props.gLine1LabelEditable}
             gLine2Label={this.props.gLine2Label}
+            gLine2LabelEditable={this.props.gLine2LabelEditable}
             gCobbDouglasA={this.props.gCobbDouglasA}
             gCobbDouglasK={this.props.gCobbDouglasK}
             gLine1Slope={this.props.gLine1Slope}
+            gLine1SlopeEditable={this.props.gLine1SlopeEditable}
             gLine1OffsetX={this.props.gLine1OffsetX}
             gLine1OffsetY={this.props.gLine1OffsetY}
             gLine2OffsetX={this.props.gLine2OffsetX}

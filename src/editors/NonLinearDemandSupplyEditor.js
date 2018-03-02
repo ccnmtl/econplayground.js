@@ -231,11 +231,11 @@ NonLinearDemandSupplyEditor.propTypes = {
     gCobbDouglasK: PropTypes.number,
 
     gLine1Label: PropTypes.string.isRequired,
-    gLine1LabelEditable: PropTypes.bool,
+    gLine1LabelEditable: PropTypes.bool.isRequired,
     gLine2Label: PropTypes.string.isRequired,
-    gLine2LabelEditable: PropTypes.bool,
+    gLine2LabelEditable: PropTypes.bool.isRequired,
     gLine1Slope: PropTypes.number.isRequired,
-    gLine1SlopeEditable: PropTypes.bool,
+    gLine1SlopeEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
 }
