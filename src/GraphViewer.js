@@ -57,16 +57,24 @@ export default class GraphViewer extends React.Component {
             gLine2Slope: this.props.gLine2SlopeInitial
         };
 
-        const reader = new commonmark.Parser();
-        const writer = new commonmark.HtmlRenderer();
-        const parsed = reader.parse(this.props.gDescription);
-        const description = writer.render(parsed);
+        let titleEl = null;
+        let descriptionEl = null;
+
+        if (!window.EconPlayground.hideTitleAndDescription) {
+            const reader = new commonmark.Parser();
+            const writer = new commonmark.HtmlRenderer();
+            const parsed = reader.parse(this.props.gDescription);
+            const description = writer.render(parsed);
+
+            titleEl = <h5>{this.props.gTitle}</h5>;
+            descriptionEl = <p dangerouslySetInnerHTML={{__html:description}}></p>;
+        }
 
         if (this.props.gType === 3) {
             return (
                 <div className="GraphViewer">
-                    <h5>{this.props.gTitle}</h5>
-                    <p dangerouslySetInnerHTML={{__html:description}}></p>
+                    {titleEl}
+                    {descriptionEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                         <input type="hidden" name="score" value={this.props.value} />
@@ -161,8 +169,8 @@ export default class GraphViewer extends React.Component {
 
             return (
                 <div className="GraphViewer">
-                    <h5>{this.props.gTitle}</h5>
-                    <p dangerouslySetInnerHTML={{__html:description}}></p>
+                    {titleEl}
+                    {descriptionEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                         <input type="hidden" name="score" value={this.props.value} />
@@ -235,8 +243,8 @@ export default class GraphViewer extends React.Component {
             // Consumption-Saving
             return (
                 <div className="GraphViewer">
-                    <h5>{this.props.gTitle}</h5>
-                    <p dangerouslySetInnerHTML={{__html:description}}></p>
+                    {titleEl}
+                    {descriptionEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                         <input type="hidden" name="score" value={this.props.value} />
@@ -318,8 +326,8 @@ export default class GraphViewer extends React.Component {
 
         return (
             <div className="GraphViewer">
-                <h5>{this.props.gTitle}</h5>
-                <p dangerouslySetInnerHTML={{__html:description}}></p>
+                {titleEl}
+                {descriptionEl}
                 <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                     <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                     <input type="hidden" name="score" value={this.props.value} />
