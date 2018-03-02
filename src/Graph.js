@@ -670,6 +670,77 @@ class ConsumptionSavingGraph extends Graph {
     make() {
         const me = this;
 
+        if (this.options.shadow && this.options.gDisplayShadow) {
+            const f1Shadow = function(x) {
+                return me.options.gA2Initial + (1 + me.options.gA4Initial) *
+                    (me.options.gA1Initial + me.options.gA3Initial - x);
+            }
+
+            this.board.create('functiongraph', [f1Shadow, -30, 30], {
+                withLabel: false,
+                strokeWidth: 2,
+                strokeColor: this.shadowColor,
+                highlight: false,
+                // Under the main line layer
+                layer: 4
+            });
+
+            if (this.options.gShowIntersection) {
+                const p1Shadow = this.board.create('point', [
+                    this.options.gA1Initial + this.options.gA3Initial, 0], {
+                        name: 'y<sub>1</sub> + w',
+                        withLabel: false,
+                        size: 1,
+                        strokeColor: this.shadowColor,
+                        fillColor: this.shadowColor,
+                        fixed: true,
+                        highlight: false,
+                        showInfobox: false
+                    });
+
+                const p2Shadow = this.board.create('point', [
+                    0, this.options.gA2Initial], {
+                        name: 'y<sub>2</sub>',
+                        withLabel: false,
+                        size: 1,
+                        strokeColor: this.shadowColor,
+                        fillColor: this.shadowColor,
+                        fixed: true,
+                        highlight: false,
+                        showInfobox: false
+                    });
+
+                const l1Shadow = this.board.create('line', [
+                    p1Shadow, [p1Shadow.X(), p2Shadow.Y()]], {
+                        withLabel: false,
+                        straightFirst: false,
+                        straightLast: false,
+                        dash: 1,
+                        strokeColor: this.shadowColor,
+                        highlight: false
+                    });
+                const l2Shadow = this.board.create('line', [
+                    p2Shadow, [p1Shadow.X(), p2Shadow.Y()]], {
+                        withLabel: false,
+                        straightFirst: false,
+                        straightLast: false,
+                        dash: 1,
+                        strokeColor: this.shadowColor,
+                        highlight: false
+                    });
+
+                this.board.create('intersection', [l1Shadow, l2Shadow], {
+                    withLabel: false,
+                    size: 1,
+                    strokeColor: this.shadowColor,
+                    fillColor: this.shadowColor,
+                    fixed: true,
+                    highlight: false,
+                    showInfobox: false
+                });
+            }
+        }
+
         const f1 = function(x) {
             // c2 = y2 + (1 + r)(y1 + w - c1)
             return me.options.gA2 + (1 + me.options.gA4) *
