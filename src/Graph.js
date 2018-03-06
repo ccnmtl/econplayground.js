@@ -633,7 +633,20 @@ class ConsumptionLeisureGraph extends Graph {
             this.board.create(
                 'intersection',
                 [this.l1, this.board.defaultAxes.x, 0], {
-                    name: this.options.gIntersectionLabel || '',
+                    name: this.options.gIntersectionHorizLineLabel || '',
+                    withLabel: true,
+                    fixed: true,
+                    highlight: false,
+                    showInfobox: false,
+                    size: 1,
+                    fillColor: 'red',
+                    strokeColor: 'red'
+                });
+
+            this.board.create(
+                'intersection',
+                [this.l1, this.board.defaultAxes.y, 0], {
+                    name: this.options.gIntersectionVertLineLabel || '',
                     withLabel: true,
                     fixed: true,
                     highlight: false,
