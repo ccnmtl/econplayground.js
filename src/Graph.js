@@ -777,7 +777,8 @@ class ConsumptionSavingGraph extends Graph {
                 size: 1,
                 fixed: true,
                 highlight: false,
-                showInfobox: false
+                showInfobox: false,
+                label: { position: 'rt', offset: [-10, -8] }
             });
 
             const p2 = this.board.create('point', [0, this.options.gA2], {
@@ -785,17 +786,23 @@ class ConsumptionSavingGraph extends Graph {
                 size: 1,
                 fixed: true,
                 highlight: false,
-                showInfobox: false
+                showInfobox: false,
+                label: { position: 'rt', offset: [-12, 35] }
             });
 
             const l1 = this.board.create('line', [p1, [p1.X(), p2.Y()]], {
+                name: this.options.gIntersectionHorizLineLabel,
+                withLabel: true,
                 straightFirst: false,
                 straightLast: false,
                 dash: 1,
                 highlight: false,
                 strokeColor: 'black'
             });
+
             const l2 = this.board.create('line', [p2, [p1.X(), p2.Y()]], {
+                name: this.options.gIntersectionVertLineLabel,
+                withLabel: true,
                 straightFirst: false,
                 straightLast: false,
                 dash: 1,
@@ -804,7 +811,7 @@ class ConsumptionSavingGraph extends Graph {
             });
 
             this.board.create('intersection', [l1, l2], {
-                name: 'EP',
+                name: this.options.gIntersectionLabel,
                 size: 1,
                 fixed: true,
                 highlight: false,
