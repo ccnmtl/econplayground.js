@@ -60,7 +60,7 @@ export default class GraphViewer extends React.Component {
         let titleEl = null;
         let descriptionEl = null;
 
-        if (!window.EconPlayground.hideTitleAndDescription) {
+        if (!window.EconPlayground.hideTitleAndDescription && this.props.gDescription) {
             const reader = new commonmark.Parser();
             const writer = new commonmark.HtmlRenderer();
             const parsed = reader.parse(this.props.gDescription);
@@ -144,6 +144,7 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                             gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
                             gCobbDouglasYName={this.props.gCobbDouglasYName}
+                            gIntersectionLabel={this.props.gIntersectionLabel}
                             updateGraph={this.props.updateGraph}
                             />
 

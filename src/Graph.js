@@ -521,8 +521,12 @@ class CobbDouglasGraph extends Graph {
                 (x ** (1 - me.options.gCobbDouglasAlpha));
         };
 
+        const lineLabel = 'F(' + this.options.gCobbDouglasAName + ',' +
+              this.options.gCobbDouglasKName + ',' +
+              this.options.gCobbDouglasLName + ')';
+
         this.board.create('functiongraph', [f], {
-            name: this.options.gLine1Label,
+            name: lineLabel,
             withLabel: true,
             strokeWidth: 2,
             strokeColor: this.l1Color
@@ -548,14 +552,10 @@ class CobbDouglasGraph extends Graph {
             });
         }
 
-        const pName = 'F(' + me.options.gCobbDouglasAName + ',' +
-              me.options.gCobbDouglasKName + ',' +
-              me.options.gCobbDouglasLName + ')';
-
-        let p = this.board.create('point', [
-            me.options.gCobbDouglasL,
-            f(me.options.gCobbDouglasL)], {
-                name: pName,
+        const p = this.board.create('point', [
+            this.options.gCobbDouglasL,
+            f(this.options.gCobbDouglasL)], {
+                name: this.options.gIntersectionLabel,
                 fixed: true
             });
 
