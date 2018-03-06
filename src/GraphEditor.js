@@ -154,6 +154,8 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
             gCobbDouglasYName={this.props.gCobbDouglasYName}
             gCobbDouglasCorrectScenario={this.props.gCobbDouglasCorrectScenario}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
 
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
@@ -260,10 +262,10 @@ export default class GraphEditor extends React.Component {
             gLine1OffsetY={this.props.gLine1OffsetY}
             gLine2OffsetX={this.props.gLine2OffsetX}
             gLine2OffsetY={this.props.gLine2OffsetY}
-            gShowIntersection={this.props.gShowIntersection}
             gIntersectionLabel={this.props.gIntersectionLabel}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gShowIntersection={this.props.gShowIntersection}
                 />
                 <ConsumptionSavingEditor
             gA1={this.props.gA1}

@@ -195,7 +195,36 @@ export default class CobbDouglasEditor extends React.Component {
             </div>
                 </div>
 
-
+                <div className="row">
+                <div className="col-sm-4">
+                <div className="form-group">
+                <label htmlFor="gIntersectionLabel">
+                Intersection point label:
+            </label>
+                <input id="gIntersectionLabel"
+            className="form-control form-control-sm"
+            type="text"
+            maxLength="60"
+            value={this.props.gIntersectionLabel}
+            onChange={handleFormUpdate.bind(this)} />
+                </div>
+                </div>
+                <div className="col-sm-2">
+                {this.props.isInstructor && (
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input
+                                id="gIntersectionLabelEditable"
+                                className="form-check-input"
+                                type="checkbox"
+                                onChange={handleFormUpdate.bind(this)}
+                                checked={this.props.gIntersectionLabelEditable} />
+                            Student editable
+                        </label>
+                    </div>
+                )}
+                </div>
+                </div>
 
             {this.props.isInstructor && (
                 <div>
@@ -275,6 +304,8 @@ CobbDouglasEditor.propTypes = {
     gCobbDouglasAlphaEditable: PropTypes.bool,
     gCobbDouglasYName: PropTypes.string,
     gCobbDouglasCorrectScenario: PropTypes.number,
+    gIntersectionLabel: PropTypes.string,
+    gIntersectionLabelEditable: PropTypes.bool,
 
     isInstructor: PropTypes.bool.isRequired
 }
