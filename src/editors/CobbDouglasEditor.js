@@ -134,7 +134,9 @@ export default class CobbDouglasEditor extends React.Component {
             value={this.props.gCobbDouglasAlpha}
             handler={handleFormUpdate.bind(this)}
             min={0}
-            max={1} />
+            max={1}
+            showMinMax={true}
+                />
                 </div>
                 <div className="col-sm-2">
                 {this.props.isInstructor &&

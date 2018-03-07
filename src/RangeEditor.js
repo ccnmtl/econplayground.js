@@ -8,8 +8,13 @@ import PropTypes from 'prop-types';
  */
 export default class RangeEditor extends React.Component {
     render() {
-        return <div className="slope-editor row">
-            <div className="col">
+        return <React.Fragment>
+            <div className="d-flex justify-content-between">
+            {this.props.showMinMax && (
+                <div className="ep-min-max">
+                    {this.props.min}
+                </div>
+            )}
             <input
         className="form-control form-control-sm"
         id={this.props.id}
@@ -21,6 +26,11 @@ export default class RangeEditor extends React.Component {
         min={this.props.min}
         max={this.props.max}
             />
+            {this.props.showMinMax && (
+                <div className="ep-min-max ep-max">
+                    {this.props.max}
+                </div>
+            )}
             </div>
             {this.props.showOverrideCheckbox && (
                 <div className="col-4">
@@ -36,7 +46,7 @@ export default class RangeEditor extends React.Component {
                     </label>
                 </div>
             )}
-        </div>;
+        </React.Fragment>;
     }
 }
 
@@ -45,7 +55,8 @@ RangeEditor.defaultProps = {
     max: 5,
     showOverrideCheckbox: false,
     overrideLabel: '',
-    overrideValue: 0
+    overrideValue: 0,
+    showMinMax: false
 };
 
 RangeEditor.propTypes = {
@@ -57,5 +68,6 @@ RangeEditor.propTypes = {
     max: PropTypes.number,
     showOverrideCheckbox: PropTypes.bool,
     overrideLabel: PropTypes.string,
-    overrideValue: PropTypes.number
+    overrideValue: PropTypes.number,
+    showMinMax: PropTypes.bool
 };
