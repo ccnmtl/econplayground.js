@@ -82,8 +82,11 @@ export default class GraphEditor extends React.Component {
             gLine2OffsetX={this.props.gLine2OffsetX}
             gLine2OffsetY={this.props.gLine2OffsetY}
             gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
             updateGraph={this.props.updateGraph}
                 />
 
