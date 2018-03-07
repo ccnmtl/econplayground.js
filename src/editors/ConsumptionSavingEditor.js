@@ -174,10 +174,6 @@ export default class ConsumptionSavingEditor extends React.Component {
                 </div>
 
                 <div className="row">
-
-                </div>
-
-                <div className="row">
                 <EditableControl
             id="gLine1Label"
             name="Orange line label"
