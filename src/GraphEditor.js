@@ -6,7 +6,7 @@ import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import JXGBoard from './JXGBoard';
-import RangeEditor from './RangeEditor';
+import RangeEditor from './form-components/RangeEditor';
 import {handleFormUpdate, displayGraphType} from './utils';
 
 export default class GraphEditor extends React.Component {
