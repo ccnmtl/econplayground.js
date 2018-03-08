@@ -9,7 +9,7 @@ import NonLinearDemandSupplyEditor from './editors/NonLinearDemandSupplyEditor';
 import ResetGraphButton from './ResetGraphButton';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
-import RangeEditor from './RangeEditor';
+import RangeEditor from './form-components/RangeEditor';
 import {
     authedFetch, getOrCreateSubmission, handleFormUpdate
 } from './utils';
