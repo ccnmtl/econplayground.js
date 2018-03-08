@@ -28,8 +28,8 @@ export default class EditableControl extends React.Component {
                         </div>
                     </div>
                 )}
+            {this.props.isInstructor && (
                 <div className="col-sm-2">
-                {this.props.isInstructor && (
                     <div className="form-check">
                         <label className="form-check-label">
                             <input
@@ -41,9 +41,10 @@ export default class EditableControl extends React.Component {
                             Student editable
                         </label>
                     </div>
-                )}
-            </div>
-                </React.Fragment>
+
+                </div>
+            )}
+            </React.Fragment>
         );
     }
 }

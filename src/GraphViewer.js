@@ -108,7 +108,7 @@ export default class GraphViewer extends React.Component {
                             gDisplayShadow={this.props.gDisplayShadow}
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                            Gintersectionvertlinelabel={this.props.gIntersectionVertLineLabel}
+                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
                             gCobbDouglasA={this.props.gCobbDouglasA}
                             gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
