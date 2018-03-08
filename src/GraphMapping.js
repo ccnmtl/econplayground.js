@@ -73,7 +73,9 @@ const exportGraph = function(state) {
         // demand-supply graph and the cobb-douglas graph. The names
         // should be generalized.
         cobb_douglas_a: forceFloat(state.gCobbDouglasA),
-        cobb_douglas_k: forceFloat(state.gCobbDouglasK)
+        cobb_douglas_a_editable: forceFloat(state.gCobbDouglasAEditable),
+        cobb_douglas_k: forceFloat(state.gCobbDouglasK),
+        cobb_douglas_k_editable: forceFloat(state.gCobbDouglasKEditable)
     }
 
     if (state.gType === 3) {
@@ -81,12 +83,10 @@ const exportGraph = function(state) {
         // saving a cobb-douglas graph.
         const cobb = {
             cobb_douglas_a_name: state.gCobbDouglasAName,
-            cobb_douglas_a_editable: state.gCobbDouglasAEditable,
             cobb_douglas_l: forceFloat(state.gCobbDouglasL),
             cobb_douglas_l_name: state.gCobbDouglasLName,
             cobb_douglas_l_editable: state.gCobbDouglasLEditable,
             cobb_douglas_k_name: state.gCobbDouglasKName,
-            cobb_douglas_k_editable: state.gCobbDouglasKEditable,
             cobb_douglas_alpha: forceFloat(state.gCobbDouglasAlpha),
             cobb_douglas_alpha_editable: state.gCobbDouglasAlphaEditable,
             cobb_douglas_y_name: state.gCobbDouglasYName,

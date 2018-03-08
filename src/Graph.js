@@ -399,16 +399,16 @@ class NonLinearDemandSupplyGraph extends Graph {
                     layer: 4
                 });
 
-            const fShadow = function(x) {
+            const f2Shadow = function(x) {
                 return (1 - alpha) *
                     (me.options.gCobbDouglasAInitial *
                      me.options.gCobbDouglasKInitial ** alpha) *
                     (x ** -alpha);
             };
 
-            const lfShadow = this.board.create(
+            const l2fShadow = this.board.create(
                 'functiongraph',
-                [fShadow, -30, 30], {
+                [f2Shadow, -30, 30], {
                     withLabel: false,
                     strokeWidth: 2,
                     strokeColor: this.shadowColor,
@@ -421,16 +421,16 @@ class NonLinearDemandSupplyGraph extends Graph {
                 forceFloat(this.options.gLine1OffsetXInitial),
                 forceFloat(this.options.gLine1OffsetYInitial)
             ]);
-            lfShadow.setPosition(window.JXG.COORDS_BY_USER, [
+            l2fShadow.setPosition(window.JXG.COORDS_BY_USER, [
                 forceFloat(this.options.gLine2OffsetXInitial),
                 forceFloat(this.options.gLine2OffsetYInitial)
             ]);
             // This is necessary, because otherwise the setPosition call
             // won't have an effect until the graph is interacted with.
             l1fShadow.fullUpdate(true);
-            lfShadow.fullUpdate(true);
+            l2fShadow.fullUpdate(true);
 
-            this.showIntersection(l1fShadow, lfShadow, true);
+            this.showIntersection(l1fShadow, l2fShadow, true);
         }
 
         const f1 = function(x) {
