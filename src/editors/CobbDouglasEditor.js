@@ -244,8 +244,8 @@ export default class CobbDouglasEditor extends React.Component {
                                 id="gCorrectFeedback"
                                 name="gCorrectFeedback"
                                 className="form-control form-control-sm"
-                                onChange={handleFormUpdate.bind(this)}>
-                                {this.props.gCorrectFeedback}
+                                onChange={handleFormUpdate.bind(this)}
+                                value={this.props.gCorrectFeedback}>
                             </textarea>
                         </div>
                         <div className="col-sm-4 mb-4">
@@ -256,8 +256,8 @@ export default class CobbDouglasEditor extends React.Component {
                                 id="gIncorrectFeedback"
                                 name="gIncorrectFeedback"
                                 className="form-control form-control-sm"
-                                onChange={handleFormUpdate.bind(this)}>
-                                {this.props.gIncorrectFeedback}
+                                onChange={handleFormUpdate.bind(this)}
+                                value={this.props.gIncorrectFeedback}>
                             </textarea>
                         </div>
                     </div>
@@ -272,8 +272,8 @@ export default class CobbDouglasEditor extends React.Component {
 CobbDouglasEditor.propTypes = {
     gTitle: PropTypes.string,
     gType: PropTypes.number,
-    gCorrectFeedback: PropTypes.string,
-    gIncorrectFeedback: PropTypes.string,
+    gCorrectFeedback: PropTypes.string.isRequired,
+    gIncorrectFeedback: PropTypes.string.isRequired,
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,
     gCobbDouglasAEditable: PropTypes.bool,
