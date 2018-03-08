@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MathJax from 'react-mathjax2'
+import MathJax from 'react-mathjax2';
 import RangeEditor from '../RangeEditor';
 import EditableControl from '../form-components/EditableControl';
 import {handleFormUpdate} from '../utils';
@@ -10,6 +10,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
         const tex = 'MP_N = (1 - α)AK^α N^{-α}';
         return (
             <div>
+                {this.props.isInstructor && (
                 <MathJax.Context
                     script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"
                     input="tex"
@@ -19,48 +20,72 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                     }}>
                     <MathJax.Node>{tex}</MathJax.Node>
                 </MathJax.Context>
+                )}
                 <div className="form-row">
-                    <div className="col-sm-4">
-                        <label htmlFor="gLine1Slope">
-                            Orange line slope
-                        </label>
-                        <RangeEditor
-                            dataId="gLine1Slope"
-                            value={this.props.gLine1Slope}
-                            showOverrideCheckbox={true}
-                            overrideLabel='Vertical'
-                            overrideValue={999}
-                            handler={handleFormUpdate.bind(this)} />
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine1SlopeEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine1SlopeEditable} />
-                                Student editable
+                    {(this.props.isInstructor || this.props.gLine1SlopeEditable) && (
+                        <div className="col-sm-4">
+                            <label htmlFor="gLine1Slope">
+                                Orange line slope
                             </label>
+                            <RangeEditor
+                                dataId="gLine1Slope"
+                                value={this.props.gLine1Slope}
+                                showOverrideCheckbox={true}
+                                overrideLabel='Vertical'
+                                overrideValue={999}
+                                handler={handleFormUpdate.bind(this)} />
                         </div>
+                    )}
+                <div className="col-sm-2">
+                {this.props.isInstructor && (
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input
+                                id="gLine1SlopeEditable"
+                                className="form-check-input"
+                                type="checkbox"
+                                onChange={handleFormUpdate.bind(this)}
+                                checked={this.props.gLine1SlopeEditable} />
+                            Student editable
+                        </label>
+                    </div>
+                )}
                     </div>
 
                 </div>
 
                 <div className="row">
-                    <div className="col">
-                        <label htmlFor="gCobbDouglasA">
-                            A
+                    {(this.props.isInstructor || this.props.gCobbDouglasAEditable) && (
+                        <div className="col-sm-4">
+                            <label htmlFor="gCobbDouglasA">
+                                A
+                            </label>
+                            <RangeEditor
+                                dataId="gCobbDouglasA"
+                                value={this.props.gCobbDouglasA}
+                                handler={handleFormUpdate.bind(this)}
+                                min={0.1}
+                                max={5} />
+                        </div>
+                    )}
+                <div className="col-sm-2">
+                {this.props.isInstructor && (
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input
+                                id="gCobbDouglasAEditable"
+                                className="form-check-input"
+                                type="checkbox"
+                                onChange={handleFormUpdate.bind(this)}
+                                checked={this.props.gCobbDouglasAEditable} />
+                            Student editable
                         </label>
-                        <RangeEditor
-                            dataId="gCobbDouglasA"
-                            value={this.props.gCobbDouglasA}
-                            handler={handleFormUpdate.bind(this)}
-                            min={0.1}
-                            max={5} />
                     </div>
-                    <div className="col">
+                )}
+            </div>
+
+            {(this.props.isInstructor || this.props.gCobbDouglasKEditable) && (
+                    <div className="col-sm-4">
                         <label htmlFor="gCobbDouglasK">
                             K
                         </label>
@@ -71,6 +96,20 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                             min={0.1}
                             max={5} />
                     </div>
+            )}
+                {this.props.isInstructor && (
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input
+                                id="gCobbDouglasKEditable"
+                                className="form-check-input"
+                                type="checkbox"
+                                onChange={handleFormUpdate.bind(this)}
+                                checked={this.props.gCobbDouglasKEditable} />
+                            Student editable
+                        </label>
+                    </div>
+                )}
                 </div>
 
                 <div className="row">
@@ -137,7 +176,9 @@ NonLinearDemandSupplyEditor.propTypes = {
     gIntersectionVertLineLabelEditable: PropTypes.bool.isRequired,
 
     gCobbDouglasA: PropTypes.number,
+    gCobbDouglasAEditable: PropTypes.bool.isRequired,
     gCobbDouglasK: PropTypes.number,
+    gCobbDouglasKEditable: PropTypes.bool.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,
     gLine1LabelEditable: PropTypes.bool.isRequired,
