@@ -194,7 +194,7 @@ const importGraph = function(json, obj) {
         gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
         gCobbDouglasAlphaEditable: json.cobb_douglas_alpha_editable,
         gCobbDouglasYName: json.cobb_douglas_y_name,
-        gCobbDouglasCorrectScenario: json.cobb_douglas_correct_scenari,
+        gCobbDouglasCorrectScenario: json.cobb_douglas_correct_scenario,
 
         // Save some initial state here for the shadow feature
         gLine1OffsetXInitial: window.parseFloat(json.line_1_offset_x),
