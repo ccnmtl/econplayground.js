@@ -121,7 +121,7 @@ export default class JXGBoard extends React.Component {
                 boundingbox: [-0.4, 5, 5, -0.4]
             });
 
-        this.board = board;
+        window.board = this.board = board;
 
         if (typeof options.gType === 'number') {
             graphTypes[options.gType](board, {
