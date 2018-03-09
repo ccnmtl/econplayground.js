@@ -239,6 +239,8 @@ const defaultGraph = {
     gLine2Label: '',
     gXAxisLabel: '',
     gYAxisLabel: '',
+    gCorrectFeedback: '',
+    gIncorrectFeedback: '',
     gLine1FeedbackIncrease: '',
     gLine1FeedbackDecrease: '',
     gLine2FeedbackIncrease: '',
