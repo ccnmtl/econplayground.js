@@ -19,4 +19,4 @@ export default class ResetGraphButton extends React.Component {
 ResetGraphButton.propTypes = {
     initialState: PropTypes.object.isRequired,
     updateGraph: PropTypes.func.isRequired
-}
+};

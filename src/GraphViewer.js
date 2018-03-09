@@ -6,6 +6,7 @@ import CobbDouglasEditor from './editors/CobbDouglasEditor';
 import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
 import NonLinearDemandSupplyEditor from './editors/NonLinearDemandSupplyEditor';
+import ExportGraphButton from './ExportGraphButton';
 import ResetGraphButton from './ResetGraphButton';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
@@ -154,6 +155,8 @@ export default class GraphViewer extends React.Component {
                             initialState={initialState}
                             updateGraph={this.props.updateGraph} />
 
+                        <ExportGraphButton />
+
                         <hr style={{
                                 display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
                             }} />
@@ -250,6 +253,8 @@ export default class GraphViewer extends React.Component {
                             initialState={initialState}
                             updateGraph={this.props.updateGraph} />
 
+                        <ExportGraphButton />
+
                         <hr style={{
                                 display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
                             }} />
@@ -327,6 +332,8 @@ export default class GraphViewer extends React.Component {
                         <ResetGraphButton
                             initialState={initialState}
                             updateGraph={this.props.updateGraph} />
+
+                        <ExportGraphButton />
 
                         <hr style={{
                                 display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
@@ -414,6 +421,8 @@ export default class GraphViewer extends React.Component {
                         <ResetGraphButton
                             initialState={initialState}
                             updateGraph={this.props.updateGraph} />
+
+                        <ExportGraphButton />
 
                         <hr style={{
                                 display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
@@ -646,6 +655,8 @@ export default class GraphViewer extends React.Component {
                     <ResetGraphButton
                         initialState={initialState}
                         updateGraph={this.props.updateGraph} />
+
+                    <ExportGraphButton />
 
                     <hr style={{
                             display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
