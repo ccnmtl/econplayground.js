@@ -133,14 +133,14 @@ export default class CommonGraphEditor extends React.Component {
 }
 
 CommonGraphEditor.propTypes = {
-    gTitle: PropTypes.string,
-    gInstructorNotes: PropTypes.string,
-    gDescription: PropTypes.string,
+    gTitle: PropTypes.string.isRequired,
+    gInstructorNotes: PropTypes.string.isRequired,
+    gDescription: PropTypes.string.isRequired,
     gNeedsSubmit: PropTypes.bool.isRequired,
-    gDisplayFeedback: PropTypes.bool,
+    gDisplayFeedback: PropTypes.bool.isRequired,
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayShadow: PropTypes.bool.isRequired,
-    gIsPublished: PropTypes.bool,
+    gIsPublished: PropTypes.bool.isRequired,
 
     updateGraph: PropTypes.func.isRequired
 }
