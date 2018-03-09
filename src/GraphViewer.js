@@ -58,8 +58,12 @@ export default class GraphViewer extends React.Component {
             gLine2Slope: this.props.gLine2SlopeInitial
         };
 
-        const titleEl = <h5>{this.props.gTitle}</h5>;
+        let titleEl = <h5></h5>;
         let descriptionEl = <p></p>;
+
+        if (!window.EconPlayground.hideTitleAndDescription) {
+            titleEl = <h5>{this.props.gTitle}</h5>;
+        }
 
         if (!window.EconPlayground.hideTitleAndDescription && this.props.gDescription) {
             const reader = new commonmark.Parser();
