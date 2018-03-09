@@ -27,7 +27,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gA1">
-                                X-intercept&apos;s value
+                                Vertical intercept value
                             </label>
                             <RangeEditor
                                 id="gA1"
