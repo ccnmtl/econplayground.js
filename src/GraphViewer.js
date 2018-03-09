@@ -93,7 +93,9 @@ export default class GraphViewer extends React.Component {
                             gXAxisLabel={this.props.gCobbDouglasLName}
                             gYAxisLabel={this.props.gCobbDouglasYName}
                             gLine1Slope={this.props.gLine1Slope}
+                            gLine1SlopeInitial={this.props.gLine1SlopeInitial}
                             gLine2Slope={this.props.gLine2Slope}
+                            gLine2SlopeInitial={this.props.gLine2SlopeInitial}
                             gLine1OffsetX={this.props.gLine1OffsetX}
                             gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
                             gLine1OffsetY={this.props.gLine1OffsetY}
