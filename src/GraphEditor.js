@@ -218,6 +218,7 @@ export default class GraphEditor extends React.Component {
             gA2={this.props.gA2}
             gA2Editable={this.props.gA2Editable}
             gLine1Label={this.props.gLine1Label}
+            gLine1LabelEditable={this.props.gLine1LabelEditable}
             gIntersectionLabel={this.props.gIntersectionLabel}
             gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
@@ -743,28 +744,28 @@ GraphEditor.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
 
-    gShowIntersection: PropTypes.bool,
-    gDisplayShadow: PropTypes.bool,
-    gIntersectionLabel: PropTypes.string,
-    gIntersectionLabelEditable: PropTypes.bool,
-    gIntersectionHorizLineLabel: PropTypes.string,
-    gIntersectionHorizLineLabelEditable: PropTypes.bool,
-    gIntersectionVertLineLabel: PropTypes.string,
-    gIntersectionVertLineLabelEditable: PropTypes.bool,
+    gShowIntersection: PropTypes.bool.isRequired,
+    gDisplayShadow: PropTypes.bool.isRequired,
+    gIntersectionLabel: PropTypes.string.isRequired,
+    gIntersectionLabelEditable: PropTypes.bool.isRequired,
+    gIntersectionHorizLineLabel: PropTypes.string.isRequired,
+    gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
+    gIntersectionVertLineLabel: PropTypes.string.isRequired,
+    gIntersectionVertLineLabelEditable: PropTypes.bool.isRequired,
 
-    gIsPublished: PropTypes.bool,
-    gDisplayFeedback: PropTypes.bool,
+    gIsPublished: PropTypes.bool.isRequired,
+    gDisplayFeedback: PropTypes.bool.isRequired,
     gCorrectFeedback: PropTypes.string,
     gIncorrectFeedback: PropTypes.string,
-    gInstructorNotes: PropTypes.string,
+    gInstructorNotes: PropTypes.string.isRequired,
     gLine1Label: PropTypes.string.isRequired,
-    gLine1LabelEditable: PropTypes.bool,
+    gLine1LabelEditable: PropTypes.bool.isRequired,
     gLine2Label: PropTypes.string.isRequired,
-    gLine2LabelEditable: PropTypes.bool,
+    gLine2LabelEditable: PropTypes.bool.isRequired,
     gLine1Slope: PropTypes.number.isRequired,
-    gLine1SlopeEditable: PropTypes.bool,
+    gLine1SlopeEditable: PropTypes.bool.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
-    gLine2SlopeEditable: PropTypes.bool,
+    gLine2SlopeEditable: PropTypes.bool.isRequired,
     gLine1OffsetX: PropTypes.number.isRequired,
     gLine1OffsetY: PropTypes.number.isRequired,
     gLine2OffsetX: PropTypes.number.isRequired,
@@ -778,9 +779,9 @@ GraphEditor.propTypes = {
     gLine2FeedbackDecrease: PropTypes.string,
     gLine2DecreaseScore: PropTypes.number,
     gXAxisLabel: PropTypes.string.isRequired,
-    gXAxisLabelEditable: PropTypes.bool,
+    gXAxisLabelEditable: PropTypes.bool.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,
-    gYAxisLabelEditable: PropTypes.bool,
+    gYAxisLabelEditable: PropTypes.bool.isRequired,
     gType: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
 

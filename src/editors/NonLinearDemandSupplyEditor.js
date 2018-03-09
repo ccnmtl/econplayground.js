@@ -168,16 +168,16 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
 }
 
 NonLinearDemandSupplyEditor.propTypes = {
-    gIntersectionLabel: PropTypes.string,
-    gIntersectionLabelEditable: PropTypes.bool,
-    gIntersectionHorizLineLabel: PropTypes.string,
+    gIntersectionLabel: PropTypes.string.isRequired,
+    gIntersectionLabelEditable: PropTypes.bool.isRequired,
+    gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
-    gIntersectionVertLineLabel: PropTypes.string,
+    gIntersectionVertLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabelEditable: PropTypes.bool.isRequired,
 
-    gCobbDouglasA: PropTypes.number,
+    gCobbDouglasA: PropTypes.number.isRequired,
     gCobbDouglasAEditable: PropTypes.bool.isRequired,
-    gCobbDouglasK: PropTypes.number,
+    gCobbDouglasK: PropTypes.number.isRequired,
     gCobbDouglasKEditable: PropTypes.bool.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,

@@ -36,7 +36,10 @@ class Editor extends Component {
                     <GraphEditor
                          ref={(ge) => { this.ge = ge; }}
                         showing={this.state.step === 1}
+                        gTitle={this.state.gTitle}
                         gType={this.state.gType}
+                        gDescription={this.state.gDescription}
+                        gInstructorNotes={this.state.gInstructorNotes}
                         gShowIntersection={this.state.gShowIntersection}
                         gDisplayShadow={this.state.gDisplayShadow}
                         gNeedsSubmit={this.state.gNeedsSubmit}

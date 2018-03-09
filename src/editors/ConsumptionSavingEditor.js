@@ -220,9 +220,9 @@ export default class ConsumptionSavingEditor extends React.Component {
 }
 
 ConsumptionSavingEditor.propTypes = {
-    gShowIntersection: PropTypes.bool,
-    gIntersectionLabel: PropTypes.string,
-    gIntersectionLabelEditable: PropTypes.bool,
+    gShowIntersection: PropTypes.bool.isRequired,
+    gIntersectionLabel: PropTypes.string.isRequired,
+    gIntersectionLabelEditable: PropTypes.bool.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
@@ -238,7 +238,7 @@ ConsumptionSavingEditor.propTypes = {
     gA4Editable: PropTypes.bool.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,
-    gLine1LabelEditable: PropTypes.bool,
+    gLine1LabelEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
 }

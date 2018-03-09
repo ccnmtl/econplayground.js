@@ -125,8 +125,8 @@ export default class ConsumptionLeisureEditor extends React.Component {
 }
 
 ConsumptionLeisureEditor.propTypes = {
-    gIntersectionLabel: PropTypes.string,
-    gIntersectionLabelEditable: PropTypes.bool,
+    gIntersectionLabel: PropTypes.string.isRequired,
+    gIntersectionLabelEditable: PropTypes.bool.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
@@ -138,7 +138,7 @@ ConsumptionLeisureEditor.propTypes = {
     gA2Editable: PropTypes.bool.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,
-    gLine1LabelEditable: PropTypes.bool,
+    gLine1LabelEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
 }
