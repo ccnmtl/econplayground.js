@@ -16,7 +16,7 @@
     "babel-runtime": "~6.26.0",
     "commonmark": "~0.28.1",
     "js-cookie": "~2.1.4",
-    "jsxgraph": "github:jsxgraph/jsxgraph#6fe3082a24579b48ef984582c3e3d65d175829fd",
+    "jsxgraph": "github:jsxgraph/jsxgraph#e70bfc3f548fa331ab53a5d282c7e6cb8cba442d",
     "object-assign": "~4.1.1",
     "promise": "~8.0.1",
     "react": "~16.2.0",
