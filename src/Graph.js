@@ -279,18 +279,15 @@ class Graph {
 
 class DemandSupplyGraph extends Graph {
     make() {
-        const me = this;
-
         if (this.options.shadow && this.options.gDisplayShadow) {
             // Display the initial curves set by the instructor.
-            const f1Shadow = function(x) {
-                const slope = me.options.gLine1SlopeInitial || 1;
-                return x * slope;
-            }
-
             const l1fShadow = this.board.create(
-                'functiongraph',
-                [f1Shadow, -30, 30], {
+                'line',
+                [
+                    [2.5, 2.5 + this.options.gLine1OffsetYInitial],
+                    [3.5, 2.5 + this.options.gLine1OffsetYInitial +
+                     this.options.gLine1SlopeInitial]
+                ], {
                     withLabel: false,
                     strokeWidth: 2,
                     strokeColor: this.shadowColor,
@@ -299,14 +296,13 @@ class DemandSupplyGraph extends Graph {
                     layer: 4
                 });
 
-            const fShadow = function(x) {
-                const slope = me.options.gLine2SlopeInitial || -1;
-                return x * slope + 5;
-            };
-
-            const lfShadow = this.board.create(
-                'functiongraph',
-                [fShadow, -30, 30], {
+            const l2fShadow = this.board.create(
+                'line',
+                [
+                    [2.5, 2.5 + this.options.gLine2OffsetYInitial],
+                    [3.5, 2.5 + this.options.gLine2OffsetYInitial +
+                     this.options.gLine2SlopeInitial]
+                ], {
                     withLabel: false,
                     strokeWidth: 2,
                     strokeColor: this.shadowColor,
@@ -315,20 +311,7 @@ class DemandSupplyGraph extends Graph {
                     layer: 4
                 });
 
-            l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
-                forceFloat(this.options.gLine1OffsetXInitial),
-                forceFloat(this.options.gLine1OffsetYInitial)
-            ]);
-            lfShadow.setPosition(window.JXG.COORDS_BY_USER, [
-                forceFloat(this.options.gLine2OffsetXInitial),
-                forceFloat(this.options.gLine2OffsetYInitial)
-            ]);
-            // This is necessary, because otherwise the setPosition call
-            // won't have an effect until the graph is interacted with.
-            l1fShadow.fullUpdate(true);
-            lfShadow.fullUpdate(true);
-
-            this.showIntersection(l1fShadow, lfShadow, true);
+            this.showIntersection(l1fShadow, l2fShadow, true);
         }
 
         this.l1 = this.board.create(
