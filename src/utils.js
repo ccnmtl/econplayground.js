@@ -156,6 +156,9 @@ const displayGraphType = function(gType) {
         case 7:
             name = 'Consumption-Saving';
             break;
+        case 8:
+            name = 'Aggregate Demand - Aggregate Supply';
+            break;
         default:
             break;
     }

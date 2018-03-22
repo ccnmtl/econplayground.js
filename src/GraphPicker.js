@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import JXGBoard from './JXGBoard.js';
+import {displayGraphType} from './utils';
 
 export default class GraphPicker extends React.Component {
     render() {
@@ -11,7 +12,7 @@ export default class GraphPicker extends React.Component {
             <div className="GraphPicker">
                 <p>Pick a graph type:</p>
                 <div className="graph-card">
-                    Linear Demand and Supply
+                    {displayGraphType(0)}
                     <JXGBoard id={'jxg-demand-supply'} gType={0} locked={true} />
                     <button
                         ref={(b1) => { this.b1 = b1; }}
@@ -22,7 +23,7 @@ export default class GraphPicker extends React.Component {
                     </button>
                 </div>
                 <div className="graph-card">
-                    Non-Linear Demand and Supply
+                    {displayGraphType(1)}
                     <JXGBoard id={'jxg-nonlinear-demand-supply'} gType={1} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
@@ -32,7 +33,7 @@ export default class GraphPicker extends React.Component {
                     </button>
                 </div>
                 <div className="graph-card">
-                    Cobb-Douglas
+                    {displayGraphType(3)}
                     <JXGBoard id={'jxg-cobb-douglas'} gType={3} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
@@ -42,7 +43,7 @@ export default class GraphPicker extends React.Component {
                     </button>
                 </div>
                 <div className="graph-card">
-                    Consumption-Leisure
+                    {displayGraphType(5)}
                     <JXGBoard id={'jxg-cons-leisure-choice'} gType={5} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
@@ -52,11 +53,21 @@ export default class GraphPicker extends React.Component {
                     </button>
                 </div>
                 <div className="graph-card">
-                    Consumption-Saving
+                    {displayGraphType(7)}
                     <JXGBoard id={'jxg-cons-saving-choice'} gType={7} locked={true} />
                     <button
                          type="button" className="btn btn-primary btn-sm"
                         onClick={this.handleClick8.bind(this)}>
+                        Select
+                        <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
+                    </button>
+                </div>
+                <div className="graph-card">
+                    {displayGraphType(8)}
+                    <JXGBoard id={'jxg-adas-choice'} gType={8} locked={true} />
+                    <button
+                         type="button" className="btn btn-primary btn-sm"
+                        onClick={this.handleClick9.bind(this)}>
                         Select
                         <svg className="octicon octicon-arrow-right octicon-after" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fillRule="evenodd" d="M10 8L4 3v3H0v4h4v3z"></path></svg>
                     </button>
@@ -87,6 +98,9 @@ export default class GraphPicker extends React.Component {
     }
     handleClick8() {
         this.props.onSelectGraph(7);
+    }
+    handleClick9() {
+        this.props.onSelectGraph(8);
     }
 }
 
