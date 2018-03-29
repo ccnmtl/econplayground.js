@@ -27,7 +27,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gA1">
-                                Vertical intercept value
+                                Horizontal intercept value
                             </label>
                             <RangeEditor
                                 id="gA1"
@@ -59,7 +59,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                 {(this.props.isInstructor || this.props.gA2Editable) &&
                         <div className="form-group">
                             <label htmlFor="gA2">
-                                w
+                                Real Wage w
                             </label>
                             <RangeEditor
                                 id="gA2"
@@ -101,6 +101,26 @@ export default class ConsumptionLeisureEditor extends React.Component {
 
                 <div className="row">
                 <EditableControl
+            id="gXAxisLabel"
+            name="X-axis label"
+            value={this.props.gXAxisLabel}
+            valueEditable={this.props.gXAxisLabelEditable}
+            isInstructor={this.props.isInstructor}
+            updateGraph={this.props.updateGraph}
+                />
+
+                <EditableControl
+            id="gYAxisLabel"
+            name="Y-axis label"
+            value={this.props.gYAxisLabel}
+            valueEditable={this.props.gYAxisLabelEditable}
+            isInstructor={this.props.isInstructor}
+            updateGraph={this.props.updateGraph}
+                />
+                </div>
+
+                <div className="row">
+                <EditableControl
             id="gIntersectionHorizLineLabel"
             name="Horizontal intersection label"
             value={this.props.gIntersectionHorizLineLabel}
@@ -131,6 +151,11 @@ ConsumptionLeisureEditor.propTypes = {
     gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabelEditable: PropTypes.bool.isRequired,
+
+    gXAxisLabel: PropTypes.string.isRequired,
+    gXAxisLabelEditable: PropTypes.bool.isRequired,
+    gYAxisLabel: PropTypes.string.isRequired,
+    gYAxisLabelEditable: PropTypes.bool.isRequired,
 
     gA1: PropTypes.number.isRequired,
     gA1Editable: PropTypes.bool.isRequired,

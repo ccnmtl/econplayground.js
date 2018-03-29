@@ -225,6 +225,12 @@ export default class GraphEditor extends React.Component {
             gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
             gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
+
+            gXAxisLabel={this.props.gXAxisLabel}
+            gXAxisLabelEditable={this.props.gXAxisLabelEditable}
+            gYAxisLabel={this.props.gYAxisLabel}
+            gYAxisLabelEditable={this.props.gYAxisLabelEditable}
+
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
 
