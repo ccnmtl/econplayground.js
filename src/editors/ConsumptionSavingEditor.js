@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MathJax from 'react-mathjax2'
+import MathJax from 'react-mathjax2';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
 import {handleFormUpdate} from '../utils';
@@ -52,7 +52,7 @@ export default class ConsumptionSavingEditor extends React.Component {
                                 id="gA1"
                                 dataId="gA1"
                                 value={this.props.gA1}
-                                min={-5}
+                                min={0}
                                 max={5}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
@@ -84,7 +84,7 @@ export default class ConsumptionSavingEditor extends React.Component {
                                 id="gA2"
                                 dataId="gA2"
                                 value={this.props.gA2}
-                                min={-5}
+                                min={0}
                                 max={5}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
@@ -150,8 +150,8 @@ export default class ConsumptionSavingEditor extends React.Component {
                                 id="gA4"
                                 dataId="gA4"
                                 value={this.props.gA4}
-                                min={0}
-                                max={5}
+                                min={-1}
+                                max={10}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>

@@ -686,7 +686,6 @@ class ConsumptionSavingGraph extends Graph {
             if (this.options.gShowIntersection) {
                 const p1Shadow = this.board.create('point', [
                     this.options.gA1Initial + this.options.gA3Initial, 0], {
-                        name: 'y<sub>1</sub> + W',
                         withLabel: false,
                         size: 1,
                         strokeColor: this.shadowColor,
@@ -698,7 +697,6 @@ class ConsumptionSavingGraph extends Graph {
 
                 const p2Shadow = this.board.create('point', [
                     0, this.options.gA2Initial], {
-                        name: 'y<sub>2</sub>',
                         withLabel: false,
                         size: 1,
                         strokeColor: this.shadowColor,
@@ -758,21 +756,19 @@ class ConsumptionSavingGraph extends Graph {
 
         if (this.options.gShowIntersection) {
             const p1 = this.board.create('point', [this.options.gA1 + this.options.gA3, 0], {
-                name: 'y<sub>1</sub> + W',
+                withLabel: false,
                 size: 1,
                 fixed: true,
                 highlight: false,
-                showInfobox: false,
-                label: { position: 'rt', offset: [-10, -8] }
+                showInfobox: false
             });
 
             const p2 = this.board.create('point', [0, this.options.gA2], {
-                name: 'y<sub>2</sub>',
+                withLabel: false,
                 size: 1,
                 fixed: true,
                 highlight: false,
-                showInfobox: false,
-                label: { position: 'rt', offset: [-12, 35] }
+                showInfobox: false
             });
 
             const l1 = this.board.create('line', [p1, [p1.X(), p2.Y()]], {
