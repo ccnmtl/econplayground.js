@@ -70,6 +70,8 @@ export default class JXGBoard extends React.Component {
                     options.gA1 = 4;
                     options.gA2 = 1;
                 }
+                xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
+                yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
                 break;
             case 7:
                 // Consumption-Saving

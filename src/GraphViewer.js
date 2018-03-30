@@ -330,6 +330,11 @@ export default class GraphViewer extends React.Component {
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                             gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
 
+                            gXAxisLabel={this.props.gXAxisLabel}
+                            gXAxisLabelEditable={this.props.gXAxisLabelEditable}
+                            gYAxisLabel={this.props.gYAxisLabel}
+                            gYAxisLabelEditable={this.props.gYAxisLabelEditable}
+
                             updateGraph={this.props.updateGraph}
                             />
 
