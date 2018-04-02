@@ -241,4 +241,4 @@ ConsumptionSavingEditor.propTypes = {
     gLine1LabelEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
-}
+};

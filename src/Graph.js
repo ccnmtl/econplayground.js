@@ -859,6 +859,7 @@ class ADASGraph extends Graph {
             ], {
                 name: this.options.gLine1Label,
                 withLabel: true,
+                dash: this.options.gLine1Dashed ? 2 : 0,
                 label: { position: 'rt', offset: [-10, -20] },
                 strokeColor: this.l1Color,
                 strokeWidth: 2,
@@ -875,6 +876,7 @@ class ADASGraph extends Graph {
             ], {
                 name: this.options.gLine2Label,
                 withLabel: true,
+                dash: this.options.gLine2Dashed ? 2 : 0,
                 label: { position: 'rt', offset: [0, 35] },
                 strokeColor: this.l2Color,
                 strokeWidth: 2,
@@ -889,14 +891,21 @@ class ADASGraph extends Graph {
             ], {
                 name: '',
                 withLabel: true,
+                dash: this.options.gLine3Dashed ? 2 : 0,
                 label: { position: 'rt', offset: [0, 35] },
                 strokeColor: this.l3Color,
                 strokeWidth: 2,
                 fixed: this.areLinesFixed
             });
 
-        if (this.options.gShowIntersection) {
+        if (this.options.gDisplayIntersection1) {
             this.showIntersection(this.l1, this.l2);
+        }
+        if (this.options.gDisplayIntersection2) {
+            this.showIntersection(this.l2, this.l3);
+        }
+        if (this.options.gDisplayIntersection3) {
+            this.showIntersection(this.l3, this.l1);
         }
     }
 }

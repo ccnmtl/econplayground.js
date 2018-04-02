@@ -188,4 +188,4 @@ NonLinearDemandSupplyEditor.propTypes = {
     gLine1SlopeEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
-}
+};
