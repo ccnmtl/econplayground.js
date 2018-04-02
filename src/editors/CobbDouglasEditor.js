@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MathJax from 'react-mathjax2'
+import MathJax from 'react-mathjax2';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
 import {handleFormUpdate} from '../utils';
@@ -289,4 +289,4 @@ CobbDouglasEditor.propTypes = {
     gIntersectionLabelEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
-}
+};

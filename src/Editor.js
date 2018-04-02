@@ -41,6 +41,9 @@ class Editor extends Component {
                         gDescription={this.state.gDescription}
                         gInstructorNotes={this.state.gInstructorNotes}
                         gShowIntersection={this.state.gShowIntersection}
+                        gDisplayIntersection1={this.state.gDisplayIntersection1}
+                        gDisplayIntersection2={this.state.gDisplayIntersection2}
+                        gDisplayIntersection3={this.state.gDisplayIntersection3}
                         gDisplayShadow={this.state.gDisplayShadow}
                         gNeedsSubmit={this.state.gNeedsSubmit}
                         gIntersectionLabel={this.state.gIntersectionLabel}
@@ -57,10 +60,17 @@ class Editor extends Component {
                         gLine1LabelEditable={this.state.gLine1LabelEditable}
                         gLine2Label={this.state.gLine2Label}
                         gLine2LabelEditable={this.state.gLine2LabelEditable}
+                        gLine3Label={this.state.gLine3Label}
+                        gLine3LabelEditable={this.state.gLine3LabelEditable}
                         gLine1Slope={this.state.gLine1Slope}
                         gLine1SlopeEditable={this.state.gLine1SlopeEditable}
                         gLine2Slope={this.state.gLine2Slope}
                         gLine2SlopeEditable={this.state.gLine2SlopeEditable}
+                        gLine3Slope={this.state.gLine3Slope}
+                        gLine3SlopeEditable={this.state.gLine3SlopeEditable}
+                        gLine1Dashed={this.state.gLine1Dashed}
+                        gLine2Dashed={this.state.gLine2Dashed}
+                        gLine3Dashed={this.state.gLine3Dashed}
                         gXAxisLabel={this.state.gXAxisLabel}
                         gXAxisLabelEditable={this.state.gXAxisLabelEditable}
                         gYAxisLabel={this.state.gYAxisLabel}

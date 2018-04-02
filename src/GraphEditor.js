@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ADASEditor from './editors/ADASEditor';
 import CobbDouglasEditor from './editors/CobbDouglasEditor';
 import NonLinearDemandSupplyEditor from './editors/NonLinearDemandSupplyEditor';
 import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
@@ -314,6 +315,105 @@ export default class GraphEditor extends React.Component {
 
                 </form>
                 </div>;
+        } else if (this.props.gType === 8) {
+            // Aggregate Demand - Aggregate Supply
+            return <div className="GraphEditor">
+                {this.title()}
+                <form>
+                <CommonGraphEditor
+            gTitle={this.props.gTitle}
+            gInstructorNotes={this.props.gInstructorNotes}
+            gDescription={this.props.gDescription}
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            gDisplayFeedback={this.props.gDisplayFeedback}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
+            gIsPublished={this.props.gIsPublished}
+            updateGraph={this.props.updateGraph}
+                />
+                <JXGBoard
+            id={'editing-graph'}
+            width={562.5}
+            height={300}
+            gType={this.props.gType}
+            gA1={this.props.gA1}
+            gA2={this.props.gA2}
+            gA3={this.props.gA3}
+            gA4={this.props.gA4}
+            gLine1Label={this.props.gLine1Label}
+            gLine2Label={this.props.gLine2Label}
+            gLine3Label={this.props.gLine3Label}
+            gLine1Dashed={this.props.gLine1Dashed}
+            gLine2Dashed={this.props.gLine2Dashed}
+            gLine3Dashed={this.props.gLine3Dashed}
+            gXAxisLabel={this.props.gXAxisLabel}
+            gYAxisLabel={this.props.gYAxisLabel}
+            gLine1Slope={this.props.gLine1Slope}
+            gLine2Slope={this.props.gLine2Slope}
+            gLine3Slope={this.props.gLine3Slope}
+            gLine1OffsetX={this.props.gLine1OffsetX}
+            gLine1OffsetY={this.props.gLine1OffsetY}
+            gLine2OffsetX={this.props.gLine2OffsetX}
+            gLine2OffsetY={this.props.gLine2OffsetY}
+            gDisplayIntersection1={this.props.gDisplayIntersection1}
+            gDisplayIntersection2={this.props.gDisplayIntersection2}
+            gDisplayIntersection3={this.props.gDisplayIntersection3}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gShowIntersection={this.props.gShowIntersection}
+                />
+                <ADASEditor
+            gXAxisLabel={this.props.gXAxisLabel}
+            gXAxisLabelEditable={this.props.gXAxisLabelEditable}
+            gYAxisLabel={this.props.gYAxisLabel}
+            gYAxisLabelEditable={this.props.gYAxisLabelEditable}
+            gA1={this.props.gA1}
+            gA1Editable={this.props.gA1Editable}
+            gA2={this.props.gA2}
+            gA2Editable={this.props.gA2Editable}
+            gA3={this.props.gA3}
+            gA3Editable={this.props.gA3Editable}
+            gA4={this.props.gA4}
+            gA4Editable={this.props.gA4Editable}
+            gLine1Slope={this.props.gLine1Slope}
+            gLine1SlopeEditable={this.props.gLine1SlopeEditable}
+            gLine1Label={this.props.gLine1Label}
+            gLine1LabelEditable={this.props.gLine1LabelEditable}
+            gLine2Slope={this.props.gLine2Slope}
+            gLine2SlopeEditable={this.props.gLine2SlopeEditable}
+            gLine2Label={this.props.gLine2Label}
+            gLine2LabelEditable={this.props.gLine2LabelEditable}
+            gLine3Label={this.props.gLine3Label}
+            gLine3LabelEditable={this.props.gLine3LabelEditable}
+            gLine3Slope={this.props.gLine3Slope}
+            gLine3SlopeEditable={this.props.gLine3SlopeEditable}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayIntersection1={this.props.gDisplayIntersection1}
+            gDisplayIntersection2={this.props.gDisplayIntersection2}
+            gDisplayIntersection3={this.props.gDisplayIntersection3}
+            gLine1Dashed={this.props.gLine1Dashed}
+            gLine2Dashed={this.props.gLine2Dashed}
+            gLine3Dashed={this.props.gLine3Dashed}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
+            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
+            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
+            gCorrectFeedback={this.props.gCorrectFeedback}
+            gIncorrectFeedback={this.props.gIncorrectFeedback}
+
+            isInstructor={true}
+            updateGraph={this.props.updateGraph}
+                />
+
+                <button type="button"
+            className="btn btn-primary btn-sm"
+            onClick={this.handleSaveGraph.bind(this)}>Save</button>
+
+                </form>
+                </div>;
         }
         return (
             <div className="GraphEditor">
@@ -368,7 +468,7 @@ export default class GraphEditor extends React.Component {
                                 dataId="gLine1Slope"
                                 value={this.props.gLine1Slope}
                                 min={0}
-                                max={20}
+                                max={5}
                                 showOverrideCheckbox={true}
                                 overrideLabel='Vertical'
                                 overrideValue={999}
@@ -395,7 +495,7 @@ export default class GraphEditor extends React.Component {
                                 </label>
                                 <RangeEditor
                                     dataId="gLine2Slope"
-                                    min={-20}
+                                    min={-5}
                                     max={0}
                                     value={this.props.gLine2Slope}
                                     showOverrideCheckbox={true}
@@ -751,6 +851,9 @@ GraphEditor.propTypes = {
     gDescription: PropTypes.string,
 
     gShowIntersection: PropTypes.bool.isRequired,
+    gDisplayIntersection1: PropTypes.bool.isRequired,
+    gDisplayIntersection2: PropTypes.bool.isRequired,
+    gDisplayIntersection3: PropTypes.bool.isRequired,
     gDisplayShadow: PropTypes.bool.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
     gIntersectionLabelEditable: PropTypes.bool.isRequired,
@@ -768,14 +871,22 @@ GraphEditor.propTypes = {
     gLine1LabelEditable: PropTypes.bool.isRequired,
     gLine2Label: PropTypes.string.isRequired,
     gLine2LabelEditable: PropTypes.bool.isRequired,
+    gLine3Label: PropTypes.string.isRequired,
+    gLine3LabelEditable: PropTypes.bool.isRequired,
     gLine1Slope: PropTypes.number.isRequired,
     gLine1SlopeEditable: PropTypes.bool.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
     gLine2SlopeEditable: PropTypes.bool.isRequired,
+    gLine3Slope: PropTypes.number.isRequired,
+    gLine3SlopeEditable: PropTypes.bool.isRequired,
     gLine1OffsetX: PropTypes.number.isRequired,
     gLine1OffsetY: PropTypes.number.isRequired,
     gLine2OffsetX: PropTypes.number.isRequired,
     gLine2OffsetY: PropTypes.number.isRequired,
+    gLine1Dashed: PropTypes.bool.isRequired,
+    gLine2Dashed: PropTypes.bool.isRequired,
+    gLine3Dashed: PropTypes.bool.isRequired,
+
     gLine1FeedbackIncrease: PropTypes.string,
     gLine1IncreaseScore: PropTypes.number,
     gLine1FeedbackDecrease: PropTypes.string,
@@ -819,4 +930,4 @@ GraphEditor.propTypes = {
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,
     showing: PropTypes.bool.isRequired
-}
+};
