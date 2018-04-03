@@ -7,6 +7,7 @@ import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import JXGBoard from './JXGBoard';
+import EditableControl from './form-components/EditableControl';
 import RangeEditor from './form-components/RangeEditor';
 import {handleFormUpdate, displayGraphType} from './utils';
 
@@ -520,202 +521,74 @@ export default class GraphEditor extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-4">
-                            <div className="form-group">
-                                <label htmlFor="gLine1Label">
-                                    Orange line label
-                                </label>
-                                <input id="gLine1Label"
-                                       value={this.props.gLine1Label}
-                                       onChange={handleFormUpdate.bind(this)}
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       />
-                            </div>
-                        </div>
-                        <div className="col-sm-2">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                         id="gLine1LabelEditable"
-                                         className="form-check-input"
-                                         type="checkbox"
-                                         onChange={handleFormUpdate.bind(this)}
-                                         checked={this.props.gLine1LabelEditable} />
-                                    Student editable
-                                </label>
-                            </div>
-                        </div>
+                        <EditableControl
+                            id="gLine1Label"
+                            name="Orange line label"
+                            value={this.props.gLine1Label}
+                            valueEditable={this.props.gLine1LabelEditable}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}
+                            />
 
-                        <div className="col-sm-4">
-                            <div className="form-group">
-                                <label htmlFor="gLine2Label">
-                                    Blue line label
-                                </label>
-                                <input id="gLine2Label"
-                                       value={this.props.gLine2Label}
-                                       onChange={handleFormUpdate.bind(this)}
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       />
-                            </div>
-                        </div>
-                        <div className="col-sm-2">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                         id="gLine2LabelEditable"
-                                         className="form-check-input"
-                                         type="checkbox"
-                                         onChange={handleFormUpdate.bind(this)}
-                                         checked={this.props.gLine2LabelEditable} />
-                                    Student editable
-                                </label>
-                            </div>
-                        </div>
+                        <EditableControl
+                            id="gLine2Label"
+                            name="Blue line label"
+                            value={this.props.gLine2Label}
+                            valueEditable={this.props.gLine2LabelEditable}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}
+                            />
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-4">
-                            <div className="form-group">
-                                <label htmlFor="gXAxisLabel">
-                                    X-axis label:
-                                </label>
-                                <input id="gXAxisLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gXAxisLabel}
-                                       onChange={handleFormUpdate.bind(this)} />
-                            </div>
-                        </div>
-                        <div className="col-sm-2">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                         id="gXAxisLabelEditable"
-                                         className="form-check-input"
-                                         type="checkbox"
-                                         onChange={handleFormUpdate.bind(this)}
-                                         checked={this.props.gXAxisLabelEditable} />
-                                    Student editable
-                                </label>
-                            </div>
-                        </div>
+                        <EditableControl
+                            id="gXAxisLabel"
+                            name="X-axis label"
+                            value={this.props.gXAxisLabel}
+                            valueEditable={this.props.gXAxisLabelEditable}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}
+                            />
 
-                        <div className="col-sm-4">
-                            <div className="form-group">
-                                <label htmlFor="gYAxisLabel">
-                                    Y-axis label:
-                                </label>
-                                <input id="gYAxisLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gYAxisLabel}
-                                       onChange={handleFormUpdate.bind(this)} />
-                            </div>
-                        </div>
-                        <div className="col-sm-2">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                         id="gYAxisLabelEditable"
-                                         className="form-check-input"
-                                         type="checkbox"
-                                         onChange={handleFormUpdate.bind(this)}
-                                         checked={this.props.gYAxisLabelEditable} />
-                                    Student editable
-                                </label>
-                            </div>
-                        </div>
+                        <EditableControl
+                            id="gYAxisLabel"
+                            name="Y-axis label"
+                            value={this.props.gYAxisLabel}
+                            valueEditable={this.props.gYAxisLabelEditable}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}
+                            />
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-4">
-                            <div className="form-group">
-                                <label htmlFor="gIntersectionLabel">
-                                    Intersection point label:
-                                </label>
-                                <input id="gIntersectionLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gIntersectionLabel}
-                                       onChange={handleFormUpdate.bind(this)} />
-                            </div>
-                        </div>
-                        <div className="col-sm-2">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                         id="gIntersectionLabelEditable"
-                                         className="form-check-input"
-                                         type="checkbox"
-                                         onChange={handleFormUpdate.bind(this)}
-                                         checked={this.props.gIntersectionLabelEditable} />
-                                    Student editable
-                                </label>
-                            </div>
-                        </div>
+                        <EditableControl
+                            id="gIntersectionLabel"
+                            name="Intersection point label"
+                            value={this.props.gIntersectionLabel}
+                            valueEditable={this.props.gIntersectionLabelEditable}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}
+                            />
                     </div>
 
                     <div className="row">
-                        <div className="col-sm-4">
-                            <div className="form-group">
-                                <label htmlFor="gIntersectionHorizLineLabel">
-                                    Intersection&apos;s horizontal line label:
-                                </label>
-                                <input id="gIntersectionHorizLineLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gIntersectionHorizLineLabel}
-                                       onChange={handleFormUpdate.bind(this)} />
-                            </div>
-                        </div>
-                        <div className="col-sm-2">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                         id="gIntersectionHorizLineLabelEditable"
-                                         className="form-check-input"
-                                         type="checkbox"
-                                         onChange={handleFormUpdate.bind(this)}
-                                         checked={this.props.gIntersectionHorizLineLabelEditable} />
-                                    Student editable
-                                </label>
-                            </div>
-                        </div>
+                        <EditableControl
+                            id="gIntersectionHorizLineLabel"
+                            name="Intersection&apos;s horizontal line label"
+                            value={this.props.gIntersectionHorizLineLabel}
+                            valueEditable={this.props.gIntersectionHorizLineLabelEditable}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}
+                            />
 
-                        <div className="col-sm-4">
-                            <div className="form-group">
-                                <label htmlFor="gIntersectionVertLineLabel">
-                                    Intersection&apos;s vertical line label:
-                                </label>
-                                <input id="gIntersectionVertLineLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gIntersectionVertLineLabel}
-                                       onChange={handleFormUpdate.bind(this)} />
-                            </div>
-                        </div>
-                        <div className="col-sm-2">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                         id="gIntersectionVertLineLabelEditable"
-                                         className="form-check-input"
-                                         type="checkbox"
-                                         onChange={handleFormUpdate.bind(this)}
-                                         checked={this.props.gIntersectionVertLineLabelEditable} />
-                                    Student editable
-                                </label>
-                            </div>
-                        </div>
+                        <EditableControl
+                            id="gIntersectionVertLineLabel"
+                            name="Intersection&apos;s vertical line label"
+                            value={this.props.gIntersectionVertLineLabel}
+                            valueEditable={this.props.gIntersectionVertLineLabelEditable}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}
+                            />
                     </div>
 
                     <hr />
