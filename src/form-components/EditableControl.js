@@ -54,4 +54,4 @@ EditableControl.propTypes = {
     name: PropTypes.string.isRequired,
     isInstructor: PropTypes.bool.isRequired,
     valueEditable: PropTypes.bool.isRequired
-}
+};
