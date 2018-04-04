@@ -814,6 +814,8 @@ const mkConsumptionSaving = function(board, options) {
  */
 class ADASGraph extends Graph {
     make() {
+        const me = this;
+
         if (this.options.shadow && this.options.gDisplayShadow) {
             // Display the initial curves set by the instructor.
             const l1fShadow = this.board.create(
@@ -849,54 +851,102 @@ class ADASGraph extends Graph {
             this.showIntersection(l1fShadow, l2fShadow, true);
         }
 
-        this.l1 = this.board.create(
-            'line',
-            [
-                [2.5, 2.5 + this.options.gLine1OffsetY +
-                 this.options.l1SubmissionOffset],
-                [3.5, 2.5 + this.options.gLine1OffsetY +
-                 this.options.gLine1Slope + this.options.l1SubmissionOffset]
-            ], {
-                name: this.options.gLine1Label,
-                withLabel: true,
-                dash: this.options.gLine1Dashed ? 2 : 0,
-                label: { position: 'rt', offset: [-10, -20] },
-                strokeColor: this.l1Color,
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
-            });
+        const f1 = function(x) {
+            const slope = me.options.gLine1Slope || 1;
+            return (x - 2.5) * slope + 2.5;
+        };
 
-        this.l2 = this.board.create(
-            'line',
-            [
-                [2.5, 2.5 + this.options.gLine2OffsetY +
-                 this.options.l2SubmissionOffset],
-                [3.5, 2.5 + this.options.gLine2OffsetY +
-                 this.options.gLine2Slope + this.options.l2SubmissionOffset]
-            ], {
-                name: this.options.gLine2Label,
-                withLabel: true,
-                dash: this.options.gLine2Dashed ? 2 : 0,
-                label: { position: 'rt', offset: [0, 35] },
-                strokeColor: this.l2Color,
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
-            });
+        this.l1 = this.board.create('functiongraph', [f1, -20, 20], {
+            name: this.options.gLine1Label,
+            withLabel: true,
+            dash: this.options.gLine1Dashed ? 2 : 0,
+            strokeWidth: 2,
+            strokeColor: this.l1Color,
+            fixed: this.areLinesFixed
+        });
 
-        this.l3 = this.board.create(
-            'line',
-            [
-                [2.5, 0],
-                [2.5, 5]
-            ], {
-                name: '',
-                withLabel: true,
-                dash: this.options.gLine3Dashed ? 2 : 0,
-                label: { position: 'rt', offset: [0, 35] },
-                strokeColor: this.l3Color,
-                strokeWidth: 2,
-                fixed: this.areLinesFixed
+        const f2 = function(x) {
+            const slope = me.options.gLine2Slope || -1;
+            return (x - 2.5) * slope + 2.5;
+        };
+
+        this.l2 = this.board.create('functiongraph', [f2, -20, 20], {
+            name: this.options.gLine2Label,
+            withLabel: true,
+            dash: this.options.gLine2Dashed ? 2 : 0,
+            strokeWidth: 2,
+            strokeColor: this.l2Color,
+            fixed: this.areLinesFixed
+        });
+
+        const f3 = function(x) {
+            const slope = me.options.gLine3Slope || Infinity;
+            return (x - 2.5) * slope + 2.5;
+        };
+
+        this.l3 = this.board.create('functiongraph', [f3, -20, 20], {
+            name: this.options.gLine3Label,
+            withLabel: true,
+            dash: this.options.gLine3Dashed ? 2 : 0,
+            strokeWidth: 2,
+            strokeColor: this.l3Color,
+            fixed: this.areLinesFixed
+        });
+
+        this.l1.setPosition(window.JXG.COORDS_BY_USER, [
+            forceFloat(this.options.gLine1OffsetX),
+            forceFloat(this.options.gLine1OffsetY)
+        ]);
+        this.l2.setPosition(window.JXG.COORDS_BY_USER, [
+            forceFloat(this.options.gLine2OffsetX),
+            forceFloat(this.options.gLine2OffsetY)
+        ]);
+        this.l3.setPosition(window.JXG.COORDS_BY_USER, [
+            forceFloat(this.options.gLine3OffsetX),
+            forceFloat(this.options.gLine3OffsetY)
+        ]);
+
+        // This is necessary, because otherwise the setPosition call
+        // won't have an effect until the graph is interacted with.
+        this.l1.fullUpdate(true);
+        this.l2.fullUpdate(true);
+        this.l3.fullUpdate(true);
+
+        this.l1.on('mouseup', function() {
+            const xOffset = me.l1.transformations[0].matrix[1][0];
+            const yOffset = me.l1.transformations[0].matrix[2][0];
+            const offsetEvt = new CustomEvent('l1offset', {
+                detail: {
+                    x: xOffset,
+                    y: yOffset
+                }
             });
+            document.dispatchEvent(offsetEvt);
+        });
+
+        this.l2.on('mouseup', function() {
+            const xOffset = me.l2.transformations[0].matrix[1][0];
+            const yOffset = me.l2.transformations[0].matrix[2][0];
+            const offsetEvt = new CustomEvent('l2offset', {
+                detail: {
+                    x: xOffset,
+                    y: yOffset
+                }
+            });
+            document.dispatchEvent(offsetEvt);
+        });
+
+        this.l3.on('mouseup', function() {
+            const xOffset = me.l3.transformations[0].matrix[1][0];
+            const yOffset = me.l3.transformations[0].matrix[2][0];
+            const offsetEvt = new CustomEvent('l3offset', {
+                detail: {
+                    x: xOffset,
+                    y: yOffset
+                }
+            });
+            document.dispatchEvent(offsetEvt);
+        });
 
         if (this.options.gDisplayIntersection1) {
             this.showIntersection(this.l1, this.l2);

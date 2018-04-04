@@ -79,6 +79,8 @@ class Viewer extends Component {
             gLine1OffsetY={this.state.gLine1OffsetY}
             gLine2OffsetX={this.state.gLine2OffsetX}
             gLine2OffsetY={this.state.gLine2OffsetY}
+            gLine3OffsetX={this.state.gLine3OffsetX}
+            gLine3OffsetY={this.state.gLine3OffsetY}
             gAlpha={this.state.gAlpha}
 
             gA1={this.state.gA1}
@@ -263,6 +265,13 @@ class Viewer extends Component {
             me.setState({
                 gLine2OffsetX: offset.x,
                 gLine2OffsetY: offset.y
+            });
+        });
+        document.addEventListener('l3offset', function(e) {
+            const offset = e.detail;
+            me.setState({
+                gLine3OffsetX: offset.x,
+                gLine3OffsetY: offset.y
             });
         });
     }

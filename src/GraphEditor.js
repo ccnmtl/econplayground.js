@@ -355,6 +355,8 @@ export default class GraphEditor extends React.Component {
             gLine1OffsetY={this.props.gLine1OffsetY}
             gLine2OffsetX={this.props.gLine2OffsetX}
             gLine2OffsetY={this.props.gLine2OffsetY}
+            gLine3OffsetX={this.props.gLine3OffsetX}
+            gLine3OffsetY={this.props.gLine3OffsetY}
             gDisplayIntersection1={this.props.gDisplayIntersection1}
             gDisplayIntersection2={this.props.gDisplayIntersection2}
             gDisplayIntersection3={this.props.gDisplayIntersection3}
@@ -883,6 +885,8 @@ GraphEditor.propTypes = {
     gLine1OffsetY: PropTypes.number.isRequired,
     gLine2OffsetX: PropTypes.number.isRequired,
     gLine2OffsetY: PropTypes.number.isRequired,
+    gLine3OffsetX: PropTypes.number.isRequired,
+    gLine3OffsetY: PropTypes.number.isRequired,
     gLine1Dashed: PropTypes.bool.isRequired,
     gLine2Dashed: PropTypes.bool.isRequired,
     gLine3Dashed: PropTypes.bool.isRequired,

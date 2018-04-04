@@ -79,6 +79,8 @@ class Editor extends Component {
                         gLine1OffsetY={this.state.gLine1OffsetY}
                         gLine2OffsetX={this.state.gLine2OffsetX}
                         gLine2OffsetY={this.state.gLine2OffsetY}
+                        gLine3OffsetX={this.state.gLine3OffsetX}
+                        gLine3OffsetY={this.state.gLine3OffsetY}
                         gAlpha={this.state.gAlpha}
                         gA1={this.state.gA1}
                         gA1Editable={this.state.gA1Editable}
