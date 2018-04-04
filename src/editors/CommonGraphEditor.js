@@ -13,7 +13,7 @@ export default class CommonGraphEditor extends React.Component {
                 <div className="row">
                     <div className="col-sm-6">
                         <div className="form-group">
-                            <label htmlFor="graph-title">
+                            <label htmlFor="gTitle">
                                 Title
                             </label>
                             <input id="gTitle"
@@ -28,7 +28,7 @@ export default class CommonGraphEditor extends React.Component {
 
                     <div className="col-sm-6">
                         <div className="form-group">
-                            <label htmlFor="graph-instructor-notes">
+                            <label htmlFor="gInstructorNotes">
                                 Instructor Notes
                             </label>
                             <textarea id="gInstructorNotes"
@@ -42,7 +42,7 @@ export default class CommonGraphEditor extends React.Component {
                 <div className="row">
                     <div className="col-sm-12">
                         <div className="form-group">
-                            <label htmlFor="graph-description">
+                            <label htmlFor="gDescription">
                                 Description
                             </label>
                             <textarea id="gDescription"
