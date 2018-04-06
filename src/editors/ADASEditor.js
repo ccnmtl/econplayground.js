@@ -183,91 +183,34 @@ export default class ADASEditor extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-sm-4">
-                        <div className="form-group">
-                            <label htmlFor="gLine1Label">
+                    <EditableControl
+                        id="gLine1Label"
+                        name="Orange line label"
+                        value={this.props.gLine1Label}
+                        valueEditable={this.props.gLine1LabelEditable}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
 
-                            </label>
-                            <input id="gLine1Label"
-                                   value={this.props.gLine1Label}
-                                   onChange={handleFormUpdate.bind(this)}
-                                   className="form-control form-control-sm"
-                                   type="text"
-                                   maxLength="60"
-                                   />
-                        </div>
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine1LabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine1LabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
-
-                    <div className="col-sm-4">
-                        <div className="form-group">
-                            <label htmlFor="gLine2Label">
-                                Blue line label
-                            </label>
-                            <input id="gLine2Label"
-                                   value={this.props.gLine2Label}
-                                   onChange={handleFormUpdate.bind(this)}
-                                   className="form-control form-control-sm"
-                                   type="text"
-                                   maxLength="60"
-                                   />
-                        </div>
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine2LabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine2LabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                    <EditableControl
+                        id="gLine2Label"
+                        name="Blue line label"
+                        value={this.props.gLine2Label}
+                        valueEditable={this.props.gLine2LabelEditable}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
                 </div>
 
                 <div className="row">
-                    <div className="col-sm-4">
-                        <div className="form-group">
-                            <label htmlFor="gLine2Label">
-                                Red line label
-                            </label>
-                            <input id="gLine3Label"
-                                   value={this.props.gLine3Label}
-                                   onChange={handleFormUpdate.bind(this)}
-                                   className="form-control form-control-sm"
-                                   type="text"
-                                   maxLength="60"
-                                   />
-                        </div>
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine3LabelEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine3LabelEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
+                    <EditableControl
+                        id="gLine3Label"
+                        name="Red line label"
+                        value={this.props.gLine3Label}
+                        valueEditable={this.props.gLine3LabelEditable}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
                 </div>
 
                 <div className="row">
@@ -292,19 +235,30 @@ export default class ADASEditor extends React.Component {
 
                 <div className="row">
                     <EditableControl
-                        id="gIntersectionHorizLineLabel"
-                        name="Horizontal intersection label"
-                        value={this.props.gIntersectionHorizLineLabel}
-                        valueEditable={this.props.gIntersectionHorizLineLabelEditable}
+                        id="gIntersectionLabel"
+                        name="Orange-Blue intersection label"
+                        value={this.props.gIntersectionLabel}
+                        valueEditable={this.props.gIntersectionLabelEditable}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
 
                     <EditableControl
-                        id="gIntersectionVertLineLabel"
-                        name="Vertical intersection label"
-                        value={this.props.gIntersectionVertLineLabel}
-                        valueEditable={this.props.gIntersectionVertLineLabelEditable}
+                        id="gIntersection2Label"
+                        name="Blue-Red intersection label"
+                        value={this.props.gIntersection2Label}
+                        valueEditable={this.props.gIntersection2LabelEditable}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
+                </div>
+
+                <div className="row">
+                    <EditableControl
+                        id="gIntersection3Label"
+                        name="Orange-Red intersection label"
+                        value={this.props.gIntersection3Label}
+                        valueEditable={this.props.gIntersection3LabelEditable}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
