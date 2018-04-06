@@ -216,6 +216,7 @@ class Graph {
             fixed: true,
             highlight: false,
             showInfobox: false,
+            layer: 4,
             size: 1,
             fillColor: isShadow ? 'rgb(150, 150, 150)' : 'red',
             strokeColor: isShadow ? 'rgb(150, 150, 150)' : 'red'
