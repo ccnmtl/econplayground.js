@@ -359,9 +359,12 @@ export default class GraphEditor extends React.Component {
             gLine3OffsetX={this.props.gLine3OffsetX}
             gLine3OffsetY={this.props.gLine3OffsetY}
             gDisplayIntersection1={this.props.gDisplayIntersection1}
-            gDisplayIntersection2={this.props.gDisplayIntersection2}
-            gDisplayIntersection3={this.props.gDisplayIntersection3}
             gIntersectionLabel={this.props.gIntersectionLabel}
+            gDisplayIntersection2={this.props.gDisplayIntersection2}
+            gIntersection2Label={this.props.gIntersection2Label}
+            gDisplayIntersection3={this.props.gDisplayIntersection3}
+            gIntersection3Label={this.props.gIntersection3Label}
+
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
             gShowIntersection={this.props.gShowIntersection}
@@ -393,13 +396,18 @@ export default class GraphEditor extends React.Component {
             gLine3SlopeEditable={this.props.gLine3SlopeEditable}
             gShowIntersection={this.props.gShowIntersection}
             gDisplayIntersection1={this.props.gDisplayIntersection1}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
             gDisplayIntersection2={this.props.gDisplayIntersection2}
+            gIntersection2Label={this.props.gIntersection2Label}
+            gIntersection2LabelEditable={this.props.gIntersection2LabelEditable}
             gDisplayIntersection3={this.props.gDisplayIntersection3}
+            gIntersection3Label={this.props.gIntersection3Label}
+            gIntersection3LabelEditable={this.props.gIntersection3LabelEditable}
             gLine1Dashed={this.props.gLine1Dashed}
             gLine2Dashed={this.props.gLine2Dashed}
             gLine3Dashed={this.props.gLine3Dashed}
-            gIntersectionLabel={this.props.gIntersectionLabel}
-            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
+
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
             gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
@@ -727,11 +735,16 @@ GraphEditor.propTypes = {
 
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayIntersection1: PropTypes.bool.isRequired,
-    gDisplayIntersection2: PropTypes.bool.isRequired,
-    gDisplayIntersection3: PropTypes.bool.isRequired,
-    gDisplayShadow: PropTypes.bool.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
     gIntersectionLabelEditable: PropTypes.bool.isRequired,
+    gDisplayIntersection2: PropTypes.bool.isRequired,
+    gIntersection2Label: PropTypes.string.isRequired,
+    gIntersection2LabelEditable: PropTypes.bool.isRequired,
+    gDisplayIntersection3: PropTypes.bool.isRequired,
+    gIntersection3Label: PropTypes.string.isRequired,
+    gIntersection3LabelEditable: PropTypes.bool.isRequired,
+    gDisplayShadow: PropTypes.bool.isRequired,
+
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
