@@ -420,7 +420,7 @@ class NonLinearDemandSupplyGraph extends Graph {
         }
 
         const f1 = function(x) {
-            const slope = me.options.gLine1Slope || 1;
+            const slope = me.options.gLine1Slope;
             return (x - 2.5) * slope + 2.5;
         };
 
@@ -853,7 +853,7 @@ class ADASGraph extends Graph {
         }
 
         const f1 = function(x) {
-            const slope = me.options.gLine1Slope || 1;
+            const slope = me.options.gLine1Slope;
             return (x - 2.5) * slope + 2.5;
         };
 
@@ -867,7 +867,7 @@ class ADASGraph extends Graph {
         });
 
         const f2 = function(x) {
-            const slope = me.options.gLine2Slope || -1;
+            const slope = me.options.gLine2Slope;
             return (x - 2.5) * slope + 2.5;
         };
 
@@ -881,7 +881,7 @@ class ADASGraph extends Graph {
         });
 
         const f3 = function(x) {
-            const slope = me.options.gLine3Slope || Infinity;
+            const slope = me.options.gLine3Slope;
             return (x - 2.5) * slope + 2.5;
         };
 
