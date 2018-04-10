@@ -42,12 +42,17 @@ class Editor extends Component {
                         gInstructorNotes={this.state.gInstructorNotes}
                         gShowIntersection={this.state.gShowIntersection}
                         gDisplayIntersection1={this.state.gDisplayIntersection1}
-                        gDisplayIntersection2={this.state.gDisplayIntersection2}
-                        gDisplayIntersection3={this.state.gDisplayIntersection3}
-                        gDisplayShadow={this.state.gDisplayShadow}
-                        gNeedsSubmit={this.state.gNeedsSubmit}
                         gIntersectionLabel={this.state.gIntersectionLabel}
                         gIntersectionLabelEditable={this.state.gIntersectionLabelEditable}
+                        gDisplayIntersection2={this.state.gDisplayIntersection2}
+                        gIntersection2Label={this.state.gIntersection2Label}
+                        gIntersection2LabelEditable={this.state.gIntersection2LabelEditable}
+                        gDisplayIntersection3={this.state.gDisplayIntersection3}
+                        gIntersection3Label={this.state.gIntersection3Label}
+                        gIntersection3LabelEditable={this.state.gIntersection3LabelEditable}
+                        gDisplayShadow={this.state.gDisplayShadow}
+                        gNeedsSubmit={this.state.gNeedsSubmit}
+
                         gIntersectionHorizLineLabel={this.state.gIntersectionHorizLineLabel}
                         gIntersectionHorizLineLabelEditable={this.state.gIntersectionHorizLineLabelEditable}
                         gIntersectionVertLineLabel={this.state.gIntersectionVertLineLabel}

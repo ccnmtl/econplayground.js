@@ -209,9 +209,9 @@ class Graph {
      * i is the intersection, and p1 and p2 are its X and Y
      * intercepts.
      */
-    showIntersection(l1, l2, isShadow) {
+    showIntersection(l1, l2, isShadow=false, label='') {
         let i = this.board.create('intersection', [l1, l2, 0], {
-            name: this.options.gIntersectionLabel || '',
+            name: label || this.options.gIntersectionLabel || '',
             withLabel: !isShadow,
             fixed: true,
             highlight: false,
@@ -950,13 +950,16 @@ class ADASGraph extends Graph {
         });
 
         if (this.options.gDisplayIntersection1) {
-            this.showIntersection(this.l1, this.l2);
+            this.showIntersection(
+                this.l1, this.l2, false, this.options.gIntersectionLabel);
         }
         if (this.options.gDisplayIntersection2) {
-            this.showIntersection(this.l2, this.l3);
+            this.showIntersection(
+                this.l2, this.l3, false, this.options.gIntersection2Label);
         }
         if (this.options.gDisplayIntersection3) {
-            this.showIntersection(this.l3, this.l1);
+            this.showIntersection(
+                this.l3, this.l1, false, this.options.gIntersection3Label);
         }
     }
 }
