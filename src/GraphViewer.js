@@ -544,6 +544,12 @@ export default class GraphViewer extends React.Component {
             updateGraph={this.props.updateGraph}
                 />
 
+                <ResetGraphButton
+            initialState={initialState}
+            updateGraph={this.props.updateGraph} />
+
+                <ExportGraphButton />
+
                 <button className="btn btn-primary btn-sm"
             disabled={!this.props.choice}
             style={{
