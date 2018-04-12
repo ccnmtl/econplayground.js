@@ -141,11 +141,19 @@ class Viewer extends Component {
             gTitle={this.state.gTitle}
             gDescription={this.state.gDescription}
             gType={this.state.gType}
-            gNeedsSubmit={this.state.gNeedsSubmit}
             gShowIntersection={this.state.gShowIntersection}
-            gDisplayShadow={this.state.gDisplayShadow}
+            gDisplayIntersection1={this.state.gDisplayIntersection1}
             gIntersectionLabel={this.state.gIntersectionLabel}
             gIntersectionLabelEditable={this.state.gIntersectionLabelEditable}
+            gDisplayIntersection2={this.state.gDisplayIntersection2}
+            gIntersection2Label={this.state.gIntersection2Label}
+            gIntersection2LabelEditable={this.state.gIntersection2LabelEditable}
+            gDisplayIntersection3={this.state.gDisplayIntersection3}
+            gIntersection3Label={this.state.gIntersection3Label}
+            gIntersection3LabelEditable={this.state.gIntersection3LabelEditable}
+            gNeedsSubmit={this.state.gNeedsSubmit}
+
+            gDisplayShadow={this.state.gDisplayShadow}
             gIntersectionHorizLineLabel={this.state.gIntersectionHorizLineLabel}
             gIntersectionHorizLineLabelEditable={this.state.gIntersectionHorizLineLabelEditable}
             gIntersectionVertLineLabel={this.state.gIntersectionVertLineLabel}
@@ -155,12 +163,20 @@ class Viewer extends Component {
             gLine1LabelEditable={this.state.gLine1LabelEditable}
             gLine2Label={this.state.gLine2Label}
             gLine2LabelEditable={this.state.gLine2LabelEditable}
+            gLine3Label={this.state.gLine3Label}
+            gLine3LabelEditable={this.state.gLine3LabelEditable}
             gLine1Slope={this.state.gLine1Slope}
             gLine1SlopeInitial={this.state.gLine1SlopeInitial}
             gLine1SlopeEditable={this.state.gLine1SlopeEditable}
             gLine2Slope={this.state.gLine2Slope}
             gLine2SlopeInitial={this.state.gLine2SlopeInitial}
             gLine2SlopeEditable={this.state.gLine2SlopeEditable}
+            gLine3Slope={this.state.gLine3Slope}
+            gLine3SlopeInitial={this.state.gLine3SlopeInitial}
+            gLine3SlopeEditable={this.state.gLine3SlopeEditable}
+            gLine1Dashed={this.state.gLine1Dashed}
+            gLine2Dashed={this.state.gLine2Dashed}
+            gLine3Dashed={this.state.gLine3Dashed}
             gXAxisLabel={this.state.gXAxisLabel}
             gXAxisLabelEditable={this.state.gXAxisLabelEditable}
             gYAxisLabel={this.state.gYAxisLabel}
@@ -173,6 +189,10 @@ class Viewer extends Component {
             gLine2OffsetY={this.state.gLine2OffsetY}
             gLine2OffsetXInitial={this.state.gLine2OffsetXInitial}
             gLine2OffsetYInitial={this.state.gLine2OffsetYInitial}
+            gLine3OffsetX={this.state.gLine3OffsetX}
+            gLine3OffsetY={this.state.gLine3OffsetY}
+            gLine3OffsetXInitial={this.state.gLine3OffsetXInitial}
+            gLine3OffsetYInitial={this.state.gLine3OffsetYInitial}
             gAlpha={this.state.gAlpha}
 
             gA1={this.state.gA1}

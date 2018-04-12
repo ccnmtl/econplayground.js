@@ -2,6 +2,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import commonmark from 'commonmark';
+import ADASEditor from './editors/ADASEditor';
 import CobbDouglasEditor from './editors/CobbDouglasEditor';
 import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
@@ -447,6 +448,111 @@ export default class GraphViewer extends React.Component {
                     </form>
                 </div>
             );
+        } else if (this.props.gType === 8) {
+            // Aggregate Demand - Aggregate Supply
+            return <div className="GraphViewer">
+                    {titleEl}
+                    {descriptionEl}
+                <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value={token} />
+                <input type="hidden" name="score" value={this.props.value} />
+                <input type="hidden" name="next" value={successUrl} />
+                <input type="hidden" name="launchUrl" value={launchUrl} />
+                <JXGBoard
+            id={'editing-graph'}
+            shadow={!isInstructor}
+            width={562.5}
+            height={300}
+            gType={this.props.gType}
+            gA1={this.props.gA1}
+            gA2={this.props.gA2}
+            gA3={this.props.gA3}
+            gA4={this.props.gA4}
+            gLine1Label={this.props.gLine1Label}
+            gLine2Label={this.props.gLine2Label}
+            gLine3Label={this.props.gLine3Label}
+            gLine1Dashed={this.props.gLine1Dashed}
+            gLine2Dashed={this.props.gLine2Dashed}
+            gLine3Dashed={this.props.gLine3Dashed}
+            gXAxisLabel={this.props.gXAxisLabel}
+            gYAxisLabel={this.props.gYAxisLabel}
+            gLine1Slope={this.props.gLine1Slope}
+            gLine2Slope={this.props.gLine2Slope}
+            gLine3Slope={this.props.gLine3Slope}
+            gLine1OffsetX={this.props.gLine1OffsetX}
+            gLine1OffsetY={this.props.gLine1OffsetY}
+            gLine2OffsetX={this.props.gLine2OffsetX}
+            gLine2OffsetY={this.props.gLine2OffsetY}
+            gLine3OffsetX={this.props.gLine3OffsetX}
+            gLine3OffsetY={this.props.gLine3OffsetY}
+            gDisplayIntersection1={this.props.gDisplayIntersection1}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gDisplayIntersection2={this.props.gDisplayIntersection2}
+            gIntersection2Label={this.props.gIntersection2Label}
+            gDisplayIntersection3={this.props.gDisplayIntersection3}
+            gIntersection3Label={this.props.gIntersection3Label}
+
+            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gShowIntersection={this.props.gShowIntersection}
+                />
+                <ADASEditor
+            gXAxisLabel={this.props.gXAxisLabel}
+            gXAxisLabelEditable={this.props.gXAxisLabelEditable}
+            gYAxisLabel={this.props.gYAxisLabel}
+            gYAxisLabelEditable={this.props.gYAxisLabelEditable}
+            gA1={this.props.gA1}
+            gA1Editable={this.props.gA1Editable}
+            gA2={this.props.gA2}
+            gA2Editable={this.props.gA2Editable}
+            gA3={this.props.gA3}
+            gA3Editable={this.props.gA3Editable}
+            gA4={this.props.gA4}
+            gA4Editable={this.props.gA4Editable}
+            gLine1Slope={this.props.gLine1Slope}
+            gLine1SlopeEditable={this.props.gLine1SlopeEditable}
+            gLine1Label={this.props.gLine1Label}
+            gLine1LabelEditable={this.props.gLine1LabelEditable}
+            gLine2Slope={this.props.gLine2Slope}
+            gLine2SlopeEditable={this.props.gLine2SlopeEditable}
+            gLine2Label={this.props.gLine2Label}
+            gLine2LabelEditable={this.props.gLine2LabelEditable}
+            gLine3Label={this.props.gLine3Label}
+            gLine3LabelEditable={this.props.gLine3LabelEditable}
+            gLine3Slope={this.props.gLine3Slope}
+            gLine3SlopeEditable={this.props.gLine3SlopeEditable}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayIntersection1={this.props.gDisplayIntersection1}
+            gIntersectionLabel={this.props.gIntersectionLabel}
+            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
+            gDisplayIntersection2={this.props.gDisplayIntersection2}
+            gIntersection2Label={this.props.gIntersection2Label}
+            gIntersection2LabelEditable={this.props.gIntersection2LabelEditable}
+            gDisplayIntersection3={this.props.gDisplayIntersection3}
+            gIntersection3Label={this.props.gIntersection3Label}
+            gIntersection3LabelEditable={this.props.gIntersection3LabelEditable}
+            gLine1Dashed={this.props.gLine1Dashed}
+            gLine2Dashed={this.props.gLine2Dashed}
+            gLine3Dashed={this.props.gLine3Dashed}
+
+            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
+            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
+
+            isInstructor={isInstructor}
+            updateGraph={this.props.updateGraph}
+                />
+
+                <button className="btn btn-primary btn-sm"
+            disabled={!this.props.choice}
+            style={{
+                marginTop: '1em',
+                display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
+            }}
+            type="submit">Submit</button>
+                </form>
+                </div>;
         }
 
         return (
@@ -721,38 +827,63 @@ GraphViewer.propTypes = {
     gDescription: PropTypes.string,
     gNeedsSubmit: PropTypes.bool,
 
-    gShowIntersection: PropTypes.bool,
-    gDisplayShadow: PropTypes.bool,
-    gIntersectionLabel: PropTypes.string,
-    gIntersectionLabelEditable: PropTypes.bool,
+    gShowIntersection: PropTypes.bool.isRequired,
+    gDisplayIntersection1: PropTypes.bool.isRequired,
+    gIntersectionLabel: PropTypes.string.isRequired,
+    gIntersectionLabelEditable: PropTypes.bool.isRequired,
+    gDisplayIntersection2: PropTypes.bool.isRequired,
+    gIntersection2Label: PropTypes.string.isRequired,
+    gIntersection2LabelEditable: PropTypes.bool.isRequired,
+    gDisplayIntersection3: PropTypes.bool.isRequired,
+    gIntersection3Label: PropTypes.string.isRequired,
+    gIntersection3LabelEditable: PropTypes.bool.isRequired,
+    gDisplayShadow: PropTypes.bool.isRequired,
+
     gIntersectionHorizLineLabel: PropTypes.string,
     gIntersectionHorizLineLabelEditable: PropTypes.bool,
     gIntersectionVertLineLabel: PropTypes.string,
     gIntersectionVertLineLabelEditable: PropTypes.bool,
 
     gDisplayFeedback: PropTypes.bool,
-    gLine1Label: PropTypes.string,
-    gLine1LabelEditable: PropTypes.bool,
-    gLine2Label: PropTypes.string,
-    gLine2LabelEditable: PropTypes.bool,
+
+    gLine1Label: PropTypes.string.isRequired,
+    gLine1LabelEditable: PropTypes.bool.isRequired,
+    gLine2Label: PropTypes.string.isRequired,
+    gLine2LabelEditable: PropTypes.bool.isRequired,
+    gLine3Label: PropTypes.string.isRequired,
+    gLine3LabelEditable: PropTypes.bool.isRequired,
+
     gXAxisLabel: PropTypes.string,
     gXAxisLabelEditable: PropTypes.bool,
     gYAxisLabel: PropTypes.string,
     gYAxisLabelEditable: PropTypes.bool,
-    gLine1Slope: PropTypes.number,
+    gLine1Slope: PropTypes.number.isRequired,
     gLine1SlopeInitial: PropTypes.number,
     gLine1SlopeEditable: PropTypes.bool,
     gLine2Slope: PropTypes.number,
     gLine2SlopeInitial: PropTypes.number,
     gLine2SlopeEditable: PropTypes.bool,
-    gLine1OffsetX: PropTypes.number,
-    gLine1OffsetY: PropTypes.number,
+    gLine3Slope: PropTypes.number,
+    gLine3SlopeInitial: PropTypes.number,
+    gLine3SlopeEditable: PropTypes.bool,
+
+    gLine1OffsetX: PropTypes.number.isRequired,
+    gLine1OffsetY: PropTypes.number.isRequired,
     gLine1OffsetXInitial: PropTypes.number,
     gLine1OffsetYInitial: PropTypes.number,
-    gLine2OffsetX: PropTypes.number,
-    gLine2OffsetY: PropTypes.number,
+    gLine2OffsetX: PropTypes.number.isRequired,
+    gLine2OffsetY: PropTypes.number.isRequired,
     gLine2OffsetXInitial: PropTypes.number,
     gLine2OffsetYInitial: PropTypes.number,
+    gLine3OffsetX: PropTypes.number.isRequired,
+    gLine3OffsetY: PropTypes.number.isRequired,
+    gLine3OffsetXInitial: PropTypes.number,
+    gLine3OffsetYInitial: PropTypes.number,
+
+    gLine1Dashed: PropTypes.bool.isRequired,
+    gLine2Dashed: PropTypes.bool.isRequired,
+    gLine3Dashed: PropTypes.bool.isRequired,
+
     gLine1FeedbackIncrease: PropTypes.string,
     gLine1IncreaseScore: PropTypes.number,
     gLine1FeedbackDecrease: PropTypes.string,

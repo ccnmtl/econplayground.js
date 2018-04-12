@@ -202,6 +202,13 @@ class Editor extends Component {
                 gLine2OffsetY: offset.y
             });
         });
+        document.addEventListener('l3offset', function(e) {
+            const offset = e.detail;
+            me.setState({
+                gLine3OffsetX: offset.x,
+                gLine3OffsetY: offset.y
+            });
+        });
     }
 }
 
