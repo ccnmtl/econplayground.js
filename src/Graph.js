@@ -209,9 +209,12 @@ class Graph {
      * i is the intersection, and p1 and p2 are its X and Y
      * intercepts.
      */
-    showIntersection(l1, l2, isShadow=false, label='') {
+    showIntersection(l1, l2, isShadow=false, label) {
+        if (label === null) {
+            label = this.options.gIntersectionLabel;
+        }
         let i = this.board.create('intersection', [l1, l2, 0], {
-            name: label || this.options.gIntersectionLabel || '',
+            name: label || '',
             withLabel: !isShadow,
             fixed: true,
             highlight: false,
