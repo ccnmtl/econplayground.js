@@ -165,8 +165,17 @@ const displayGraphType = function(gType) {
     return name;
 };
 
+const getError = function(obj) {
+    let o = null;
+    for (o in obj) {
+        return `${o}: ${obj[o]}`;
+    }
+
+    return 'An error occurred.';
+};
+
 export {
     authedFetch, getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
-    getOffset, forceFloat, displayGraphType
+    getOffset, forceFloat, displayGraphType, getError
 };

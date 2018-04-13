@@ -3,7 +3,7 @@ import BackButton from './BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
 import { exportGraph, defaultGraph } from './GraphMapping';
-import { authedFetch } from './utils';
+import { authedFetch, getError } from './utils';
 
 class Editor extends Component {
     constructor(props) {
@@ -176,10 +176,12 @@ class Editor extends Component {
                         window.location.href = url;
                     });
                 } else {
-                    me.setState({
-                        alertText: response.statusText
+                    response.json().then(function(d) {
+                        me.setState({
+                            alertText: getError(d)
+                        });
+                        window.scrollTo(0, 0);
                     });
-                    window.scrollTo(0, 0);
                 }
             });
     }
