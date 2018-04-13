@@ -23,7 +23,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                         </MathJax.Context>
                 )}
                 <div className="row">
-                {(this.props.isInstructor || this.props.gA1Editable) &&
+                {(this.props.isInstructor || true) &&
                     <div className="col-sm-4">
                         <div className="form-group">
                             <label htmlFor="gA1">
@@ -39,24 +39,9 @@ export default class ConsumptionLeisureEditor extends React.Component {
                         </div>
                  </div>
                 }
-                <div className="col-sm-2">
-                {this.props.isInstructor &&
-                 <div className="form-check">
-                 <label className="form-check-label">
-                 <input
-                 id="gA1Editable"
-                 className="form-check-input"
-                 type="checkbox"
-                 onChange={handleFormUpdate.bind(this)}
-                 checked={this.props.gA1Editable} />
-                 Student editable
-                 </label>
-                 </div>
-                }
-            </div>
 
                 <div className="col-sm-4">
-                {(this.props.isInstructor || this.props.gA2Editable) &&
+                {(this.props.isInstructor || true) &&
                         <div className="form-group">
                             <label htmlFor="gA2">
                                 Real Wage w
@@ -70,21 +55,6 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                 handler={handleFormUpdate.bind(this)} />
                  </div>
                 }
-                    </div>
-                <div className="col-sm-2">
-                {this.props.isInstructor &&
-                 <div className="form-check">
-                 <label className="form-check-label">
-                 <input
-                 id="gA2Editable"
-                 className="form-check-input"
-                 type="checkbox"
-                 onChange={handleFormUpdate.bind(this)}
-                 checked={this.props.gA2Editable} />
-                 Student editable
-                 </label>
-                 </div>
-                }
             </div>
                 </div>
 
@@ -93,7 +63,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
             id="gLine1Label"
             name="Orange line label"
             value={this.props.gLine1Label}
-            valueEditable={this.props.gLine1LabelEditable}
+            valueEditable={true}
             isInstructor={this.props.isInstructor}
             updateGraph={this.props.updateGraph}
                 />
@@ -104,7 +74,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
             id="gXAxisLabel"
             name="X-axis label"
             value={this.props.gXAxisLabel}
-            valueEditable={this.props.gXAxisLabelEditable}
+            valueEditable={true}
             isInstructor={this.props.isInstructor}
             updateGraph={this.props.updateGraph}
                 />
@@ -113,7 +83,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
             id="gYAxisLabel"
             name="Y-axis label"
             value={this.props.gYAxisLabel}
-            valueEditable={this.props.gYAxisLabelEditable}
+            valueEditable={true}
             isInstructor={this.props.isInstructor}
             updateGraph={this.props.updateGraph}
                 />
@@ -124,7 +94,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
             id="gIntersectionHorizLineLabel"
             name="Horizontal intersection label"
             value={this.props.gIntersectionHorizLineLabel}
-            valueEditable={this.props.gIntersectionHorizLineLabelEditable}
+            valueEditable={true}
             isInstructor={this.props.isInstructor}
             updateGraph={this.props.updateGraph}
                 />
@@ -133,7 +103,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
             id="gIntersectionVertLineLabel"
             name="Vertical intersection label"
             value={this.props.gIntersectionVertLineLabel}
-            valueEditable={this.props.gIntersectionVertLineLabelEditable}
+            valueEditable={true}
             isInstructor={this.props.isInstructor}
             updateGraph={this.props.updateGraph}
                 />
@@ -146,24 +116,16 @@ export default class ConsumptionLeisureEditor extends React.Component {
 
 ConsumptionLeisureEditor.propTypes = {
     gIntersectionLabel: PropTypes.string.isRequired,
-    gIntersectionLabelEditable: PropTypes.bool.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
-    gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
-    gIntersectionVertLineLabelEditable: PropTypes.bool.isRequired,
 
     gXAxisLabel: PropTypes.string.isRequired,
-    gXAxisLabelEditable: PropTypes.bool.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,
-    gYAxisLabelEditable: PropTypes.bool.isRequired,
 
     gA1: PropTypes.number.isRequired,
-    gA1Editable: PropTypes.bool.isRequired,
     gA2: PropTypes.number.isRequired,
-    gA2Editable: PropTypes.bool.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,
-    gLine1LabelEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
 };

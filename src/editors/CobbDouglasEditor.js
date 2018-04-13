@@ -68,22 +68,6 @@ export default class CobbDouglasEditor extends React.Component {
             min={0} />
                 </div>
 
-                <div className="col-sm-2">
-                {this.props.isInstructor &&
-                 <div className="form-check">
-                 <label className="form-check-label">
-                 <input
-                 id="gCobbDouglasAEditable"
-                 className="form-check-input"
-                 type="checkbox"
-                 onChange={handleFormUpdate.bind(this)}
-                 checked={this.props.gCobbDouglasAEditable} />
-                 Student editable
-                 </label>
-                 </div>
-                }
-            </div>
-
                 <div className="col-sm-4">
                 <div className="form-group">
                 <label htmlFor="gCobbDouglasK">
@@ -107,21 +91,6 @@ export default class CobbDouglasEditor extends React.Component {
             min={0} />
                 </div>
                 </div>
-                <div className="col-sm-2">
-                {this.props.isInstructor &&
-                 <div className="form-check">
-                 <label className="form-check-label">
-                 <input
-                 id="gCobbDouglasKEditable"
-                 className="form-check-input"
-                 type="checkbox"
-                 onChange={handleFormUpdate.bind(this)}
-                 checked={this.props.gCobbDouglasKEditable} />
-                 Student editable
-                 </label>
-                 </div>
-                }
-            </div>
                 </div>
 
                 <div className="row">
@@ -138,21 +107,6 @@ export default class CobbDouglasEditor extends React.Component {
             showMinMax={true}
                 />
                 </div>
-                <div className="col-sm-2">
-                {this.props.isInstructor &&
-                 <div className="form-check">
-                 <label className="form-check-label">
-                 <input
-                 id="gCobbDouglasAlphaEditable"
-                 className="form-check-input"
-                 type="checkbox"
-                 onChange={handleFormUpdate.bind(this)}
-                 checked={this.props.gCobbDouglasAlphaEditable} />
-                 Student editable
-                 </label>
-                 </div>
-                }
-            </div>
 
                 <div className="col-sm-4">
                 <label htmlFor="gCobbDouglasL">
@@ -181,21 +135,6 @@ export default class CobbDouglasEditor extends React.Component {
                     </small>
                 )}
             </div>
-                <div className="col-sm-2">
-                {this.props.isInstructor && (
-                    <div className="form-check">
-                        <label className="form-check-label">
-                            <input
-                                id="gCobbDouglasLEditable"
-                                className="form-check-input"
-                                type="checkbox"
-                                onChange={handleFormUpdate.bind(this)}
-                                checked={this.props.gCobbDouglasLEditable} />
-                            Student editable
-                        </label>
-                    </div>
-                )}
-            </div>
                 </div>
 
                 <div className="row">
@@ -203,7 +142,7 @@ export default class CobbDouglasEditor extends React.Component {
             id="gIntersectionLabel"
             name="Intersection point label"
             value={this.props.gIntersectionLabel}
-            valueEditable={this.props.gIntersectionLabelEditable}
+            valueEditable={true}
             isInstructor={this.props.isInstructor}
             updateGraph={this.props.updateGraph}
                 />
@@ -274,19 +213,14 @@ CobbDouglasEditor.propTypes = {
     gIncorrectFeedback: PropTypes.string.isRequired,
     gCobbDouglasA: PropTypes.number.isRequired,
     gCobbDouglasAName: PropTypes.string.isRequired,
-    gCobbDouglasAEditable: PropTypes.bool.isRequired,
     gCobbDouglasL: PropTypes.number.isRequired,
     gCobbDouglasLName: PropTypes.string.isRequired,
-    gCobbDouglasLEditable: PropTypes.bool.isRequired,
     gCobbDouglasK: PropTypes.number.isRequired,
     gCobbDouglasKName: PropTypes.string.isRequired,
-    gCobbDouglasKEditable: PropTypes.bool.isRequired,
     gCobbDouglasAlpha: PropTypes.number.isRequired,
-    gCobbDouglasAlphaEditable: PropTypes.bool.isRequired,
     gCobbDouglasYName: PropTypes.string.isRequired,
     gCobbDouglasCorrectScenario: PropTypes.number,
     gIntersectionLabel: PropTypes.string.isRequired,
-    gIntersectionLabelEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
 };
