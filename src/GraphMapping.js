@@ -291,7 +291,7 @@ const defaultGraph = {
     gLine1SlopeEditable: false,
     gLine2Slope: -1,
     gLine2SlopeEditable: false,
-    gLine3Slope: Infinity,
+    gLine3Slope: 999,
     gLine3SlopeEditable: false,
     gLine3Label: '',
     gLine3LabelEditable: false,
