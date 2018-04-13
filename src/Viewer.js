@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
 import { exportGraph, importGraph, defaultGraph } from './GraphMapping';
-import { authedFetch, getSubmission } from './utils';
+import { authedFetch, getSubmission, getError } from './utils';
 
 class Viewer extends Component {
     constructor(props) {
@@ -330,10 +330,12 @@ class Viewer extends Component {
 
                     window.scrollTo(0, 0);
                 } else {
-                    me.setState({
-                        alertText: response.statusText
+                    response.json().then(function(d) {
+                        me.setState({
+                            alertText: getError(d)
+                        });
+                        window.scrollTo(0, 0);
                     });
-                    window.scrollTo(0, 0);
                 }
             });
     }
