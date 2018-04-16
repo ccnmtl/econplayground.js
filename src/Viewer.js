@@ -51,6 +51,10 @@ class Viewer extends Component {
             gDisplayShadow={this.state.gDisplayShadow}
             gIntersectionHorizLineLabel={this.state.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.state.gIntersectionVertLineLabel}
+            gIntersection2HorizLineLabel={this.state.gIntersection2HorizLineLabel}
+            gIntersection2VertLineLabel={this.state.gIntersection2VertLineLabel}
+            gIntersection3HorizLineLabel={this.state.gIntersection3HorizLineLabel}
+            gIntersection3VertLineLabel={this.state.gIntersection3VertLineLabel}
             gIsPublished={this.state.gIsPublished}
             gDisplayFeedback={this.state.gDisplayFeedback}
             gCorrectFeedback={this.state.gCorrectFeedback}
@@ -132,6 +136,10 @@ class Viewer extends Component {
             gDisplayShadow={this.state.gDisplayShadow}
             gIntersectionHorizLineLabel={this.state.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.state.gIntersectionVertLineLabel}
+            gIntersection2HorizLineLabel={this.state.gIntersection2HorizLineLabel}
+            gIntersection2VertLineLabel={this.state.gIntersection2VertLineLabel}
+            gIntersection3HorizLineLabel={this.state.gIntersection3HorizLineLabel}
+            gIntersection3VertLineLabel={this.state.gIntersection3VertLineLabel}
             gDisplayFeedback={this.state.gDisplayFeedback}
             gLine1Label={this.state.gLine1Label}
             gLine2Label={this.state.gLine2Label}

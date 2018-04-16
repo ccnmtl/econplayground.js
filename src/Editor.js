@@ -52,6 +52,10 @@ class Editor extends Component {
 
                         gIntersectionHorizLineLabel={this.state.gIntersectionHorizLineLabel}
                         gIntersectionVertLineLabel={this.state.gIntersectionVertLineLabel}
+                        gIntersection2HorizLineLabel={this.state.gIntersection2HorizLineLabel}
+                        gIntersection2VertLineLabel={this.state.gIntersection2VertLineLabel}
+                        gIntersection3HorizLineLabel={this.state.gIntersection3HorizLineLabel}
+                        gIntersection3VertLineLabel={this.state.gIntersection3VertLineLabel}
                         gIsPublished={this.state.gIsPublished}
                         gDisplayFeedback={this.state.gDisplayFeedback}
                         gCorrectFeedback={this.state.gCorrectFeedback}

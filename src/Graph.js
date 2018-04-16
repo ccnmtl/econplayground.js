@@ -209,10 +209,17 @@ class Graph {
      * i is the intersection, and p1 and p2 are its X and Y
      * intercepts.
      */
-    showIntersection(l1, l2, isShadow=false, label) {
-        if (label === null) {
+    showIntersection(l1, l2, isShadow=false, label, horizLabel, vertLabel) {
+        if (label === null || typeof label === 'undefined') {
             label = this.options.gIntersectionLabel;
         }
+        if (horizLabel === null || typeof horizLabel === 'undefined') {
+            horizLabel = this.options.gIntersectionHorizLineLabel;
+        }
+        if (vertLabel === null || typeof vertLabel === 'undefined') {
+            vertLabel = this.options.gIntersectionVertLineLabel;
+        }
+
         let i = this.board.create('intersection', [l1, l2, 0], {
             name: label || '',
             withLabel: !isShadow,
@@ -227,7 +234,7 @@ class Graph {
 
         let p1 = this.board.create('point', [0, i.Y()], {
             size: 0,
-            name: this.options.gIntersectionHorizLineLabel || '',
+            name: horizLabel || '',
             withLabel: !isShadow,
             fixed: true,
             highlight: false,
@@ -245,7 +252,7 @@ class Graph {
 
         let p2 = this.board.create('point', [i.X(), 0], {
             size: 0,
-            name: this.options.gIntersectionVertLineLabel || '',
+            name: vertLabel || '',
             withLabel: !isShadow,
             fixed: true,
             highlight: false,
@@ -954,15 +961,24 @@ class ADASGraph extends Graph {
 
         if (this.options.gDisplayIntersection1) {
             this.showIntersection(
-                this.l1, this.l2, false, this.options.gIntersectionLabel);
+                this.l1, this.l2, false, this.options.gIntersectionLabel,
+                this.options.gIntersectionHorizLineLabel,
+                this.options.gIntersectionVertLineLabel
+            );
         }
         if (this.options.gDisplayIntersection2) {
             this.showIntersection(
-                this.l2, this.l3, false, this.options.gIntersection2Label);
+                this.l2, this.l3, false, this.options.gIntersection2Label,
+                this.options.gIntersection2HorizLineLabel,
+                this.options.gIntersection2VertLineLabel
+            );
         }
         if (this.options.gDisplayIntersection3) {
             this.showIntersection(
-                this.l3, this.l1, false, this.options.gIntersection3Label);
+                this.l3, this.l1, false, this.options.gIntersection3Label,
+                this.options.gIntersection3HorizLineLabel,
+                this.options.gIntersection3VertLineLabel
+            );
         }
     }
 }

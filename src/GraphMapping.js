@@ -25,11 +25,16 @@ const exportGraph = function(state) {
 
         show_intersection: state.gShowIntersection,
         intersection_label: state.gIntersectionLabel,
-        intersection_horiz_line_label: state.gIntersectionHorizLineLabel,
-        intersection_vert_line_label: state.gIntersectionVertLineLabel,
 
         intersection_2_label: state.gIntersection2Label,
         intersection_3_label: state.gIntersection3Label,
+
+        intersection_horiz_line_label: state.gIntersectionHorizLineLabel,
+        intersection_vert_line_label: state.gIntersectionVertLineLabel,
+        intersection_2_horiz_line_label: state.gIntersection2HorizLineLabel,
+        intersection_2_vert_line_label: state.gIntersection2VertLineLabel,
+        intersection_3_horiz_line_label: state.gIntersection3HorizLineLabel,
+        intersection_3_vert_line_label: state.gIntersection3VertLineLabel,
 
         display_intersection_1: state.gDisplayIntersection1,
         display_intersection_2: state.gDisplayIntersection2,
@@ -132,8 +137,13 @@ const importGraph = function(json, obj) {
         gIntersectionLabel: json.intersection_label,
         gIntersection2Label: json.intersection_2_label,
         gIntersection3Label: json.intersection_3_label,
+
         gIntersectionHorizLineLabel: json.intersection_horiz_line_label,
         gIntersectionVertLineLabel: json.intersection_vert_line_label,
+        gIntersection2HorizLineLabel: json.intersection_2_horiz_line_label,
+        gIntersection2VertLineLabel: json.intersection_2_vert_line_label,
+        gIntersection3HorizLineLabel: json.intersection_3_horiz_line_label,
+        gIntersection3VertLineLabel: json.intersection_3_vert_line_label,
 
         gLine1Slope: window.parseFloat(json.line_1_slope),
         gLine2Slope: window.parseFloat(json.line_2_slope),
@@ -230,8 +240,14 @@ const defaultGraph = {
     gIntersectionLabel: '',
     gIntersection2Label: '',
     gIntersection3Label: '',
+
     gIntersectionHorizLineLabel: '',
     gIntersectionVertLineLabel: '',
+    gIntersection2HorizLineLabel: '',
+    gIntersection2VertLineLabel: '',
+    gIntersection3HorizLineLabel: '',
+    gIntersection3VertLineLabel: '',
+
     gLine1Slope: 1,
     gLine2Slope: -1,
     gLine3Slope: 999,
