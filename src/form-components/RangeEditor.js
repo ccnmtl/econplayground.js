@@ -16,7 +16,7 @@ export default class RangeEditor extends React.Component {
                 </div>
             )}
             <input
-        className="form-control form-control-sm"
+        className="form-control-range form-control-sm"
         id={this.props.id}
         data-id={this.props.dataId}
         type="range"
