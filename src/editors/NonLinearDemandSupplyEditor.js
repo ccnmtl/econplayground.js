@@ -22,7 +22,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                 </MathJax.Context>
                 )}
                 <div className="form-row">
-                    {(this.props.isInstructor || this.props.gLine1SlopeEditable) && (
+                    {(this.props.isInstructor || true) && (
                         <div className="col-sm-4">
                             <label htmlFor="gLine1Slope">
                                 Orange line slope
@@ -36,88 +36,44 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     )}
-                <div className="col-sm-2">
-                {this.props.isInstructor && (
-                    <div className="form-check">
-                        <label className="form-check-label">
-                            <input
-                                id="gLine1SlopeEditable"
-                                className="form-check-input"
-                                type="checkbox"
-                                onChange={handleFormUpdate.bind(this)}
-                                checked={this.props.gLine1SlopeEditable} />
-                            Student editable
-                        </label>
-                    </div>
-                )}
-                    </div>
-
                 </div>
 
                 <div className="row">
-                    {(this.props.isInstructor || this.props.gCobbDouglasAEditable) && (
-                        <div className="col-sm-4">
-                            <label htmlFor="gCobbDouglasA">
-                                A
-                            </label>
-                            <RangeEditor
-                                dataId="gCobbDouglasA"
-                                value={this.props.gCobbDouglasA}
-                                handler={handleFormUpdate.bind(this)}
-                                min={0.1}
-                                max={5} />
-                        </div>
-                    )}
-                <div className="col-sm-2">
-                {this.props.isInstructor && (
-                    <div className="form-check">
-                        <label className="form-check-label">
-                            <input
-                                id="gCobbDouglasAEditable"
-                                className="form-check-input"
-                                type="checkbox"
-                                onChange={handleFormUpdate.bind(this)}
-                                checked={this.props.gCobbDouglasAEditable} />
-                            Student editable
-                        </label>
-                    </div>
-                )}
-            </div>
-
-            {(this.props.isInstructor || this.props.gCobbDouglasKEditable) && (
+                {(this.props.isInstructor || true) && (
                     <div className="col-sm-4">
-                        <label htmlFor="gCobbDouglasK">
-                            K
+                        <label htmlFor="gCobbDouglasA">
+                            A
                         </label>
                         <RangeEditor
-                            dataId="gCobbDouglasK"
-                            value={this.props.gCobbDouglasK}
+                            dataId="gCobbDouglasA"
+                            value={this.props.gCobbDouglasA}
                             handler={handleFormUpdate.bind(this)}
                             min={0.1}
                             max={5} />
                     </div>
-            )}
-                {this.props.isInstructor && (
-                    <div className="form-check">
-                        <label className="form-check-label">
-                            <input
-                                id="gCobbDouglasKEditable"
-                                className="form-check-input"
-                                type="checkbox"
-                                onChange={handleFormUpdate.bind(this)}
-                                checked={this.props.gCobbDouglasKEditable} />
-                            Student editable
-                        </label>
-                    </div>
                 )}
+
+            {(this.props.isInstructor || true) && (
+                <div className="col-sm-4">
+                    <label htmlFor="gCobbDouglasK">
+                        K
+                    </label>
+                    <RangeEditor
+                        dataId="gCobbDouglasK"
+                        value={this.props.gCobbDouglasK}
+                        handler={handleFormUpdate.bind(this)}
+                        min={0.1}
+                        max={5} />
                 </div>
+            )}
+            </div>
 
                 <div className="row">
                     <EditableControl
                         id="gLine1Label"
                         name="Orange line label"
                         value={this.props.gLine1Label}
-                        valueEditable={this.props.gLine1LabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -126,7 +82,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         id="gLine2Label"
                         name="Blue line label"
                         value={this.props.gLine2Label}
-                        valueEditable={this.props.gLine2LabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -137,7 +93,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         id="gIntersectionLabel"
                         name="Intersection point label"
                         value={this.props.gIntersectionLabel}
-                        valueEditable={this.props.gIntersectionLabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -148,7 +104,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         id="gIntersectionHorizLineLabel"
                         name="Intersection&apos;s horizontal line label"
                         value={this.props.gIntersectionHorizLineLabel}
-                        valueEditable={this.props.gIntersectionHorizLineLabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -157,7 +113,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         id="gIntersectionVertLineLabel"
                         name="Intersection&apos;s vertical line label"
                         value={this.props.gIntersectionVertLineLabel}
-                        valueEditable={this.props.gIntersectionVertLineLabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -169,23 +125,15 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
 
 NonLinearDemandSupplyEditor.propTypes = {
     gIntersectionLabel: PropTypes.string.isRequired,
-    gIntersectionLabelEditable: PropTypes.bool.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
-    gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
-    gIntersectionVertLineLabelEditable: PropTypes.bool.isRequired,
 
     gCobbDouglasA: PropTypes.number.isRequired,
-    gCobbDouglasAEditable: PropTypes.bool.isRequired,
     gCobbDouglasK: PropTypes.number.isRequired,
-    gCobbDouglasKEditable: PropTypes.bool.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,
-    gLine1LabelEditable: PropTypes.bool.isRequired,
     gLine2Label: PropTypes.string.isRequired,
-    gLine2LabelEditable: PropTypes.bool.isRequired,
     gLine1Slope: PropTypes.number.isRequired,
-    gLine1SlopeEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
 };

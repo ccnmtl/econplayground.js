@@ -57,40 +57,28 @@ export default class GraphEditor extends React.Component {
 
             gCobbDouglasA={this.props.gCobbDouglasA}
             gCobbDouglasAName={this.props.gCobbDouglasAName}
-            gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
             gCobbDouglasL={this.props.gCobbDouglasL}
             gCobbDouglasLName={this.props.gCobbDouglasLName}
-            gCobbDouglasLEditable={this.props.gCobbDouglasLEditable}
             gCobbDouglasK={this.props.gCobbDouglasK}
             gCobbDouglasKName={this.props.gCobbDouglasKName}
-            gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-            gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
             gCobbDouglasYName={this.props.gCobbDouglasYName}
 
                 />
                 <NonLinearDemandSupplyEditor
             isInstructor={true}
             gLine1Label={this.props.gLine1Label}
-            gLine1LabelEditable={this.props.gLine1LabelEditable}
             gLine2Label={this.props.gLine2Label}
-            gLine2LabelEditable={this.props.gLine2LabelEditable}
             gCobbDouglasA={this.props.gCobbDouglasA}
-            gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
             gCobbDouglasK={this.props.gCobbDouglasK}
-            gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gLine1Slope={this.props.gLine1Slope}
-            gLine1SlopeEditable={this.props.gLine1SlopeEditable}
             gLine1OffsetX={this.props.gLine1OffsetX}
             gLine1OffsetY={this.props.gLine1OffsetY}
             gLine2OffsetX={this.props.gLine2OffsetX}
             gLine2OffsetY={this.props.gLine2OffsetY}
             gIntersectionLabel={this.props.gIntersectionLabel}
-            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
             updateGraph={this.props.updateGraph}
                 />
 
@@ -137,32 +125,23 @@ export default class GraphEditor extends React.Component {
 
             gCobbDouglasA={this.props.gCobbDouglasA}
             gCobbDouglasAName={this.props.gCobbDouglasAName}
-            gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
             gCobbDouglasL={this.props.gCobbDouglasL}
             gCobbDouglasLName={this.props.gCobbDouglasLName}
-            gCobbDouglasLEditable={this.props.gCobbDouglasLEditable}
             gCobbDouglasK={this.props.gCobbDouglasK}
             gCobbDouglasKName={this.props.gCobbDouglasKName}
-            gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-            gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
                 />
                 <CobbDouglasEditor
             gCobbDouglasA={this.props.gCobbDouglasA}
             gCobbDouglasAName={this.props.gCobbDouglasAName}
-            gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
             gCobbDouglasL={this.props.gCobbDouglasL}
             gCobbDouglasLName={this.props.gCobbDouglasLName}
-            gCobbDouglasLEditable={this.props.gCobbDouglasLEditable}
             gCobbDouglasK={this.props.gCobbDouglasK}
             gCobbDouglasKName={this.props.gCobbDouglasKName}
-            gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-            gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
             gCobbDouglasYName={this.props.gCobbDouglasYName}
             gCobbDouglasCorrectScenario={this.props.gCobbDouglasCorrectScenario}
             gIntersectionLabel={this.props.gIntersectionLabel}
-            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
 
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
@@ -216,22 +195,14 @@ export default class GraphEditor extends React.Component {
                 />
                 <ConsumptionLeisureEditor
             gA1={this.props.gA1}
-            gA1Editable={this.props.gA1Editable}
             gA2={this.props.gA2}
-            gA2Editable={this.props.gA2Editable}
             gLine1Label={this.props.gLine1Label}
-            gLine1LabelEditable={this.props.gLine1LabelEditable}
             gIntersectionLabel={this.props.gIntersectionLabel}
-            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
 
             gXAxisLabel={this.props.gXAxisLabel}
-            gXAxisLabelEditable={this.props.gXAxisLabelEditable}
             gYAxisLabel={this.props.gYAxisLabel}
-            gYAxisLabelEditable={this.props.gYAxisLabelEditable}
 
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
@@ -287,22 +258,14 @@ export default class GraphEditor extends React.Component {
                 />
                 <ConsumptionSavingEditor
             gA1={this.props.gA1}
-            gA1Editable={this.props.gA1Editable}
             gA2={this.props.gA2}
-            gA2Editable={this.props.gA2Editable}
             gA3={this.props.gA3}
-            gA3Editable={this.props.gA3Editable}
             gA4={this.props.gA4}
-            gA4Editable={this.props.gA4Editable}
             gLine1Label={this.props.gLine1Label}
-            gLine1LabelEditable={this.props.gLine1LabelEditable}
             gShowIntersection={this.props.gShowIntersection}
             gIntersectionLabel={this.props.gIntersectionLabel}
-            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
 
@@ -371,47 +334,30 @@ export default class GraphEditor extends React.Component {
                 />
                 <ADASEditor
             gXAxisLabel={this.props.gXAxisLabel}
-            gXAxisLabelEditable={this.props.gXAxisLabelEditable}
             gYAxisLabel={this.props.gYAxisLabel}
-            gYAxisLabelEditable={this.props.gYAxisLabelEditable}
             gA1={this.props.gA1}
-            gA1Editable={this.props.gA1Editable}
             gA2={this.props.gA2}
-            gA2Editable={this.props.gA2Editable}
             gA3={this.props.gA3}
-            gA3Editable={this.props.gA3Editable}
             gA4={this.props.gA4}
-            gA4Editable={this.props.gA4Editable}
             gLine1Slope={this.props.gLine1Slope}
-            gLine1SlopeEditable={this.props.gLine1SlopeEditable}
             gLine1Label={this.props.gLine1Label}
-            gLine1LabelEditable={this.props.gLine1LabelEditable}
             gLine2Slope={this.props.gLine2Slope}
-            gLine2SlopeEditable={this.props.gLine2SlopeEditable}
             gLine2Label={this.props.gLine2Label}
-            gLine2LabelEditable={this.props.gLine2LabelEditable}
             gLine3Label={this.props.gLine3Label}
-            gLine3LabelEditable={this.props.gLine3LabelEditable}
             gLine3Slope={this.props.gLine3Slope}
-            gLine3SlopeEditable={this.props.gLine3SlopeEditable}
             gShowIntersection={this.props.gShowIntersection}
             gDisplayIntersection1={this.props.gDisplayIntersection1}
             gIntersectionLabel={this.props.gIntersectionLabel}
-            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
             gDisplayIntersection2={this.props.gDisplayIntersection2}
             gIntersection2Label={this.props.gIntersection2Label}
-            gIntersection2LabelEditable={this.props.gIntersection2LabelEditable}
             gDisplayIntersection3={this.props.gDisplayIntersection3}
             gIntersection3Label={this.props.gIntersection3Label}
-            gIntersection3LabelEditable={this.props.gIntersection3LabelEditable}
             gLine1Dashed={this.props.gLine1Dashed}
             gLine2Dashed={this.props.gLine2Dashed}
             gLine3Dashed={this.props.gLine3Dashed}
 
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
 
@@ -485,19 +431,6 @@ export default class GraphEditor extends React.Component {
                                 overrideValue={999}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
-                        <div className="col-sm-2">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                         id="gLine1SlopeEditable"
-                                         className="form-check-input"
-                                         type="checkbox"
-                                         onChange={handleFormUpdate.bind(this)}
-                                         checked={this.props.gLine1SlopeEditable} />
-                                    Student editable
-                                </label>
-                            </div>
-                        </div>
 
                         <div className="col-sm-4">
                             <div className="form-group">
@@ -515,19 +448,6 @@ export default class GraphEditor extends React.Component {
                                     handler={handleFormUpdate.bind(this)} />
                             </div>
                         </div>
-                        <div className="col-sm-2">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                         id="gLine2SlopeEditable"
-                                         className="form-check-input"
-                                         type="checkbox"
-                                         onChange={handleFormUpdate.bind(this)}
-                                         checked={this.props.gLine2SlopeEditable} />
-                                    Student editable
-                                </label>
-                            </div>
-                        </div>
                     </div>
 
                     <div className="row">
@@ -535,7 +455,7 @@ export default class GraphEditor extends React.Component {
                             id="gLine1Label"
                             name="Orange line label"
                             value={this.props.gLine1Label}
-                            valueEditable={this.props.gLine1LabelEditable}
+                            valueEditable={true}
                             isInstructor={true}
                             updateGraph={this.props.updateGraph}
                             />
@@ -544,7 +464,7 @@ export default class GraphEditor extends React.Component {
                             id="gLine2Label"
                             name="Blue line label"
                             value={this.props.gLine2Label}
-                            valueEditable={this.props.gLine2LabelEditable}
+                            valueEditable={true}
                             isInstructor={true}
                             updateGraph={this.props.updateGraph}
                             />
@@ -555,7 +475,7 @@ export default class GraphEditor extends React.Component {
                             id="gXAxisLabel"
                             name="X-axis label"
                             value={this.props.gXAxisLabel}
-                            valueEditable={this.props.gXAxisLabelEditable}
+                            valueEditable={true}
                             isInstructor={true}
                             updateGraph={this.props.updateGraph}
                             />
@@ -564,7 +484,7 @@ export default class GraphEditor extends React.Component {
                             id="gYAxisLabel"
                             name="Y-axis label"
                             value={this.props.gYAxisLabel}
-                            valueEditable={this.props.gYAxisLabelEditable}
+                            valueEditable={true}
                             isInstructor={true}
                             updateGraph={this.props.updateGraph}
                             />
@@ -575,7 +495,7 @@ export default class GraphEditor extends React.Component {
                             id="gIntersectionLabel"
                             name="Intersection point label"
                             value={this.props.gIntersectionLabel}
-                            valueEditable={this.props.gIntersectionLabelEditable}
+                            valueEditable={true}
                             isInstructor={true}
                             updateGraph={this.props.updateGraph}
                             />
@@ -586,7 +506,7 @@ export default class GraphEditor extends React.Component {
                             id="gIntersectionHorizLineLabel"
                             name="Intersection&apos;s horizontal line label"
                             value={this.props.gIntersectionHorizLineLabel}
-                            valueEditable={this.props.gIntersectionHorizLineLabelEditable}
+                            valueEditable={true}
                             isInstructor={true}
                             updateGraph={this.props.updateGraph}
                             />
@@ -595,7 +515,7 @@ export default class GraphEditor extends React.Component {
                             id="gIntersectionVertLineLabel"
                             name="Intersection&apos;s vertical line label"
                             value={this.props.gIntersectionVertLineLabel}
-                            valueEditable={this.props.gIntersectionVertLineLabelEditable}
+                            valueEditable={true}
                             isInstructor={true}
                             updateGraph={this.props.updateGraph}
                             />
@@ -736,19 +656,14 @@ GraphEditor.propTypes = {
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayIntersection1: PropTypes.bool.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
-    gIntersectionLabelEditable: PropTypes.bool.isRequired,
     gDisplayIntersection2: PropTypes.bool.isRequired,
     gIntersection2Label: PropTypes.string.isRequired,
-    gIntersection2LabelEditable: PropTypes.bool.isRequired,
     gDisplayIntersection3: PropTypes.bool.isRequired,
     gIntersection3Label: PropTypes.string.isRequired,
-    gIntersection3LabelEditable: PropTypes.bool.isRequired,
     gDisplayShadow: PropTypes.bool.isRequired,
 
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
-    gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
-    gIntersectionVertLineLabelEditable: PropTypes.bool.isRequired,
 
     gIsPublished: PropTypes.bool.isRequired,
     gDisplayFeedback: PropTypes.bool.isRequired,
@@ -756,17 +671,11 @@ GraphEditor.propTypes = {
     gIncorrectFeedback: PropTypes.string,
     gInstructorNotes: PropTypes.string.isRequired,
     gLine1Label: PropTypes.string.isRequired,
-    gLine1LabelEditable: PropTypes.bool.isRequired,
     gLine2Label: PropTypes.string.isRequired,
-    gLine2LabelEditable: PropTypes.bool.isRequired,
     gLine3Label: PropTypes.string.isRequired,
-    gLine3LabelEditable: PropTypes.bool.isRequired,
     gLine1Slope: PropTypes.number.isRequired,
-    gLine1SlopeEditable: PropTypes.bool.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
-    gLine2SlopeEditable: PropTypes.bool.isRequired,
     gLine3Slope: PropTypes.number.isRequired,
-    gLine3SlopeEditable: PropTypes.bool.isRequired,
     gLine1OffsetX: PropTypes.number.isRequired,
     gLine1OffsetY: PropTypes.number.isRequired,
     gLine2OffsetX: PropTypes.number.isRequired,
@@ -786,34 +695,24 @@ GraphEditor.propTypes = {
     gLine2FeedbackDecrease: PropTypes.string,
     gLine2DecreaseScore: PropTypes.number,
     gXAxisLabel: PropTypes.string.isRequired,
-    gXAxisLabelEditable: PropTypes.bool.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,
-    gYAxisLabelEditable: PropTypes.bool.isRequired,
     gType: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
 
     gAlpha: PropTypes.number,
 
     gA1: PropTypes.number,
-    gA1Editable: PropTypes.bool,
     gA2: PropTypes.number,
-    gA2Editable: PropTypes.bool,
     gA3: PropTypes.number,
-    gA3Editable: PropTypes.bool,
     gA4: PropTypes.number,
-    gA4Editable: PropTypes.bool,
 
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,
-    gCobbDouglasAEditable: PropTypes.bool,
     gCobbDouglasL: PropTypes.number,
     gCobbDouglasLName: PropTypes.string,
-    gCobbDouglasLEditable: PropTypes.bool,
     gCobbDouglasK: PropTypes.number,
     gCobbDouglasKName: PropTypes.string,
-    gCobbDouglasKEditable: PropTypes.bool,
     gCobbDouglasAlpha: PropTypes.number,
-    gCobbDouglasAlphaEditable: PropTypes.bool,
     gCobbDouglasCorrectScenario: PropTypes.number,
     gCobbDouglasYName: PropTypes.string,
 

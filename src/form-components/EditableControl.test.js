@@ -16,7 +16,7 @@ it('renders without crashing', () => {
     );
 });
 
-it('Displays checkbox for instructors', () => {
+it('Displays control when valueEditable is true', () => {
     const el = TestRenderer.create(
         <EditableControl
             id="gIntersectionHorizLineLabel"
@@ -26,21 +26,20 @@ it('Displays checkbox for instructors', () => {
             isInstructor={true}
             updateGraph={function() {}} />
     ).root;
-    const checkbox = el.findByProps({className: 'form-check'});
-    expect(checkbox.type).toEqual('div');
+    el.findByProps({id: 'gIntersectionHorizLineLabel'});
 });
 
-it('Hides checkbox for students', () => {
+it('Hides control when valueEditable is false', () => {
     const el = TestRenderer.create(
         <EditableControl
             id="gIntersectionHorizLineLabel"
             name="Endowment point&apos;s horizontal line label"
             value="a"
-            valueEditable={true}
+            valueEditable={false}
             isInstructor={false}
             updateGraph={function() {}} />
     ).root;
     expect(() => {
-        el.findByProps({className: 'form-check'});
-    }).toThrow('No instances found with props: {"className":"form-check"}');
+        el.findByProps({className: 'form-control'});
+    }).toThrow('No instances found with props: {"className":"form-control"}');
 });

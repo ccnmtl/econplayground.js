@@ -134,25 +134,17 @@ export default class GraphViewer extends React.Component {
                         <NonLinearDemandSupplyEditor
                             isInstructor={isInstructor}
                             gLine1Label={this.props.gLine1Label}
-                            gLine1LabelEditable={this.props.gLine1LabelEditable}
                             gLine2Label={this.props.gLine2Label}
-                            gLine2LabelEditable={this.props.gLine2LabelEditable}
                             gCobbDouglasA={this.props.gCobbDouglasA}
-                            gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
                             gCobbDouglasK={this.props.gCobbDouglasK}
-                            gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
                             gLine1Slope={this.props.gLine1Slope}
-                            gLine1SlopeEditable={this.props.gLine1SlopeEditable}
                             gLine1OffsetX={this.props.gLine1OffsetX}
                             gLine1OffsetY={this.props.gLine1OffsetY}
                             gLine2OffsetX={this.props.gLine2OffsetX}
                             gLine2OffsetY={this.props.gLine2OffsetY}
                             gIntersectionLabel={this.props.gIntersectionLabel}
-                            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
                             updateGraph={this.props.updateGraph}
                             />
 
@@ -240,15 +232,11 @@ export default class GraphViewer extends React.Component {
                             isInstructor={isInstructor}
                             gCobbDouglasA={this.props.gCobbDouglasA}
                             gCobbDouglasAName={this.props.gCobbDouglasAName}
-                            gCobbDouglasAEditable={this.props.gCobbDouglasAEditable}
                             gCobbDouglasL={this.props.gCobbDouglasL}
                             gCobbDouglasLName={this.props.gCobbDouglasLName}
-                            gCobbDouglasLEditable={this.props.gCobbDouglasLEditable}
                             gCobbDouglasK={this.props.gCobbDouglasK}
                             gCobbDouglasKName={this.props.gCobbDouglasKName}
-                            gCobbDouglasKEditable={this.props.gCobbDouglasKEditable}
                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                            gCobbDouglasAlphaEditable={this.props.gCobbDouglasAlphaEditable}
                             gCobbDouglasYName={this.props.gCobbDouglasYName}
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             updateGraph={this.props.updateGraph}
@@ -319,22 +307,14 @@ export default class GraphViewer extends React.Component {
                         <ConsumptionLeisureEditor
                             isInstructor={isInstructor}
                             gA1={this.props.gA1}
-                            gA1Editable={this.props.gA1Editable}
                             gA2={this.props.gA2}
-                            gA2Editable={this.props.gA2Editable}
                             gLine1Label={this.props.gLine1Label}
-                            gLine1LabelEditable={this.props.gLine1LabelEditable}
                             gIntersectionLabel={this.props.gIntersectionLabel}
-                            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
 
                             gXAxisLabel={this.props.gXAxisLabel}
-                            gXAxisLabelEditable={this.props.gXAxisLabelEditable}
                             gYAxisLabel={this.props.gYAxisLabel}
-                            gYAxisLabelEditable={this.props.gYAxisLabelEditable}
 
                             updateGraph={this.props.updateGraph}
                             />
@@ -408,22 +388,14 @@ export default class GraphViewer extends React.Component {
                         <ConsumptionSavingEditor
                             isInstructor={isInstructor}
                             gA1={this.props.gA1}
-                            gA1Editable={this.props.gA1Editable}
                             gA2={this.props.gA2}
-                            gA2Editable={this.props.gA2Editable}
                             gA3={this.props.gA3}
-                            gA3Editable={this.props.gA3Editable}
                             gA4={this.props.gA4}
-                            gA4Editable={this.props.gA4Editable}
                             gLine1Label={this.props.gLine1Label}
-                            gLine1LabelEditable={this.props.gLine1LabelEditable}
                             gShowIntersection={this.props.gShowIntersection}
                             gIntersectionLabel={this.props.gIntersectionLabel}
-                            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
 
                             updateGraph={this.props.updateGraph}
                             />
@@ -498,47 +470,30 @@ export default class GraphViewer extends React.Component {
                 />
                 <ADASEditor
             gXAxisLabel={this.props.gXAxisLabel}
-            gXAxisLabelEditable={this.props.gXAxisLabelEditable}
             gYAxisLabel={this.props.gYAxisLabel}
-            gYAxisLabelEditable={this.props.gYAxisLabelEditable}
             gA1={this.props.gA1}
-            gA1Editable={this.props.gA1Editable}
             gA2={this.props.gA2}
-            gA2Editable={this.props.gA2Editable}
             gA3={this.props.gA3}
-            gA3Editable={this.props.gA3Editable}
             gA4={this.props.gA4}
-            gA4Editable={this.props.gA4Editable}
             gLine1Slope={this.props.gLine1Slope}
-            gLine1SlopeEditable={this.props.gLine1SlopeEditable}
             gLine1Label={this.props.gLine1Label}
-            gLine1LabelEditable={this.props.gLine1LabelEditable}
             gLine2Slope={this.props.gLine2Slope}
-            gLine2SlopeEditable={this.props.gLine2SlopeEditable}
             gLine2Label={this.props.gLine2Label}
-            gLine2LabelEditable={this.props.gLine2LabelEditable}
             gLine3Label={this.props.gLine3Label}
-            gLine3LabelEditable={this.props.gLine3LabelEditable}
             gLine3Slope={this.props.gLine3Slope}
-            gLine3SlopeEditable={this.props.gLine3SlopeEditable}
             gShowIntersection={this.props.gShowIntersection}
             gDisplayIntersection1={this.props.gDisplayIntersection1}
             gIntersectionLabel={this.props.gIntersectionLabel}
-            gIntersectionLabelEditable={this.props.gIntersectionLabelEditable}
             gDisplayIntersection2={this.props.gDisplayIntersection2}
             gIntersection2Label={this.props.gIntersection2Label}
-            gIntersection2LabelEditable={this.props.gIntersection2LabelEditable}
             gDisplayIntersection3={this.props.gDisplayIntersection3}
             gIntersection3Label={this.props.gIntersection3Label}
-            gIntersection3LabelEditable={this.props.gIntersection3LabelEditable}
             gLine1Dashed={this.props.gLine1Dashed}
             gLine2Dashed={this.props.gLine2Dashed}
             gLine3Dashed={this.props.gLine3Dashed}
 
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-            gIntersectionHorizLineLabelEditable={this.props.gIntersectionHorizLineLabelEditable}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-            gIntersectionVertLineLabelEditable={this.props.gIntersectionVertLineLabelEditable}
 
             isInstructor={isInstructor}
             updateGraph={this.props.updateGraph}
@@ -604,9 +559,7 @@ export default class GraphViewer extends React.Component {
                         gAlpha={this.props.gAlpha}
 
                         gA1={this.props.gA1}
-                        gA1Editable={this.props.gA1Editable}
                         gA2={this.props.gA2}
-                        gA2Editable={this.props.gA2Editable}
 
                         gA={this.props.gA}
                         gK={this.props.gK}
@@ -636,7 +589,7 @@ export default class GraphViewer extends React.Component {
                          gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease} />
 
                     <div className={'form-row ' + (this.props.gType !== 3 ? '' : 'd-none')}>
-                        <div className={"col " + (this.props.gLine1SlopeEditable ? '' : 'd-none')}>
+                        <div className="col">
                             <label htmlFor="gLine1Slope">
                                 Orange line slope
                             </label>
@@ -648,7 +601,7 @@ export default class GraphViewer extends React.Component {
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
 
-                        <div className={"col " + (this.props.gLine2SlopeEditable ? '' : 'd-none')}>
+                        <div className="col">
                             <div className="form-group">
                                 <label htmlFor="gLine2Slope">
                                     Blue line slope
@@ -664,7 +617,7 @@ export default class GraphViewer extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className={"col " + (this.props.gLine1LabelEditable ? '' : 'd-none')}>
+                        <div className="col">
                             <div className="form-group">
                                 <label htmlFor="gLine1Label">
                                     Orange line label
@@ -678,7 +631,7 @@ export default class GraphViewer extends React.Component {
                                        />
                             </div>
                         </div>
-                        <div className={"col " + (this.props.gLine2LabelEditable ? '' : 'd-none')}>
+                        <div className="col">
                             <div className="form-group">
                                 <label htmlFor="gLine2Label">
                                     Blue line label
@@ -695,7 +648,7 @@ export default class GraphViewer extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className={"col " + (this.props.gXAxisLabelEditable ? '' : 'd-none')}>
+                        <div className="col">
                             <div className="form-group">
                                 <label htmlFor="gXAxisLabel">
                                     X-axis label:
@@ -710,7 +663,7 @@ export default class GraphViewer extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"col " + (this.props.gYAxisLabelEditable ? '' : 'd-none')}>
+                        <div className="col">
                             <div className="form-group">
                                 <label htmlFor="gYAxisLabel">
                                     Y-axis label:
@@ -727,7 +680,7 @@ export default class GraphViewer extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className={"col-sm-6 " + (this.props.gIntersectionLabelEditable ? '' : 'd-none')}>
+                        <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="gIntersectionLabel">
                                     Intersection point label:
@@ -744,7 +697,7 @@ export default class GraphViewer extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className={"col " + (this.props.gIntersectionHorizLineLabelEditable ? '' : 'd-none')}>
+                        <div className="col">
                             <div className="form-group">
                                 <label htmlFor="gIntersectionHorizLineLabel">
                                     Intersection&apos;s horizontal line label:
@@ -758,7 +711,7 @@ export default class GraphViewer extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"col " + (this.props.gIntersectionVertLineLabelEditable ? '' : 'd-none')}>
+                        <div className="col">
                             <div className="form-group">
                                 <label htmlFor="gIntersectionVertLineLabel">
                                     Intersection&apos;s vertical line label:
@@ -836,42 +789,29 @@ GraphViewer.propTypes = {
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayIntersection1: PropTypes.bool.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
-    gIntersectionLabelEditable: PropTypes.bool.isRequired,
     gDisplayIntersection2: PropTypes.bool.isRequired,
     gIntersection2Label: PropTypes.string.isRequired,
-    gIntersection2LabelEditable: PropTypes.bool.isRequired,
     gDisplayIntersection3: PropTypes.bool.isRequired,
     gIntersection3Label: PropTypes.string.isRequired,
-    gIntersection3LabelEditable: PropTypes.bool.isRequired,
     gDisplayShadow: PropTypes.bool.isRequired,
 
     gIntersectionHorizLineLabel: PropTypes.string,
-    gIntersectionHorizLineLabelEditable: PropTypes.bool,
     gIntersectionVertLineLabel: PropTypes.string,
-    gIntersectionVertLineLabelEditable: PropTypes.bool,
 
     gDisplayFeedback: PropTypes.bool,
 
     gLine1Label: PropTypes.string.isRequired,
-    gLine1LabelEditable: PropTypes.bool.isRequired,
     gLine2Label: PropTypes.string.isRequired,
-    gLine2LabelEditable: PropTypes.bool.isRequired,
     gLine3Label: PropTypes.string.isRequired,
-    gLine3LabelEditable: PropTypes.bool.isRequired,
 
     gXAxisLabel: PropTypes.string,
-    gXAxisLabelEditable: PropTypes.bool,
     gYAxisLabel: PropTypes.string,
-    gYAxisLabelEditable: PropTypes.bool,
     gLine1Slope: PropTypes.number.isRequired,
     gLine1SlopeInitial: PropTypes.number,
-    gLine1SlopeEditable: PropTypes.bool,
     gLine2Slope: PropTypes.number,
     gLine2SlopeInitial: PropTypes.number,
-    gLine2SlopeEditable: PropTypes.bool,
     gLine3Slope: PropTypes.number,
     gLine3SlopeInitial: PropTypes.number,
-    gLine3SlopeEditable: PropTypes.bool,
 
     gLine1OffsetX: PropTypes.number.isRequired,
     gLine1OffsetY: PropTypes.number.isRequired,
@@ -904,16 +844,12 @@ GraphViewer.propTypes = {
 
     gA1: PropTypes.number,
     gA1Initial: PropTypes.number,
-    gA1Editable: PropTypes.bool,
     gA2: PropTypes.number,
     gA2Initial: PropTypes.number,
-    gA2Editable: PropTypes.bool,
     gA3: PropTypes.number,
     gA3Initial: PropTypes.number,
-    gA3Editable: PropTypes.bool,
     gA4: PropTypes.number,
     gA4Initial: PropTypes.number,
-    gA4Editable: PropTypes.bool,
 
     gA: PropTypes.number,
     gK: PropTypes.number,
@@ -924,18 +860,14 @@ GraphViewer.propTypes = {
     gCobbDouglasA: PropTypes.number,
     gCobbDouglasAInitial: PropTypes.number,
     gCobbDouglasAName: PropTypes.string,
-    gCobbDouglasAEditable: PropTypes.bool,
     gCobbDouglasL: PropTypes.number,
     gCobbDouglasLInitial: PropTypes.number,
     gCobbDouglasLName: PropTypes.string,
-    gCobbDouglasLEditable: PropTypes.bool,
     gCobbDouglasK: PropTypes.number,
     gCobbDouglasKInitial: PropTypes.number,
     gCobbDouglasKName: PropTypes.string,
-    gCobbDouglasKEditable: PropTypes.bool,
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasAlphaInitial: PropTypes.number,
-    gCobbDouglasAlphaEditable: PropTypes.bool,
     gCobbDouglasYName: PropTypes.string,
 
     submission: PropTypes.object,

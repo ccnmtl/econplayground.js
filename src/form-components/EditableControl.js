@@ -28,22 +28,6 @@ export default class EditableControl extends React.Component {
                         </div>
                     </div>
                 )}
-            {this.props.isInstructor && (
-                <div className="col-sm-2">
-                    <div className="form-check">
-                        <label className="form-check-label">
-                            <input
-                                id={`${this.props.id}Editable`}
-                                className="form-check-input"
-                                type="checkbox"
-                                onChange={handleFormUpdate.bind(this)}
-                                checked={this.props.valueEditable} />
-                            Student editable
-                        </label>
-                    </div>
-
-                </div>
-            )}
             </React.Fragment>
         );
     }

@@ -23,19 +23,6 @@ export default class ADASEditor extends React.Component {
                             overrideValue={999}
                             handler={handleFormUpdate.bind(this)} />
                     </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine1SlopeEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine1SlopeEditable} />
-                                Student editable
-                            </label>
-                        </div>
-                    </div>
 
                     <div className="col-sm-4">
                         <div className="form-group">
@@ -51,19 +38,6 @@ export default class ADASEditor extends React.Component {
                                 overrideLabel='Vertical'
                                 overrideValue={-999}
                                 handler={handleFormUpdate.bind(this)} />
-                        </div>
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine2SlopeEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine2SlopeEditable} />
-                                Student editable
-                            </label>
                         </div>
                     </div>
                 </div>
@@ -82,19 +56,6 @@ export default class ADASEditor extends React.Component {
                             overrideLabel='Vertical'
                             overrideValue={999}
                             handler={handleFormUpdate.bind(this)} />
-                    </div>
-                    <div className="col-sm-2">
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine3SlopeEditable"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine3SlopeEditable} />
-                                Student editable
-                            </label>
-                        </div>
                     </div>
                 </div>
 
@@ -187,7 +148,7 @@ export default class ADASEditor extends React.Component {
                         id="gLine1Label"
                         name="Orange line label"
                         value={this.props.gLine1Label}
-                        valueEditable={this.props.gLine1LabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -196,7 +157,7 @@ export default class ADASEditor extends React.Component {
                         id="gLine2Label"
                         name="Blue line label"
                         value={this.props.gLine2Label}
-                        valueEditable={this.props.gLine2LabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -207,7 +168,7 @@ export default class ADASEditor extends React.Component {
                         id="gLine3Label"
                         name="Red line label"
                         value={this.props.gLine3Label}
-                        valueEditable={this.props.gLine3LabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -218,7 +179,7 @@ export default class ADASEditor extends React.Component {
                         id="gXAxisLabel"
                         name="X-axis label"
                         value={this.props.gXAxisLabel}
-                        valueEditable={this.props.gXAxisLabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -227,7 +188,7 @@ export default class ADASEditor extends React.Component {
                         id="gYAxisLabel"
                         name="Y-axis label"
                         value={this.props.gYAxisLabel}
-                        valueEditable={this.props.gYAxisLabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -238,7 +199,7 @@ export default class ADASEditor extends React.Component {
                         id="gIntersectionLabel"
                         name="Orange-Blue intersection label"
                         value={this.props.gIntersectionLabel}
-                        valueEditable={this.props.gIntersectionLabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -247,7 +208,7 @@ export default class ADASEditor extends React.Component {
                         id="gIntersection2Label"
                         name="Blue-Red intersection label"
                         value={this.props.gIntersection2Label}
-                        valueEditable={this.props.gIntersection2LabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -258,7 +219,7 @@ export default class ADASEditor extends React.Component {
                         id="gIntersection3Label"
                         name="Orange-Red intersection label"
                         value={this.props.gIntersection3Label}
-                        valueEditable={this.props.gIntersection3LabelEditable}
+                        valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
@@ -271,34 +232,21 @@ export default class ADASEditor extends React.Component {
 
 ADASEditor.propTypes = {
     gIntersectionLabel: PropTypes.string.isRequired,
-    gIntersectionLabelEditable: PropTypes.bool.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
-    gIntersectionHorizLineLabelEditable: PropTypes.bool.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
-    gIntersectionVertLineLabelEditable: PropTypes.bool.isRequired,
 
     gXAxisLabel: PropTypes.string.isRequired,
-    gXAxisLabelEditable: PropTypes.bool.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,
-    gYAxisLabelEditable: PropTypes.bool.isRequired,
 
     gA1: PropTypes.number.isRequired,
-    gA1Editable: PropTypes.bool.isRequired,
     gA2: PropTypes.number.isRequired,
-    gA2Editable: PropTypes.bool.isRequired,
 
     gLine1Slope: PropTypes.number.isRequired,
-    gLine1SlopeEditable: PropTypes.bool.isRequired,
     gLine1Label: PropTypes.string.isRequired,
-    gLine1LabelEditable: PropTypes.bool.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
-    gLine2SlopeEditable: PropTypes.bool.isRequired,
     gLine2Label: PropTypes.string.isRequired,
-    gLine2LabelEditable: PropTypes.bool.isRequired,
     gLine3Slope: PropTypes.number.isRequired,
-    gLine3SlopeEditable: PropTypes.bool.isRequired,
     gLine3Label: PropTypes.string.isRequired,
-    gLine3LabelEditable: PropTypes.bool.isRequired,
 
     isInstructor: PropTypes.bool.isRequired
 };
