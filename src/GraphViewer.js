@@ -466,6 +466,11 @@ export default class GraphViewer extends React.Component {
 
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
+
             gShowIntersection={this.props.gShowIntersection}
                 />
                 <ADASEditor
@@ -494,6 +499,10 @@ export default class GraphViewer extends React.Component {
 
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
 
             isInstructor={isInstructor}
             updateGraph={this.props.updateGraph}
@@ -797,6 +806,10 @@ GraphViewer.propTypes = {
 
     gIntersectionHorizLineLabel: PropTypes.string,
     gIntersectionVertLineLabel: PropTypes.string,
+    gIntersection2HorizLineLabel: PropTypes.string,
+    gIntersection2VertLineLabel: PropTypes.string,
+    gIntersection3HorizLineLabel: PropTypes.string,
+    gIntersection3VertLineLabel: PropTypes.string,
 
     gDisplayFeedback: PropTypes.bool,
 

@@ -330,6 +330,10 @@ export default class GraphEditor extends React.Component {
 
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
             gShowIntersection={this.props.gShowIntersection}
                 />
                 <ADASEditor
@@ -358,6 +362,11 @@ export default class GraphEditor extends React.Component {
 
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
+
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
 
@@ -664,6 +673,10 @@ GraphEditor.propTypes = {
 
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
+    gIntersection2HorizLineLabel: PropTypes.string.isRequired,
+    gIntersection2VertLineLabel: PropTypes.string.isRequired,
+    gIntersection3HorizLineLabel: PropTypes.string.isRequired,
+    gIntersection3VertLineLabel: PropTypes.string.isRequired,
 
     gIsPublished: PropTypes.bool.isRequired,
     gDisplayFeedback: PropTypes.bool.isRequired,

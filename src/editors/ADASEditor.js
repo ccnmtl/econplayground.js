@@ -146,7 +146,7 @@ export default class ADASEditor extends React.Component {
                 <div className="row">
                     <EditableControl
                         id="gLine1Label"
-                        name="Orange line label"
+                        name="Orange line"
                         value={this.props.gLine1Label}
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
@@ -155,7 +155,7 @@ export default class ADASEditor extends React.Component {
 
                     <EditableControl
                         id="gLine2Label"
-                        name="Blue line label"
+                        name="Blue line"
                         value={this.props.gLine2Label}
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
@@ -166,7 +166,7 @@ export default class ADASEditor extends React.Component {
                 <div className="row">
                     <EditableControl
                         id="gLine3Label"
-                        name="Red line label"
+                        name="Red line"
                         value={this.props.gLine3Label}
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
@@ -177,7 +177,7 @@ export default class ADASEditor extends React.Component {
                 <div className="row">
                     <EditableControl
                         id="gXAxisLabel"
-                        name="X-axis label"
+                        name="X-axis"
                         value={this.props.gXAxisLabel}
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
@@ -186,7 +186,7 @@ export default class ADASEditor extends React.Component {
 
                     <EditableControl
                         id="gYAxisLabel"
-                        name="Y-axis label"
+                        name="Y-axis"
                         value={this.props.gYAxisLabel}
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
@@ -197,7 +197,7 @@ export default class ADASEditor extends React.Component {
                 <div className="row">
                     <EditableControl
                         id="gIntersectionLabel"
-                        name="Orange-Blue intersection label"
+                        name="Orange-Blue intersection"
                         value={this.props.gIntersectionLabel}
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
@@ -206,7 +206,7 @@ export default class ADASEditor extends React.Component {
 
                     <EditableControl
                         id="gIntersection2Label"
-                        name="Blue-Red intersection label"
+                        name="Blue-Red intersection"
                         value={this.props.gIntersection2Label}
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
@@ -217,8 +217,68 @@ export default class ADASEditor extends React.Component {
                 <div className="row">
                     <EditableControl
                         id="gIntersection3Label"
-                        name="Orange-Red intersection label"
+                        name="Orange-Red intersection"
                         value={this.props.gIntersection3Label}
+                        valueEditable={true}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
+                </div>
+
+                <div className="row">
+                    <EditableControl
+                        id="gIntersectionHorizLineLabel"
+                        name="Orange-Blue intersection horizontal"
+                        value={this.props.gIntersectionHorizLineLabel}
+                        valueEditable={true}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
+
+                    <EditableControl
+                        id="gIntersectionVertLineLabel"
+                        name="Orange-Blue intersection vertical"
+                        value={this.props.gIntersectionVertLineLabel}
+                        valueEditable={true}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
+                </div>
+
+                <div className="row">
+                    <EditableControl
+                        id="gIntersection2HorizLineLabel"
+                        name="Blue-Red intersection horizontal"
+                        value={this.props.gIntersection2HorizLineLabel}
+                        valueEditable={true}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
+
+                    <EditableControl
+                        id="gIntersection2VertLineLabel"
+                        name="Blue-Red intersection vertical"
+                        value={this.props.gIntersection2VertLineLabel}
+                        valueEditable={true}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
+                </div>
+
+                <div className="row">
+                    <EditableControl
+                        id="gIntersection3HorizLineLabel"
+                        name="Orange-Red intersection horizontal"
+                        value={this.props.gIntersection3HorizLineLabel}
+                        valueEditable={true}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                        />
+
+                    <EditableControl
+                        id="gIntersection3VertLineLabel"
+                        name="Orange-Red intersection vertical"
+                        value={this.props.gIntersection3VertLineLabel}
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
@@ -234,6 +294,10 @@ ADASEditor.propTypes = {
     gIntersectionLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
+    gIntersection2HorizLineLabel: PropTypes.string.isRequired,
+    gIntersection2VertLineLabel: PropTypes.string.isRequired,
+    gIntersection3HorizLineLabel: PropTypes.string.isRequired,
+    gIntersection3VertLineLabel: PropTypes.string.isRequired,
 
     gXAxisLabel: PropTypes.string.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,

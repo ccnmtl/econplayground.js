@@ -138,6 +138,10 @@ export default class JXGBoard extends React.Component {
                 gDisplayShadow: options.gDisplayShadow,
                 gIntersectionHorizLineLabel: options.gIntersectionHorizLineLabel,
                 gIntersectionVertLineLabel: options.gIntersectionVertLineLabel,
+                gIntersection2HorizLineLabel: options.gIntersection2HorizLineLabel,
+                gIntersection2VertLineLabel: options.gIntersection2VertLineLabel,
+                gIntersection3HorizLineLabel: options.gIntersection3HorizLineLabel,
+                gIntersection3VertLineLabel: options.gIntersection3VertLineLabel,
                 gXAxisLabel: options.gXAxisLabel,
                 gYAxisLabel: options.gYAxisLabel,
                 gLine1Label: options.gLine1Label,
@@ -214,6 +218,10 @@ export default class JXGBoard extends React.Component {
             'gDisplayShadow',
             'gIntersectionHorizLineLabel',
             'gIntersectionVertLineLabel',
+            'gIntersection2HorizLineLabel',
+            'gIntersection2VertLineLabel',
+            'gIntersection3HorizLineLabel',
+            'gIntersection3VertLineLabel',
             'gXAxisLabel',
             'gYAxisLabel',
             'gLine1Label',
@@ -288,9 +296,18 @@ export default class JXGBoard extends React.Component {
 
                 gIntersectionHorizLineLabel:
                 nextProps.gIntersectionHorizLineLabel,
-
                 gIntersectionVertLineLabel:
                 nextProps.gIntersectionVertLineLabel,
+
+                gIntersection2HorizLineLabel:
+                nextProps.gIntersection2HorizLineLabel,
+                gIntersection2VertLineLabel:
+                nextProps.gIntersection2VertLineLabel,
+
+                gIntersection3HorizLineLabel:
+                nextProps.gIntersection3HorizLineLabel,
+                gIntersection3VertLineLabel:
+                nextProps.gIntersection3VertLineLabel,
 
                 gLine1Label: nextProps.gLine1Label,
                 gLine2Label: nextProps.gLine2Label,
@@ -369,6 +386,10 @@ export default class JXGBoard extends React.Component {
             gDisplayShadow: this.props.gDisplayShadow,
             gIntersectionHorizLineLabel: this.props.gIntersectionHorizLineLabel,
             gIntersectionVertLineLabel: this.props.gIntersectionVertLineLabel,
+            gIntersection2HorizLineLabel: this.props.gIntersection2HorizLineLabel,
+            gIntersection2VertLineLabel: this.props.gIntersection2VertLineLabel,
+            gIntersection3HorizLineLabel: this.props.gIntersection3HorizLineLabel,
+            gIntersection3VertLineLabel: this.props.gIntersection3VertLineLabel,
             gLine1Label: this.props.gLine1Label,
             gLine2Label: this.props.gLine2Label,
             gLine3Label: this.props.gLine3Label,
@@ -457,6 +478,10 @@ JXGBoard.propTypes = {
     gDisplayShadow: PropTypes.bool,
     gIntersectionHorizLineLabel: PropTypes.string,
     gIntersectionVertLineLabel: PropTypes.string,
+    gIntersection2HorizLineLabel: PropTypes.string,
+    gIntersection2VertLineLabel: PropTypes.string,
+    gIntersection3HorizLineLabel: PropTypes.string,
+    gIntersection3VertLineLabel: PropTypes.string,
     gLine1Label: PropTypes.string,
     gLine2Label: PropTypes.string,
     gLine3Label: PropTypes.string,
