@@ -50,7 +50,7 @@ export default class ADASEditor extends React.Component {
                         <RangeEditor
                             dataId="gLine3Slope"
                             value={this.props.gLine3Slope}
-                            min={0}
+                            min={-5}
                             max={5}
                             showOverrideCheckbox={true}
                             overrideLabel='Vertical'
