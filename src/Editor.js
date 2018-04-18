@@ -38,6 +38,7 @@ class Editor extends Component {
                         showing={this.state.step === 1}
                         gTitle={this.state.gTitle}
                         gType={this.state.gType}
+                        gAssignmentType={this.state.gAssignmentType}
                         gDescription={this.state.gDescription}
                         gInstructorNotes={this.state.gInstructorNotes}
                         gShowIntersection={this.state.gShowIntersection}
