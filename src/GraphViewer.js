@@ -141,6 +141,8 @@ export default class GraphViewer extends React.Component {
 
                         <NonLinearDemandSupplyEditor
                             isInstructor={isInstructor}
+                            displayLabels={displayLabels}
+                            displaySliders={displaySliders}
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
                             gCobbDouglasA={this.props.gCobbDouglasA}
@@ -316,6 +318,8 @@ export default class GraphViewer extends React.Component {
 
                         <ConsumptionLeisureEditor
                             isInstructor={isInstructor}
+                            displayLabels={displayLabels}
+                            displaySliders={displaySliders}
                             gA1={this.props.gA1}
                             gA2={this.props.gA2}
                             gLine1Label={this.props.gLine1Label}
@@ -397,6 +401,8 @@ export default class GraphViewer extends React.Component {
 
                         <ConsumptionSavingEditor
                             isInstructor={isInstructor}
+                            displayLabels={displayLabels}
+                            displaySliders={displaySliders}
                             gA1={this.props.gA1}
                             gA2={this.props.gA2}
                             gA3={this.props.gA3}
@@ -514,6 +520,8 @@ export default class GraphViewer extends React.Component {
             gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
             gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
 
+            displayLabels={displayLabels}
+            displaySliders={displaySliders}
             isInstructor={isInstructor}
             updateGraph={this.props.updateGraph}
                 />
@@ -605,99 +613,107 @@ export default class GraphViewer extends React.Component {
                          gLine1FeedbackIncrease={this.props.gLine1FeedbackIncrease}
                          gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
                          gLine2FeedbackIncrease={this.props.gLine2FeedbackIncrease}
-                         gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease} />
+                        gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease} />
 
-                    <div className={'form-row ' + (this.props.gType !== 3 ? '' : 'd-none')}>
-                        <div className="col">
-                            <label htmlFor="gLine1Slope">
-                                Orange line slope
-                            </label>
-                            <RangeEditor
-                                dataId="gLine1Slope"
-                                value={this.props.gLine1Slope}
-                                min={0}
-                                max={5}
-                                handler={handleFormUpdate.bind(this)} />
-                        </div>
 
-                        <div className="col">
-                            <div className="form-group">
-                                <label htmlFor="gLine2Slope">
-                                    Blue line slope
+                    {displaySliders && (
+                        <div className={'form-row ' + (this.props.gType !== 3 ? '' : 'd-none')}>
+                            <div className="col">
+                                <label htmlFor="gLine1Slope">
+                                    Orange line slope
                                 </label>
                                 <RangeEditor
-                                    dataId="gLine2Slope"
-                                    value={this.props.gLine2Slope}
-                                    min={-5}
-                                    max={0}
+                                    dataId="gLine1Slope"
+                                    value={this.props.gLine1Slope}
+                                    min={0}
+                                    max={5}
                                     handler={handleFormUpdate.bind(this)} />
                             </div>
+
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="gLine2Slope">
+                                        Blue line slope
+                                    </label>
+                                    <RangeEditor
+                                        dataId="gLine2Slope"
+                                        value={this.props.gLine2Slope}
+                                        min={-5}
+                                        max={0}
+                                        handler={handleFormUpdate.bind(this)} />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {displayLabels && (
+                        <div className="row">
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="gLine1Label">
+                                        Orange line label
+                                    </label>
+                                    <input id="gLine1Label"
+                                           value={this.props.gLine1Label}
+                                           onChange={handleFormUpdate.bind(this)}
+                                           className="form-control form-control-sm"
+                                           type="text"
+                                           maxLength="60"
+                                           />
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="gLine2Label">
+                                        Blue line label
+                                    </label>
+                                    <input id="gLine2Label"
+                                           value={this.props.gLine2Label}
+                                           onChange={handleFormUpdate.bind(this)}
+                                           className="form-control form-control-sm"
+                                           type="text"
+                                           maxLength="60"
+                                           />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+            {displayLabels && (
+                <div className="row">
+                    <div className="col">
+                        <div className="form-group">
+                            <label htmlFor="gXAxisLabel">
+                                X-axis label:
+                            </label>
+                            <input id="gXAxisLabel"
+                                   className="form-control form-control-sm"
+                                   type="text"
+                                   maxLength="60"
+                                   value={this.props.gXAxisLabel}
+                                   onChange={handleFormUpdate.bind(this)}
+                                   />
                         </div>
                     </div>
 
-                    <div className="row">
-                        <div className="col">
-                            <div className="form-group">
-                                <label htmlFor="gLine1Label">
-                                    Orange line label
-                                </label>
-                                <input id="gLine1Label"
-                                       value={this.props.gLine1Label}
-                                       onChange={handleFormUpdate.bind(this)}
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       />
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="form-group">
-                                <label htmlFor="gLine2Label">
-                                    Blue line label
-                                </label>
-                                <input id="gLine2Label"
-                                       value={this.props.gLine2Label}
-                                       onChange={handleFormUpdate.bind(this)}
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       />
-                            </div>
+                    <div className="col">
+                        <div className="form-group">
+                            <label htmlFor="gYAxisLabel">
+                                Y-axis label:
+                            </label>
+                            <input id="gYAxisLabel"
+                                   className="form-control form-control-sm"
+                                   type="text"
+                                   maxLength="60"
+                                   value={this.props.gYAxisLabel}
+                                   onChange={handleFormUpdate.bind(this)}
+                                   />
                         </div>
                     </div>
+                </div>
+            )}
 
-                    <div className="row">
-                        <div className="col">
-                            <div className="form-group">
-                                <label htmlFor="gXAxisLabel">
-                                    X-axis label:
-                                </label>
-                                <input id="gXAxisLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gXAxisLabel}
-                                       onChange={handleFormUpdate.bind(this)}
-                                       />
-                            </div>
-                        </div>
-
-                        <div className="col">
-                            <div className="form-group">
-                                <label htmlFor="gYAxisLabel">
-                                    Y-axis label:
-                                </label>
-                                <input id="gYAxisLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gYAxisLabel}
-                                       onChange={handleFormUpdate.bind(this)}
-                                       />
-                            </div>
-                        </div>
-                    </div>
-
+            {displayLabels && (
                     <div className="row">
                         <div className="col-sm-6">
                             <div className="form-group">
@@ -714,7 +730,9 @@ export default class GraphViewer extends React.Component {
                             </div>
                         </div>
                     </div>
+            )}
 
+            {displayLabels && (
                     <div className="row">
                         <div className="col">
                             <div className="form-group">
@@ -744,6 +762,7 @@ export default class GraphViewer extends React.Component {
                             </div>
                         </div>
                     </div>
+            )}
 
                     <ResetGraphButton
                         initialState={initialState}

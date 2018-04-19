@@ -216,9 +216,6 @@ export default class CobbDouglasEditor extends React.Component {
 }
 
 CobbDouglasEditor.propTypes = {
-    displayLabels: PropTypes.bool.isRequired,
-    displaySliders: PropTypes.bool.isRequired,
-
     gCorrectFeedback: PropTypes.string.isRequired,
     gIncorrectFeedback: PropTypes.string.isRequired,
     gCobbDouglasA: PropTypes.number.isRequired,
@@ -232,5 +229,7 @@ CobbDouglasEditor.propTypes = {
     gCobbDouglasCorrectScenario: PropTypes.number,
     gIntersectionLabel: PropTypes.string.isRequired,
 
+    displayLabels: PropTypes.bool.isRequired,
+    displaySliders: PropTypes.bool.isRequired,
     isInstructor: PropTypes.bool.isRequired
 };
