@@ -125,6 +125,7 @@ class Viewer extends Component {
             gTitle={this.state.gTitle}
             gDescription={this.state.gDescription}
             gType={this.state.gType}
+            gAssignmentType={this.state.gAssignmentType}
             gShowIntersection={this.state.gShowIntersection}
             gDisplayIntersection1={this.state.gDisplayIntersection1}
             gIntersectionLabel={this.state.gIntersectionLabel}

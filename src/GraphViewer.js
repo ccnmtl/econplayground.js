@@ -41,6 +41,14 @@ export default class GraphViewer extends React.Component {
             isInstructor = window.EconPlayground.isInstructor;
         }
 
+        const displayLabels = isInstructor ||
+              this.props.gAssignmentType === 0 ||
+              this.props.gAssignmentType === 1;
+
+        const displaySliders = isInstructor ||
+              this.props.gAssignmentType === 0 ||
+              this.props.gAssignmentType === 2;
+
         const token = Cookies.get('csrftoken');
 
         const initialState = {
@@ -230,6 +238,8 @@ export default class GraphViewer extends React.Component {
 
                         <CobbDouglasEditor
                             isInstructor={isInstructor}
+                            displayLabels={displayLabels}
+                            displaySliders={displaySliders}
                             gCobbDouglasA={this.props.gCobbDouglasA}
                             gCobbDouglasAName={this.props.gCobbDouglasAName}
                             gCobbDouglasL={this.props.gCobbDouglasL}
@@ -794,6 +804,7 @@ GraphViewer.propTypes = {
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
     gNeedsSubmit: PropTypes.bool,
+    gAssignmentType: PropTypes.number.isRequired,
 
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayIntersection1: PropTypes.bool.isRequired,
