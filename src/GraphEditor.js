@@ -27,6 +27,7 @@ export default class GraphEditor extends React.Component {
             gTitle={this.props.gTitle}
             gInstructorNotes={this.props.gInstructorNotes}
             gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
             gNeedsSubmit={this.props.gNeedsSubmit}
             gDisplayFeedback={this.props.gDisplayFeedback}
             gShowIntersection={this.props.gShowIntersection}
@@ -96,6 +97,7 @@ export default class GraphEditor extends React.Component {
             gTitle={this.props.gTitle}
             gInstructorNotes={this.props.gInstructorNotes}
             gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
             gNeedsSubmit={this.props.gNeedsSubmit}
             gDisplayFeedback={this.props.gDisplayFeedback}
             gShowIntersection={this.props.gShowIntersection}
@@ -164,6 +166,7 @@ export default class GraphEditor extends React.Component {
             gTitle={this.props.gTitle}
             gInstructorNotes={this.props.gInstructorNotes}
             gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
             gNeedsSubmit={this.props.gNeedsSubmit}
             gDisplayFeedback={this.props.gDisplayFeedback}
             gShowIntersection={this.props.gShowIntersection}
@@ -225,6 +228,7 @@ export default class GraphEditor extends React.Component {
             gTitle={this.props.gTitle}
             gInstructorNotes={this.props.gInstructorNotes}
             gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
             gNeedsSubmit={this.props.gNeedsSubmit}
             gDisplayFeedback={this.props.gDisplayFeedback}
             gShowIntersection={this.props.gShowIntersection}
@@ -288,6 +292,7 @@ export default class GraphEditor extends React.Component {
             gTitle={this.props.gTitle}
             gInstructorNotes={this.props.gInstructorNotes}
             gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
             gNeedsSubmit={this.props.gNeedsSubmit}
             gDisplayFeedback={this.props.gDisplayFeedback}
             gShowIntersection={this.props.gShowIntersection}
@@ -389,6 +394,7 @@ export default class GraphEditor extends React.Component {
                          gTitle={this.props.gTitle}
                          gInstructorNotes={this.props.gInstructorNotes}
                          gDescription={this.props.gDescription}
+                         gAssignmentType={this.props.gAssignmentType}
                          gNeedsSubmit={this.props.gNeedsSubmit}
                          gDisplayFeedback={this.props.gDisplayFeedback}
                          gShowIntersection={this.props.gShowIntersection}
@@ -710,6 +716,7 @@ GraphEditor.propTypes = {
     gXAxisLabel: PropTypes.string.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,
     gType: PropTypes.number,
+    gAssignmentType: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
 
     gAlpha: PropTypes.number,

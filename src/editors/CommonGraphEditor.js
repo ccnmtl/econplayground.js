@@ -40,7 +40,7 @@ export default class CommonGraphEditor extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-sm-12">
+                    <div className="col-sm-8">
                         <div className="form-group">
                             <label htmlFor="gDescription">
                                 Description
@@ -49,6 +49,24 @@ export default class CommonGraphEditor extends React.Component {
                                       onChange={handleFormUpdate.bind(this)}
                                       value={this.props.gDescription}
                                       className="form-control form-control-sm" />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-sm-6">
+                        <div className="form-group">
+                            <label htmlFor="gAssignmentType">
+                                Assignment type
+                            </label>
+                            <select id="gAssignmentType"
+                                    className="custom-select"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    value={this.props.gAssignmentType}>
+                                <option value="0">Template graph assignment</option>
+                                <option value="1">Labeling assignment</option>
+                                <option value="2">Modification assignment</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -136,6 +154,7 @@ CommonGraphEditor.propTypes = {
     gTitle: PropTypes.string.isRequired,
     gInstructorNotes: PropTypes.string.isRequired,
     gDescription: PropTypes.string.isRequired,
+    gAssignmentType: PropTypes.number.isRequired,
     gNeedsSubmit: PropTypes.bool.isRequired,
     gDisplayFeedback: PropTypes.bool.isRequired,
     gShowIntersection: PropTypes.bool.isRequired,

@@ -40,6 +40,7 @@ class Viewer extends Component {
             gDescription={this.state.gDescription}
             gInstructorNotes={this.state.gInstructorNotes}
             gType={this.state.gType}
+            gAssignmentType={this.state.gAssignmentType}
             gNeedsSubmit={this.state.gNeedsSubmit}
             gShowIntersection={this.state.gShowIntersection}
             gDisplayIntersection1={this.state.gDisplayIntersection1}

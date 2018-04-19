@@ -15,6 +15,7 @@ const exportGraph = function(state) {
         description: state.gDescription,
         instructor_notes: state.gInstructorNotes,
         graph_type: state.gType,
+        assignment_type: state.gAssignmentType,
         is_published: state.gIsPublished,
         display_feedback: state.gDisplayFeedback,
         display_shadow: state.gDisplayShadow,
@@ -121,6 +122,7 @@ const importGraph = function(json, obj) {
         gDescription: json.description,
         gInstructorNotes: json.instructor_notes,
         gType: json.graph_type,
+        gAssignmentType: json.assignment_type,
         gIsPublished: json.is_published,
         gDisplayFeedback: json.display_feedback,
         gDisplayShadow: json.display_shadow,
@@ -223,6 +225,7 @@ const defaultGraph = {
     // Graph options
     gId: null,
     gType: null,
+    gAssignmentType: 0, // Default to "Template graph" - everything editable
     gTitle: '',
     gDescription: '',
     gInstructorNotes: '',
