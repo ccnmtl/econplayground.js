@@ -67,6 +67,8 @@ export default class GraphEditor extends React.Component {
 
                 />
                 <NonLinearDemandSupplyEditor
+            displayLabels={true}
+            displaySliders={true}
             isInstructor={true}
             gLine1Label={this.props.gLine1Label}
             gLine2Label={this.props.gLine2Label}
@@ -148,6 +150,8 @@ export default class GraphEditor extends React.Component {
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
 
+            displayLabels={true}
+            displaySliders={true}
             isInstructor={true}
             updateGraph={this.props.updateGraph}
                 />
@@ -210,6 +214,8 @@ export default class GraphEditor extends React.Component {
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
 
+            displayLabels={true}
+            displaySliders={true}
             isInstructor={true}
             updateGraph={this.props.updateGraph}
                 />
@@ -273,6 +279,8 @@ export default class GraphEditor extends React.Component {
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
 
+            displayLabels={true}
+            displaySliders={true}
             isInstructor={true}
             updateGraph={this.props.updateGraph}
                 />
@@ -375,6 +383,8 @@ export default class GraphEditor extends React.Component {
             gCorrectFeedback={this.props.gCorrectFeedback}
             gIncorrectFeedback={this.props.gIncorrectFeedback}
 
+            displayLabels={true}
+            displaySliders={true}
             isInstructor={true}
             updateGraph={this.props.updateGraph}
                 />

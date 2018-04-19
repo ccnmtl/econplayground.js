@@ -8,56 +8,60 @@ export default class ADASEditor extends React.Component {
     render() {
         return (
             <div>
-                <div className="form-row">
-                    <div className="col-sm-4">
-                        <label htmlFor="gLine1Slope">
-                            Orange line slope
-                        </label>
-                        <RangeEditor
-                            dataId="gLine1Slope"
-                            value={this.props.gLine1Slope}
-                            min={0}
-                            max={5}
-                            showOverrideCheckbox={true}
-                            overrideLabel='Vertical'
-                            overrideValue={999}
-                            handler={handleFormUpdate.bind(this)} />
-                    </div>
-
-                    <div className="col-sm-4">
-                        <div className="form-group">
-                            <label htmlFor="gLine2Slope">
-                                Blue line slope
+                {this.props.displaySliders && (
+                    <div className="form-row">
+                        <div className="col-sm-4">
+                            <label htmlFor="gLine1Slope">
+                                Orange line slope
                             </label>
                             <RangeEditor
-                                dataId="gLine2Slope"
-                                min={-5}
-                                max={0}
-                                value={this.props.gLine2Slope}
+                                dataId="gLine1Slope"
+                                value={this.props.gLine1Slope}
+                                min={0}
+                                max={5}
                                 showOverrideCheckbox={true}
                                 overrideLabel='Vertical'
-                                overrideValue={-999}
+                                overrideValue={999}
+                                handler={handleFormUpdate.bind(this)} />
+                        </div>
+
+                        <div className="col-sm-4">
+                            <div className="form-group">
+                                <label htmlFor="gLine2Slope">
+                                    Blue line slope
+                                </label>
+                                <RangeEditor
+                                    dataId="gLine2Slope"
+                                    min={-5}
+                                    max={0}
+                                    value={this.props.gLine2Slope}
+                                    showOverrideCheckbox={true}
+                                    overrideLabel='Vertical'
+                                    overrideValue={-999}
+                                    handler={handleFormUpdate.bind(this)} />
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {this.props.displaySliders && (
+                    <div className="form-row">
+                        <div className="col-sm-4">
+                            <label htmlFor="gLine3Slope">
+                                Red line slope
+                            </label>
+                            <RangeEditor
+                                dataId="gLine3Slope"
+                                value={this.props.gLine3Slope}
+                                min={-5}
+                                max={5}
+                                showOverrideCheckbox={true}
+                                overrideLabel='Vertical'
+                                overrideValue={999}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
-                </div>
-
-                <div className="form-row">
-                    <div className="col-sm-4">
-                        <label htmlFor="gLine3Slope">
-                            Red line slope
-                        </label>
-                        <RangeEditor
-                            dataId="gLine3Slope"
-                            value={this.props.gLine3Slope}
-                            min={-5}
-                            max={5}
-                            showOverrideCheckbox={true}
-                            overrideLabel='Vertical'
-                            overrideValue={999}
-                            handler={handleFormUpdate.bind(this)} />
-                    </div>
-                </div>
+                )}
 
                 <div className="row">
                     <div className="col-sm-3">
@@ -143,6 +147,7 @@ export default class ADASEditor extends React.Component {
                     </div>
                 </div>
 
+            {this.props.displayLabels && (
                 <div className="row">
                     <EditableControl
                         id="gLine1Label"
@@ -162,7 +167,9 @@ export default class ADASEditor extends React.Component {
                         updateGraph={this.props.updateGraph}
                         />
                 </div>
+            )}
 
+            {this.props.displayLabels && (
                 <div className="row">
                     <EditableControl
                         id="gLine3Label"
@@ -173,7 +180,9 @@ export default class ADASEditor extends React.Component {
                         updateGraph={this.props.updateGraph}
                         />
                 </div>
+            )}
 
+            {this.props.displayLabels && (
                 <div className="row">
                     <EditableControl
                         id="gXAxisLabel"
@@ -192,8 +201,10 @@ export default class ADASEditor extends React.Component {
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
-                </div>
+                    </div>
+            )}
 
+            {this.props.displayLabels && (
                 <div className="row">
                     <EditableControl
                         id="gIntersectionLabel"
@@ -212,8 +223,10 @@ export default class ADASEditor extends React.Component {
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
-                </div>
+                    </div>
+            )}
 
+            {this.props.displayLabels && (
                 <div className="row">
                     <EditableControl
                         id="gIntersection3Label"
@@ -223,8 +236,10 @@ export default class ADASEditor extends React.Component {
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
-                </div>
+                    </div>
+            )}
 
+            {this.props.displayLabels && (
                 <div className="row">
                     <EditableControl
                         id="gIntersectionHorizLineLabel"
@@ -243,8 +258,10 @@ export default class ADASEditor extends React.Component {
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
-                </div>
+                    </div>
+            )}
 
+            {this.props.displayLabels && (
                 <div className="row">
                     <EditableControl
                         id="gIntersection2HorizLineLabel"
@@ -263,8 +280,10 @@ export default class ADASEditor extends React.Component {
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
-                </div>
+                    </div>
+            )}
 
+            {this.props.displayLabels && (
                 <div className="row">
                     <EditableControl
                         id="gIntersection3HorizLineLabel"
@@ -283,7 +302,8 @@ export default class ADASEditor extends React.Component {
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
-                </div>
+                    </div>
+            )}
 
             </div>
         );
@@ -312,5 +332,7 @@ ADASEditor.propTypes = {
     gLine3Slope: PropTypes.number.isRequired,
     gLine3Label: PropTypes.string.isRequired,
 
+    displayLabels: PropTypes.bool.isRequired,
+    displaySliders: PropTypes.bool.isRequired,
     isInstructor: PropTypes.bool.isRequired
 };
