@@ -34,7 +34,7 @@ export default class CobbDouglasEditor extends React.Component {
                                    />
                         )}
                         <MathJax.Context
-                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"
+                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
                             input="tex"
                             options={{
                                 displayAlign: 'left',
