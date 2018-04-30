@@ -19,7 +19,7 @@ export default class ADASEditor extends React.Component {
                                 value={this.props.gLine1Slope}
                                 min={0}
                                 max={5}
-                                showOverrideCheckbox={true}
+                                showOverrideButton={true}
                                 overrideLabel='Vertical'
                                 overrideValue={999}
                                 handler={handleFormUpdate.bind(this)} />
@@ -35,7 +35,7 @@ export default class ADASEditor extends React.Component {
                                     min={-5}
                                     max={0}
                                     value={this.props.gLine2Slope}
-                                    showOverrideCheckbox={true}
+                                    showOverrideButton={true}
                                     overrideLabel='Vertical'
                                     overrideValue={-999}
                                     handler={handleFormUpdate.bind(this)} />
@@ -55,9 +55,12 @@ export default class ADASEditor extends React.Component {
                                 value={this.props.gLine3Slope}
                                 min={-5}
                                 max={5}
-                                showOverrideCheckbox={true}
+                                showOverrideButton={true}
                                 overrideLabel='Vertical'
                                 overrideValue={999}
+                                showOverride2Button={true}
+                                override2Label='Horizontal'
+                                override2Value={0}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
