@@ -105,6 +105,7 @@ export default class ADASEditor extends React.Component {
                     </div>
                 </div>
 
+            {this.props.isInstructor && (
                 <div className="row">
                     <div className="col-sm-3">
                         <div className="form-check">
@@ -146,6 +147,7 @@ export default class ADASEditor extends React.Component {
                         </div>
                     </div>
                 </div>
+            )}
 
             {this.props.displayLabels && (
                 <div className="row">
