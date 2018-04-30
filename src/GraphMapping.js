@@ -216,7 +216,10 @@ const importGraph = function(json, obj) {
         gCobbDouglasAInitial: window.parseFloat(json.cobb_douglas_a),
         gCobbDouglasLInitial: window.parseFloat(json.cobb_douglas_l),
         gCobbDouglasKInitial: window.parseFloat(json.cobb_douglas_k),
-        gCobbDouglasAlphaInitial: window.parseFloat(json.cobb_douglas_alpha)
+        gCobbDouglasAlphaInitial: window.parseFloat(json.cobb_douglas_alpha),
+        gDisplayIntersection1Initial: json.display_intersection_1,
+        gDisplayIntersection2Initial: json.display_intersection_2,
+        gDisplayIntersection3Initial: json.display_intersection_3
     };
     obj.setState(updateObj);
 };

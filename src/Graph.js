@@ -828,37 +828,84 @@ class ADASGraph extends Graph {
 
         if (this.options.shadow && this.options.gDisplayShadow) {
             // Display the initial curves set by the instructor.
+            const f1Shadow = function(x) {
+                const slope = me.options.gLine1SlopeInitial;
+                return (x - 2.5) * slope + 2.5;
+            };
+
             const l1fShadow = this.board.create(
-                'line',
-                [
-                    [2.5, 2.5 + this.options.gLine1OffsetYInitial],
-                    [3.5, 2.5 + this.options.gLine1OffsetYInitial +
-                     this.options.gLine1SlopeInitial]
-                ], {
+                'functiongraph', [f1Shadow, -20, 20], {
                     withLabel: false,
                     strokeWidth: 2,
                     strokeColor: this.shadowColor,
+                    dash: this.options.gLine1Dashed ? 2 : 0,
                     highlight: false,
                     fixed: true,
                     layer: 4
                 });
+
+            const f2Shadow = function(x) {
+                const slope = me.options.gLine2SlopeInitial;
+                return (x - 2.5) * slope + 2.5;
+            };
 
             const l2fShadow = this.board.create(
-                'line',
-                [
-                    [2.5, 2.5 + this.options.gLine2OffsetYInitial],
-                    [3.5, 2.5 + this.options.gLine2OffsetYInitial +
-                     this.options.gLine2SlopeInitial]
-                ], {
+                'functiongraph', [f2Shadow, -20, 20], {
                     withLabel: false,
                     strokeWidth: 2,
                     strokeColor: this.shadowColor,
+                    dash: this.options.gLine2Dashed ? 2 : 0,
                     highlight: false,
                     fixed: true,
                     layer: 4
                 });
 
-            this.showIntersection(l1fShadow, l2fShadow, true);
+            const f3Shadow = function(x) {
+                const slope = me.options.gLine3SlopeInitial;
+                return (x - 2.5) * slope + 2.5;
+            };
+
+            const l3fShadow = this.board.create(
+                'functiongraph', [f3Shadow, -20, 20], {
+                    withLabel: false,
+                    strokeWidth: 2,
+                    strokeColor: this.shadowColor,
+                    dash: this.options.gLine3Dashed ? 2 : 0,
+                    highlight: false,
+                    fixed: true,
+                    layer: 4
+                });
+
+            l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
+                forceFloat(this.options.gLine1OffsetXInitial),
+                forceFloat(this.options.gLine1OffsetYInitial)
+            ]);
+            l2fShadow.setPosition(window.JXG.COORDS_BY_USER, [
+                forceFloat(this.options.gLine2OffsetXInitial),
+                forceFloat(this.options.gLine2OffsetYInitial)
+            ]);
+            l3fShadow.setPosition(window.JXG.COORDS_BY_USER, [
+                forceFloat(this.options.gLine3OffsetXInitial),
+                forceFloat(this.options.gLine3OffsetYInitial)
+            ]);
+
+            // This is necessary, because otherwise the setPosition call
+            // won't have an effect until the graph is interacted with.
+            l1fShadow.fullUpdate(true);
+            l2fShadow.fullUpdate(true);
+            l3fShadow.fullUpdate(true);
+
+            if (this.options.gDisplayIntersection1Initial) {
+                this.showIntersection(l1fShadow, l2fShadow, true);
+            }
+
+            if (this.options.gDisplayIntersection2Initial) {
+                this.showIntersection(l2fShadow, l3fShadow, true);
+            }
+
+            if (this.options.gDisplayIntersection3Initial) {
+                this.showIntersection(l3fShadow, l1fShadow, true);
+            }
         }
 
         const f1 = function(x) {

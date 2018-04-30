@@ -128,10 +128,13 @@ class Viewer extends Component {
             gAssignmentType={this.state.gAssignmentType}
             gShowIntersection={this.state.gShowIntersection}
             gDisplayIntersection1={this.state.gDisplayIntersection1}
+            gDisplayIntersection1Initial={this.state.gDisplayIntersection1Initial}
             gIntersectionLabel={this.state.gIntersectionLabel}
             gDisplayIntersection2={this.state.gDisplayIntersection2}
+            gDisplayIntersection2Initial={this.state.gDisplayIntersection2Initial}
             gIntersection2Label={this.state.gIntersection2Label}
             gDisplayIntersection3={this.state.gDisplayIntersection3}
+            gDisplayIntersection3Initial={this.state.gDisplayIntersection3Initial}
             gIntersection3Label={this.state.gIntersection3Label}
             gNeedsSubmit={this.state.gNeedsSubmit}
 
