@@ -26,7 +26,7 @@ class Viewer extends Component {
 
     render() {
         if (window.EconPlayground.isInstructor) {
-            return <div>
+            return <React.Fragment>
                 <div className="alert alert-info"
             hidden={this.state.alertText ? false : true}
             role="alert">
@@ -111,9 +111,9 @@ class Viewer extends Component {
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
             saveGraph={this.handleSaveGraph.bind(this)} />
-                </div>;
+                </React.Fragment>;
         } else {
-            return <div>
+            return <React.Fragment>
                 <div className="alert alert-info"
             hidden={this.state.alertText ? false : true}
             role="alert">
@@ -215,7 +215,7 @@ class Viewer extends Component {
             choice={this.state.choice}
             value={this.state.value}
                 />
-                </div>;
+                </React.Fragment>;
         }
     }
 

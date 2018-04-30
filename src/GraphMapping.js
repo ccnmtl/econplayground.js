@@ -298,7 +298,15 @@ const defaultGraph = {
     gCobbDouglasK: 1,
     gCobbDouglasKName: 'K',
     gCobbDouglasAlpha: 0.65,
-    gCobbDouglasYName: 'Y'
+    gCobbDouglasYName: 'Y',
+
+    // Use a hard-coded proof-of-concept assessment spreadsheet for
+    // now. Eventually, this will be defined using a Google
+    // Spreadsheet, or some react-spreadsheet component with its data
+    // stored in our database. The details of that aren't so important
+    // right now. I'll remove this once I have the graphs displaying
+    // feedback and setting scores based on this format here.
+    assessment: []
 };
 
 export { exportGraph, importGraph, defaultGraph };
