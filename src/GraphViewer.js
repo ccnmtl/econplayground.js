@@ -465,19 +465,31 @@ export default class GraphViewer extends React.Component {
             gXAxisLabel={this.props.gXAxisLabel}
             gYAxisLabel={this.props.gYAxisLabel}
             gLine1Slope={this.props.gLine1Slope}
+            gLine1SlopeInitial={this.props.gLine1SlopeInitial}
             gLine2Slope={this.props.gLine2Slope}
+            gLine2SlopeInitial={this.props.gLine2SlopeInitial}
             gLine3Slope={this.props.gLine3Slope}
+            gLine3SlopeInitial={this.props.gLine3SlopeInitial}
             gLine1OffsetX={this.props.gLine1OffsetX}
             gLine1OffsetY={this.props.gLine1OffsetY}
+            gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
+            gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
             gLine2OffsetX={this.props.gLine2OffsetX}
             gLine2OffsetY={this.props.gLine2OffsetY}
+            gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
+            gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
             gLine3OffsetX={this.props.gLine3OffsetX}
             gLine3OffsetY={this.props.gLine3OffsetY}
+            gLine3OffsetXInitial={this.props.gLine3OffsetXInitial}
+            gLine3OffsetYInitial={this.props.gLine3OffsetYInitial}
             gDisplayIntersection1={this.props.gDisplayIntersection1}
+            gDisplayIntersection1Initial={this.props.gDisplayIntersection1Initial}
             gIntersectionLabel={this.props.gIntersectionLabel}
             gDisplayIntersection2={this.props.gDisplayIntersection2}
+            gDisplayIntersection2Initial={this.props.gDisplayIntersection2Initial}
             gIntersection2Label={this.props.gIntersection2Label}
             gDisplayIntersection3={this.props.gDisplayIntersection3}
+            gDisplayIntersection3Initial={this.props.gDisplayIntersection3Initial}
             gIntersection3Label={this.props.gIntersection3Label}
 
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
@@ -500,8 +512,8 @@ export default class GraphViewer extends React.Component {
             gLine1Label={this.props.gLine1Label}
             gLine2Slope={this.props.gLine2Slope}
             gLine2Label={this.props.gLine2Label}
-            gLine3Label={this.props.gLine3Label}
             gLine3Slope={this.props.gLine3Slope}
+            gLine3Label={this.props.gLine3Label}
             gShowIntersection={this.props.gShowIntersection}
             gDisplayIntersection1={this.props.gDisplayIntersection1}
             gIntersectionLabel={this.props.gIntersectionLabel}
@@ -827,10 +839,13 @@ GraphViewer.propTypes = {
 
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayIntersection1: PropTypes.bool.isRequired,
+    gDisplayIntersection1Initial: PropTypes.bool.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
     gDisplayIntersection2: PropTypes.bool.isRequired,
+    gDisplayIntersection2Initial: PropTypes.bool.isRequired,
     gIntersection2Label: PropTypes.string.isRequired,
     gDisplayIntersection3: PropTypes.bool.isRequired,
+    gDisplayIntersection3Initial: PropTypes.bool.isRequired,
     gIntersection3Label: PropTypes.string.isRequired,
     gDisplayShadow: PropTypes.bool.isRequired,
 
