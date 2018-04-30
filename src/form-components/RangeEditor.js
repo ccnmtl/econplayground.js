@@ -31,21 +31,37 @@ export default class RangeEditor extends React.Component {
                     {this.props.max}
                 </div>
             )}
-            </div>
-            {this.props.showOverrideCheckbox && (
+        </div>
+            <div className="input-group">
+            {this.props.showOverrideButton && (
                 <div className="col-4">
                     <label className="form-check-label">
                         <input
                             data-id={this.props.dataId}
                             data-override={this.props.overrideValue}
                             className="form-check-input override"
-                            type="checkbox"
+                            type="radio"
                             onChange={this.props.handler}
                             checked={this.props.value === this.props.overrideValue} />
                         {this.props.overrideLabel}
                     </label>
                 </div>
             )}
+        {this.props.showOverride2Button && (
+            <div className="col-4">
+                <label className="form-check-label">
+                    <input
+                        data-id={this.props.dataId}
+                        data-override={this.props.override2Value}
+                        className="form-check-input override"
+                        type="radio"
+                        onChange={this.props.handler}
+                        checked={this.props.value === this.props.override2Value} />
+                    {this.props.override2Label}
+                </label>
+            </div>
+        )}
+        </div>
         </React.Fragment>;
     }
 }
@@ -53,9 +69,12 @@ export default class RangeEditor extends React.Component {
 RangeEditor.defaultProps = {
     min: -5,
     max: 5,
-    showOverrideCheckbox: false,
+    showOverrideButton: false,
     overrideLabel: '',
     overrideValue: 0,
+    showOverride2Button: false,
+    override2Label: '',
+    override2Value: 0,
     showMinMax: false
 };
 
@@ -66,8 +85,11 @@ RangeEditor.propTypes = {
     value: PropTypes.number.isRequired,
     min: PropTypes.number,
     max: PropTypes.number,
-    showOverrideCheckbox: PropTypes.bool,
+    showOverrideButton: PropTypes.bool,
     overrideLabel: PropTypes.string,
     overrideValue: PropTypes.number,
+    showOverride2Button: PropTypes.bool,
+    override2Label: PropTypes.string,
+    override2Value: PropTypes.number,
     showMinMax: PropTypes.bool
 };

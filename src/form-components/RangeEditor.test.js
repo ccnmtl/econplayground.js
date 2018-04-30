@@ -14,7 +14,7 @@ it('renders without crashing', () => {
     );
 });
 
-it('Displays override checkbox when configured', () => {
+it('Displays override radio button when configured', () => {
     const el = TestRenderer.create(
         <RangeEditor
             dataId="gCobbDouglasA"
@@ -22,11 +22,11 @@ it('Displays override checkbox when configured', () => {
             handler={function() {}}
             min={0}
             max={5}
-            showOverrideCheckbox={true}
+            showOverrideButton={true}
             overrideLabel={'override'}
             overrideValue={10000}
             />
     ).root;
-    const checkbox = el.findByProps({type: 'checkbox'});
-    expect(checkbox.type).toEqual('input');
+    const button = el.findByProps({type: 'radio'});
+    expect(button.type).toEqual('input');
 });

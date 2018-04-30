@@ -94,6 +94,7 @@ const handleFormUpdate = function(e) {
 
     switch(e.target.type) {
         case 'checkbox':
+        case 'radio':
             if (e.target.className.includes('override')) {
                 obj[id] = parseFloat(e.target.dataset.override);
             } else {

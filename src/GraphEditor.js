@@ -451,7 +451,7 @@ export default class GraphEditor extends React.Component {
                                 value={this.props.gLine1Slope}
                                 min={0}
                                 max={5}
-                                showOverrideCheckbox={true}
+                                showOverrideButton={true}
                                 overrideLabel='Vertical'
                                 overrideValue={999}
                                 handler={handleFormUpdate.bind(this)} />
@@ -467,7 +467,7 @@ export default class GraphEditor extends React.Component {
                                     min={-5}
                                     max={0}
                                     value={this.props.gLine2Slope}
-                                    showOverrideCheckbox={true}
+                                    showOverrideButton={true}
                                     overrideLabel='Vertical'
                                     overrideValue={-999}
                                     handler={handleFormUpdate.bind(this)} />
