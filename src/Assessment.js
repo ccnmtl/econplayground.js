@@ -7,11 +7,11 @@
  *    Name, Value, Feedback (fulfilled), feedback (unfulfilled), score
  *
  * [
- *   ['line1label', 'Demand', 'Correct!', 'Sorry, try again', 1.0],
+ *   ['line1label', 'Demand', 'Correct!', 'Sorry, try again', 1],
  *   ['line1label', 'Alternative solution', 'Correct!', 'Sorry, try again', 0.9],
- *   ['line1slope', 'increase', 'Correct!', 'Sorry, try again', 1.0],
+ *   ['line1slope', 'increase', 'Correct!', 'Sorry, try again', 1],
  *   ['line1intercept', 'any', 'Are you sure you\'re moving the right line?'],
- *   ['line2intercept', 'decrease', 'Correct!', 'Sorry, try again', 1.0]
+ *   ['line2intercept', 'decrease', 'Correct!', 'Sorry, try again', 1]
  * ]
  *
  * Given this data, if a student fills out Line 1's label with
@@ -36,6 +36,66 @@ export default class Assessment {
     }
 
     /**
+     * Given an action, return its type.
+     *
+     * Right now, there are two different action types. I'm
+     * classifying them as 'label' and 'movement'.
+     *
+     * To evaluate a label action, the user's input is
+     * fuzzy-matched with the correct answer (case-insensitive,
+     * whitespace ignored).
+     *
+     * A movement action can be a slope change or a y-intercept
+     * change. From the user's perspective, this is a slider
+     * movement or a line drag. The new value is compared with the
+     * original value. The assessment system then finds out
+     * whether this was in 'increase', 'decrease', or 'any' for
+     * any value change.
+     *
+     * We can assume that any action whose name ends in 'label' is a
+     * label action. For now, everything else is considered a
+     * movement.
+     */
+    getActionType(action) {
+        if (action.name.endsWith('label')) {
+            return 'label';
+        } else {
+            return 'movement';
+        }
+    }
+
+    /**
+     * Extract a row (array) into an object.
+     */
+    extractRow(row) {
+        return {
+            name: row[0],
+            value: row[1],
+            feedback_fulfilled: row[2],
+            feedback_unfulfilled: row[3],
+            score: row[4]
+        };
+    }
+
+    /**
+     * Remove case and whitespace from text.
+     *
+     * Used for fuzzy-matching labels and attribute names.
+     */
+    stripText(s) {
+        return s.toLowerCase().replace(/ /g, '');
+    }
+
+    evalActionWithType(assessment, userAction, actionType) {
+        if (actionType === 'label') {
+            return this.stripText(assessment.value) ===
+                this.stripText(userAction.value);
+        } else {
+            return assessment.value === userAction.value;
+        }
+    }
+
+    /**
      * Evaluate an action. This function takes an Action and returns a
      * Response.
      *
@@ -45,17 +105,19 @@ export default class Assessment {
      */
     evalAction(action) {
         for (let i = 0; i < this.assessment.length; i++) {
-            if (this.assessment[i][0] === action.action) {
-                if (action.value === this.assessment[i][1]) {
+            let row = this.extractRow(this.assessment[i]);
+
+            if (this.stripText(row.name) === this.stripText(action.name)) {
+                if (this.evalActionWithType(row, action, this.getActionType(row))) {
                     // Action fulfilled
                     return {
-                        feedback: this.assessment[i][2],
-                        score: this.assessment[i][4]
+                        feedback: row.feedback_fulfilled,
+                        score: row.score
                     };
                 } else {
                     // Action unfulfilled
                     return {
-                        feedback: this.assessment[i][3],
+                        feedback: row.feedback_unfulfilled,
                         score: 0
                     };
                 }
