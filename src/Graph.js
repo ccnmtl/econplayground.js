@@ -381,7 +381,7 @@ class NonLinearDemandSupplyGraph extends Graph {
             const f1Shadow = function(x) {
                 const slope = me.options.gLine1SlopeInitial || 1;
                 return (x - 2.5) * slope + 2.5;
-            }
+            };
 
             const l1fShadow = this.board.create(
                 'functiongraph',
@@ -596,7 +596,7 @@ class ConsumptionLeisureGraph extends Graph {
         if (this.options.shadow && this.options.gDisplayShadow) {
             const f1Shadow = function(x) {
                 return (me.options.gA1Initial - x) * me.options.gA2Initial;
-            }
+            };
 
             this.board.create('functiongraph', [f1Shadow, -30, 30], {
                 name: this.options.gLine1Label,
@@ -682,7 +682,7 @@ class ConsumptionSavingGraph extends Graph {
             const f1Shadow = function(x) {
                 return me.options.gA2Initial + (1 + me.options.gA4Initial) *
                     (me.options.gA1Initial + me.options.gA3Initial - x);
-            }
+            };
 
             this.board.create('functiongraph', [f1Shadow, -30, 30], {
                 withLabel: false,

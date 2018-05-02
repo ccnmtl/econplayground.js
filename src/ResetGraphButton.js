@@ -8,7 +8,7 @@ export default class ResetGraphButton extends React.Component {
                     onClick={this.onClick.bind(this)}>
                 Reset Graph
             </button>
-        )
+        );
     }
     onClick(evt) {
         evt.preventDefault();
