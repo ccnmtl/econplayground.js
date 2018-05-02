@@ -51,22 +51,14 @@ export default class GraphViewer extends React.Component {
 
         const token = Cookies.get('csrftoken');
 
-        const initialState = {
-            gCobbDouglasA: this.props.gCobbDouglasAInitial,
-            gCobbDouglasL: this.props.gCobbDouglasLInitial,
-            gCobbDouglasK: this.props.gCobbDouglasKInitial,
-            gCobbDouglasAlpha: this.props.gCobbDouglasAlphaInitial,
-            gA1: this.props.gA1Initial,
-            gA2: this.props.gA2Initial,
-            gA3: this.props.gA3Initial,
-            gA4: this.props.gA4Initial,
-            gLine1OffsetX: this.props.gLine1OffsetXInitial,
-            gLine1OffsetY: this.props.gLine1OffsetYInitial,
-            gLine2OffsetX: this.props.gLine2OffsetXInitial,
-            gLine2OffsetY: this.props.gLine2OffsetYInitial,
-            gLine1Slope: this.props.gLine1SlopeInitial,
-            gLine2Slope: this.props.gLine2SlopeInitial
-        };
+        let initialState = {};
+
+        let key = '';
+        for (key in this.props) {
+            if (key.endsWith('Initial')) {
+                initialState[key.replace(/Initial$/, '')] = this.props[key];
+            }
+        }
 
         let titleEl = <h5></h5>;
         let descriptionEl = <p></p>;
