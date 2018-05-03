@@ -130,12 +130,15 @@ class Viewer extends Component {
             gDisplayIntersection1={this.state.gDisplayIntersection1}
             gDisplayIntersection1Initial={this.state.gDisplayIntersection1Initial}
             gIntersectionLabel={this.state.gIntersectionLabel}
+            gIntersectionLabelInitial={this.state.gIntersectionLabelInitial}
             gDisplayIntersection2={this.state.gDisplayIntersection2}
             gDisplayIntersection2Initial={this.state.gDisplayIntersection2Initial}
             gIntersection2Label={this.state.gIntersection2Label}
+            gIntersection2LabelInitial={this.state.gIntersection2LabelInitial}
             gDisplayIntersection3={this.state.gDisplayIntersection3}
             gDisplayIntersection3Initial={this.state.gDisplayIntersection3Initial}
             gIntersection3Label={this.state.gIntersection3Label}
+            gIntersection3LabelInitial={this.state.gIntersection3LabelInitial}
             gNeedsSubmit={this.state.gNeedsSubmit}
 
             gDisplayShadow={this.state.gDisplayShadow}
@@ -145,10 +148,19 @@ class Viewer extends Component {
             gIntersection2VertLineLabel={this.state.gIntersection2VertLineLabel}
             gIntersection3HorizLineLabel={this.state.gIntersection3HorizLineLabel}
             gIntersection3VertLineLabel={this.state.gIntersection3VertLineLabel}
+            gIntersectionHorizLineLabelInitial={this.state.gIntersectionHorizLineLabelInitial}
+            gIntersectionVertLineLabelInitial={this.state.gIntersectionVertLineLabelInitial}
+            gIntersection2HorizLineLabelInitial={this.state.gIntersection2HorizLineLabelInitial}
+            gIntersection2VertLineLabelInitial={this.state.gIntersection2VertLineLabelInitial}
+            gIntersection3HorizLineLabelInitial={this.state.gIntersection3HorizLineLabelInitial}
+            gIntersection3VertLineLabelInitial={this.state.gIntersection3VertLineLabelInitial}
             gDisplayFeedback={this.state.gDisplayFeedback}
             gLine1Label={this.state.gLine1Label}
             gLine2Label={this.state.gLine2Label}
             gLine3Label={this.state.gLine3Label}
+            gLine1LabelInitial={this.state.gLine1LabelInitial}
+            gLine2LabelInitial={this.state.gLine2LabelInitial}
+            gLine3LabelInitial={this.state.gLine3LabelInitial}
             gLine1Slope={this.state.gLine1Slope}
             gLine1SlopeInitial={this.state.gLine1SlopeInitial}
             gLine2Slope={this.state.gLine2Slope}
@@ -160,6 +172,8 @@ class Viewer extends Component {
             gLine3Dashed={this.state.gLine3Dashed}
             gXAxisLabel={this.state.gXAxisLabel}
             gYAxisLabel={this.state.gYAxisLabel}
+            gXAxisLabelInitial={this.state.gXAxisLabelInitial}
+            gYAxisLabelInitial={this.state.gYAxisLabelInitial}
             gLine1OffsetX={this.state.gLine1OffsetX}
             gLine1OffsetY={this.state.gLine1OffsetY}
             gLine1OffsetXInitial={this.state.gLine1OffsetXInitial}
