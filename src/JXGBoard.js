@@ -208,7 +208,7 @@ export default class JXGBoard extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentDidUpdate(prevProps) {
         const updateProps = [
             'gType',
             'gShowIntersection',
@@ -282,7 +282,7 @@ export default class JXGBoard extends React.Component {
         let needsUpdate = false;
         for (let i = 0; i < updateProps.length; i++) {
             let prop = updateProps[i];
-            if (this.props[prop] !== nextProps[prop]) {
+            if (this.props[prop] !== prevProps[prop]) {
                 needsUpdate = true;
                 break;
             }
@@ -290,94 +290,94 @@ export default class JXGBoard extends React.Component {
 
         if (needsUpdate) {
             this.renderJXBoard({
-                gType: nextProps.gType,
-                gShowIntersection: nextProps.gShowIntersection,
-                gDisplayIntersection1: nextProps.gDisplayIntersection1,
-                gDisplayIntersection1Initial: nextProps.gDisplayIntersection1Initial,
-                gIntersectionLabel: nextProps.gIntersectionLabel,
-                gDisplayIntersection2: nextProps.gDisplayIntersection2,
-                gDisplayIntersection2Initial: nextProps.gDisplayIntersection2Initial,
-                gIntersection2Label: nextProps.gIntersection2Label,
-                gDisplayIntersection3: nextProps.gDisplayIntersection3,
-                gDisplayIntersection3Initial: nextProps.gDisplayIntersection3Initial,
-                gIntersection3Label: nextProps.gIntersection3Label,
-                gDisplayShadow: nextProps.gDisplayShadow,
+                gType: this.props.gType,
+                gShowIntersection: this.props.gShowIntersection,
+                gDisplayIntersection1: this.props.gDisplayIntersection1,
+                gDisplayIntersection1Initial: this.props.gDisplayIntersection1Initial,
+                gIntersectionLabel: this.props.gIntersectionLabel,
+                gDisplayIntersection2: this.props.gDisplayIntersection2,
+                gDisplayIntersection2Initial: this.props.gDisplayIntersection2Initial,
+                gIntersection2Label: this.props.gIntersection2Label,
+                gDisplayIntersection3: this.props.gDisplayIntersection3,
+                gDisplayIntersection3Initial: this.props.gDisplayIntersection3Initial,
+                gIntersection3Label: this.props.gIntersection3Label,
+                gDisplayShadow: this.props.gDisplayShadow,
 
                 gIntersectionHorizLineLabel:
-                nextProps.gIntersectionHorizLineLabel,
+                this.props.gIntersectionHorizLineLabel,
                 gIntersectionVertLineLabel:
-                nextProps.gIntersectionVertLineLabel,
+                this.props.gIntersectionVertLineLabel,
 
                 gIntersection2HorizLineLabel:
-                nextProps.gIntersection2HorizLineLabel,
+                this.props.gIntersection2HorizLineLabel,
                 gIntersection2VertLineLabel:
-                nextProps.gIntersection2VertLineLabel,
+                this.props.gIntersection2VertLineLabel,
 
                 gIntersection3HorizLineLabel:
-                nextProps.gIntersection3HorizLineLabel,
+                this.props.gIntersection3HorizLineLabel,
                 gIntersection3VertLineLabel:
-                nextProps.gIntersection3VertLineLabel,
+                this.props.gIntersection3VertLineLabel,
 
-                gLine1Label: nextProps.gLine1Label,
-                gLine2Label: nextProps.gLine2Label,
-                gLine3Label: nextProps.gLine3Label,
-                gXAxisLabel: nextProps.gXAxisLabel,
-                gYAxisLabel: nextProps.gYAxisLabel,
-                gLine1Slope: nextProps.gLine1Slope,
-                gLine1SlopeInitial: nextProps.gLine1SlopeInitial,
-                gLine2Slope: nextProps.gLine2Slope,
-                gLine2SlopeInitial: nextProps.gLine2SlopeInitial,
-                gLine3Slope: nextProps.gLine3Slope,
-                gLine3SlopeInitial: nextProps.gLine3SlopeInitial,
-                gLine1OffsetX: nextProps.gLine1OffsetX,
-                gLine1OffsetY: nextProps.gLine1OffsetY,
-                gLine1OffsetXInitial: nextProps.gLine1OffsetXInitial,
-                gLine1OffsetYInitial: nextProps.gLine1OffsetYInitial,
-                gLine2OffsetX: nextProps.gLine2OffsetX,
-                gLine2OffsetY: nextProps.gLine2OffsetY,
-                gLine2OffsetXInitial: nextProps.gLine2OffsetXInitial,
-                gLine2OffsetYInitial: nextProps.gLine2OffsetYInitial,
-                gLine3OffsetX: nextProps.gLine3OffsetX,
-                gLine3OffsetY: nextProps.gLine3OffsetY,
-                gLine3OffsetXInitial: nextProps.gLine3OffsetXInitial,
-                gLine3OffsetYInitial: nextProps.gLine3OffsetYInitial,
-                gLine1Dashed: nextProps.gLine1Dashed,
-                gLine2Dashed: nextProps.gLine2Dashed,
-                gLine3Dashed: nextProps.gLine3Dashed,
-                gAlpha: nextProps.gAlpha,
-                gA1: nextProps.gA1,
-                gA1Initial: nextProps.gA1Initial,
-                gA2: nextProps.gA2,
-                gA2Initial: nextProps.gA2Initial,
-                gA3: nextProps.gA3,
-                gA3Initial: nextProps.gA3Initial,
-                gA4: nextProps.gA4,
-                gA4Initial: nextProps.gA4Initial,
-                gA5: nextProps.gA5,
-                gA: nextProps.gA,
-                gK: nextProps.gK,
-                gR: nextProps.gR,
-                gY1: nextProps.gY1,
-                gY2: nextProps.gY2,
-                gCobbDouglasA: nextProps.gCobbDouglasA,
-                gCobbDouglasAInitial: nextProps.gCobbDouglasAInitial,
-                gCobbDouglasAName: nextProps.gCobbDouglasAName,
-                gCobbDouglasL: nextProps.gCobbDouglasL,
-                gCobbDouglasLInitial: nextProps.gCobbDouglasLInitial,
-                gCobbDouglasLName: nextProps.gCobbDouglasLName,
-                gCobbDouglasK: nextProps.gCobbDouglasK,
-                gCobbDouglasKInitial: nextProps.gCobbDouglasKInitial,
-                gCobbDouglasKName: nextProps.gCobbDouglasKName,
-                gCobbDouglasAlpha: nextProps.gCobbDouglasAlpha,
-                gCobbDouglasAlphaInitial: nextProps.gCobbDouglasAlphaInitial,
-                gNeedsSubmit: nextProps.gNeedsSubmit,
+                gLine1Label: this.props.gLine1Label,
+                gLine2Label: this.props.gLine2Label,
+                gLine3Label: this.props.gLine3Label,
+                gXAxisLabel: this.props.gXAxisLabel,
+                gYAxisLabel: this.props.gYAxisLabel,
+                gLine1Slope: this.props.gLine1Slope,
+                gLine1SlopeInitial: this.props.gLine1SlopeInitial,
+                gLine2Slope: this.props.gLine2Slope,
+                gLine2SlopeInitial: this.props.gLine2SlopeInitial,
+                gLine3Slope: this.props.gLine3Slope,
+                gLine3SlopeInitial: this.props.gLine3SlopeInitial,
+                gLine1OffsetX: this.props.gLine1OffsetX,
+                gLine1OffsetY: this.props.gLine1OffsetY,
+                gLine1OffsetXInitial: this.props.gLine1OffsetXInitial,
+                gLine1OffsetYInitial: this.props.gLine1OffsetYInitial,
+                gLine2OffsetX: this.props.gLine2OffsetX,
+                gLine2OffsetY: this.props.gLine2OffsetY,
+                gLine2OffsetXInitial: this.props.gLine2OffsetXInitial,
+                gLine2OffsetYInitial: this.props.gLine2OffsetYInitial,
+                gLine3OffsetX: this.props.gLine3OffsetX,
+                gLine3OffsetY: this.props.gLine3OffsetY,
+                gLine3OffsetXInitial: this.props.gLine3OffsetXInitial,
+                gLine3OffsetYInitial: this.props.gLine3OffsetYInitial,
+                gLine1Dashed: this.props.gLine1Dashed,
+                gLine2Dashed: this.props.gLine2Dashed,
+                gLine3Dashed: this.props.gLine3Dashed,
+                gAlpha: this.props.gAlpha,
+                gA1: this.props.gA1,
+                gA1Initial: this.props.gA1Initial,
+                gA2: this.props.gA2,
+                gA2Initial: this.props.gA2Initial,
+                gA3: this.props.gA3,
+                gA3Initial: this.props.gA3Initial,
+                gA4: this.props.gA4,
+                gA4Initial: this.props.gA4Initial,
+                gA5: this.props.gA5,
+                gA: this.props.gA,
+                gK: this.props.gK,
+                gR: this.props.gR,
+                gY1: this.props.gY1,
+                gY2: this.props.gY2,
+                gCobbDouglasA: this.props.gCobbDouglasA,
+                gCobbDouglasAInitial: this.props.gCobbDouglasAInitial,
+                gCobbDouglasAName: this.props.gCobbDouglasAName,
+                gCobbDouglasL: this.props.gCobbDouglasL,
+                gCobbDouglasLInitial: this.props.gCobbDouglasLInitial,
+                gCobbDouglasLName: this.props.gCobbDouglasLName,
+                gCobbDouglasK: this.props.gCobbDouglasK,
+                gCobbDouglasKInitial: this.props.gCobbDouglasKInitial,
+                gCobbDouglasKName: this.props.gCobbDouglasKName,
+                gCobbDouglasAlpha: this.props.gCobbDouglasAlpha,
+                gCobbDouglasAlphaInitial: this.props.gCobbDouglasAlphaInitial,
+                gNeedsSubmit: this.props.gNeedsSubmit,
 
-                l1SubmissionOffset: getL1SubmissionOffset(nextProps.submission),
-                l2SubmissionOffset: getL2SubmissionOffset(nextProps.submission),
-                submission: nextProps.submission,
-                isSubmitted: !!nextProps.submission,
+                l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
+                l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
+                submission: this.props.submission,
+                isSubmitted: !!this.props.submission,
 
-                shadow: nextProps.shadow
+                shadow: this.props.shadow
             });
         }
     }
