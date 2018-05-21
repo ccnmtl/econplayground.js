@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "babel-jest": "~23.0.0-alpha.0",
-    "babel-loader": "~8.0.0-beta.3",
+    "babel-loader": "~7.1.2",
     "eslint": "~4.19.0",
     "eslint-config-react-app": "~2.1.0",
     "eslint-loader": "~2.0.0",
