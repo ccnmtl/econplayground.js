@@ -34,6 +34,9 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 showOverrideButton={true}
                                 overrideLabel='Vertical'
                                 overrideValue={999}
+                                showOverride2Button={true}
+                                override2Label='Horizontal'
+                                override2Value={0}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                 </div>
