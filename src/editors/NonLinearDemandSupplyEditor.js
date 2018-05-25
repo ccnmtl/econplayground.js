@@ -10,6 +10,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
         const tex = 'MP_N = (1 - α)AK^α N^{-α}';
         return (
             <div>
+                <h2>Function</h2>
                 {this.props.isInstructor && (
                 <MathJax.Context
                     script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
@@ -21,9 +22,10 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                     <MathJax.Node>{tex}</MathJax.Node>
                 </MathJax.Context>
                 )}
-
                 {this.props.displaySliders && (
-                <div className="form-row">
+                <div>
+                    <h2>Slope</h2>
+                    <div className="form-row">
                         <div className="col-sm-4">
                             <label htmlFor="gLine1Slope">
                                 Orange line slope
@@ -39,39 +41,37 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 override2Value={0}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
-                </div>
-                )}
-
-                {this.props.displaySliders && (
-                <div className="row">
-                    <div className="col-sm-4">
-                        <label htmlFor="gCobbDouglasA">
-                            A
-                        </label>
-                        <RangeEditor
-                            dataId="gCobbDouglasA"
-                            value={this.props.gCobbDouglasA}
-                            handler={handleFormUpdate.bind(this)}
-                            min={0.1}
-                            max={5} />
-                    </div>
-
-                <div className="col-sm-4">
-                    <label htmlFor="gCobbDouglasK">
-                        K
-                    </label>
-                    <RangeEditor
-                        dataId="gCobbDouglasK"
-                        value={this.props.gCobbDouglasK}
-                        handler={handleFormUpdate.bind(this)}
-                        min={0.1}
-                        max={5} />
-                </div>
+                        <div className="col-sm-4">
+                            <label htmlFor="gCobbDouglasA">
+                                A
+                            </label>
+                            <RangeEditor
+                                dataId="gCobbDouglasA"
+                                value={this.props.gCobbDouglasA}
+                                handler={handleFormUpdate.bind(this)}
+                                min={0.1}
+                                max={5} />
                         </div>
+                        <div className="col-sm-4">
+                            <label htmlFor="gCobbDouglasK">
+                                K
+                            </label>
+                            <RangeEditor
+                                dataId="gCobbDouglasK"
+                                value={this.props.gCobbDouglasK}
+                                handler={handleFormUpdate.bind(this)}
+                                min={0.1}
+                                max={5} />
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
                 )}
 
                 {this.props.displayLabels && (
-                <div className="row">
+                <div>
+                    <h2>Labels</h2>
+                    <div className="row">
                     <EditableControl
                         id="gLine1Label"
                         name="Orange line label"
@@ -89,7 +89,9 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
-                        </div>
+                    </div>
+                    <hr/>
+                </div>
                 )}
 
                 {this.props.displayLabels && (
@@ -102,11 +104,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
-                        </div>
-                )}
-
-                {this.props.displayLabels && (
-                <div className="row">
                     <EditableControl
                         id="gIntersectionHorizLineLabel"
                         name="Intersection&apos;s horizontal line label"

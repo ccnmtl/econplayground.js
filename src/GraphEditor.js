@@ -23,18 +23,8 @@ export default class GraphEditor extends React.Component {
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                <CommonGraphEditor
-            gTitle={this.props.gTitle}
-            gInstructorNotes={this.props.gInstructorNotes}
-            gDescription={this.props.gDescription}
-            gAssignmentType={this.props.gAssignmentType}
-            gNeedsSubmit={this.props.gNeedsSubmit}
-            gDisplayFeedback={this.props.gDisplayFeedback}
-            gShowIntersection={this.props.gShowIntersection}
-            gDisplayShadow={this.props.gDisplayShadow}
-            gIsPublished={this.props.gIsPublished}
-            updateGraph={this.props.updateGraph}
-                />
+					<div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <JXGBoard
             id={'editing-graph'}
             width={562.5}
@@ -66,6 +56,20 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasYName={this.props.gCobbDouglasYName}
 
                 />
+                <CommonGraphEditor
+            gTitle={this.props.gTitle}
+            gInstructorNotes={this.props.gInstructorNotes}
+            gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            gDisplayFeedback={this.props.gDisplayFeedback}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
+            gIsPublished={this.props.gIsPublished}
+            updateGraph={this.props.updateGraph}
+                />
+                        </div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <NonLinearDemandSupplyEditor
             displayLabels={true}
             displaySliders={true}
@@ -88,6 +92,8 @@ export default class GraphEditor extends React.Component {
                 <button type="button"
             className="btn btn-primary btn-sm"
             onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                    </div>
+                  </div>
 
                 </form>
                 </div>;
