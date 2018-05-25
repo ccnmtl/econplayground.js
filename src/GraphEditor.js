@@ -90,7 +90,7 @@ export default class GraphEditor extends React.Component {
                                 onClick={this.handleSaveGraph.bind(this)}>Save</button>
                     </form>
                 </div>
-            )
+            );
         } else if (this.props.gType === 1) {
             return <div className="GraphEditor">
 n                {this.title()}
