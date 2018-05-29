@@ -11,6 +11,9 @@ export default class ConsumptionSavingEditor extends React.Component {
 
         return (
             <div>
+                <div className="function">
+                <h2>Function</h2>
+                <div className="row">
                 {this.props.isInstructor &&
                     (<MathJax.Context
                             script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
@@ -22,6 +25,7 @@ export default class ConsumptionSavingEditor extends React.Component {
                             <MathJax.Node>{tex}</MathJax.Node>
                         </MathJax.Context>
                     )}
+                </div>
 
                 <div className="row">
                 <div className="col-sm-6">
@@ -40,7 +44,11 @@ export default class ConsumptionSavingEditor extends React.Component {
                 </div>
                 </div>
                 </div>
+                <hr/>
+                </div>
 
+                <div className="slope">
+                <h2>Slope</h2>
                 {this.props.displaySliders && (
                 <div className="row">
                     <div className="col-sm-4">
@@ -108,7 +116,11 @@ export default class ConsumptionSavingEditor extends React.Component {
                     </div>
                         </div>
                 )}
+                <hr/>
+                </div>
 
+                <div className="labes">
+                <h2>Labels</h2>
                 {this.props.displayLabels && (
                         <div className="row">
                         <EditableControl
@@ -156,6 +168,7 @@ export default class ConsumptionSavingEditor extends React.Component {
                         />
                         </div>
                 )}
+                </div>
                 </div>
         );
     }
