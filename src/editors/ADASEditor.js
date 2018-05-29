@@ -8,6 +8,8 @@ export default class ADASEditor extends React.Component {
     render() {
         return (
             <div>
+                <div className="slope">
+                <h2>Slope</h2>
                 {this.props.displaySliders && (
                     <div className="form-row">
                         <div className="col-sm-4">
@@ -71,7 +73,11 @@ export default class ADASEditor extends React.Component {
                         </div>
                     </div>
                 )}
+                <hr/>
+                </div>
 
+                <div className="Lines">
+                <h2>Lines</h2>
                 <div className="row">
                     <div className="col-sm-3">
                         <div className="form-check">
@@ -157,7 +163,11 @@ export default class ADASEditor extends React.Component {
                     </div>
                 </div>
             )}
+                <hr/>
+                </div>
 
+            <div className="labels">
+            <h2>Labels</h2>
             {this.props.displayLabels && (
                 <div className="row">
                     <EditableControl
@@ -316,6 +326,7 @@ export default class ADASEditor extends React.Component {
                     </div>
             )}
 
+            </div>
             </div>
         );
     }
