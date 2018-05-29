@@ -8,6 +8,8 @@ export default class DemandSupplyEditor extends React.Component {
     render() {
         return <React.Fragment>
             {this.props.displaySliders && (
+                <div>
+                <h2>Slope</h2>
                 <div className="form-row">
                     <div className="col-sm-4">
                         <label htmlFor="gLine1Slope">
@@ -47,10 +49,13 @@ export default class DemandSupplyEditor extends React.Component {
                         </div>
                     </div>
                 </div>
+                </div>
             )}
 
         {this.props.displayLabels && (
             <React.Fragment>
+                <div>
+                <h2>Labels</h2>
                 <div className="row">
                     <EditableControl
                         id="gLine1Label"
@@ -120,6 +125,7 @@ export default class DemandSupplyEditor extends React.Component {
                         isInstructor={true}
                         updateGraph={this.props.updateGraph}
                         />
+                </div>
                 </div>
             </React.Fragment>
         )}
