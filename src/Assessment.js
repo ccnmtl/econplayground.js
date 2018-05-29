@@ -126,4 +126,29 @@ export default class Assessment {
 
         return null;
     }
+
+    // Remove the leading 'g' and make lowercase.
+    translateKey(key) {
+        return key.replace(/^g/, '').toLowerCase();
+    }
+
+    /**
+     * Assess the given state.
+     */
+    evalState(state) {
+        let result = null;
+
+        for (let key in state) {
+            if (key.endsWith('Label')) {
+                result = this.evalAction({
+                    name: this.translateKey(key),
+                    value: state[key]
+                });
+
+                if (result) {
+                    console.log(result);
+                }
+            }
+        }
+    }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import commonmark from 'commonmark';
+import Assessment from './Assessment';
 import ADASEditor from './editors/ADASEditor';
 import CobbDouglasEditor from './editors/CobbDouglasEditor';
 import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
@@ -622,6 +623,9 @@ export default class GraphViewer extends React.Component {
             });
         } else {
             // "playground" graph submitted.
+            let a = new Assessment(this.props.assessment);
+
+            a.evalState(this.props);
         }
     }
 }
@@ -724,6 +728,7 @@ GraphViewer.propTypes = {
     gCobbDouglasAlphaInitial: PropTypes.number,
     gCobbDouglasYName: PropTypes.string,
 
+    assessment: PropTypes.object,
     submission: PropTypes.object,
     updateGraph: PropTypes.func.isRequired,
     choice: PropTypes.number,
