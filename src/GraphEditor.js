@@ -93,7 +93,7 @@ export default class GraphEditor extends React.Component {
             );
         } else if (this.props.gType === 1) {
             return <div className="GraphEditor">
-n                {this.title()}
+                {this.title()}
                 <form>
                 <CommonGraphEditor
             gTitle={this.props.gTitle}
