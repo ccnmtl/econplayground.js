@@ -5,11 +5,10 @@ import CobbDouglasEditor from './editors/CobbDouglasEditor';
 import NonLinearDemandSupplyEditor from './editors/NonLinearDemandSupplyEditor';
 import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
+import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import JXGBoard from './JXGBoard';
-import EditableControl from './form-components/EditableControl';
-import RangeEditor from './form-components/RangeEditor';
-import {handleFormUpdate, displayGraphType} from './utils';
+import {displayGraphType} from './utils';
 
 export default class GraphEditor extends React.Component {
     title() {
@@ -19,9 +18,82 @@ export default class GraphEditor extends React.Component {
         if (!this.props.showing) {
             return null;
         }
-        if (this.props.gType === 1) {
+        if (this.props.gType === 0) {
+            // Demand-Supply
+            return (
+                <div className="GraphEditor">
+                    {this.title()}
+                    <form>
+                        <CommonGraphEditor
+                            gTitle={this.props.gTitle}
+                            gInstructorNotes={this.props.gInstructorNotes}
+                            gDescription={this.props.gDescription}
+                            gAssignmentType={this.props.gAssignmentType}
+                            gNeedsSubmit={this.props.gNeedsSubmit}
+                            gDisplayFeedback={this.props.gDisplayFeedback}
+                            gShowIntersection={this.props.gShowIntersection}
+                            gDisplayShadow={this.props.gDisplayShadow}
+                            gIsPublished={this.props.gIsPublished}
+                            updateGraph={this.props.updateGraph}
+                            />
+                        <JXGBoard
+                            id={'editing-graph'}
+                            width={562.5}
+                            height={300}
+                            gType={this.props.gType}
+                            gLine1Label={this.props.gLine1Label}
+                            gLine2Label={this.props.gLine2Label}
+                            gXAxisLabel={this.props.gXAxisLabel}
+                            gYAxisLabel={this.props.gYAxisLabel}
+                            gLine1Slope={this.props.gLine1Slope}
+                            gLine2Slope={this.props.gLine2Slope}
+                            gLine1OffsetX={this.props.gLine1OffsetX}
+                            gLine1OffsetY={this.props.gLine1OffsetY}
+                            gLine2OffsetX={this.props.gLine2OffsetX}
+                            gLine2OffsetY={this.props.gLine2OffsetY}
+                            gShowIntersection={this.props.gShowIntersection}
+                            gIntersectionLabel={this.props.gIntersectionLabel}
+                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                            gCobbDouglasA={this.props.gCobbDouglasA}
+                            gCobbDouglasAName={this.props.gCobbDouglasAName}
+                            gCobbDouglasL={this.props.gCobbDouglasL}
+                            gCobbDouglasLName={this.props.gCobbDouglasLName}
+                            gCobbDouglasK={this.props.gCobbDouglasK}
+                            gCobbDouglasKName={this.props.gCobbDouglasKName}
+                            gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                            />
+
+                        <DemandSupplyEditor
+                            displayLabels={true}
+                            displaySliders={true}
+                            isInstructor={true}
+                            gLine1Label={this.props.gLine1Label}
+                            gLine2Label={this.props.gLine2Label}
+                            gLine1Slope={this.props.gLine1Slope}
+                            gLine2Slope={this.props.gLine2Slope}
+                            gLine1OffsetX={this.props.gLine1OffsetX}
+                            gLine1OffsetY={this.props.gLine1OffsetY}
+                            gLine2OffsetX={this.props.gLine2OffsetX}
+                            gLine2OffsetY={this.props.gLine2OffsetY}
+                            gXAxisLabel={this.props.gXAxisLabel}
+                            gYAxisLabel={this.props.gYAxisLabel}
+                            gIntersectionLabel={this.props.gIntersectionLabel}
+                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                            updateGraph={this.props.updateGraph}
+                            />
+
+                        <button type="button"
+                                className="btn btn-primary btn-sm"
+                                onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                    </form>
+                </div>
+            );
+        } else if (this.props.gType === 1) {
             return <div className="GraphEditor">
-                {this.title()}
+n                {this.title()}
                 <form>
                 <CommonGraphEditor
             gTitle={this.props.gTitle}
@@ -395,285 +467,9 @@ export default class GraphEditor extends React.Component {
 
                 </form>
                 </div>;
+        } else {
+            return <div>Unknown graph type: {this.props.gType}</div>;
         }
-        return (
-            <div className="GraphEditor">
-                {this.title()}
-                <form>
-                    <CommonGraphEditor
-                         gTitle={this.props.gTitle}
-                         gInstructorNotes={this.props.gInstructorNotes}
-                         gDescription={this.props.gDescription}
-                         gAssignmentType={this.props.gAssignmentType}
-                         gNeedsSubmit={this.props.gNeedsSubmit}
-                         gDisplayFeedback={this.props.gDisplayFeedback}
-                         gShowIntersection={this.props.gShowIntersection}
-                         gDisplayShadow={this.props.gDisplayShadow}
-                         gIsPublished={this.props.gIsPublished}
-                         updateGraph={this.props.updateGraph}
-                         />
-                    <JXGBoard
-                         id={'editing-graph'}
-                         width={562.5}
-                         height={300}
-                         gType={this.props.gType}
-                         gLine1Label={this.props.gLine1Label}
-                         gLine2Label={this.props.gLine2Label}
-                         gXAxisLabel={this.props.gXAxisLabel}
-                         gYAxisLabel={this.props.gYAxisLabel}
-                         gLine1Slope={this.props.gLine1Slope}
-                         gLine2Slope={this.props.gLine2Slope}
-                         gLine1OffsetX={this.props.gLine1OffsetX}
-                         gLine1OffsetY={this.props.gLine1OffsetY}
-                         gLine2OffsetX={this.props.gLine2OffsetX}
-                         gLine2OffsetY={this.props.gLine2OffsetY}
-                         gShowIntersection={this.props.gShowIntersection}
-                         gIntersectionLabel={this.props.gIntersectionLabel}
-                         gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                         gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-
-                        gCobbDouglasA={this.props.gCobbDouglasA}
-                        gCobbDouglasAName={this.props.gCobbDouglasAName}
-                        gCobbDouglasL={this.props.gCobbDouglasL}
-                        gCobbDouglasLName={this.props.gCobbDouglasLName}
-                        gCobbDouglasK={this.props.gCobbDouglasK}
-                        gCobbDouglasKName={this.props.gCobbDouglasKName}
-                        gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                         />
-
-                    <div className="form-row">
-                        <div className="col-sm-4">
-                            <label htmlFor="gLine1Slope">
-                                Orange line slope
-                            </label>
-                            <RangeEditor
-                                dataId="gLine1Slope"
-                                value={this.props.gLine1Slope}
-                                min={0}
-                                max={5}
-                                showOverrideButton={true}
-                                overrideLabel='Vertical'
-                                overrideValue={999}
-                                showOverride2Button={true}
-                                override2Label='Horizontal'
-                                override2Value={0}
-                                handler={handleFormUpdate.bind(this)} />
-                        </div>
-
-                        <div className="col-sm-4">
-                            <div className="form-group">
-                                <label htmlFor="gLine2Slope">
-                                    Blue line slope
-                                </label>
-                                <RangeEditor
-                                    dataId="gLine2Slope"
-                                    min={-5}
-                                    max={0}
-                                    value={this.props.gLine2Slope}
-                                    showOverrideButton={true}
-                                    overrideLabel='Vertical'
-                                    overrideValue={-999}
-                                    showOverride2Button={true}
-                                    override2Label='Horizontal'
-                                    override2Value={0}
-                                    handler={handleFormUpdate.bind(this)} />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <EditableControl
-                            id="gLine1Label"
-                            name="Orange line label"
-                            value={this.props.gLine1Label}
-                            valueEditable={true}
-                            isInstructor={true}
-                            updateGraph={this.props.updateGraph}
-                            />
-
-                        <EditableControl
-                            id="gLine2Label"
-                            name="Blue line label"
-                            value={this.props.gLine2Label}
-                            valueEditable={true}
-                            isInstructor={true}
-                            updateGraph={this.props.updateGraph}
-                            />
-                    </div>
-
-                    <div className="row">
-                        <EditableControl
-                            id="gXAxisLabel"
-                            name="X-axis label"
-                            value={this.props.gXAxisLabel}
-                            valueEditable={true}
-                            isInstructor={true}
-                            updateGraph={this.props.updateGraph}
-                            />
-
-                        <EditableControl
-                            id="gYAxisLabel"
-                            name="Y-axis label"
-                            value={this.props.gYAxisLabel}
-                            valueEditable={true}
-                            isInstructor={true}
-                            updateGraph={this.props.updateGraph}
-                            />
-                    </div>
-
-                    <div className="row">
-                        <EditableControl
-                            id="gIntersectionLabel"
-                            name="Intersection point label"
-                            value={this.props.gIntersectionLabel}
-                            valueEditable={true}
-                            isInstructor={true}
-                            updateGraph={this.props.updateGraph}
-                            />
-                    </div>
-
-                    <div className="row">
-                        <EditableControl
-                            id="gIntersectionHorizLineLabel"
-                            name="Intersection&apos;s horizontal line label"
-                            value={this.props.gIntersectionHorizLineLabel}
-                            valueEditable={true}
-                            isInstructor={true}
-                            updateGraph={this.props.updateGraph}
-                            />
-
-                        <EditableControl
-                            id="gIntersectionVertLineLabel"
-                            name="Intersection&apos;s vertical line label"
-                            value={this.props.gIntersectionVertLineLabel}
-                            valueEditable={true}
-                            isInstructor={true}
-                            updateGraph={this.props.updateGraph}
-                            />
-                    </div>
-
-                    <hr />
-                    <h4>Feedback</h4>
-
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <div className="form-group">
-                                <label htmlFor="gLine1FeedbackIncrease">
-                                    Orange line feedback when moved up
-                                </label>
-                                <textarea id="gLine1FeedbackIncrease"
-                                          onChange={handleFormUpdate.bind(this)}
-                                          value={this.props.gLine1FeedbackIncrease}
-                                          className="form-control form-control-sm"></textarea>
-
-                                <div className="form-inline mt-sm-1">
-                                    <label htmlFor="gLine1IncreaseScore">
-                                        Score:
-                                    </label>
-                                    <input id="gLine1IncreaseScore"
-                                           type="number"
-                                           step="0.01"
-                                           min="0"
-                                           max="1"
-                                           onChange={handleFormUpdate.bind(this)}
-                                           value={this.props.gLine1IncreaseScore}
-                                           aria-describedby="gLine1IncreaseScoreHelpBlock"
-                                           className="form-control form-control-sm ml-sm-2" />
-                                    <small id="gLine1IncreaseScoreHelpBlock"
-                                           className="form-text text-muted ml-sm-2">
-                                        Percentage of total between 0 and 1. e.g.: 0.8 = 80%
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-sm-6">
-                            <div className="form-group">
-                                <label htmlFor="gLine2FeedbackIncrease">
-                                    Blue line feedback when moved up
-                                </label>
-                                <textarea id="gLine2FeedbackIncrease"
-                                          onChange={handleFormUpdate.bind(this)}
-                                          value={this.props.gLine2FeedbackIncrease}
-                                          className="form-control form-control-sm" />
-
-                                <div className="form-inline mt-sm-1">
-                                    <label htmlFor="gLine2IncreaseScore">
-                                        Score:
-                                    </label>
-                                    <input id="gLine2IncreaseScore"
-                                           type="number"
-                                           step="0.01"
-                                           min="0"
-                                           max="1"
-                                           onChange={handleFormUpdate.bind(this)}
-                                           value={this.props.gLine2IncreaseScore}
-                                           className="form-control form-control-sm ml-sm-2" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <div className="form-group">
-                                <label htmlFor="gLine1FeedbackDecrease">
-                                    Orange line feedback when moved down
-                                </label>
-                                <textarea id="gLine1FeedbackDecrease"
-                                          onChange={handleFormUpdate.bind(this)}
-                                          value={this.props.gLine1FeedbackDecrease}
-                                          className="form-control form-control-sm" />
-
-                                <div className="form-inline mt-sm-1">
-                                    <label htmlFor="gLine1DecreaseScore">
-                                        Score:
-                                    </label>
-                                    <input id="gLine1DecreaseScore"
-                                           type="number"
-                                           step="0.01"
-                                           min="0"
-                                           max="1"
-                                           onChange={handleFormUpdate.bind(this)}
-                                           value={this.props.gLine1DecreaseScore}
-                                           className="form-control form-control-sm ml-sm-2" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-sm-6">
-                            <div className="form-group">
-                                <label htmlFor="gLine2FeedbackDecrease">
-                                    Blue line feedback when moved down
-                                </label>
-                                <textarea id="gLine2FeedbackDecrease"
-                                          onChange={handleFormUpdate.bind(this)}
-                                          value={this.props.gLine2FeedbackDecrease}
-                                          className="form-control form-control-sm"></textarea>
-
-                                <div className="form-inline mt-sm-1">
-                                    <label htmlFor="gLine2DecreaseScore">
-                                        Score:
-                                    </label>
-                                    <input id="gLine2DecreaseScore"
-                                           type="number"
-                                           step="0.01"
-                                           min="0"
-                                           max="1"
-                                           onChange={handleFormUpdate.bind(this)}
-                                           value={this.props.gLine2DecreaseScore}
-                                           className="form-control form-control-sm ml-sm-2" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="button"
-                            className="btn btn-primary btn-sm"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                </form>
-            </div>
-        )
     }
     handleSaveGraph() {
         this.props.saveGraph();

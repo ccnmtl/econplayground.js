@@ -6,15 +6,13 @@ import ADASEditor from './editors/ADASEditor';
 import CobbDouglasEditor from './editors/CobbDouglasEditor';
 import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
+import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import NonLinearDemandSupplyEditor from './editors/NonLinearDemandSupplyEditor';
 import ExportGraphButton from './ExportGraphButton';
 import ResetGraphButton from './ResetGraphButton';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
-import RangeEditor from './form-components/RangeEditor';
-import {
-    authedFetch, getOrCreateSubmission, handleFormUpdate
-} from './utils';
+import {authedFetch, getOrCreateSubmission} from './utils';
 
 /**
  * This component is used to view an econgraph object.
@@ -76,7 +74,103 @@ export default class GraphViewer extends React.Component {
             descriptionEl = <p dangerouslySetInnerHTML={{__html:description}}></p>;
         }
 
-        if (this.props.gType === 1) {
+        if (this.props.gType === 0) {
+            // Demand-Supply
+            return (
+                <div className="GraphViewer">
+                    {titleEl}
+                    {descriptionEl}
+                    <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
+                        <input type="hidden" name="csrfmiddlewaretoken" value={token} />
+                        <input type="hidden" name="score" value={this.props.value} />
+                        <input type="hidden" name="next" value={successUrl} />
+                        <input type="hidden" name="launchUrl" value={launchUrl} />
+                        <JXGBoard
+                            id={'editing-graph'}
+                            width={562.5}
+                            height={300}
+                            submission={this.props.submission}
+                            shadow={!isInstructor}
+
+                            gType={this.props.gType}
+                            gLine1Label={this.props.gLine1Label}
+                            gLine2Label={this.props.gLine2Label}
+                            gXAxisLabel={this.props.gCobbDouglasLName}
+                            gYAxisLabel={this.props.gCobbDouglasYName}
+                            gLine1Slope={this.props.gLine1Slope}
+                            gLine1SlopeInitial={this.props.gLine1SlopeInitial}
+                            gLine2Slope={this.props.gLine2Slope}
+                            gLine2SlopeInitial={this.props.gLine2SlopeInitial}
+                            gLine1OffsetX={this.props.gLine1OffsetX}
+                            gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
+                            gLine1OffsetY={this.props.gLine1OffsetY}
+                            gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
+                            gLine2OffsetX={this.props.gLine2OffsetX}
+                            gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
+                            gLine2OffsetY={this.props.gLine2OffsetY}
+                            gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
+                            gNeedsSubmit={this.props.gNeedsSubmit}
+                            gShowIntersection={this.props.gShowIntersection}
+                            gDisplayShadow={this.props.gDisplayShadow}
+                            gIntersectionLabel={this.props.gIntersectionLabel}
+                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                            gCobbDouglasA={this.props.gCobbDouglasA}
+                            gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
+                            gCobbDouglasAName={this.props.gCobbDouglasAName}
+                            gCobbDouglasL={this.props.gCobbDouglasL}
+                            gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
+                            gCobbDouglasLName={this.props.gCobbDouglasLName}
+                            gCobbDouglasK={this.props.gCobbDouglasK}
+                            gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
+                            gCobbDouglasKName={this.props.gCobbDouglasKName}
+                            gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                            gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
+                            gCobbDouglasYName={this.props.gCobbDouglasYName}
+                            />
+
+                        <DemandSupplyEditor
+                            isInstructor={isInstructor}
+                            displayLabels={displayLabels}
+                            displaySliders={displaySliders}
+                            gLine1Label={this.props.gLine1Label}
+                            gLine2Label={this.props.gLine2Label}
+                            gLine1Slope={this.props.gLine1Slope}
+                            gLine2Slope={this.props.gLine2Slope}
+                            gLine1OffsetX={this.props.gLine1OffsetX}
+                            gLine1OffsetY={this.props.gLine1OffsetY}
+                            gLine2OffsetX={this.props.gLine2OffsetX}
+                            gLine2OffsetY={this.props.gLine2OffsetY}
+                            gXAxisLabel={this.props.gXAxisLabel}
+                            gYAxisLabel={this.props.gYAxisLabel}
+                            gIntersectionLabel={this.props.gIntersectionLabel}
+                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                            updateGraph={this.props.updateGraph}
+                            />
+
+                        <ResetGraphButton
+                            initialState={initialState}
+                            updateGraph={this.props.updateGraph} />
+
+                        <ExportGraphButton />
+
+                        <hr style={{
+                                display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
+                            }} />
+
+                        <button className="btn btn-primary btn-sm"
+                                disabled={!this.props.choice}
+                                style={{
+                                    marginTop: '1em',
+                                    display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
+                                }}
+                                type="submit">Submit</button>
+                    </form>
+                </div>
+            );
+        } else if (this.props.gType === 1) {
             return (
                 <div className="GraphViewer">
                     {titleEl}
@@ -545,249 +639,9 @@ export default class GraphViewer extends React.Component {
             type="submit">Submit</button>
                 </form>
                 </div>;
+        } else {
+            return <div>Unknown graph type: {this.props.gType}</div>;
         }
-
-        return (
-            <div className="GraphViewer">
-                {titleEl}
-                {descriptionEl}
-                <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
-                    <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                    <input type="hidden" name="score" value={this.props.value} />
-                    <input type="hidden" name="next" value={successUrl} />
-                    <input type="hidden" name="launchUrl" value={launchUrl} />
-                    <JXGBoard
-                        id={'editing-graph'}
-                        width={562.5}
-                        height={300}
-                        submission={this.props.submission}
-                        shadow={!isInstructor}
-
-                        gType={this.props.gType}
-                        gLine1Label={this.props.gLine1Label}
-                        gLine2Label={this.props.gLine2Label}
-                        gXAxisLabel={this.props.gXAxisLabel}
-                        gYAxisLabel={this.props.gYAxisLabel}
-                        gLine1Slope={this.props.gLine1Slope}
-                        gLine2Slope={this.props.gLine2Slope}
-                        gLine1SlopeInitial={this.props.gLine1SlopeInitial}
-                        gLine2SlopeInitial={this.props.gLine2SlopeInitial}
-                        gLine1OffsetX={this.props.gLine1OffsetX}
-                        gLine1OffsetY={this.props.gLine1OffsetY}
-                        gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
-                        gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
-                        gLine2OffsetX={this.props.gLine2OffsetX}
-                        gLine2OffsetY={this.props.gLine2OffsetY}
-                        gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
-                        gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
-                        gNeedsSubmit={this.props.gNeedsSubmit}
-                        gShowIntersection={this.props.gShowIntersection}
-                        gDisplayShadow={this.props.gDisplayShadow}
-                        gIntersectionLabel={this.props.gIntersectionLabel}
-                        gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                        gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-
-                        gAlpha={this.props.gAlpha}
-
-                        gA1={this.props.gA1}
-                        gA2={this.props.gA2}
-
-                        gA={this.props.gA}
-                        gK={this.props.gK}
-                        gR={this.props.gR}
-                        gY1={this.props.gY1}
-                        gY2={this.props.gY2}
-
-                        gCobbDouglasA={this.props.gCobbDouglasA}
-                        gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
-                        gCobbDouglasL={this.props.gCobbDouglasL}
-                        gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
-                        gCobbDouglasK={this.props.gCobbDouglasK}
-                        gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
-                        gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                        gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
-                        />
-
-                    <Feedback
-                         choice={this.props.choice}
-                         submission={this.props.submission}
-                         isSubmitted={!!this.props.submission}
-                         gNeedsSubmit={this.props.gNeedsSubmit}
-                         gDisplayFeedback={this.props.gDisplayFeedback}
-                         gLine1FeedbackIncrease={this.props.gLine1FeedbackIncrease}
-                         gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
-                         gLine2FeedbackIncrease={this.props.gLine2FeedbackIncrease}
-                        gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease} />
-
-
-                    {displaySliders && (
-                        <div className={'form-row ' + (this.props.gType !== 3 ? '' : 'd-none')}>
-                            <div className="col">
-                                <label htmlFor="gLine1Slope">
-                                    Orange line slope
-                                </label>
-                                <RangeEditor
-                                    dataId="gLine1Slope"
-                                    value={this.props.gLine1Slope}
-                                    min={0}
-                                    max={5}
-                                    handler={handleFormUpdate.bind(this)} />
-                            </div>
-
-                            <div className="col">
-                                <div className="form-group">
-                                    <label htmlFor="gLine2Slope">
-                                        Blue line slope
-                                    </label>
-                                    <RangeEditor
-                                        dataId="gLine2Slope"
-                                        value={this.props.gLine2Slope}
-                                        min={-5}
-                                        max={0}
-                                        handler={handleFormUpdate.bind(this)} />
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {displayLabels && (
-                        <div className="row">
-                            <div className="col">
-                                <div className="form-group">
-                                    <label htmlFor="gLine1Label">
-                                        Orange line label
-                                    </label>
-                                    <input id="gLine1Label"
-                                           value={this.props.gLine1Label}
-                                           onChange={handleFormUpdate.bind(this)}
-                                           className="form-control form-control-sm"
-                                           type="text"
-                                           maxLength="60"
-                                           />
-                                </div>
-                            </div>
-                            <div className="col">
-                                <div className="form-group">
-                                    <label htmlFor="gLine2Label">
-                                        Blue line label
-                                    </label>
-                                    <input id="gLine2Label"
-                                           value={this.props.gLine2Label}
-                                           onChange={handleFormUpdate.bind(this)}
-                                           className="form-control form-control-sm"
-                                           type="text"
-                                           maxLength="60"
-                                           />
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-            {displayLabels && (
-                <div className="row">
-                    <div className="col">
-                        <div className="form-group">
-                            <label htmlFor="gXAxisLabel">
-                                X-axis label:
-                            </label>
-                            <input id="gXAxisLabel"
-                                   className="form-control form-control-sm"
-                                   type="text"
-                                   maxLength="60"
-                                   value={this.props.gXAxisLabel}
-                                   onChange={handleFormUpdate.bind(this)}
-                                   />
-                        </div>
-                    </div>
-
-                    <div className="col">
-                        <div className="form-group">
-                            <label htmlFor="gYAxisLabel">
-                                Y-axis label:
-                            </label>
-                            <input id="gYAxisLabel"
-                                   className="form-control form-control-sm"
-                                   type="text"
-                                   maxLength="60"
-                                   value={this.props.gYAxisLabel}
-                                   onChange={handleFormUpdate.bind(this)}
-                                   />
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {displayLabels && (
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <div className="form-group">
-                                <label htmlFor="gIntersectionLabel">
-                                    Intersection point label:
-                                </label>
-                                <input id="gIntersectionLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gIntersectionLabel}
-                                       onChange={handleFormUpdate.bind(this)}
-                                       />
-                            </div>
-                        </div>
-                    </div>
-            )}
-
-            {displayLabels && (
-                    <div className="row">
-                        <div className="col">
-                            <div className="form-group">
-                                <label htmlFor="gIntersectionHorizLineLabel">
-                                    Intersection&apos;s horizontal line label:
-                                </label>
-                                <input id="gIntersectionHorizLineLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gIntersectionHorizLineLabel}
-                                       onChange={handleFormUpdate.bind(this)} />
-                            </div>
-                        </div>
-
-                        <div className="col">
-                            <div className="form-group">
-                                <label htmlFor="gIntersectionVertLineLabel">
-                                    Intersection&apos;s vertical line label:
-                                </label>
-                                <input id="gIntersectionVertLineLabel"
-                                       className="form-control form-control-sm"
-                                       type="text"
-                                       maxLength="60"
-                                       value={this.props.gIntersectionVertLineLabel}
-                                       onChange={handleFormUpdate.bind(this)} />
-                            </div>
-                        </div>
-                    </div>
-            )}
-
-                    <ResetGraphButton
-                        initialState={initialState}
-                        updateGraph={this.props.updateGraph} />
-
-                    <ExportGraphButton />
-
-                    <hr style={{
-                            display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                        }} />
-
-                    <button className="btn btn-primary btn-sm"
-                            disabled={!this.props.choice}
-                            style={{
-                                marginTop: '1em',
-                                display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                            }}
-                            type="submit">Submit</button>
-                </form>
-            </div>
-        );
     }
     createSubmission(data) {
         const me = this;
