@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BackButton from './BackButton';
+import BackButton from './buttons/BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
 import { exportGraph, defaultGraph } from './GraphMapping';
