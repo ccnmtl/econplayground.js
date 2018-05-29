@@ -12,16 +12,17 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
             <div>
                 <h2>Function</h2>
                 {this.props.isInstructor && (
-                <MathJax.Context
-                    script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
-                    input="tex"
-                    options={{
-                        displayAlign: 'left',
-                        messageStyle: 'none'
-                    }}>
-                    <MathJax.Node>{tex}</MathJax.Node>
-                </MathJax.Context>
+                    <MathJax.Context
+                        script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
+                        input="tex"
+                        options={{
+                            displayAlign: 'left',
+                            messageStyle: 'none'
+                        }}>
+                        <MathJax.Node>{tex}</MathJax.Node>
+                    </MathJax.Context>
                 )}
+                <hr/>
                 {this.props.displaySliders && (
                 <div>
                     <h2>Slope</h2>

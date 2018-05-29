@@ -40,6 +40,7 @@ export default class CommonGraphEditor extends React.Component {
                               value={this.props.gDescription}
                               className="form-control form-control-sm" />
                 </div>
+                <h2>Assignment Type</h2>
                 <div className="form-group">
                     <label htmlFor="gAssignmentType">
                         Assignment type
