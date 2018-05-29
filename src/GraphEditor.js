@@ -23,8 +23,8 @@ export default class GraphEditor extends React.Component {
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-					<div class="row">
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div className="row">
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <JXGBoard
             id={'editing-graph'}
             width={562.5}
@@ -69,7 +69,7 @@ export default class GraphEditor extends React.Component {
             updateGraph={this.props.updateGraph}
                 />
                         </div>
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <NonLinearDemandSupplyEditor
             displayLabels={true}
             displaySliders={true}
