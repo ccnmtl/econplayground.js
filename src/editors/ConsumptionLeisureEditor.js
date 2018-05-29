@@ -11,6 +11,9 @@ export default class ConsumptionLeisureEditor extends React.Component {
 
         return (
             <div>
+                <div className="function">
+                <h2>Function</h2>
+                <div className="row">
                 {this.props.isInstructor &&
                     (<MathJax.Context
                             script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
@@ -22,8 +25,13 @@ export default class ConsumptionLeisureEditor extends React.Component {
                             <MathJax.Node>{tex}</MathJax.Node>
                         </MathJax.Context>
                     )}
+                </div>
+                <hr/>
+                </div>
 
                 {this.props.displaySliders && (
+                    <div className="slope">
+                    <h2>Slope</h2>
                     <div className="row">
                         <div className="col-sm-4">
                             <div className="form-group">
@@ -55,8 +63,11 @@ export default class ConsumptionLeisureEditor extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <hr/>
+                    </div>
                 )}
 
+                <h2>Labels</h2>
                 {this.props.displayLabels && (
                     <div className="row">
                         <EditableControl
