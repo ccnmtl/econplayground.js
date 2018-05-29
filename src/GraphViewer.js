@@ -8,11 +8,12 @@ import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
 import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import NonLinearDemandSupplyEditor from './editors/NonLinearDemandSupplyEditor';
-import ExportGraphButton from './ExportGraphButton';
-import ResetGraphButton from './ResetGraphButton';
+import ExportGraphButton from './buttons/ExportGraphButton';
+import ResetGraphButton from './buttons/ResetGraphButton';
+import SubmitButton from './buttons/SubmitButton';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
-import {authedFetch, getOrCreateSubmission} from './utils';
+import {getOrCreateSubmission} from './utils';
 
 /**
  * This component is used to view an econgraph object.
@@ -156,17 +157,10 @@ export default class GraphViewer extends React.Component {
 
                         <ExportGraphButton />
 
-                        <hr style={{
-                                display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                            }} />
-
-                        <button className="btn btn-primary btn-sm"
-                                disabled={!this.props.choice}
-                                style={{
-                                    marginTop: '1em',
-                                    display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                                }}
-                                type="submit">Submit</button>
+                        <SubmitButton
+                            gNeedsSubmit={this.props.gNeedsSubmit}
+                            submission={this.props.submission}
+                            isInstructor={isInstructor} />
                     </form>
                 </div>
             );
@@ -250,17 +244,10 @@ export default class GraphViewer extends React.Component {
 
                         <ExportGraphButton />
 
-                        <hr style={{
-                                display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                            }} />
-
-                        <button className="btn btn-primary btn-sm"
-                                disabled={!this.props.choice}
-                                style={{
-                                    marginTop: '1em',
-                                    display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                                }}
-                                type="submit">Submit</button>
+                        <SubmitButton
+                            gNeedsSubmit={this.props.gNeedsSubmit}
+                            submission={this.props.submission}
+                            isInstructor={isInstructor} />
                     </form>
                 </div>
             );
@@ -346,17 +333,10 @@ export default class GraphViewer extends React.Component {
 
                         <ExportGraphButton />
 
-                        <hr style={{
-                                display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                            }} />
-
-                        <button className="btn btn-primary btn-sm"
-                                disabled={!this.props.choice}
-                                style={{
-                                    marginTop: '1em',
-                                    display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                                }}
-                                type="submit">Submit</button>
+                        <SubmitButton
+                            gNeedsSubmit={this.props.gNeedsSubmit}
+                            submission={this.props.submission}
+                            isInstructor={isInstructor} />
                     </form>
                 </div>
             );
@@ -425,17 +405,10 @@ export default class GraphViewer extends React.Component {
 
                         <ExportGraphButton />
 
-                        <hr style={{
-                                display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                            }} />
-
-                        <button className="btn btn-primary btn-sm"
-                                disabled={!this.props.choice}
-                                style={{
-                                    marginTop: '1em',
-                                    display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                                }}
-                                type="submit">Submit</button>
+                        <SubmitButton
+                            gNeedsSubmit={this.props.gNeedsSubmit}
+                            submission={this.props.submission}
+                            isInstructor={isInstructor} />
                     </form>
                 </div>
             );
@@ -508,17 +481,10 @@ export default class GraphViewer extends React.Component {
 
                         <ExportGraphButton />
 
-                        <hr style={{
-                                display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                            }} />
-
-                        <button className="btn btn-primary btn-sm"
-                                disabled={!this.props.choice}
-                                style={{
-                                    marginTop: '1em',
-                                    display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-                                }}
-                                type="submit">Submit</button>
+                        <SubmitButton
+                            gNeedsSubmit={this.props.gNeedsSubmit}
+                            submission={this.props.submission}
+                            isInstructor={isInstructor} />
                     </form>
                 </div>
             );
@@ -630,49 +596,33 @@ export default class GraphViewer extends React.Component {
 
                 <ExportGraphButton />
 
-                <button className="btn btn-primary btn-sm"
-            disabled={!this.props.choice}
-            style={{
-                marginTop: '1em',
-                display: (!isInstructor && this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
-            }}
-            type="submit">Submit</button>
+                <SubmitButton
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            submission={this.props.submission}
+            isInstructor={isInstructor} />
                 </form>
                 </div>;
         } else {
             return <div>Unknown graph type: {this.props.gType}</div>;
         }
     }
-    createSubmission(data) {
-        const me = this;
-        return authedFetch('/api/submissions/', 'post', JSON.stringify(data))
-            .then(function(response) {
-                if (response.status === 201) {
-                    me.setState({
-                        alertText: response.statusText
-                    });
-                    window.scrollTo(0, 0);
-                } else {
-                    me.setState({
-                        alertText: response.statusText
-                    });
-                    window.scrollTo(0, 0);
-                    throw 'Submission not created';
-                }
-            });
-    }
     handleSubmit(event) {
         // Make the Submission obj in Django, then submit to Canvas
         // with LTI.
         event.preventDefault();
-        const form = event.target;
-        getOrCreateSubmission({
-            graph: this.props.gId,
-            choice: this.props.choice,
-            score: this.props.value
-        }).then(function() {
-            form.submit();
-        });
+
+        if (this.props.gNeedsSubmit) {
+            const form = event.target;
+            getOrCreateSubmission({
+                graph: this.props.gId,
+                choice: this.props.choice,
+                score: this.props.value
+            }).then(function() {
+                form.submit();
+            });
+        } else {
+            // "playground" graph submitted.
+        }
     }
 }
 
