@@ -18,6 +18,7 @@ export default class CobbDouglasEditor extends React.Component {
 
         return (
             <div>
+                <h2>Function</h2>
                 <div>
                     This is a projection of the Cobb-Douglas function
                     with {this.props.gCobbDouglasLName} plotted along
@@ -43,9 +44,12 @@ export default class CobbDouglasEditor extends React.Component {
                             <MathJax.Node>{tex}</MathJax.Node>
                         </MathJax.Context>
                     </div>
+                    <hr/>
                 </div>
 
             {this.props.displaySliders && (
+                <div>
+                <h2>Slope</h2>
                 <div className="row">
                     <div className="col-sm-4">
                         <label htmlFor="gCobbDouglasA">
@@ -94,9 +98,11 @@ export default class CobbDouglasEditor extends React.Component {
                     </div>
                     </div>
                     </div>
+                    </div>
             )}
 
             {this.props.displaySliders && (
+                <div>
                 <div className="row">
                     <div className="col-sm-4">
                         <label htmlFor="gCobbDouglasAlpha">
@@ -139,10 +145,14 @@ export default class CobbDouglasEditor extends React.Component {
                         </small>
                     )}
                 </div>
-                    </div>
+            </div>
+                <hr/>
+            </div>
             )}
 
             {this.props.displayLabels && (
+                <div>
+                <h2>Label</h2>
                 <div className="row">
                     <EditableControl
                         id="gIntersectionLabel"
@@ -152,6 +162,7 @@ export default class CobbDouglasEditor extends React.Component {
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
                         />
+                </div>
                 </div>
             )}
 
