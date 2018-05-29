@@ -34,7 +34,7 @@ export default class RangeEditor extends React.Component {
         </div>
             <div className="input-group">
             {this.props.showOverrideButton && (
-                <div className="col-4">
+                <div className="form-check form-check-inline">
                     <label className="form-check-label">
                         <input
                             data-id={this.props.dataId}
@@ -48,7 +48,7 @@ export default class RangeEditor extends React.Component {
                 </div>
             )}
         {this.props.showOverride2Button && (
-            <div className="col-4">
+            <div className="form-check form-check-inline">
                 <label className="form-check-label">
                     <input
                         data-id={this.props.dataId}
