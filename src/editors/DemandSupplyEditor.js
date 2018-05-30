@@ -9,61 +9,60 @@ export default class DemandSupplyEditor extends React.Component {
         return <React.Fragment>
             {this.props.displaySliders && (
                 <div>
-                <h2>Slope</h2>
-                <div className="form-row">
-                    <div className="col-sm-4">
-                        <label htmlFor="gLine1Slope">
-                            Orange line slope
-                        </label>
-                        <RangeEditor
-                            dataId="gLine1Slope"
-                            value={this.props.gLine1Slope}
-                            min={0}
-                            max={5}
-                            showOverrideButton={true}
-                            overrideLabel='Vertical'
-                            overrideValue={999}
-                            showOverride2Button={true}
-                            override2Label='Horizontal'
-                            override2Value={0}
-                            handler={handleFormUpdate.bind(this)} />
-                    </div>
-
-                    <div className="col-sm-4">
-                        <div className="form-group">
-                            <label htmlFor="gLine2Slope">
-                                Blue line slope
+                    <h2>Slope</h2>
+                    <div className="form-row">
+                        <div className="col-sm-4">
+                            <label htmlFor="gLine1Slope">
+                                Orange line slope
                             </label>
                             <RangeEditor
-                                dataId="gLine2Slope"
-                                min={-5}
-                                max={0}
-                                value={this.props.gLine2Slope}
+                                dataId="gLine1Slope"
+                                value={this.props.gLine1Slope}
+                                min={0}
+                                max={5}
                                 showOverrideButton={true}
                                 overrideLabel='Vertical'
-                                overrideValue={-999}
+                                overrideValue={999}
                                 showOverride2Button={true}
                                 override2Label='Horizontal'
                                 override2Value={0}
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
+
+                        <div className="col-sm-4">
+                            <div className="form-group">
+                                <label htmlFor="gLine2Slope">
+                                    Blue line slope
+                                </label>
+                                <RangeEditor
+                                    dataId="gLine2Slope"
+                                    min={-5}
+                                    max={0}
+                                    value={this.props.gLine2Slope}
+                                    showOverrideButton={true}
+                                    overrideLabel='Vertical'
+                                    overrideValue={-999}
+                                    showOverride2Button={true}
+                                    override2Label='Horizontal'
+                                    override2Value={0}
+                                    handler={handleFormUpdate.bind(this)} />
+                            </div>
+                        </div>
                     </div>
-                </div>
                 </div>
             )}
 
-        {this.props.displayLabels && (
-            <React.Fragment>
-                <div>
-                <h2>Labels</h2>
-                <div className="row">
-                    <EditableControl
-                        id="gLine1Label"
-                        name="Orange line label"
-                        value={this.props.gLine1Label}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}
+            {this.props.displayLabels && (
+                <React.Fragment>
+                    <h2>Labels</h2>
+                    <div className="row">
+                        <EditableControl
+                            id="gLine1Label"
+                            name="Orange line label"
+                            value={this.props.gLine1Label}
+                            valueEditable={true}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}
                         />
 
                     <EditableControl
@@ -73,7 +72,7 @@ export default class DemandSupplyEditor extends React.Component {
                         valueEditable={true}
                         isInstructor={true}
                         updateGraph={this.props.updateGraph}
-                        />
+                    />
                 </div>
 
                 <div className="row">
@@ -84,51 +83,50 @@ export default class DemandSupplyEditor extends React.Component {
                         valueEditable={true}
                         isInstructor={true}
                         updateGraph={this.props.updateGraph}
-                        />
+                    />
 
-                    <EditableControl
-                        id="gYAxisLabel"
-                        name="Y-axis label"
-                        value={this.props.gYAxisLabel}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}
-                        />
-                </div>
+                <EditableControl
+                    id="gYAxisLabel"
+                    name="Y-axis label"
+                    value={this.props.gYAxisLabel}
+                    valueEditable={true}
+                    isInstructor={true}
+                    updateGraph={this.props.updateGraph}
+                />
+            </div>
 
-                <div className="row">
-                    <EditableControl
-                        id="gIntersectionLabel"
-                        name="Intersection point label"
-                        value={this.props.gIntersectionLabel}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}
-                        />
-                </div>
+            <div className="row">
+                <EditableControl
+                    id="gIntersectionLabel"
+                    name="Intersection point label"
+                    value={this.props.gIntersectionLabel}
+                    valueEditable={true}
+                    isInstructor={true}
+                    updateGraph={this.props.updateGraph}
+                />
+            </div>
 
-                <div className="row">
-                    <EditableControl
-                        id="gIntersectionHorizLineLabel"
-                        name="Intersection&apos;s horizontal line label"
-                        value={this.props.gIntersectionHorizLineLabel}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}
-                        />
+            <div className="row">
+                <EditableControl
+                    id="gIntersectionHorizLineLabel"
+                    name="Intersection&apos;s horizontal line label"
+                    value={this.props.gIntersectionHorizLineLabel}
+                    valueEditable={true}
+                    isInstructor={true}
+                    updateGraph={this.props.updateGraph}
+                />
 
-                    <EditableControl
-                        id="gIntersectionVertLineLabel"
-                        name="Intersection&apos;s vertical line label"
-                        value={this.props.gIntersectionVertLineLabel}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}
-                        />
-                </div>
-                </div>
-            </React.Fragment>
-        )}
+            <EditableControl
+                id="gIntersectionVertLineLabel"
+                name="Intersection&apos;s vertical line label"
+                value={this.props.gIntersectionVertLineLabel}
+                valueEditable={true}
+                isInstructor={true}
+                updateGraph={this.props.updateGraph}
+            />
+        </div>
+    </React.Fragment>
+            )}
         </React.Fragment>;
     }
 }

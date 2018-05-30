@@ -19,207 +19,199 @@ export default class CobbDouglasEditor extends React.Component {
         return (
             <div>
                 <h2>Function</h2>
-                <div>
-                    This is a projection of the Cobb-Douglas function
-                    with {this.props.gCobbDouglasLName} plotted along
-                    the X-axis.
-                    <div className="form-inline">
-                        {this.props.isInstructor && (
-                            <input type="text"
-                                   className="form-control form-control-sm mr-2"
-                                   data-id="gCobbDouglasYName"
-                                   value={this.props.gCobbDouglasYName}
-                                   maxLength="1"
-                                   size="1"
-                                   onChange={handleFormUpdate.bind(this)}
-                                   />
-                        )}
-                        <MathJax.Context
-                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
-                            input="tex"
-                            options={{
-                                displayAlign: 'left',
-                                messageStyle: 'none'
-                            }}>
-                            <MathJax.Node>{tex}</MathJax.Node>
-                        </MathJax.Context>
-                    </div>
-                    <hr/>
-                </div>
-
-            {this.props.displaySliders && (
-                <div>
-                <h2>Slope</h2>
-                <div className="row">
-                    <div className="col-sm-4">
-                        <label htmlFor="gCobbDouglasA">
-                            {this.props.isInstructor ? (
-                                <input type="text"
-                                       id="gCobbDouglasAName"
-                                       maxLength="1"
-                                       size="1"
-                                       className="form-control form-control-sm"
-                                       value={this.props.gCobbDouglasAName}
-                                       onChange={handleFormUpdate.bind(this)}
-                                       />
-                            ) : (
-                                this.props.gCobbDouglasAName
-                            )}
-
-                </label>
-                    <RangeEditor
-                dataId="gCobbDouglasA"
-                value={this.props.gCobbDouglasA}
-                handler={handleFormUpdate.bind(this)}
-                min={0} />
-                    </div>
-
-                    <div className="col-sm-4">
-                    <div className="form-group">
-                    <label htmlFor="gCobbDouglasK">
-                    {this.props.isInstructor ? (
-                        <input type="text"
-                               id="gCobbDouglasKName"
-                               maxLength="1"
-                               size="1"
-                               className="form-control form-control-sm"
-                               value={this.props.gCobbDouglasKName}
-                               onChange={handleFormUpdate.bind(this)}
-                               />
-                    ) : (
-                        this.props.gCobbDouglasKName
-                    )}
-                </label>
-                    <RangeEditor
-                dataId="gCobbDouglasK"
-                value={this.props.gCobbDouglasK}
-                handler={handleFormUpdate.bind(this)}
-                min={0} />
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-            )}
-
-            {this.props.displaySliders && (
-                <div>
-                <div className="row">
-                    <div className="col-sm-4">
-                        <label htmlFor="gCobbDouglasAlpha">
-                            &alpha;
-                        </label>
-                        <RangeEditor
-                            dataId="gCobbDouglasAlpha"
-                            value={this.props.gCobbDouglasAlpha}
-                            handler={handleFormUpdate.bind(this)}
-                            min={0}
-                            max={1}
-                            showMinMax={true}
-                            />
-                    </div>
-
-                    <div className="col-sm-4">
-                        <label htmlFor="gCobbDouglasL">
-                            {this.props.isInstructor ? (
-                                <input type="text"
-                                       id="gCobbDouglasLName"
-                                       maxLength="1"
-                                       size="1"
-                                       className="form-control form-control-sm"
-                                       value={this.props.gCobbDouglasLName}
-                                       onChange={handleFormUpdate.bind(this)}
-                                       />
-                            ) : (
-                                this.props.gCobbDouglasLName
-                            )}
-                </label>
-                    <RangeEditor
-                dataId="gCobbDouglasL"
-                value={this.props.gCobbDouglasL}
-                handler={handleFormUpdate.bind(this)}
-                min={0}
-                max={10} />
+                This is a projection of the Cobb-Douglas function
+                with {this.props.gCobbDouglasLName} plotted along
+                the X-axis.
+                <div className="form-inline">
                     {this.props.isInstructor && (
-                        <small className="form-text text-muted ml-sm-2">
-                            This variable is plotted along the X-axis.
-                        </small>
-                    )}
-                </div>
-            </div>
-                <hr/>
-            </div>
-            )}
-
-            {this.props.displayLabels && (
-                <div>
-                <h2>Label</h2>
-                <div className="row">
-                    <EditableControl
-                        id="gIntersectionLabel"
-                        name="Intersection point label"
-                        value={this.props.gIntersectionLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
+                        <input type="text"
+                            className="form-control form-control-sm mr-2"
+                            data-id="gCobbDouglasYName"
+                            value={this.props.gCobbDouglasYName}
+                            maxLength="1"
+                            size="1"
+                            onChange={handleFormUpdate.bind(this)}
                         />
+                    )}
+                    <MathJax.Context
+                        script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
+                        input="tex"
+                        options={{
+                            displayAlign: 'left',
+                            messageStyle: 'none'
+                        }}>
+                        <MathJax.Node>{tex}</MathJax.Node>
+                    </MathJax.Context>
                 </div>
-                </div>
-            )}
+                <hr/>
 
-            {this.props.isInstructor && (
-                <div>
-                    <hr />
-                    <h4>Feedback</h4>
+                <h2>Slope</h2>
+                {this.props.displaySliders && (
                     <div className="row">
-                        <div className="col-sm-4 mb-4">
-                            <label htmlFor="gCobbDouglasCorrectScenario">
-                                Correct student scenario
+                        <div className="col-sm-4">
+                            <label htmlFor="gCobbDouglasA">
+                                {this.props.isInstructor ? (
+                                    <input type="text"
+                                        id="gCobbDouglasAName"
+                                        maxLength="1"
+                                        size="1"
+                                        className="form-control form-control-sm"
+                                        value={this.props.gCobbDouglasAName}
+                                        onChange={handleFormUpdate.bind(this)}
+                                    />
+                                ) : (
+                                    this.props.gCobbDouglasAName
+                                )}
+
                             </label>
-                            <select
-                                id="gCobbDouglasCorrectScenario"
-                                name="gCobbDouglasCorrectScenario"
-                                className="custom-select form-control-sm"
-                                value={this.props.gCobbDouglasCorrectScenario}
-                                onChange={handleFormUpdate.bind(this)}>
-                                <option value="0">{this.props.gCobbDouglasAName} increased</option>
-                                <option value="1">{this.props.gCobbDouglasAName} decreased</option>
-                                <option value="2">{this.props.gCobbDouglasKName} increased</option>
-                                <option value="3">{this.props.gCobbDouglasKName} decreased</option>
-                                <option value="4">&alpha; increased</option>
-                                <option value="5">&alpha; decreased</option>
-                                <option value="6">{this.props.gCobbDouglasLName} increased</option>
-                                <option value="7">{this.props.gCobbDouglasLName} decreased</option>
-                            </select>
+                            <RangeEditor
+                                dataId="gCobbDouglasA"
+                                value={this.props.gCobbDouglasA}
+                                handler={handleFormUpdate.bind(this)}
+                                min={0} />
+                        </div>
+
+                        <div className="col-sm-4">
+                            <div className="form-group">
+                                <label htmlFor="gCobbDouglasK">
+                                    {this.props.isInstructor ? (
+                                        <input type="text"
+                                            id="gCobbDouglasKName"
+                                            maxLength="1"
+                                            size="1"
+                                            className="form-control form-control-sm"
+                                            value={this.props.gCobbDouglasKName}
+                                            onChange={handleFormUpdate.bind(this)}
+                                        />
+                                    ) : (
+                                        this.props.gCobbDouglasKName
+                                    )}
+                                </label>
+                                <RangeEditor
+                                    dataId="gCobbDouglasK"
+                                    value={this.props.gCobbDouglasK}
+                                    handler={handleFormUpdate.bind(this)}
+                                    min={0} />
+                            </div>
                         </div>
                     </div>
+                )}
+
+                {this.props.displaySliders && (
                     <div className="row">
-                        <div className="col-sm-4 mb-4">
-                            <label htmlFor="gCorrectFeedback">
-                                Correct student feedback
+                        <div className="col-sm-4">
+                            <label htmlFor="gCobbDouglasAlpha">
+                                &alpha;
                             </label>
-                            <textarea
-                                id="gCorrectFeedback"
-                                name="gCorrectFeedback"
-                                className="form-control form-control-sm"
-                                onChange={handleFormUpdate.bind(this)}
-                                value={this.props.gCorrectFeedback}>
-                            </textarea>
+                            <RangeEditor
+                                dataId="gCobbDouglasAlpha"
+                                value={this.props.gCobbDouglasAlpha}
+                                handler={handleFormUpdate.bind(this)}
+                                min={0}
+                                max={1}
+                                showMinMax={true}
+                            />
                         </div>
-                        <div className="col-sm-4 mb-4">
-                            <label htmlFor="gIncorrectFeedback">
-                                Incorrect student feedback
+
+                        <div className="col-sm-4">
+                            <label htmlFor="gCobbDouglasL">
+                                {this.props.isInstructor ? (
+                                    <input type="text"
+                                        id="gCobbDouglasLName"
+                                        maxLength="1"
+                                        size="1"
+                                        className="form-control form-control-sm"
+                                        value={this.props.gCobbDouglasLName}
+                                        onChange={handleFormUpdate.bind(this)}
+                                    />
+                                ) : (
+                                    this.props.gCobbDouglasLName
+                                )}
                             </label>
-                            <textarea
-                                id="gIncorrectFeedback"
-                                name="gIncorrectFeedback"
-                                className="form-control form-control-sm"
-                                onChange={handleFormUpdate.bind(this)}
-                                value={this.props.gIncorrectFeedback}>
-                            </textarea>
+                            <RangeEditor
+                                dataId="gCobbDouglasL"
+                                value={this.props.gCobbDouglasL}
+                                handler={handleFormUpdate.bind(this)}
+                                min={0}
+                                max={10} />
+                            {this.props.isInstructor && (
+                                <small className="form-text text-muted ml-sm-2">
+                                    This variable is plotted along the X-axis.
+                                </small>
+                            )}
                         </div>
                     </div>
-                </div>
-            )}
+                )}
+                <hr/>
+
+                <h2>Label</h2>
+                {this.props.displayLabels && (
+                    <div className="row">
+                        <EditableControl
+                            id="gIntersectionLabel"
+                            name="Intersection point label"
+                            value={this.props.gIntersectionLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
+                )}
+
+                <hr />
+                <h4>Feedback</h4>
+                {this.props.isInstructor && (
+                    <div>
+                        <div className="row">
+                            <div className="col-sm-4 mb-4">
+                                <label htmlFor="gCobbDouglasCorrectScenario">
+                                    Correct student scenario
+                                </label>
+                                <select
+                                    id="gCobbDouglasCorrectScenario"
+                                    name="gCobbDouglasCorrectScenario"
+                                    className="custom-select form-control-sm"
+                                    value={this.props.gCobbDouglasCorrectScenario}
+                                    onChange={handleFormUpdate.bind(this)}>
+                                    <option value="0">{this.props.gCobbDouglasAName} increased</option>
+                                    <option value="1">{this.props.gCobbDouglasAName} decreased</option>
+                                    <option value="2">{this.props.gCobbDouglasKName} increased</option>
+                                    <option value="3">{this.props.gCobbDouglasKName} decreased</option>
+                                    <option value="4">&alpha; increased</option>
+                                    <option value="5">&alpha; decreased</option>
+                                    <option value="6">{this.props.gCobbDouglasLName} increased</option>
+                                    <option value="7">{this.props.gCobbDouglasLName} decreased</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-4 mb-4">
+                                <label htmlFor="gCorrectFeedback">
+                                    Correct student feedback
+                                </label>
+                                <textarea
+                                    id="gCorrectFeedback"
+                                    name="gCorrectFeedback"
+                                    className="form-control form-control-sm"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    value={this.props.gCorrectFeedback}>
+                                </textarea>
+                            </div>
+                            <div className="col-sm-4 mb-4">
+                                <label htmlFor="gIncorrectFeedback">
+                                    Incorrect student feedback
+                                </label>
+                                <textarea
+                                    id="gIncorrectFeedback"
+                                    name="gIncorrectFeedback"
+                                    className="form-control form-control-sm"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    value={this.props.gIncorrectFeedback}>
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
             </div>
         );
