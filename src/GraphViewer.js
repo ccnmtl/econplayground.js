@@ -169,6 +169,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -259,6 +260,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -340,6 +342,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -414,6 +417,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -492,6 +496,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -611,6 +616,7 @@ export default class GraphViewer extends React.Component {
                 <ExportGraphButton />
 
                 <SubmitButton
+            assessment={this.props.assessment}
             gNeedsSubmit={this.props.gNeedsSubmit}
             submission={this.props.submission}
             isInstructor={isInstructor} />

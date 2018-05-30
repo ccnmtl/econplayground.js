@@ -9,6 +9,10 @@ export default class SubmitButton extends React.Component {
         };
     }
     render() {
+        if (!this.props.assessment || this.props.assessment.length === 0) {
+            return null;
+        }
+
         return <React.Fragment>
             <hr style={{
                 display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
@@ -31,5 +35,6 @@ SubmitButton.propTypes = {
     onClick: PropTypes.func,
     gNeedsSubmit: PropTypes.bool.isRequired,
     isInstructor: PropTypes.bool.isRequired,
-    submission: PropTypes.object
+    submission: PropTypes.object,
+    assessment: PropTypes.array.isRequired
 };
