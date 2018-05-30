@@ -7,7 +7,7 @@ import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
 import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
-import CommonAssignmentTypeEditor from './editors/CommonAssignmentTypeEditor';
+import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
 import {displayGraphType} from './utils';
 
@@ -63,7 +63,7 @@ export default class GraphEditor extends React.Component {
                                 />
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <CommonAssignmentTypeEditor
+                                <CommonGraphSettings
                                     gAssignmentType={this.props.gAssignmentType}
                                     gNeedsSubmit={this.props.gNeedsSubmit}
                                     gDisplayFeedback={this.props.gDisplayFeedback}
@@ -146,7 +146,7 @@ export default class GraphEditor extends React.Component {
                             />
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <CommonAssignmentTypeEditor
+                            <CommonGraphSettings
                                 gAssignmentType={this.props.gAssignmentType}
                                 gNeedsSubmit={this.props.gNeedsSubmit}
                                 gDisplayFeedback={this.props.gDisplayFeedback}
@@ -225,7 +225,7 @@ export default class GraphEditor extends React.Component {
                             />
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <CommonAssignmentTypeEditor
+                            <CommonGraphSettings
                                 gAssignmentType={this.props.gAssignmentType}
                                 gNeedsSubmit={this.props.gNeedsSubmit}
                                 gDisplayFeedback={this.props.gDisplayFeedback}
@@ -373,7 +373,7 @@ export default class GraphEditor extends React.Component {
                             />
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <CommonAssignmentTypeEditor
+                            <CommonGraphSettings
                                 gAssignmentType={this.props.gAssignmentType}
                                 gNeedsSubmit={this.props.gNeedsSubmit}
                                 gDisplayFeedback={this.props.gDisplayFeedback}
@@ -465,16 +465,7 @@ export default class GraphEditor extends React.Component {
                             />
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <CommonAssignmentTypeEditor
-                                gAssignmentType={this.props.gAssignmentType}
-                                gNeedsSubmit={this.props.gNeedsSubmit}
-                                gDisplayFeedback={this.props.gDisplayFeedback}
-                                gShowIntersection={this.props.gShowIntersection}
-                                gDisplayShadow={this.props.gDisplayShadow}
-                                gIsPublished={this.props.gIsPublished}
-                                updateGraph={this.props.updateGraph}
-                            />
-                            <CommonAssignmentTypeEditor
+                            <CommonGraphSettings
                                 gAssignmentType={this.props.gAssignmentType}
                                 gNeedsSubmit={this.props.gNeedsSubmit}
                                 gDisplayFeedback={this.props.gDisplayFeedback}

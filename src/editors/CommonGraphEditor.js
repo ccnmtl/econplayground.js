@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {handleFormUpdate} from '../utils';
 
 /**
- * This component contains the form fields common to all graph types,
- * like title, description, etc.
+ * This component contains the form fields  title, instructor notes,
+ * and description.
  */
 export default class CommonGraphEditor extends React.Component {
     render() {

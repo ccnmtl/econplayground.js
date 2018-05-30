@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import {handleFormUpdate} from '../utils';
 
 /**
- * This component contains the form fields common to all graph types,
- * like title, description, etc.
+ * This component contains the form fields for assignment type,
+ * and visibility settings.
  */
-export default class CommonGraphEditor extends React.Component {
+export default class CommonGraphSettings extends React.Component {
     render() {
         return (
             <div>
@@ -85,7 +85,7 @@ export default class CommonGraphEditor extends React.Component {
     }
 }
 
-CommonGraphEditor.propTypes = {
+CommonGraphSettings.propTypes = {
     gAssignmentType: PropTypes.number.isRequired,
     gNeedsSubmit: PropTypes.bool.isRequired,
     gDisplayFeedback: PropTypes.bool.isRequired,
