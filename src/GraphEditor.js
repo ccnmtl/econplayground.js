@@ -24,18 +24,8 @@ export default class GraphEditor extends React.Component {
                 <div className="GraphEditor">
                     {this.title()}
                     <form>
-                        <CommonGraphEditor
-                            gTitle={this.props.gTitle}
-                            gInstructorNotes={this.props.gInstructorNotes}
-                            gDescription={this.props.gDescription}
-                            gAssignmentType={this.props.gAssignmentType}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            gDisplayFeedback={this.props.gDisplayFeedback}
-                            gShowIntersection={this.props.gShowIntersection}
-                            gDisplayShadow={this.props.gDisplayShadow}
-                            gIsPublished={this.props.gIsPublished}
-                            updateGraph={this.props.updateGraph}
-                            />
+                    <div className="row">
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <JXGBoard
                             id={'editing-graph'}
                             width={562.5}
@@ -64,6 +54,20 @@ export default class GraphEditor extends React.Component {
                             gCobbDouglasKName={this.props.gCobbDouglasKName}
                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                             />
+                        <CommonGraphEditor
+                            gTitle={this.props.gTitle}
+                            gInstructorNotes={this.props.gInstructorNotes}
+                            gDescription={this.props.gDescription}
+                            gAssignmentType={this.props.gAssignmentType}
+                            gNeedsSubmit={this.props.gNeedsSubmit}
+                            gDisplayFeedback={this.props.gDisplayFeedback}
+                            gShowIntersection={this.props.gShowIntersection}
+                            gDisplayShadow={this.props.gDisplayShadow}
+                            gIsPublished={this.props.gIsPublished}
+                            updateGraph={this.props.updateGraph}
+                            />
+                        </div>
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 
                         <DemandSupplyEditor
                             displayLabels={true}
@@ -88,10 +92,13 @@ export default class GraphEditor extends React.Component {
                         <button type="button"
                                 className="btn btn-primary btn-sm"
                                 onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                    </div>
+                    </div>
                     </form>
                 </div>
             );
         } else if (this.props.gType === 1) {
+            // Non-Linear Demand Supply
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
@@ -170,21 +177,12 @@ export default class GraphEditor extends React.Component {
                 </form>
                 </div>;
         } else if (this.props.gType === 3) {
+            // Cobb-Douglas
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                <CommonGraphEditor
-            gTitle={this.props.gTitle}
-            gInstructorNotes={this.props.gInstructorNotes}
-            gDescription={this.props.gDescription}
-            gAssignmentType={this.props.gAssignmentType}
-            gNeedsSubmit={this.props.gNeedsSubmit}
-            gDisplayFeedback={this.props.gDisplayFeedback}
-            gShowIntersection={this.props.gShowIntersection}
-            gDisplayShadow={this.props.gDisplayShadow}
-            gIsPublished={this.props.gIsPublished}
-            updateGraph={this.props.updateGraph}
-                />
+                <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <JXGBoard
             id={'editing-graph'}
             width={562.5}
@@ -213,6 +211,20 @@ export default class GraphEditor extends React.Component {
             gCobbDouglasKName={this.props.gCobbDouglasKName}
             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                 />
+                <CommonGraphEditor
+            gTitle={this.props.gTitle}
+            gInstructorNotes={this.props.gInstructorNotes}
+            gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            gDisplayFeedback={this.props.gDisplayFeedback}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
+            gIsPublished={this.props.gIsPublished}
+            updateGraph={this.props.updateGraph}
+                />
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <CobbDouglasEditor
             gCobbDouglasA={this.props.gCobbDouglasA}
             gCobbDouglasAName={this.props.gCobbDouglasAName}
@@ -238,24 +250,17 @@ export default class GraphEditor extends React.Component {
             className="btn btn-primary btn-sm"
             onClick={this.handleSaveGraph.bind(this)}>Save</button>
 
+                </div>
+                </div>
                 </form>
                 </div>;
         } else if (this.props.gType === 5) {
+            // Consumption Leisure
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                <CommonGraphEditor
-            gTitle={this.props.gTitle}
-            gInstructorNotes={this.props.gInstructorNotes}
-            gDescription={this.props.gDescription}
-            gAssignmentType={this.props.gAssignmentType}
-            gNeedsSubmit={this.props.gNeedsSubmit}
-            gDisplayFeedback={this.props.gDisplayFeedback}
-            gShowIntersection={this.props.gShowIntersection}
-            gDisplayShadow={this.props.gDisplayShadow}
-            gIsPublished={this.props.gIsPublished}
-            updateGraph={this.props.updateGraph}
-                />
+                <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <JXGBoard
             id={'editing-graph'}
             width={562.5}
@@ -278,6 +283,20 @@ export default class GraphEditor extends React.Component {
             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                 />
+                <CommonGraphEditor
+            gTitle={this.props.gTitle}
+            gInstructorNotes={this.props.gInstructorNotes}
+            gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            gDisplayFeedback={this.props.gDisplayFeedback}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
+            gIsPublished={this.props.gIsPublished}
+            updateGraph={this.props.updateGraph}
+                />
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <ConsumptionLeisureEditor
             gA1={this.props.gA1}
             gA2={this.props.gA2}
@@ -302,24 +321,17 @@ export default class GraphEditor extends React.Component {
             className="btn btn-primary btn-sm"
             onClick={this.handleSaveGraph.bind(this)}>Save</button>
 
+                </div>
+                </div>
                 </form>
                 </div>;
         } else if (this.props.gType === 7) {
+            // Consumption Savings
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                <CommonGraphEditor
-            gTitle={this.props.gTitle}
-            gInstructorNotes={this.props.gInstructorNotes}
-            gDescription={this.props.gDescription}
-            gAssignmentType={this.props.gAssignmentType}
-            gNeedsSubmit={this.props.gNeedsSubmit}
-            gDisplayFeedback={this.props.gDisplayFeedback}
-            gShowIntersection={this.props.gShowIntersection}
-            gDisplayShadow={this.props.gDisplayShadow}
-            gIsPublished={this.props.gIsPublished}
-            updateGraph={this.props.updateGraph}
-                />
+                <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <JXGBoard
             id={'editing-graph'}
             width={562.5}
@@ -344,6 +356,20 @@ export default class GraphEditor extends React.Component {
             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
             gShowIntersection={this.props.gShowIntersection}
                 />
+                <CommonGraphEditor
+            gTitle={this.props.gTitle}
+            gInstructorNotes={this.props.gInstructorNotes}
+            gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            gDisplayFeedback={this.props.gDisplayFeedback}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
+            gIsPublished={this.props.gIsPublished}
+            updateGraph={this.props.updateGraph}
+                />
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <ConsumptionSavingEditor
             gA1={this.props.gA1}
             gA2={this.props.gA2}
@@ -367,6 +393,8 @@ export default class GraphEditor extends React.Component {
             className="btn btn-primary btn-sm"
             onClick={this.handleSaveGraph.bind(this)}>Save</button>
 
+                </div>
+                </div>
                 </form>
                 </div>;
         } else if (this.props.gType === 8) {
@@ -374,18 +402,8 @@ export default class GraphEditor extends React.Component {
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                <CommonGraphEditor
-            gTitle={this.props.gTitle}
-            gInstructorNotes={this.props.gInstructorNotes}
-            gDescription={this.props.gDescription}
-            gAssignmentType={this.props.gAssignmentType}
-            gNeedsSubmit={this.props.gNeedsSubmit}
-            gDisplayFeedback={this.props.gDisplayFeedback}
-            gShowIntersection={this.props.gShowIntersection}
-            gDisplayShadow={this.props.gDisplayShadow}
-            gIsPublished={this.props.gIsPublished}
-            updateGraph={this.props.updateGraph}
-                />
+                <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <JXGBoard
             id={'editing-graph'}
             width={562.5}
@@ -427,6 +445,20 @@ export default class GraphEditor extends React.Component {
             gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
             gShowIntersection={this.props.gShowIntersection}
                 />
+                <CommonGraphEditor
+            gTitle={this.props.gTitle}
+            gInstructorNotes={this.props.gInstructorNotes}
+            gDescription={this.props.gDescription}
+            gAssignmentType={this.props.gAssignmentType}
+            gNeedsSubmit={this.props.gNeedsSubmit}
+            gDisplayFeedback={this.props.gDisplayFeedback}
+            gShowIntersection={this.props.gShowIntersection}
+            gDisplayShadow={this.props.gDisplayShadow}
+            gIsPublished={this.props.gIsPublished}
+            updateGraph={this.props.updateGraph}
+                />
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <ADASEditor
             gXAxisLabel={this.props.gXAxisLabel}
             gYAxisLabel={this.props.gYAxisLabel}
@@ -471,6 +503,8 @@ export default class GraphEditor extends React.Component {
             className="btn btn-primary btn-sm"
             onClick={this.handleSaveGraph.bind(this)}>Save</button>
 
+                </div>
+                </div>
                 </form>
                 </div>;
         } else {

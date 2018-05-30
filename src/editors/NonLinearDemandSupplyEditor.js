@@ -23,9 +23,8 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                     </MathJax.Context>
                 )}
                 <hr/>
+                <h2>Slope</h2>
                 {this.props.displaySliders && (
-                <div>
-                    <h2>Slope</h2>
                     <div className="form-row">
                         <div className="col-sm-4">
                             <label htmlFor="gLine1Slope">
@@ -65,21 +64,19 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 max={5} />
                         </div>
                     </div>
-                    <hr/>
-                </div>
                 )}
+                <hr/>
 
+                <h2>Labels</h2>
                 {this.props.displayLabels && (
-                <div>
-                    <h2>Labels</h2>
                     <div className="row">
-                    <EditableControl
-                        id="gLine1Label"
-                        name="Orange line label"
-                        value={this.props.gLine1Label}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
+                        <EditableControl
+                            id="gLine1Label"
+                            name="Orange line label"
+                            value={this.props.gLine1Label}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
                         />
 
                     <EditableControl
@@ -89,29 +86,28 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
-                        />
-                    </div>
-                    <hr/>
+                    />
                 </div>
                 )}
+                <hr/>
 
                 {this.props.displayLabels && (
-                <div className="row">
-                    <EditableControl
-                        id="gIntersectionLabel"
-                        name="Intersection point label"
-                        value={this.props.gIntersectionLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
+                    <div className="row">
+                        <EditableControl
+                            id="gIntersectionLabel"
+                            name="Intersection point label"
+                            value={this.props.gIntersectionLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
                         />
-                    <EditableControl
-                        id="gIntersectionHorizLineLabel"
-                        name="Intersection&apos;s horizontal line label"
-                        value={this.props.gIntersectionHorizLineLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
+                        <EditableControl
+                            id="gIntersectionHorizLineLabel"
+                            name="Intersection&apos;s horizontal line label"
+                            value={this.props.gIntersectionHorizLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
                         />
 
                     <EditableControl
@@ -121,8 +117,8 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         valueEditable={true}
                         isInstructor={this.props.isInstructor}
                         updateGraph={this.props.updateGraph}
-                        />
-                        </div>
+                    />
+                </div>
                 )}
             </div>
         );
