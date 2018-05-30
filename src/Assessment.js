@@ -146,9 +146,14 @@ export default class Assessment {
                 });
 
                 if (result) {
-                    console.log(result);
+                    return result;
                 }
             }
         }
+
+        return {
+            feedback: null,
+            score: null
+        };
     }
 }
