@@ -639,13 +639,13 @@ GraphViewer.propTypes = {
 
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayIntersection1: PropTypes.bool.isRequired,
-    gDisplayIntersection1Initial: PropTypes.bool.isRequired,
+    gDisplayIntersection1Initial: PropTypes.bool,
     gIntersectionLabel: PropTypes.string.isRequired,
     gDisplayIntersection2: PropTypes.bool.isRequired,
-    gDisplayIntersection2Initial: PropTypes.bool.isRequired,
+    gDisplayIntersection2Initial: PropTypes.bool,
     gIntersection2Label: PropTypes.string.isRequired,
     gDisplayIntersection3: PropTypes.bool.isRequired,
-    gDisplayIntersection3Initial: PropTypes.bool.isRequired,
+    gDisplayIntersection3Initial: PropTypes.bool,
     gIntersection3Label: PropTypes.string.isRequired,
     gDisplayShadow: PropTypes.bool.isRequired,
 
@@ -728,7 +728,7 @@ GraphViewer.propTypes = {
     gCobbDouglasAlphaInitial: PropTypes.number,
     gCobbDouglasYName: PropTypes.string,
 
-    assessment: PropTypes.object,
+    assessment: PropTypes.array,
     submission: PropTypes.object,
     updateGraph: PropTypes.func.isRequired,
     choice: PropTypes.number,
