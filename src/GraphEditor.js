@@ -7,6 +7,7 @@ import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
 import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
+import CommonAssignmentTypeEditor from './editors/CommonAssignmentTypeEditor';
 import JXGBoard from './JXGBoard';
 import {displayGraphType} from './utils';
 
@@ -58,6 +59,11 @@ export default class GraphEditor extends React.Component {
                                     gTitle={this.props.gTitle}
                                     gInstructorNotes={this.props.gInstructorNotes}
                                     gDescription={this.props.gDescription}
+                                    updateGraph={this.props.updateGraph}
+                                />
+                            </div>
+                            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <CommonAssignmentTypeEditor
                                     gAssignmentType={this.props.gAssignmentType}
                                     gNeedsSubmit={this.props.gNeedsSubmit}
                                     gDisplayFeedback={this.props.gDisplayFeedback}
@@ -66,9 +72,6 @@ export default class GraphEditor extends React.Component {
                                     gIsPublished={this.props.gIsPublished}
                                     updateGraph={this.props.updateGraph}
                                 />
-                            </div>
-                            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-
                                 <DemandSupplyEditor
                                     displayLabels={true}
                                     displaySliders={true}
@@ -139,6 +142,11 @@ export default class GraphEditor extends React.Component {
                                 gTitle={this.props.gTitle}
                                 gInstructorNotes={this.props.gInstructorNotes}
                                 gDescription={this.props.gDescription}
+                                updateGraph={this.props.updateGraph}
+                            />
+                        </div>
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <CommonAssignmentTypeEditor
                                 gAssignmentType={this.props.gAssignmentType}
                                 gNeedsSubmit={this.props.gNeedsSubmit}
                                 gDisplayFeedback={this.props.gDisplayFeedback}
@@ -147,8 +155,6 @@ export default class GraphEditor extends React.Component {
                                 gIsPublished={this.props.gIsPublished}
                                 updateGraph={this.props.updateGraph}
                             />
-                        </div>
-                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <NonLinearDemandSupplyEditor
                                 displayLabels={true}
                                 displaySliders={true}
@@ -215,6 +221,11 @@ export default class GraphEditor extends React.Component {
                                 gTitle={this.props.gTitle}
                                 gInstructorNotes={this.props.gInstructorNotes}
                                 gDescription={this.props.gDescription}
+                                updateGraph={this.props.updateGraph}
+                            />
+                        </div>
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <CommonAssignmentTypeEditor
                                 gAssignmentType={this.props.gAssignmentType}
                                 gNeedsSubmit={this.props.gNeedsSubmit}
                                 gDisplayFeedback={this.props.gDisplayFeedback}
@@ -223,8 +234,6 @@ export default class GraphEditor extends React.Component {
                                 gIsPublished={this.props.gIsPublished}
                                 updateGraph={this.props.updateGraph}
                             />
-                        </div>
-                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CobbDouglasEditor
                                 gCobbDouglasA={this.props.gCobbDouglasA}
                                 gCobbDouglasAName={this.props.gCobbDouglasAName}
@@ -360,6 +369,11 @@ export default class GraphEditor extends React.Component {
                                 gTitle={this.props.gTitle}
                                 gInstructorNotes={this.props.gInstructorNotes}
                                 gDescription={this.props.gDescription}
+                                updateGraph={this.props.updateGraph}
+                            />
+                        </div>
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <CommonAssignmentTypeEditor
                                 gAssignmentType={this.props.gAssignmentType}
                                 gNeedsSubmit={this.props.gNeedsSubmit}
                                 gDisplayFeedback={this.props.gDisplayFeedback}
@@ -368,8 +382,6 @@ export default class GraphEditor extends React.Component {
                                 gIsPublished={this.props.gIsPublished}
                                 updateGraph={this.props.updateGraph}
                             />
-                        </div>
-                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <ConsumptionSavingEditor
                                 gA1={this.props.gA1}
                                 gA2={this.props.gA2}
@@ -449,6 +461,11 @@ export default class GraphEditor extends React.Component {
                                 gTitle={this.props.gTitle}
                                 gInstructorNotes={this.props.gInstructorNotes}
                                 gDescription={this.props.gDescription}
+                                updateGraph={this.props.updateGraph}
+                            />
+                        </div>
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <CommonAssignmentTypeEditor
                                 gAssignmentType={this.props.gAssignmentType}
                                 gNeedsSubmit={this.props.gNeedsSubmit}
                                 gDisplayFeedback={this.props.gDisplayFeedback}
@@ -457,8 +474,6 @@ export default class GraphEditor extends React.Component {
                                 gIsPublished={this.props.gIsPublished}
                                 updateGraph={this.props.updateGraph}
                             />
-                        </div>
-                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonAssignmentTypeEditor
                                 gAssignmentType={this.props.gAssignmentType}
                                 gNeedsSubmit={this.props.gNeedsSubmit}
