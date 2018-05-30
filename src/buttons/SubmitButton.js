@@ -31,5 +31,5 @@ SubmitButton.propTypes = {
     onClick: PropTypes.func,
     gNeedsSubmit: PropTypes.bool.isRequired,
     isInstructor: PropTypes.bool.isRequired,
-    submission: PropTypes.obj
+    submission: PropTypes.object
 };

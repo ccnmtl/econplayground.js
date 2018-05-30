@@ -224,6 +224,7 @@ class Viewer extends Component {
             gCobbDouglasAlphaInitial={this.state.gCobbDouglasAlphaInitial}
             gCobbDouglasYName={this.state.gCobbDouglasYName}
 
+            assessment={this.state.assessment}
             submission={this.state.submission}
             updateGraph={this.handleGraphUpdate.bind(this)}
             choice={this.state.choice}
