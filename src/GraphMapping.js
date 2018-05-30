@@ -91,22 +91,9 @@ const exportGraph = function(state) {
             cobb_douglas_l_name: state.gCobbDouglasLName,
             cobb_douglas_k_name: state.gCobbDouglasKName,
             cobb_douglas_alpha: forceFloat(state.gCobbDouglasAlpha),
-            cobb_douglas_y_name: state.gCobbDouglasYName,
-            cobb_douglas_correct_scenario: state.gCobbDouglasCorrectScenario
+            cobb_douglas_y_name: state.gCobbDouglasYName
         };
         Object.assign(obj, cobb);
-    } else if (state.gType === 0) {
-        const demandSupplyScore = {
-            line_1_feedback_increase: state.gLine1FeedbackIncrease,
-            line_1_increase_score: forceFloat(state.gLine1IncreaseScore),
-            line_1_feedback_decrease: state.gLine1FeedbackDecrease,
-            line_1_decrease_score: forceFloat(state.gLine1DecreaseScore),
-            line_2_feedback_increase: state.gLine2FeedbackIncrease,
-            line_2_increase_score: forceFloat(state.gLine2IncreaseScore),
-            line_2_feedback_decrease: state.gLine2FeedbackDecrease,
-            line_2_decrease_score: forceFloat(state.gLine2DecreaseScore)
-        };
-        Object.assign(obj, demandSupplyScore);
     }
 
     return obj;
@@ -162,15 +149,6 @@ const importGraph = function(json, obj) {
         gLine2Dashed: json.line_2_dashed,
         gLine3Dashed: json.line_3_dashed,
 
-        gLine1FeedbackIncrease: json.line_1_feedback_increase,
-        gLine1IncreaseScore: window.parseFloat(json.line_1_increase_score),
-        gLine1FeedbackDecrease: json.line_1_feedback_decrease,
-        gLine1DecreaseScore: window.parseFloat(json.line_1_decrease_score),
-        gLine2FeedbackIncrease: json.line_2_feedback_increase,
-        gLine2IncreaseScore: window.parseFloat(json.line_2_increase_score),
-        gLine2FeedbackDecrease: json.line_2_feedback_decrease,
-        gLine2DecreaseScore: window.parseFloat(json.line_2_decrease_score),
-
         gAlpha: window.parseFloat(json.alpha),
         gOmega: window.parseFloat(json.omega),
 
@@ -196,8 +174,7 @@ const importGraph = function(json, obj) {
         gCobbDouglasK: window.parseFloat(json.cobb_douglas_k),
         gCobbDouglasKName: json.cobb_douglas_k_name,
         gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
-        gCobbDouglasYName: json.cobb_douglas_y_name,
-        gCobbDouglasCorrectScenario: json.cobb_douglas_correct_scenario
+        gCobbDouglasYName: json.cobb_douglas_y_name
     };
 
     // When importing a graph for display, save the initial state of
@@ -261,10 +238,6 @@ const defaultGraph = {
     gYAxisLabel: '',
     gCorrectFeedback: '',
     gIncorrectFeedback: '',
-    gLine1FeedbackIncrease: '',
-    gLine1FeedbackDecrease: '',
-    gLine2FeedbackIncrease: '',
-    gLine2FeedbackDecrease: '',
 
     gAlpha: 0.3,
     gOmega: 1,

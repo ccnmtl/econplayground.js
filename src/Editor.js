@@ -88,14 +88,6 @@ class Editor extends Component {
                         gR={this.state.gR}
                         gY1={this.state.gY1}
                         gY2={this.state.gY2}
-                        gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
-                        gLine1DecreaseScore={this.state.gLine1DecreaseScore}
-                        gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
-                        gLine1IncreaseScore={this.state.gLine1IncreaseScore}
-                        gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
-                        gLine2DecreaseScore={this.state.gLine2DecreaseScore}
-                        gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
-                        gLine2IncreaseScore={this.state.gLine2IncreaseScore}
 
                         gCobbDouglasA={this.state.gCobbDouglasA}
                         gCobbDouglasAName={this.state.gCobbDouglasAName}
