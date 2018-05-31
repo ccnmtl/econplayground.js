@@ -83,6 +83,9 @@ export default class Assessment {
      * Used for fuzzy-matching labels and attribute names.
      */
     stripText(s) {
+        if (!s) {
+            return s;
+        }
         return s.toLowerCase().replace(/ /g, '');
     }
 
@@ -129,6 +132,9 @@ export default class Assessment {
 
     // Remove the leading 'g' and make lowercase.
     translateKey(key) {
+        if (!key) {
+            return key;
+        }
         return key.replace(/^g/, '').toLowerCase();
     }
 

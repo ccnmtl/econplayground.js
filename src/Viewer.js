@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
 import { exportGraph, importGraph, defaultGraph } from './GraphMapping';
-import { authedFetch, getSubmission, getError } from './utils';
+import { authedFetch, getAssessment, getSubmission, getError } from './utils';
 
 class Viewer extends Component {
     constructor(props) {
@@ -229,7 +229,14 @@ class Viewer extends Component {
                 return null;
             }
         }).then(function(s) {
-            me.setState({submission: s});
+            if (s) {
+                me.setState({submission: s});
+            }
+            return getAssessment(me.state.gId);
+        }).then(function(a) {
+            if (a && a.assessmentrule_set) {
+                me.setState({assessment: a.assessmentrule_set});
+            }
         });
 
         // Add graph feedback event handlers
