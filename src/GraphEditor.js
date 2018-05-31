@@ -60,11 +60,13 @@ export default class GraphEditor extends React.Component {
                                     gInstructorNotes={this.props.gInstructorNotes}
                                     gDescription={this.props.gDescription}
                                     updateGraph={this.props.updateGraph}
-                                />
-                                <div className="form-group">
-                                    <a href={"/graph/" + this.props.gId + "/public/"}
-                                        className="btn btn-secondary">Student View</a>
-                                </div>
+                                    />
+                                {this.props.gId &&
+                                    <div className="form-group">
+                                            <a href={"/graph/" + this.props.gId + "/public/"}
+                                                   className="btn btn-secondary">Student View</a>
+                                        </div>
+                                }
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <CommonGraphSettings
