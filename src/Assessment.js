@@ -108,7 +108,12 @@ export default class Assessment {
      */
     evalAction(action) {
         for (let i = 0; i < this.assessment.length; i++) {
-            let row = this.extractRow(this.assessment[i]);
+            let row = {};
+            if (Array.isArray(this.assessment[i])) {
+                row = this.extractRow(this.assessment[i]);
+            } else {
+                row = this.assessment[i];
+            }
 
             if (this.stripText(row.name) === this.stripText(action.name)) {
                 if (this.evalActionWithType(row, action, this.getActionType(row))) {
