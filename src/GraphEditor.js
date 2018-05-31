@@ -63,7 +63,7 @@ export default class GraphEditor extends React.Component {
                                 />
                                 <div className="form-group">
                                     <a href={"/graph/" + this.props.gId + "/public/"}
-                                       className="btn btn-secondary">Student View</a>
+                                        className="btn btn-secondary">Student View</a>
                                 </div>
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -102,11 +102,12 @@ export default class GraphEditor extends React.Component {
                     <button type="button"
                         className="btn btn-primary btn-sm"
                         onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    <a role="button"
-                        className="btn btn-danger btn-sm float-md-right"
-                        href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-                </form>
-            </div>
+                    {this.props.gId &&
+                            <a role="button"
+                                className="btn btn-danger btn-sm float-md-right"
+                                href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
+                        </form>
+                    </div>
             );
         } else if (this.props.gType === 1) {
             // Non-Linear Demand Supply
@@ -188,11 +189,12 @@ export default class GraphEditor extends React.Component {
                 <button type="button"
                     className="btn btn-primary btn-sm"
                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                <a role="button"
-                    className="btn btn-danger btn-sm float-md-right"
-                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-            </form>
-        </div>;
+                {this.props.gId &&
+                        <a role="button"
+                            className="btn btn-danger btn-sm float-md-right"
+                            href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
+                    </form>
+                </div>;
         } else if (this.props.gType === 3) {
             // Cobb-Douglas
             return <div className="GraphEditor">
@@ -272,10 +274,11 @@ export default class GraphEditor extends React.Component {
             <button type="button"
                 className="btn btn-primary btn-sm"
                 onClick={this.handleSaveGraph.bind(this)}>Save</button>
-            <a role="button"
-                className="btn btn-danger btn-sm float-md-right"
-                href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-        </div>;
+            {this.props.gId &&
+                    <a role="button"
+                        className="btn btn-danger btn-sm float-md-right"
+                        href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
+                </div>;
         } else if (this.props.gType === 5) {
             // Consumption Leisure
             return <div className="GraphEditor">
@@ -345,12 +348,12 @@ export default class GraphEditor extends React.Component {
                 <button type="button"
                     className="btn btn-primary btn-sm"
                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                <a role="button"
-                    className="btn btn-danger btn-sm float-md-right"
-                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-
-            </form>
-        </div>;
+                {this.props.gId &&
+                        <a role="button"
+                            className="btn btn-danger btn-sm float-md-right"
+                            href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
+                    </form>
+                </div>;
         } else if (this.props.gType === 7) {
             // Consumption Savings
             return <div className="GraphEditor">
@@ -417,22 +420,18 @@ export default class GraphEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph}
                             />
-
-                        <button type="button"
-                            className="btn btn-primary btn-sm"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
-
+                        </div>
                     </div>
-                </div>
-                <hr/>
-                <button type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                <a role="button"
-                    className="btn btn-danger btn-sm float-md-right"
-                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-            </form>
-        </div>;
+                    <hr/>
+                    <button type="button"
+                        className="btn btn-primary btn-sm"
+                        onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                    {this.props.gId &&
+                            <a role="button"
+                                className="btn btn-danger btn-sm float-md-right"
+                                href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
+                        </form>
+                    </div>;
         } else if (this.props.gType === 8) {
             // Aggregate Demand - Aggregate Supply
             return <div className="GraphEditor">
@@ -544,11 +543,12 @@ export default class GraphEditor extends React.Component {
                 <button type="button"
                     className="btn btn-primary btn-sm"
                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                <a role="button"
-                    className="btn btn-danger btn-sm float-md-right"
-                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-            </form>
-        </div>;
+                {this.props.gId &&
+                        <a role="button"
+                            className="btn btn-danger btn-sm float-md-right"
+                            href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
+                    </form>
+                </div>;
         } else {
             return <div>Unknown graph type: {this.props.gType}</div>;
         }
