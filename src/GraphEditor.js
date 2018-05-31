@@ -251,7 +251,6 @@ export default class GraphEditor extends React.Component {
                                 gCobbDouglasKName={this.props.gCobbDouglasKName}
                                 gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                                 gCobbDouglasYName={this.props.gCobbDouglasYName}
-                                gCobbDouglasCorrectScenario={this.props.gCobbDouglasCorrectScenario}
                                 gIntersectionLabel={this.props.gIntersectionLabel}
 
                                 gCorrectFeedback={this.props.gCorrectFeedback}
@@ -586,14 +585,6 @@ GraphEditor.propTypes = {
     gLine2Dashed: PropTypes.bool.isRequired,
     gLine3Dashed: PropTypes.bool.isRequired,
 
-    gLine1FeedbackIncrease: PropTypes.string,
-    gLine1IncreaseScore: PropTypes.number,
-    gLine1FeedbackDecrease: PropTypes.string,
-    gLine1DecreaseScore: PropTypes.number,
-    gLine2FeedbackIncrease: PropTypes.string,
-    gLine2IncreaseScore: PropTypes.number,
-    gLine2FeedbackDecrease: PropTypes.string,
-    gLine2DecreaseScore: PropTypes.number,
     gXAxisLabel: PropTypes.string.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,
     gType: PropTypes.number,
@@ -614,7 +605,6 @@ GraphEditor.propTypes = {
     gCobbDouglasK: PropTypes.number,
     gCobbDouglasKName: PropTypes.string,
     gCobbDouglasAlpha: PropTypes.number,
-    gCobbDouglasCorrectScenario: PropTypes.number,
     gCobbDouglasYName: PropTypes.string,
 
     updateGraph: PropTypes.func.isRequired,

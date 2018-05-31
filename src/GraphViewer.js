@@ -307,10 +307,7 @@ export default class GraphViewer extends React.Component {
                             isSubmitted={!!this.props.submission}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             gDisplayFeedback={this.props.gDisplayFeedback}
-                            gLine1FeedbackIncrease={this.props.gLine1FeedbackIncrease}
-                            gLine1FeedbackDecrease={this.props.gLine1FeedbackDecrease}
-                            gLine2FeedbackIncrease={this.props.gLine2FeedbackIncrease}
-                            gLine2FeedbackDecrease={this.props.gLine2FeedbackDecrease} />
+                            />
 
                         <CobbDouglasEditor
                             isInstructor={isInstructor}
@@ -632,6 +629,7 @@ export default class GraphViewer extends React.Component {
 
 GraphViewer.propTypes = {
     gId: PropTypes.number,
+    gType: PropTypes.number,
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
     gNeedsSubmit: PropTypes.bool,
@@ -687,16 +685,6 @@ GraphViewer.propTypes = {
     gLine1Dashed: PropTypes.bool.isRequired,
     gLine2Dashed: PropTypes.bool.isRequired,
     gLine3Dashed: PropTypes.bool.isRequired,
-
-    gLine1FeedbackIncrease: PropTypes.string,
-    gLine1IncreaseScore: PropTypes.number,
-    gLine1FeedbackDecrease: PropTypes.string,
-    gLine1DecreaseScore: PropTypes.number,
-    gLine2FeedbackIncrease: PropTypes.string,
-    gLine2IncreaseScore: PropTypes.number,
-    gLine2FeedbackDecrease: PropTypes.string,
-    gLine2DecreaseScore: PropTypes.number,
-    gType: PropTypes.number,
 
     gAlpha: PropTypes.number,
 

@@ -89,14 +89,6 @@ class Viewer extends Component {
             gR={this.state.gR}
             gY1={this.state.gY1}
             gY2={this.state.gY2}
-            gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
-            gLine1IncreaseScore={this.state.gLine1IncreaseScore}
-            gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
-            gLine1DecreaseScore={this.state.gLine1DecreaseScore}
-            gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
-            gLine2IncreaseScore={this.state.gLine2IncreaseScore}
-            gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
-            gLine2DecreaseScore={this.state.gLine2DecreaseScore}
 
             gCobbDouglasA={this.state.gCobbDouglasA}
             gCobbDouglasAName={this.state.gCobbDouglasAName}
@@ -106,7 +98,6 @@ class Viewer extends Component {
             gCobbDouglasKName={this.state.gCobbDouglasKName}
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
             gCobbDouglasYName={this.state.gCobbDouglasYName}
-            gCobbDouglasCorrectScenario={this.state.gCobbDouglasCorrectScenario}
 
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
@@ -202,14 +193,6 @@ class Viewer extends Component {
             gR={this.state.gR}
             gY1={this.state.gY1}
             gY2={this.state.gY2}
-            gLine1FeedbackDecrease={this.state.gLine1FeedbackDecrease}
-            gLine1DecreaseScore={this.state.gLine1DecreaseScore}
-            gLine1FeedbackIncrease={this.state.gLine1FeedbackIncrease}
-            gLine1IncreaseScore={this.state.gLine1IncreaseScore}
-            gLine2FeedbackDecrease={this.state.gLine2FeedbackDecrease}
-            gLine2DecreaseScore={this.state.gLine2DecreaseScore}
-            gLine2FeedbackIncrease={this.state.gLine2FeedbackIncrease}
-            gLine2IncreaseScore={this.state.gLine2IncreaseScore}
 
             gCobbDouglasA={this.state.gCobbDouglasA}
             gCobbDouglasAInitial={this.state.gCobbDouglasAInitial}
@@ -245,16 +228,13 @@ class Viewer extends Component {
 
         // Add graph feedback event handlers
         document.addEventListener('l1up', function() {
-            me.handleCase1();
+            // TODO
         });
         document.addEventListener('l1down', function() {
-            me.handleCase2();
         });
         document.addEventListener('l2up', function() {
-            me.handleCase3();
         });
         document.addEventListener('l2down', function() {
-            me.handleCase4();
         });
         document.addEventListener('l1initial', function() {
             me.handleInitial();
@@ -330,30 +310,6 @@ class Viewer extends Component {
     }
     updateDisplayIntersection(checked) {
         this.setState({gShowIntersection: checked});
-    }
-    handleCase1() {
-        this.setState({
-            choice: 1,
-            value: this.state.gLine1IncreaseScore.toString()
-        });
-    }
-    handleCase2() {
-        this.setState({
-            choice: 2,
-            value: this.state.gLine1DecreaseScore.toString()
-        });
-    }
-    handleCase3() {
-        this.setState({
-            choice: 3,
-            value: this.state.gLine2IncreaseScore.toString()
-        });
-    }
-    handleCase4() {
-        this.setState({
-            choice: 4,
-            value: this.state.gLine2DecreaseScore.toString()
-        });
     }
     handleInitial() {
         this.setState({value: '0'});
