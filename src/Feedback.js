@@ -3,15 +3,9 @@ import PropTypes from 'prop-types';
 
 export default class Feedback extends React.Component {
     render() {
-        if (this.props.gNeedsSubmit && !this.props.submission) {
-            return null;
-        }
-
-        let msg = '';
-
-        if (msg) {
+        if (this.props.feedback) {
             return <div className="alert alert-primary" role="alert">
-                {msg}
+                {this.props.feedback}
             </div>;
         }
 
@@ -20,7 +14,5 @@ export default class Feedback extends React.Component {
 }
 
 Feedback.propTypes = {
-    submission: PropTypes.object,
-    gDisplayFeedback: PropTypes.bool,
-    gNeedsSubmit: PropTypes.bool,
+    feedback: PropTypes.string
 };

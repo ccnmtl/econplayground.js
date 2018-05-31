@@ -20,6 +20,13 @@ import {getOrCreateSubmission} from './utils';
  * This component is used to view an econgraph object.
  */
 export default class GraphViewer extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentFeedback: ''
+        };
+    }
     render() {
         let action = '';
         if (window.EconPlayground && window.EconPlayground.LTIPostGrade) {
@@ -132,6 +139,9 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasYName={this.props.gCobbDouglasYName}
                             />
 
+                        <Feedback
+                            feedback={this.state.currentFeedback} />
+
                         <DemandSupplyEditor
                             isInstructor={isInstructor}
                             displayLabels={displayLabels}
@@ -159,6 +169,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -220,6 +231,9 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasYName={this.props.gCobbDouglasYName}
                             />
 
+                        <Feedback
+                            feedback={this.state.currentFeedback} />
+
                         <NonLinearDemandSupplyEditor
                             isInstructor={isInstructor}
                             displayLabels={displayLabels}
@@ -246,6 +260,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -302,12 +317,7 @@ export default class GraphViewer extends React.Component {
                             />
 
                         <Feedback
-                            choice={this.props.choice}
-                            submission={this.props.submission}
-                            isSubmitted={!!this.props.submission}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            gDisplayFeedback={this.props.gDisplayFeedback}
-                            />
+                            feedback={this.state.currentFeedback} />
 
                         <CobbDouglasEditor
                             isInstructor={isInstructor}
@@ -332,6 +342,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -379,6 +390,8 @@ export default class GraphViewer extends React.Component {
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                             />
 
+                        <Feedback
+                            feedback={this.state.currentFeedback} />
 
                         <ConsumptionLeisureEditor
                             isInstructor={isInstructor}
@@ -404,6 +417,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -455,6 +469,8 @@ export default class GraphViewer extends React.Component {
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                             />
 
+                        <Feedback
+                            feedback={this.state.currentFeedback} />
 
                         <ConsumptionSavingEditor
                             isInstructor={isInstructor}
@@ -480,6 +496,7 @@ export default class GraphViewer extends React.Component {
                         <ExportGraphButton />
 
                         <SubmitButton
+                            assessment={this.props.assessment}
                             gNeedsSubmit={this.props.gNeedsSubmit}
                             submission={this.props.submission}
                             isInstructor={isInstructor} />
@@ -551,6 +568,10 @@ export default class GraphViewer extends React.Component {
 
             gShowIntersection={this.props.gShowIntersection}
                 />
+
+                <Feedback
+            feedback={this.state.currentFeedback} />
+
                 <ADASEditor
             gXAxisLabel={this.props.gXAxisLabel}
             gYAxisLabel={this.props.gYAxisLabel}
@@ -595,6 +616,7 @@ export default class GraphViewer extends React.Component {
                 <ExportGraphButton />
 
                 <SubmitButton
+            assessment={this.props.assessment}
             gNeedsSubmit={this.props.gNeedsSubmit}
             submission={this.props.submission}
             isInstructor={isInstructor} />
@@ -622,7 +644,8 @@ export default class GraphViewer extends React.Component {
             // "playground" graph submitted.
             let a = new Assessment(this.props.assessment);
 
-            a.evalState(this.props);
+            const assessment = a.evalState(this.props);
+            this.setState({currentFeedback: assessment.feedback});
         }
     }
 }
