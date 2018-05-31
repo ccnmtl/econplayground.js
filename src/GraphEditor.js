@@ -61,6 +61,10 @@ export default class GraphEditor extends React.Component {
                                     gDescription={this.props.gDescription}
                                     updateGraph={this.props.updateGraph}
                                 />
+                                <div className="form-group">
+                                    <a href={"/graph/" + this.props.gId + "/public/"}
+                                       className="btn btn-secondary">Student View</a>
+                                </div>
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <CommonGraphSettings
@@ -92,11 +96,15 @@ export default class GraphEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
 
-                            <button type="button"
-                                className="btn btn-primary btn-sm"
-                                onClick={this.handleSaveGraph.bind(this)}>Save</button>
                         </div>
                     </div>
+                    <hr/>
+                    <button type="button"
+                        className="btn btn-primary btn-sm"
+                        onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                    <a role="button"
+                        className="btn btn-danger btn-sm float-md-right"
+                        href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
                 </form>
             </div>
             );
@@ -174,12 +182,12 @@ export default class GraphEditor extends React.Component {
                                 updateGraph={this.props.updateGraph}
                             />
 
-                        <button type="button"
-                            className="btn btn-primary btn-sm"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
                     </div>
                 </div>
-
+                <hr/>
+                <button type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
             </form>
         </div>;
         } else if (this.props.gType === 3) {
@@ -255,13 +263,13 @@ export default class GraphEditor extends React.Component {
                                 updateGraph={this.props.updateGraph}
                             />
 
-                        <button type="button"
-                            className="btn btn-primary btn-sm"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
-
                     </div>
                 </div>
             </form>
+            <hr/>
+            <button type="button"
+                className="btn btn-primary btn-sm"
+                onClick={this.handleSaveGraph.bind(this)}>Save</button>
         </div>;
         } else if (this.props.gType === 5) {
             // Consumption Leisure
@@ -326,12 +334,13 @@ export default class GraphEditor extends React.Component {
                                 updateGraph={this.props.updateGraph}
                             />
 
-                        <button type="button"
-                            className="btn btn-primary btn-sm"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
-
                     </div>
                 </div>
+                <hr/>
+                <button type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
+
             </form>
         </div>;
         } else if (this.props.gType === 7) {
@@ -407,6 +416,10 @@ export default class GraphEditor extends React.Component {
 
                     </div>
                 </div>
+                <hr/>
+                <button type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
             </form>
         </div>;
         } else if (this.props.gType === 8) {
@@ -514,12 +527,12 @@ export default class GraphEditor extends React.Component {
                                 updateGraph={this.props.updateGraph}
                             />
 
-                        <button type="button"
-                            className="btn btn-primary btn-sm"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
-
                     </div>
                 </div>
+                <hr/>
+                <button type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
             </form>
         </div>;
         } else {
@@ -532,6 +545,7 @@ export default class GraphEditor extends React.Component {
 }
 
 GraphEditor.propTypes = {
+    gId: PropTypes.number.idRequired,
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
 
