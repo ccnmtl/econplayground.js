@@ -188,6 +188,9 @@ export default class GraphEditor extends React.Component {
                 <button type="button"
                     className="btn btn-primary btn-sm"
                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                <a role="button"
+                    className="btn btn-danger btn-sm float-md-right"
+                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
             </form>
         </div>;
         } else if (this.props.gType === 3) {
@@ -269,6 +272,9 @@ export default class GraphEditor extends React.Component {
             <button type="button"
                 className="btn btn-primary btn-sm"
                 onClick={this.handleSaveGraph.bind(this)}>Save</button>
+            <a role="button"
+                className="btn btn-danger btn-sm float-md-right"
+                href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
         </div>;
         } else if (this.props.gType === 5) {
             // Consumption Leisure
@@ -339,6 +345,9 @@ export default class GraphEditor extends React.Component {
                 <button type="button"
                     className="btn btn-primary btn-sm"
                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                <a role="button"
+                    className="btn btn-danger btn-sm float-md-right"
+                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
 
             </form>
         </div>;
@@ -419,6 +428,9 @@ export default class GraphEditor extends React.Component {
                 <button type="button"
                     className="btn btn-primary btn-sm"
                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                <a role="button"
+                    className="btn btn-danger btn-sm float-md-right"
+                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
             </form>
         </div>;
         } else if (this.props.gType === 8) {
@@ -532,6 +544,9 @@ export default class GraphEditor extends React.Component {
                 <button type="button"
                     className="btn btn-primary btn-sm"
                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                <a role="button"
+                    className="btn btn-danger btn-sm float-md-right"
+                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
             </form>
         </div>;
         } else {
