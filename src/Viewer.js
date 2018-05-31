@@ -220,11 +220,14 @@ class Viewer extends Component {
     componentDidMount() {
         // Load graph and submission data
         const me = this;
-        this.getGraph().then(function() {
-            return me.getSubmission();
-        }).then(function(s) {
-            me.setState({submission: s});
-        });
+
+        if (this.state.gNeedsSubmit) {
+            this.getGraph().then(function() {
+                return me.getSubmission();
+            }).then(function(s) {
+                me.setState({submission: s});
+            });
+        }
 
         // Add graph feedback event handlers
         document.addEventListener('l1up', function() {
