@@ -544,7 +544,7 @@ export default class GraphEditor extends React.Component {
 }
 
 GraphEditor.propTypes = {
-    gId: PropTypes.number.idRequired,
+    gId: PropTypes.number,
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
 
