@@ -83,6 +83,9 @@ export default class Assessment {
      * Used for fuzzy-matching labels and attribute names.
      */
     stripText(s) {
+        if (!s) {
+            return s;
+        }
         return s.toLowerCase().replace(/ /g, '');
     }
 
@@ -105,7 +108,12 @@ export default class Assessment {
      */
     evalAction(action) {
         for (let i = 0; i < this.assessment.length; i++) {
-            let row = this.extractRow(this.assessment[i]);
+            let row = {};
+            if (Array.isArray(this.assessment[i])) {
+                row = this.extractRow(this.assessment[i]);
+            } else {
+                row = this.assessment[i];
+            }
 
             if (this.stripText(row.name) === this.stripText(action.name)) {
                 if (this.evalActionWithType(row, action, this.getActionType(row))) {
@@ -129,6 +137,9 @@ export default class Assessment {
 
     // Remove the leading 'g' and make lowercase.
     translateKey(key) {
+        if (!key) {
+            return key;
+        }
         return key.replace(/^g/, '').toLowerCase();
     }
 
