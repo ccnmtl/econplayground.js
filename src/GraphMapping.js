@@ -19,8 +19,6 @@ const exportGraph = function(state) {
         is_published: state.gIsPublished,
         display_feedback: state.gDisplayFeedback,
         display_shadow: state.gDisplayShadow,
-        correct_feedback: state.gCorrectFeedback,
-        incorrect_feedback: state.gIncorrectFeedback,
         needs_submit: state.gNeedsSubmit,
 
         show_intersection: state.gShowIntersection,
@@ -113,8 +111,6 @@ const importGraph = function(json, obj) {
         gIsPublished: json.is_published,
         gDisplayFeedback: json.display_feedback,
         gDisplayShadow: json.display_shadow,
-        gCorrectFeedback: json.correct_feedback,
-        gIncorrectFeedback: json.incorrect_feedback,
         gNeedsSubmit: json.needs_submit,
 
         gShowIntersection: json.show_intersection,
@@ -236,8 +232,6 @@ const defaultGraph = {
     gLine3Dashed: false,
     gXAxisLabel: '',
     gYAxisLabel: '',
-    gCorrectFeedback: '',
-    gIncorrectFeedback: '',
 
     gAlpha: 0.3,
     gOmega: 1,

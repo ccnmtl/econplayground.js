@@ -163,8 +163,6 @@ export default class CobbDouglasEditor extends React.Component {
 }
 
 CobbDouglasEditor.propTypes = {
-    gCorrectFeedback: PropTypes.string.isRequired,
-    gIncorrectFeedback: PropTypes.string.isRequired,
     gCobbDouglasA: PropTypes.number.isRequired,
     gCobbDouglasAName: PropTypes.string.isRequired,
     gCobbDouglasL: PropTypes.number.isRequired,
