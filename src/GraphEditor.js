@@ -13,7 +13,14 @@ import {displayGraphType} from './utils';
 
 export default class GraphEditor extends React.Component {
     title() {
-        return <h2>{displayGraphType(this.props.gType)}</h2>;
+        return (
+            <div>
+            <h1>{displayGraphType(this.props.gType)}</h1>
+            <p className="lead text-secondary">
+                Add and modify the information of your graph.
+            </p>
+        </div>
+        );
     }
     render() {
         if (!this.props.showing) {
@@ -29,8 +36,8 @@ export default class GraphEditor extends React.Component {
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <JXGBoard
                                     id={'editing-graph'}
-                                    width={562.5}
-                                    height={300}
+                                    width={540}
+                                    height={288}
                                     gType={this.props.gType}
                                     gLine1Label={this.props.gLine1Label}
                                     gLine2Label={this.props.gLine2Label}
@@ -120,8 +127,8 @@ export default class GraphEditor extends React.Component {
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <JXGBoard
                                 id={'editing-graph'}
-                                width={562.5}
-                                height={300}
+                                width={540}
+                                height={288}
                                 gType={this.props.gType}
                                 gLine1Label={this.props.gLine1Label}
                                 gLine2Label={this.props.gLine2Label}
@@ -206,8 +213,8 @@ export default class GraphEditor extends React.Component {
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <JXGBoard
                                 id={'editing-graph'}
-                                width={562.5}
-                                height={300}
+                                width={540}
+                                height={288}
                                 gType={this.props.gType}
                                 gLine1Label={this.props.gLine1Label}
                                 gLine2Label={this.props.gLine2Label}
@@ -290,8 +297,8 @@ export default class GraphEditor extends React.Component {
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <JXGBoard
                                 id={'editing-graph'}
-                                width={562.5}
-                                height={300}
+                                width={540}
+                                height={288}
                                 gType={this.props.gType}
                                 gA1={this.props.gA1}
                                 gA2={this.props.gA2}
@@ -365,8 +372,8 @@ export default class GraphEditor extends React.Component {
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <JXGBoard
                                 id={'editing-graph'}
-                                width={562.5}
-                                height={300}
+                                width={540}
+                                height={288}
                                 gType={this.props.gType}
                                 gA1={this.props.gA1}
                                 gA2={this.props.gA2}
@@ -443,8 +450,8 @@ export default class GraphEditor extends React.Component {
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <JXGBoard
                                 id={'editing-graph'}
-                                width={562.5}
-                                height={300}
+                                width={540}
+                                height={288}
                                 gType={this.props.gType}
                                 gA1={this.props.gA1}
                                 gA2={this.props.gA2}
