@@ -277,9 +277,6 @@ export default class GraphEditor extends React.Component {
                                 gCobbDouglasYName={this.props.gCobbDouglasYName}
                                 gIntersectionLabel={this.props.gIntersectionLabel}
 
-                                gCorrectFeedback={this.props.gCorrectFeedback}
-                                gIncorrectFeedback={this.props.gIncorrectFeedback}
-
                                 displayLabels={true}
                                 displaySliders={true}
                                 isInstructor={true}
@@ -356,9 +353,6 @@ export default class GraphEditor extends React.Component {
 
                                 gXAxisLabel={this.props.gXAxisLabel}
                                 gYAxisLabel={this.props.gYAxisLabel}
-
-                                gCorrectFeedback={this.props.gCorrectFeedback}
-                                gIncorrectFeedback={this.props.gIncorrectFeedback}
 
                                 displayLabels={true}
                                 displaySliders={true}
@@ -441,8 +435,6 @@ export default class GraphEditor extends React.Component {
                                 gIntersectionLabel={this.props.gIntersectionLabel}
                                 gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                 gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                                gCorrectFeedback={this.props.gCorrectFeedback}
-                                gIncorrectFeedback={this.props.gIncorrectFeedback}
 
                                 displayLabels={true}
                                 displaySliders={true}
@@ -562,9 +554,6 @@ export default class GraphEditor extends React.Component {
                                 gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
                                 gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
 
-                                gCorrectFeedback={this.props.gCorrectFeedback}
-                                gIncorrectFeedback={this.props.gIncorrectFeedback}
-
                                 displayLabels={true}
                                 displaySliders={true}
                                 isInstructor={true}
@@ -615,8 +604,6 @@ GraphEditor.propTypes = {
 
     gIsPublished: PropTypes.bool.isRequired,
     gDisplayFeedback: PropTypes.bool.isRequired,
-    gCorrectFeedback: PropTypes.string,
-    gIncorrectFeedback: PropTypes.string,
     gInstructorNotes: PropTypes.string.isRequired,
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
