@@ -145,8 +145,14 @@ export default class Assessment {
 
     /**
      * Assess the given state.
+     *
+     * Returns an array of the form: [{
+     *     feedback: <string>,
+     *     score: <number>
+     * }, ...]
      */
     evalState(state) {
+        let results = [];
         let result = null;
 
         for (let key in state) {
@@ -157,14 +163,11 @@ export default class Assessment {
                 });
 
                 if (result) {
-                    return result;
+                    results.push(result);
                 }
             }
         }
 
-        return {
-            feedback: null,
-            score: null
-        };
+        return results;
     }
 }

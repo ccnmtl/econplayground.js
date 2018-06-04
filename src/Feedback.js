@@ -3,10 +3,19 @@ import PropTypes from 'prop-types';
 
 export default class Feedback extends React.Component {
     render() {
-        if (this.props.feedback) {
-            return <div className="alert alert-primary" role="alert">
-                {this.props.feedback}
-            </div>;
+        if (this.props.feedback && this.props.feedback.length > 0) {
+            let n = 0;
+            return (
+                <React.Fragment>
+                    {this.props.feedback.map(e => (
+                        <div key={n++}
+                             className="alert alert-primary"
+                             role="alert">
+                            {e.feedback}
+                        </div>
+                    ))}
+                </React.Fragment>
+            );
         }
 
         return null;
@@ -14,5 +23,5 @@ export default class Feedback extends React.Component {
 }
 
 Feedback.propTypes = {
-    feedback: PropTypes.string
+    feedback: PropTypes.array.isRequired
 };
