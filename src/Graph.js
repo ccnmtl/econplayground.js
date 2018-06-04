@@ -106,7 +106,7 @@ class Graph {
             this.initialL1Y = this.l1.getRise();
 
             if (window.EconPlayground.isInstructor) {
-                this.l1.on('mouseup', function() {
+                this.l1.on('up', function() {
                     const offset = getOffset(
                         me.l1.getSlope(), me.l1.getRise(), 2.5);
                     const offsetEvt = new CustomEvent('l1offset', {
@@ -118,7 +118,7 @@ class Graph {
                     document.dispatchEvent(offsetEvt);
                 });
             } else {
-                this.l1.on('mouseup', function() {
+                this.l1.on('up', function() {
                     // Only do this line reset functionality if this
                     // is a submittable graph. Otherwise, students
                     // should be able to play freely.
@@ -154,7 +154,7 @@ class Graph {
             this.initialL2Y = this.l2.getRise();
 
             if (window.EconPlayground.isInstructor) {
-                this.l2.on('mouseup', function() {
+                this.l2.on('up', function() {
                     const offset = getOffset(
                         me.l2.getSlope(), me.l2.getRise(), 2.5);
                     const offsetEvt = new CustomEvent('l2offset', {
@@ -166,7 +166,7 @@ class Graph {
                     document.dispatchEvent(offsetEvt);
                 });
             } else {
-                this.l2.on('mouseup', function() {
+                this.l2.on('up', function() {
                     // Only do this line reset functionality if this
                     // is a submittable graph. Otherwise, students
                     // should be able to play freely.
@@ -391,7 +391,9 @@ class NonLinearDemandSupplyGraph extends Graph {
                     strokeColor: this.shadowColor,
                     highlight: false,
                     fixed: true,
-                    layer: 4
+                    layer: 4,
+                    recursionDepthLow: 8,
+                    recursionDepthHigh: 15
                 });
 
             const f2Shadow = function(x) {
@@ -409,7 +411,9 @@ class NonLinearDemandSupplyGraph extends Graph {
                     strokeColor: this.shadowColor,
                     highlight: false,
                     fixed: true,
-                    layer: 4
+                    layer: 4,
+                    recursionDepthLow: 8,
+                    recursionDepthHigh: 15
                 });
 
             l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
@@ -438,7 +442,9 @@ class NonLinearDemandSupplyGraph extends Graph {
             withLabel: true,
             strokeWidth: 2,
             strokeColor: this.l1Color,
-            fixed: this.areLinesFixed
+            fixed: this.areLinesFixed,
+            recursionDepthLow: 8,
+            recursionDepthHigh: 15
         });
 
         const f = function(x) {
@@ -453,7 +459,9 @@ class NonLinearDemandSupplyGraph extends Graph {
             withLabel: true,
             strokeWidth: 2,
             strokeColor: this.l2Color,
-            fixed: this.areLinesFixed
+            fixed: this.areLinesFixed,
+            recursionDepthLow: 8,
+            recursionDepthHigh: 15
         });
 
         this.l1.setPosition(window.JXG.COORDS_BY_USER, [
@@ -470,7 +478,7 @@ class NonLinearDemandSupplyGraph extends Graph {
         this.l1.fullUpdate(true);
         this.l2.fullUpdate(true);
 
-        this.l1.on('mouseup', function() {
+        this.l1.on('up', function() {
             const xOffset = me.l1.transformations[0].matrix[1][0];
             const yOffset = me.l1.transformations[0].matrix[2][0];
             const offsetEvt = new CustomEvent('l1offset', {
@@ -482,7 +490,7 @@ class NonLinearDemandSupplyGraph extends Graph {
             document.dispatchEvent(offsetEvt);
         });
 
-        this.l2.on('mouseup', function() {
+        this.l2.on('up', function() {
             const xOffset = me.l2.transformations[0].matrix[1][0];
             const yOffset = me.l2.transformations[0].matrix[2][0];
             const offsetEvt = new CustomEvent('l2offset', {
@@ -524,7 +532,9 @@ class CobbDouglasGraph extends Graph {
             name: lineLabel,
             withLabel: true,
             strokeWidth: 2,
-            strokeColor: this.l1Color
+            strokeColor: this.l1Color,
+            recursionDepthLow: 8,
+            recursionDepthHigh: 15
         });
 
         if (this.options.shadow && this.options.gDisplayShadow) {
@@ -543,7 +553,9 @@ class CobbDouglasGraph extends Graph {
                 strokeColor: this.shadowColor,
                 highlight: false,
                 // Under the main line layer
-                layer: 4
+                layer: 4,
+                recursionDepthLow: 8,
+                recursionDepthHigh: 15
             });
         }
 
@@ -605,7 +617,9 @@ class ConsumptionLeisureGraph extends Graph {
                 strokeColor: this.shadowColor,
                 highlight: false,
                 // Under the main line layer
-                layer: 4
+                layer: 4,
+                recursionDepthLow: 8,
+                recursionDepthHigh: 15
             });
         }
 
@@ -621,7 +635,9 @@ class ConsumptionLeisureGraph extends Graph {
             // This graph is only moved by its RangeEditors, not by
             // dragging.
             fixed: true,
-            highlight: false
+            highlight: false,
+            recursionDepthLow: 8,
+            recursionDepthHigh: 15
         });
 
         if (this.options.gShowIntersection) {
@@ -690,7 +706,9 @@ class ConsumptionSavingGraph extends Graph {
                 strokeColor: this.shadowColor,
                 highlight: false,
                 // Under the main line layer
-                layer: 4
+                layer: 4,
+                recursionDepthLow: 8,
+                recursionDepthHigh: 15
             });
 
             if (this.options.gShowIntersection) {
@@ -761,7 +779,9 @@ class ConsumptionSavingGraph extends Graph {
             // This graph is only moved by its RangeEditors, not by
             // dragging.
             fixed: true,
-            highlight: false
+            highlight: false,
+            recursionDepthLow: 8,
+            recursionDepthHigh: 15
         });
 
         if (this.options.gShowIntersection) {
@@ -841,7 +861,9 @@ class ADASGraph extends Graph {
                     dash: this.options.gLine1Dashed ? 2 : 0,
                     highlight: false,
                     fixed: true,
-                    layer: 4
+                    layer: 4,
+                    recursionDepthLow: 2,
+                    recursionDepthHigh: 4
                 });
 
             const f2Shadow = function(x) {
@@ -857,7 +879,9 @@ class ADASGraph extends Graph {
                     dash: this.options.gLine2Dashed ? 2 : 0,
                     highlight: false,
                     fixed: true,
-                    layer: 4
+                    layer: 4,
+                    recursionDepthLow: 2,
+                    recursionDepthHigh: 4
                 });
 
             const f3Shadow = function(x) {
@@ -873,7 +897,9 @@ class ADASGraph extends Graph {
                     dash: this.options.gLine3Dashed ? 2 : 0,
                     highlight: false,
                     fixed: true,
-                    layer: 4
+                    layer: 4,
+                    recursionDepthLow: 2,
+                    recursionDepthHigh: 4
                 });
 
             l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
@@ -919,7 +945,9 @@ class ADASGraph extends Graph {
             dash: this.options.gLine1Dashed ? 2 : 0,
             strokeWidth: 2,
             strokeColor: this.l1Color,
-            fixed: this.areLinesFixed
+            fixed: this.areLinesFixed,
+            recursionDepthLow: 2,
+            recursionDepthHigh: 4
         });
 
         const f2 = function(x) {
@@ -933,7 +961,9 @@ class ADASGraph extends Graph {
             dash: this.options.gLine2Dashed ? 2 : 0,
             strokeWidth: 2,
             strokeColor: this.l2Color,
-            fixed: this.areLinesFixed
+            fixed: this.areLinesFixed,
+            recursionDepthLow: 2,
+            recursionDepthHigh: 4
         });
 
         const f3 = function(x) {
@@ -947,7 +977,9 @@ class ADASGraph extends Graph {
             dash: this.options.gLine3Dashed ? 2 : 0,
             strokeWidth: 2,
             strokeColor: this.l3Color,
-            fixed: this.areLinesFixed
+            fixed: this.areLinesFixed,
+            recursionDepthLow: 2,
+            recursionDepthHigh: 4
         });
 
         this.l1.setPosition(window.JXG.COORDS_BY_USER, [
@@ -969,7 +1001,7 @@ class ADASGraph extends Graph {
         this.l2.fullUpdate(true);
         this.l3.fullUpdate(true);
 
-        this.l1.on('mouseup', function() {
+        this.l1.on('up', function() {
             const xOffset = me.l1.transformations[0].matrix[1][0];
             const yOffset = me.l1.transformations[0].matrix[2][0];
             const offsetEvt = new CustomEvent('l1offset', {
@@ -981,7 +1013,7 @@ class ADASGraph extends Graph {
             document.dispatchEvent(offsetEvt);
         });
 
-        this.l2.on('mouseup', function() {
+        this.l2.on('up', function() {
             const xOffset = me.l2.transformations[0].matrix[1][0];
             const yOffset = me.l2.transformations[0].matrix[2][0];
             const offsetEvt = new CustomEvent('l2offset', {
@@ -993,7 +1025,7 @@ class ADASGraph extends Graph {
             document.dispatchEvent(offsetEvt);
         });
 
-        this.l3.on('mouseup', function() {
+        this.l3.on('up', function() {
             const xOffset = me.l3.transformations[0].matrix[1][0];
             const yOffset = me.l3.transformations[0].matrix[2][0];
             const offsetEvt = new CustomEvent('l3offset', {
