@@ -104,8 +104,8 @@ export default class GraphViewer extends React.Component {
                             gType={this.props.gType}
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={this.props.gCobbDouglasLName}
-                            gYAxisLabel={this.props.gCobbDouglasYName}
+                            gXAxisLabel={this.props.gXAxisLabel}
+                            gYAxisLabel={this.props.gYAxisLabel}
                             gLine1Slope={this.props.gLine1Slope}
                             gLine1SlopeInitial={this.props.gLine1SlopeInitial}
                             gLine2Slope={this.props.gLine2Slope}
@@ -124,19 +124,6 @@ export default class GraphViewer extends React.Component {
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-
-                            gCobbDouglasA={this.props.gCobbDouglasA}
-                            gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
-                            gCobbDouglasAName={this.props.gCobbDouglasAName}
-                            gCobbDouglasL={this.props.gCobbDouglasL}
-                            gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
-                            gCobbDouglasLName={this.props.gCobbDouglasLName}
-                            gCobbDouglasK={this.props.gCobbDouglasK}
-                            gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
-                            gCobbDouglasKName={this.props.gCobbDouglasKName}
-                            gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                            gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
-                            gCobbDouglasYName={this.props.gCobbDouglasYName}
                             />
 
                         <Feedback
@@ -196,8 +183,8 @@ export default class GraphViewer extends React.Component {
                             gType={this.props.gType}
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={this.props.gCobbDouglasLName}
-                            gYAxisLabel={this.props.gCobbDouglasYName}
+                            gXAxisLabel={this.props.gXAxisLabel}
+                            gYAxisLabel={this.props.gYAxisLabel}
                             gLine1Slope={this.props.gLine1Slope}
                             gLine1SlopeInitial={this.props.gLine1SlopeInitial}
                             gLine2Slope={this.props.gLine2Slope}
@@ -374,8 +361,8 @@ export default class GraphViewer extends React.Component {
                             gA2Initial={this.props.gA2Initial}
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={this.props.gCobbDouglasLName}
-                            gYAxisLabel={this.props.gCobbDouglasYName}
+                            gXAxisLabel={this.props.gXAxisLabel}
+                            gYAxisLabel={this.props.gYAxisLabel}
                             gLine1Slope={this.props.gLine1Slope}
                             gLine2Slope={this.props.gLine2Slope}
                             gLine1OffsetX={this.props.gLine1OffsetX}
@@ -453,8 +440,8 @@ export default class GraphViewer extends React.Component {
                             gA4Initial={this.props.gA4Initial}
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={this.props.gCobbDouglasLName}
-                            gYAxisLabel={this.props.gCobbDouglasYName}
+                            gXAxisLabel={this.props.gXAxisLabel}
+                            gYAxisLabel={this.props.gYAxisLabel}
                             gLine1Slope={this.props.gLine1Slope}
                             gLine2Slope={this.props.gLine2Slope}
                             gLine1OffsetX={this.props.gLine1OffsetX}
