@@ -24,7 +24,7 @@ export default class GraphViewer extends React.Component {
         super(props);
 
         this.state = {
-            currentFeedback: ''
+            currentFeedback: []
         };
     }
     render() {
@@ -629,10 +629,9 @@ export default class GraphViewer extends React.Component {
             });
         } else {
             // "playground" graph submitted.
-            let a = new Assessment(this.props.assessment);
-
-            const assessment = a.evalState(this.props);
-            this.setState({currentFeedback: assessment.feedback});
+            const assessment = new Assessment(this.props.assessment);
+            const result = assessment.evalState(this.props);
+            this.setState({currentFeedback: result});
         }
     }
 }
