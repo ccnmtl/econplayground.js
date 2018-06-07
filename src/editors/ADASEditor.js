@@ -8,8 +8,9 @@ export default class ADASEditor extends React.Component {
     render() {
         return (
             <div>
-                <h2>Slope</h2>
                 {this.props.displaySliders && (
+                    <React.Fragment>
+                    <h2>Slope</h2>
                     <div className="form-row">
                         <div className="col-sm-4">
                             <label htmlFor="gLine1Slope">
@@ -49,9 +50,11 @@ export default class ADASEditor extends React.Component {
                             </div>
                         </div>
                     </div>
+                </React.Fragment>
                 )}
 
                 {this.props.displaySliders && (
+                    <React.Fragment>
                     <div className="form-row">
                         <div className="col-sm-4">
                             <label htmlFor="gLine3Slope">
@@ -71,8 +74,9 @@ export default class ADASEditor extends React.Component {
                                 handler={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
-                )}
                 <hr/>
+            </React.Fragment>
+                )}
 
                 <h2>Lines</h2>
                 <div className="row">
@@ -118,71 +122,75 @@ export default class ADASEditor extends React.Component {
                 </div>
 
                 {this.props.isInstructor && (
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                        id="gLine1Dashed"
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        onChange={handleFormUpdate.bind(this)}
-                                        checked={this.props.gLine1Dashed} />
-                                    Orange line dashed?
-                                </label>
+                    <React.Fragment>
+                        <div className="row">
+                            <div className="col-sm-3">
+                                <div className="form-check">
+                                    <label className="form-check-label">
+                                        <input
+                                            id="gLine1Dashed"
+                                            className="form-check-input"
+                                            type="checkbox"
+                                            onChange={handleFormUpdate.bind(this)}
+                                            checked={this.props.gLine1Dashed} />
+                                        Orange line dashed?
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="col-sm-3">
+                                <div className="form-check">
+                                    <label className="form-check-label">
+                                        <input
+                                            id="gLine2Dashed"
+                                            className="form-check-input"
+                                            type="checkbox"
+                                            onChange={handleFormUpdate.bind(this)}
+                                            checked={this.props.gLine2Dashed} />
+                                        Blue line dashed?
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="col-sm-3">
+                                <div className="form-check">
+                                    <label className="form-check-label">
+                                        <input
+                                            id="gLine3Dashed"
+                                            className="form-check-input"
+                                            type="checkbox"
+                                            onChange={handleFormUpdate.bind(this)}
+                                            checked={this.props.gLine3Dashed} />
+                                        Red line dashed?
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div className="col-sm-3">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                        id="gLine2Dashed"
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        onChange={handleFormUpdate.bind(this)}
-                                        checked={this.props.gLine2Dashed} />
-                                    Blue line dashed?
-                                </label>
-                            </div>
-                        </div>
-                        <div className="col-sm-3">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                        id="gLine3Dashed"
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        onChange={handleFormUpdate.bind(this)}
-                                        checked={this.props.gLine3Dashed} />
-                                    Red line dashed?
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                        <hr/>
+                    </React.Fragment>
                 )}
-                <hr/>
 
-                <h2>Labels</h2>
                 {this.props.displayLabels && (
-                    <div className="row">
-                        <EditableControl
-                            id="gLine1Label"
-                            name="Orange line"
-                            value={this.props.gLine1Label}
-                            valueEditable={true}
-                            isInstructor={this.props.isInstructor}
-                            updateGraph={this.props.updateGraph}
-                        />
+                    <React.Fragment>
+                        <h2>Labels</h2>
+                        <div className="row">
+                            <EditableControl
+                                id="gLine1Label"
+                                name="Orange line"
+                                value={this.props.gLine1Label}
+                                valueEditable={true}
+                                isInstructor={this.props.isInstructor}
+                                updateGraph={this.props.updateGraph}
+                            />
 
-                    <EditableControl
-                        id="gLine2Label"
-                        name="Blue line"
-                        value={this.props.gLine2Label}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                            <EditableControl
+                                id="gLine2Label"
+                                name="Blue line"
+                                value={this.props.gLine2Label}
+                                valueEditable={true}
+                                isInstructor={this.props.isInstructor}
+                                updateGraph={this.props.updateGraph}
+                            />
+                        </div>
+                    </React.Fragment>
                 )}
 
                 {this.props.displayLabels && (
@@ -209,15 +217,15 @@ export default class ADASEditor extends React.Component {
                             updateGraph={this.props.updateGraph}
                         />
 
-                    <EditableControl
-                        id="gYAxisLabel"
-                        name="Y-axis"
-                        value={this.props.gYAxisLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                        <EditableControl
+                            id="gYAxisLabel"
+                            name="Y-axis"
+                            value={this.props.gYAxisLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
 
                 {this.props.displayLabels && (
@@ -231,15 +239,15 @@ export default class ADASEditor extends React.Component {
                             updateGraph={this.props.updateGraph}
                         />
 
-                    <EditableControl
-                        id="gIntersection2Label"
-                        name="Blue-Red intersection"
-                        value={this.props.gIntersection2Label}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                        <EditableControl
+                            id="gIntersection2Label"
+                            name="Blue-Red intersection"
+                            value={this.props.gIntersection2Label}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
 
                 {this.props.displayLabels && (
@@ -266,15 +274,15 @@ export default class ADASEditor extends React.Component {
                             updateGraph={this.props.updateGraph}
                         />
 
-                    <EditableControl
-                        id="gIntersectionVertLineLabel"
-                        name="Orange-Blue intersection vertical"
-                        value={this.props.gIntersectionVertLineLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                        <EditableControl
+                            id="gIntersectionVertLineLabel"
+                            name="Orange-Blue intersection vertical"
+                            value={this.props.gIntersectionVertLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
 
                 {this.props.displayLabels && (
@@ -288,15 +296,15 @@ export default class ADASEditor extends React.Component {
                             updateGraph={this.props.updateGraph}
                         />
 
-                    <EditableControl
-                        id="gIntersection2VertLineLabel"
-                        name="Blue-Red intersection vertical"
-                        value={this.props.gIntersection2VertLineLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                        <EditableControl
+                            id="gIntersection2VertLineLabel"
+                            name="Blue-Red intersection vertical"
+                            value={this.props.gIntersection2VertLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
 
                 {this.props.displayLabels && (
@@ -310,17 +318,16 @@ export default class ADASEditor extends React.Component {
                             updateGraph={this.props.updateGraph}
                         />
 
-                    <EditableControl
-                        id="gIntersection3VertLineLabel"
-                        name="Orange-Red intersection vertical"
-                        value={this.props.gIntersection3VertLineLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                        <EditableControl
+                            id="gIntersection3VertLineLabel"
+                            name="Orange-Red intersection vertical"
+                            value={this.props.gIntersection3VertLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
-
             </div>
         );
     }
