@@ -10,6 +10,7 @@ import CommonGraphEditor from './editors/CommonGraphEditor';
 import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
 import {displayGraphType, handleFormUpdate} from './utils';
+import { StickyContainer, Sticky   } from 'react-sticky';
 
 export default class GraphEditor extends React.Component {
     title() {
@@ -32,8 +33,11 @@ export default class GraphEditor extends React.Component {
                 <div className="GraphEditor">
                     {this.title()}
                     <form>
-                        <div className="row">
+                        <StickyContainer className="sticky-container row">
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <Sticky>
+                                    {({style }) => { return (
+                                        <div style={style}>
                                 <h2>Scenario</h2>
                                 <div className="form-group">
                                     <label htmlFor="gTitle">
@@ -88,6 +92,11 @@ export default class GraphEditor extends React.Component {
                                         </div>
                                     }
                             </div>
+                                    )
+                                    }
+                                    }
+                                </Sticky>
+                            </div>
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <CommonGraphSettings
                                     gAssignmentType={this.props.gAssignmentType}
@@ -118,7 +127,7 @@ export default class GraphEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-                        </div>
+                        </StickyContainer>
                         <hr/>
                         <div className="row">
                             <div className="ml-3  mr-2">
@@ -142,8 +151,11 @@ export default class GraphEditor extends React.Component {
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                    <div className="row">
+                    <StickyContainer className="sticky-container row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <Sticky>
+                                {({style }) => { return (
+                                    <div style={style} >
                             <h2>Scenario</h2>
                             <div className="form-group">
                                 <label htmlFor="gTitle">
@@ -200,6 +212,11 @@ export default class GraphEditor extends React.Component {
                                         </div>
                                     }
                         </div>
+                            )
+                            }
+                            }
+                        </Sticky>
+                        </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonGraphSettings
                                 gAssignmentType={this.props.gAssignmentType}
@@ -229,7 +246,8 @@ export default class GraphEditor extends React.Component {
                                 updateGraph={this.props.updateGraph}
                             />
                         </div>
-                    </div>
+                    </StickyContainer>
+                </form>
                     <hr/>
                     <div className="row">
                         <div className="ml-3  mr-2">
@@ -245,15 +263,17 @@ export default class GraphEditor extends React.Component {
                                 </div>
                         }
                     </div>
-                </form>
             </div>;
         } else if (this.props.gType === 3) {
             // Cobb-Douglas
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                    <div className="row">
+                    <StickyContainer className="sticky-container row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <Sticky>
+                                {({style }) => { return (
+                                    <div style={style} >
                             <h2>Scenario</h2>
                             <div className="form-group">
                                 <label htmlFor="gTitle">
@@ -299,13 +319,18 @@ export default class GraphEditor extends React.Component {
                                 gTitle={this.props.gTitle}
                                 gInstructorNotes={this.props.gInstructorNotes}
                                 gDescription={this.props.gDescription}
-            updateGraph={this.props.updateGraph} />
+                                updateGraph={this.props.updateGraph} />
                                 {this.props.gId &&
                                     <div className="form-group">
                                             <a href={"/graph/" + this.props.gId + "/public/"}
                                                    className="btn btn-secondary">Student View</a>
                                         </div>
                                     }
+                                    </div>
+                                )
+                                }
+                                }
+                            </Sticky>
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonGraphSettings
@@ -334,7 +359,7 @@ export default class GraphEditor extends React.Component {
                                 updateGraph={this.props.updateGraph}
                             />
                         </div>
-                    </div>
+                    </StickyContainer>
                 </form>
                 <hr/>
                 <div className="row">
@@ -357,8 +382,11 @@ export default class GraphEditor extends React.Component {
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                    <div className="row">
+                    <StickyContainer className="sticky-container row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <Sticky>
+                                {({style }) => { return (
+                                    <div style={style} >
                             <h2>Scenario</h2>
                             <div className="form-group">
                                 <label htmlFor="gTitle">
@@ -412,6 +440,11 @@ export default class GraphEditor extends React.Component {
                                         </div>
                                     }
                         </div>
+                                )
+                                }
+                                }
+                            </Sticky>
+                        </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <ConsumptionLeisureEditor
                                 gA1={this.props.gA1}
@@ -431,7 +464,8 @@ export default class GraphEditor extends React.Component {
                             />
 
                     </div>
-                </div>
+                </StickyContainer>
+            </form>
                 <hr/>
                 <div className="row">
                     <div className="ml-3  mr-2">
@@ -447,15 +481,17 @@ export default class GraphEditor extends React.Component {
                             </div>
                     }
                 </div>
-            </form>
         </div>;
         } else if (this.props.gType === 7) {
             // Consumption Savings
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                    <div className="row">
+                    <StickyContainer className="sticky-container row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <Sticky>
+                                {({style }) => { return (
+                                    <div style={style} >
                             <h2>Scenario</h2>
                             <div className="form-group">
                                 <label htmlFor="gTitle">
@@ -504,6 +540,11 @@ export default class GraphEditor extends React.Component {
                                                    className="btn btn-secondary">Student View</a>
                                         </div>
                                     }
+                        </div>
+                                )
+                                }
+                                }
+                            </Sticky>
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonGraphSettings
@@ -532,7 +573,7 @@ export default class GraphEditor extends React.Component {
                                 updateGraph={this.props.updateGraph}
                             />
                         </div>
-                    </div>
+                    </StickyContainer>
                     <hr/>
                     <div className="row">
                         <div className="ml-3  mr-2">
@@ -555,8 +596,11 @@ export default class GraphEditor extends React.Component {
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
-                    <div className="row">
+                    <StickyContainer className="sticky-container row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <Sticky>
+                                {({style }) => { return (
+                                    <div style={style} >
                             <h2>Scenario</h2>
                             <div className="form-group">
                                 <label htmlFor="gTitle">
@@ -623,6 +667,11 @@ export default class GraphEditor extends React.Component {
                                         </div>
                                     }
                         </div>
+                                )
+                                }
+                                }
+                            </Sticky>
+                        </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonGraphSettings
                                 gAssignmentType={this.props.gAssignmentType}
@@ -671,7 +720,7 @@ export default class GraphEditor extends React.Component {
                             />
 
                     </div>
-                </div>
+                </StickyContainer>
                 <hr/>
                 <div className="row">
                     <div className="ml-3  mr-2">
