@@ -67,11 +67,11 @@ export default class GraphViewer extends React.Component {
             }
         }
 
-        let titleEl = <h5></h5>;
+        let titleEl = <h1></h1>;
         let descriptionEl = <p></p>;
 
         if (!window.EconPlayground.hideTitleAndDescription) {
-            titleEl = <h5>{this.props.gTitle}</h5>;
+            titleEl = <h1>{this.props.gTitle}</h1>;
         }
 
         if (!window.EconPlayground.hideTitleAndDescription && this.props.gDescription) {
@@ -80,7 +80,7 @@ export default class GraphViewer extends React.Component {
             const parsed = reader.parse(this.props.gDescription);
             const description = writer.render(parsed);
 
-            descriptionEl = <p dangerouslySetInnerHTML={{__html:description}}></p>;
+            descriptionEl = <p className="lead text-secondary" dangerouslySetInnerHTML={{__html:description}}></p>;
         }
 
         if (this.props.gType === 0) {
@@ -164,10 +164,11 @@ export default class GraphViewer extends React.Component {
                 </div>
             );
         } else if (this.props.gType === 1) {
+            // non-linear graph
             return (
                 <div className="GraphViewer">
-                    {titleEl}
-                    {descriptionEl}
+                        {titleEl}
+                        {descriptionEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                         <input type="hidden" name="score" value={this.props.value} />
