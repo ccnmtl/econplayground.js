@@ -38,60 +38,60 @@ export default class GraphEditor extends React.Component {
                                 <Sticky>
                                     {({style }) => { return (
                                         <div style={style}>
-                                <h2>Scenario</h2>
-                                <div className="form-group">
-                                    <label htmlFor="gTitle">
-                                        Title
-                                    </label>
-                                    <input id="gTitle"
-                                        onChange={handleFormUpdate.bind(this)}
-                                        value={this.props.gTitle}
-                                        className="form-control form-control-sm"
-                                        type="text"
-                                        maxLength="140"
-                                    />
-                                </div>
-                                <JXGBoard
-                                    id={'editing-graph'}
-                                    width={540}
-                                    height={288}
-                                    gType={this.props.gType}
-                                    gLine1Label={this.props.gLine1Label}
-                                    gLine2Label={this.props.gLine2Label}
-                                    gXAxisLabel={this.props.gXAxisLabel}
-                                    gYAxisLabel={this.props.gYAxisLabel}
-                                    gLine1Slope={this.props.gLine1Slope}
-                                    gLine2Slope={this.props.gLine2Slope}
-                                    gLine1OffsetX={this.props.gLine1OffsetX}
-                                    gLine1OffsetY={this.props.gLine1OffsetY}
-                                    gLine2OffsetX={this.props.gLine2OffsetX}
-                                    gLine2OffsetY={this.props.gLine2OffsetY}
-                                    gShowIntersection={this.props.gShowIntersection}
-                                    gIntersectionLabel={this.props.gIntersectionLabel}
-                                    gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                                    gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                            <h2>Scenario</h2>
+                                            <div className="form-group">
+                                                <label htmlFor="gTitle">
+                                                    Title
+                                                </label>
+                                                <input id="gTitle"
+                                                    onChange={handleFormUpdate.bind(this)}
+                                                    value={this.props.gTitle}
+                                                    className="form-control form-control-sm"
+                                                    type="text"
+                                                    maxLength="140"
+                                                />
+                                            </div>
+                                            <JXGBoard
+                                                id={'editing-graph'}
+                                                width={540}
+                                                height={288}
+                                                gType={this.props.gType}
+                                                gLine1Label={this.props.gLine1Label}
+                                                gLine2Label={this.props.gLine2Label}
+                                                gXAxisLabel={this.props.gXAxisLabel}
+                                                gYAxisLabel={this.props.gYAxisLabel}
+                                                gLine1Slope={this.props.gLine1Slope}
+                                                gLine2Slope={this.props.gLine2Slope}
+                                                gLine1OffsetX={this.props.gLine1OffsetX}
+                                                gLine1OffsetY={this.props.gLine1OffsetY}
+                                                gLine2OffsetX={this.props.gLine2OffsetX}
+                                                gLine2OffsetY={this.props.gLine2OffsetY}
+                                                gShowIntersection={this.props.gShowIntersection}
+                                                gIntersectionLabel={this.props.gIntersectionLabel}
+                                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
-                                    gCobbDouglasA={this.props.gCobbDouglasA}
-                                    gCobbDouglasAName={this.props.gCobbDouglasAName}
-                                    gCobbDouglasL={this.props.gCobbDouglasL}
-                                    gCobbDouglasLName={this.props.gCobbDouglasLName}
-                                    gCobbDouglasK={this.props.gCobbDouglasK}
-                                    gCobbDouglasKName={this.props.gCobbDouglasKName}
-                                    gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                                />
-                                <CommonGraphEditor
-                                    gTitle={this.props.gTitle}
-                                    gInstructorNotes={this.props.gInstructorNotes}
-                                    gDescription={this.props.gDescription}
-                                    updateGraph={this.props.updateGraph}
-                                    />
-                                {this.props.gId &&
-                                    <div className="form-group">
-                                            <a href={"/graph/" + this.props.gId + "/public/"}
-                                                   className="btn btn-secondary">Student View</a>
+                                                gCobbDouglasA={this.props.gCobbDouglasA}
+                                                gCobbDouglasAName={this.props.gCobbDouglasAName}
+                                                gCobbDouglasL={this.props.gCobbDouglasL}
+                                                gCobbDouglasLName={this.props.gCobbDouglasLName}
+                                                gCobbDouglasK={this.props.gCobbDouglasK}
+                                                gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                                gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                                            />
+                                            <CommonGraphEditor
+                                                gTitle={this.props.gTitle}
+                                                gInstructorNotes={this.props.gInstructorNotes}
+                                                gDescription={this.props.gDescription}
+                                                updateGraph={this.props.updateGraph}
+                                            />
+                                        {this.props.gId &&
+                                                <div className="form-group">
+                                                <a href={"/graph/" + this.props.gId + "/public/"}
+                                            className="btn btn-secondary">Student View</a>
+                                                </div>
+                                        }
                                         </div>
-                                    }
-                            </div>
                                     )
                                     }
                                     }
@@ -156,66 +156,65 @@ export default class GraphEditor extends React.Component {
                             <Sticky>
                                 {({style }) => { return (
                                     <div style={style} >
-                            <h2>Scenario</h2>
-                            <div className="form-group">
-                                <label htmlFor="gTitle">
-                                    Title
-                                </label>
-                                <input id="gTitle"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    value={this.props.gTitle}
-                                    className="form-control form-control-sm"
-                                    type="text"
-                                    maxLength="140"
-                                />
-                            </div>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={540}
-                                height={288}
-                                gType={this.props.gType}
-                                gLine1Label={this.props.gLine1Label}
-                                gLine2Label={this.props.gLine2Label}
-                                gXAxisLabel={'L' || this.props.gCobbDouglasKName}
-                                gYAxisLabel={'Y'}
-                                gLine1Slope={this.props.gLine1Slope}
-                                gLine2Slope={this.props.gLine2Slope}
-                                gLine1OffsetX={this.props.gLine1OffsetX}
-                                gLine1OffsetY={this.props.gLine1OffsetY}
-                                gLine2OffsetX={this.props.gLine2OffsetX}
-                                gLine2OffsetY={this.props.gLine2OffsetY}
-                                gAlpha={this.props.gAlpha}
-                                gShowIntersection={this.props.gShowIntersection}
-                                gIntersectionLabel={this.props.gIntersectionLabel}
-                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-
-                                gCobbDouglasA={this.props.gCobbDouglasA}
-                                gCobbDouglasAName={this.props.gCobbDouglasAName}
-                                gCobbDouglasL={this.props.gCobbDouglasL}
-                                gCobbDouglasLName={this.props.gCobbDouglasLName}
-                                gCobbDouglasK={this.props.gCobbDouglasK}
-                                gCobbDouglasKName={this.props.gCobbDouglasKName}
-                                gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                                gCobbDouglasYName={this.props.gCobbDouglasYName}
-
-                            />
-                            <CommonGraphEditor
-                                gTitle={this.props.gTitle}
-                                gInstructorNotes={this.props.gInstructorNotes}
-                                gDescription={this.props.gDescription}
-            updateGraph={this.props.updateGraph} />
-                                {this.props.gId &&
-                                    <div className="form-group">
-                                            <a href={"/graph/" + this.props.gId + "/public/"}
-                                                   className="btn btn-secondary">Student View</a>
+                                        <h2>Scenario</h2>
+                                        <div className="form-group">
+                                            <label htmlFor="gTitle">
+                                                Title
+                                            </label>
+                                            <input id="gTitle"
+                                                onChange={handleFormUpdate.bind(this)}
+                                                value={this.props.gTitle}
+                                                className="form-control form-control-sm"
+                                                type="text"
+                                                maxLength="140"
+                                            />
                                         </div>
-                                    }
-                        </div>
-                            )
-                            }
-                            }
-                        </Sticky>
+                                        <JXGBoard
+                                            id={'editing-graph'}
+                                            width={540}
+                                            height={288}
+                                            gType={this.props.gType}
+                                            gLine1Label={this.props.gLine1Label}
+                                            gLine2Label={this.props.gLine2Label}
+                                            gXAxisLabel={'L' || this.props.gCobbDouglasKName}
+                                            gYAxisLabel={'Y'}
+                                            gLine1Slope={this.props.gLine1Slope}
+                                            gLine2Slope={this.props.gLine2Slope}
+                                            gLine1OffsetX={this.props.gLine1OffsetX}
+                                            gLine1OffsetY={this.props.gLine1OffsetY}
+                                            gLine2OffsetX={this.props.gLine2OffsetX}
+                                            gLine2OffsetY={this.props.gLine2OffsetY}
+                                            gAlpha={this.props.gAlpha}
+                                            gShowIntersection={this.props.gShowIntersection}
+                                            gIntersectionLabel={this.props.gIntersectionLabel}
+                                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                                            gCobbDouglasA={this.props.gCobbDouglasA}
+                                            gCobbDouglasAName={this.props.gCobbDouglasAName}
+                                            gCobbDouglasL={this.props.gCobbDouglasL}
+                                            gCobbDouglasLName={this.props.gCobbDouglasLName}
+                                            gCobbDouglasK={this.props.gCobbDouglasK}
+                                            gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                            gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                                            gCobbDouglasYName={this.props.gCobbDouglasYName}
+                                        />
+                                        <CommonGraphEditor
+                                            gTitle={this.props.gTitle}
+                                            gInstructorNotes={this.props.gInstructorNotes}
+                                            gDescription={this.props.gDescription}
+                                            updateGraph={this.props.updateGraph} />
+                                        {this.props.gId &&
+                                                <div className="form-group">
+                                                    <a href={"/graph/" + this.props.gId + "/public/"}
+                                                        className="btn btn-secondary">Student View</a>
+                                                </div>
+                                        }
+                                    </div>
+                                )
+                                }
+                                }
+                            </Sticky>
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonGraphSettings
@@ -262,7 +261,7 @@ export default class GraphEditor extends React.Component {
                                         href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
                                 </div>
                         }
-                    </div>
+                </div>
             </div>;
         } else if (this.props.gType === 3) {
             // Cobb-Douglas
@@ -274,58 +273,57 @@ export default class GraphEditor extends React.Component {
                             <Sticky>
                                 {({style }) => { return (
                                     <div style={style} >
-                            <h2>Scenario</h2>
-                            <div className="form-group">
-                                <label htmlFor="gTitle">
-                                    Title
-                                </label>
-                                <input id="gTitle"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    value={this.props.gTitle}
-                                    className="form-control form-control-sm"
-                                    type="text"
-                                    maxLength="140"
-                                />
-                            </div>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={540}
-                                height={288}
-                                gType={this.props.gType}
-                                gLine1Label={this.props.gLine1Label}
-                                gLine2Label={this.props.gLine2Label}
-                                gXAxisLabel={this.props.gCobbDouglasLName}
-                                gYAxisLabel={this.props.gCobbDouglasYName}
-                                gLine1Slope={this.props.gLine1Slope}
-                                gLine2Slope={this.props.gLine2Slope}
-                                gLine1OffsetX={this.props.gLine1OffsetX}
-                                gLine1OffsetY={this.props.gLine1OffsetY}
-                                gLine2OffsetX={this.props.gLine2OffsetX}
-                                gLine2OffsetY={this.props.gLine2OffsetY}
-                                gShowIntersection={this.props.gShowIntersection}
-                                gIntersectionLabel={this.props.gIntersectionLabel}
-                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-
-                                gCobbDouglasA={this.props.gCobbDouglasA}
-                                gCobbDouglasAName={this.props.gCobbDouglasAName}
-                                gCobbDouglasL={this.props.gCobbDouglasL}
-                                gCobbDouglasLName={this.props.gCobbDouglasLName}
-                                gCobbDouglasK={this.props.gCobbDouglasK}
-                                gCobbDouglasKName={this.props.gCobbDouglasKName}
-                                gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                            />
-                            <CommonGraphEditor
-                                gTitle={this.props.gTitle}
-                                gInstructorNotes={this.props.gInstructorNotes}
-                                gDescription={this.props.gDescription}
-                                updateGraph={this.props.updateGraph} />
-                                {this.props.gId &&
-                                    <div className="form-group">
-                                            <a href={"/graph/" + this.props.gId + "/public/"}
-                                                   className="btn btn-secondary">Student View</a>
+                                        <h2>Scenario</h2>
+                                        <div className="form-group">
+                                            <label htmlFor="gTitle">
+                                                Title
+                                            </label>
+                                            <input id="gTitle"
+                                                onChange={handleFormUpdate.bind(this)}
+                                                value={this.props.gTitle}
+                                                className="form-control form-control-sm"
+                                                type="text"
+                                                maxLength="140"
+                                            />
                                         </div>
-                                    }
+                                        <JXGBoard
+                                            id={'editing-graph'}
+                                            width={540}
+                                            height={288}
+                                            gType={this.props.gType}
+                                            gLine1Label={this.props.gLine1Label}
+                                            gLine2Label={this.props.gLine2Label}
+                                            gXAxisLabel={this.props.gCobbDouglasLName}
+                                            gYAxisLabel={this.props.gCobbDouglasYName}
+                                            gLine1Slope={this.props.gLine1Slope}
+                                            gLine2Slope={this.props.gLine2Slope}
+                                            gLine1OffsetX={this.props.gLine1OffsetX}
+                                            gLine1OffsetY={this.props.gLine1OffsetY}
+                                            gLine2OffsetX={this.props.gLine2OffsetX}
+                                            gLine2OffsetY={this.props.gLine2OffsetY}
+                                            gShowIntersection={this.props.gShowIntersection}
+                                            gIntersectionLabel={this.props.gIntersectionLabel}
+                                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                            gCobbDouglasA={this.props.gCobbDouglasA}
+                                            gCobbDouglasAName={this.props.gCobbDouglasAName}
+                                            gCobbDouglasL={this.props.gCobbDouglasL}
+                                            gCobbDouglasLName={this.props.gCobbDouglasLName}
+                                            gCobbDouglasK={this.props.gCobbDouglasK}
+                                            gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                            gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                                        />
+                                        <CommonGraphEditor
+                                            gTitle={this.props.gTitle}
+                                            gInstructorNotes={this.props.gInstructorNotes}
+                                            gDescription={this.props.gDescription}
+                                            updateGraph={this.props.updateGraph} />
+                                        {this.props.gId &&
+                                            <div className="form-group">
+                                                    <a href={"/graph/" + this.props.gId + "/public/"}
+                                                           className="btn btn-secondary">Student View</a>
+                                                </div>
+                                            }
                                     </div>
                                 )
                                 }
@@ -387,59 +385,59 @@ export default class GraphEditor extends React.Component {
                             <Sticky>
                                 {({style }) => { return (
                                     <div style={style} >
-                            <h2>Scenario</h2>
-                            <div className="form-group">
-                                <label htmlFor="gTitle">
-                                    Title
-                                </label>
-                                <input id="gTitle"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    value={this.props.gTitle}
-                                    className="form-control form-control-sm"
-                                    type="text"
-                                    maxLength="140"
-                                />
-                            </div>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={540}
-                                height={288}
-                                gType={this.props.gType}
-                                gA1={this.props.gA1}
-                                gA2={this.props.gA2}
-                                gLine1Label={this.props.gLine1Label}
-                                gLine2Label={this.props.gLine2Label}
-                                gXAxisLabel={this.props.gXAxisLabel}
-                                gYAxisLabel={this.props.gYAxisLabel}
-                                gLine1Slope={this.props.gLine1Slope}
-                                gLine2Slope={this.props.gLine2Slope}
-                                gLine1OffsetX={this.props.gLine1OffsetX}
-                                gLine1OffsetY={this.props.gLine1OffsetY}
-                                gLine2OffsetX={this.props.gLine2OffsetX}
-                                gLine2OffsetY={this.props.gLine2OffsetY}
-                                gShowIntersection={this.props.gShowIntersection}
-                                gIntersectionLabel={this.props.gIntersectionLabel}
-                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                            />
-                            <CommonGraphEditor
-                                gTitle={this.props.gTitle}
-                                gInstructorNotes={this.props.gInstructorNotes}
-                                gDescription={this.props.gDescription}
-                                gAssignmentType={this.props.gAssignmentType}
-                                gNeedsSubmit={this.props.gNeedsSubmit}
-                                gDisplayFeedback={this.props.gDisplayFeedback}
-                                gShowIntersection={this.props.gShowIntersection}
-                                gDisplayShadow={this.props.gDisplayShadow}
-                                gIsPublished={this.props.gIsPublished}
-            updateGraph={this.props.updateGraph} />
-                                {this.props.gId &&
-                                    <div className="form-group">
-                                            <a href={"/graph/" + this.props.gId + "/public/"}
-                                                   className="btn btn-secondary">Student View</a>
+                                        <h2>Scenario</h2>
+                                        <div className="form-group">
+                                            <label htmlFor="gTitle">
+                                                Title
+                                            </label>
+                                            <input id="gTitle"
+                                                onChange={handleFormUpdate.bind(this)}
+                                                value={this.props.gTitle}
+                                                className="form-control form-control-sm"
+                                                type="text"
+                                                maxLength="140"
+                                            />
                                         </div>
-                                    }
-                        </div>
+                                        <JXGBoard
+                                            id={'editing-graph'}
+                                            width={540}
+                                            height={288}
+                                            gType={this.props.gType}
+                                            gA1={this.props.gA1}
+                                            gA2={this.props.gA2}
+                                            gLine1Label={this.props.gLine1Label}
+                                            gLine2Label={this.props.gLine2Label}
+                                            gXAxisLabel={this.props.gXAxisLabel}
+                                            gYAxisLabel={this.props.gYAxisLabel}
+                                            gLine1Slope={this.props.gLine1Slope}
+                                            gLine2Slope={this.props.gLine2Slope}
+                                            gLine1OffsetX={this.props.gLine1OffsetX}
+                                            gLine1OffsetY={this.props.gLine1OffsetY}
+                                            gLine2OffsetX={this.props.gLine2OffsetX}
+                                            gLine2OffsetY={this.props.gLine2OffsetY}
+                                            gShowIntersection={this.props.gShowIntersection}
+                                            gIntersectionLabel={this.props.gIntersectionLabel}
+                                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                        />
+                                        <CommonGraphEditor
+                                            gTitle={this.props.gTitle}
+                                            gInstructorNotes={this.props.gInstructorNotes}
+                                            gDescription={this.props.gDescription}
+                                            gAssignmentType={this.props.gAssignmentType}
+                                            gNeedsSubmit={this.props.gNeedsSubmit}
+                                            gDisplayFeedback={this.props.gDisplayFeedback}
+                                            gShowIntersection={this.props.gShowIntersection}
+                                            gDisplayShadow={this.props.gDisplayShadow}
+                                            gIsPublished={this.props.gIsPublished}
+                                            updateGraph={this.props.updateGraph} />
+                                        {this.props.gId &&
+                                            <div className="form-group">
+                                                    <a href={"/graph/" + this.props.gId + "/public/"}
+                                                           className="btn btn-secondary">Student View</a>
+                                                </div>
+                                            }
+                                    </div>
                                 )
                                 }
                                 }
@@ -480,7 +478,7 @@ export default class GraphEditor extends React.Component {
                                     href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
                             </div>
                     }
-                </div>
+            </div>
         </div>;
         } else if (this.props.gType === 7) {
             // Consumption Savings
@@ -492,55 +490,55 @@ export default class GraphEditor extends React.Component {
                             <Sticky>
                                 {({style }) => { return (
                                     <div style={style} >
-                            <h2>Scenario</h2>
-                            <div className="form-group">
-                                <label htmlFor="gTitle">
-                                    Title
-                                </label>
-                                <input id="gTitle"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    value={this.props.gTitle}
-                                    className="form-control form-control-sm"
-                                    type="text"
-                                    maxLength="140"
-                                />
-                            </div>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={540}
-                                height={288}
-                                gType={this.props.gType}
-                                gA1={this.props.gA1}
-                                gA2={this.props.gA2}
-                                gA3={this.props.gA3}
-                                gA4={this.props.gA4}
-                                gLine1Label={this.props.gLine1Label}
-                                gLine2Label={this.props.gLine2Label}
-                                gXAxisLabel={this.props.gXAxisLabel}
-                                gYAxisLabel={this.props.gYAxisLabel}
-                                gLine1Slope={this.props.gLine1Slope}
-                                gLine2Slope={this.props.gLine2Slope}
-                                gLine1OffsetX={this.props.gLine1OffsetX}
-                                gLine1OffsetY={this.props.gLine1OffsetY}
-                                gLine2OffsetX={this.props.gLine2OffsetX}
-                                gLine2OffsetY={this.props.gLine2OffsetY}
-                                gIntersectionLabel={this.props.gIntersectionLabel}
-                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                                gShowIntersection={this.props.gShowIntersection}
-                            />
-                            <CommonGraphEditor
-                                gTitle={this.props.gTitle}
-                                gInstructorNotes={this.props.gInstructorNotes}
-                                gDescription={this.props.gDescription}
-            updateGraph={this.props.updateGraph} />
-                                {this.props.gId &&
-                                    <div className="form-group">
-                                            <a href={"/graph/" + this.props.gId + "/public/"}
-                                                   className="btn btn-secondary">Student View</a>
+                                        <h2>Scenario</h2>
+                                        <div className="form-group">
+                                            <label htmlFor="gTitle">
+                                                Title
+                                            </label>
+                                            <input id="gTitle"
+                                                onChange={handleFormUpdate.bind(this)}
+                                                value={this.props.gTitle}
+                                                className="form-control form-control-sm"
+                                                type="text"
+                                                maxLength="140"
+                                            />
                                         </div>
-                                    }
-                        </div>
+                                        <JXGBoard
+                                            id={'editing-graph'}
+                                            width={540}
+                                            height={288}
+                                            gType={this.props.gType}
+                                            gA1={this.props.gA1}
+                                            gA2={this.props.gA2}
+                                            gA3={this.props.gA3}
+                                            gA4={this.props.gA4}
+                                            gLine1Label={this.props.gLine1Label}
+                                            gLine2Label={this.props.gLine2Label}
+                                            gXAxisLabel={this.props.gXAxisLabel}
+                                            gYAxisLabel={this.props.gYAxisLabel}
+                                            gLine1Slope={this.props.gLine1Slope}
+                                            gLine2Slope={this.props.gLine2Slope}
+                                            gLine1OffsetX={this.props.gLine1OffsetX}
+                                            gLine1OffsetY={this.props.gLine1OffsetY}
+                                            gLine2OffsetX={this.props.gLine2OffsetX}
+                                            gLine2OffsetY={this.props.gLine2OffsetY}
+                                            gIntersectionLabel={this.props.gIntersectionLabel}
+                                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                            gShowIntersection={this.props.gShowIntersection}
+                                        />
+                                        <CommonGraphEditor
+                                            gTitle={this.props.gTitle}
+                                            gInstructorNotes={this.props.gInstructorNotes}
+                                            gDescription={this.props.gDescription}
+                                            updateGraph={this.props.updateGraph} />
+                                        {this.props.gId &&
+                                                <div className="form-group">
+                                                    <a href={"/graph/" + this.props.gId + "/public/"}
+                                                        className="btn btn-secondary">Student View</a>
+                                                </div>
+                                        }
+                                    </div>
                                 )
                                 }
                                 }
@@ -601,72 +599,71 @@ export default class GraphEditor extends React.Component {
                             <Sticky>
                                 {({style }) => { return (
                                     <div style={style} >
-                            <h2>Scenario</h2>
-                            <div className="form-group">
-                                <label htmlFor="gTitle">
-                                    Title
-                                </label>
-                                <input id="gTitle"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    value={this.props.gTitle}
-                                    className="form-control form-control-sm"
-                                    type="text"
-                                    maxLength="140"
-                                />
-                            </div>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={540}
-                                height={288}
-                                gType={this.props.gType}
-                                gA1={this.props.gA1}
-                                gA2={this.props.gA2}
-                                gA3={this.props.gA3}
-                                gA4={this.props.gA4}
-                                gLine1Label={this.props.gLine1Label}
-                                gLine2Label={this.props.gLine2Label}
-                                gLine3Label={this.props.gLine3Label}
-                                gLine1Dashed={this.props.gLine1Dashed}
-                                gLine2Dashed={this.props.gLine2Dashed}
-                                gLine3Dashed={this.props.gLine3Dashed}
-                                gXAxisLabel={this.props.gXAxisLabel}
-                                gYAxisLabel={this.props.gYAxisLabel}
-                                gLine1Slope={this.props.gLine1Slope}
-                                gLine2Slope={this.props.gLine2Slope}
-                                gLine3Slope={this.props.gLine3Slope}
-                                gLine1OffsetX={this.props.gLine1OffsetX}
-                                gLine1OffsetY={this.props.gLine1OffsetY}
-                                gLine2OffsetX={this.props.gLine2OffsetX}
-                                gLine2OffsetY={this.props.gLine2OffsetY}
-                                gLine3OffsetX={this.props.gLine3OffsetX}
-                                gLine3OffsetY={this.props.gLine3OffsetY}
-                                gDisplayIntersection1={this.props.gDisplayIntersection1}
-                                gIntersectionLabel={this.props.gIntersectionLabel}
-                                gDisplayIntersection2={this.props.gDisplayIntersection2}
-                                gIntersection2Label={this.props.gIntersection2Label}
-                                gDisplayIntersection3={this.props.gDisplayIntersection3}
-                                gIntersection3Label={this.props.gIntersection3Label}
-
-                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                                gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
-                                gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
-                                gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
-                                gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
-                                gShowIntersection={this.props.gShowIntersection}
-                            />
-                            <CommonGraphEditor
-                                gTitle={this.props.gTitle}
-                                gInstructorNotes={this.props.gInstructorNotes}
-                                gDescription={this.props.gDescription}
-            updateGraph={this.props.updateGraph} />
-                                {this.props.gId &&
-                                    <div className="form-group">
-                                            <a href={"/graph/" + this.props.gId + "/public/"}
-                                                   className="btn btn-secondary">Student View</a>
+                                        <h2>Scenario</h2>
+                                        <div className="form-group">
+                                            <label htmlFor="gTitle">
+                                                Title
+                                            </label>
+                                            <input id="gTitle"
+                                                onChange={handleFormUpdate.bind(this)}
+                                                value={this.props.gTitle}
+                                                className="form-control form-control-sm"
+                                                type="text"
+                                                maxLength="140"
+                                            />
                                         </div>
-                                    }
-                        </div>
+                                        <JXGBoard
+                                            id={'editing-graph'}
+                                            width={540}
+                                            height={288}
+                                            gType={this.props.gType}
+                                            gA1={this.props.gA1}
+                                            gA2={this.props.gA2}
+                                            gA3={this.props.gA3}
+                                            gA4={this.props.gA4}
+                                            gLine1Label={this.props.gLine1Label}
+                                            gLine2Label={this.props.gLine2Label}
+                                            gLine3Label={this.props.gLine3Label}
+                                            gLine1Dashed={this.props.gLine1Dashed}
+                                            gLine2Dashed={this.props.gLine2Dashed}
+                                            gLine3Dashed={this.props.gLine3Dashed}
+                                            gXAxisLabel={this.props.gXAxisLabel}
+                                            gYAxisLabel={this.props.gYAxisLabel}
+                                            gLine1Slope={this.props.gLine1Slope}
+                                            gLine2Slope={this.props.gLine2Slope}
+                                            gLine3Slope={this.props.gLine3Slope}
+                                            gLine1OffsetX={this.props.gLine1OffsetX}
+                                            gLine1OffsetY={this.props.gLine1OffsetY}
+                                            gLine2OffsetX={this.props.gLine2OffsetX}
+                                            gLine2OffsetY={this.props.gLine2OffsetY}
+                                            gLine3OffsetX={this.props.gLine3OffsetX}
+                                            gLine3OffsetY={this.props.gLine3OffsetY}
+                                            gDisplayIntersection1={this.props.gDisplayIntersection1}
+                                            gIntersectionLabel={this.props.gIntersectionLabel}
+                                            gDisplayIntersection2={this.props.gDisplayIntersection2}
+                                            gIntersection2Label={this.props.gIntersection2Label}
+                                            gDisplayIntersection3={this.props.gDisplayIntersection3}
+                                            gIntersection3Label={this.props.gIntersection3Label}
+                                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                                            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+                                            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+                                            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
+                                            gShowIntersection={this.props.gShowIntersection}
+                                        />
+                                        <CommonGraphEditor
+                                            gTitle={this.props.gTitle}
+                                            gInstructorNotes={this.props.gInstructorNotes}
+                                            gDescription={this.props.gDescription}
+                                            updateGraph={this.props.updateGraph} />
+                                        {this.props.gId &&
+                                                <div className="form-group">
+                                                    <a href={"/graph/" + this.props.gId + "/public/"}
+                                                        className="btn btn-secondary">Student View</a>
+                                                </div>
+                                        }
+                                    </div>
                                 )
                                 }
                                 }
