@@ -11,16 +11,14 @@ export default class CommonGraphEditor extends React.Component {
         return (
             <div>
                 <div className="form-group">
-                    <label htmlFor="gTitle">
-                        Title
+                    <label htmlFor="gDescription">
+                        Description
                     </label>
-                    <input id="gTitle"
+                    <textarea id="gDescription"
                         onChange={handleFormUpdate.bind(this)}
-                        value={this.props.gTitle}
-                        className="form-control form-control-sm"
-                        type="text"
-                        maxLength="140"
-                    />
+                        value={this.props.gDescription}
+                        rows={4}
+                        className="form-control form-control-sm" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="gInstructorNotes">
@@ -29,15 +27,6 @@ export default class CommonGraphEditor extends React.Component {
                     <textarea id="gInstructorNotes"
                         onChange={handleFormUpdate.bind(this)}
                         value={this.props.gInstructorNotes}
-                        className="form-control form-control-sm" />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="gDescription">
-                        Description
-                    </label>
-                    <textarea id="gDescription"
-                        onChange={handleFormUpdate.bind(this)}
-                        value={this.props.gDescription}
                         className="form-control form-control-sm" />
                 </div>
             </div>
