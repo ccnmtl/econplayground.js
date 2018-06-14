@@ -611,7 +611,7 @@ export default class GraphViewer extends React.Component {
                 </form>
                 </div>;
         } else {
-            return <div>Unknown graph type: {this.props.gType}</div>;
+            return null;
         }
     }
     handleSubmit(event) {
