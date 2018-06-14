@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import {displayGraphType} from './utils';
 
 export default class GraphPicker extends React.Component {
+    constructor(props) {
+        super(props);
+        this.mediaPrefix = 'https://ccnmtl-econplayground-static-prod.s3.' +
+            'amazonaws.com/media/img/';
+    }
     render() {
         if (!this.props.showing) {
             return null;
@@ -16,7 +21,7 @@ export default class GraphPicker extends React.Component {
                         <a href="#"
                            ref={(b1) => { this.b1 = b1;  }}
                             onClick={this.handleClick1.bind(this)}>
-                            <img className="img-fluid" src="/media/img/linear_demand_supply.png"/>
+                            <img className="img-fluid" src={this.mediaPrefix + 'linear_demand_supply.png'} />
                         </a>
                         <div className="card-body">
                             <h5 className="card-title">{displayGraphType(0)}</h5>
@@ -26,7 +31,7 @@ export default class GraphPicker extends React.Component {
                     <div className="card">
                         <a href="#"
                             onClick={this.handleClick2.bind(this)}>
-                            <img className="img-fluid" src="/media/img/non-linear_demand_supply.png"/>
+                            <img className="img-fluid" src={this.mediaPrefix + 'non-linear_demand_supply.png'} />
                         </a>
                         <div className="card-body">
                             <h5 className="card-title">{displayGraphType(1)}</h5>
@@ -36,7 +41,7 @@ export default class GraphPicker extends React.Component {
                     <div className="card">
                         <a href="#"
                             onClick={this.handleClick4.bind(this)}>
-                            <img className="img-fluid" src="/media/img/cobb_douglas.png"/>
+                            <img className="img-fluid" src={this.mediaPrefix + 'cobb_douglas.png'} />
                         </a>
                         <div className="card-body">
                             <h5 className="card-title">{displayGraphType(3)}</h5>
@@ -46,7 +51,7 @@ export default class GraphPicker extends React.Component {
                     <div className="card">
                         <a href="#"
                             onClick={this.handleClick6.bind(this)}>
-                            <img className="img-fluid" src="/media/img/consumption_leisure.png"/>
+                            <img className="img-fluid" src={this.mediaPrefix + 'consumption_leisure.png'} />
                         </a>
                         <div className="card-body">
                             <h5 className="card-title">{displayGraphType(5)}</h5>
@@ -56,7 +61,7 @@ export default class GraphPicker extends React.Component {
                     <div className="card">
                         <a href="#"
                             onClick={this.handleClick8.bind(this)}>
-                            <img className="img-fluid" src="/media/img/consumption_saving.png"/>
+                            <img className="img-fluid" src={this.mediaPrefix + 'consumption_saving.png'} />
                         </a>
                         <div className="card-body">
                             <h5 className="card-title">{displayGraphType(7)}</h5>
@@ -66,7 +71,7 @@ export default class GraphPicker extends React.Component {
                     <div className="card">
                         <a href="#"
                             onClick={this.handleClick9.bind(this)}>
-                            <img className="img-fluid" src="/media/img/ADAS.png"/>
+                            <img className="img-fluid" src={this.mediaPrefix + 'ADAS.png'} />
                         </a>
                         <div className="card-body">
                             <h5 className="card-title">{displayGraphType(8)}</h5>
