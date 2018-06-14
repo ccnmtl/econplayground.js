@@ -16,19 +16,19 @@ it('Evaluates a label action', () => {
         ['line2intercept', 'decrease', 'Correct!', 'Sorry, try again', 1]
     ]);
     let action = {name: 'line1label', value: 'Demand'};
-    let response = {feedback: 'Correct!', score: 1};
+    let response = {feedback: 'Correct!', score: 1, fulfilled: true};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'line1label', value: 'demand'};
-    response = {feedback: 'Correct!', score: 1};
+    response = {feedback: 'Correct!', score: 1, fulfilled: true};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'line1label', value: ' demand  '};
-    response = {feedback: 'Correct!', score: 1};
+    response = {feedback: 'Correct!', score: 1, fulfilled: true};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'line1label', value: 'nope'};
-    response = {feedback: 'Sorry, try again', score: 0};
+    response = {feedback: 'Sorry, try again', score: 0, fulfilled: false};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'not found', value: 'abc'};
