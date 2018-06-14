@@ -104,7 +104,8 @@ export default class Assessment {
      *
      * An Action consists of a name and a value.
      *
-     * A Response is textual feedback and a numerical score.
+     * A Response is textual feedback and a numerical score, and a
+     * "fulfilled" boolean.
      */
     evalAction(action) {
         for (let i = 0; i < this.assessment.length; i++) {
@@ -120,13 +121,15 @@ export default class Assessment {
                     // Action fulfilled
                     return {
                         feedback: row.feedback_fulfilled,
-                        score: row.score
+                        score: row.score,
+                        fulfilled: true
                     };
                 } else {
                     // Action unfulfilled
                     return {
                         feedback: row.feedback_unfulfilled,
-                        score: 0
+                        score: 0,
+                        fulfilled: false
                     };
                 }
             }
