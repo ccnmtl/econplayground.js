@@ -863,7 +863,7 @@ class ADASGraph extends Graph {
                     fixed: true,
                     layer: 4,
                     recursionDepthLow: 2,
-                    recursionDepthHigh: 4
+                    recursionDepthHigh: 10
                 });
 
             const f2Shadow = function(x) {
@@ -881,7 +881,7 @@ class ADASGraph extends Graph {
                     fixed: true,
                     layer: 4,
                     recursionDepthLow: 2,
-                    recursionDepthHigh: 4
+                    recursionDepthHigh: 10
                 });
 
             const f3Shadow = function(x) {
@@ -899,7 +899,7 @@ class ADASGraph extends Graph {
                     fixed: true,
                     layer: 4,
                     recursionDepthLow: 2,
-                    recursionDepthHigh: 4
+                    recursionDepthHigh: 10
                 });
 
             l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
@@ -947,7 +947,7 @@ class ADASGraph extends Graph {
             strokeColor: this.l1Color,
             fixed: this.areLinesFixed,
             recursionDepthLow: 2,
-            recursionDepthHigh: 4
+            recursionDepthHigh: 10
         });
 
         const f2 = function(x) {
@@ -963,7 +963,7 @@ class ADASGraph extends Graph {
             strokeColor: this.l2Color,
             fixed: this.areLinesFixed,
             recursionDepthLow: 2,
-            recursionDepthHigh: 4
+            recursionDepthHigh: 10
         });
 
         const f3 = function(x) {
@@ -979,7 +979,7 @@ class ADASGraph extends Graph {
             strokeColor: this.l3Color,
             fixed: this.areLinesFixed,
             recursionDepthLow: 2,
-            recursionDepthHigh: 4
+            recursionDepthHigh: 10
         });
 
         this.l1.setPosition(window.JXG.COORDS_BY_USER, [
