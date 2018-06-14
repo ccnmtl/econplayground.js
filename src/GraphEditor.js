@@ -573,7 +573,7 @@ export default class GraphEditor extends React.Component {
                     </form>
                 </div>;
         } else {
-            return <div>Unknown graph type: {this.props.gType}</div>;
+            return null;
         }
     }
     handleSaveGraph() {
