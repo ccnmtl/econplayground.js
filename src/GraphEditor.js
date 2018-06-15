@@ -9,17 +9,17 @@ import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
-import {displayGraphType} from './utils';
+import {displayGraphType, handleFormUpdate} from './utils';
 
 export default class GraphEditor extends React.Component {
     title() {
         return (
             <div>
-            <h1>{displayGraphType(this.props.gType)}</h1>
-            <p className="lead text-secondary">
-                Add and modify the information of your graph.
-            </p>
-        </div>
+                <h1>{displayGraphType(this.props.gType)}</h1>
+                <p className="lead text-secondary">
+                    Add and modify the information of your graph.
+                </p>
+            </div>
         );
     }
     render() {
@@ -34,6 +34,19 @@ export default class GraphEditor extends React.Component {
                     <form>
                         <div className="row">
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <h2>Scenario</h2>
+                                <div className="form-group">
+                                    <label htmlFor="gTitle">
+                                        Title
+                                    </label>
+                                    <input id="gTitle"
+                                        onChange={handleFormUpdate.bind(this)}
+                                        value={this.props.gTitle}
+                                        className="form-control form-control-sm"
+                                        type="text"
+                                        maxLength="140"
+                                    />
+                                </div>
                                 <JXGBoard
                                     id={'editing-graph'}
                                     width={540}
@@ -73,7 +86,7 @@ export default class GraphEditor extends React.Component {
                                             <a href={"/graph/" + this.props.gId + "/public/"}
                                                    className="btn btn-secondary">Student View</a>
                                         </div>
-                                }
+                                    }
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <CommonGraphSettings
@@ -104,19 +117,25 @@ export default class GraphEditor extends React.Component {
                                     gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                                     updateGraph={this.props.updateGraph}
                                 />
-
+                            </div>
                         </div>
-                    </div>
-                    <hr/>
-                    <button type="button"
-                        className="btn btn-primary btn-sm"
-                        onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    {this.props.gId &&
-                            <a role="button"
-                                className="btn btn-danger btn-sm float-md-right"
-                                href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
-                        </form>
-                    </div>
+                        <hr/>
+                        <div className="row">
+                            <div className="ml-3  mr-2">
+                                <button type="button"
+                                    className="btn btn-primary"
+                                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                            </div>
+                            {this.props.gId &&
+                                    <div className="ml-auto mr-3">
+                                        <a role="button"
+                                            className="btn btn-danger float-md-right"
+                                            href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
+                                    </div>
+                            }
+                        </div>
+                    </form>
+                </div>
             );
         } else if (this.props.gType === 1) {
             // Non-Linear Demand Supply
@@ -125,6 +144,19 @@ export default class GraphEditor extends React.Component {
                 <form>
                     <div className="row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h2>Scenario</h2>
+                            <div className="form-group">
+                                <label htmlFor="gTitle">
+                                    Title
+                                </label>
+                                <input id="gTitle"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    value={this.props.gTitle}
+                                    className="form-control form-control-sm"
+                                    type="text"
+                                    maxLength="140"
+                                />
+                            </div>
                             <JXGBoard
                                 id={'editing-graph'}
                                 width={540}
@@ -160,13 +192,13 @@ export default class GraphEditor extends React.Component {
                                 gTitle={this.props.gTitle}
                                 gInstructorNotes={this.props.gInstructorNotes}
                                 gDescription={this.props.gDescription}
-                                updateGraph={this.props.updateGraph} />
+            updateGraph={this.props.updateGraph} />
                                 {this.props.gId &&
                                     <div className="form-group">
                                             <a href={"/graph/" + this.props.gId + "/public/"}
                                                    className="btn btn-secondary">Student View</a>
                                         </div>
-                                }
+                                    }
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonGraphSettings
@@ -196,19 +228,25 @@ export default class GraphEditor extends React.Component {
                                 gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                                 updateGraph={this.props.updateGraph}
                             />
-
+                        </div>
                     </div>
-                </div>
-                <hr/>
-                <button type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                {this.props.gId &&
-                        <a role="button"
-                            className="btn btn-danger btn-sm float-md-right"
-                            href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
-                    </form>
-                </div>;
+                    <hr/>
+                    <div className="row">
+                        <div className="ml-3  mr-2">
+                            <button type="button"
+                                className="btn btn-primary"
+                                onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                        </div>
+                        {this.props.gId &&
+                                <div className="ml-auto mr-3">
+                                    <a role="button"
+                                        className="btn btn-danger float-md-right"
+                                        href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
+                                </div>
+                        }
+                    </div>
+                </form>
+            </div>;
         } else if (this.props.gType === 3) {
             // Cobb-Douglas
             return <div className="GraphEditor">
@@ -216,6 +254,19 @@ export default class GraphEditor extends React.Component {
                 <form>
                     <div className="row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h2>Scenario</h2>
+                            <div className="form-group">
+                                <label htmlFor="gTitle">
+                                    Title
+                                </label>
+                                <input id="gTitle"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    value={this.props.gTitle}
+                                    className="form-control form-control-sm"
+                                    type="text"
+                                    maxLength="140"
+                                />
+                            </div>
                             <JXGBoard
                                 id={'editing-graph'}
                                 width={540}
@@ -248,13 +299,13 @@ export default class GraphEditor extends React.Component {
                                 gTitle={this.props.gTitle}
                                 gInstructorNotes={this.props.gInstructorNotes}
                                 gDescription={this.props.gDescription}
-                                updateGraph={this.props.updateGraph} />
+            updateGraph={this.props.updateGraph} />
                                 {this.props.gId &&
-                                     <div className="form-group">
+                                    <div className="form-group">
                                             <a href={"/graph/" + this.props.gId + "/public/"}
                                                    className="btn btn-secondary">Student View</a>
                                         </div>
-                                }
+                                    }
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonGraphSettings
@@ -282,19 +333,25 @@ export default class GraphEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph}
                             />
-
+                        </div>
                     </div>
+                </form>
+                <hr/>
+                <div className="row">
+                    <div className="ml-3  mr-2">
+                        <button type="button"
+                            className="btn btn-primary"
+                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                    </div>
+                    {this.props.gId &&
+                            <div className="ml-auto mr-3">
+                                <a role="button"
+                                    className="btn btn-danger float-md-right"
+                                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
+                            </div>
+                    }
                 </div>
-            </form>
-            <hr/>
-            <button type="button"
-                className="btn btn-primary btn-sm"
-                onClick={this.handleSaveGraph.bind(this)}>Save</button>
-            {this.props.gId &&
-                    <a role="button"
-                        className="btn btn-danger btn-sm float-md-right"
-                        href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
-                </div>;
+            </div>;
         } else if (this.props.gType === 5) {
             // Consumption Leisure
             return <div className="GraphEditor">
@@ -302,6 +359,19 @@ export default class GraphEditor extends React.Component {
                 <form>
                     <div className="row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h2>Scenario</h2>
+                            <div className="form-group">
+                                <label htmlFor="gTitle">
+                                    Title
+                                </label>
+                                <input id="gTitle"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    value={this.props.gTitle}
+                                    className="form-control form-control-sm"
+                                    type="text"
+                                    maxLength="140"
+                                />
+                            </div>
                             <JXGBoard
                                 id={'editing-graph'}
                                 width={540}
@@ -334,13 +404,13 @@ export default class GraphEditor extends React.Component {
                                 gShowIntersection={this.props.gShowIntersection}
                                 gDisplayShadow={this.props.gDisplayShadow}
                                 gIsPublished={this.props.gIsPublished}
-                                updateGraph={this.props.updateGraph} />
+            updateGraph={this.props.updateGraph} />
                                 {this.props.gId &&
-                                     <div className="form-group">
+                                    <div className="form-group">
                                             <a href={"/graph/" + this.props.gId + "/public/"}
                                                    className="btn btn-secondary">Student View</a>
                                         </div>
-                                }
+                                    }
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <ConsumptionLeisureEditor
@@ -363,15 +433,22 @@ export default class GraphEditor extends React.Component {
                     </div>
                 </div>
                 <hr/>
-                <button type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                {this.props.gId &&
-                        <a role="button"
-                            className="btn btn-danger btn-sm float-md-right"
-                            href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
-                    </form>
-                </div>;
+                <div className="row">
+                    <div className="ml-3  mr-2">
+                        <button type="button"
+                            className="btn btn-primary"
+                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                    </div>
+                    {this.props.gId &&
+                            <div className="ml-auto mr-3">
+                                <a role="button"
+                                    className="btn btn-danger float-md-right"
+                                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
+                            </div>
+                    }
+                </div>
+            </form>
+        </div>;
         } else if (this.props.gType === 7) {
             // Consumption Savings
             return <div className="GraphEditor">
@@ -379,6 +456,19 @@ export default class GraphEditor extends React.Component {
                 <form>
                     <div className="row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h2>Scenario</h2>
+                            <div className="form-group">
+                                <label htmlFor="gTitle">
+                                    Title
+                                </label>
+                                <input id="gTitle"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    value={this.props.gTitle}
+                                    className="form-control form-control-sm"
+                                    type="text"
+                                    maxLength="140"
+                                />
+                            </div>
                             <JXGBoard
                                 id={'editing-graph'}
                                 width={540}
@@ -407,13 +497,13 @@ export default class GraphEditor extends React.Component {
                                 gTitle={this.props.gTitle}
                                 gInstructorNotes={this.props.gInstructorNotes}
                                 gDescription={this.props.gDescription}
-                                updateGraph={this.props.updateGraph} />
+            updateGraph={this.props.updateGraph} />
                                 {this.props.gId &&
-                                     <div className="form-group">
+                                    <div className="form-group">
                                             <a href={"/graph/" + this.props.gId + "/public/"}
                                                    className="btn btn-secondary">Student View</a>
                                         </div>
-                                }
+                                    }
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonGraphSettings
@@ -444,15 +534,22 @@ export default class GraphEditor extends React.Component {
                         </div>
                     </div>
                     <hr/>
-                    <button type="button"
-                        className="btn btn-primary btn-sm"
-                        onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    {this.props.gId &&
-                            <a role="button"
-                                className="btn btn-danger btn-sm float-md-right"
-                                href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
-                        </form>
-                    </div>;
+                    <div className="row">
+                        <div className="ml-3  mr-2">
+                            <button type="button"
+                                className="btn btn-primary"
+                                onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                        </div>
+                        {this.props.gId &&
+                                <div className="ml-auto mr-3">
+                                    <a role="button"
+                                        className="btn btn-danger float-md-right"
+                                        href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
+                                </div>
+                        }
+                    </div>
+                </form>
+            </div>;
         } else if (this.props.gType === 8) {
             // Aggregate Demand - Aggregate Supply
             return <div className="GraphEditor">
@@ -460,6 +557,19 @@ export default class GraphEditor extends React.Component {
                 <form>
                     <div className="row">
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <h2>Scenario</h2>
+                            <div className="form-group">
+                                <label htmlFor="gTitle">
+                                    Title
+                                </label>
+                                <input id="gTitle"
+                                    onChange={handleFormUpdate.bind(this)}
+                                    value={this.props.gTitle}
+                                    className="form-control form-control-sm"
+                                    type="text"
+                                    maxLength="140"
+                                />
+                            </div>
                             <JXGBoard
                                 id={'editing-graph'}
                                 width={540}
@@ -505,13 +615,13 @@ export default class GraphEditor extends React.Component {
                                 gTitle={this.props.gTitle}
                                 gInstructorNotes={this.props.gInstructorNotes}
                                 gDescription={this.props.gDescription}
-                                updateGraph={this.props.updateGraph} />
+            updateGraph={this.props.updateGraph} />
                                 {this.props.gId &&
-                                     <div className="form-group">
+                                    <div className="form-group">
                                             <a href={"/graph/" + this.props.gId + "/public/"}
                                                    className="btn btn-secondary">Student View</a>
                                         </div>
-                                }
+                                    }
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <CommonGraphSettings
@@ -563,15 +673,22 @@ export default class GraphEditor extends React.Component {
                     </div>
                 </div>
                 <hr/>
-                <button type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                {this.props.gId &&
-                        <a role="button"
-                            className="btn btn-danger btn-sm float-md-right"
-                            href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>}
-                    </form>
-                </div>;
+                <div className="row">
+                    <div className="ml-3  mr-2">
+                        <button type="button"
+                            className="btn btn-primary"
+                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                    </div>
+                    {this.props.gId &&
+                            <div className="ml-auto mr-3">
+                                <a role="button"
+                                    className="btn btn-danger float-md-right"
+                                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
+                            </div>
+                    }
+                </div>
+            </form>
+        </div>;
         } else {
             return null;
         }

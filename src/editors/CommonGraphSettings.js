@@ -10,10 +10,10 @@ export default class CommonGraphSettings extends React.Component {
     render() {
         return (
             <div>
-                <h2>Assignment Type</h2>
+                <h2>Assignment</h2>
                 <div className="form-group">
                     <label htmlFor="gAssignmentType">
-                        Assignment type
+                        Type
                     </label>
                     <select id="gAssignmentType"
                         className="custom-select"
