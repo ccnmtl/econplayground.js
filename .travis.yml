@@ -5,7 +5,7 @@ node_js:
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get install -y libgif-dev
-- npm install -g greenkeeper-lockfile@1
+- npm install -g greenkeeper-lockfile@2
 install: npm install
 before_script: greenkeeper-lockfile-update
 script:
