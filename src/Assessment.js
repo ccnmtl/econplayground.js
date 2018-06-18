@@ -15,10 +15,10 @@
  * ]
  *
  * Given this data, if a student fills out Line 1's label with
- * "Demand" and submits the quiz, they get 100%. If they fill in Line
- * 1's label with "Alternative solution", they get 90%. If they
- * increase Line 1's slope from its original position, they get 100%.
- * Or, if they drag Line 2 down and submit they get 100%.
+ * "Demand" and submits the quiz, they get 1 point. If they fill in
+ * Line 1's label with "Alternative solution", they get 0.9 of a
+ * point. The system iterates through all the rules and sums the
+ * scores for all the rules that are fulfilled.
  *
  * If the student drags Line 1, they get the message "Are you sure
  * you're moving the right line?" There is no score associated with
@@ -93,6 +93,12 @@ export default class Assessment {
         if (actionType === 'label') {
             return this.stripText(assessment.value) ===
                 this.stripText(userAction.value);
+        } else if (actionType === 'movement') {
+            return assessment.value === userAction.value ||
+                // If the AssessmentRule is 'any', then any non-null
+                // value is valid.
+                (!!userAction.value && assessment.value === 'any');
+
         } else {
             return assessment.value === userAction.value;
         }
@@ -114,6 +120,11 @@ export default class Assessment {
                 row = this.extractRow(this.assessment[i]);
             } else {
                 row = this.assessment[i];
+            }
+
+            // Skip this row if it's empty for some reason.
+            if (!row) {
+                continue;
             }
 
             if (this.stripText(row.name) === this.stripText(action.name)) {
@@ -143,7 +154,26 @@ export default class Assessment {
         if (!key) {
             return key;
         }
-        return key.replace(/^g/, '').toLowerCase();
+        return key
+            .replace(/^g/, '')
+            .replace(/OffsetY$/, 'intercept')
+            .toLowerCase();
+    }
+
+    /**
+     * Translate a line movement from graph state to an assessment
+     * rule string.
+     *
+     * Given an initial value and a current value, returns 'up',
+     * 'down', or null if there was no change.
+     */
+    translateMovement(initialVal, currentVal) {
+        if (initialVal < currentVal) {
+            return 'up';
+        } else if (initialVal > currentVal) {
+            return 'down';
+        }
+        return null;
     }
 
     /**
@@ -153,13 +183,28 @@ export default class Assessment {
      *     feedback: <string>,
      *     score: <number>
      * }, ...]
+     *
+     * This method does the work of determinining whether the user
+     * moved lines up or down, based on their current vs initial
+     * values.
      */
     evalState(state) {
         let results = [];
         let result = null;
 
         for (let key in state) {
-            if (key.endsWith('Label')) {
+            if (key.endsWith('OffsetY')) {
+                // Evaluate shifts
+                result = this.evalAction({
+                    name: this.translateKey(key),
+                    value: this.translateMovement(
+                        state[`${key}Initial`], state[key])
+                });
+                if (result) {
+                    results.push(result);
+                }
+            } else if (key.endsWith('Label')) {
+                // Evaluate labels
                 result = this.evalAction({
                     name: this.translateKey(key),
                     value: state[key]
