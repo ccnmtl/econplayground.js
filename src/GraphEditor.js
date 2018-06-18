@@ -135,12 +135,9 @@ export default class GraphEditor extends React.Component {
                                     className="btn btn-primary"
                                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
                             </div>
-                            {this.props.gId &&
-                                    <div>
-                                        <button onClick={this.handleSaveAndViewGraph.bind(this)}
-                                            className="btn btn-secondary">Save and View</button>
-                                    </div>
-                            }
+                    <button onClick={this.handleSaveAndViewGraph.bind(this)}
+                type="button"
+                className="btn btn-secondary">Save and View</button>
                             {this.props.gId &&
                                     <div className="ml-auto mr-3">
                                         <a role="button"
@@ -259,7 +256,10 @@ export default class GraphEditor extends React.Component {
                             <button type="button"
                                 className="btn btn-primary"
                                 onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                        </div>
+                </div>
+                <button onClick={this.handleSaveAndViewGraph.bind(this)}
+            type="button"
+            className="btn btn-secondary">Save and View</button>
                         {this.props.gId &&
                                 <div className="ml-auto mr-3">
                                     <a role="button"
@@ -371,7 +371,10 @@ export default class GraphEditor extends React.Component {
                         <button type="button"
                             className="btn btn-primary"
                             onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    </div>
+                </div>
+                <button onClick={this.handleSaveAndViewGraph.bind(this)}
+            type="button"
+                className="btn btn-secondary">Save and View</button>
                     {this.props.gId &&
                             <div className="ml-auto mr-3">
                                 <a role="button"
@@ -476,7 +479,10 @@ export default class GraphEditor extends React.Component {
                         <button type="button"
                             className="btn btn-primary"
                             onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    </div>
+                </div>
+                <button onClick={this.handleSaveAndViewGraph.bind(this)}
+            type="button"
+                className="btn btn-secondary">Save and View</button>
                     {this.props.gId &&
                             <div className="ml-auto mr-3">
                                 <a role="button"
@@ -584,7 +590,10 @@ export default class GraphEditor extends React.Component {
                             <button type="button"
                                 className="btn btn-primary"
                                 onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                        </div>
+                </div>
+                <button onClick={this.handleSaveAndViewGraph.bind(this)}
+            type="button"
+                className="btn btn-secondary">Save and View</button>
                         {this.props.gId &&
                                 <div className="ml-auto mr-3">
                                     <a role="button"
@@ -730,7 +739,10 @@ export default class GraphEditor extends React.Component {
                         <button type="button"
                             className="btn btn-primary"
                             onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    </div>
+                </div>
+                <button onClick={this.handleSaveAndViewGraph.bind(this)}
+            type="button"
+                className="btn btn-secondary">Save and View</button>
                     {this.props.gId &&
                             <div className="ml-auto mr-3">
                                 <a role="button"
@@ -749,10 +761,7 @@ export default class GraphEditor extends React.Component {
         this.props.saveGraph();
     }
     handleSaveAndViewGraph() {
-        console.log(this.props);
-        console.log("Hello Nick");
-        debugger;
-        this.props.viewAndSaveGraph();
+        this.props.saveAndViewGraph();
     }
 }
 
@@ -820,6 +829,6 @@ GraphEditor.propTypes = {
 
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,
-    viewAndSaveGraph: PropTypes.func.isRequired,
+    saveAndViewGraph: PropTypes.func.isRequired,
     showing: PropTypes.bool.isRequired
 };

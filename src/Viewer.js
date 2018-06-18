@@ -99,7 +99,8 @@ class Viewer extends Component {
 
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
-            saveGraph={this.handleSaveGraph.bind(this)} />
+            saveGraph={this.handleSaveGraph.bind(this)}
+            saveAndViewGraph={this.handleSaveAndViewGraph.bind(this)} />
                 </React.Fragment>;
         } else {
             return <React.Fragment>
@@ -291,15 +292,24 @@ class Viewer extends Component {
         return getSubmission(this.state.gId);
     }
 
-    handleSaveGraph() {
+    /**
+     * Save the graph to the backend. Returns a promise.
+     *
+     * If the `chain` param is true, then this function can be used
+     * within a promise chain and customized as needed.
+     */
+    handleSaveGraph(chain = false) {
         let data = exportGraph(this.state);
         data.author = window.EconPlayground.user;
 
         const me = this;
-        authedFetch('/api/graphs/' + this.graphId + '/',
-                    'put',
-                    JSON.stringify(data))
+        return authedFetch(
+            `/api/graphs/${this.graphId}/`, 'put', JSON.stringify(data))
             .then(function(response) {
+                if (chain) {
+                    return response.json();
+                }
+
                 if (response.status === 200) {
                     me.setState({
                         alertText: 'Graph saved'
@@ -314,6 +324,13 @@ class Viewer extends Component {
                         window.scrollTo(0, 0);
                     });
                 }
+            });
+    }
+    handleSaveAndViewGraph() {
+        return this.handleSaveGraph(true)
+            .then(function(graph) {
+                const url = `/graph/${graph.id}/public/`;
+                window.location.href = url;
             });
     }
     handleGraphUpdate(obj) {
