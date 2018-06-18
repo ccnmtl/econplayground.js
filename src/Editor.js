@@ -97,7 +97,8 @@ class Editor extends Component {
                         gCobbDouglasYName={this.state.gCobbDouglasYName}
 
                         updateGraph={this.handleGraphUpdate.bind(this)}
-                        saveGraph={this.handleSaveGraph.bind(this)} />
+                        saveGraph={this.handleSaveGraph.bind(this)}
+                        viewAndSaveGraph={this.handleSaveAndViewGraph.bind(this)} />
                 </div>
             </div>
         );
@@ -147,6 +148,33 @@ class Editor extends Component {
 
                     response.json().then(function(graph) {
                         const url = `/graph/${graph.id}/`;
+                        window.location.href = url;
+                    });
+                } else {
+                    response.json().then(function(d) {
+                        me.setState({
+                            alertText: getError(d)
+                        });
+                        window.scrollTo(0, 0);
+                    });
+                }
+            });
+    }
+    handleSaveAndViewGraph() {
+        let data = exportGraph(this.state);
+        data.author = window.EconPlayground.user;
+
+        const me = this;
+        authedFetch('/api/graphs/', 'post', JSON.stringify(data))
+            .then(function(response) {
+                if (response.status === 201) {
+                    me.setState({
+                        alertText: null,
+                        step: 2
+                    });
+
+                    response.json().then(function(graph) {
+                        const url = `/graph/${graph.id}/public/`;
                         window.location.href = url;
                     });
                 } else {

@@ -10,7 +10,7 @@ import CommonGraphEditor from './editors/CommonGraphEditor';
 import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
 import {displayGraphType, handleFormUpdate} from './utils';
-import { StickyContainer, Sticky   } from 'react-sticky';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 export default class GraphEditor extends React.Component {
     title() {
@@ -135,6 +135,12 @@ export default class GraphEditor extends React.Component {
                                     className="btn btn-primary"
                                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
                             </div>
+                            {this.props.gId &&
+                                    <div>
+                                        <button onClick={this.handleSaveAndViewGraph.bind(this)}
+                                            className="btn btn-secondary">Save and View</button>
+                                    </div>
+                            }
                             {this.props.gId &&
                                     <div className="ml-auto mr-3">
                                         <a role="button"
@@ -742,6 +748,12 @@ export default class GraphEditor extends React.Component {
     handleSaveGraph() {
         this.props.saveGraph();
     }
+    handleSaveAndViewGraph() {
+        console.log(this.props);
+        console.log("Hello Nick");
+        debugger;
+        this.props.viewAndSaveGraph();
+    }
 }
 
 GraphEditor.propTypes = {
@@ -808,5 +820,6 @@ GraphEditor.propTypes = {
 
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,
+    viewAndSaveGraph: PropTypes.func.isRequired,
     showing: PropTypes.bool.isRequired
 };
