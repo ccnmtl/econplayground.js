@@ -97,7 +97,8 @@ class Editor extends Component {
                         gCobbDouglasYName={this.state.gCobbDouglasYName}
 
                         updateGraph={this.handleGraphUpdate.bind(this)}
-                        saveGraph={this.handleSaveGraph.bind(this)} />
+                        saveGraph={this.handleSaveGraph.bind(this)}
+                        saveAndViewGraph={this.handleSaveAndViewGraph.bind(this)} />
                 </div>
             </div>
         );
@@ -132,13 +133,23 @@ class Editor extends Component {
             gA2: gA2default
         });
     }
-    handleSaveGraph() {
+    /**
+     * Save the graph to the backend. Returns a promise.
+     *
+     * If the `chain` param is true, then this function can be used
+     * within a promise chain and customized as needed.
+     */
+    handleSaveGraph(chain = false) {
         let data = exportGraph(this.state);
         data.author = window.EconPlayground.user;
 
         const me = this;
-        authedFetch('/api/graphs/', 'post', JSON.stringify(data))
+        return authedFetch('/api/graphs/', 'post', JSON.stringify(data))
             .then(function(response) {
+                if (chain) {
+                    return response.json();
+                }
+
                 if (response.status === 201) {
                     me.setState({
                         alertText: null,
@@ -158,6 +169,14 @@ class Editor extends Component {
                     });
                 }
             });
+    }
+    handleSaveAndViewGraph() {
+        return this.handleSaveGraph(true)
+            .then(function(graph) {
+                const url = `/graph/${graph.id}/public/`;
+                window.location.href = url;
+            });
+
     }
     handleGraphUpdate(obj) {
         this.setState(obj);

@@ -10,7 +10,7 @@ import CommonGraphEditor from './editors/CommonGraphEditor';
 import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
 import {displayGraphType, handleFormUpdate} from './utils';
-import { StickyContainer, Sticky   } from 'react-sticky';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 export default class GraphEditor extends React.Component {
     title() {
@@ -85,12 +85,6 @@ export default class GraphEditor extends React.Component {
                                                 gDescription={this.props.gDescription}
                                                 updateGraph={this.props.updateGraph}
                                             />
-                                        {this.props.gId &&
-                                                <div className="form-group">
-                                                <a href={"/graph/" + this.props.gId + "/public/"}
-                                            className="btn btn-secondary">Student View</a>
-                                                </div>
-                                        }
                                         </div>
                                     )
                                     }
@@ -135,6 +129,9 @@ export default class GraphEditor extends React.Component {
                                     className="btn btn-primary"
                                     onClick={this.handleSaveGraph.bind(this)}>Save</button>
                             </div>
+                            <button onClick={this.handleSaveAndViewGraph.bind(this)}
+                                type="button"
+                                className="btn btn-secondary">Save and View</button>
                             {this.props.gId &&
                                     <div className="ml-auto mr-3">
                                         <a role="button"
@@ -247,20 +244,23 @@ export default class GraphEditor extends React.Component {
                         </div>
                     </StickyContainer>
                 </form>
-                    <hr/>
-                    <div className="row">
-                        <div className="ml-3  mr-2">
-                            <button type="button"
-                                className="btn btn-primary"
-                                onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                        </div>
-                        {this.props.gId &&
-                                <div className="ml-auto mr-3">
-                                    <a role="button"
-                                        className="btn btn-danger float-md-right"
-                                        href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-                                </div>
-                        }
+                <hr/>
+                <div className="row">
+                    <div className="ml-3  mr-2">
+                        <button type="button"
+                            className="btn btn-primary"
+                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                    </div>
+                    <button onClick={this.handleSaveAndViewGraph.bind(this)}
+                        type="button"
+                        className="btn btn-secondary">Save and View</button>
+                    {this.props.gId &&
+                            <div className="ml-auto mr-3">
+                                <a role="button"
+                                    className="btn btn-danger float-md-right"
+                                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
+                            </div>
+                    }
                 </div>
             </div>;
         } else if (this.props.gType === 3) {
@@ -318,12 +318,6 @@ export default class GraphEditor extends React.Component {
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gDescription={this.props.gDescription}
                                             updateGraph={this.props.updateGraph} />
-                                        {this.props.gId &&
-                                            <div className="form-group">
-                                                    <a href={"/graph/" + this.props.gId + "/public/"}
-                                                           className="btn btn-secondary">Student View</a>
-                                                </div>
-                                            }
                                     </div>
                                 )
                                 }
@@ -366,6 +360,9 @@ export default class GraphEditor extends React.Component {
                             className="btn btn-primary"
                             onClick={this.handleSaveGraph.bind(this)}>Save</button>
                     </div>
+                    <button onClick={this.handleSaveAndViewGraph.bind(this)}
+                        type="button"
+                        className="btn btn-secondary">Save and View</button>
                     {this.props.gId &&
                             <div className="ml-auto mr-3">
                                 <a role="button"
@@ -431,12 +428,6 @@ export default class GraphEditor extends React.Component {
                                             gDisplayShadow={this.props.gDisplayShadow}
                                             gIsPublished={this.props.gIsPublished}
                                             updateGraph={this.props.updateGraph} />
-                                        {this.props.gId &&
-                                            <div className="form-group">
-                                                    <a href={"/graph/" + this.props.gId + "/public/"}
-                                                           className="btn btn-secondary">Student View</a>
-                                                </div>
-                                            }
                                     </div>
                                 )
                                 }
@@ -464,20 +455,23 @@ export default class GraphEditor extends React.Component {
                     </div>
                 </StickyContainer>
             </form>
-                <hr/>
-                <div className="row">
-                    <div className="ml-3  mr-2">
-                        <button type="button"
-                            className="btn btn-primary"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    </div>
-                    {this.props.gId &&
-                            <div className="ml-auto mr-3">
-                                <a role="button"
-                                    className="btn btn-danger float-md-right"
-                                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-                            </div>
-                    }
+            <hr/>
+            <div className="row">
+                <div className="ml-3  mr-2">
+                    <button type="button"
+                        className="btn btn-primary"
+                        onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                </div>
+                <button onClick={this.handleSaveAndViewGraph.bind(this)}
+                    type="button"
+                    className="btn btn-secondary">Save and View</button>
+                {this.props.gId &&
+                        <div className="ml-auto mr-3">
+                            <a role="button"
+                                className="btn btn-danger float-md-right"
+                                href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
+                        </div>
+                }
             </div>
         </div>;
         } else if (this.props.gType === 7) {
@@ -532,12 +526,6 @@ export default class GraphEditor extends React.Component {
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gDescription={this.props.gDescription}
                                             updateGraph={this.props.updateGraph} />
-                                        {this.props.gId &&
-                                                <div className="form-group">
-                                                    <a href={"/graph/" + this.props.gId + "/public/"}
-                                                        className="btn btn-secondary">Student View</a>
-                                                </div>
-                                        }
                                     </div>
                                 )
                                 }
@@ -579,6 +567,9 @@ export default class GraphEditor extends React.Component {
                                 className="btn btn-primary"
                                 onClick={this.handleSaveGraph.bind(this)}>Save</button>
                         </div>
+                        <button onClick={this.handleSaveAndViewGraph.bind(this)}
+                            type="button"
+                            className="btn btn-secondary">Save and View</button>
                         {this.props.gId &&
                                 <div className="ml-auto mr-3">
                                     <a role="button"
@@ -657,12 +648,6 @@ export default class GraphEditor extends React.Component {
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gDescription={this.props.gDescription}
                                             updateGraph={this.props.updateGraph} />
-                                        {this.props.gId &&
-                                                <div className="form-group">
-                                                    <a href={"/graph/" + this.props.gId + "/public/"}
-                                                        className="btn btn-secondary">Student View</a>
-                                                </div>
-                                        }
                                     </div>
                                 )
                                 }
@@ -725,6 +710,9 @@ export default class GraphEditor extends React.Component {
                             className="btn btn-primary"
                             onClick={this.handleSaveGraph.bind(this)}>Save</button>
                     </div>
+                    <button onClick={this.handleSaveAndViewGraph.bind(this)}
+                        type="button"
+                        className="btn btn-secondary">Save and View</button>
                     {this.props.gId &&
                             <div className="ml-auto mr-3">
                                 <a role="button"
@@ -741,6 +729,9 @@ export default class GraphEditor extends React.Component {
     }
     handleSaveGraph() {
         this.props.saveGraph();
+    }
+    handleSaveAndViewGraph() {
+        this.props.saveAndViewGraph();
     }
 }
 
@@ -808,5 +799,6 @@ GraphEditor.propTypes = {
 
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,
+    saveAndViewGraph: PropTypes.func.isRequired,
     showing: PropTypes.bool.isRequired
 };
