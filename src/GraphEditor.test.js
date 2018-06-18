@@ -49,6 +49,7 @@ it('renders without crashing', () => {
             gIntersectionLabel={''}
             gIntersection2Label={''}
             gIntersection3Label={''}
-            saveGraph={function() {}} />
+            saveGraph={function() {}}
+            saveAndViewGraph={function() {}} />
     );
 });
