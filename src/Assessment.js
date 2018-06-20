@@ -149,7 +149,20 @@ export default class Assessment {
         return null;
     }
 
-    // Remove the leading 'g' and make lowercase.
+    /**
+     * Translate a key value from the React state representation to
+     * my slightly-more-friendly assessment language.
+     *
+     * We'll be looking at React properties and tying them to the
+     * instructor-provided case-insensitive assessment rule strings:
+     *
+     * gLine1OffsetY    -> line1intercept
+     * gLine1Label      -> line1label
+     * gLine1Slope      -> line1slope
+     *
+     * I want to change OffsetY to Intercept in the backend anyways
+     * since that's a better way to describe this value.
+     */
     translateKey(key) {
         if (!key) {
             return key;
@@ -176,6 +189,15 @@ export default class Assessment {
         return null;
     }
 
+    translateSlopeChange(initialVal, currentVal) {
+        if (initialVal < currentVal) {
+            return 'increase';
+        } else if (initialVal > currentVal) {
+            return 'decrease';
+        }
+        return null;
+    }
+
     /**
      * Assess the given state.
      *
@@ -198,6 +220,16 @@ export default class Assessment {
                 result = this.evalAction({
                     name: this.translateKey(key),
                     value: this.translateMovement(
+                        state[`${key}Initial`], state[key])
+                });
+                if (result) {
+                    results.push(result);
+                }
+            } else if (key.endsWith('Slope')) {
+                // Evaluate rotations
+                result = this.evalAction({
+                    name: this.translateKey(key),
+                    value: this.translateSlopeChange(
                         state[`${key}Initial`], state[key])
                 });
                 if (result) {
