@@ -79,6 +79,14 @@ export default class CommonGraphSettings extends React.Component {
                         Display shadow on student view
                     </label>
                 </div>
+                <div>
+                    <a target="_blank"
+                       role="button"
+                       className="btn btn-primary mt-2"
+                       href="/admin/main/assessment/">
+                        Feedback and Assessment editor
+                    </a>
+                </div>
                 <hr/>
             </div>
         );
