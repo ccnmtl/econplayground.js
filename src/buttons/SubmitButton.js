@@ -2,32 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class SubmitButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            url: '#'
-        };
-    }
     render() {
-        if (!this.props.assessment || this.props.assessment.length === 0) {
-            return null;
-        }
+        const hasAssessment = !!this.props.assessment &&
+              this.props.assessment.length !== 0;
 
         return <React.Fragment>
             <hr style={{
                 display: (this.props.gNeedsSubmit && !this.props.submission) ? 'inherit' : 'none'
             }} />
 
+        {hasAssessment && (
             <button className="btn btn-primary btn-sm"
-        style={{
-            marginTop: '1em',
-            display: (!this.props.isInstructor && !this.props.submission) ? 'inherit' : 'none'
-        }}
-        type="submit">Submit</button>
+                    style={{
+                        marginTop: '1em',
+                        display: (!this.props.isInstructor && !this.props.submission) ? 'inherit' : 'none'
+                    }}
+                    type="submit">Submit</button>
+        )}
+
+        {!hasAssessment && (
+            <button className="btn btn-primary btn-sm"
+                    disabled="true"
+                    style={{
+                        marginTop: '1em',
+                        display: (!this.props.isInstructor && !this.props.submission) ? 'inherit' : 'none'
+                    }}
+                    type="submit">Submit</button>
+        )}
 
             </React.Fragment>;
-    }
-    onClick(evt) {
     }
 }
 

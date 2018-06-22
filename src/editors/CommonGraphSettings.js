@@ -32,7 +32,7 @@ export default class CommonGraphSettings extends React.Component {
                             type="checkbox"
                             onChange={handleFormUpdate.bind(this)}
                             checked={this.props.gNeedsSubmit} />
-                        Requires submission
+                        Requires assessment
                     </label>
                 </div>
                 <div className="form-check">
