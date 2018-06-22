@@ -236,6 +236,8 @@ class Viewer extends Component {
             if (a && a.assessmentrule_set) {
                 me.setState({assessment: a.assessmentrule_set});
             }
+        }, function() {
+            // Assessment not found
         });
 
         // Add graph feedback event handlers
