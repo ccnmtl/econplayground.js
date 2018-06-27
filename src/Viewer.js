@@ -11,7 +11,6 @@ class Viewer extends Component {
         this.graphId = window.location.pathname.split('/')[2];
 
         this.state = {
-            choice: null,
             value: '',
             submission: null
         };
@@ -209,7 +208,6 @@ class Viewer extends Component {
             assessment={this.state.assessment}
             submission={this.state.submission}
             updateGraph={this.handleGraphUpdate.bind(this)}
-            choice={this.state.choice}
             value={this.state.value}
                 />
                 </React.Fragment>;

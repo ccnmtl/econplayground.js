@@ -67,29 +67,11 @@ const getOrCreateSubmission = function(data) {
         });
 };
 
-const getL1SubmissionOffset = function(submission) {
-    if (!submission) {
-        return 0;
-    }
-
-    if (submission.choice === 1) {
-        return 1;
-    } else if (submission.choice === 2) {
-        return -1;
-    }
+const getL1SubmissionOffset = function() {
     return 0;
 };
 
-const getL2SubmissionOffset = function(submission) {
-    if (!submission) {
-        return 0;
-    }
-
-    if (submission.choice === 3) {
-        return 1;
-    } else if (submission.choice === 4) {
-        return -1;
-    }
+const getL2SubmissionOffset = function() {
     return 0;
 };
 
