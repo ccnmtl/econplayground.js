@@ -99,6 +99,7 @@ export default class GraphEditor extends React.Component {
                                     gShowIntersection={this.props.gShowIntersection}
                                     gDisplayShadow={this.props.gDisplayShadow}
                                     gIsPublished={this.props.gIsPublished}
+                                    gTopic={this.props.gTopic}
                                     updateGraph={this.props.updateGraph}
                                 />
                                 <DemandSupplyEditor
@@ -221,6 +222,7 @@ export default class GraphEditor extends React.Component {
                                 gShowIntersection={this.props.gShowIntersection}
                                 gDisplayShadow={this.props.gDisplayShadow}
                                 gIsPublished={this.props.gIsPublished}
+                                gTopic={this.props.gTopic}
                                 updateGraph={this.props.updateGraph}
                             />
                             <NonLinearDemandSupplyEditor
@@ -332,6 +334,7 @@ export default class GraphEditor extends React.Component {
                                 gShowIntersection={this.props.gShowIntersection}
                                 gDisplayShadow={this.props.gDisplayShadow}
                                 gIsPublished={this.props.gIsPublished}
+                                gTopic={this.props.gTopic}
                                 updateGraph={this.props.updateGraph}
                             />
                             <CobbDouglasEditor
@@ -540,6 +543,7 @@ export default class GraphEditor extends React.Component {
                                 gShowIntersection={this.props.gShowIntersection}
                                 gDisplayShadow={this.props.gDisplayShadow}
                                 gIsPublished={this.props.gIsPublished}
+                                gTopic={this.props.gTopic}
                                 updateGraph={this.props.updateGraph}
                             />
                             <ConsumptionSavingEditor
@@ -662,6 +666,7 @@ export default class GraphEditor extends React.Component {
                                 gShowIntersection={this.props.gShowIntersection}
                                 gDisplayShadow={this.props.gDisplayShadow}
                                 gIsPublished={this.props.gIsPublished}
+                                gTopic={this.props.gTopic}
                                 updateGraph={this.props.updateGraph}
                             />
                             <ADASEditor
@@ -739,6 +744,7 @@ GraphEditor.propTypes = {
     gId: PropTypes.number,
     gTitle: PropTypes.string,
     gDescription: PropTypes.string,
+    gTopic: PropTypes.number,
 
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayIntersection1: PropTypes.bool.isRequired,
