@@ -20,6 +20,7 @@ const exportGraph = function(state) {
         display_feedback: state.gDisplayFeedback,
         display_shadow: state.gDisplayShadow,
         needs_submit: state.gNeedsSubmit,
+        topic: state.gTopic,
 
         show_intersection: state.gShowIntersection,
         intersection_label: state.gIntersectionLabel,
@@ -112,6 +113,7 @@ const importGraph = function(json, obj) {
         gDisplayFeedback: json.display_feedback,
         gDisplayShadow: json.display_shadow,
         gNeedsSubmit: json.needs_submit,
+        gTopic: json.topic,
 
         gShowIntersection: json.show_intersection,
         gDisplayIntersection1: json.display_intersection_1,
@@ -203,6 +205,7 @@ const defaultGraph = {
     gDisplayShadow: true,
     gDisplayFeedback: false,
     gIsPublished: false,
+    gTopic: 0,
 
     gIntersectionLabel: '',
     gIntersection2Label: '',

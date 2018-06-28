@@ -29,6 +29,17 @@ const getAssessment = function(graphId) {
         });
 };
 
+const getTopics = function() {
+    return authedFetch('/api/topics/')
+        .then(function(response) {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                throw 'Not found';
+            }
+        });
+};
+
 /**
  * Returns a Promise containing the submission for the current user
  * and given graph id, if it exists.
@@ -169,7 +180,7 @@ const getError = function(obj) {
 };
 
 export {
-    authedFetch, getAssessment,
+    authedFetch, getAssessment, getTopics,
     getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
     getOffset, forceFloat, displayGraphType, getError

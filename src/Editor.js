@@ -50,6 +50,7 @@ class Editor extends Component {
                         gIntersection3Label={this.state.gIntersection3Label}
                         gDisplayShadow={this.state.gDisplayShadow}
                         gNeedsSubmit={this.state.gNeedsSubmit}
+                        gTopic={this.state.gTopic}
 
                         gIntersectionHorizLineLabel={this.state.gIntersectionHorizLineLabel}
                         gIntersectionVertLineLabel={this.state.gIntersectionVertLineLabel}
