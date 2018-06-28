@@ -15,7 +15,7 @@ export default class ConsumptionSavingEditor extends React.Component {
                         <React.Fragment>
                             <h2>Function</h2>
                             <div className="row">
-                                (<MathJax.Context
+                                <MathJax.Context
                                     script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
                                     input="tex"
                                     options={{
@@ -24,7 +24,6 @@ export default class ConsumptionSavingEditor extends React.Component {
                                     }}>
                                     <MathJax.Node>{tex}</MathJax.Node>
                                 </MathJax.Context>
-                                )
                             </div>
                         </React.Fragment>
                 }
