@@ -209,45 +209,47 @@ export default class Assessment {
      * This method does the work of determinining whether the user
      * moved lines up or down, based on their current vs initial
      * values.
+     *
+     * Returns an array of Responses.
      */
     evalState(state) {
-        let results = [];
-        let result = null;
+        let responses = [];
+        let r = null;
 
         for (let key in state) {
             if (key.endsWith('OffsetY')) {
                 // Evaluate shifts
-                result = this.evalAction({
+                r = this.evalAction({
                     name: this.translateKey(key),
                     value: this.translateMovement(
                         state[`${key}Initial`], state[key])
                 });
-                if (result) {
-                    results.push(result);
+                if (r) {
+                    responses.push(r);
                 }
             } else if (key.endsWith('Slope')) {
                 // Evaluate rotations
-                result = this.evalAction({
+                r = this.evalAction({
                     name: this.translateKey(key),
                     value: this.translateSlopeChange(
                         state[`${key}Initial`], state[key])
                 });
-                if (result) {
-                    results.push(result);
+                if (r) {
+                    responses.push(r);
                 }
             } else if (key.endsWith('Label')) {
                 // Evaluate labels
-                result = this.evalAction({
+                r = this.evalAction({
                     name: this.translateKey(key),
                     value: state[key]
                 });
 
-                if (result) {
-                    results.push(result);
+                if (r) {
+                    responses.push(r);
                 }
             }
         }
 
-        return results;
+        return responses;
     }
 }

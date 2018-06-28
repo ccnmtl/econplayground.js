@@ -14,7 +14,7 @@ import ResetGraphButton from './buttons/ResetGraphButton';
 import SubmitButton from './buttons/SubmitButton';
 import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
-import {getOrCreateSubmission} from './utils';
+import {forceFloat, getOrCreateSubmission} from './utils';
 
 /**
  * This component is used to view an econgraph object.
@@ -91,14 +91,13 @@ export default class GraphViewer extends React.Component {
                     {descriptionEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.value} />
+                        <input type="hidden" name="score" value={this.props.totalScore} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
                             id={'editing-graph'}
                             width={562.5}
                             height={300}
-                            submission={this.props.submission}
                             shadow={!isInstructor}
 
                             gType={this.props.gType}
@@ -171,7 +170,7 @@ export default class GraphViewer extends React.Component {
                         {descriptionEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.value} />
+                        <input type="hidden" name="score" value={this.props.totalScore} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
@@ -262,7 +261,7 @@ export default class GraphViewer extends React.Component {
                     {descriptionEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.value} />
+                        <input type="hidden" name="score" value={this.props.totalScore} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
@@ -345,7 +344,7 @@ export default class GraphViewer extends React.Component {
                     {descriptionEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.value} />
+                        <input type="hidden" name="score" value={this.props.totalScore} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
@@ -420,7 +419,7 @@ export default class GraphViewer extends React.Component {
                     {descriptionEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.value} />
+                        <input type="hidden" name="score" value={this.props.totalScore} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
@@ -498,7 +497,7 @@ export default class GraphViewer extends React.Component {
                     {descriptionEl}
                 <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                 <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                <input type="hidden" name="score" value={this.props.value} />
+                <input type="hidden" name="score" value={this.props.totalScore} />
                 <input type="hidden" name="next" value={successUrl} />
                 <input type="hidden" name="launchUrl" value={launchUrl} />
                 <JXGBoard
@@ -615,23 +614,29 @@ export default class GraphViewer extends React.Component {
         }
     }
     handleSubmit(event) {
-        // Make the Submission obj in Django, then submit to Canvas
-        // with LTI.
         event.preventDefault();
+        const assessment = new Assessment(this.props.assessment);
+        const responses = assessment.evalState(this.props);
 
         if (this.props.gNeedsSubmit) {
+            // LTI-connected graph submitted. Create a Submission
+            // object and submit to Canvas with LTI.
             const form = event.target;
+
+            // Sum up the scores for all fulfilled rules.
+            const scores = responses.map(x => forceFloat(x.score));
+            const score = scores.reduce((a, b) => a + b, 0);
+
             getOrCreateSubmission({
                 graph: this.props.gId,
-                score: this.props.value
+                score: score
             }).then(function() {
                 form.submit();
             });
         } else {
-            // "playground" graph submitted.
-            const assessment = new Assessment(this.props.assessment);
-            const result = assessment.evalState(this.props);
-            this.setState({currentFeedback: result});
+            // "playground" graph submitted. Show feedback
+            // immediately.
+            this.setState({currentFeedback: responses});
         }
     }
 }
@@ -728,5 +733,5 @@ GraphViewer.propTypes = {
     assessment: PropTypes.array,
     submission: PropTypes.object,
     updateGraph: PropTypes.func.isRequired,
-    value: PropTypes.string
+    totalScore: PropTypes.number.isRequired
 };

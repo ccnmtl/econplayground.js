@@ -10,17 +10,21 @@ export default class SubmitButton extends React.Component {
             return null;
         }
 
+        if (!!this.props.submission) {
+            const submittedAt = new Date(this.props.submission.created_at);
+            return <React.Fragment>
+                <hr />
+                <small>
+                You submitted an answer to this graph at {submittedAt.toLocaleString()}.
+                </small>
+                </React.Fragment>;
+        }
+
         return <React.Fragment>
-            <div>
             <hr />
-            <button className="btn btn-primary btn-sm"
-                style={{
-                    marginTop: '1em',
-                    display: (!this.props.isInstructor && !this.props.submission) ?
-                'inherit' : 'none'
-                }}
-                type="submit">Submit</button>
-            </div>
+            <button className="btn btn-primary btn-sm mt-1" type="submit">
+                Submit
+            </button>
         </React.Fragment>;
     }
 }

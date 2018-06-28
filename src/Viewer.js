@@ -11,7 +11,7 @@ class Viewer extends Component {
         this.graphId = window.location.pathname.split('/')[2];
 
         this.state = {
-            value: '',
+            totalScore: 0,
             submission: null
         };
 
@@ -208,7 +208,7 @@ class Viewer extends Component {
             assessment={this.state.assessment}
             submission={this.state.submission}
             updateGraph={this.handleGraphUpdate.bind(this)}
-            value={this.state.value}
+            totalScore={this.state.totalScore}
                 />
                 </React.Fragment>;
         }
@@ -236,7 +236,10 @@ class Viewer extends Component {
         const me = this;
 
         return getSubmission(gId).then(function(s) {
-            me.setState({submission: s});
+            me.setState({
+                alertText: 'Submitted.',
+                submission: s
+            });
         }, function() {
             // No submission found
         });
@@ -351,7 +354,7 @@ class Viewer extends Component {
         this.setState({gShowIntersection: checked});
     }
     handleInitial() {
-        this.setState({value: '0'});
+        this.setState({totalScore: 0});
     }
 }
 

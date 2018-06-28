@@ -125,7 +125,7 @@ const getOffset = function(slope, y, n) {
  * API's DecimalFields. This is currently capped to 2 decimal places.
  */
 const forceFloat = function(n) {
-    n = Number(n)
+    n = Number(n);
     if (isNaN(n) || typeof n === 'undefined') {
         n = 0;
     }
