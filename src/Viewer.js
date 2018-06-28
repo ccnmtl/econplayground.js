@@ -216,28 +216,43 @@ class Viewer extends Component {
         }
     }
 
-    componentDidMount() {
-        // Load graph and submission data
+    /**
+     * Get an assessment from Django and set it in this.state.
+     */
+    loadAssessment(gId) {
         const me = this;
 
-
-        this.getGraph().then(function() {
-            if (me.state.gNeedsSubmit) {
-                return me.getSubmission();
-            } else {
-                return null;
-            }
-        }).then(function(s) {
-            if (s) {
-                me.setState({submission: s});
-            }
-            return getAssessment(me.state.gId);
-        }).then(function(a) {
+        return getAssessment(gId).then(function(a) {
             if (a && a.assessmentrule_set) {
                 me.setState({assessment: a.assessmentrule_set});
             }
         }, function() {
-            // Assessment not found
+            // No assessment found
+        });
+    }
+
+    /**
+     * Get a submission from Django and set it in this.state.
+     */
+    loadSubmission(gId) {
+        const me = this;
+
+        return getSubmission(gId).then(function(s) {
+            me.setState({submission: s});
+        }, function() {
+            // No submission found
+        });
+    }
+
+    componentDidMount() {
+        // Load graph and submission data
+        const me = this;
+
+        this.getGraph().then(function() {
+            me.loadAssessment(me.state.gId);
+            if (me.state.gNeedsSubmit) {
+                me.loadSubmission(me.state.gId);
+            }
         });
 
         // Add graph feedback event handlers
@@ -288,10 +303,6 @@ class Viewer extends Component {
             }).then(function(json) {
                 importGraph(json, me);
             });
-    }
-
-    getSubmission() {
-        return getSubmission(this.state.gId);
     }
 
     /**

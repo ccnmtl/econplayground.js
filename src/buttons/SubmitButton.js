@@ -6,19 +6,21 @@ export default class SubmitButton extends React.Component {
         const hasAssessment = !!this.props.assessment &&
               this.props.assessment.length !== 0;
 
+        if (!hasAssessment) {
+            return null;
+        }
+
         return <React.Fragment>
-            {hasAssessment && (
-                <div>
-                    <hr />
-                    <button className="btn btn-primary btn-sm"
-                            style={{
-                                marginTop: '1em',
-                                display: (!this.props.isInstructor && !this.props.submission) ?
-                                    'inherit' : 'none'
-                            }}
-                            type="submit">Submit</button>
-                </div>
-            )}
+            <div>
+            <hr />
+            <button className="btn btn-primary btn-sm"
+                style={{
+                    marginTop: '1em',
+                    display: (!this.props.isInstructor && !this.props.submission) ?
+                'inherit' : 'none'
+                }}
+                type="submit">Submit</button>
+            </div>
         </React.Fragment>;
     }
 }
