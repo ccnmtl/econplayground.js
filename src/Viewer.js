@@ -36,7 +36,7 @@ class Viewer extends Component {
             showing={true}
             gId={this.state.gId}
             gTitle={this.state.gTitle}
-            gDescription={this.state.gDescription}
+            gInstructions={this.state.gInstructions}
             gInstructorNotes={this.state.gInstructorNotes}
             gType={this.state.gType}
             gAssignmentType={this.state.gAssignmentType}
@@ -113,7 +113,7 @@ class Viewer extends Component {
             ref={(gv) => { this.gv = gv; }}
             gId={this.state.gId}
             gTitle={this.state.gTitle}
-            gDescription={this.state.gDescription}
+            gInstructions={this.state.gInstructions}
             gType={this.state.gType}
             gAssignmentType={this.state.gAssignmentType}
             gShowIntersection={this.state.gShowIntersection}

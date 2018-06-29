@@ -4,19 +4,19 @@ import {handleFormUpdate} from '../utils';
 
 /**
  * This component contains the form fields  title, instructor notes,
- * and description.
+ * and instructions.
  */
 export default class CommonGraphEditor extends React.Component {
     render() {
         return (
             <div>
                 <div className="form-group">
-                    <label htmlFor="gDescription">
-                        Description
+                    <label htmlFor="gInstructions">
+                        Instructions
                     </label>
-                    <textarea id="gDescription"
+                    <textarea id="gInstructions"
                         onChange={handleFormUpdate.bind(this)}
-                        value={this.props.gDescription}
+                        value={this.props.gInstructions}
                         rows={4}
                         className="form-control form-control-sm" />
                 </div>
@@ -37,7 +37,7 @@ export default class CommonGraphEditor extends React.Component {
 CommonGraphEditor.propTypes = {
     gTitle: PropTypes.string.isRequired,
     gInstructorNotes: PropTypes.string.isRequired,
-    gDescription: PropTypes.string.isRequired,
+    gInstructions: PropTypes.string.isRequired,
 
     updateGraph: PropTypes.func.isRequired
 }

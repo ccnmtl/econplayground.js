@@ -82,7 +82,7 @@ export default class GraphEditor extends React.Component {
                                             <CommonGraphEditor
                                                 gTitle={this.props.gTitle}
                                                 gInstructorNotes={this.props.gInstructorNotes}
-                                                gDescription={this.props.gDescription}
+                                                gInstructions={this.props.gInstructions}
                                                 updateGraph={this.props.updateGraph}
                                             />
                                         </div>
@@ -200,7 +200,7 @@ export default class GraphEditor extends React.Component {
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
                                             gInstructorNotes={this.props.gInstructorNotes}
-                                            gDescription={this.props.gDescription}
+                                            gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                                 <div className="form-group">
@@ -318,7 +318,7 @@ export default class GraphEditor extends React.Component {
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
                                             gInstructorNotes={this.props.gInstructorNotes}
-                                            gDescription={this.props.gDescription}
+                                            gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
                                     </div>
                                 )
@@ -423,7 +423,7 @@ export default class GraphEditor extends React.Component {
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
                                             gInstructorNotes={this.props.gInstructorNotes}
-                                            gDescription={this.props.gDescription}
+                                            gInstructions={this.props.gInstructions}
                                             gAssignmentType={this.props.gAssignmentType}
                                             gNeedsSubmit={this.props.gNeedsSubmit}
                                             gDisplayFeedback={this.props.gDisplayFeedback}
@@ -527,7 +527,7 @@ export default class GraphEditor extends React.Component {
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
                                             gInstructorNotes={this.props.gInstructorNotes}
-                                            gDescription={this.props.gDescription}
+                                            gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
                                     </div>
                                 )
@@ -650,7 +650,7 @@ export default class GraphEditor extends React.Component {
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
                                             gInstructorNotes={this.props.gInstructorNotes}
-                                            gDescription={this.props.gDescription}
+                                            gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
                                     </div>
                                 )
@@ -743,7 +743,7 @@ export default class GraphEditor extends React.Component {
 GraphEditor.propTypes = {
     gId: PropTypes.number,
     gTitle: PropTypes.string,
-    gDescription: PropTypes.string,
+    gInstructions: PropTypes.string,
     gTopic: PropTypes.number,
 
     gShowIntersection: PropTypes.bool.isRequired,

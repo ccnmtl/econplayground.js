@@ -12,7 +12,7 @@ import { forceFloat } from './utils';
 const exportGraph = function(state) {
     let obj = {
         title: state.gTitle,
-        description: state.gDescription,
+        instructions: state.gInstructions,
         instructor_notes: state.gInstructorNotes,
         graph_type: state.gType,
         assignment_type: state.gAssignmentType,
@@ -105,7 +105,7 @@ const importGraph = function(json, obj) {
     const updateObj = {
         gId: json.id,
         gTitle: json.title,
-        gDescription: json.description,
+        gInstructions: json.instructions,
         gInstructorNotes: json.instructor_notes,
         gType: json.graph_type,
         gAssignmentType: json.assignment_type,
@@ -195,7 +195,7 @@ const defaultGraph = {
     gType: null,
     gAssignmentType: 0, // Default to "Template graph" - everything editable
     gTitle: '',
-    gDescription: '',
+    gInstructions: '',
     gInstructorNotes: '',
     gNeedsSubmit: false,
     gShowIntersection: true,
