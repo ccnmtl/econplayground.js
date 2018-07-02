@@ -101,7 +101,7 @@ it('Evaluates state correctly', () => {
     ]);
     const state = {
         gTitle: 'mock graph state',
-        gDescription: 'Some random graph',
+        gInstructions: 'Some random graph',
         gLine1OffsetYInitial: 0,
         gLine1OffsetY: 1.52,
         gLine1Label: 'abc'

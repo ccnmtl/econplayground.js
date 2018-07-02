@@ -39,7 +39,7 @@ class Editor extends Component {
                         gTitle={this.state.gTitle}
                         gType={this.state.gType}
                         gAssignmentType={this.state.gAssignmentType}
-                        gDescription={this.state.gDescription}
+                        gInstructions={this.state.gInstructions}
                         gInstructorNotes={this.state.gInstructorNotes}
                         gShowIntersection={this.state.gShowIntersection}
                         gDisplayIntersection1={this.state.gDisplayIntersection1}

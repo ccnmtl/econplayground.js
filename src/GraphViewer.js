@@ -68,19 +68,19 @@ export default class GraphViewer extends React.Component {
         }
 
         let titleEl = <h1></h1>;
-        let descriptionEl = <p></p>;
+        let instructionsEl = <p></p>;
 
-        if (!window.EconPlayground.hideTitleAndDescription) {
+        if (!window.EconPlayground.hideTitleAndInstructions) {
             titleEl = <h1>{this.props.gTitle}</h1>;
         }
 
-        if (!window.EconPlayground.hideTitleAndDescription && this.props.gDescription) {
+        if (!window.EconPlayground.hideTitleAndInstructions && this.props.gInstructions) {
             const reader = new commonmark.Parser();
             const writer = new commonmark.HtmlRenderer();
-            const parsed = reader.parse(this.props.gDescription);
-            const description = writer.render(parsed);
+            const parsed = reader.parse(this.props.gInstructions);
+            const instructions = writer.render(parsed);
 
-            descriptionEl = <p className="lead text-secondary" dangerouslySetInnerHTML={{__html:description}}></p>;
+            instructionsEl = <p className="lead text-secondary" dangerouslySetInnerHTML={{__html:instructions}}></p>;
         }
 
         if (this.props.gType === 0) {
@@ -88,7 +88,7 @@ export default class GraphViewer extends React.Component {
             return (
                 <div className="GraphViewer">
                     {titleEl}
-                    {descriptionEl}
+                    {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                         <input type="hidden" name="score" value={this.props.totalScore} />
@@ -167,7 +167,7 @@ export default class GraphViewer extends React.Component {
             return (
                 <div className="GraphViewer">
                         {titleEl}
-                        {descriptionEl}
+                        {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                         <input type="hidden" name="score" value={this.props.totalScore} />
@@ -258,7 +258,7 @@ export default class GraphViewer extends React.Component {
             return (
                 <div className="GraphViewer">
                     {titleEl}
-                    {descriptionEl}
+                    {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                         <input type="hidden" name="score" value={this.props.totalScore} />
@@ -341,7 +341,7 @@ export default class GraphViewer extends React.Component {
             return (
                 <div className="GraphViewer">
                     {titleEl}
-                    {descriptionEl}
+                    {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                         <input type="hidden" name="score" value={this.props.totalScore} />
@@ -416,7 +416,7 @@ export default class GraphViewer extends React.Component {
             return (
                 <div className="GraphViewer">
                     {titleEl}
-                    {descriptionEl}
+                    {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                         <input type="hidden" name="score" value={this.props.totalScore} />
@@ -494,7 +494,7 @@ export default class GraphViewer extends React.Component {
             // Aggregate Demand - Aggregate Supply
             return <div className="GraphViewer">
                     {titleEl}
-                    {descriptionEl}
+                    {instructionsEl}
                 <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                 <input type="hidden" name="csrfmiddlewaretoken" value={token} />
                 <input type="hidden" name="score" value={this.props.totalScore} />
@@ -645,7 +645,7 @@ GraphViewer.propTypes = {
     gId: PropTypes.number,
     gType: PropTypes.number,
     gTitle: PropTypes.string,
-    gDescription: PropTypes.string,
+    gInstructions: PropTypes.string,
     gNeedsSubmit: PropTypes.bool,
     gAssignmentType: PropTypes.number.isRequired,
 
