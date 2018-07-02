@@ -81,6 +81,7 @@ export default class GraphEditor extends React.Component {
                                             />
                                             <CommonGraphEditor
                                                 gTitle={this.props.gTitle}
+                                                gSummary={this.props.gSummary}
                                                 gInstructorNotes={this.props.gInstructorNotes}
                                                 gInstructions={this.props.gInstructions}
                                                 updateGraph={this.props.updateGraph}
@@ -199,6 +200,7 @@ export default class GraphEditor extends React.Component {
                                         />
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
+                                            gSummary={this.props.gSummary}
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
@@ -317,6 +319,7 @@ export default class GraphEditor extends React.Component {
                                         />
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
+                                            gSummary={this.props.gSummary}
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
@@ -422,6 +425,7 @@ export default class GraphEditor extends React.Component {
                                         />
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
+                                            gSummary={this.props.gSummary}
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gInstructions={this.props.gInstructions}
                                             gAssignmentType={this.props.gAssignmentType}
@@ -526,6 +530,7 @@ export default class GraphEditor extends React.Component {
                                         />
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
+                                            gSummary={this.props.gSummary}
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
@@ -649,6 +654,7 @@ export default class GraphEditor extends React.Component {
                                         />
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
+                                            gSummary={this.props.gSummary}
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
@@ -743,6 +749,7 @@ export default class GraphEditor extends React.Component {
 GraphEditor.propTypes = {
     gId: PropTypes.number,
     gTitle: PropTypes.string,
+    gSummary: PropTypes.string,
     gInstructions: PropTypes.string,
     gTopic: PropTypes.number,
 

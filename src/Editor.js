@@ -37,6 +37,7 @@ class Editor extends Component {
                          ref={(ge) => { this.ge = ge; }}
                         showing={this.state.step === 1}
                         gTitle={this.state.gTitle}
+                        gSummary={this.state.gSummary}
                         gType={this.state.gType}
                         gAssignmentType={this.state.gAssignmentType}
                         gInstructions={this.state.gInstructions}

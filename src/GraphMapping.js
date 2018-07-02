@@ -12,6 +12,7 @@ import { forceFloat } from './utils';
 const exportGraph = function(state) {
     let obj = {
         title: state.gTitle,
+        summary: state.gSummary,
         instructions: state.gInstructions,
         instructor_notes: state.gInstructorNotes,
         graph_type: state.gType,
@@ -26,7 +27,7 @@ const exportGraph = function(state) {
         intersection_label: state.gIntersectionLabel,
 
         intersection_2_label: state.gIntersection2Label,
-        intersection_3_label: state.gIntersection3Label,
+       intersection_3_label: state.gIntersection3Label,
 
         intersection_horiz_line_label: state.gIntersectionHorizLineLabel,
         intersection_vert_line_label: state.gIntersectionVertLineLabel,
@@ -105,6 +106,7 @@ const importGraph = function(json, obj) {
     const updateObj = {
         gId: json.id,
         gTitle: json.title,
+        gSummary: json.summary,
         gInstructions: json.instructions,
         gInstructorNotes: json.instructor_notes,
         gType: json.graph_type,
