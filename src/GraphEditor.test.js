@@ -10,6 +10,7 @@ it('renders without crashing', () => {
             gType={0}
             gAssignmentType={0}
             gTitle={'title'}
+            gSummary={'summary'}
             gInstructions={'instructions'}
             showing={true}
             updateDisplayIntersection={function() {}}
