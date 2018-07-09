@@ -1,3 +1,5 @@
+import { forceFloat } from './utils';
+
 /**
  * Assessment.js
  *
@@ -33,6 +35,13 @@
 export default class Assessment {
     constructor(assessment=[]) {
         this.assessment = assessment;
+
+        this.totalScore = 0;
+        const me = this;
+        this.assessment.forEach(function(rule) {
+            let row = me.extractRow(rule);
+            me.totalScore += forceFloat(row.score);
+        });
     }
 
     /**
@@ -132,7 +141,7 @@ export default class Assessment {
                     // Action fulfilled
                     return {
                         feedback: row.feedback_fulfilled,
-                        score: row.score,
+                        score: forceFloat(row.score / this.totalScore),
                         fulfilled: true
                     };
                 } else {
