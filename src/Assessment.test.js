@@ -18,15 +18,15 @@ it('Evaluates a label action', () => {
         ['line2intercept', 'decrease', 'Correct!', 'Sorry, try again', 1]
     ]);
     let action = {name: 'line1label', value: 'Demand'};
-    let response = {feedback: 'Correct!', score: 1, fulfilled: true};
+    let response = {feedback: 'Correct!', score: 0.26, fulfilled: true};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'line1label', value: 'demand'};
-    response = {feedback: 'Correct!', score: 1, fulfilled: true};
+    response = {feedback: 'Correct!', score: 0.26, fulfilled: true};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'line1label', value: ' demand  '};
-    response = {feedback: 'Correct!', score: 1, fulfilled: true};
+    response = {feedback: 'Correct!', score: 0.26, fulfilled: true};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'line1label', value: 'nope'};
@@ -50,7 +50,7 @@ it('Evaluates a line shift', () => {
     let action = {name: 'line1intercept', value: 'up'};
     let response = {
         feedback: 'Line 1 moved up',
-        score: 0.2,
+        score: 0.1,
         fulfilled: true
     };
     expect(a.evalAction(action)).toEqual(response);
@@ -75,7 +75,7 @@ it('Evaluates a line rotation (slope change)', () => {
     let action = {name: 'line1slope', value: 'increase'};
     let response = {
         feedback: 'Line 1 slope increased',
-        score: 0.2,
+        score: 0.1,
         fulfilled: true
     };
     expect(a.evalAction(action)).toEqual(response);
@@ -116,7 +116,42 @@ it('Evaluates state correctly', () => {
     });
     expect(r).toContainEqual({
         feedback: 'Are you sure you need to shift this line?',
-        score: undefined,
+        score: 0,
+        fulfilled: true
+    });
+});
+
+it('Normalizes the summed score to a number between 0 and 1', () => {
+    const a = new Assessment([
+        ['line1label', 'Demand', 'Correct!', 'Sorry, try again', 1],
+        ['line1label', 'Alternative solution',
+         'Correct!', 'Sorry, try again', 0.9],
+        ['line1slope', 'increase',
+         'Line 1 slope increased', 'Line 1 slope not increased', 0.2],
+        ['line2slope', 'any', 'Are you sure you\'re moving the right line?'],
+        ['line1intercept', 'any', 'Are you sure you need to shift this line?']
+    ]);
+    const state = {
+        gTitle: 'mock graph state',
+        gInstructions: 'Some random graph',
+        gLine1OffsetYInitial: 0,
+        gLine1OffsetY: 1.52,
+        gLine1Label: 'Demand'
+    };
+
+    const r = a.evalState(state);
+    expect(r.length).toEqual(2);
+
+    // Assert that this rule's score was normalized as a fraction of
+    // the total points.
+    expect(r).toContainEqual({
+        feedback: 'Correct!',
+        score: 0.48,
+        fulfilled: true
+    });
+    expect(r).toContainEqual({
+        feedback: 'Are you sure you need to shift this line?',
+        score: 0,
         fulfilled: true
     });
 });
