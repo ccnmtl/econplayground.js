@@ -19,6 +19,7 @@ it('renders without crashing', () => {
             gDisplayShadow={true}
             gDisplayFeedback={false}
             gIsPublished={true}
+            gIsFeatured={true}
             gNeedsSubmit={false}
             gShowIntersection={true}
             gDisplayIntersection1={true}
