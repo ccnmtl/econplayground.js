@@ -207,7 +207,7 @@ const defaultGraph = {
     gDisplayShadow: true,
     gDisplayFeedback: false,
     gIsPublished: false,
-    gTopic: 0,
+    gTopic: 1,
 
     gIntersectionLabel: '',
     gIntersection2Label: '',
