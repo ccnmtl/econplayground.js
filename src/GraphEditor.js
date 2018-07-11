@@ -446,6 +446,17 @@ export default class GraphEditor extends React.Component {
                             </Sticky>
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <CommonGraphSettings
+                                gAssignmentType={this.props.gAssignmentType}
+                                gNeedsSubmit={this.props.gNeedsSubmit}
+                                gDisplayFeedback={this.props.gDisplayFeedback}
+                                gShowIntersection={this.props.gShowIntersection}
+                                gDisplayShadow={this.props.gDisplayShadow}
+                                gIsPublished={this.props.gIsPublished}
+                                gIsFeatured={this.props.gIsFeatured}
+                                gTopic={this.props.gTopic}
+                                updateGraph={this.props.updateGraph}
+                            />
                             <ConsumptionLeisureEditor
                                 gA1={this.props.gA1}
                                 gA2={this.props.gA2}
