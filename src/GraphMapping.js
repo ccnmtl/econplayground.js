@@ -18,6 +18,7 @@ const exportGraph = function(state) {
         graph_type: state.gType,
         assignment_type: state.gAssignmentType,
         is_published: state.gIsPublished,
+        featured: state.gIsFeatured,
         display_feedback: state.gDisplayFeedback,
         display_shadow: state.gDisplayShadow,
         needs_submit: state.gNeedsSubmit,
@@ -112,6 +113,7 @@ const importGraph = function(json, obj) {
         gType: json.graph_type,
         gAssignmentType: json.assignment_type,
         gIsPublished: json.is_published,
+        gIsFeatured: json.featured,
         gDisplayFeedback: json.display_feedback,
         gDisplayShadow: json.display_shadow,
         gNeedsSubmit: json.needs_submit,
@@ -207,6 +209,7 @@ const defaultGraph = {
     gDisplayShadow: true,
     gDisplayFeedback: false,
     gIsPublished: false,
+    gIsFeatured: false,
     gTopic: 1,
 
     gIntersectionLabel: '',

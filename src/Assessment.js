@@ -39,7 +39,12 @@ export default class Assessment {
         this.totalScore = 0;
         const me = this;
         this.assessment.forEach(function(rule) {
-            let row = me.extractRow(rule);
+            let row = rule;
+            // Allow assessment rules to be passed in as either an
+            // object or a plain array. This adds some flexibility.
+            if (!('score' in row)) {
+                row = me.extractRow(rule);
+            }
             me.totalScore += forceFloat(row.score);
         });
     }
@@ -138,10 +143,18 @@ export default class Assessment {
 
             if (this.stripText(row.name) === this.stripText(action.name)) {
                 if (this.evalActionWithType(row, action, this.getActionType(row))) {
+                    // Avoid divide-by-zero error. Just fall back to a
+                    // result of 0.
+                    let normalizedScore = 0;
+                    if (this.totalScore !== 0) {
+                        normalizedScore = forceFloat(
+                            row.score / this.totalScore);
+                    }
+
                     // Action fulfilled
                     return {
                         feedback: row.feedback_fulfilled,
-                        score: forceFloat(row.score / this.totalScore),
+                        score: normalizedScore,
                         fulfilled: true
                     };
                 } else {

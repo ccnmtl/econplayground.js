@@ -51,16 +51,17 @@ export default class CommonGraphSettings extends React.Component {
                 <a href="/admin/main/topic/" target="_blank">Manage topics</a>
                 </small>
                 </div>
-                <div className="form-check">
-                    <label className="form-check-label">
-                        <input
-                            id="gNeedsSubmit"
-                            className="form-check-input"
-                            type="checkbox"
-                            onChange={handleFormUpdate.bind(this)}
-                            checked={this.props.gNeedsSubmit} />
-                        Requires assessment
+                <div className="form-group">
+                    <label htmlFor="gNeedsSubmit">
+                Assessment Type
                     </label>
+                    <select id="gNeedsSubmit"
+                        className="custom-select form-control-sm"
+                        onChange={handleFormUpdate.bind(this)}
+                        value={(this.props.gNeedsSubmit ? 1 : 0)}>
+                <option value={0}>Practice assessment</option>
+                <option value={1}>LTI Assessment</option>
+                    </select>
                 </div>
                 <div className="form-check">
                     <label className="form-check-label">
@@ -93,6 +94,17 @@ export default class CommonGraphSettings extends React.Component {
                             onChange={handleFormUpdate.bind(this)}
                             checked={this.props.gIsPublished} />
                         Published
+                    </label>
+                </div>
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input
+                            id="gIsFeatured"
+                            className="form-check-input"
+                            type="checkbox"
+                            onChange={handleFormUpdate.bind(this)}
+                            checked={this.props.gIsFeatured} />
+                        Featured
                     </label>
                 </div>
                 <div className="form-check">
@@ -132,6 +144,7 @@ CommonGraphSettings.propTypes = {
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayShadow: PropTypes.bool.isRequired,
     gIsPublished: PropTypes.bool.isRequired,
+    gIsFeatured: PropTypes.bool.isRequired,
     gTopic: PropTypes.number,
 
     updateGraph: PropTypes.func.isRequired

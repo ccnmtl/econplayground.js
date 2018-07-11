@@ -119,6 +119,12 @@ const handleFormUpdate = function(e) {
             obj[id] = e.target.value;
     }
 
+    if (typeof obj['gNeedsSubmit'] === 'number') {
+        // Cast gNeedsSubmit to a boolean, in case it's a number (0 or
+        // 1).
+        obj['gNeedsSubmit'] = !!parseInt(obj['gNeedsSubmit'], 10);
+    }
+
     this.props.updateGraph(obj);
 };
 
