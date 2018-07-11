@@ -24,7 +24,8 @@ export default class GraphViewer extends React.Component {
         super(props);
 
         this.state = {
-            currentFeedback: []
+            currentFeedback: [],
+            score: 0
         };
     }
     render() {
@@ -91,7 +92,7 @@ export default class GraphViewer extends React.Component {
                     {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.totalScore} />
+                        <input type="hidden" name="score" value={this.state.score} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
@@ -170,7 +171,7 @@ export default class GraphViewer extends React.Component {
                         {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.totalScore} />
+                        <input type="hidden" name="score" value={this.state.score} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
@@ -261,7 +262,7 @@ export default class GraphViewer extends React.Component {
                     {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.totalScore} />
+                        <input type="hidden" name="score" value={this.state.score} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
@@ -344,7 +345,7 @@ export default class GraphViewer extends React.Component {
                     {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.totalScore} />
+                        <input type="hidden" name="score" value={this.state.score} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
@@ -419,7 +420,7 @@ export default class GraphViewer extends React.Component {
                     {instructionsEl}
                     <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                         <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.props.totalScore} />
+                        <input type="hidden" name="score" value={this.state.score} />
                         <input type="hidden" name="next" value={successUrl} />
                         <input type="hidden" name="launchUrl" value={launchUrl} />
                         <JXGBoard
@@ -497,7 +498,7 @@ export default class GraphViewer extends React.Component {
                     {instructionsEl}
                 <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
                 <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                <input type="hidden" name="score" value={this.props.totalScore} />
+                <input type="hidden" name="score" value={this.state.score} />
                 <input type="hidden" name="next" value={successUrl} />
                 <input type="hidden" name="launchUrl" value={launchUrl} />
                 <JXGBoard
@@ -627,6 +628,8 @@ export default class GraphViewer extends React.Component {
             const scores = responses.map(x => forceFloat(x.score));
             const score = scores.reduce((a, b) => a + b, 0);
 
+            this.setState({score: score});
+
             getOrCreateSubmission({
                 graph: this.props.gId,
                 score: score
@@ -732,6 +735,5 @@ GraphViewer.propTypes = {
 
     assessment: PropTypes.array,
     submission: PropTypes.object,
-    updateGraph: PropTypes.func.isRequired,
-    totalScore: PropTypes.number.isRequired
+    updateGraph: PropTypes.func.isRequired
 };
