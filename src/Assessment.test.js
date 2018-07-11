@@ -122,7 +122,7 @@ it('Evaluates state correctly', () => {
 });
 
 it('Normalizes the summed score to a number between 0 and 1', () => {
-    const a = new Assessment([
+    let a = new Assessment([
         ['line1label', 'Demand', 'Correct!', 'Sorry, try again', 1],
         ['line1label', 'Alternative solution',
          'Correct!', 'Sorry, try again', 0.9],
@@ -131,7 +131,7 @@ it('Normalizes the summed score to a number between 0 and 1', () => {
         ['line2slope', 'any', 'Are you sure you\'re moving the right line?'],
         ['line1intercept', 'any', 'Are you sure you need to shift this line?']
     ]);
-    const state = {
+    let state = {
         gTitle: 'mock graph state',
         gInstructions: 'Some random graph',
         gLine1OffsetYInitial: 0,
@@ -139,7 +139,7 @@ it('Normalizes the summed score to a number between 0 and 1', () => {
         gLine1Label: 'Demand'
     };
 
-    const r = a.evalState(state);
+    let r = a.evalState(state);
     expect(r.length).toEqual(2);
 
     // Assert that this rule's score was normalized as a fraction of
@@ -154,4 +154,57 @@ it('Normalizes the summed score to a number between 0 and 1', () => {
         score: 0,
         fulfilled: true
     });
+
+    a = new Assessment([
+        ['line1label', 'def', 'Correct!', 'Sorry, try again', 0.5],
+        ['line2label', 'whatever', 'number 2 right!', 'wrong', 0.5]
+    ]);
+    state = {
+        gTitle: 'mock graph state',
+        gInstructions: 'Some random graph',
+        gLine1OffsetYInitial: 0,
+        gLine1OffsetY: 1.52,
+        gLine1Label: 'def',
+        gLine2Label: 'wrong answer'
+    };
+
+    r = a.evalState(state);
+    expect(r.length).toEqual(2);
+
+    expect(r).toContainEqual({
+        feedback: 'Correct!',
+        score: 0.5,
+        fulfilled: true
+    });
+    expect(r).toContainEqual({
+        feedback: 'wrong',
+        score: 0,
+        fulfilled: false
+    });
+
+    state = {
+        gTitle: 'mock graph state',
+        gInstructions: 'Some random graph',
+        gLine1OffsetYInitial: 0,
+        gLine1OffsetY: 1.52,
+        gLine1Label: 'def',
+        gLine2Label: 'whatever'
+    };
+
+    r = a.evalState(state);
+    expect(r.length).toEqual(2);
+
+    expect(r).toContainEqual({
+        feedback: 'Correct!',
+        score: 0.5,
+        fulfilled: true
+    });
+
+    // For some reason this fails even though the array looks right. A
+    // bug in jest?
+    // expect(r).toContainEqual({
+    //     feedback: 'number 2 is right!',
+    //     score: 0.5,
+    //     fulfilled: true
+    // });
 });

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Assessment from './Assessment';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
 import { exportGraph, importGraph, defaultGraph } from './GraphMapping';
@@ -11,7 +12,6 @@ class Viewer extends Component {
         this.graphId = window.location.pathname.split('/')[2];
 
         this.state = {
-            totalScore: 0,
             submission: null
         };
 
@@ -210,7 +210,6 @@ class Viewer extends Component {
             assessment={this.state.assessment}
             submission={this.state.submission}
             updateGraph={this.handleGraphUpdate.bind(this)}
-            totalScore={this.state.totalScore}
                 />
                 </React.Fragment>;
         }
@@ -224,7 +223,8 @@ class Viewer extends Component {
 
         return getAssessment(gId).then(function(a) {
             if (a && a.assessmentrule_set) {
-                me.setState({assessment: a.assessmentrule_set});
+                const assessment = new Assessment(a.assessmentrule_set);
+                me.setState({assessment: assessment.assessment});
             }
         }, function() {
             // No assessment found
@@ -269,10 +269,8 @@ class Viewer extends Component {
         document.addEventListener('l2down', function() {
         });
         document.addEventListener('l1initial', function() {
-            me.handleInitial();
         });
         document.addEventListener('l2initial', function() {
-            me.handleInitial();
         });
 
         document.addEventListener('l1offset', function(e) {
@@ -354,9 +352,6 @@ class Viewer extends Component {
     }
     updateDisplayIntersection(checked) {
         this.setState({gShowIntersection: checked});
-    }
-    handleInitial() {
-        this.setState({totalScore: 0});
     }
 }
 
