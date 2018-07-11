@@ -225,6 +225,7 @@ export default class GraphEditor extends React.Component {
                                 gShowIntersection={this.props.gShowIntersection}
                                 gDisplayShadow={this.props.gDisplayShadow}
                                 gIsPublished={this.props.gIsPublished}
+                                gIsFeatured={this.props.gIsFeatured}
                                 gTopic={this.props.gTopic}
                                 updateGraph={this.props.updateGraph}
                             />
