@@ -100,6 +100,7 @@ export default class GraphEditor extends React.Component {
                                     gShowIntersection={this.props.gShowIntersection}
                                     gDisplayShadow={this.props.gDisplayShadow}
                                     gIsPublished={this.props.gIsPublished}
+                                    gIsFeatured={this.props.gIsFeatured}
                                     gTopic={this.props.gTopic}
                                     updateGraph={this.props.updateGraph}
                                 />
@@ -337,6 +338,7 @@ export default class GraphEditor extends React.Component {
                                 gShowIntersection={this.props.gShowIntersection}
                                 gDisplayShadow={this.props.gDisplayShadow}
                                 gIsPublished={this.props.gIsPublished}
+                                gIsFeatured={this.props.gIsFeatured}
                                 gTopic={this.props.gTopic}
                                 updateGraph={this.props.updateGraph}
                             />
@@ -434,6 +436,7 @@ export default class GraphEditor extends React.Component {
                                             gShowIntersection={this.props.gShowIntersection}
                                             gDisplayShadow={this.props.gDisplayShadow}
                                             gIsPublished={this.props.gIsPublished}
+                                            gIsFeatured={this.props.gIsFeatured}
                                             updateGraph={this.props.updateGraph} />
                                     </div>
                                 )
@@ -548,6 +551,7 @@ export default class GraphEditor extends React.Component {
                                 gShowIntersection={this.props.gShowIntersection}
                                 gDisplayShadow={this.props.gDisplayShadow}
                                 gIsPublished={this.props.gIsPublished}
+                                gIsFeatured={this.props.gIsFeatured}
                                 gTopic={this.props.gTopic}
                                 updateGraph={this.props.updateGraph}
                             />
@@ -672,6 +676,7 @@ export default class GraphEditor extends React.Component {
                                 gShowIntersection={this.props.gShowIntersection}
                                 gDisplayShadow={this.props.gDisplayShadow}
                                 gIsPublished={this.props.gIsPublished}
+                                gIsFeatured={this.props.gIsFeatured}
                                 gTopic={this.props.gTopic}
                                 updateGraph={this.props.updateGraph}
                             />
@@ -770,6 +775,7 @@ GraphEditor.propTypes = {
     gIntersection3VertLineLabel: PropTypes.string.isRequired,
 
     gIsPublished: PropTypes.bool.isRequired,
+    gIsFeatured: PropTypes.bool.isRequired,
     gDisplayFeedback: PropTypes.bool.isRequired,
     gInstructorNotes: PropTypes.string.isRequired,
     gLine1Label: PropTypes.string.isRequired,

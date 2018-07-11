@@ -99,6 +99,17 @@ export default class CommonGraphSettings extends React.Component {
                 <div className="form-check">
                     <label className="form-check-label">
                         <input
+                            id="gIsFeatured"
+                            className="form-check-input"
+                            type="checkbox"
+                            onChange={handleFormUpdate.bind(this)}
+                            checked={this.props.gIsFeatured} />
+                        Featured
+                    </label>
+                </div>
+                <div className="form-check">
+                    <label className="form-check-label">
+                        <input
                             id="gDisplayShadow"
                             className="form-check-input"
                             type="checkbox"
@@ -133,6 +144,7 @@ CommonGraphSettings.propTypes = {
     gShowIntersection: PropTypes.bool.isRequired,
     gDisplayShadow: PropTypes.bool.isRequired,
     gIsPublished: PropTypes.bool.isRequired,
+    gIsFeatured: PropTypes.bool.isRequired,
     gTopic: PropTypes.number,
 
     updateGraph: PropTypes.func.isRequired
