@@ -43,7 +43,6 @@ export default class CommonGraphSettings extends React.Component {
                         className="custom-select form-control-sm"
                         onChange={handleFormUpdate.bind(this)}
                             value={this.props.gTopic || 0}>
-                        <option value="0">---</option>
                         {this.state.topics.map(e => (
                             <option key={e.pk} value={e.pk}>{e.name}</option>
                         ))}
