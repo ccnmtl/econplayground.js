@@ -47,9 +47,6 @@ export default class CommonGraphSettings extends React.Component {
                             <option key={e.pk} value={e.pk}>{e.name}</option>
                         ))}
             </select>
-                <small className="form-text text-muted">
-                <a href="/admin/main/topic/" target="_blank">Manage topics</a>
-                </small>
                 </div>
                 <div className="form-group">
                     <label htmlFor="gNeedsSubmit">
