@@ -159,16 +159,16 @@ const displayGraphType = function(gType) {
             name = 'Non-Linear Demand and Supply';
             break;
         case 3:
-            name = 'Cobb-Douglas';
+            name = 'Cobb-Douglas Production Function';
             break;
         case 5:
-            name = 'Consumption-Leisure';
+            name = 'Consumption-Leisure: Constraint';
             break;
         case 7:
-            name = 'Consumption-Saving';
+            name = 'Consumption-Saving: Constraint';
             break;
         case 8:
-            name = 'Aggregate Demand - Aggregate Supply';
+            name = 'Linear Demand and Supply: 3 Functions';
             break;
         default:
             break;
