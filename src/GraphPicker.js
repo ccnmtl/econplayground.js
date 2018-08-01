@@ -15,8 +15,8 @@ export default class GraphPicker extends React.Component {
         return (
             <div className="GraphPicker container">
                 <h1>Create a Graph</h1>
-                <p className="lead text-secondary">Build your own ideas by starting with one of these graphs as a foundation.</p>
-                <div className="card-columns">
+                <p className="lead text-secondary">Build illustrations or assignments for EconPractice assessment (local) or CourseWorks assessment (LTI).</p>
+                <div className="card-deck">
                     <div className="card">
                         <a href="#"
                            ref={(b1) => { this.b1 = b1;  }}
