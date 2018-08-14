@@ -201,6 +201,7 @@ const defaultGraph = {
     gTitle: '',
     gInstructions: '',
     gInstructorNotes: '',
+    gSummary: '',
     gNeedsSubmit: false,
     gShowIntersection: true,
     gDisplayIntersection1: true,
