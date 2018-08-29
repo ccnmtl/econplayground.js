@@ -10,13 +10,9 @@
   },
   "homepage": "https://github.com/ccnmtl/econplayground.js#readme",
   "dependencies": {
-    "babel-core": "~6.26.0",
-    "babel-eslint": "~9.0.0",
-    "babel-preset-react-app": "~3.1.1",
-    "babel-runtime": "~6.26.0",
     "commonmark": "~0.28.1",
     "js-cookie": "~2.1.4",
-    "jsxgraph": "github:jsxgraph/jsxgraph#v0.99.7",
+    "jsxgraph": "0.99.7",
     "object-assign": "~4.1.1",
     "promise": "~8.0.1",
     "react": "~16.4.0",
@@ -34,8 +30,14 @@
     "eslint": "eslint src/*.js config/*.js"
   },
   "devDependencies": {
-    "babel-jest": "~23.0.0-alpha.0",
-    "babel-loader": "~7.1.2",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "~9.0.0",
+    "babel-jest": "~23.4.2",
+    "babel-loader": "~8.0.0",
+    "canvas": "^1.6.11",
     "eslint": "~5.0.0",
     "eslint-config-react-app": "~2.1.0",
     "eslint-loader": "~2.1.0",
@@ -91,7 +93,8 @@
   },
   "babel": {
     "presets": [
-      "react-app"
+      "@babel/env",
+      "@babel/react"
     ]
   },
   "eslintConfig": {
