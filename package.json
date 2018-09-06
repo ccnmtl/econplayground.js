@@ -15,7 +15,7 @@
     "jsxgraph": "0.99.7",
     "object-assign": "~4.1.1",
     "promise": "~8.0.1",
-    "react": "~16.4.0",
+    "react": "~16.5.0",
     "react-dom": "~16.4.0",
     "react-mathjax2": "~0.0.1",
     "react-sticky": "~6.0.2",
