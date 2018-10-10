@@ -33,19 +33,6 @@ export default class GraphPicker extends React.Component {
                     </div>
                     <div className="card">
                         <a href="#"
-                            onClick={this.handleClick4.bind(this)}>
-                            <img className="img-fluid" src={this.mediaPrefix + 'cobb_douglas.png'} />
-                        </a>
-                        <div className="card-body">
-                            <h5 className="card-title">
-                                <a href="#" onClick={this.handleClick4.bind(this)}>
-                                    {displayGraphType(3)}
-                                </a>
-                            </h5>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <a href="#"
                             onClick={this.handleClick2.bind(this)}>
                             <img className="img-fluid" src={this.mediaPrefix + 'non-linear_demand_supply.png'} />
                         </a>
@@ -59,19 +46,6 @@ export default class GraphPicker extends React.Component {
                     </div>
                     <div className="card">
                         <a href="#"
-                            onClick={this.handleClick8.bind(this)}>
-                            <img className="img-fluid" src={this.mediaPrefix + 'consumption_saving.png'} />
-                        </a>
-                        <div className="card-body">
-                            <h5 className="card-title">
-                                <a href="#" onClick={this.handleClick8.bind(this)}>
-                                    {displayGraphType(7)}
-                                </a>
-                            </h5>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <a href="#"
                             onClick={this.handleClick9.bind(this)}>
                             <img className="img-fluid" src={this.mediaPrefix + 'ADAS.png'} />
                         </a>
@@ -79,6 +53,32 @@ export default class GraphPicker extends React.Component {
                             <h5 className="card-title">
                                 <a href="#" onClick={this.handleClick9.bind(this)}>
                                     {displayGraphType(8)}
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <a href="#"
+                            onClick={this.handleClick4.bind(this)}>
+                            <img className="img-fluid" src={this.mediaPrefix + 'cobb_douglas.png'} />
+                        </a>
+                        <div className="card-body">
+                            <h5 className="card-title">
+                                <a href="#" onClick={this.handleClick4.bind(this)}>
+                                    {displayGraphType(3)}
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <a href="#"
+                            onClick={this.handleClick8.bind(this)}>
+                            <img className="img-fluid" src={this.mediaPrefix + 'consumption_saving.png'} />
+                        </a>
+                        <div className="card-body">
+                            <h5 className="card-title">
+                                <a href="#" onClick={this.handleClick8.bind(this)}>
+                                    {displayGraphType(7)}
                                 </a>
                             </h5>
                         </div>
