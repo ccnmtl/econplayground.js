@@ -87,6 +87,9 @@ export default class JXGBoard extends React.Component {
                 yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
                 break;
         }
+        
+        // https://jsxgraph.uni-bayreuth.de/wp/2012/11/02/howto-export-jsxgraph-constructions/
+        JXG.Options.text.display = 'internal';
 
         let board = JXG.JSXGraph.initBoard(
             this.id, {
