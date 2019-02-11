@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import JXGBoard from './JXGBoard.js';
+import JXGBoard from './JXGBoard';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
