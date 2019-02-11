@@ -24,8 +24,9 @@ export default class ExportGraphButton extends React.Component {
             return;
         }
 
-        const svg = new XMLSerializer().serializeToString(window.board.renderer.svgRoot);
-        const url = "data:application/octet-stream;charset=utf-8," + window.encodeURIComponent(svg);
+        const svg = window.board.renderer.dumpToSvg(false);
+        const url = 'data:application/octet-stream;charset=utf-8,' +
+                    window.encodeURIComponent(svg);
         this.setState({
             url: url
         });
