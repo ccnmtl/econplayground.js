@@ -36,12 +36,6 @@ Now you can make changes in the econplayground.js repository, and the
 build will be updated when you access the tool in the Django application.
 
 ### Overview
-I'm still learning new things about React, and my React codebases are
-the only ones I've ever worked with. I'm realizing now that it's
-probably about time to look at how other people are solving similar
-problems with React, to make things more typical and less
-idiosyncratic.  So, there are some quirks here that I'd like to
-explain.
 
 The Django application displays either `Viewer.js` or `Editor.js`. The
 graph create route displays `Editor.js`, while the graph detail route
