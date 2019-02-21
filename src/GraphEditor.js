@@ -198,6 +198,7 @@ export default class GraphEditor extends React.Component {
                                             gCobbDouglasKName={this.props.gCobbDouglasKName}
                                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                                             gCobbDouglasYName={this.props.gCobbDouglasYName}
+                                            gFunctionChoice={this.props.gFunctionChoice}
                                         />
                                         <CommonGraphEditor
                                             gTitle={this.props.gTitle}
@@ -245,6 +246,8 @@ export default class GraphEditor extends React.Component {
                                 gIntersectionLabel={this.props.gIntersectionLabel}
                                 gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                 gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                gFunctionChoice={this.props.gFunctionChoice}
+
                                 updateGraph={this.props.updateGraph}
                             />
                         </div>
@@ -827,6 +830,8 @@ GraphEditor.propTypes = {
     gCobbDouglasKName: PropTypes.string,
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasYName: PropTypes.string,
+
+    gFunctionChoice: PropTypes.number,
 
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,

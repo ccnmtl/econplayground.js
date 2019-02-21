@@ -197,6 +197,7 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasKName: options.gCobbDouglasKName,
                 gCobbDouglasAlpha: options.gCobbDouglasAlpha,
                 gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
+                gFunctionChoice: options.gFunctionChoice,
                 gNeedsSubmit: options.gNeedsSubmit,
                 l1SubmissionOffset: getL1SubmissionOffset(options.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(options.submission),
@@ -274,6 +275,7 @@ export default class JXGBoard extends React.Component {
             'gCobbDouglasKName',
             'gCobbDouglasAlpha',
             'gCobbDouglasAlphaInitial',
+            'gFunctionChoice',
             'gNeedsSubmit',
             'submission',
             'shadow'
@@ -370,6 +372,7 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasKName: this.props.gCobbDouglasKName,
                 gCobbDouglasAlpha: this.props.gCobbDouglasAlpha,
                 gCobbDouglasAlphaInitial: this.props.gCobbDouglasAlphaInitial,
+                gFunctionChoice: this.props.gFunctionChoice,
                 gNeedsSubmit: this.props.gNeedsSubmit,
 
                 l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
@@ -454,6 +457,7 @@ export default class JXGBoard extends React.Component {
             gCobbDouglasKName: this.props.gCobbDouglasKName,
             gCobbDouglasAlpha: this.props.gCobbDouglasAlpha,
             gCobbDouglasAlphaInitial: this.props.gCobbDouglasAlphaInitial,
+            gFunctionChoice: this.props.gFunctionChoice,
             gNeedsSubmit: this.props.gNeedsSubmit,
             l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
             l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
@@ -556,6 +560,8 @@ JXGBoard.propTypes = {
     gCobbDouglasYName: PropTypes.string,
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasAlphaInitial: PropTypes.number,
+
+    gFunctionChoice: PropTypes.number,
 
     id: PropTypes.string.isRequired,
     locked: PropTypes.bool
