@@ -447,12 +447,21 @@ class NonLinearDemandSupplyGraph extends Graph {
             recursionDepthHigh: 15
         });
 
-        const f = function(x) {
+        let f = function(x) {
             return (1 - alpha) *
                 (me.options.gCobbDouglasA *
                  me.options.gCobbDouglasK ** alpha) *
                 (x ** -alpha);
         };
+
+        if (this.options.gFunctionChoice === 1) {
+            f  = function(x) {
+                return alpha *
+                    (me.options.gCobbDouglasA *
+                     me.options.gCobbDouglasK ** (alpha - 1)) *
+                    (x ** (1 - alpha));
+            };
+        }
 
         this.l2 = this.board.create('functiongraph', [f, -30, 30], {
             name: this.options.gLine2Label,

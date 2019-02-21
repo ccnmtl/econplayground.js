@@ -99,6 +99,8 @@ class Editor extends Component {
                         gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
                         gCobbDouglasYName={this.state.gCobbDouglasYName}
 
+                        gFunctionChoice={this.state.gFunctionChoice}
+
                         updateGraph={this.handleGraphUpdate.bind(this)}
                         saveGraph={this.handleSaveGraph.bind(this)}
                         saveAndViewGraph={this.handleSaveAndViewGraph.bind(this)} />

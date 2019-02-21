@@ -94,13 +94,19 @@ const handleFormUpdate = function(e) {
 
     // Use the element's id as the attribute name, and fall
     // back to data-id.
-    const id = e.target.id || e.target.dataset.id || e.target.name;
+    let id = e.target.id || e.target.dataset.id || e.target.name;
+
+    if (e.target.type === 'radio') {
+        id = e.target.name || e.target.id || e.target.dataset.id;
+    }
 
     switch(e.target.type) {
         case 'checkbox':
         case 'radio':
             if (e.target.className.includes('override')) {
                 obj[id] = parseFloat(e.target.dataset.override);
+            } else if (typeof e.target.value !== 'undefined') {
+                obj[id] = forceNumber(e.target.value);
             } else {
                 obj[id] = e.target.checked;
             }
@@ -149,6 +155,14 @@ const forceFloat = function(n) {
     return Math.round(n * 100) / 100;
 };
 
+const forceNumber = function(n) {
+    n = Number(n);
+    if (isNaN(n) || typeof n === 'undefined') {
+        n = 0;
+    }
+    return n;
+};
+
 const displayGraphType = function(gType) {
     let name = '';
     switch (gType) {
@@ -189,5 +203,5 @@ export {
     authedFetch, getAssessment, getTopics,
     getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
-    getOffset, forceFloat, displayGraphType, getError
+    getOffset, forceFloat, forceNumber, displayGraphType, getError
 };

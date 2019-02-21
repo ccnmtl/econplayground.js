@@ -6,22 +6,65 @@ import EditableControl from '../form-components/EditableControl';
 import {handleFormUpdate} from '../utils';
 
 export default class NonLinearDemandSupplyEditor extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.mathjaxOptions = {
+            jax: ['input/TeX', 'output/CommonHTML'],
+            displayAlign: 'left',
+            messageStyle: 'none'
+        };
+    }
     render() {
-        const tex = 'MP_N = (1 - α)AK^α N^{-α}';
+        const func1 = 'MP_N = (1 - α)AK^α N^{-α}';
+        const func2 = 'MP_K = αAK^{α - 1} N^{1 - α}';
         return (
             <div>
                 {this.props.isInstructor && (
                     <React.Fragment>
                         <h2>Function</h2>
-                        <MathJax.Context
-                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
-                            input="tex"
-                            options={{
-                                displayAlign: 'left',
-                                messageStyle: 'none'
-                            }}>
-                            <MathJax.Node>{tex}</MathJax.Node>
-                        </MathJax.Context>
+                        <div className="form-row">
+                            <div className="col">
+                                <div className="form-check">
+                                    <input className="form-check-input"
+                                           type="radio"
+                                           name="gFunctionChoice"
+                                           id="gFunctionChoice1"
+                                           onChange={handleFormUpdate.bind(this)}
+                                           value={0}
+                                           checked={this.props.gFunctionChoice === 0} />
+
+                                    <label className="form-check-label" htmlFor="gFunctionChoice1">
+                                        <MathJax.Context
+                                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"
+                                            input="tex"
+                                            styles={{'background-color': 'red'}}
+                                            options={this.mathjaxOptions}>
+                                            <MathJax.Node>{func1}</MathJax.Node>
+                                        </MathJax.Context>
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="form-check">
+                                    <input className="form-check-input"
+                                           type="radio"
+                                           name="gFunctionChoice"
+                                           id="gFunctionChoice2"
+                                           onChange={handleFormUpdate.bind(this)}
+                                           value={1}
+                                           checked={this.props.gFunctionChoice === 1} />
+                                    <label className="form-check-label" htmlFor="gFunctionChoice2">
+                                        <MathJax.Context
+                                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"
+                                            input="tex"
+                                            options={this.mathjaxOptions}>
+                                            <MathJax.Node>{func2}</MathJax.Node>
+                                        </MathJax.Context>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                         <hr/>
                     </React.Fragment>
                 )}
@@ -141,6 +184,8 @@ NonLinearDemandSupplyEditor.propTypes = {
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
     gLine1Slope: PropTypes.number.isRequired,
+
+    gFunctionChoice: PropTypes.number.isRequired,
 
     displayLabels: PropTypes.bool.isRequired,
     displaySliders: PropTypes.bool.isRequired,

@@ -4,7 +4,7 @@
  * Mapping to and from a graph's react.js state and its
  * json representation in django-rest-framework.
  */
-import { forceFloat } from './utils';
+import { forceFloat, forceNumber } from './utils';
 
 /**
  * Returns the current graph settings as a persistable JSON object.
@@ -28,7 +28,7 @@ const exportGraph = function(state) {
         intersection_label: state.gIntersectionLabel,
 
         intersection_2_label: state.gIntersection2Label,
-       intersection_3_label: state.gIntersection3Label,
+        intersection_3_label: state.gIntersection3Label,
 
         intersection_horiz_line_label: state.gIntersectionHorizLineLabel,
         intersection_vert_line_label: state.gIntersectionVertLineLabel,
@@ -81,6 +81,8 @@ const exportGraph = function(state) {
         // should be generalized.
         cobb_douglas_a: forceFloat(state.gCobbDouglasA),
         cobb_douglas_k: forceFloat(state.gCobbDouglasK),
+
+        function_choice: forceNumber(state.gFunctionChoice)
     }
 
     if (state.gType === 3) {
@@ -176,7 +178,9 @@ const importGraph = function(json, obj) {
         gCobbDouglasK: window.parseFloat(json.cobb_douglas_k),
         gCobbDouglasKName: json.cobb_douglas_k_name,
         gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
-        gCobbDouglasYName: json.cobb_douglas_y_name
+        gCobbDouglasYName: json.cobb_douglas_y_name,
+
+        gFunctionChoice: json.function_choice
     };
 
     // When importing a graph for display, save the initial state of
@@ -265,6 +269,8 @@ const defaultGraph = {
     gCobbDouglasKName: 'K',
     gCobbDouglasAlpha: 0.65,
     gCobbDouglasYName: 'Y',
+
+    gFunctionChoice: 0,
 
     // Use a hard-coded proof-of-concept assessment spreadsheet for
     // now. Eventually, this will be defined using a Google
