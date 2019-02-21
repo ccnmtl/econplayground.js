@@ -14,7 +14,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                     <React.Fragment>
                         <h2>Function</h2>
                         <MathJax.Context
-                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
+                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
                             input="tex"
                             options={{
                                 displayAlign: 'left',
