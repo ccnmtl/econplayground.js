@@ -54,6 +54,12 @@ export default class JXGBoard extends React.Component {
                 // Non-linear demand-supply
                 xAxisLabel = 'N';
                 yAxisLabel = 'MP<sub>N</sub>';
+
+                if (options.gFunctionChoice === 1) {
+                    xAxisLabel = 'K';
+                    yAxisLabel = 'MP<sub>K</sub>';
+                }
+
                 if (this.props.locked) {
                     options.gCobbDouglasA = 3.4;
                     options.gCobbDouglasK = 2.3;
