@@ -63,7 +63,6 @@ export default class CobbDouglasEditor extends React.Component {
                                     ) : (
                                         this.props.gCobbDouglasAName
                                     )}
-
                                 </label>
                                 <RangeEditor
                                     dataId="gCobbDouglasA"

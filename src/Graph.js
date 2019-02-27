@@ -396,12 +396,21 @@ class NonLinearDemandSupplyGraph extends Graph {
                     recursionDepthHigh: 15
                 });
 
-            const f2Shadow = function(x) {
+            let f2Shadow = function(x) {
                 return (1 - alpha) *
                     (me.options.gCobbDouglasAInitial *
                      me.options.gCobbDouglasKInitial ** alpha) *
                     (x ** -alpha);
             };
+
+            if (this.options.gFunctionChoice === 1) {
+                f2Shadow = function(x) {
+                    return alpha *
+                        (me.options.gCobbDouglasAInitial *
+                         me.options.gCobbDouglasKInitial ** (alpha - 1)) *
+                        (x ** (1 - alpha));
+                };
+            }
 
             const l2fShadow = this.board.create(
                 'functiongraph',
@@ -455,7 +464,7 @@ class NonLinearDemandSupplyGraph extends Graph {
         };
 
         if (this.options.gFunctionChoice === 1) {
-            f  = function(x) {
+            f = function(x) {
                 return alpha *
                     (me.options.gCobbDouglasA *
                      me.options.gCobbDouglasK ** (alpha - 1)) *

@@ -56,8 +56,8 @@ export default class JXGBoard extends React.Component {
                 yAxisLabel = 'MP<sub>N</sub>';
 
                 if (options.gFunctionChoice === 1) {
-                    xAxisLabel = 'K';
-                    yAxisLabel = 'MP<sub>K</sub>';
+                    xAxisLabel = options.gCobbDouglasKName;
+                    yAxisLabel = `MP<sub>${options.gCobbDouglasKName}</sub>`;
                 }
 
                 if (this.props.locked) {
