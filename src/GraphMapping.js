@@ -82,6 +82,10 @@ const exportGraph = function(state) {
         cobb_douglas_a: forceFloat(state.gCobbDouglasA),
         cobb_douglas_k: forceFloat(state.gCobbDouglasK),
 
+        // Used by Cobb-Douglas and Non-Linear Demand-Supply graphs.
+        cobb_douglas_a_name: state.gCobbDouglasAName,
+        cobb_douglas_k_name: state.gCobbDouglasKName,
+
         function_choice: forceNumber(state.gFunctionChoice)
     }
 
@@ -89,10 +93,8 @@ const exportGraph = function(state) {
         // Don't send all these cobb-douglas related fields if not
         // saving a cobb-douglas graph.
         const cobb = {
-            cobb_douglas_a_name: state.gCobbDouglasAName,
             cobb_douglas_l: forceFloat(state.gCobbDouglasL),
             cobb_douglas_l_name: state.gCobbDouglasLName,
-            cobb_douglas_k_name: state.gCobbDouglasKName,
             cobb_douglas_alpha: forceFloat(state.gCobbDouglasAlpha),
             cobb_douglas_y_name: state.gCobbDouglasYName
         };

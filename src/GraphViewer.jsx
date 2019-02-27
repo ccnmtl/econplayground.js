@@ -230,7 +230,11 @@ export default class GraphViewer extends React.Component {
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
                             gCobbDouglasA={this.props.gCobbDouglasA}
+                            gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
+                            gCobbDouglasAName={this.props.gCobbDouglasAName}
                             gCobbDouglasK={this.props.gCobbDouglasK}
+                            gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
+                            gCobbDouglasKName={this.props.gCobbDouglasKName}
                             gLine1Slope={this.props.gLine1Slope}
                             gLine1OffsetX={this.props.gLine1OffsetX}
                             gLine1OffsetY={this.props.gLine1OffsetY}

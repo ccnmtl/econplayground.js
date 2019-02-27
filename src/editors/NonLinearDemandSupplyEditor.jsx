@@ -16,8 +16,8 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
         };
     }
     render() {
-        const func1 = 'MP_N = (1 - α)AK^α N^{-α}';
-        const func2 = 'MP_K = αAK^{α - 1} N^{1 - α}';
+        const func1 = `MP_N = (1 - α)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^α N^{-α}`;
+        const func2 = `MP_${this.props.gCobbDouglasKName} = α${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{α - 1} N^{1 - α}`;
         return (
             <div>
                 {this.props.isInstructor && (
@@ -89,7 +89,18 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                             </div>
                             <div className="col-sm-4">
                                 <label htmlFor="gCobbDouglasA">
-                                    A
+                                    {this.props.isInstructor ? (
+                                        <input type="text"
+                                            id="gCobbDouglasAName"
+                                            maxLength="1"
+                                            size="1"
+                                            className="form-control form-control-sm"
+                                            value={this.props.gCobbDouglasAName}
+                                            onChange={handleFormUpdate.bind(this)}
+                                        />
+                                    ) : (
+                                        this.props.gCobbDouglasAName
+                                    )}
                                 </label>
                                 <RangeEditor
                                     dataId="gCobbDouglasA"
@@ -100,7 +111,18 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                             </div>
                             <div className="col-sm-4">
                                 <label htmlFor="gCobbDouglasK">
-                                    K
+                                    {this.props.isInstructor ? (
+                                        <input type="text"
+                                               id="gCobbDouglasKName"
+                                               maxLength="1"
+                                               size="1"
+                                               className="form-control form-control-sm"
+                                               value={this.props.gCobbDouglasKName}
+                                               onChange={handleFormUpdate.bind(this)}
+                                        />
+                                    ) : (
+                                        this.props.gCobbDouglasKName
+                                    )}
                                 </label>
                                 <RangeEditor
                                     dataId="gCobbDouglasK"
@@ -179,7 +201,9 @@ NonLinearDemandSupplyEditor.propTypes = {
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
 
     gCobbDouglasA: PropTypes.number.isRequired,
+    gCobbDouglasAName: PropTypes.string.isRequired,
     gCobbDouglasK: PropTypes.number.isRequired,
+    gCobbDouglasKName: PropTypes.string.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
