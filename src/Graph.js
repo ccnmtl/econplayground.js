@@ -407,8 +407,8 @@ class NonLinearDemandSupplyGraph extends Graph {
                 f2Shadow = function(x) {
                     return alpha *
                         (me.options.gCobbDouglasAInitial *
-                         me.options.gCobbDouglasKInitial ** (alpha - 1)) *
-                        (x ** (1 - alpha));
+                         x ** (alpha - 1)) *
+                        (me.options.gCobbDouglasKInitial ** (1 - alpha));
                 };
             }
 
@@ -467,8 +467,8 @@ class NonLinearDemandSupplyGraph extends Graph {
             f = function(x) {
                 return alpha *
                     (me.options.gCobbDouglasA *
-                     me.options.gCobbDouglasK ** (alpha - 1)) *
-                    (x ** (1 - alpha));
+                     x ** (alpha - 1)) *
+                    (me.options.gCobbDouglasK ** (1 - alpha));
             };
         }
 

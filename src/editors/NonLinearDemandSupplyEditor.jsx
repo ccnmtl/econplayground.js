@@ -17,7 +17,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
     }
     render() {
         const func1 = `MP_N = (1 - α)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^α N^{-α}`;
-        const func2 = `MP_${this.props.gCobbDouglasKName} = α${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{α - 1} N^{1 - α}`;
+        const func2 = `MP_${this.props.gCobbDouglasKName} = α${this.props.gCobbDouglasAName}K^{α - 1} N^{1 - α}`;
         return (
             <div>
                 {this.props.isInstructor && (
@@ -111,7 +111,9 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                             </div>
                             <div className="col-sm-4">
                                 <label htmlFor="gCobbDouglasK">
-                                    {this.props.isInstructor ? (
+                                    {this.props.gFunctionChoice === 1 && 'N'}
+                                    {this.props.gFunctionChoice !== 1 &&
+                                     (this.props.isInstructor ? (
                                         <input type="text"
                                                id="gCobbDouglasKName"
                                                maxLength="1"
@@ -122,7 +124,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                         />
                                     ) : (
                                         this.props.gCobbDouglasKName
-                                    )}
+                                    ))}
                                 </label>
                                 <RangeEditor
                                     dataId="gCobbDouglasK"
