@@ -19,6 +19,6 @@ test: $(JS_SENTINAL)
 	npm run test
 
 clean:
-	rm -rf $(NODE_MODULES) build
+	rm -rf $(NODE_MODULES) build package-lock.json
 
 .PHONY: clean build
