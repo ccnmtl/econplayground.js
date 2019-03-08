@@ -86,6 +86,12 @@ export default class GraphEditor extends React.Component {
                                                 gInstructions={this.props.gInstructions}
                                                 updateGraph={this.props.updateGraph}
                                             />
+                                        {this.props.gId &&
+                                         <div className="form-group">
+                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                                className="btn btn-secondary">Student View</a>
+                                         </div>
+                                        }
                                         </div>
                                     )
                                     }
@@ -207,15 +213,14 @@ export default class GraphEditor extends React.Component {
                                             gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
-                                                <div className="form-group">
-                                                    <a href={"/graph/" + this.props.gId + "/public/"}
-                                                        className="btn btn-secondary">Student View</a>
-                                                </div>
+                                         <div className="form-group">
+                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                                className="btn btn-secondary">Student View</a>
+                                         </div>
                                         }
                                     </div>
                                 )
-                                }
-                                }
+                                }}
                             </Sticky>
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -330,6 +335,12 @@ export default class GraphEditor extends React.Component {
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
+                                        {this.props.gId &&
+                                         <div className="form-group">
+                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                                className="btn btn-secondary">Student View</a>
+                                         </div>
+                                        }
                                     </div>
                                 )
                                 }
@@ -444,6 +455,12 @@ export default class GraphEditor extends React.Component {
                                             gIsPublished={this.props.gIsPublished}
                                             gIsFeatured={this.props.gIsFeatured}
                                             updateGraph={this.props.updateGraph} />
+                                        {this.props.gId &&
+                                         <div className="form-group">
+                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                                className="btn btn-secondary">Student View</a>
+                                         </div>
+                                        }
                                     </div>
                                 )
                                 }
@@ -554,6 +571,12 @@ export default class GraphEditor extends React.Component {
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
+                                        {this.props.gId &&
+                                         <div className="form-group">
+                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                                className="btn btn-secondary">Student View</a>
+                                         </div>
+                                        }
                                     </div>
                                 )
                                 }
@@ -679,6 +702,12 @@ export default class GraphEditor extends React.Component {
                                             gInstructorNotes={this.props.gInstructorNotes}
                                             gInstructions={this.props.gInstructions}
                                             updateGraph={this.props.updateGraph} />
+                                        {this.props.gId &&
+                                         <div className="form-group">
+                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                                className="btn btn-secondary">Student View</a>
+                                         </div>
+                                        }
                                     </div>
                                 )
                                 }
