@@ -23,10 +23,12 @@ export default class GraphViewer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
+        this.initialState = {
             currentFeedback: [],
             score: 0
         };
+        this.state = this.initialState;
+        this.updateGraph = this.updateGraph.bind(this);
     }
     render() {
         let action = '';
@@ -59,7 +61,7 @@ export default class GraphViewer extends React.Component {
 
         const token = Cookies.get('csrftoken');
 
-        let initialState = {};
+        let initialState = this.initialState;
 
         let key = '';
         for (key in this.props) {
@@ -146,12 +148,12 @@ export default class GraphViewer extends React.Component {
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                            updateGraph={this.props.updateGraph}
+                            updateGraph={this.updateGraph}
                             />
 
                         <ResetGraphButton
                             initialState={initialState}
-                            updateGraph={this.props.updateGraph} />
+                            updateGraph={this.updateGraph} />
 
                         <ExportGraphButton />
 
@@ -244,12 +246,12 @@ export default class GraphViewer extends React.Component {
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                             gFunctionChoice={this.props.gFunctionChoice}
-                            updateGraph={this.props.updateGraph}
+                            updateGraph={this.updateGraph}
                             />
 
                         <ResetGraphButton
                             initialState={initialState}
-                            updateGraph={this.props.updateGraph} />
+                            updateGraph={this.updateGraph} />
 
                         <ExportGraphButton />
 
@@ -326,12 +328,12 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                             gCobbDouglasYName={this.props.gCobbDouglasYName}
                             gIntersectionLabel={this.props.gIntersectionLabel}
-                            updateGraph={this.props.updateGraph}
+                            updateGraph={this.updateGraph}
                             />
 
                         <ResetGraphButton
                             initialState={initialState}
-                            updateGraph={this.props.updateGraph} />
+                            updateGraph={this.updateGraph} />
 
                         <ExportGraphButton />
 
@@ -401,12 +403,12 @@ export default class GraphViewer extends React.Component {
                             gXAxisLabel={this.props.gXAxisLabel}
                             gYAxisLabel={this.props.gYAxisLabel}
 
-                            updateGraph={this.props.updateGraph}
+                            updateGraph={this.updateGraph}
                             />
 
                         <ResetGraphButton
                             initialState={initialState}
-                            updateGraph={this.props.updateGraph} />
+                            updateGraph={this.updateGraph} />
 
                         <ExportGraphButton />
 
@@ -480,12 +482,12 @@ export default class GraphViewer extends React.Component {
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
-                            updateGraph={this.props.updateGraph}
+                            updateGraph={this.updateGraph}
                             />
 
                         <ResetGraphButton
                             initialState={initialState}
-                            updateGraph={this.props.updateGraph} />
+                            updateGraph={this.updateGraph} />
 
                         <ExportGraphButton />
 
@@ -600,12 +602,12 @@ export default class GraphViewer extends React.Component {
             displayLabels={displayLabels}
             displaySliders={displaySliders}
             isInstructor={isInstructor}
-            updateGraph={this.props.updateGraph}
+            updateGraph={this.updateGraph}
                 />
 
                 <ResetGraphButton
             initialState={initialState}
-            updateGraph={this.props.updateGraph} />
+            updateGraph={this.updateGraph} />
 
                 <ExportGraphButton />
 
@@ -694,6 +696,10 @@ export default class GraphViewer extends React.Component {
             // immediately.
             this.setState({currentFeedback: responses});
         }
+    }
+    updateGraph(state) {
+        this.setState({currentFeedback: state.currentFeedback});
+        return this.props.updateGraph(state);
     }
 }
 
