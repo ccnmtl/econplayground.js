@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '10'
-- '11'
+- '12'
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get install -y libgif-dev
