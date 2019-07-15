@@ -12,7 +12,7 @@
   "dependencies": {
     "commonmark": "~0.29.0",
     "js-cookie": "~2.1.4",
-    "jsxgraph": "ccnmtl/jsxgraph#dev",
+    "jsxgraph": "ccnmtl/jsxgraph#dump-to-svg",
     "object-assign": "~4.1.1",
     "promise": "~8.0.1",
     "react": "~16.8.2",
