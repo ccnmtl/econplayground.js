@@ -51,7 +51,7 @@
     "react-dev-utils": "~9.0.0",
     "react-test-renderer": "~16.8.6",
     "style-loader": "~0.23.0",
-    "url-loader": "~2.0.0"
+    "url-loader": "~2.1.0"
   },
   "greenkeeper": {
     "ignore": [
