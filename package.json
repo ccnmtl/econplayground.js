@@ -19,7 +19,7 @@
     "react-dom": "~16.8.6",
     "react-mathjax2": "~0.0.1",
     "react-sticky": "~6.0.2",
-    "webpack": "~4.37.0",
+    "webpack": "~4.38.0",
     "webpack-cli": "~3.3.0",
     "whatwg-fetch": "~3.0.0"
   },
