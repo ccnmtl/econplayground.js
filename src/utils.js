@@ -29,8 +29,16 @@ const getAssessment = function(graphId) {
         });
 };
 
-const getTopics = function() {
-    return authedFetch('/api/topics/')
+const getCohortId = function() {
+    const m = location.pathname.match(/\/course\/(\d+)\/graph\/create\//);
+    if (m && m.length > 1) {
+        return m[1];
+    }
+    return null;
+};
+
+const getTopics = function(cohortId) {
+    return authedFetch(`/api/cohorts/${cohortId}/`)
         .then(function(response) {
             if (response.status === 200) {
                 return response.json();
@@ -202,7 +210,7 @@ const getError = function(obj) {
 };
 
 export {
-    authedFetch, getAssessment, getTopics,
+    authedFetch, getAssessment, getCohortId, getTopics,
     getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
     getOffset, forceFloat, forceNumber, displayGraphType, getError
