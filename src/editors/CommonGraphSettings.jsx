@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getTopics, handleFormUpdate} from '../utils';
+import {getCohortId, getTopics, handleFormUpdate} from '../utils';
 
 /**
  * This component contains the form fields for assignment type,
@@ -14,8 +14,8 @@ export default class CommonGraphSettings extends React.Component {
         };
 
         const me = this;
-        getTopics().then(function(topics) {
-            me.setState({topics: topics});
+        getTopics(getCohortId()).then(function(topics) {
+            me.setState({topics: topics['topic_set']});
         });
     }
     render() {
