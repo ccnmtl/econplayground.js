@@ -29,8 +29,16 @@ const getAssessment = function(graphId) {
         });
 };
 
+const getGraphId = function() {
+    if (window.location.pathname.match(/^\/course\//)) {
+        return window.location.pathname.split('/')[4];
+    } else {
+        return window.location.pathname.split('/')[2];
+    }
+};
+
 const getCohortId = function() {
-    const m = location.pathname.match(/\/course\/(\d+)\/graph\/create\//);
+    const m = location.pathname.match(/\/course\/(\d+)\/graph\/.*/);
     if (m && m.length > 1) {
         return m[1];
     }
@@ -210,7 +218,7 @@ const getError = function(obj) {
 };
 
 export {
-    authedFetch, getAssessment, getCohortId, getTopics,
+    authedFetch, getAssessment, getGraphId, getCohortId, getTopics,
     getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
     getOffset, forceFloat, forceNumber, displayGraphType, getError

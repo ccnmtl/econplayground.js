@@ -3,13 +3,15 @@ import Assessment from './Assessment';
 import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
 import { exportGraph, importGraph, defaultGraph } from './GraphMapping';
-import { authedFetch, getAssessment, getSubmission, getError } from './utils';
+import {
+    authedFetch, getGraphId, getAssessment, getSubmission, getError
+} from './utils';
 
 class Viewer extends Component {
     constructor(props) {
         super(props);
 
-        this.graphId = window.location.pathname.split('/')[2];
+        this.graphId = getGraphId();
 
         this.state = {
             submission: null
