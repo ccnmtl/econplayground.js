@@ -27,6 +27,26 @@ export default class GraphEditor extends React.Component {
         if (!this.props.showing) {
             return null;
         }
+        const editRow = (
+            <div className="row">
+                <div className="ml-3  mr-2">
+                    <button type="button"
+                            className="btn btn-primary"
+                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
+                </div>
+                <button onClick={this.handleSaveAndViewGraph.bind(this)}
+                        type="button"
+                        className="btn btn-secondary">Save and View</button>
+                {this.props.gId &&
+                 <div className="ml-auto mr-3">
+                     <a role="button"
+                        className="btn btn-danger float-md-right"
+                        href={`/graph/${this.props.gId}/delete/`}>Delete Graph</a>
+                 </div>
+                }
+            </div>
+        );
+
         if (this.props.gType === 0) {
             // Demand-Supply
             return (
@@ -132,23 +152,7 @@ export default class GraphEditor extends React.Component {
                             </div>
                         </StickyContainer>
                         <hr/>
-                        <div className="row">
-                            <div className="ml-3  mr-2">
-                                <button type="button"
-                                    className="btn btn-primary"
-                                    onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                            </div>
-                            <button onClick={this.handleSaveAndViewGraph.bind(this)}
-                                type="button"
-                                className="btn btn-secondary">Save and View</button>
-                            {this.props.gId &&
-                                    <div className="ml-auto mr-3">
-                                        <a role="button"
-                                            className="btn btn-danger float-md-right"
-                                            href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-                                    </div>
-                            }
-                        </div>
+                        {editRow}
                     </form>
                 </div>
             );
@@ -168,11 +172,11 @@ export default class GraphEditor extends React.Component {
                                                 Title
                                             </label>
                                             <input id="gTitle"
-                                                onChange={handleFormUpdate.bind(this)}
-                                                value={this.props.gTitle}
-                                                className="form-control form-control-sm"
-                                                type="text"
-                                                maxLength="140"
+                                                   onChange={handleFormUpdate.bind(this)}
+                                                   value={this.props.gTitle}
+                                                   className="form-control form-control-sm"
+                                                   type="text"
+                                                   maxLength="140"
                                             />
                                         </div>
                                         <JXGBoard
@@ -259,25 +263,10 @@ export default class GraphEditor extends React.Component {
                             />
                         </div>
                     </StickyContainer>
+
+                    <hr/>
+                    {editRow}
                 </form>
-                <hr/>
-                <div className="row">
-                    <div className="ml-3  mr-2">
-                        <button type="button"
-                            className="btn btn-primary"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    </div>
-                    <button onClick={this.handleSaveAndViewGraph.bind(this)}
-                        type="button"
-                        className="btn btn-secondary">Save and View</button>
-                    {this.props.gId &&
-                            <div className="ml-auto mr-3">
-                                <a role="button"
-                                    className="btn btn-danger float-md-right"
-                                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-                            </div>
-                    }
-                </div>
             </div>;
         } else if (this.props.gType === 3) {
             // Cobb-Douglas
@@ -377,25 +366,9 @@ export default class GraphEditor extends React.Component {
                             />
                         </div>
                     </StickyContainer>
+                    <hr/>
+                    {editRow}
                 </form>
-                <hr/>
-                <div className="row">
-                    <div className="ml-3  mr-2">
-                        <button type="button"
-                            className="btn btn-primary"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    </div>
-                    <button onClick={this.handleSaveAndViewGraph.bind(this)}
-                        type="button"
-                        className="btn btn-secondary">Save and View</button>
-                    {this.props.gId &&
-                            <div className="ml-auto mr-3">
-                                <a role="button"
-                                    className="btn btn-danger float-md-right"
-                                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-                            </div>
-                    }
-                </div>
             </div>;
         } else if (this.props.gType === 5) {
             // Consumption Leisure
@@ -497,27 +470,11 @@ export default class GraphEditor extends React.Component {
                             />
 
                     </div>
-                </StickyContainer>
-            </form>
-            <hr/>
-            <div className="row">
-                <div className="ml-3  mr-2">
-                    <button type="button"
-                        className="btn btn-primary"
-                        onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                </div>
-                <button onClick={this.handleSaveAndViewGraph.bind(this)}
-                    type="button"
-                    className="btn btn-secondary">Save and View</button>
-                {this.props.gId &&
-                        <div className="ml-auto mr-3">
-                            <a role="button"
-                                className="btn btn-danger float-md-right"
-                                href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-                        </div>
-                }
-            </div>
-        </div>;
+                    </StickyContainer>
+                    <hr/>
+                    {editRow}
+                </form>
+            </div>;
         } else if (this.props.gType === 7) {
             // Consumption Savings
             return <div className="GraphEditor">
@@ -614,23 +571,7 @@ export default class GraphEditor extends React.Component {
                         </div>
                     </StickyContainer>
                     <hr/>
-                    <div className="row">
-                        <div className="ml-3  mr-2">
-                            <button type="button"
-                                className="btn btn-primary"
-                                onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                        </div>
-                        <button onClick={this.handleSaveAndViewGraph.bind(this)}
-                            type="button"
-                            className="btn btn-secondary">Save and View</button>
-                        {this.props.gId &&
-                                <div className="ml-auto mr-3">
-                                    <a role="button"
-                                        className="btn btn-danger float-md-right"
-                                        href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-                                </div>
-                        }
-                    </div>
+                    {editRow}
                 </form>
             </div>;
         } else if (this.props.gType === 8) {
@@ -766,23 +707,7 @@ export default class GraphEditor extends React.Component {
                     </div>
                 </StickyContainer>
                 <hr/>
-                <div className="row">
-                    <div className="ml-3  mr-2">
-                        <button type="button"
-                            className="btn btn-primary"
-                            onClick={this.handleSaveGraph.bind(this)}>Save</button>
-                    </div>
-                    <button onClick={this.handleSaveAndViewGraph.bind(this)}
-                        type="button"
-                        className="btn btn-secondary">Save and View</button>
-                    {this.props.gId &&
-                            <div className="ml-auto mr-3">
-                                <a role="button"
-                                    className="btn btn-danger float-md-right"
-                                    href={"/graph/" + this.props.gId + "/delete/"}>Delete Graph</a>
-                            </div>
-                    }
-                </div>
+                {editRow}
             </form>
         </div>;
         } else {
