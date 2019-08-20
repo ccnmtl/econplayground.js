@@ -14,7 +14,9 @@ export default class CommonGraphSettings extends React.Component {
         };
 
         const me = this;
-        getTopics(getCohortId()).then(function(topics) {
+        getTopics(
+            getCohortId(window.location.pathname)
+        ).then(function(topics) {
             me.setState({topics: topics['topic_set']});
         });
     }

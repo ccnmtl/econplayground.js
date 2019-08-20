@@ -11,7 +11,7 @@ class Viewer extends Component {
     constructor(props) {
         super(props);
 
-        this.graphId = getGraphId();
+        this.graphId = getGraphId(window.location.pathname);
 
         this.state = {
             submission: null
