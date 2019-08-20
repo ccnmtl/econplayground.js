@@ -3,7 +3,7 @@ import BackButton from './buttons/BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
 import { exportGraph, defaultGraph } from './GraphMapping';
-import { authedFetch, getError } from './utils';
+import { authedFetch, getError, getCohortId } from './utils';
 
 class Editor extends Component {
     constructor(props) {
@@ -162,7 +162,8 @@ class Editor extends Component {
                     });
 
                     response.json().then(function(graph) {
-                        const url = `/graph/${graph.id}/`;
+                        const courseId = getCohortId(window.location.pathname);
+                        const url = `/course/${courseId}/graph/${graph.id}/`;
                         window.location.href = url;
                     });
                 } else {
@@ -176,11 +177,11 @@ class Editor extends Component {
             });
     }
     handleSaveAndViewGraph() {
-        return this.handleSaveGraph(true)
-            .then(function(graph) {
-                const url = `/graph/${graph.id}/public/`;
-                window.location.href = url;
-            });
+        return this.handleSaveGraph(true).then(function(graph) {
+            const courseId = getCohortId(window.location.pathname);
+            const url = `/course/${courseId}/graph/${graph.id}/public/`;
+            window.location.href = url;
+        });
 
     }
     handleGraphUpdate(obj) {
