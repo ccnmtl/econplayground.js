@@ -29,18 +29,24 @@ const getAssessment = function(graphId) {
         });
 };
 
-const getGraphId = function() {
-    if (window.location.pathname.match(/^\/course\//)) {
-        return window.location.pathname.split('/')[4];
-    } else {
-        return window.location.pathname.split('/')[2];
+const getGraphId = function(urlpath) {
+    let m = urlpath.match(/^\/?course\/\d+\/graph\/(\d+)\/?/);
+    if (m && m.length > 1) {
+        return forceNumber(m[1]);
     }
+
+    m = urlpath.match(/^\/?graph\/(\d+)\/?/);
+    if (m && m.length > 1) {
+        return forceNumber(m[1]);
+    }
+
+    return null;
 };
 
-const getCohortId = function() {
-    const m = location.pathname.match(/\/course\/(\d+)\/graph\/.*/);
+const getCohortId = function(urlpath) {
+    const m = urlpath.match(/^\/?course\/(\d+)\/?.*/);
     if (m && m.length > 1) {
-        return m[1];
+        return forceNumber(m[1]);
     }
     return null;
 };

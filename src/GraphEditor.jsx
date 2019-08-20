@@ -9,7 +9,7 @@ import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
-import {displayGraphType, handleFormUpdate} from './utils';
+import {displayGraphType, handleFormUpdate, getCohortId} from './utils';
 import { StickyContainer, Sticky } from 'react-sticky';
 
 export default class GraphEditor extends React.Component {
@@ -27,6 +27,9 @@ export default class GraphEditor extends React.Component {
         if (!this.props.showing) {
             return null;
         }
+
+        const courseId = getCohortId(window.location.pathname);
+
         const editRow = (
             <div className="row">
                 <div className="ml-3  mr-2">
@@ -41,7 +44,7 @@ export default class GraphEditor extends React.Component {
                  <div className="ml-auto mr-3">
                      <a role="button"
                         className="btn btn-danger float-md-right"
-                        href={`/graph/${this.props.gId}/delete/`}>Delete Graph</a>
+                        href={`/course/${courseId}/graph/${this.props.gId}/delete/`}>Delete Graph</a>
                  </div>
                 }
             </div>
@@ -108,7 +111,7 @@ export default class GraphEditor extends React.Component {
                                             />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -218,7 +221,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -326,7 +329,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -430,7 +433,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -530,7 +533,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -645,7 +648,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/graph/" + this.props.gId + "/public/"}
+                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }

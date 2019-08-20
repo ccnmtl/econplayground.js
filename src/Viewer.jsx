@@ -4,14 +4,15 @@ import GraphEditor from './GraphEditor';
 import GraphViewer from './GraphViewer';
 import { exportGraph, importGraph, defaultGraph } from './GraphMapping';
 import {
-    authedFetch, getGraphId, getAssessment, getSubmission, getError
+    authedFetch, getGraphId, getCohortId, getAssessment,
+    getSubmission, getError
 } from './utils';
 
 class Viewer extends Component {
     constructor(props) {
         super(props);
 
-        this.graphId = getGraphId();
+        this.graphId = getGraphId(window.location.pathname);
 
         this.state = {
             submission: null
@@ -348,11 +349,11 @@ class Viewer extends Component {
             });
     }
     handleSaveAndViewGraph() {
-        return this.handleSaveGraph(true)
-            .then(function(graph) {
-                const url = `/graph/${graph.id}/public/`;
-                window.location.href = url;
-            });
+        return this.handleSaveGraph(true).then(function(graph) {
+            const courseId = getCohortId(window.location.pathname);
+            const url = `/course/${courseId$}/graph/${graph.id}/public/`;
+            window.location.href = url;
+        });
     }
     handleGraphUpdate(obj) {
         this.setState(obj);
