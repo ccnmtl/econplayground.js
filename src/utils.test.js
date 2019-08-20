@@ -29,6 +29,16 @@ it('gets the graph ID', () => {
     expect(getGraphId('/course/14/graph/1/')).toBe(1);
 
     expect(getGraphId('/')).toBe(null);
+
+    expect(getGraphId('/graph/24')).toBe(24);
+    expect(getGraphId('/course/14/graph/24')).toBe(24);
+    expect(getGraphId('/course/14/graph/1')).toBe(1);
+
+    expect(getGraphId('graph/24/')).toBe(24);
+    expect(getGraphId('course/14/graph/24/')).toBe(24);
+    expect(getGraphId('course/14/graph/1/')).toBe(1);
+
+    expect(getGraphId('')).toBe(null);
 });
 
 it('gets the cohort ID', () => {
@@ -37,4 +47,14 @@ it('gets the cohort ID', () => {
     expect(getCohortId('/course/21/edit/')).toBe(21);
 
     expect(getCohortId('/')).toBe(null);
+
+    expect(getCohortId('/course/21/graph/24')).toBe(21);
+    expect(getCohortId('/course/21')).toBe(21);
+    expect(getCohortId('/course/21/edit')).toBe(21);
+
+    expect(getCohortId('course/21/graph/24/')).toBe(21);
+    expect(getCohortId('course/21/')).toBe(21);
+    expect(getCohortId('course/21/edit/')).toBe(21);
+
+    expect(getCohortId('')).toBe(null);
 });

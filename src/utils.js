@@ -30,12 +30,12 @@ const getAssessment = function(graphId) {
 };
 
 const getGraphId = function(urlpath) {
-    let m = urlpath.match(/^\/course\/\d+\/graph\/(\d+)\//);
+    let m = urlpath.match(/^\/?course\/\d+\/graph\/(\d+)\/?/);
     if (m && m.length > 1) {
         return forceNumber(m[1]);
     }
 
-    m = urlpath.match(/^\/graph\/(\d+)\//);
+    m = urlpath.match(/^\/?graph\/(\d+)\/?/);
     if (m && m.length > 1) {
         return forceNumber(m[1]);
     }
@@ -44,7 +44,7 @@ const getGraphId = function(urlpath) {
 };
 
 const getCohortId = function(urlpath) {
-    const m = urlpath.match(/^\/course\/(\d+)\/.*/);
+    const m = urlpath.match(/^\/?course\/(\d+)\/?.*/);
     if (m && m.length > 1) {
         return forceNumber(m[1]);
     }
