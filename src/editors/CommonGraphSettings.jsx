@@ -17,7 +17,17 @@ export default class CommonGraphSettings extends React.Component {
         getTopics(
             getCohortId(window.location.pathname)
         ).then(function(topics) {
-            me.setState({topics: topics['topic_set']});
+            me.setState({
+                topics: topics['topic_set']
+            });
+
+            // After getting the topics, set the graph's topic to the
+            // first one available, if it needs one.
+            if (!me.props.gTopic && topics['topic_set'].length > 0) {
+                me.props.updateGraph({
+                    gTopic: topics['topic_set'][0].pk
+                });
+            }
         });
     }
     render() {
