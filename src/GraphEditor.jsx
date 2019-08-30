@@ -111,7 +111,7 @@ export default class GraphEditor extends React.Component {
                                             />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
+                                             <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -221,7 +221,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
+                                             <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -329,7 +329,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
+                                             <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -433,7 +433,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
+                                             <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -533,7 +533,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
+                                             <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -648,7 +648,7 @@ export default class GraphEditor extends React.Component {
                                             updateGraph={this.props.updateGraph} />
                                         {this.props.gId &&
                                          <div className="form-group">
-                                             <a href={"/course/${courseId}/graph/" + this.props.gId + "/public/"}
+                                             <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
