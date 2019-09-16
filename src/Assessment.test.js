@@ -18,15 +18,15 @@ it('Evaluates a label action', () => {
         ['line2intercept', 'decrease', 'Correct!', 'Sorry, try again', 1]
     ]);
     let action = {name: 'line1label', value: 'Demand'};
-    let response = {feedback: 'Correct!', score: 0.26, fulfilled: true};
+    let response = {feedback: 'Correct!', score: 0.2564, fulfilled: true};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'line1label', value: 'demand'};
-    response = {feedback: 'Correct!', score: 0.26, fulfilled: true};
+    response = {feedback: 'Correct!', score: 0.2564, fulfilled: true};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'line1label', value: ' demand  '};
-    response = {feedback: 'Correct!', score: 0.26, fulfilled: true};
+    response = {feedback: 'Correct!', score: 0.2564, fulfilled: true};
     expect(a.evalAction(action)).toEqual(response);
 
     action = {name: 'line1label', value: 'nope'};
@@ -50,7 +50,7 @@ it('Evaluates a line shift', () => {
     let action = {name: 'line1intercept', value: 'up'};
     let response = {
         feedback: 'Line 1 moved up',
-        score: 0.1,
+        score: 0.0952,
         fulfilled: true
     };
     expect(a.evalAction(action)).toEqual(response);
@@ -75,7 +75,7 @@ it('Evaluates a line rotation (slope change)', () => {
     let action = {name: 'line1slope', value: 'increase'};
     let response = {
         feedback: 'Line 1 slope increased',
-        score: 0.1,
+        score: 0.0952,
         fulfilled: true
     };
     expect(a.evalAction(action)).toEqual(response);
@@ -146,7 +146,7 @@ it('Normalizes the summed score to a number between 0 and 1', () => {
     // the total points.
     expect(r).toContainEqual({
         feedback: 'Correct!',
-        score: 0.48,
+        score: 0.4762,
         fulfilled: true
     });
     expect(r).toContainEqual({

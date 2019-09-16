@@ -169,14 +169,14 @@ const getOffset = function(slope, y, n) {
 
 /*
  * Force a value into a float that will be acceptable to the Django
- * API's DecimalFields. This is currently capped to 2 decimal places.
+ * API's DecimalFields. This is currently capped to 4 decimal places.
  */
 const forceFloat = function(n) {
     n = Number(n);
     if (isNaN(n) || typeof n === 'undefined') {
         n = 0;
     }
-    return Math.round(n * 100) / 100;
+    return Math.round(n * 10000) / 10000;
 };
 
 const forceNumber = function(n) {
