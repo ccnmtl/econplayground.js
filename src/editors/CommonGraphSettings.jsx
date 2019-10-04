@@ -31,6 +31,10 @@ export default class CommonGraphSettings extends React.Component {
         });
     }
     render() {
+        const assessmentUrl =
+            (window.EconPlayground && window.EconPlayground.assessmentUrl) ||
+            '/admin/main/assessment';
+
         return (
             <div>
                 <h2>Assignment</h2>
@@ -131,7 +135,7 @@ export default class CommonGraphSettings extends React.Component {
                     <a target="_blank"
                        role="button"
                        className="btn btn-sm btn-primary mt-2"
-                       href="/admin/main/assessment/">
+                       href={assessmentUrl}>
                         Feedback and Assessment editor
                     </a>
                     <small className="form-text text-muted">
