@@ -47,7 +47,7 @@
     "file-loader": "~4.2.0",
     "fs-extra": "~8.1.0",
     "jest": "~24.9.0",
-    "jsdom": "~15.1.1",
+    "jsdom": "~15.2.0",
     "react-dev-utils": "~9.1.0",
     "react-test-renderer": "~16.10.1",
     "style-loader": "~1.0.0",
