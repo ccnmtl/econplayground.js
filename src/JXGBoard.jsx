@@ -477,8 +477,9 @@ export default class JXGBoard extends React.Component {
     // for rendering the JSXGraph board div and any child elements
     render() {
         return (
-            <div id={this.id} className="jxgbox" style={this.style}>
-            </div>
+            <figure aria-label="The EconPractice graph."
+                    id={this.id} className="jxgbox" style={this.style}>
+            </figure>
         );
     }
 }
