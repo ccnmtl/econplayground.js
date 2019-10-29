@@ -125,6 +125,7 @@ export default class GraphEditor extends React.Component {
                                         {this.props.gId &&
                                          <div className="form-group">
                                              <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
+                                                title="Student View"
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -235,6 +236,7 @@ export default class GraphEditor extends React.Component {
                                         {this.props.gId &&
                                          <div className="form-group">
                                              <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
+                                                title="Student View"
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -343,6 +345,7 @@ export default class GraphEditor extends React.Component {
                                         {this.props.gId &&
                                          <div className="form-group">
                                              <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
+                                                title="Student View"
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -447,6 +450,7 @@ export default class GraphEditor extends React.Component {
                                         {this.props.gId &&
                                          <div className="form-group">
                                              <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
+                                                title="Student View"
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -547,6 +551,7 @@ export default class GraphEditor extends React.Component {
                                         {this.props.gId &&
                                          <div className="form-group">
                                              <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
+                                                title="Student View"
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
@@ -662,6 +667,7 @@ export default class GraphEditor extends React.Component {
                                         {this.props.gId &&
                                          <div className="form-group">
                                              <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
+                                                title="Student View"
                                                 className="btn btn-secondary">Student View</a>
                                          </div>
                                         }
