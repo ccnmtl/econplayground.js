@@ -44,6 +44,7 @@ export default class GraphEditor extends React.Component {
                  <div className="ml-auto mr-2">
                      <a role="button"
                         className="btn btn-primary float-md-right"
+                        title="Clone Graph"
                         href={`/course/${courseId}/graph/${this.props.gId}/clone/`}>
                          <svg height="32" className="mr-1 octicon octicon-repo-clone" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fillRule="evenodd" d="M15 0H9v7c0 .55.45 1 1 1h1v1h1V8h3c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zm-4 7h-1V6h1v1zm4 0h-3V6h3v1zm0-2h-4V1h4v4zM4 5H3V4h1v1zm0-2H3V2h1v1zM2 1h6V0H1C.45 0 0 .45 0 1v12c0 .55.45 1 1 1h2v2l1.5-1.5L6 16v-2h5c.55 0 1-.45 1-1v-3H2V1zm9 10v2H6v-1H3v1H1v-2h10zM3 8h1v1H3V8zm1-1H3V6h1v1z"></path></svg>
                          Clone Graph
@@ -54,6 +55,7 @@ export default class GraphEditor extends React.Component {
                  <div className="mr-3">
                      <a role="button"
                         className="btn btn-danger float-md-right"
+                        title="Delete Graph"
                         href={`/course/${courseId}/graph/${this.props.gId}/delete/`}>
                          <svg height="32" className="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="24" aria-hidden="true"><path fillRule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg>
                          Delete Graph
