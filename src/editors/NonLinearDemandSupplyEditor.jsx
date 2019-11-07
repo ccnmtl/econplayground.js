@@ -36,7 +36,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
 
                                     <label className="form-check-label" htmlFor="gFunctionChoice1">
                                         <MathJax.Context
-                                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"
+                                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"
                                             input="tex"
                                             styles={{'background-color': 'red'}}
                                             options={this.mathjaxOptions}>
@@ -56,7 +56,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                            checked={this.props.gFunctionChoice === 1} />
                                     <label className="form-check-label" htmlFor="gFunctionChoice2">
                                         <MathJax.Context
-                                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"
+                                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"
                                             input="tex"
                                             options={this.mathjaxOptions}>
                                             <MathJax.Node>{func2}</MathJax.Node>
