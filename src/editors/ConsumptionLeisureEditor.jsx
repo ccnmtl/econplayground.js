@@ -16,7 +16,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                             <h2>Function</h2>
                             <div className="row">
                                     <MathJax.Context
-                                    script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+                                    script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"
                                     input="tex"
                                     options={{
                                         displayAlign: 'left',
