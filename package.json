@@ -46,7 +46,7 @@
     "eslint-plugin-react": "~7.18.0",
     "file-loader": "~5.0.1",
     "fs-extra": "~8.1.0",
-    "jest": "~24.9.0",
+    "jest": "~25.1.0",
     "jsdom": "~16.0.0",
     "react-dev-utils": "~10.0.0",
     "react-test-renderer": "~16.12.0",
