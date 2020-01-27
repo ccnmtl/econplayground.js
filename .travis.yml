@@ -5,13 +5,10 @@ node_js:
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get install -y libgif-dev
-- npm install -g greenkeeper-lockfile@2
 install: npm install
-before_script: greenkeeper-lockfile-update
 script:
 - make eslint
 - make test
-after_script: greenkeeper-lockfile-upload
 env:
   global:
     secure: tY8y9XATZvoAhSrKMeZ0lQQGMWhNTUDlBDAIeLe+hOFI8Is+UC01V9iGart8dHqlf3hBOwmm6BeIWb8LsQlsKanHYDTPiKH79dcn9BggKVF62F9Ha/Ffaqf+uJzT9+GdV4MlB9yfBUiluY64kI5tEf7awJQLg8HchXd3i3RcSlYUEA3OMdzkODAJz+H4DkPyAprD/OVPVsh63DyjsmFgvqtz5eUtAfsEmKPu01iupb7FYsNCnd6z39S5GDhiBjxlnNt2y2vkHhVZtYzmfH6lC/UuxlkS5SICYwpl5Ky+lqr1VFxzresDY3cooCRZMx10FGlr4Hn8dXHyao7x5Tm50pqotC4Djs4jYx+Rj6xaGawHNftFm8+UTCjvy/JbqbX9coCvyiANfYvh3VUGAEtusxfimYM3tHziXErkAEY6MqxMWgHO8wJTdn/jFowFEfspbFfNiVRh+1jFHjrmBSJDkxvjucC2bdcsftBpkKhxhw5Mwgrqqn132M7iWXRVcHCatmJMpv2KOInckVchCHlPcN3moEXyNgoC0mU7MZQ/nkwPPtyoXJQF5Opxj+O7OyOEoZYiJrpo6YP3UVz2LoHeSqGuac/CsnXNlJuffceeT73dHiSzMFORtpDBvaexllpLFg2nq+yVqbFL0azUYQoViGnp2/O8m/x8Lnn2uat+lJQ=
