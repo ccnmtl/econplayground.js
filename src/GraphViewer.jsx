@@ -1,5 +1,4 @@
 import React from 'react';
-import Cookies from 'js-cookie';
 import PropTypes from 'prop-types';
 import commonmark from 'commonmark';
 import Assessment from './Assessment';

@@ -1,5 +1,3 @@
-import Cookies from 'js-cookie';
-
 /**
  * A wrapper for `fetch` that passes along auth credentials.
  */
