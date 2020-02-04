@@ -1,10 +1,9 @@
-import Cookies from 'js-cookie';
-
 /**
  * A wrapper for `fetch` that passes along auth credentials.
  */
 const authedFetch = function(url, method = 'get', data = null) {
-    const token = Cookies.get('csrftoken');
+    const elt = document.getElementById('csrf-token');
+    const token = elt ? elt.getAttribute('content') : '';
     return fetch(url, {
         method: method,
         headers: {
