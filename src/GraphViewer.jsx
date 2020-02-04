@@ -59,7 +59,8 @@ export default class GraphViewer extends React.Component {
               this.props.gAssignmentType === 0 ||
               this.props.gAssignmentType === 2;
 
-        const token = Cookies.get('csrftoken');
+        const token = document.getElementById(
+            'csrf-token').getAttribute('content');
 
         let initialState = this.initialState;
 
