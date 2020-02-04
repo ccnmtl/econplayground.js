@@ -2,8 +2,8 @@
  * A wrapper for `fetch` that passes along auth credentials.
  */
 const authedFetch = function(url, method = 'get', data = null) {
-    const token = document.getElementById(
-        'csrf-token').getAttribute('content');
+    const elt = document.getElementById('csrf-token');
+    const token = elt ? elt.getAttribute('content') : '';
     return fetch(url, {
         method: method,
         headers: {
