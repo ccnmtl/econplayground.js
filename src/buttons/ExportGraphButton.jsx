@@ -24,11 +24,9 @@ export default class ExportGraphButton extends React.Component {
             return;
         }
 
-        const svg = window.board.renderer.dumpToSVG();
-        const url = 'data:application/octet-stream;charset=utf-8,' +
-                    window.encodeURIComponent(svg);
+        const svg = window.board.renderer.dumpToDataURI(false);
         this.setState({
-            url: url
+            url: svg
         });
     }
 }

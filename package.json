@@ -11,7 +11,7 @@
   "homepage": "https://github.com/ccnmtl/econplayground.js#readme",
   "dependencies": {
     "commonmark": "~0.29.0",
-    "jsxgraph": "ccnmtl/jsxgraph#dump-to-svg",
+    "jsxgraph": "~1.1.0",
     "object-assign": "~4.1.1",
     "promise": "~8.1.0",
     "react": "~16.13.0",
