@@ -1,10 +1,12 @@
+import 'whatwg-fetch';
+
 /**
  * A wrapper for `fetch` that passes along auth credentials.
  */
 const authedFetch = function(url, method = 'get', data = null) {
     const elt = document.getElementById('csrf-token');
     const token = elt ? elt.getAttribute('content') : '';
-    return fetch(url, {
+    return window.fetch(url, {
         method: method,
         headers: {
             'Accept': 'application/json, text/plain, */*',
