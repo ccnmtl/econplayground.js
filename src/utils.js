@@ -4,7 +4,7 @@
 const authedFetch = function(url, method = 'get', data = null) {
     const elt = document.getElementById('csrf-token');
     const token = elt ? elt.getAttribute('content') : '';
-    return fetch(url, {
+    return fetch(url + '?format=json', {
         method: method,
         headers: {
             'Accept': 'application/json, text/plain, */*',
