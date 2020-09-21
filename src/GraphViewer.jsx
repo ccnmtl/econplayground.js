@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import commonmark from 'commonmark';
+import * as commonmark from 'commonmark';
 import Assessment from './Assessment';
 import ADASEditor from './editors/ADASEditor';
 import CobbDouglasEditor from './editors/CobbDouglasEditor';
