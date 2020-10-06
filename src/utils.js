@@ -207,6 +207,15 @@ const displayGraphType = function(gType) {
         case 8:
             name = 'Linear Demand and Supply: 3 Functions';
             break;
+        case 9:
+            name = 'Linear Demand and Supply: AUC';
+            break;
+        case 10:
+            name = 'Non-Linear Demand and Supply: AUC';
+            break;
+        case 11:
+            name = 'Consumption-Saving: AUC';
+            break;
         default:
             break;
     }

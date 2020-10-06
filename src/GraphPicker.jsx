@@ -8,6 +8,28 @@ export default class GraphPicker extends React.Component {
         this.mediaPrefix = 'https://ccnmtl-econplayground-static-prod.s3.' +
             'amazonaws.com/media/img/';
     }
+
+    renderGraphOption(n, imgname) {
+        return (
+            <div className="card">
+                <a href="#"
+                   title={displayGraphType(n)}
+                   onClick={() => this.onSelectGraph(n)}>
+                    <img className="img-fluid" src={this.mediaPrefix + imgname} />
+                </a>
+                <div className="card-body">
+                    <h5 className="card-title">
+                        <a href="#"
+                           title={displayGraphType(n)}
+                           onClick={() => this.onSelectGraph(n)}>
+                            {displayGraphType(n)}
+                        </a>
+                    </h5>
+                </div>
+            </div>
+        );
+    }
+
     render() {
         if (!this.props.showing) {
             return null;
@@ -114,10 +136,15 @@ export default class GraphPicker extends React.Component {
                             </h5>
                         </div>
                     </div>
+
+                    {this.renderGraphOption(9, 'linear_demand_supply.png')}
                 </div>
             </div>
-        )
+        );
     }
+
+    // TODO: all these functions can be removed, and we call
+    // onSelectGraph() directly using onClick={() => this.onSelectGraph(n)}
     handleClick1() {
         this.props.onSelectGraph(0);
     }
