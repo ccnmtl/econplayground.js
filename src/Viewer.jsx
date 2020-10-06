@@ -351,7 +351,7 @@ class Viewer extends Component {
     handleSaveAndViewGraph() {
         return this.handleSaveGraph(true).then(function(graph) {
             const courseId = getCohortId(window.location.pathname);
-            const url = `/course/${courseId$}/graph/${graph.id}/public/`;
+            const url = `/course/${courseId}/graph/${graph.id}/public/`;
             window.location.href = url;
         });
     }
