@@ -65,7 +65,7 @@ export default class GraphEditor extends React.Component {
             </div>
         );
 
-        if (this.props.gType === 0) {
+        if (this.props.gType === 0 || this.props.gType === 9) {
             // Demand-Supply
             return (
                 <div className="GraphEditor">
