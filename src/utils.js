@@ -157,13 +157,22 @@ const handleFormUpdate = function(e) {
     this.props.updateGraph(obj);
 };
 
-/*
+/**
  * Given a line's slope and y-intercept, return its
  * y-offset at x-value n.
  */
 const getOffset = function(slope, y, n) {
     const xpos = (slope * n) + y;
     return xpos - n;
+};
+
+/**
+ * Given a point and its slope, return its x-intercept.
+ *
+ * From: https://stackoverflow.com/a/36183654/173630
+ */
+const getXIntercept = function(p, slope) {
+    return p.X() - p.Y() / slope;
 };
 
 /*
@@ -235,5 +244,6 @@ export {
     authedFetch, getAssessment, getGraphId, getCohortId, getTopics,
     getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
-    getOffset, forceFloat, forceNumber, displayGraphType, getError
+    getOffset, getXIntercept,
+    forceFloat, forceNumber, displayGraphType, getError
 };
