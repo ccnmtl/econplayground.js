@@ -20,6 +20,24 @@ const applyDefaults = function(obj, defaults) {
     return o;
 };
 
+const invisiblePointOptions = {
+    hasLabel: false,
+    withLabel: false,
+    label: {
+        visible: false
+    },
+    size: 0
+};
+
+const triangleOptions = {
+    fixed: true,
+    draggable: false,
+    isDraggable: false,
+    vertices: {
+        visible: false
+    }
+};
+
 class Graph {
     constructor(board, options, defaults) {
         if (typeof defaults === 'undefined') {
@@ -372,36 +390,16 @@ const mkDemandSupply = function(board, options) {
 };
 
 class DemandSupplyGraphAUC extends DemandSupplyGraph {
-    constructor(board, options, defaults) {
-        super(board, options, defaults);
-        this.pointOptions = {
-            hasLabel: false,
-            withLabel: false,
-            label: {
-                visible: false
-            },
-            size: 0
-        };
-        this.triangleOptions = {
-            fixed: true,
-            draggable: false,
-            isDraggable: false,
-            vertices: {
-                visible: false
-            }
-        };
-    }
-
     drawTriangleA() {
         const p1 = this.board.create('point', [
             0,
             5 + getOffset(this.l2.getSlope(), this.options.gLine2OffsetY, 0)
-        ], this.pointOptions);
+        ], invisiblePointOptions);
 
         const p2 = this.board.create('point', [
             0,
             this.intersection.Y()
-        ], this.pointOptions);
+        ], invisiblePointOptions);
 
         this.board.create('polygon', [
             p1, p2, this.intersection
@@ -410,19 +408,19 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             withLabel: true,
             fillColor: 'purple',
             highlightFillColor: 'purple',
-            ...this.triangleOptions
+            ...triangleOptions
         });
     }
     drawTriangleB() {
         const p1 = this.board.create('point', [
             0,
             this.intersection.Y()
-        ], this.pointOptions);
+        ], invisiblePointOptions);
 
         const p2 = this.board.create('point', [
             0,
             this.options.gLine1OffsetY + this.options.l1SubmissionOffset
-        ], this.pointOptions);
+        ], invisiblePointOptions);
 
         this.board.create('polygon', [
             this.intersection, p1, p2
@@ -431,17 +429,17 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             withLabel: true,
             fillColor: 'lime',
             highlightFillColor: 'lime',
-            ...this.triangleOptions
+            ...triangleOptions
         });
     }
     drawTriangleC() {
         const p1 = this.board.create('point', [
             this.intersection.X(),
             0
-        ], this.pointOptions);
+        ], invisiblePointOptions);
 
         const xIntercept = getXIntercept(this.intersection, this.l1.getSlope());
-        const p2 = this.board.create('point', [xIntercept, 0], this.pointOptions);
+        const p2 = this.board.create('point', [xIntercept, 0], invisiblePointOptions);
 
         this.board.create('polygon', [
             this.intersection, p1, p2
@@ -450,7 +448,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             withLabel: true,
             fillColor: 'red',
             highlightFillColor: 'red',
-            ...this.triangleOptions
+            ...triangleOptions
         });
     }
 
@@ -638,6 +636,78 @@ class NonLinearDemandSupplyGraph extends Graph {
 
 const mkNonLinearDemandSupply = function(board, options) {
     let g = new NonLinearDemandSupplyGraph(board, options);
+    g.make();
+    g.postMake();
+    return g;
+};
+
+class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
+    drawTriangleB() {
+        const p1 = this.board.create('point', [
+            0,
+            this.intersection.Y()
+        ], invisiblePointOptions);
+
+        const p2 = this.board.create('point', [
+            0,
+            this.options.gLine1OffsetY -
+                this.options.gLine1OffsetX +
+                this.options.l1SubmissionOffset,
+        ], invisiblePointOptions);
+
+        this.board.create('polygon', [
+            this.intersection, p1, p2
+        ], {
+            name: 'B',
+            withLabel: true,
+            fillColor: 'lime',
+            highlightFillColor: 'lime',
+            ...triangleOptions
+        });
+    }
+    drawTriangleC() {
+        const p1 = this.board.create('point', [
+            this.intersection.X(),
+            0
+        ], invisiblePointOptions);
+
+        const xIntercept = getXIntercept(
+            this.intersection, this.options.gLine1Slope);
+        const p2 = this.board.create(
+            'point', [xIntercept, 0], invisiblePointOptions);
+
+        this.board.create('polygon', [
+            this.intersection, p1, p2
+        ], {
+            name: 'C',
+            withLabel: true,
+            fillColor: 'red',
+            highlightFillColor: 'red',
+            ...triangleOptions
+        });
+    }
+
+    make() {
+        super.make();
+
+        this.intersection = this.board.create('intersection', [this.l1, this.l2, 0], {
+            name: '',
+            withLabel: false,
+            fixed: true,
+            highlight: false,
+            showInfobox: false,
+            layer: 4,
+            size: 0,
+            visible: false
+        });
+
+        this.drawTriangleB();
+        this.drawTriangleC();
+    }
+}
+
+const mkNonLinearDemandSupplyAUC = function(board, options) {
+    let g = new NonLinearDemandSupplyGraphAUC(board, options);
     g.make();
     g.postMake();
     return g;
@@ -1206,5 +1276,5 @@ export const graphTypes = [
     null, mkConsumptionLeisure,
     null, mkConsumptionSaving,
     mkADAS,
-    mkDemandSupplyAUC
+    mkDemandSupplyAUC, mkNonLinearDemandSupplyAUC
 ];
