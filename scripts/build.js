@@ -14,6 +14,8 @@ process.on('unhandledRejection', err => {
 // Ensure environment variables are read.
 require('../config/env');
 
+const _ = require('lodash');
+
 const path = require('path');
 const chalk = require('chalk');
 const fs = require('fs-extra');
@@ -107,10 +109,32 @@ function build(previousFileSizes) {
   let compiler = webpack(config);
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
+      let messages;
       if (err) {
-        return reject(err);
+        if (!err.message) {
+          return reject(err);
+        }
+        messages = formatWebpackMessages({
+          errors: [err.message],
+          warnings: [],
+        });
+      } else {
+          const statsJson = stats.toJson({
+              all: false,
+              warnings: true,
+              errors: true,
+              errorDetails: false
+          })
+          messages = formatWebpackMessages({
+              errors: _.map(statsJson.errors, function(o) {
+                  const moduleName = o.moduleName ? o.moduleName + ': ' : '';
+                  return moduleName + o.message;
+              }),
+              warnings: _.map(statsJson.warnings, function(o) {
+                  return o.message;
+              })
+          });
       }
-      const messages = formatWebpackMessages(stats.toJson({}, true));
       if (messages.errors.length) {
         // Only keep the first error. Others are often indicative
         // of the same problem, but confuse the reader with noise.
