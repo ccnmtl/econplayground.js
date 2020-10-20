@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/ccnmtl/econplayground.js#readme",
   "dependencies": {
-    "commonmark": "0.29.1",
+    "commonmark": "0.29.2",
     "jsxgraph": "~1.1.0",
     "object-assign": "~4.1.1",
     "promise": "~8.1.0",
