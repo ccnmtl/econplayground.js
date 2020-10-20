@@ -15,7 +15,7 @@
     "object-assign": "~4.1.1",
     "promise": "~8.1.0",
     "react": "~16.14.0",
-    "react-dom": "~16.13.0",
+    "react-dom": "~16.14.0",
     "react-mathjax2": "~0.0.1",
     "react-sticky": "~6.0.2",
     "webpack": "~5.1.3",
