@@ -66,7 +66,7 @@ export default class GraphEditor extends React.Component {
         );
 
         if (this.props.gType === 0 || this.props.gType === 9) {
-            // Demand-Supply
+            // Demand-Supply, possibly AUC (area under curve)
             return (
                 <div className="GraphEditor">
                     {this.title()}
@@ -175,8 +175,8 @@ export default class GraphEditor extends React.Component {
                     </form>
                 </div>
             );
-        } else if (this.props.gType === 1) {
-            // Non-Linear Demand Supply
+        } else if (this.props.gType === 1 || this.props.gType === 10) {
+            // Non-Linear Demand Supply, possibly AUC (area under curve)
             return <div className="GraphEditor">
                 {this.title()}
                 <form>

@@ -44,7 +44,8 @@ export default class GraphPicker extends React.Component {
             [3, 'cobb_douglas.png'],
             [7, 'consumption_saving.png'],
             [5, 'consumption_leisure.png'],
-            [9, 'linear_demand_supply.png']
+            [9, 'linear_demand_supply.png'],
+            [10, 'non-linear_demand_supply.png'],
         ];
 
         return (
