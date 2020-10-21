@@ -580,6 +580,8 @@ class NonLinearDemandSupplyGraph extends Graph {
             };
         }
 
+        this.myfunc = f;
+
         this.l2 = this.board.create('functiongraph', [f, -30, 30], {
             name: this.options.gLine2Label,
             withLabel: true,
@@ -700,6 +702,49 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
             size: 0,
             visible: false
         });
+
+        const invisibleFunc = this.board.create(
+            'functiongraph', [this.myfunc, 0, this.intersection.Y()], {
+                visible: false,
+                withLabel: false,
+                strokeWidth: 0,
+                recursionDepthLow: 8,
+                recursionDepthHigh: 15
+            });
+
+        const curve = this.board.create(
+            'curve', [[], []], {
+                strokeWidth: 0,
+                fillColor: 'yellow',
+                fillOpacity: 0.3,
+                isDraggable: false,
+                draggable: false
+            });
+
+        const me = this;
+        curve.updateDataArray = function() {
+            // Start with (0, 0)
+            this.dataX = [0];
+            this.dataY = [me.intersection.Y()];
+
+            // Copy all points from curve2
+            this.dataX = this.dataX.concat(
+                invisibleFunc.points.map(function(p) {
+                    return p.usrCoords[1] + me.options.gLine2OffsetX;
+                })
+            );
+
+            this.dataY = this.dataY.concat(
+                invisibleFunc.points.map(function(p) {
+                    return p.usrCoords[2] + me.options.gLine2OffsetY;
+                })
+            );
+
+            // Close the curve by adding (0,0)
+            this.dataX.push(0);
+            this.dataY.push(me.intersection.Y());
+        };
+        this.board.update();
 
         this.drawTriangleB();
         this.drawTriangleC();
