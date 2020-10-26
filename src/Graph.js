@@ -393,7 +393,8 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
     drawTriangleA() {
         const p1 = this.board.create('point', [
             0,
-            5 + getOffset(this.l2.getSlope(), this.options.gLine2OffsetY, 0)
+            // getRise() returns the y-intercept
+            this.l2.getRise()
         ], invisiblePointOptions);
 
         const p2 = this.board.create('point', [
@@ -419,7 +420,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
 
         const p2 = this.board.create('point', [
             0,
-            this.options.gLine1OffsetY + this.options.l1SubmissionOffset
+            this.l1.getRise()
         ], invisiblePointOptions);
 
         this.board.create('polygon', [
