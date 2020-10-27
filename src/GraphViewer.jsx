@@ -86,8 +86,8 @@ export default class GraphViewer extends React.Component {
             instructionsEl = <p className="lead text-secondary" dangerouslySetInnerHTML={{__html:instructions}}></p>;
         }
 
-        if (this.props.gType === 0) {
-            // Demand-Supply
+        if (this.props.gType === 0 || this.props.gType === 9) {
+            // Demand-Supply, possibly AUC (area under curve)
             return (
                 <div className="GraphViewer">
                     {titleEl}
@@ -165,8 +165,8 @@ export default class GraphViewer extends React.Component {
                     </form>
                 </div>
             );
-        } else if (this.props.gType === 1) {
-            // non-linear graph
+        } else if (this.props.gType === 1 || this.props.gType === 10) {
+            // Non-Linear Demand Supply, possibly AUC (area under curve)
             return (
                 <div className="GraphViewer">
                         {titleEl}
