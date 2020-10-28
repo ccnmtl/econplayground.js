@@ -223,7 +223,7 @@ const displayGraphType = function(gType) {
             name = 'Non-Linear Demand and Supply: AUC';
             break;
         case 11:
-            name = 'Consumption-Saving: AUC';
+            name = 'Optimal Choice and Budget Constraints';
             break;
         default:
             break;
