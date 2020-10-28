@@ -11,15 +11,22 @@ export default class GraphPicker extends React.Component {
         this.renderGraphOption = this.renderGraphOption.bind(this);
     }
 
-    renderGraphOption(n, imgname, idx) {
+    renderGraphOption(n, imgname, isBeta, idx) {
         return (
             <div className="card" key={idx}>
                 <a href="#"
                    title={displayGraphType(n)}
                    onClick={() => this.props.onSelectGraph(n)}>
+
                     <img className="img-fluid" src={this.mediaPrefix + imgname} />
+                    {isBeta && (
+                        <span className="badge badge-warning ml-2 mt-2">
+                            Beta
+                        </span>
+                    )}
                 </a>
                 <div className="card-body">
+
                     <h5 className="card-title">
                         <a href="#"
                            title={displayGraphType(n)}
@@ -39,14 +46,14 @@ export default class GraphPicker extends React.Component {
 
         const me = this;
         const graphs = [
-            [1, 'non-linear_demand_supply.png'],
-            [8, 'ADAS.png'],
-            [3, 'cobb_douglas.png'],
-            [7, 'consumption_saving.png'],
-            [5, 'consumption_leisure.png'],
-            [9, 'linear_demand_supply.png'],
-            [10, 'non-linear_demand_supply.png'],
-            [11, 'consumption_saving.png'],
+            [1, 'non-linear_demand_supply.png', false],
+            [8, 'ADAS.png', false],
+            [3, 'cobb_douglas.png', false],
+            [7, 'consumption_saving.png', false],
+            [5, 'consumption_leisure.png', false],
+            [9, 'linear_demand_supply.png', true],
+            [10, 'non-linear_demand_supply.png', true],
+            [11, 'consumption_saving.png', true],
         ];
 
         return (
@@ -73,8 +80,9 @@ export default class GraphPicker extends React.Component {
                     </div>
 
                     {
-                        graphs.map(function(pair, idx) {
-                            return me.renderGraphOption(pair[0], pair[1], idx);
+                        graphs.map(function(g, idx) {
+                            return me.renderGraphOption(
+                                g[0], g[1], g[2], idx);
                         })
                     }
                 </div>
