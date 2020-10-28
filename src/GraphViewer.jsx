@@ -420,7 +420,7 @@ export default class GraphViewer extends React.Component {
                     </form>
                 </div>
             );
-        } else if (this.props.gType === 7) {
+        } else if (this.props.gType === 7 || this.props.gType === 11) {
             // Consumption-Saving
             return (
                 <div className="GraphViewer">

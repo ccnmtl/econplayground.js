@@ -1083,6 +1083,19 @@ const mkConsumptionSaving = function(board, options) {
     return g;
 };
 
+class ConsumptionSavingGraphAUC extends ConsumptionSavingGraph {
+    make() {
+        super.make();
+    }
+}
+
+const mkConsumptionSavingAUC = function(board, options) {
+    let g = new ConsumptionSavingGraphAUC(board, options);
+    g.make();
+    g.postMake();
+    return g;
+};
+
 /**
  * Aggregate Demand - Aggregate Supply graph.
  */
@@ -1322,5 +1335,6 @@ export const graphTypes = [
     null, mkConsumptionLeisure,
     null, mkConsumptionSaving,
     mkADAS,
-    mkDemandSupplyAUC, mkNonLinearDemandSupplyAUC
+    mkDemandSupplyAUC, mkNonLinearDemandSupplyAUC,
+    mkConsumptionSavingAUC
 ];
