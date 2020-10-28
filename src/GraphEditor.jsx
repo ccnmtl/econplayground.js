@@ -497,7 +497,7 @@ export default class GraphEditor extends React.Component {
                     {editRow}
                 </form>
             </div>;
-        } else if (this.props.gType === 7) {
+        } else if (this.props.gType === 7 || this.props.gType === 11) {
             // Consumption Savings
             return <div className="GraphEditor">
                 {this.title()}
