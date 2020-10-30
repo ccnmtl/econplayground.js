@@ -1200,7 +1200,7 @@ class ConsumptionSavingGraph extends Graph {
                 strokeColor: 'black'
             });
 
-            this.board.create('intersection', [l1, l2], {
+            this.intersection = this.board.create('intersection', [l1, l2], {
                 name: this.options.gIntersectionLabel,
                 size: 1,
                 fixed: true,
@@ -1218,14 +1218,35 @@ const mkConsumptionSaving = function(board, options) {
     return g;
 };
 
-class ConsumptionSavingGraphAUC extends ConsumptionSavingGraph {
+class OptimalChoiceGraph extends ConsumptionSavingGraph {
+    drawArc(intersection) {
+        const x = intersection.X();
+        const y = intersection.Y();
+
+        const p1 = board.create(
+            'point',
+            [x, y + 6],
+            invisiblePointOptions);
+        const p2 = board.create(
+            'point',
+            [x, y],
+            invisiblePointOptions);
+        const p3 = board.create(
+            'point',
+            [x + 6, y],
+            invisiblePointOptions);
+
+        this.board.create('circumcirclearc', [p1, p2, p3]);
+    }
     make() {
         super.make();
+
+        this.drawArc(this.intersection);
     }
 }
 
-const mkConsumptionSavingAUC = function(board, options) {
-    let g = new ConsumptionSavingGraphAUC(board, options);
+const mkOptimalChoice = function(board, options) {
+    let g = new OptimalChoiceGraph(board, options);
     g.make();
     g.postMake();
     return g;
@@ -1471,5 +1492,5 @@ export const graphTypes = [
     null, mkConsumptionSaving,
     mkADAS,
     mkDemandSupplyAUC, mkNonLinearDemandSupplyAUC,
-    mkConsumptionSavingAUC
+    mkOptimalChoice
 ];
