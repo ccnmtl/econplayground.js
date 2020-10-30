@@ -416,7 +416,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             ...triangleOptions
         });
         drawLabel(this.board, points, 'A');
-        this.triangleAArea = forceFloat(p.Area());
+        return forceFloat(p.Area());
     }
     drawTriangleB() {
         const p1 = this.board.create('point', [
@@ -442,7 +442,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             ...triangleOptions
         });
         drawLabel(this.board, points, 'B');
-        this.triangleBArea = forceFloat(p.Area());
+        return forceFloat(p.Area());
     }
     drawTriangleC() {
         const p1 = this.board.create('point', [
@@ -466,7 +466,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             ...triangleOptions
         });
         drawLabel(this.board, points, 'C');
-        this.triangleCArea = forceFloat(p.Area());
+        return forceFloat(p.Area());
     }
 
     make() {
@@ -483,11 +483,11 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             visible: false
         });
 
-        this.drawTriangleA();
-        this.drawTriangleB();
-        this.drawTriangleC();
         this.options.gLinearDemandSupplyAUCArea(
-            this.triangleAArea, this.triangleBArea, this.triangleCArea);
+            this.drawTriangleA(),
+            this.drawTriangleB(),
+            this.drawTriangleC()
+        );
     }
 }
 
