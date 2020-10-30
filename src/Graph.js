@@ -6,6 +6,7 @@
 
 import { defaultGraph } from './GraphMapping';
 import { forceFloat, getOffset, getXIntercept } from './utils';
+import { drawLabel } from './jsxgraphUtils';
 
 
 const applyDefaults = function(obj, defaults) {
@@ -402,15 +403,19 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             this.intersection.Y()
         ], invisiblePointOptions);
 
-        this.board.create('polygon', [
-            p1, p2, this.intersection
-        ], {
-            name: 'A',
-            withLabel: true,
+        const p3 = this.board.create('point', [
+            this.intersection.X(),
+            this.intersection.Y()
+        ], invisiblePointOptions);
+
+        const points = [p1, p2, p3];
+        this.board.create('polygon', points, {
+            withLabel: false,
             fillColor: 'purple',
             highlightFillColor: 'purple',
             ...triangleOptions
         });
+        drawLabel(this.board, points, 'A');
     }
     drawTriangleB() {
         const p1 = this.board.create('point', [
@@ -423,15 +428,19 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             this.l1.getRise()
         ], invisiblePointOptions);
 
-        this.board.create('polygon', [
-            this.intersection, p1, p2
-        ], {
-            name: 'B',
-            withLabel: true,
+        const p3 = this.board.create('point', [
+            this.intersection.X(),
+            this.intersection.Y()
+        ], invisiblePointOptions);
+
+        const points = [p3, p1, p2];
+        this.board.create('polygon', points, {
+            withLabel: false,
             fillColor: 'lime',
             highlightFillColor: 'lime',
             ...triangleOptions
         });
+        drawLabel(this.board, points, 'B');
     }
     drawTriangleC() {
         const p1 = this.board.create('point', [
@@ -442,15 +451,19 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         const xIntercept = getXIntercept(this.intersection, this.l1.getSlope());
         const p2 = this.board.create('point', [xIntercept, 0], invisiblePointOptions);
 
-        this.board.create('polygon', [
-            this.intersection, p1, p2
-        ], {
-            name: 'C',
-            withLabel: true,
+        const p3 = this.board.create('point', [
+            this.intersection.X(),
+            this.intersection.Y()
+        ], invisiblePointOptions);
+
+        const points = [p3, p1, p2];
+        this.board.create('polygon', points, {
+            withLabel: false,
             fillColor: 'red',
             highlightFillColor: 'red',
             ...triangleOptions
         });
+        drawLabel(this.board, points, 'C');
     }
 
     make() {
@@ -658,15 +671,19 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
                 this.options.l1SubmissionOffset,
         ], invisiblePointOptions);
 
-        this.board.create('polygon', [
-            this.intersection, p1, p2
-        ], {
-            name: 'B',
-            withLabel: true,
+        const p3 = this.board.create('point', [
+            this.intersection.X(),
+            this.intersection.Y()
+        ], invisiblePointOptions);
+
+        const points = [p3, p2, p1];
+        this.board.create('polygon', points, {
+            withLabel: false,
             fillColor: 'lime',
             highlightFillColor: 'lime',
             ...triangleOptions
         });
+        drawLabel(this.board, points, 'B');
     }
     drawTriangleC() {
         const p1 = this.board.create('point', [
@@ -679,15 +696,19 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         const p2 = this.board.create(
             'point', [xIntercept, 0], invisiblePointOptions);
 
-        this.board.create('polygon', [
-            this.intersection, p1, p2
-        ], {
-            name: 'C',
-            withLabel: true,
+        const p3 = this.board.create('point', [
+            this.intersection.X(),
+            this.intersection.Y()
+        ], invisiblePointOptions);
+
+        const points = [p3, p2, p1];
+        this.board.create('polygon', points, {
+            withLabel: false,
             fillColor: 'red',
             highlightFillColor: 'red',
             ...triangleOptions
         });
+        drawLabel(this.board, points, 'C');
     }
 
     make() {
