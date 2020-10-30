@@ -6,7 +6,7 @@
 
 import { defaultGraph } from './GraphMapping';
 import { forceFloat, getOffset, getXIntercept } from './utils';
-import { drawLabel } from './jsxgraphUtils';
+import { drawLabel, drawPolygon } from './jsxgraphUtils';
 
 
 const applyDefaults = function(obj, defaults) {
@@ -409,13 +409,8 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p1, p2, p3];
-        this.board.create('polygon', points, {
-            withLabel: false,
-            fillColor: 'purple',
-            highlightFillColor: 'purple',
-            ...triangleOptions
-        });
-        drawLabel(this.board, points, 'A');
+
+        return drawPolygon(this.board, points, 'A', 'purple');
     }
     drawTriangleB() {
         const p1 = this.board.create('point', [
@@ -434,13 +429,8 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p3, p1, p2];
-        this.board.create('polygon', points, {
-            withLabel: false,
-            fillColor: 'lime',
-            highlightFillColor: 'lime',
-            ...triangleOptions
-        });
-        drawLabel(this.board, points, 'B');
+
+        return drawPolygon(this.board, points, 'B', 'lime');
     }
     drawTriangleC() {
         const p1 = this.board.create('point', [
@@ -457,13 +447,8 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p3, p1, p2];
-        this.board.create('polygon', points, {
-            withLabel: false,
-            fillColor: 'red',
-            highlightFillColor: 'red',
-            ...triangleOptions
-        });
-        drawLabel(this.board, points, 'C');
+
+        return drawPolygon(this.board, points, 'C', 'red');
     }
 
     make() {
@@ -480,9 +465,15 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             visible: false
         });
 
-        this.drawTriangleA();
-        this.drawTriangleB();
-        this.drawTriangleC();
+        const triangleA = this.drawTriangleA();
+        const triangleB = this.drawTriangleB();
+        const triangleC = this.drawTriangleC();
+
+        this.options.handleAreaUpdate(
+            forceFloat(triangleA.Area()),
+            forceFloat(triangleB.Area()),
+            forceFloat(triangleC.Area())
+        );
     }
 }
 
