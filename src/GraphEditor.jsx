@@ -9,16 +9,19 @@ import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
+import AUCDisplay from './AUCDisplay';
 import {displayGraphType, handleFormUpdate, getCohortId} from './utils';
 
 export default class GraphEditor extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            gLinearDemandSupplyAUCArea: []
+            areaA: null,
+            areaB: null,
+            areaC: null,
         }
 
-        this.handleGLinearDemandSupplyAUCArea = this.handleGLinearDemandSupplyAUCArea.bind(this);
+        this.handleAreaUpdate = this.handleAreaUpdate.bind(this);
     }
     title() {
         return (
@@ -30,9 +33,12 @@ export default class GraphEditor extends React.Component {
             </div>
         );
     }
-    handleGLinearDemandSupplyAUCArea(areaA, areaB, areaC) {
+    handleAreaUpdate(areaA, areaB, areaC) {
+        // Handles area updates for all types of AUC graphs
         this.setState({
-            gLinearDemandSupplyAUCArea: [areaA, areaB, areaC]
+            areaA: areaA,
+            areaB: areaB,
+            areaC: areaC
         })
     }
     render() {
@@ -126,15 +132,12 @@ export default class GraphEditor extends React.Component {
                                         gCobbDouglasK={this.props.gCobbDouglasK}
                                         gCobbDouglasKName={this.props.gCobbDouglasKName}
                                         gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                                        gLinearDemandSupplyAUCArea={this.handleGLinearDemandSupplyAUCArea}
+                                        handleAreaUpdate={this.handleAreaUpdate}
                                     />
-                                    {this.state.gLinearDemandSupplyAUCArea.length > 0 && (
-                                        <div>
-                                            Area A: {this.state.gLinearDemandSupplyAUCArea[0]}&nbsp;
-                                            Area B: {this.state.gLinearDemandSupplyAUCArea[1]}&nbsp;
-                                            Area C: {this.state.gLinearDemandSupplyAUCArea[2]}
-                                        </div>
-                                    )}
+                                    <AUCDisplay
+                                        areaA={this.state.areaA}
+                                        areaB={this.state.areaB}
+                                        areaC={this.state.areaC}/>
                                     <CommonGraphEditor
                                         gTitle={this.props.gTitle}
                                         gSummary={this.props.gSummary}

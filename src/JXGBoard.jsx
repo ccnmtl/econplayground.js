@@ -212,7 +212,7 @@ export default class JXGBoard extends React.Component {
                 isSubmitted: options.isSubmitted,
                 locked: this.props.locked,
                 shadow: this.props.shadow,
-                gLinearDemandSupplyAUCArea: this.props.gLinearDemandSupplyAUCArea
+                handleAreaUpdate: this.props.handleAreaUpdate
             });
         }
     }
@@ -575,5 +575,5 @@ JXGBoard.propTypes = {
 
     id: PropTypes.string.isRequired,
     locked: PropTypes.bool,
-    gLinearDemandSupplyAUCArea: PropTypes.func
+    handleAreaUpdate: PropTypes.func
 };

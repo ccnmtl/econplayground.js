@@ -483,7 +483,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             visible: false
         });
 
-        this.options.gLinearDemandSupplyAUCArea(
+        this.options.handleAreaUpdate(
             this.drawTriangleA(),
             this.drawTriangleB(),
             this.drawTriangleC()
