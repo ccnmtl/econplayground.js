@@ -12,6 +12,14 @@ import JXGBoard from './JXGBoard';
 import {displayGraphType, handleFormUpdate, getCohortId} from './utils';
 
 export default class GraphEditor extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            gLinearDemandSupplyAUCArea: []
+        }
+
+        this.handleGLinearDemandSupplyAUCArea = this.handleGLinearDemandSupplyAUCArea.bind(this);
+    }
     title() {
         return (
             <div>
@@ -21,6 +29,11 @@ export default class GraphEditor extends React.Component {
                 </p>
             </div>
         );
+    }
+    handleGLinearDemandSupplyAUCArea(areaA, areaB, areaC) {
+        this.setState({
+            gLinearDemandSupplyAUCArea: [areaA, areaB, areaC]
+        })
     }
     render() {
         if (!this.props.showing) {
@@ -113,7 +126,15 @@ export default class GraphEditor extends React.Component {
                                         gCobbDouglasK={this.props.gCobbDouglasK}
                                         gCobbDouglasKName={this.props.gCobbDouglasKName}
                                         gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                                        gLinearDemandSupplyAUCArea={this.handleGLinearDemandSupplyAUCArea}
                                     />
+                                    {this.state.gLinearDemandSupplyAUCArea.length > 0 && (
+                                        <div>
+                                            Area A: {this.state.gLinearDemandSupplyAUCArea[0]}&nbsp;
+                                            Area B: {this.state.gLinearDemandSupplyAUCArea[1]}&nbsp;
+                                            Area C: {this.state.gLinearDemandSupplyAUCArea[2]}
+                                        </div>
+                                    )}
                                     <CommonGraphEditor
                                         gTitle={this.props.gTitle}
                                         gSummary={this.props.gSummary}

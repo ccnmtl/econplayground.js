@@ -211,7 +211,8 @@ export default class JXGBoard extends React.Component {
                 submission: options.submission,
                 isSubmitted: options.isSubmitted,
                 locked: this.props.locked,
-                shadow: this.props.shadow
+                shadow: this.props.shadow,
+                gLinearDemandSupplyAUCArea: this.props.gLinearDemandSupplyAUCArea
             });
         }
     }
@@ -470,7 +471,8 @@ export default class JXGBoard extends React.Component {
             l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
             submission: this.props.submission,
             isSubmitted: !!this.props.submission,
-            shadow: this.props.shadow
+            shadow: this.props.shadow,
+            gLinearDemandSupplyAUCArea: this.props.gLinearDemandSupplyAUCArea
         });
     }
 
@@ -572,5 +574,6 @@ JXGBoard.propTypes = {
     gFunctionChoice: PropTypes.number,
 
     id: PropTypes.string.isRequired,
-    locked: PropTypes.bool
+    locked: PropTypes.bool,
+    gLinearDemandSupplyAUCArea: PropTypes.func
 };

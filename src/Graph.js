@@ -409,13 +409,14 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p1, p2, p3];
-        this.board.create('polygon', points, {
+        const p = this.board.create('polygon', points, {
             withLabel: false,
             fillColor: 'purple',
             highlightFillColor: 'purple',
             ...triangleOptions
         });
         drawLabel(this.board, points, 'A');
+        this.triangleAArea = forceFloat(p.Area());
     }
     drawTriangleB() {
         const p1 = this.board.create('point', [
@@ -434,13 +435,14 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p3, p1, p2];
-        this.board.create('polygon', points, {
+        const p = this.board.create('polygon', points, {
             withLabel: false,
             fillColor: 'lime',
             highlightFillColor: 'lime',
             ...triangleOptions
         });
         drawLabel(this.board, points, 'B');
+        this.triangleBArea = forceFloat(p.Area());
     }
     drawTriangleC() {
         const p1 = this.board.create('point', [
@@ -457,13 +459,14 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p3, p1, p2];
-        this.board.create('polygon', points, {
+        const p = this.board.create('polygon', points, {
             withLabel: false,
             fillColor: 'red',
             highlightFillColor: 'red',
             ...triangleOptions
         });
         drawLabel(this.board, points, 'C');
+        this.triangleCArea = forceFloat(p.Area());
     }
 
     make() {
@@ -483,6 +486,8 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         this.drawTriangleA();
         this.drawTriangleB();
         this.drawTriangleC();
+        this.options.gLinearDemandSupplyAUCArea(
+            this.triangleAArea, this.triangleBArea, this.triangleCArea);
     }
 }
 
