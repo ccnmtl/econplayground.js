@@ -9,7 +9,7 @@ import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
-import AUCDisplay from './AUCDisplay';
+import AreaDisplay from './AreaDisplay';
 import {displayGraphType, handleFormUpdate, getCohortId} from './utils';
 
 export default class GraphEditor extends React.Component {
@@ -134,7 +134,7 @@ export default class GraphEditor extends React.Component {
                                         gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                                         handleAreaUpdate={this.handleAreaUpdate}
                                     />
-                                    <AUCDisplay
+                                    <AreaDisplay
                                         areaA={this.state.areaA}
                                         areaB={this.state.areaB}
                                         areaC={this.state.areaC}/>

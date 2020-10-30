@@ -471,8 +471,7 @@ export default class JXGBoard extends React.Component {
             l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
             submission: this.props.submission,
             isSubmitted: !!this.props.submission,
-            shadow: this.props.shadow,
-            gLinearDemandSupplyAUCArea: this.props.gLinearDemandSupplyAUCArea
+            shadow: this.props.shadow
         });
     }
 
