@@ -9,6 +9,7 @@ export default class GraphPicker extends React.Component {
             'amazonaws.com/media/img/';
 
         this.renderGraphOption = this.renderGraphOption.bind(this);
+        this.b1 = React.createRef();
     }
 
     renderGraphOption(n, imgname, isBeta, idx) {
@@ -64,7 +65,7 @@ export default class GraphPicker extends React.Component {
                     <div className="card">
                         <a href="#"
                            title="Linear Demand and Supply"
-                           ref={(b1) => { this.b1 = b1;  }}
+                           ref={this.b1}
                            onClick={() => this.props.onSelectGraph(0)}>
                             <img className="img-fluid" src={this.mediaPrefix + 'linear_demand_supply.png'} />
                         </a>

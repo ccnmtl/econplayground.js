@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MathJax from 'react-mathjax2';
+import {MathComponent} from 'mathjax-react';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
 import {handleFormUpdate} from '../utils';
@@ -16,8 +16,8 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
         };
     }
     render() {
-        const func1 = `MP_N = (1 - α)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^α N^{-α}`;
-        const func2 = `MP_${this.props.gCobbDouglasKName} = α${this.props.gCobbDouglasAName}K^{α - 1} N^{1 - α}`;
+        const func1 = String.raw`MP_N = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha N^{-\alpha}`;
+        const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} N^{1 - \alpha}`;
         return (
             <div>
                 {this.props.isInstructor && (
@@ -35,13 +35,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                            checked={this.props.gFunctionChoice === 0} />
 
                                     <label className="form-check-label" htmlFor="gFunctionChoice1">
-                                        <MathJax.Context
-                                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"
-                                            input="tex"
-                                            styles={{'background-color': 'red'}}
-                                            options={this.mathjaxOptions}>
-                                            <MathJax.Node>{func1}</MathJax.Node>
-                                        </MathJax.Context>
+                                        <MathComponent tex={func1} />
                                     </label>
                                 </div>
                             </div>
@@ -55,12 +49,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                            value={1}
                                            checked={this.props.gFunctionChoice === 1} />
                                     <label className="form-check-label" htmlFor="gFunctionChoice2">
-                                        <MathJax.Context
-                                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"
-                                            input="tex"
-                                            options={this.mathjaxOptions}>
-                                            <MathJax.Node>{func2}</MathJax.Node>
-                                        </MathJax.Context>
+                                        <MathComponent tex={func2} />
                                     </label>
                                 </div>
                             </div>

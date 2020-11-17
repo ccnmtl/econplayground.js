@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MathJax from 'react-mathjax2';
+import {MathComponent} from 'mathjax-react';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
 import {handleFormUpdate} from '../utils';
 
 export default class ConsumptionSavingEditor extends React.Component {
     render() {
-        const tex = 'c_2 = y_2 + (1 + r) (y_1 + W - c_1)';
+        const tex = String.raw`c_2 = y_2 + (1 + r) (y_1 + W - c_1)`;
 
         return (
             <div>
@@ -15,15 +15,7 @@ export default class ConsumptionSavingEditor extends React.Component {
                         <React.Fragment>
                             <h2>Function</h2>
                             <div className="row">
-                                <MathJax.Context
-                                    script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"
-                                    input="tex"
-                                    options={{
-                                        displayAlign: 'left',
-                                        messageStyle: 'none'
-                                    }}>
-                                    <MathJax.Node>{tex}</MathJax.Node>
-                                </MathJax.Context>
+                                <MathComponent tex={tex} />
                             </div>
                         </React.Fragment>
                 }

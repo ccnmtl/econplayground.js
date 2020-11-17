@@ -15,26 +15,31 @@ class Editor extends Component {
         };
 
         Object.assign(this.state, defaultGraph);
+
+        this.test = React.createRef();
+        this.backbutton = React.createRef();
+        this.gp = React.createRef();
+        this.ge = React.createRef();
     }
     render() {
         return (
             <div className="Editor">
-                <div className="Editor-container" ref={(test) => { this.test = test; }}>
+                <div className="Editor-container" ref={this.test}>
                     <div className="alert alert-danger"
                          hidden={this.state.alertText ? false : true}
                          role="alert">
                         {this.state.alertText}
                     </div>
                     <BackButton
-                         ref={(backbutton) => { this.backbutton = backbutton; }}
-                         showing={this.state.step !== 0}
-                         onClick={this.reset.bind(this)} />
+                        ref={this.backbutton}
+                        showing={this.state.step !== 0}
+                        onClick={this.reset.bind(this)} />
                     <GraphPicker
-                         ref={(gp) => { this.gp = gp; }}
-                         showing={this.state.step === 0}
-                         onSelectGraph={this.onSelectGraph.bind(this)} />
+                        ref={this.gp}
+                        showing={this.state.step === 0}
+                        onSelectGraph={this.onSelectGraph.bind(this)} />
                     <GraphEditor
-                         ref={(ge) => { this.ge = ge; }}
+                        ref={this.ge}
                         showing={this.state.step === 1}
                         gTitle={this.state.gTitle}
                         gSummary={this.state.gSummary}

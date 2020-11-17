@@ -24,6 +24,9 @@ class Viewer extends Component {
         if (window.location.href.match(/submitted=1/)) {
             this.state.alertText = 'Submitted.';
         }
+
+        this.gv = React.createRef();
+        this.ge = React.createRef();
     }
 
     render() {
@@ -35,7 +38,7 @@ class Viewer extends Component {
                 {this.state.alertText}
             </div>
                 <GraphEditor
-            ref={(ge) => { this.ge = ge; }}
+            ref={this.ge}
             showing={true}
             gId={this.state.gId}
             gTitle={this.state.gTitle}
@@ -117,7 +120,7 @@ class Viewer extends Component {
                 {this.state.alertText}
             </div>
                 <GraphViewer
-            ref={(gv) => { this.gv = gv; }}
+            ref={this.gv}
             gId={this.state.gId}
             gTitle={this.state.gTitle}
             gInstructions={this.state.gInstructions}
