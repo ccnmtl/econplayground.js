@@ -263,7 +263,7 @@ export default class GraphViewer extends React.Component {
                     </form>
                 </div>
             );
-        } else if (this.props.gType === 3) {
+        } else if (this.props.gType === 3 || this.props.gType === 12) {
             return (
                 <div className="GraphViewer">
                     {titleEl}

@@ -300,7 +300,7 @@ export default class GraphEditor extends React.Component {
                     {editRow}
                 </form>
             </div>;
-        } else if (this.props.gType === 3) {
+        } else if (this.props.gType === 3 || this.props.gType === 12) {
             // Cobb-Douglas
             return <div className="GraphEditor">
                 {this.title()}
