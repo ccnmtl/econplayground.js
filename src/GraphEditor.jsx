@@ -19,7 +19,7 @@ export default class GraphEditor extends React.Component {
             areaA: null,
             areaB: null,
             areaC: null,
-        }
+        };
 
         this.handleAreaUpdate = this.handleAreaUpdate.bind(this);
     }
@@ -39,7 +39,7 @@ export default class GraphEditor extends React.Component {
             areaA: areaA,
             areaB: areaB,
             areaC: areaC
-        })
+        });
     }
     render() {
         if (!this.props.showing) {

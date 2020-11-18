@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MathJax from 'react-mathjax2';
+import {MathComponent} from 'mathjax-react';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
 import {handleFormUpdate} from '../utils';
 
 export default class CobbDouglasEditor extends React.Component {
     render() {
-        let tex = '= ' + this.props.gCobbDouglasAName +
-            this.props.gCobbDouglasKName +
-            '^α' + this.props.gCobbDouglasLName +
-            '^{1 - α}';
+        let tex = String.raw`= ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha ${this.props.gCobbDouglasLName}^{1 - \alpha}`;
 
         if (!this.props.isInstructor) {
-            tex = this.props.gCobbDouglasYName + ' ' + tex;
+            tex = String.raw`${this.props.gCobbDouglasYName} tex`;
         }
 
         return (
@@ -33,15 +30,7 @@ export default class CobbDouglasEditor extends React.Component {
                             onChange={handleFormUpdate.bind(this)}
                         />
                     )}
-                    <MathJax.Context
-                        script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"
-                        input="tex"
-                        options={{
-                            displayAlign: 'left',
-                            messageStyle: 'none'
-                        }}>
-                        <MathJax.Node>{tex}</MathJax.Node>
-                    </MathJax.Context>
+                    <MathComponent tex={tex} />
                 </div>
                 <hr/>
 
