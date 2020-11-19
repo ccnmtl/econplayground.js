@@ -492,8 +492,9 @@ class NonLinearDemandSupplyGraph extends Graph {
         if (this.options.shadow && this.options.gDisplayShadow) {
             // Display the initial curves set by the instructor.
             const f1Shadow = function(x) {
-                const slope = me.options.gLine1SlopeInitial || 1;
-                return (x - 2.5) * slope + 2.5;
+                const slope = me.options.gLine1SlopeInitial;
+                const result = (x - me.options.gLine1OffsetXInitial) * slope;
+                return result + me.options.gLine1OffsetYInitial;
             };
 
             const l1fShadow = this.board.create(
@@ -510,18 +511,24 @@ class NonLinearDemandSupplyGraph extends Graph {
                 });
 
             let f2Shadow = function(x) {
-                return (1 - alpha) *
-                    (me.options.gCobbDouglasAInitial *
-                     me.options.gCobbDouglasKInitial ** alpha) *
-                    (x ** -alpha);
+                const result = (1 - alpha) *
+                      (me.options.gCobbDouglasAInitial *
+                       me.options.gCobbDouglasKInitial ** alpha) *
+                      ((x - me.options.gLine2OffsetXInitial) **
+                       -alpha);
+
+                return result + me.options.gLine2OffsetYInitial;
             };
 
             if (this.options.gFunctionChoice === 1) {
                 f2Shadow = function(x) {
-                    return alpha *
-                        (me.options.gCobbDouglasAInitial *
-                         x ** (alpha - 1)) *
-                        (me.options.gCobbDouglasKInitial ** (1 - alpha));
+                    const result = alpha *
+                          (me.options.gCobbDouglasAInitial *
+                           (x - me.options.gLine2OffsetXInitial)
+                           ** (alpha - 1)) *
+                          (me.options.gCobbDouglasKInitial ** (1 - alpha));
+
+                    return result + me.options.gLine2OffsetYInitial;
                 };
             }
 
@@ -538,28 +545,16 @@ class NonLinearDemandSupplyGraph extends Graph {
                     recursionDepthHigh: 15
                 });
 
-            l1fShadow.setPosition(window.JXG.COORDS_BY_USER, [
-                forceFloat(this.options.gLine1OffsetXInitial),
-                forceFloat(this.options.gLine1OffsetYInitial)
-            ]);
-            l2fShadow.setPosition(window.JXG.COORDS_BY_USER, [
-                forceFloat(this.options.gLine2OffsetXInitial),
-                forceFloat(this.options.gLine2OffsetYInitial)
-            ]);
-            // This is necessary, because otherwise the setPosition call
-            // won't have an effect until the graph is interacted with.
-            l1fShadow.fullUpdate(true);
-            l2fShadow.fullUpdate(true);
-
             this.showIntersection(l1fShadow, l2fShadow, true);
         }
 
-        const f1 = function(x) {
+        const l1func = function(x) {
             const slope = me.options.gLine1Slope;
-            return (x - 2.5) * slope + 2.5;
+            const result = (x - me.options.gLine1OffsetX) * slope;
+            return result + me.options.gLine1OffsetY;
         };
 
-        this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
+        this.l1 = this.board.create('functiongraph', [l1func, -30, 30], {
             name: this.options.gLine1Label,
             withLabel: true,
             strokeWidth: 2,
@@ -569,25 +564,36 @@ class NonLinearDemandSupplyGraph extends Graph {
             recursionDepthHigh: 15
         });
 
-        let f = function(x) {
-            return (1 - alpha) *
+        let l2func = function(x) {
+            // Apply the X offset to x before we do
+            // anything else with it, to shift the graph
+            // left and right.
+            const result = (1 - alpha) *
                 (me.options.gCobbDouglasA *
                  me.options.gCobbDouglasK ** alpha) *
-                (x ** -alpha);
+                  ((x - me.options.gLine2OffsetX) **
+                   -alpha);
+
+            // Sum the y offset with the result
+            // to shift it up/down
+            return result + me.options.gLine2OffsetY;
         };
 
         if (this.options.gFunctionChoice === 1) {
-            f = function(x) {
-                return alpha *
+            l2func = function(x) {
+                const result = alpha *
                     (me.options.gCobbDouglasA *
-                     x ** (alpha - 1)) *
+                     (x - me.options.gLine2OffsetX)
+                     ** (alpha - 1)) *
                     (me.options.gCobbDouglasK ** (1 - alpha));
+
+                return result + me.options.gLine2OffsetY;
             };
         }
 
-        this.myfunc = f;
+        this.l2func = l2func;
 
-        this.l2 = this.board.create('functiongraph', [f, -30, 30], {
+        this.l2 = this.board.create('functiongraph', [l2func, -30, 30], {
             name: this.options.gLine2Label,
             withLabel: true,
             strokeWidth: 2,
@@ -597,27 +603,13 @@ class NonLinearDemandSupplyGraph extends Graph {
             recursionDepthHigh: 15
         });
 
-        this.l1.setPosition(window.JXG.COORDS_BY_USER, [
-            forceFloat(this.options.gLine1OffsetX),
-            forceFloat(this.options.gLine1OffsetY)
-        ]);
-        this.l2.setPosition(window.JXG.COORDS_BY_USER, [
-            forceFloat(this.options.gLine2OffsetX),
-            forceFloat(this.options.gLine2OffsetY)
-        ]);
-
-        // This is necessary, because otherwise the setPosition call
-        // won't have an effect until the graph is interacted with.
-        this.l1.fullUpdate(true);
-        this.l2.fullUpdate(true);
-
         this.l1.on('up', function() {
             const xOffset = me.l1.transformations[0].matrix[1][0];
             const yOffset = me.l1.transformations[0].matrix[2][0];
             const offsetEvt = new CustomEvent('l1offset', {
                 detail: {
-                    x: xOffset,
-                    y: yOffset
+                    x: me.options.gLine1OffsetX + xOffset,
+                    y: me.options.gLine1OffsetY + yOffset
                 }
             });
             document.dispatchEvent(offsetEvt);
@@ -626,10 +618,11 @@ class NonLinearDemandSupplyGraph extends Graph {
         this.l2.on('up', function() {
             const xOffset = me.l2.transformations[0].matrix[1][0];
             const yOffset = me.l2.transformations[0].matrix[2][0];
+
             const offsetEvt = new CustomEvent('l2offset', {
                 detail: {
-                    x: xOffset,
-                    y: yOffset
+                    x: me.options.gLine2OffsetX + xOffset,
+                    y: me.options.gLine2OffsetY + yOffset
                 }
             });
             document.dispatchEvent(offsetEvt);
@@ -649,6 +642,50 @@ const mkNonLinearDemandSupply = function(board, options) {
 };
 
 class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
+    drawAreaA() {
+        const invisibleFunc = this.board.create(
+            'functiongraph', [this.l2func, 0, this.intersection.X()], {
+                visible: false,
+                withLabel: false,
+                strokeWidth: 0,
+                recursionDepthLow: 8,
+                recursionDepthHigh: 15
+            });
+
+        const curve = this.board.create(
+            'curve', [[], []], {
+                strokeWidth: 0,
+                fillColor: 'yellow',
+                fillOpacity: 0.3,
+                isDraggable: false,
+                draggable: false
+            });
+
+        const me = this;
+        curve.updateDataArray = function() {
+            // Start with (0, 0)
+            this.dataX = [0];
+            this.dataY = [me.intersection.Y()];
+
+            // Copy all points from curve2
+            this.dataX = this.dataX.concat(
+                invisibleFunc.points.map(function(p) {
+                    return p.usrCoords[1];
+                })
+            );
+
+            this.dataY = this.dataY.concat(
+                invisibleFunc.points.map(function(p) {
+                    return p.usrCoords[2];
+                })
+            );
+
+            // Close the curve by adding (0,0)
+            this.dataX.push(0);
+            this.dataY.push(me.intersection.Y());
+        };
+        this.board.update();
+    }
     drawTriangleB() {
         const p1 = this.board.create('point', [
             0,
@@ -716,49 +753,7 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
             visible: false
         });
 
-        const invisibleFunc = this.board.create(
-            'functiongraph', [this.myfunc, 0, this.intersection.Y()], {
-                visible: false,
-                withLabel: false,
-                strokeWidth: 0,
-                recursionDepthLow: 8,
-                recursionDepthHigh: 15
-            });
-
-        const curve = this.board.create(
-            'curve', [[], []], {
-                strokeWidth: 0,
-                fillColor: 'yellow',
-                fillOpacity: 0.3,
-                isDraggable: false,
-                draggable: false
-            });
-
-        const me = this;
-        curve.updateDataArray = function() {
-            // Start with (0, 0)
-            this.dataX = [0];
-            this.dataY = [me.intersection.Y()];
-
-            // Copy all points from curve2
-            this.dataX = this.dataX.concat(
-                invisibleFunc.points.map(function(p) {
-                    return p.usrCoords[1] + me.options.gLine2OffsetX;
-                })
-            );
-
-            this.dataY = this.dataY.concat(
-                invisibleFunc.points.map(function(p) {
-                    return p.usrCoords[2] + me.options.gLine2OffsetY;
-                })
-            );
-
-            // Close the curve by adding (0,0)
-            this.dataX.push(0);
-            this.dataY.push(me.intersection.Y());
-        };
-        this.board.update();
-
+        this.drawAreaA();
         this.drawTriangleB();
         this.drawTriangleC();
     }
