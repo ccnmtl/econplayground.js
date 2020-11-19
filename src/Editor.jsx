@@ -16,7 +16,6 @@ class Editor extends Component {
 
         Object.assign(this.state, defaultGraph);
 
-        this.test = React.createRef();
         this.backbutton = React.createRef();
         this.gp = React.createRef();
         this.ge = React.createRef();
@@ -24,7 +23,7 @@ class Editor extends Component {
     render() {
         return (
             <div className="Editor">
-                <div className="Editor-container" ref={this.test}>
+                <div className="Editor-container">
                     <div className="alert alert-danger"
                          hidden={this.state.alertText ? false : true}
                          role="alert">
