@@ -24,6 +24,6 @@ it('can be clicked', () => {
              onSelectGraph={function() {}} />,
         div,
         function() {
-            ReactTestUtils.Simulate.click(this.b1);
+            ReactTestUtils.Simulate.click(this.b1.current);
         });
 });

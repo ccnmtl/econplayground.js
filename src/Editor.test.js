@@ -14,17 +14,17 @@ it('renders without crashing', () => {
 it('renders with children in the expected visibility state', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Editor />, div, function() {
-        expect(this.backbutton.props.showing).toBe(false);
-        expect(this.gp.props.showing).toBe(true);
-        expect(this.ge.props.showing).toBe(false);
+        expect(this.backbutton.current.props.showing).toBe(false);
+        expect(this.gp.current.props.showing).toBe(true);
+        expect(this.ge.current.props.showing).toBe(false);
 
-        expect(ReactTestUtils.isCompositeComponent(this.backbutton)).toBe(true);
-        expect(ReactTestUtils.isCompositeComponent(this.gp)).toBe(true);
-        expect(ReactTestUtils.isCompositeComponent(this.ge)).toBe(true);
+        expect(ReactTestUtils.isCompositeComponent(this.backbutton.current)).toBe(true);
+        expect(ReactTestUtils.isCompositeComponent(this.gp.current)).toBe(true);
+        expect(ReactTestUtils.isCompositeComponent(this.ge.current)).toBe(true);
 
         expect(this.state.step).toBe(0);
         expect(this.state.gType).toBe(null);
-        ReactTestUtils.Simulate.click(this.gp.b1);
+        ReactTestUtils.Simulate.click(this.gp.current.b1);
         // expect(this.state.step).toBe(1);
     });
 });
