@@ -10,7 +10,7 @@ export default class CobbDouglasEditor extends React.Component {
         let tex = String.raw`= ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha ${this.props.gCobbDouglasLName}^{1 - \alpha}`;
 
         if (!this.props.isInstructor) {
-            tex = String.raw`${this.props.gCobbDouglasYName} tex`;
+            tex = String.raw`${this.props.gCobbDouglasYName} ${tex}`;
         }
 
         return (
