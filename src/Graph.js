@@ -487,7 +487,8 @@ const mkDemandSupplyAUC = function(board, options) {
 class NonLinearDemandSupplyGraph extends Graph {
     make() {
         const me = this;
-        const alpha = 0.3;
+        const alpha = this.options.gCobbDouglasAlpha ?
+              this.options.gCobbDouglasAlpha : 0.3;
 
         if (this.options.shadow && this.options.gDisplayShadow) {
             // Display the initial curves set by the instructor.
@@ -634,7 +635,7 @@ class NonLinearDemandSupplyGraph extends Graph {
     }
 }
 
-const mkNonLinearDemandSupply = function(board, options) {
+export const mkNonLinearDemandSupply = function(board, options) {
     let g = new NonLinearDemandSupplyGraph(board, options);
     g.make();
     g.postMake();

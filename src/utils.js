@@ -225,6 +225,9 @@ const displayGraphType = function(gType) {
         case 11:
             name = 'Optimal Choice and Budget Constraints';
             break;
+        case 12:
+            name = 'Cobb-Douglas NLDS';
+            break;
         default:
             break;
     }

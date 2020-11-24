@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import JXG from 'jsxgraph';
-import {graphTypes} from './Graph';
+import {graphTypes, mkNonLinearDemandSupply} from './Graph';
 import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 
 /**
@@ -132,8 +132,46 @@ export default class JXGBoard extends React.Component {
 
         window.board = this.board = board;
 
+        let board2 = null;
+        if (options.gType === 12) {
+            board2 = JXG.JSXGraph.initBoard(
+                this.id + '-2', {
+                    axis: true,
+                    defaultAxes: {
+                        x: {
+                            name: xAxisLabel,
+                            label: {
+                                offset: [400, -12]
+                            },
+                            withLabel: xAxisLabel ? true : false,
+                            ticks: {
+                                visible: false
+                            },
+                            layer: 9
+                        },
+                        y: {
+                            name: yAxisLabel,
+                            label: {
+                                offset: [0, 260]
+                            },
+                            withLabel: yAxisLabel ? true : false,
+                            ticks: {
+                                visible: false
+                            },
+                            layer: 9
+                        }
+                    },
+                    keepAspectRatio: true,
+                    showCopyright: false,
+                    showZoom: false,
+                    showReload: false,
+                    showNavigation: false,
+                    boundingbox: [-0.4, 5, 5, -0.4]
+                });
+        }
+
         if (typeof options.gType === 'number') {
-            graphTypes[options.gType](board, {
+            let graphParams = {
                 gShowIntersection: options.gShowIntersection,
                 gDisplayIntersection1: options.gDisplayIntersection1,
                 gDisplayIntersection1Initial: options.gDisplayIntersection1Initial,
@@ -193,6 +231,7 @@ export default class JXGBoard extends React.Component {
                 gR: options.gR,
                 gY1: options.gY1,
                 gY2: options.gY2,
+
                 gCobbDouglasA: options.gCobbDouglasA,
                 gCobbDouglasAInitial: options.gCobbDouglasAInitial,
                 gCobbDouglasAName: options.gCobbDouglasAName,
@@ -202,8 +241,7 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasK: options.gCobbDouglasK,
                 gCobbDouglasKInitial: options.gCobbDouglasKInitial,
                 gCobbDouglasKName: options.gCobbDouglasKName,
-                gCobbDouglasAlpha: options.gCobbDouglasAlpha,
-                gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
+
                 gFunctionChoice: options.gFunctionChoice,
                 gNeedsSubmit: options.gNeedsSubmit,
                 l1SubmissionOffset: getL1SubmissionOffset(options.submission),
@@ -213,7 +251,88 @@ export default class JXGBoard extends React.Component {
                 locked: this.props.locked,
                 shadow: this.props.shadow,
                 handleAreaUpdate: this.props.handleAreaUpdate
-            });
+            };
+
+            if (options.gType !== 1) {
+                graphParams = {
+                    gCobbDouglasAlpha: options.gCobbDouglasAlpha,
+                    gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
+                    ...graphParams
+                };
+            }
+
+            // If this is a joint graph, alter the graph ID constructor
+            // to be that of the top graph we're rendering.
+            const graphId = options.gType === 12 ? 3 : options.gType;
+
+            graphTypes[graphId](board, graphParams);
+
+            // On the Cobb-Douglas NLDS joint graph type, also
+            // initialize the second board to be a NLDS graph.
+            if (options.gType === 12) {
+                mkNonLinearDemandSupply(board2, {
+                    gShowIntersection: options.gShowIntersection,
+                    gDisplayIntersection1: options.gDisplayIntersection1,
+                    gDisplayIntersection1Initial: options.gDisplayIntersection1Initial,
+                    gIntersectionLabel: options.gIntersectionLabel,
+
+                    gDisplayShadow: options.gDisplayShadow,
+                    gIntersectionHorizLineLabel: options.gIntersectionHorizLineLabel,
+                    gIntersectionVertLineLabel: options.gIntersectionVertLineLabel,
+                    gXAxisLabel: options.gXAxisLabel,
+                    gYAxisLabel: options.gYAxisLabel,
+                    gLine1Label: options.gLine1Label,
+                    gLine2Label: options.gLine2Label,
+                    gLine1Slope: options.gLine1Slope,
+                    gLine1SlopeInitial: options.gLine1SlopeInitial,
+
+                    gLine1OffsetX: options.gLine1OffsetX,
+                    gLine1OffsetY: options.gLine1OffsetY,
+                    gLine1OffsetXInitial: options.gLine1OffsetXInitial,
+                    gLine1OffsetYInitial: options.gLine1OffsetYInitial,
+
+                    // Line 2 is not draggable for now.
+                    gLine2OffsetX: 0,
+                    gLine2OffsetY: 0,
+                    gLine2OffsetXInitial: 0,
+                    gLine2OffsetYInitial: 0,
+
+                    gAlpha: options.gAlpha,
+                    gA1: options.gA1,
+                    gA1Initial: options.gA1Initial,
+                    gA2: options.gA2,
+                    gA2Initial: options.gA2Initial,
+                    gA3: options.gA3,
+                    gA3Initial: options.gA3Initial,
+                    gA4: options.gA4,
+                    gA4Initial: options.gA4Initial,
+                    gA5: options.gA5,
+                    gA: options.gA,
+                    gK: options.gK,
+                    gR: options.gR,
+                    gY1: options.gY1,
+                    gY2: options.gY2,
+                    gCobbDouglasA: options.gCobbDouglasA,
+                    gCobbDouglasAInitial: options.gCobbDouglasAInitial,
+                    gCobbDouglasAName: options.gCobbDouglasAName,
+                    gCobbDouglasL: options.gCobbDouglasL,
+                    gCobbDouglasLInitial: options.gCobbDouglasLInitial,
+                    gCobbDouglasLName: options.gCobbDouglasLName,
+                    gCobbDouglasK: options.gCobbDouglasK,
+                    gCobbDouglasKInitial: options.gCobbDouglasKInitial,
+                    gCobbDouglasKName: options.gCobbDouglasKName,
+                    gCobbDouglasAlpha: options.gCobbDouglasAlpha,
+                    gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
+                    gFunctionChoice: options.gFunctionChoice,
+                    gNeedsSubmit: options.gNeedsSubmit,
+                    l1SubmissionOffset: getL1SubmissionOffset(options.submission),
+                    l2SubmissionOffset: getL2SubmissionOffset(options.submission),
+                    submission: options.submission,
+                    isSubmitted: options.isSubmitted,
+                    locked: this.props.locked,
+                    shadow: this.props.shadow
+                });
+            }
         }
     }
 
@@ -479,9 +598,19 @@ export default class JXGBoard extends React.Component {
     // for rendering the JSXGraph board div and any child elements
     render() {
         return (
-            <figure aria-label="The EconPractice graph."
-                    id={this.id} className="jxgbox" style={this.style}>
-            </figure>
+            <>
+                <figure aria-label="The EconPractice graph."
+                        id={this.id} className="jxgbox" style={this.style}>
+                </figure>
+
+                {this.props.gType === 12 && (
+                    <figure aria-label="The EconPractice graph."
+                            id={this.id + '-2'}
+                            className="jxgbox"
+                            style={this.style}>
+                    </figure>
+                )}
+            </>
         );
     }
 }
