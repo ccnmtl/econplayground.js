@@ -117,6 +117,56 @@ export default class DemandSupplyEditor extends React.Component {
                     </div>
                 </React.Fragment>
             )}
+            {true && (
+                <React.Fragment>
+                    {/* 
+                        This feature needs to enable/disable the ability to show hide surplusses
+                        Also needs to be able to make active/inactive to show/hide the surplusses
+
+                        The first grants the ability to change, the second changes the visibility
+
+                        Use radio buttons to select which surpluses to show.
+                        Use a checkbox to show/hide selection
+                    */}
+                    <h2>Surpluses</h2>
+                    <div className="form-row">
+                        <div className="form-group">
+                            {['A', 'B', 'C', 'A + B', 'B + C'].map(function(el, idx) {
+                                return (
+                                    <div className="form-check form-check-inline" key={idx}>
+                                        <label className="form-check-label">
+                                            <input
+                                                className="form-check-input override"
+                                                type="radio"
+                                                onChange={function() {console.log('checked')}}
+                                                name={'surplus-enabled'} />
+                                            {el}
+                                        </label>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group">
+                            {['Show', 'Hide'].map(function(el, idx) {
+                                return (
+                                    <div className="form-check form-check-inline" key={idx}>
+                                        <label className="form-check-label">
+                                            <input
+                                                className="form-check-input override"
+                                                type="radio"
+                                                onChange={function() {console.log('checked')}}
+                                                name={'surplus-active'} />
+                                            {el}
+                                        </label>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </React.Fragment>
+            )}
         </React.Fragment>;
     }
 }
