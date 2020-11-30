@@ -86,7 +86,11 @@ const exportGraph = function(state) {
         cobb_douglas_a_name: state.gCobbDouglasAName,
         cobb_douglas_k_name: state.gCobbDouglasKName,
 
-        function_choice: forceNumber(state.gFunctionChoice)
+        function_choice: forceNumber(state.gFunctionChoice),
+
+        // AUC features
+        area_configuration: forceNumber(state.gAreaConfiguration),
+        is_area_displayed: state.gIsAreaDisplayed
     }
 
     if (state.gType === 3) {
@@ -182,7 +186,11 @@ const importGraph = function(json, obj) {
         gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
         gCobbDouglasYName: json.cobb_douglas_y_name,
 
-        gFunctionChoice: json.function_choice
+        gFunctionChoice: json.function_choice,
+
+        // AUC features
+        gAreaConfiguration: json.area_configuration,
+        gIsAreaDisplayed: json.is_area_displayed
     };
 
     // When importing a graph for display, save the initial state of
@@ -273,6 +281,9 @@ const defaultGraph = {
     gCobbDouglasYName: 'Y',
 
     gFunctionChoice: 0,
+
+    gAreaConfiguration: 0,
+    gIsAreaDisplayed: true,
 
     // Use a hard-coded proof-of-concept assessment spreadsheet for
     // now. Eventually, this will be defined using a Google
