@@ -62,70 +62,110 @@ export default class DemandSupplyEditor extends React.Component {
                             value={this.props.gLine1Label}
                             valueEditable={true}
                             isInstructor={true}
-                            updateGraph={this.props.updateGraph}
-                        />
+                            updateGraph={this.props.updateGraph}/>
+                        <EditableControl
+                            id="gLine2Label"
+                            name="Blue line label"
+                            value={this.props.gLine2Label}
+                            valueEditable={true}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}/>
+                    </div>
 
-                    <EditableControl
-                        id="gLine2Label"
-                        name="Blue line label"
-                        value={this.props.gLine2Label}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                    <div className="row">
+                        <EditableControl
+                            id="gXAxisLabel"
+                            name="X-axis label"
+                            value={this.props.gXAxisLabel}
+                            valueEditable={true}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}/>
+                        <EditableControl
+                            id="gYAxisLabel"
+                            name="Y-axis label"
+                            value={this.props.gYAxisLabel}
+                            valueEditable={true}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}/>
+                    </div>
 
-                <div className="row">
-                    <EditableControl
-                        id="gXAxisLabel"
-                        name="X-axis label"
-                        value={this.props.gXAxisLabel}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}
-                    />
+                    <div className="row">
+                        <EditableControl
+                            id="gIntersectionLabel"
+                            name="Intersection point label"
+                            value={this.props.gIntersectionLabel}
+                            valueEditable={true}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}/>
+                    </div>
 
-                <EditableControl
-                    id="gYAxisLabel"
-                    name="Y-axis label"
-                    value={this.props.gYAxisLabel}
-                    valueEditable={true}
-                    isInstructor={true}
-                    updateGraph={this.props.updateGraph}
-                />
-            </div>
+                    <div className="row">
+                        <EditableControl
+                            id="gIntersectionHorizLineLabel"
+                            name="Intersection&apos;s horizontal line label"
+                            value={this.props.gIntersectionHorizLineLabel}
+                            valueEditable={true}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}/>
+                        <EditableControl
+                            id="gIntersectionVertLineLabel"
+                            name="Intersection&apos;s vertical line label"
+                            value={this.props.gIntersectionVertLineLabel}
+                            valueEditable={true}
+                            isInstructor={true}
+                            updateGraph={this.props.updateGraph}/>
+                    </div>
+                </React.Fragment>
+            )}
+            {this.props.showAUC && (
+                <React.Fragment>
+                    {/* 
+                        This feature needs to enable/disable the ability to show hide surplusses
+                        Also needs to be able to make active/inactive to show/hide the surplusses
 
-            <div className="row">
-                <EditableControl
-                    id="gIntersectionLabel"
-                    name="Intersection point label"
-                    value={this.props.gIntersectionLabel}
-                    valueEditable={true}
-                    isInstructor={true}
-                    updateGraph={this.props.updateGraph}
-                />
-            </div>
+                        The first grants the ability to change, the second changes the visibility
 
-            <div className="row">
-                <EditableControl
-                    id="gIntersectionHorizLineLabel"
-                    name="Intersection&apos;s horizontal line label"
-                    value={this.props.gIntersectionHorizLineLabel}
-                    valueEditable={true}
-                    isInstructor={true}
-                    updateGraph={this.props.updateGraph}
-                />
-
-            <EditableControl
-                id="gIntersectionVertLineLabel"
-                name="Intersection&apos;s vertical line label"
-                value={this.props.gIntersectionVertLineLabel}
-                valueEditable={true}
-                isInstructor={true}
-                updateGraph={this.props.updateGraph}
-            />
-        </div>
-    </React.Fragment>
+                        Use radio buttons to select which surpluses to show.
+                        Use a checkbox to show/hide selection
+                    */}
+                    <h2>Surpluses</h2>
+                    <div className="form-row">
+                        <div className="form-group">
+                            {['A', 'B', 'C', 'A + B', 'B + C'].map(function(el, idx) {
+                                return (
+                                    <div className="form-check form-check-inline" key={idx}>
+                                        <label className="form-check-label">
+                                            <input
+                                                className="form-check-input override"
+                                                type="radio"
+                                                onChange={function() {console.log('checked')}}
+                                                name={'surplus-enabled'} />
+                                            {el}
+                                        </label>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group">
+                            {['Show', 'Hide'].map(function(el, idx) {
+                                return (
+                                    <div className="form-check form-check-inline" key={idx}>
+                                        <label className="form-check-label">
+                                            <input
+                                                className="form-check-input override"
+                                                type="radio"
+                                                onChange={function() {console.log('checked')}}
+                                                name={'surplus-active'} />
+                                            {el}
+                                        </label>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </React.Fragment>
             )}
         </React.Fragment>;
     }
@@ -146,5 +186,14 @@ DemandSupplyEditor.propTypes = {
 
     displayLabels: PropTypes.bool.isRequired,
     displaySliders: PropTypes.bool.isRequired,
-    isInstructor: PropTypes.bool.isRequired
+    isInstructor: PropTypes.bool.isRequired,
+    showAUC: PropTypes.bool.isRequired
 };
+
+
+
+
+
+
+
+
