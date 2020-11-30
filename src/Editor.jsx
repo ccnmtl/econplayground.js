@@ -104,6 +104,8 @@ class Editor extends Component {
                         gCobbDouglasYName={this.state.gCobbDouglasYName}
 
                         gFunctionChoice={this.state.gFunctionChoice}
+                        gAreaConfiguration={this.state.gAreaConfiguration}
+                        gIsAreaDisplayed={this.state.gIsAreaDisplayed}
 
                         updateGraph={this.handleGraphUpdate.bind(this)}
                         saveGraph={this.handleSaveGraph.bind(this)}

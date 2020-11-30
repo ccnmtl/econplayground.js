@@ -128,7 +128,8 @@ const handleFormUpdate = function(e) {
                 obj[id] = parseFloat(e.target.dataset.override);
             } else if (
                 e.target.type !== 'checkbox' &&
-                    typeof e.target.value !== 'undefined') {
+                    typeof e.target.value !== 'undefined'
+            ) {
                 obj[id] = forceNumber(e.target.value);
             } else {
                 obj[id] = e.target.checked;

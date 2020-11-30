@@ -107,6 +107,9 @@ class Viewer extends Component {
 
             gFunctionChoice={this.state.gFunctionChoice}
 
+            gAreaConfiguration={this.state.gAreaConfiguration}
+            gIsAreaDisplayed={this.state.gIsAreaDisplayed}
+
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
             saveGraph={this.handleSaveGraph.bind(this)}
@@ -217,6 +220,9 @@ class Viewer extends Component {
             gCobbDouglasYName={this.state.gCobbDouglasYName}
 
             gFunctionChoice={this.state.gFunctionChoice}
+
+            gAreaConfiguration={this.state.gAreaConfiguration}
+            gIsAreaDisplayed={this.state.gIsAreaDisplayed}
 
             assessment={this.state.assessment}
             submission={this.state.submission}
