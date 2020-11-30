@@ -117,7 +117,7 @@ export default class DemandSupplyEditor extends React.Component {
                     </div>
                 </React.Fragment>
             )}
-            {true && (
+            {this.props.showAUC && (
                 <React.Fragment>
                     {/* 
                         This feature needs to enable/disable the ability to show hide surplusses
@@ -143,7 +143,7 @@ export default class DemandSupplyEditor extends React.Component {
                                             {el}
                                         </label>
                                     </div>
-                                )
+                                );
                             })}
                         </div>
                     </div>
@@ -161,7 +161,7 @@ export default class DemandSupplyEditor extends React.Component {
                                             {el}
                                         </label>
                                     </div>
-                                )
+                                );
                             })}
                         </div>
                     </div>
@@ -186,5 +186,14 @@ DemandSupplyEditor.propTypes = {
 
     displayLabels: PropTypes.bool.isRequired,
     displaySliders: PropTypes.bool.isRequired,
-    isInstructor: PropTypes.bool.isRequired
+    isInstructor: PropTypes.bool.isRequired,
+    showAUC: PropTypes.bool.isRequired
 };
+
+
+
+
+
+
+
+

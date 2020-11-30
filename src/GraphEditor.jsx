@@ -183,6 +183,7 @@ export default class GraphEditor extends React.Component {
                                     gIntersectionLabel={this.props.gIntersectionLabel}
                                     gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                     gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                    showAUC={this.props.gType === 9}
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
