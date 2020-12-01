@@ -465,14 +465,27 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             visible: false
         });
 
-        const triangleA = this.drawTriangleA();
-        const triangleB = this.drawTriangleB();
-        const triangleC = this.drawTriangleC();
+        let triangleA = null;
+        let triangleB = null;
+        let triangleC = null;
+
+        const areaConf = this.options.gAreaConfiguration;
+        // Turn on and off certain triangles based on the "area
+        // configuration".
+        if (areaConf === 0 || areaConf === 3) {
+            triangleA = this.drawTriangleA();
+        }
+        if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
+            triangleB = this.drawTriangleB();
+        }
+        if (areaConf === 2 || areaConf === 4) {
+            triangleC = this.drawTriangleC();
+        }
 
         this.options.handleAreaUpdate(
-            forceFloat(triangleA.Area()),
-            forceFloat(triangleB.Area()),
-            forceFloat(triangleC.Area())
+            triangleA ? forceFloat(triangleA.Area()) : null,
+            triangleB ? forceFloat(triangleB.Area()) : null,
+            triangleC ? forceFloat(triangleC.Area()) : null
         );
     }
 }

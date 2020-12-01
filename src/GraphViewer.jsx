@@ -126,6 +126,9 @@ export default class GraphViewer extends React.Component {
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                            gAreaConfiguration={this.props.gAreaConfiguration}
+                            gIsAreaDisplayed={this.props.gIsAreaDisplayed}
                             />
 
                         <Feedback
@@ -220,6 +223,9 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
                             gCobbDouglasYName={this.props.gCobbDouglasYName}
                             gFunctionChoice={this.props.gFunctionChoice}
+
+                            gAreaConfiguration={this.props.gAreaConfiguration}
+                            gIsAreaDisplayed={this.props.gIsAreaDisplayed}
                             />
 
                         <Feedback
