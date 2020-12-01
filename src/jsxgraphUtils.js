@@ -37,6 +37,16 @@ const drawPolygon = function(board, points, name, color) {
     return p;
 };
 
+
+/**
+ * Given a point and the line's slope, return its x-intercept.
+ *
+ * From: https://stackoverflow.com/a/36183654/173630
+ */
+const getXInterceptWithPoint = function(p, slope) {
+    return p.X() - p.Y() / slope;
+};
+
 export {
-    drawLabel, drawPolygon
+    drawLabel, drawPolygon, getXInterceptWithPoint
 };

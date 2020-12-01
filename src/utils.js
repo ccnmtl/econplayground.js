@@ -168,12 +168,12 @@ const getOffset = function(slope, y, n) {
 };
 
 /**
- * Given a point and its slope, return its x-intercept.
- *
- * From: https://stackoverflow.com/a/36183654/173630
+ * For a line that's defined as y = mx + b,
+ * return its X intercept, given the slope (m)
+ * and the Y offset (b).
  */
-const getXIntercept = function(p, slope) {
-    return p.X() - p.Y() / slope;
+const getXIntercept = function(m, b) {
+    return (-b) / m;
 };
 
 /*
