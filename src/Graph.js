@@ -6,7 +6,7 @@
 
 import { defaultGraph } from './GraphMapping';
 import { forceFloat, getOffset, getXIntercept } from './utils';
-import { drawLabel, drawPolygon } from './jsxgraphUtils';
+import { drawLabel, drawPolygon, getXInterceptWithPoint } from './jsxgraphUtils';
 
 
 const applyDefaults = function(obj, defaults) {
@@ -400,12 +400,15 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
 
         const p2 = this.board.create('point', [
             0,
-            this.intersection.Y()
+            Math.max(this.intersection.Y(), 0)
         ], invisiblePointOptions);
 
         const p3 = this.board.create('point', [
-            this.intersection.X(),
-            this.intersection.Y()
+            Math.min(
+                this.intersection.X(),
+                getXInterceptWithPoint(this.intersection, this.l2.getSlope())
+            ),
+            Math.max(this.intersection.Y(), 0)
         ], invisiblePointOptions);
 
         const points = [p1, p2, p3];
@@ -413,40 +416,79 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         return drawPolygon(this.board, points, 'A', 'purple');
     }
     drawTriangleB() {
+        const yIntercept = this.l1.getRise();
+        let points = [];
+
         const p1 = this.board.create('point', [
             0,
             this.intersection.Y()
         ], invisiblePointOptions);
+        points.push(p1);
 
         const p2 = this.board.create('point', [
-            0,
-            this.l1.getRise()
-        ], invisiblePointOptions);
-
-        const p3 = this.board.create('point', [
             this.intersection.X(),
             this.intersection.Y()
         ], invisiblePointOptions);
+        points.push(p2);
 
-        const points = [p3, p1, p2];
+        if (yIntercept >= 0) {
+            // If the y intercept is 0 or more, the shape is a
+            // triangle.
+            const p3 = this.board.create('point', [
+                0, yIntercept
+            ], invisiblePointOptions);
+            points.push(p3);
+        } else {
+            const p3 = this.board.create('point', [
+                getXIntercept(this.l1.getSlope(), yIntercept),
+                0
+            ], invisiblePointOptions);
+            points.push(p3);
+
+            const p4 = this.board.create('point', [
+                0, 0
+            ], invisiblePointOptions);
+            points.push(p4);
+        }
 
         return drawPolygon(this.board, points, 'B', 'lime');
     }
     drawTriangleC() {
+        const yIntercept = this.l1.getRise();
+        let points = [];
+
         const p1 = this.board.create('point', [
-            this.intersection.X(),
-            0
-        ], invisiblePointOptions);
-
-        const xIntercept = getXIntercept(this.intersection, this.l1.getSlope());
-        const p2 = this.board.create('point', [xIntercept, 0], invisiblePointOptions);
-
-        const p3 = this.board.create('point', [
             this.intersection.X(),
             this.intersection.Y()
         ], invisiblePointOptions);
+        points.push(p1);
 
-        const points = [p3, p1, p2];
+        const p2 = this.board.create('point', [
+            this.intersection.X(),
+            0
+        ], invisiblePointOptions);
+        points.push(p2);
+
+        if (yIntercept >= 0) {
+            const p3 = this.board.create('point', [
+                0, 0
+            ], invisiblePointOptions);
+            points.push(p3);
+
+            const p4 = this.board.create('point', [
+                0, yIntercept
+            ], invisiblePointOptions);
+            points.push(p4);
+
+
+        } else {
+            const xIntercept = getXInterceptWithPoint(
+                this.intersection, this.l1.getSlope());
+            const p3 = this.board.create(
+                'point',
+                [xIntercept, 0], invisiblePointOptions)
+            points.push(p3);
+        }
 
         return drawPolygon(this.board, points, 'C', 'red');
     }
@@ -733,7 +775,7 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
             0
         ], invisiblePointOptions);
 
-        const xIntercept = getXIntercept(
+        const xIntercept = getXInterceptWithPoint(
             this.intersection, this.options.gLine1Slope);
         const p2 = this.board.create(
             'point', [xIntercept, 0], invisiblePointOptions);
