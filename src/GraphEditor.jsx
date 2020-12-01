@@ -14,7 +14,7 @@ import {displayGraphType, handleFormUpdate, getCohortId} from './utils';
 
 export default class GraphEditor extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             areaA: null,
             areaB: null,
@@ -183,6 +183,10 @@ export default class GraphEditor extends React.Component {
                                     gIntersectionLabel={this.props.gIntersectionLabel}
                                     gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                     gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                                    gAreaConfiguration={this.props.gAreaConfiguration}
+                                    gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
                                     showAUC={this.props.gType === 9}
                                     updateGraph={this.props.updateGraph}
                                 />
@@ -800,6 +804,9 @@ GraphEditor.propTypes = {
     gCobbDouglasYName: PropTypes.string,
 
     gFunctionChoice: PropTypes.number,
+
+    gAreaConfiguration: PropTypes.number,
+    gIsAreaDisplayed: PropTypes.bool,
 
     updateGraph: PropTypes.func.isRequired,
     saveGraph: PropTypes.func.isRequired,

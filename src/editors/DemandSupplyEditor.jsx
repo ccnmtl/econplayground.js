@@ -6,6 +6,7 @@ import {handleFormUpdate} from '../utils';
 
 export default class DemandSupplyEditor extends React.Component {
     render() {
+        const me = this;
         return <React.Fragment>
             {this.props.displaySliders && (
                 <div>
@@ -119,7 +120,7 @@ export default class DemandSupplyEditor extends React.Component {
             )}
             {this.props.showAUC && (
                 <React.Fragment>
-                    {/* 
+                    {/*
                         This feature needs to enable/disable the ability to show hide surplusses
                         Also needs to be able to make active/inactive to show/hide the surplusses
 
@@ -136,10 +137,14 @@ export default class DemandSupplyEditor extends React.Component {
                                     <div className="form-check form-check-inline" key={idx}>
                                         <label className="form-check-label">
                                             <input
-                                                className="form-check-input override"
+                                                className="form-check-input"
                                                 type="radio"
-                                                onChange={function() {console.log('checked')}}
-                                                name={'surplus-enabled'} />
+                                                id={`gAreaConfiguration-${idx}`}
+                                                name="gAreaConfiguration"
+                                                onChange={handleFormUpdate.bind(me)}
+                                                checked={me.props.gAreaConfiguration === idx}
+                                                value={idx}
+                                            />
                                             {el}
                                         </label>
                                     </div>
@@ -149,20 +154,17 @@ export default class DemandSupplyEditor extends React.Component {
                     </div>
                     <div className="form-row">
                         <div className="form-group">
-                            {['Show', 'Hide'].map(function(el, idx) {
-                                return (
-                                    <div className="form-check form-check-inline" key={idx}>
-                                        <label className="form-check-label">
-                                            <input
-                                                className="form-check-input override"
-                                                type="radio"
-                                                onChange={function() {console.log('checked')}}
-                                                name={'surplus-active'} />
-                                            {el}
-                                        </label>
-                                    </div>
-                                );
-                            })}
+                            <div className="form-check">
+                                <label className="form-check-label">
+                                    <input
+                                        id="gIsAreaDisplayed"
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        onChange={handleFormUpdate.bind(this)}
+                                        checked={this.props.gIsAreaDisplayed} />
+                                    Show Area on Student Graph
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </React.Fragment>
@@ -184,16 +186,11 @@ DemandSupplyEditor.propTypes = {
     gLine2Slope: PropTypes.number.isRequired,
     gLine2Label: PropTypes.string.isRequired,
 
+    gIsAreaDisplayed: PropTypes.number,
+    gIsAreaDisplayed: PropTypes.bool,
+
     displayLabels: PropTypes.bool.isRequired,
     displaySliders: PropTypes.bool.isRequired,
     isInstructor: PropTypes.bool.isRequired,
     showAUC: PropTypes.bool.isRequired
 };
-
-
-
-
-
-
-
-
