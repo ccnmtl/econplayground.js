@@ -132,6 +132,9 @@ export default class GraphEditor extends React.Component {
                                         gCobbDouglasK={this.props.gCobbDouglasK}
                                         gCobbDouglasKName={this.props.gCobbDouglasKName}
                                         gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+
+                                        gAreaConfiguration={this.props.gAreaConfiguration}
+                                        gIsAreaDisplayed={this.props.gIsAreaDisplayed}
                                         handleAreaUpdate={this.handleAreaUpdate}
                                     />
                                     <AreaDisplay
@@ -248,6 +251,9 @@ export default class GraphEditor extends React.Component {
                                     gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                                     gCobbDouglasYName={this.props.gCobbDouglasYName}
                                     gFunctionChoice={this.props.gFunctionChoice}
+
+                                    gAreaConfiguration={this.props.gAreaConfiguration}
+                                    gIsAreaDisplayed={this.props.gIsAreaDisplayed}
                                 />
                                 <CommonGraphEditor
                                     gTitle={this.props.gTitle}

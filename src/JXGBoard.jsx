@@ -243,6 +243,10 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasKName: options.gCobbDouglasKName,
 
                 gFunctionChoice: options.gFunctionChoice,
+
+                gAreaConfiguration: options.gAreaConfiguration,
+                gIsAreaDisplayed: options.gIsAreaDisplayed,
+
                 gNeedsSubmit: options.gNeedsSubmit,
                 l1SubmissionOffset: getL1SubmissionOffset(options.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(options.submission),
@@ -324,6 +328,8 @@ export default class JXGBoard extends React.Component {
                     gCobbDouglasAlpha: options.gCobbDouglasAlpha,
                     gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
                     gFunctionChoice: options.gFunctionChoice,
+                    gAreaConfiguration: options.gAreaConfiguration,
+                    gIsAreaDisplayed: options.gIsAreaDisplayed,
                     gNeedsSubmit: options.gNeedsSubmit,
                     l1SubmissionOffset: getL1SubmissionOffset(options.submission),
                     l2SubmissionOffset: getL2SubmissionOffset(options.submission),
@@ -403,6 +409,8 @@ export default class JXGBoard extends React.Component {
             'gCobbDouglasAlpha',
             'gCobbDouglasAlphaInitial',
             'gFunctionChoice',
+            'gAreaConfiguration',
+            'gIsAreaDisplayed',
             'gNeedsSubmit',
             'submission',
             'shadow'
@@ -500,6 +508,8 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasAlpha: this.props.gCobbDouglasAlpha,
                 gCobbDouglasAlphaInitial: this.props.gCobbDouglasAlphaInitial,
                 gFunctionChoice: this.props.gFunctionChoice,
+                gAreaConfiguration: this.props.gAreaConfiguration,
+                gIsAreaDisplayed: this.props.gIsAreaDisplayed,
                 gNeedsSubmit: this.props.gNeedsSubmit,
 
                 l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
@@ -585,6 +595,8 @@ export default class JXGBoard extends React.Component {
             gCobbDouglasAlpha: this.props.gCobbDouglasAlpha,
             gCobbDouglasAlphaInitial: this.props.gCobbDouglasAlphaInitial,
             gFunctionChoice: this.props.gFunctionChoice,
+            gAreaConfiguration: this.props.gAreaConfiguration,
+            gIsAreaDisplayed: this.props.gIsAreaDisplayed,
             gNeedsSubmit: this.props.gNeedsSubmit,
             l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
             l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
@@ -700,6 +712,9 @@ JXGBoard.propTypes = {
     gCobbDouglasAlphaInitial: PropTypes.number,
 
     gFunctionChoice: PropTypes.number,
+
+    gAreaConfiguration: PropTypes.number,
+    gIsAreaDisplayed: PropTypes.bool,
 
     id: PropTypes.string.isRequired,
     locked: PropTypes.bool,
