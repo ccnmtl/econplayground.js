@@ -9,20 +9,9 @@ import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
-import AreaDisplay from './AreaDisplay';
 import {displayGraphType, handleFormUpdate, getCohortId} from './utils';
 
 export default class GraphEditor extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            areaA: null,
-            areaB: null,
-            areaC: null,
-        };
-
-        this.handleAreaUpdate = this.handleAreaUpdate.bind(this);
-    }
     title() {
         return (
             <div>
@@ -32,14 +21,6 @@ export default class GraphEditor extends React.Component {
                 </p>
             </div>
         );
-    }
-    handleAreaUpdate(areaA, areaB, areaC) {
-        // Handles area updates for all types of AUC graphs
-        this.setState({
-            areaA: areaA,
-            areaB: areaB,
-            areaC: areaC
-        });
     }
     render() {
         if (!this.props.showing) {
@@ -135,12 +116,7 @@ export default class GraphEditor extends React.Component {
 
                                         gAreaConfiguration={this.props.gAreaConfiguration}
                                         gIsAreaDisplayed={this.props.gIsAreaDisplayed}
-                                        handleAreaUpdate={this.handleAreaUpdate}
                                     />
-                                    <AreaDisplay
-                                        areaA={this.state.areaA}
-                                        areaB={this.state.areaB}
-                                        areaC={this.state.areaC}/>
                                     <CommonGraphEditor
                                         gTitle={this.props.gTitle}
                                         gSummary={this.props.gSummary}
