@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import JXG from 'jsxgraph';
 import {graphTypes, mkNonLinearDemandSupply} from './Graph';
+import AreaDisplay from './AreaDisplay';
 import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 
 /**
@@ -15,12 +16,30 @@ import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 export default class JXGBoard extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            areaA: null,
+            areaB: null,
+            areaC: null,
+        };
+
         this.id = this.props.id;
         this.style = {
             // The defaults provided here are used by the GraphPicker
             width: this.props.width || 450,
             height: this.props.height || 240
         };
+
+        this.handleAreaUpdate = this.handleAreaUpdate.bind(this);
+    }
+
+    handleAreaUpdate(areaA, areaB, areaC) {
+        // Handles area updates for all types of AUC graphs
+        this.setState({
+            areaA: areaA,
+            areaB: areaB,
+            areaC: areaC
+        });
     }
 
     renderJXBoard(options) {
@@ -254,7 +273,7 @@ export default class JXGBoard extends React.Component {
                 isSubmitted: options.isSubmitted,
                 locked: this.props.locked,
                 shadow: this.props.shadow,
-                handleAreaUpdate: this.props.handleAreaUpdate
+                handleAreaUpdate: this.handleAreaUpdate
             };
 
             if (options.gType !== 1) {
@@ -622,6 +641,13 @@ export default class JXGBoard extends React.Component {
                             style={this.style}>
                     </figure>
                 )}
+
+                {this.props.gType === 9 && (
+                    <AreaDisplay
+                        areaA={this.state.areaA}
+                        areaB={this.state.areaB}
+                        areaC={this.state.areaC} />
+                )}
             </>
         );
     }
@@ -717,6 +743,5 @@ JXGBoard.propTypes = {
     gIsAreaDisplayed: PropTypes.bool,
 
     id: PropTypes.string.isRequired,
-    locked: PropTypes.bool,
-    handleAreaUpdate: PropTypes.func
+    locked: PropTypes.bool
 };

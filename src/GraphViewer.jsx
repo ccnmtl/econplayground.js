@@ -151,6 +151,10 @@ export default class GraphViewer extends React.Component {
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                            gAreaConfiguration={this.props.gAreaConfiguration}
+                            gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                            showAUC={this.props.gType === 9}
                             updateGraph={this.updateGraph}
                             />
 
