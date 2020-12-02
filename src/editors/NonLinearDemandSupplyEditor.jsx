@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {MathComponent} from 'mathjax-react';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
+import AreaConfiguration from './AreaConfiguration';
 import {handleFormUpdate} from '../utils';
 
 export default class NonLinearDemandSupplyEditor extends React.Component {
@@ -19,7 +20,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
         const func1 = String.raw`MP_N = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha N^{-\alpha}`;
         const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} N^{1 - \alpha}`;
         return (
-            <div>
+            <>
                 {this.props.isInstructor && (
                     <React.Fragment>
                         <h2>Function</h2>
@@ -181,12 +182,21 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                     />
                 </div>
                 )}
-            </div>
+
+                {this.props.showAUC && (
+                    <AreaConfiguration
+                        gAreaConfiguration={this.props.gAreaConfiguration}
+                        gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                        updateGraph={this.props.updateGraph}
+                    />
+                )}
+            </>
         );
     }
 }
 
 NonLinearDemandSupplyEditor.propTypes = {
+    updateGraph: PropTypes.func.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
@@ -204,5 +214,6 @@ NonLinearDemandSupplyEditor.propTypes = {
 
     displayLabels: PropTypes.bool.isRequired,
     displaySliders: PropTypes.bool.isRequired,
-    isInstructor: PropTypes.bool.isRequired
+    isInstructor: PropTypes.bool.isRequired,
+    showAUC: PropTypes.bool.isRequired
 };

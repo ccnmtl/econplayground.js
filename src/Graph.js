@@ -809,9 +809,18 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
             visible: false
         });
 
-        this.drawAreaA();
-        this.drawTriangleB();
-        this.drawTriangleC();
+        const areaConf = this.options.gAreaConfiguration;
+        // Turn on and off certain triangles based on the "area
+        // configuration".
+        if (areaConf === 0 || areaConf === 3) {
+            this.drawAreaA();
+        }
+        if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
+            this.drawTriangleB();
+        }
+        if (areaConf === 2 || areaConf === 4) {
+            this.drawTriangleC();
+        }
     }
 }
 
