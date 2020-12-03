@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditableControl from '../form-components/EditableControl';
 import RangeEditor from '../form-components/RangeEditor';
+import AreaConfiguration from './AreaConfiguration';
 import {handleFormUpdate} from '../utils';
 
 export default class DemandSupplyEditor extends React.Component {
@@ -119,61 +120,18 @@ export default class DemandSupplyEditor extends React.Component {
                 </React.Fragment>
             )}
             {this.props.showAUC && (
-                <React.Fragment>
-                    {/*
-                        This feature needs to enable/disable the ability to show hide surplusses
-                        Also needs to be able to make active/inactive to show/hide the surplusses
-
-                        The first grants the ability to change, the second changes the visibility
-
-                        Use radio buttons to select which surpluses to show.
-                        Use a checkbox to show/hide selection
-                    */}
-                    <h2>Surpluses</h2>
-                    <div className="form-row">
-                        <div className="form-group">
-                            {['A', 'B', 'C', 'A + B', 'B + C'].map(function(el, idx) {
-                                return (
-                                    <div className="form-check form-check-inline" key={idx}>
-                                        <label className="form-check-label">
-                                            <input
-                                                className="form-check-input"
-                                                type="radio"
-                                                id={`gAreaConfiguration-${idx}`}
-                                                name="gAreaConfiguration"
-                                                onChange={handleFormUpdate.bind(me)}
-                                                checked={me.props.gAreaConfiguration === idx}
-                                                value={idx}
-                                            />
-                                            {el}
-                                        </label>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
-                    <div className="form-row">
-                        <div className="form-group">
-                            <div className="form-check">
-                                <label className="form-check-label">
-                                    <input
-                                        id="gIsAreaDisplayed"
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        onChange={handleFormUpdate.bind(this)}
-                                        checked={this.props.gIsAreaDisplayed} />
-                                    Show Area on Student Graph
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </React.Fragment>
+                <AreaConfiguration
+                    gAreaConfiguration={this.props.gAreaConfiguration}
+                    gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                    updateGraph={this.props.updateGraph}
+                />
             )}
         </React.Fragment>;
     }
 }
 
 DemandSupplyEditor.propTypes = {
+    updateGraph: PropTypes.func.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
@@ -186,7 +144,7 @@ DemandSupplyEditor.propTypes = {
     gLine2Slope: PropTypes.number.isRequired,
     gLine2Label: PropTypes.string.isRequired,
 
-    gIsAreaDisplayed: PropTypes.number,
+    gAreaConfiguration: PropTypes.number,
     gIsAreaDisplayed: PropTypes.bool,
 
     displayLabels: PropTypes.bool.isRequired,
