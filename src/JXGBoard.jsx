@@ -642,7 +642,7 @@ export default class JXGBoard extends React.Component {
                     </figure>
                 )}
 
-                {this.props.gType === 9 && (
+                {(this.props.gType === 9 || this.props.gType === 10) && (
                     <AreaDisplay
                         areaA={this.state.areaA}
                         areaB={this.state.areaB}
