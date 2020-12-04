@@ -6,7 +6,7 @@
 
 import { defaultGraph } from './GraphMapping';
 import { forceFloat, getOffset, getXIntercept } from './utils';
-import { drawLabel, drawPolygon, getXInterceptWithPoint } from './jsxgraphUtils';
+import { drawPolygon, getXInterceptWithPoint } from './jsxgraphUtils';
 
 
 const applyDefaults = function(obj, defaults) {
@@ -28,15 +28,6 @@ const invisiblePointOptions = {
         visible: false
     },
     size: 0
-};
-
-const triangleOptions = {
-    fixed: true,
-    draggable: false,
-    isDraggable: false,
-    vertices: {
-        visible: false
-    }
 };
 
 class Graph {
@@ -761,13 +752,7 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p3, p2, p1];
-        this.board.create('polygon', points, {
-            withLabel: false,
-            fillColor: 'lime',
-            highlightFillColor: 'lime',
-            ...triangleOptions
-        });
-        drawLabel(this.board, points, 'B');
+        return drawPolygon(this.board, points, 'B', 'lime');
     }
     drawTriangleC() {
         const p1 = this.board.create('point', [
@@ -786,13 +771,7 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p3, p2, p1];
-        this.board.create('polygon', points, {
-            withLabel: false,
-            fillColor: 'red',
-            highlightFillColor: 'red',
-            ...triangleOptions
-        });
-        drawLabel(this.board, points, 'C');
+        return drawPolygon(this.board, points, 'C', 'red');
     }
 
     make() {
@@ -809,18 +788,29 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
             visible: false
         });
 
+        let areaA = null;
+        let triangleB = null;
+        let triangleC = null;
+
         const areaConf = this.options.gAreaConfiguration;
         // Turn on and off certain triangles based on the "area
         // configuration".
         if (areaConf === 0 || areaConf === 3) {
-            this.drawAreaA();
+            areaA = this.drawAreaA();
         }
         if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
-            this.drawTriangleB();
+            triangleB = this.drawTriangleB();
         }
         if (areaConf === 2 || areaConf === 4) {
-            this.drawTriangleC();
+            triangleC = this.drawTriangleC();
         }
+
+        this.options.handleAreaUpdate(
+            // TODO
+            areaA ? forceFloat(areaA.Area()) : null,
+            triangleB ? forceFloat(triangleB.Area()) : null,
+            triangleC ? forceFloat(triangleC.Area()) : null
+        );
     }
 }
 
