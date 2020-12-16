@@ -406,7 +406,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
 
         return drawPolygon(this.board, points, 'A', 'purple');
     }
-    drawTriangleB() {
+    drawTriangleB(areaConf=null) {
         const yIntercept = this.l1.getRise();
         let points = [];
 
@@ -442,9 +442,11 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             points.push(p4);
         }
 
-        return drawPolygon(this.board, points, 'B', 'lime');
+        return drawPolygon(
+            this.board, points, 'B',
+            areaConf === 3 ? 'purple' : 'lime');
     }
-    drawTriangleC() {
+    drawTriangleC(areaConf=null) {
         const yIntercept = this.l1.getRise();
         let points = [];
 
@@ -481,7 +483,9 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             points.push(p3);
         }
 
-        return drawPolygon(this.board, points, 'C', 'red');
+        return drawPolygon(
+            this.board, points, 'C',
+            areaConf === 4 ? 'lime' : 'red');
     }
 
     make() {
@@ -509,10 +513,10 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             triangleA = this.drawTriangleA();
         }
         if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
-            triangleB = this.drawTriangleB();
+            triangleB = this.drawTriangleB(areaConf);
         }
         if (areaConf === 2 || areaConf === 4) {
-            triangleC = this.drawTriangleC();
+            triangleC = this.drawTriangleC(areaConf);
         }
 
         this.options.handleAreaUpdate(
