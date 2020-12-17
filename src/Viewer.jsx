@@ -108,6 +108,7 @@ class Viewer extends Component {
             gFunctionChoice={this.state.gFunctionChoice}
 
             gAreaConfiguration={this.state.gAreaConfiguration}
+
             gIsAreaDisplayed={this.state.gIsAreaDisplayed}
 
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
@@ -222,6 +223,7 @@ class Viewer extends Component {
             gFunctionChoice={this.state.gFunctionChoice}
 
             gAreaConfiguration={this.state.gAreaConfiguration}
+            gAreaConfigurationInitial={this.state.gAreaConfigurationInitial}
             gIsAreaDisplayed={this.state.gIsAreaDisplayed}
 
             assessment={this.state.assessment}

@@ -31,6 +31,7 @@ export default class AreaConfiguration extends React.Component {
                         })}
                     </div>
                 </div>
+
                 <div className="form-row">
                     <div className="form-group">
                         <div className="form-check">
@@ -41,7 +42,7 @@ export default class AreaConfiguration extends React.Component {
                                     type="checkbox"
                                     onChange={handleFormUpdate.bind(this)}
                                     checked={this.props.gIsAreaDisplayed} />
-                                Show Area on Student Graph
+                                Show Area Shadow
                             </label>
                         </div>
                     </div>

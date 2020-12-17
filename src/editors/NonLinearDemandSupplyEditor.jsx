@@ -212,6 +212,9 @@ NonLinearDemandSupplyEditor.propTypes = {
 
     gFunctionChoice: PropTypes.number.isRequired,
 
+    gAreaConfiguration: PropTypes.number,
+    gIsAreaDisplayed: PropTypes.bool,
+
     displayLabels: PropTypes.bool.isRequired,
     displaySliders: PropTypes.bool.isRequired,
     isInstructor: PropTypes.bool.isRequired,

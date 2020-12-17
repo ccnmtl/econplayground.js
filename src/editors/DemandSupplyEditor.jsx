@@ -119,12 +119,16 @@ export default class DemandSupplyEditor extends React.Component {
                     </div>
                 </React.Fragment>
             )}
+
             {this.props.showAUC && (
-                <AreaConfiguration
-                    gAreaConfiguration={this.props.gAreaConfiguration}
-                    gIsAreaDisplayed={this.props.gIsAreaDisplayed}
-                    updateGraph={this.props.updateGraph}
-                />
+                <>
+                    <AreaConfiguration
+                        gAreaConfiguration={this.props.gAreaConfiguration}
+                        gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                        updateGraph={this.props.updateGraph}
+                    />
+                </>
+
             )}
         </React.Fragment>;
     }

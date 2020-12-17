@@ -48,6 +48,7 @@ class Graph {
         this.l3 = null;
         this.l3Color = 'rgb(228, 87, 86)';
         this.shadowColor = 'rgb(200, 200, 200)';
+        this.shadowAreaColor = 'rgb(150, 150, 150)';
 
         this.options = applyDefaults(options, defaults);
 
@@ -382,7 +383,7 @@ const mkDemandSupply = function(board, options) {
 };
 
 class DemandSupplyGraphAUC extends DemandSupplyGraph {
-    drawTriangleA() {
+    drawTriangleA(shadow=false) {
         const p1 = this.board.create('point', [
             0,
             // getRise() returns the y-intercept
@@ -404,9 +405,12 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
 
         const points = [p1, p2, p3];
 
-        return drawPolygon(this.board, points, 'A', 'purple');
+        return drawPolygon(
+            this.board, points, 'A',
+            shadow ? this.shadowAreaColor : 'purple');
     }
-    drawTriangleB(areaConf=null) {
+    drawTriangleB(shadow=false, areaConf=null) {
+        console.log('areaConf', areaConf);
         const yIntercept = this.l1.getRise();
         let points = [];
 
@@ -442,11 +446,14 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             points.push(p4);
         }
 
-        return drawPolygon(
-            this.board, points, 'B',
-            areaConf === 3 ? 'purple' : 'lime');
+        let color = areaConf === 3 ? 'purple' : 'lime';
+        if (shadow) {
+            color = this.shadowAreaColor;
+        }
+
+        return drawPolygon(this.board, points, 'B', color);
     }
-    drawTriangleC(areaConf=null) {
+    drawTriangleC(shadow=false, areaConf=null) {
         const yIntercept = this.l1.getRise();
         let points = [];
 
@@ -483,9 +490,41 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             points.push(p3);
         }
 
-        return drawPolygon(
-            this.board, points, 'C',
-            areaConf === 4 ? 'lime' : 'red');
+        let color = areaConf === 4 ? 'lime' : 'red';
+        if (shadow) {
+            color = this.shadowAreaColor;
+        }
+
+        return drawPolygon(this.board, points, 'C', color);
+    }
+
+    drawAreas(shadow=false) {
+        let triangleA = null;
+        let triangleB = null;
+        let triangleC = null;
+
+        const areaConf = shadow ?
+              this.options.gAreaConfigurationInitial :
+              this.options.gAreaConfiguration;
+        console.log('drawAreas', shadow, areaConf);
+
+        // Turn on and off certain triangles based on the "area
+        // configuration".
+        if (areaConf === 0 || areaConf === 3) {
+            triangleA = this.drawTriangleA(shadow);
+        }
+        if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
+            triangleB = this.drawTriangleB(shadow, areaConf);
+        }
+        if (areaConf === 2 || areaConf === 4) {
+            triangleC = this.drawTriangleC(shadow, areaConf);
+        }
+
+        this.options.handleAreaUpdate(
+            triangleA ? forceFloat(triangleA.Area()) : null,
+            triangleB ? forceFloat(triangleB.Area()) : null,
+            triangleC ? forceFloat(triangleC.Area()) : null
+        );
     }
 
     make() {
@@ -502,28 +541,10 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             visible: false
         });
 
-        let triangleA = null;
-        let triangleB = null;
-        let triangleC = null;
-
-        const areaConf = this.options.gAreaConfiguration;
-        // Turn on and off certain triangles based on the "area
-        // configuration".
-        if (areaConf === 0 || areaConf === 3) {
-            triangleA = this.drawTriangleA();
+        if (this.options.gIsAreaDisplayed) {
+            this.drawAreas(true);
         }
-        if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
-            triangleB = this.drawTriangleB(areaConf);
-        }
-        if (areaConf === 2 || areaConf === 4) {
-            triangleC = this.drawTriangleC(areaConf);
-        }
-
-        this.options.handleAreaUpdate(
-            triangleA ? forceFloat(triangleA.Area()) : null,
-            triangleB ? forceFloat(triangleB.Area()) : null,
-            triangleC ? forceFloat(triangleC.Area()) : null
-        );
+        this.drawAreas(false);
     }
 }
 
