@@ -7,6 +7,34 @@ export default class AreaDisplay extends React.Component {
             return null;
         }
 
+        if (
+            typeof this.props.areaA === 'number' &&
+                typeof this.props.areaB === 'number'
+        ) {
+            return (
+                <div>
+                    <span className="mr-2">
+                        Area A+B: <strong>{
+                            this.props.areaA + this.props.areaB
+                        }</strong>
+                    </span>
+                </div>
+            );
+        } else if (
+            typeof this.props.areaB === 'number' &&
+                typeof this.props.areaC === 'number'
+        ) {
+            return (
+                <div>
+                    <span className="mr-2">
+                        Area B+C: <strong>{
+                            this.props.areaB + this.props.areaC
+                        }</strong>
+                    </span>
+                </div>
+            );
+        }
+
         return (
             <div>
                 {typeof this.props.areaA === 'number' && (
