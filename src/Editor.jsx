@@ -105,7 +105,12 @@ class Editor extends Component {
 
                         gFunctionChoice={this.state.gFunctionChoice}
                         gAreaConfiguration={this.state.gAreaConfiguration}
+
                         gIsAreaDisplayed={this.state.gIsAreaDisplayed}
+
+                        gAreaAName={this.state.gAreaAName}
+                        gAreaBName={this.state.gAreaBName}
+                        gAreaCName={this.state.gAreaCName}
 
                         updateGraph={this.handleGraphUpdate.bind(this)}
                         saveGraph={this.handleSaveGraph.bind(this)}

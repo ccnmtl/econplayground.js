@@ -111,6 +111,10 @@ class Viewer extends Component {
 
             gIsAreaDisplayed={this.state.gIsAreaDisplayed}
 
+            gAreaAName={this.state.gAreaAName}
+            gAreaBName={this.state.gAreaBName}
+            gAreaCName={this.state.gAreaCName}
+
             updateDisplayIntersection={this.updateDisplayIntersection.bind(this)}
             updateGraph={this.handleGraphUpdate.bind(this)}
             saveGraph={this.handleSaveGraph.bind(this)}
@@ -225,6 +229,10 @@ class Viewer extends Component {
             gAreaConfiguration={this.state.gAreaConfiguration}
             gAreaConfigurationInitial={this.state.gAreaConfigurationInitial}
             gIsAreaDisplayed={this.state.gIsAreaDisplayed}
+
+            gAreaAName={this.state.gAreaAName}
+            gAreaBName={this.state.gAreaBName}
+            gAreaCName={this.state.gAreaCName}
 
             assessment={this.state.assessment}
             submission={this.state.submission}
