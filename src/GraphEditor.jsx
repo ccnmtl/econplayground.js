@@ -382,6 +382,34 @@ export default class GraphEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph}
                             />
+                            {this.props.gType === 12 && (
+                                <NonLinearDemandSupplyEditor
+                                    displayLabels={true}
+                                    displaySliders={true}
+                                    isInstructor={true}
+                                    gLine1Label={this.props.gLine1Label}
+                                    gLine2Label={this.props.gLine2Label}
+                                    gCobbDouglasA={this.props.gCobbDouglasA}
+                                    gCobbDouglasAName={this.props.gCobbDouglasAName}
+                                    gCobbDouglasK={this.props.gCobbDouglasK}
+                                    gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                    gLine1Slope={this.props.gLine1Slope}
+                                    gLine1OffsetX={this.props.gLine1OffsetX}
+                                    gLine1OffsetY={this.props.gLine1OffsetY}
+                                    gLine2OffsetX={this.props.gLine2OffsetX}
+                                    gLine2OffsetY={this.props.gLine2OffsetY}
+                                    gIntersectionLabel={this.props.gIntersectionLabel}
+                                    gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                                    gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                    gFunctionChoice={this.props.gFunctionChoice}
+
+                                    gAreaConfiguration={this.props.gAreaConfiguration}
+                                    gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                                    showAUC={this.props.gType === 10}
+
+                                    updateGraph={this.props.updateGraph}
+                                />
+                            )}
                         </div>
                     </div>
                     <hr/>

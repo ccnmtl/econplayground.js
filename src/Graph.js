@@ -863,7 +863,8 @@ class CobbDouglasGraph extends Graph {
             name: lineLabel,
             withLabel: true,
             strokeWidth: 2,
-            strokeColor: this.l1Color,
+            strokeColor: this.options.gType === 12 ?
+                this.l2Color : this.l1Color,
             recursionDepthLow: 8,
             recursionDepthHigh: 15
         });
