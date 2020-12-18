@@ -90,7 +90,11 @@ const exportGraph = function(state) {
 
         // AUC features
         area_configuration: forceNumber(state.gAreaConfiguration),
-        is_area_displayed: state.gIsAreaDisplayed
+        is_area_displayed: state.gIsAreaDisplayed,
+
+        area_a_name: state.gAreaAName,
+        area_b_name: state.gAreaBName,
+        area_c_name: state.gAreaCName
     }
 
     if (state.gType === 3) {
@@ -284,6 +288,10 @@ const defaultGraph = {
 
     gAreaConfiguration: 0,
     gIsAreaDisplayed: true,
+
+    gAreaAName: 'A',
+    gAreaBName: 'B',
+    gAreaCName: 'C',
 
     // Use a hard-coded proof-of-concept assessment spreadsheet for
     // now. Eventually, this will be defined using a Google

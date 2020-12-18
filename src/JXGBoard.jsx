@@ -264,6 +264,7 @@ export default class JXGBoard extends React.Component {
                 gFunctionChoice: options.gFunctionChoice,
 
                 gAreaConfiguration: options.gAreaConfiguration,
+                gAreaConfigurationInitial: options.gAreaConfigurationInitial,
                 gIsAreaDisplayed: options.gIsAreaDisplayed,
 
                 gNeedsSubmit: options.gNeedsSubmit,
@@ -348,6 +349,7 @@ export default class JXGBoard extends React.Component {
                     gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
                     gFunctionChoice: options.gFunctionChoice,
                     gAreaConfiguration: options.gAreaConfiguration,
+                    gAreaConfigurationInitial: options.gAreaConfigurationInitial,
                     gIsAreaDisplayed: options.gIsAreaDisplayed,
                     gNeedsSubmit: options.gNeedsSubmit,
                     l1SubmissionOffset: getL1SubmissionOffset(options.submission),
@@ -429,6 +431,7 @@ export default class JXGBoard extends React.Component {
             'gCobbDouglasAlphaInitial',
             'gFunctionChoice',
             'gAreaConfiguration',
+            'gAreaConfigurationInitial',
             'gIsAreaDisplayed',
             'gNeedsSubmit',
             'submission',
@@ -528,6 +531,7 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasAlphaInitial: this.props.gCobbDouglasAlphaInitial,
                 gFunctionChoice: this.props.gFunctionChoice,
                 gAreaConfiguration: this.props.gAreaConfiguration,
+                gAreaConfigurationInitial: this.props.gAreaConfigurationInitial,
                 gIsAreaDisplayed: this.props.gIsAreaDisplayed,
                 gNeedsSubmit: this.props.gNeedsSubmit,
 
@@ -615,6 +619,7 @@ export default class JXGBoard extends React.Component {
             gCobbDouglasAlphaInitial: this.props.gCobbDouglasAlphaInitial,
             gFunctionChoice: this.props.gFunctionChoice,
             gAreaConfiguration: this.props.gAreaConfiguration,
+            gAreaConfigurationInitial: this.props.gAreaConfigurationInitial,
             gIsAreaDisplayed: this.props.gIsAreaDisplayed,
             gNeedsSubmit: this.props.gNeedsSubmit,
             l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
@@ -740,6 +745,7 @@ JXGBoard.propTypes = {
     gFunctionChoice: PropTypes.number,
 
     gAreaConfiguration: PropTypes.number,
+    gAreaConfigurationInitial: PropTypes.number,
     gIsAreaDisplayed: PropTypes.bool,
 
     id: PropTypes.string.isRequired,

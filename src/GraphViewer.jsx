@@ -128,6 +128,8 @@ export default class GraphViewer extends React.Component {
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
                             gAreaConfiguration={this.props.gAreaConfiguration}
+                            gAreaConfigurationInitial={
+                                this.props.gAreaConfigurationInitial}
                             gIsAreaDisplayed={this.props.gIsAreaDisplayed}
                             />
 
@@ -229,6 +231,8 @@ export default class GraphViewer extends React.Component {
                             gFunctionChoice={this.props.gFunctionChoice}
 
                             gAreaConfiguration={this.props.gAreaConfiguration}
+                            gAreaConfigurationInitial={
+                                this.props.gAreaConfigurationInitial}
                             gIsAreaDisplayed={this.props.gIsAreaDisplayed}
                             />
 
