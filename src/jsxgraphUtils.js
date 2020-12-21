@@ -16,7 +16,9 @@ const drawLabel = function(board, points, text) {
     const group = board.create('group', points);
     const center = group._update_centroid_center();
 
-    board.create('text', [center[0], center[1], text]);
+    board.create('text', [center[0], center[1], text], {
+        anchorX: 'middle'
+    });
 };
 
 /**

@@ -266,6 +266,9 @@ export default class JXGBoard extends React.Component {
                 gAreaConfiguration: options.gAreaConfiguration,
                 gAreaConfigurationInitial: options.gAreaConfigurationInitial,
                 gIsAreaDisplayed: options.gIsAreaDisplayed,
+                gAreaAName: options.gAreaAName,
+                gAreaBName: options.gAreaBName,
+                gAreaCName: options.gAreaCName,
 
                 gNeedsSubmit: options.gNeedsSubmit,
                 l1SubmissionOffset: getL1SubmissionOffset(options.submission),
@@ -351,6 +354,10 @@ export default class JXGBoard extends React.Component {
                     gAreaConfiguration: options.gAreaConfiguration,
                     gAreaConfigurationInitial: options.gAreaConfigurationInitial,
                     gIsAreaDisplayed: options.gIsAreaDisplayed,
+                    gAreaAName: options.gAreaAName,
+                    gAreaBName: options.gAreaBName,
+                    gAreaCName: options.gAreaCName,
+
                     gNeedsSubmit: options.gNeedsSubmit,
                     l1SubmissionOffset: getL1SubmissionOffset(options.submission),
                     l2SubmissionOffset: getL2SubmissionOffset(options.submission),
@@ -433,6 +440,9 @@ export default class JXGBoard extends React.Component {
             'gAreaConfiguration',
             'gAreaConfigurationInitial',
             'gIsAreaDisplayed',
+            'gAreaAName',
+            'gAreaBName',
+            'gAreaCName',
             'gNeedsSubmit',
             'submission',
             'shadow'
@@ -533,6 +543,10 @@ export default class JXGBoard extends React.Component {
                 gAreaConfiguration: this.props.gAreaConfiguration,
                 gAreaConfigurationInitial: this.props.gAreaConfigurationInitial,
                 gIsAreaDisplayed: this.props.gIsAreaDisplayed,
+                gAreaAName: this.props.gAreaAName,
+                gAreaBName: this.props.gAreaBName,
+                gAreaCName: this.props.gAreaCName,
+
                 gNeedsSubmit: this.props.gNeedsSubmit,
 
                 l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
@@ -621,6 +635,9 @@ export default class JXGBoard extends React.Component {
             gAreaConfiguration: this.props.gAreaConfiguration,
             gAreaConfigurationInitial: this.props.gAreaConfigurationInitial,
             gIsAreaDisplayed: this.props.gIsAreaDisplayed,
+            gAreaAName: this.props.gAreaAName,
+            gAreaBName: this.props.gAreaBName,
+            gAreaCName: this.props.gAreaCName,
             gNeedsSubmit: this.props.gNeedsSubmit,
             l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
             l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
@@ -747,6 +764,9 @@ JXGBoard.propTypes = {
     gAreaConfiguration: PropTypes.number,
     gAreaConfigurationInitial: PropTypes.number,
     gIsAreaDisplayed: PropTypes.bool,
+    gAreaAName: PropTypes.string,
+    gAreaBName: PropTypes.string,
+    gAreaCName: PropTypes.string,
 
     id: PropTypes.string.isRequired,
     locked: PropTypes.bool

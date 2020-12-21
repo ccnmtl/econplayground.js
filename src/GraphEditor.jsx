@@ -116,6 +116,9 @@ export default class GraphEditor extends React.Component {
 
                                         gAreaConfiguration={this.props.gAreaConfiguration}
                                         gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                                        gAreaAName={this.props.gAreaAName}
+                                        gAreaBName={this.props.gAreaBName}
+                                        gAreaCName={this.props.gAreaCName}
                                     />
                                     <CommonGraphEditor
                                         gTitle={this.props.gTitle}
@@ -165,6 +168,10 @@ export default class GraphEditor extends React.Component {
 
                                     gAreaConfiguration={this.props.gAreaConfiguration}
                                     gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                                    gAreaAName={this.props.gAreaAName}
+                                    gAreaBName={this.props.gAreaBName}
+                                    gAreaCName={this.props.gAreaCName}
 
                                     showAUC={this.props.gType === 9}
                                     updateGraph={this.props.updateGraph}
@@ -230,6 +237,9 @@ export default class GraphEditor extends React.Component {
 
                                     gAreaConfiguration={this.props.gAreaConfiguration}
                                     gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                                    gAreaAName={this.props.gAreaAName}
+                                    gAreaBName={this.props.gAreaBName}
+                                    gAreaCName={this.props.gAreaCName}
                                 />
                                 <CommonGraphEditor
                                     gTitle={this.props.gTitle}
@@ -280,6 +290,11 @@ export default class GraphEditor extends React.Component {
 
                                 gAreaConfiguration={this.props.gAreaConfiguration}
                                 gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                                gAreaAName={this.props.gAreaAName}
+                                gAreaBName={this.props.gAreaBName}
+                                gAreaCName={this.props.gAreaCName}
+
                                 showAUC={this.props.gType === 10}
 
                                 updateGraph={this.props.updateGraph}

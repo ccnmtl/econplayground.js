@@ -131,6 +131,10 @@ export default class GraphViewer extends React.Component {
                             gAreaConfigurationInitial={
                                 this.props.gAreaConfigurationInitial}
                             gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                            gAreaAName={this.props.gAreaAName}
+                            gAreaBName={this.props.gAreaBName}
+                            gAreaCName={this.props.gAreaCName}
                             />
 
                         <Feedback
@@ -155,6 +159,9 @@ export default class GraphViewer extends React.Component {
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                             gAreaConfiguration={this.props.gAreaConfiguration}
                             gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                            gAreaAName={this.props.gAreaAName}
+                            gAreaBName={this.props.gAreaBName}
+                            gAreaCName={this.props.gAreaCName}
 
                             showAUC={this.props.gType === 9}
                             updateGraph={this.updateGraph}
@@ -234,6 +241,10 @@ export default class GraphViewer extends React.Component {
                             gAreaConfigurationInitial={
                                 this.props.gAreaConfigurationInitial}
                             gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                            gAreaAName={this.props.gAreaAName}
+                            gAreaBName={this.props.gAreaBName}
+                            gAreaCName={this.props.gAreaCName}
                             />
 
                         <Feedback
@@ -262,6 +273,9 @@ export default class GraphViewer extends React.Component {
                             gFunctionChoice={this.props.gFunctionChoice}
                             gAreaConfiguration={this.props.gAreaConfiguration}
                             gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                            gAreaAName={this.props.gAreaAName}
+                            gAreaBName={this.props.gAreaBName}
+                            gAreaCName={this.props.gAreaCName}
                             showAUC={this.props.gType === 10}
                             updateGraph={this.updateGraph}
                             />

@@ -194,7 +194,11 @@ const importGraph = function(json, obj) {
 
         // AUC features
         gAreaConfiguration: json.area_configuration,
-        gIsAreaDisplayed: json.is_area_displayed
+        gIsAreaDisplayed: json.is_area_displayed,
+
+        gAreaAName: json.area_a_name,
+        gAreaBName: json.area_b_name,
+        gAreaCName: json.area_c_name
     };
 
     // When importing a graph for display, save the initial state of

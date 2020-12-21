@@ -8,7 +8,36 @@ export default class AreaConfiguration extends React.Component {
         const me = this;
         return (
             <>
-                <h2>Surpluses</h2>
+            <h2>Areas</h2>
+
+                <div className="form-row">
+                    <EditableControl
+                        id="gAreaAName"
+                        name="Area A label"
+                        value={this.props.gAreaAName}
+                        valueEditable={true}
+                        isInstructor={true}
+                        updateGraph={this.props.updateGraph}/>
+
+                    <EditableControl
+                        id="gAreaBName"
+                        name="Area B label"
+                        value={this.props.gAreaBName}
+                        valueEditable={true}
+                        isInstructor={true}
+                        updateGraph={this.props.updateGraph}/>
+                </div>
+
+                <div className="form-row">
+                    <EditableControl
+                        id="gAreaCName"
+                        name="Area C label"
+                        value={this.props.gAreaCName}
+                        valueEditable={true}
+                        isInstructor={true}
+                        updateGraph={this.props.updateGraph}/>
+                </div>
+
                 <div className="form-row">
                     <div className="form-group">
                         {['A', 'B', 'C', 'A + B', 'B + C'].map(function(el, idx) {
@@ -55,5 +84,10 @@ export default class AreaConfiguration extends React.Component {
 AreaConfiguration.propTypes = {
     gAreaConfiguration: PropTypes.number.isRequired,
     gIsAreaDisplayed: PropTypes.bool.isRequired,
+
+    gAreaAName: PropTypes.string.isRequired,
+    gAreaBName: PropTypes.string.isRequired,
+    gAreaCName: PropTypes.string.isRequired,
+
     updateGraph: PropTypes.func.isRequired
 };

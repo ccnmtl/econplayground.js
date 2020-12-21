@@ -125,6 +125,11 @@ export default class DemandSupplyEditor extends React.Component {
                     <AreaConfiguration
                         gAreaConfiguration={this.props.gAreaConfiguration}
                         gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                        gAreaAName={this.props.gAreaAName}
+                        gAreaBName={this.props.gAreaBName}
+                        gAreaCName={this.props.gAreaCName}
+
                         updateGraph={this.props.updateGraph}
                     />
                 </>
@@ -150,6 +155,10 @@ DemandSupplyEditor.propTypes = {
 
     gAreaConfiguration: PropTypes.number,
     gIsAreaDisplayed: PropTypes.bool,
+
+    gAreaAName: PropTypes.string,
+    gAreaBName: PropTypes.string,
+    gAreaCName: PropTypes.string,
 
     displayLabels: PropTypes.bool.isRequired,
     displaySliders: PropTypes.bool.isRequired,

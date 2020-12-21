@@ -406,11 +406,10 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         const points = [p1, p2, p3];
 
         return drawPolygon(
-            this.board, points, 'A',
+            this.board, points, this.options.gAreaAName,
             shadow ? this.shadowAreaColor : 'purple');
     }
     drawTriangleB(shadow=false, areaConf=null) {
-        console.log('areaConf', areaConf);
         const yIntercept = this.l1.getRise();
         let points = [];
 
@@ -451,7 +450,8 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             color = this.shadowAreaColor;
         }
 
-        return drawPolygon(this.board, points, 'B', color);
+        return drawPolygon(
+            this.board, points, this.options.gAreaBName, color);
     }
     drawTriangleC(shadow=false, areaConf=null) {
         const yIntercept = this.l1.getRise();
@@ -495,7 +495,8 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             color = this.shadowAreaColor;
         }
 
-        return drawPolygon(this.board, points, 'C', color);
+        return drawPolygon(
+            this.board, points, this.options.gAreaCName, color);
     }
 
     drawAreas(shadow=false) {
@@ -506,7 +507,6 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         const areaConf = shadow ?
               this.options.gAreaConfigurationInitial :
               this.options.gAreaConfiguration;
-        console.log('drawAreas', shadow, areaConf);
 
         // Turn on and off certain triangles based on the "area
         // configuration".
