@@ -191,6 +191,7 @@ export default class JXGBoard extends React.Component {
 
         if (typeof options.gType === 'number') {
             let graphParams = {
+                gType: options.gType,
                 gShowIntersection: options.gShowIntersection,
                 gDisplayIntersection1: options.gDisplayIntersection1,
                 gDisplayIntersection1Initial: options.gDisplayIntersection1Initial,
