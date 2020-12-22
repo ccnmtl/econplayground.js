@@ -622,7 +622,15 @@ class NonLinearDemandSupplyGraph extends Graph {
 
         const l1func = function(x) {
             const slope = me.options.gLine1Slope;
-            const result = (x - me.options.gLine1OffsetX) * slope;
+
+            let lineXPos = x - me.options.gLine1OffsetX;
+            if (me.options.gType === 12) {
+                // If this NLDS graph is a joint graph, use the cobb-douglas
+                // L value as the X offset for line 1.
+                lineXPos = x - me.options.gCobbDouglasL;
+            }
+
+            const result = lineXPos * slope;
             return result + me.options.gLine1OffsetY;
         };
 
