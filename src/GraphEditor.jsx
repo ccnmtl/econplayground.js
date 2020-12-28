@@ -420,7 +420,7 @@ export default class GraphEditor extends React.Component {
 
                                     gAreaConfiguration={this.props.gAreaConfiguration}
                                     gIsAreaDisplayed={this.props.gIsAreaDisplayed}
-                                    showAUC={this.props.gType === 10}
+                                    showAUC={false}
 
                                     updateGraph={this.props.updateGraph}
                                 />
