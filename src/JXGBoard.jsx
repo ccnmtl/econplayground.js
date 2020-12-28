@@ -299,6 +299,7 @@ export default class JXGBoard extends React.Component {
             // initialize the second board to be a NLDS graph.
             if (options.gType === 12) {
                 mkNonLinearDemandSupply(board2, {
+                    gType: options.gType,
                     gShowIntersection: options.gShowIntersection,
                     gDisplayIntersection1: options.gDisplayIntersection1,
                     gDisplayIntersection1Initial: options.gDisplayIntersection1Initial,
