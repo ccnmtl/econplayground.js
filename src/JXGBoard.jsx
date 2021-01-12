@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import JXG from 'jsxgraph';
-import {graphTypes, mkNonLinearDemandSupply} from './Graph';
+import {graphTypes, mkDemandSupply, mkNonLinearDemandSupply} from './Graph';
 import AreaDisplay from './AreaDisplay';
 import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 
@@ -152,7 +152,7 @@ export default class JXGBoard extends React.Component {
         window.board = this.board = board;
 
         let board2 = null;
-        if (options.gType === 12) {
+        if (options.gType === 12 || options.gType == 13) {
             board2 = JXG.JSXGraph.initBoard(
                 this.id + '-2', {
                     axis: true,
@@ -291,7 +291,14 @@ export default class JXGBoard extends React.Component {
 
             // If this is a joint graph, alter the graph ID constructor
             // to be that of the top graph we're rendering.
-            const graphId = options.gType === 12 ? 3 : options.gType;
+            let graphId = options.gType;
+            if (options.gType == 12) {
+                // Render a Cobb-Douglas graph
+                graphId = 3;
+            } else if (options.gType === 13) {
+                // Render a Linear Demand-Supply graph
+                graphId = 0;
+            }
 
             graphTypes[graphId](board, graphParams);
 
@@ -359,6 +366,43 @@ export default class JXGBoard extends React.Component {
                     gAreaAName: options.gAreaAName,
                     gAreaBName: options.gAreaBName,
                     gAreaCName: options.gAreaCName,
+
+                    gNeedsSubmit: options.gNeedsSubmit,
+                    l1SubmissionOffset: getL1SubmissionOffset(options.submission),
+                    l2SubmissionOffset: getL2SubmissionOffset(options.submission),
+                    submission: options.submission,
+                    isSubmitted: options.isSubmitted,
+                    locked: this.props.locked,
+                    shadow: this.props.shadow
+                });
+            } else if (options.gType === 13) {
+                mkDemandSupply(board2, {
+                    gType: options.gType,
+                    gShowIntersection: options.gShowIntersection,
+                    gDisplayIntersection1: options.gDisplayIntersection1,
+                    gDisplayIntersection1Initial: options.gDisplayIntersection1Initial,
+                    gIntersectionLabel: options.gIntersectionLabel,
+
+                    gDisplayShadow: options.gDisplayShadow,
+                    gIntersectionHorizLineLabel: options.gIntersectionHorizLineLabel,
+                    gIntersectionVertLineLabel: options.gIntersectionVertLineLabel,
+                    gXAxisLabel: options.gXAxisLabel,
+                    gYAxisLabel: options.gYAxisLabel,
+                    gLine1Label: options.gLine1Label,
+                    gLine2Label: options.gLine2Label,
+                    gLine1Slope: options.gLine1Slope,
+                    gLine1SlopeInitial: options.gLine1SlopeInitial,
+
+                    gLine1OffsetX: options.gLine1OffsetX,
+                    gLine1OffsetY: options.gLine1OffsetY,
+                    gLine1OffsetXInitial: options.gLine1OffsetXInitial,
+                    gLine1OffsetYInitial: options.gLine1OffsetYInitial,
+
+                    // Line 2 is not draggable for now.
+                    gLine2OffsetX: 0,
+                    gLine2OffsetY: 0,
+                    gLine2OffsetXInitial: 0,
+                    gLine2OffsetYInitial: 0,
 
                     gNeedsSubmit: options.gNeedsSubmit,
                     l1SubmissionOffset: getL1SubmissionOffset(options.submission),
@@ -652,13 +696,33 @@ export default class JXGBoard extends React.Component {
     // called only if shouldComponentUpdate returns true
     // for rendering the JSXGraph board div and any child elements
     render() {
+        if (this.props.gType === 13) {
+            return (
+                <>
+                    <div className="col-6">
+                        <figure aria-label="The EconPractice graph."
+                                id={this.id} className="jxgbox" style={this.style}>
+                        </figure>
+                    </div>
+
+                    <div className="col-6">
+                        <figure aria-label="The EconPractice graph."
+                                id={this.id + '-2'}
+                                className="jxgbox"
+                                style={this.style}>
+                        </figure>
+                    </div>
+                </>
+            );
+        }
+
         return (
             <>
                 <figure aria-label="The EconPractice graph."
                         id={this.id} className="jxgbox" style={this.style}>
                 </figure>
 
-                {this.props.gType === 12 && (
+                {(this.props.gType === 12) && (
                     <figure aria-label="The EconPractice graph."
                             id={this.id + '-2'}
                             className="jxgbox"
