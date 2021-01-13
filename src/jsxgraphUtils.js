@@ -5,6 +5,11 @@ const shapeOptions = {
     isDraggable: false,
     vertices: {
         visible: false
+    },
+    borders: {
+        strokeWidth: 0,
+        highlightStrokeWidth: 0,
+        visible: false
     }
 };
 
