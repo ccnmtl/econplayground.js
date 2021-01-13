@@ -304,7 +304,7 @@ class DemandSupplyGraph extends Graph {
     make() {
         if (this.options.shadow && this.options.gDisplayShadow) {
             // Display the initial curves set by the instructor.
-            const l1fShadow = this.board.create(
+            this.l1fShadow = this.board.create(
                 'line',
                 [
                     [2.5, 2.5 + this.options.gLine1OffsetYInitial],
@@ -319,7 +319,7 @@ class DemandSupplyGraph extends Graph {
                     layer: 4
                 });
 
-            const l2fShadow = this.board.create(
+            this.l2fShadow = this.board.create(
                 'line',
                 [
                     [2.5, 2.5 + this.options.gLine2OffsetYInitial],
@@ -334,7 +334,7 @@ class DemandSupplyGraph extends Graph {
                     layer: 4
                 });
 
-            this.showIntersection(l1fShadow, l2fShadow, true);
+            this.showIntersection(this.l1fShadow, this.l2fShadow, true);
         }
 
         this.l1 = this.board.create(
@@ -383,45 +383,46 @@ const mkDemandSupply = function(board, options) {
 };
 
 class DemandSupplyGraphAUC extends DemandSupplyGraph {
-    drawTriangleA(shadow=false) {
+    drawTriangleA(shadow=false, intersection, l2) {
         const p1 = this.board.create('point', [
             0,
             // getRise() returns the y-intercept
-            this.l2.getRise()
+            l2.getRise()
         ], invisiblePointOptions);
 
         const p2 = this.board.create('point', [
             0,
-            Math.max(this.intersection.Y(), 0)
+            Math.max(intersection.Y(), 0)
         ], invisiblePointOptions);
 
         const p3 = this.board.create('point', [
             Math.min(
-                this.intersection.X(),
-                getXInterceptWithPoint(this.intersection, this.l2.getSlope())
+                intersection.X(),
+                getXInterceptWithPoint(intersection, l2.getSlope())
             ),
-            Math.max(this.intersection.Y(), 0)
+            Math.max(intersection.Y(), 0)
         ], invisiblePointOptions);
 
         const points = [p1, p2, p3];
 
         return drawPolygon(
-            this.board, points, this.options.gAreaAName,
+            this.board, points,
+            shadow ? null : this.options.gAreaAName,
             shadow ? this.shadowAreaColor : 'purple');
     }
-    drawTriangleB(shadow=false, areaConf=null) {
-        const yIntercept = this.l1.getRise();
+    drawTriangleB(shadow=false, areaConf=null, intersection, l1) {
+        const yIntercept = l1.getRise();
         let points = [];
 
         const p1 = this.board.create('point', [
             0,
-            this.intersection.Y()
+            intersection.Y()
         ], invisiblePointOptions);
         points.push(p1);
 
         const p2 = this.board.create('point', [
-            this.intersection.X(),
-            this.intersection.Y()
+            intersection.X(),
+            intersection.Y()
         ], invisiblePointOptions);
         points.push(p2);
 
@@ -434,7 +435,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             points.push(p3);
         } else {
             const p3 = this.board.create('point', [
-                getXIntercept(this.l1.getSlope(), yIntercept),
+                getXIntercept(l1.getSlope(), yIntercept),
                 0
             ], invisiblePointOptions);
             points.push(p3);
@@ -451,20 +452,22 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         }
 
         return drawPolygon(
-            this.board, points, this.options.gAreaBName, color);
+            this.board, points,
+            shadow ? null : this.options.gAreaBName,
+            color);
     }
-    drawTriangleC(shadow=false, areaConf=null) {
-        const yIntercept = this.l1.getRise();
+    drawTriangleC(shadow=false, areaConf=null, intersection, l1) {
+        const yIntercept = l1.getRise();
         let points = [];
 
         const p1 = this.board.create('point', [
-            this.intersection.X(),
-            this.intersection.Y()
+            intersection.X(),
+            intersection.Y()
         ], invisiblePointOptions);
         points.push(p1);
 
         const p2 = this.board.create('point', [
-            this.intersection.X(),
+            intersection.X(),
             0
         ], invisiblePointOptions);
         points.push(p2);
@@ -483,7 +486,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
 
         } else {
             const xIntercept = getXInterceptWithPoint(
-                this.intersection, this.l1.getSlope());
+                intersection, l1.getSlope());
             const p3 = this.board.create(
                 'point',
                 [xIntercept, 0], invisiblePointOptions)
@@ -496,28 +499,30 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         }
 
         return drawPolygon(
-            this.board, points, this.options.gAreaCName, color);
+            this.board, points,
+            shadow ? null : this.options.gAreaCName, color);
     }
 
-    drawAreas(shadow=false) {
+    drawAreas() {
         let triangleA = null;
         let triangleB = null;
         let triangleC = null;
 
-        const areaConf = shadow ?
-              this.options.gAreaConfigurationInitial :
-              this.options.gAreaConfiguration;
+        const areaConf = this.options.gAreaConfiguration;
 
         // Turn on and off certain triangles based on the "area
         // configuration".
         if (areaConf === 0 || areaConf === 3) {
-            triangleA = this.drawTriangleA(shadow);
+            triangleA = this.drawTriangleA(
+                false, this.intersection, this.l2);
         }
         if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
-            triangleB = this.drawTriangleB(shadow, areaConf);
+            triangleB = this.drawTriangleB(
+                false, areaConf, this.intersection, this.l1);
         }
         if (areaConf === 2 || areaConf === 4) {
-            triangleC = this.drawTriangleC(shadow, areaConf);
+            triangleC = this.drawTriangleC(
+                false, areaConf, this.intersection, this.l1);
         }
 
         this.options.handleAreaUpdate(
@@ -525,6 +530,25 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             triangleB ? forceFloat(triangleB.Area()) : null,
             triangleC ? forceFloat(triangleC.Area()) : null
         );
+    }
+
+    drawShadowAreas() {
+        const areaConf = this.options.gAreaConfigurationInitial;
+
+        // Turn on and off certain triangles based on the "area
+        // configuration".
+        if (areaConf === 0 || areaConf === 3) {
+            this.drawTriangleA(
+                true, this.shadowIntersection, this.l2fShadow);
+        }
+        if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
+            this.drawTriangleB(
+                true, areaConf, this.shadowIntersection, this.l1fShadow);
+        }
+        if (areaConf === 2 || areaConf === 4) {
+            this.drawTriangleC(
+                true, areaConf, this.shadowIntersection, this.l1fShadow);
+        }
     }
 
     make() {
@@ -542,9 +566,24 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         });
 
         if (this.options.gIsAreaDisplayed) {
-            this.drawAreas(true);
+            if (this.l1fShadow && this.l2fShadow) {
+                this.shadowIntersection = this.board.create('intersection', [
+                    this.l1fShadow, this.l2fShadow, 0
+                ], {
+                    name: '',
+                    withLabel: false,
+                    fixed: true,
+                    highlight: false,
+                    showInfobox: false,
+                    layer: 4,
+                    size: 0,
+                    visible: false
+                });
+            }
+            this.drawShadowAreas();
         }
-        this.drawAreas(false);
+
+        this.drawAreas();
     }
 }
 
