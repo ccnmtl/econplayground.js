@@ -229,6 +229,9 @@ const displayGraphType = function(gType) {
         case 12:
             name = 'Cobb-Douglas NLDS';
             break;
+        case 13:
+            name = 'Linear Demand-Supply x2';
+            break;
         default:
             break;
     }

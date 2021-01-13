@@ -375,7 +375,7 @@ class DemandSupplyGraph extends Graph {
     }
 }
 
-const mkDemandSupply = function(board, options) {
+export const mkDemandSupply = function(board, options) {
     let g = new DemandSupplyGraph(board, options);
     g.make();
     g.postMake();
