@@ -16,15 +16,17 @@ export default class EditableControl extends React.Component {
                 {(this.props.isInstructor || this.props.valueEditable) && (
                     <div className="col-sm-4">
                         <div className="form-group">
-                            <label htmlFor={this.props.id}>
+                            <label>
                                 {this.props.name}
+
+                                <input
+                                    name={this.props.id}
+                                    className="form-control form-control-sm"
+                                    type="text"
+                                    maxLength="60"
+                                    value={this.props.value}
+                                    onChange={handleFormUpdate.bind(this)} />
                             </label>
-                            <input id={this.props.id}
-                                   className="form-control form-control-sm"
-                                   type="text"
-                                   maxLength="60"
-                                   value={this.props.value}
-                                   onChange={handleFormUpdate.bind(this)} />
                         </div>
                     </div>
                 )}

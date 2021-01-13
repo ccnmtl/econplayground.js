@@ -23,7 +23,7 @@ export default class CobbDouglasEditor extends React.Component {
                     {this.props.isInstructor && (
                         <input type="text"
                             className="form-control form-control-sm mr-2"
-                            data-id="gCobbDouglasYName"
+                            name="gCobbDouglasYName"
                             value={this.props.gCobbDouglasYName}
                             maxLength="1"
                             size="1"
@@ -42,7 +42,7 @@ export default class CobbDouglasEditor extends React.Component {
                                 <label htmlFor="gCobbDouglasA">
                                     {this.props.isInstructor ? (
                                         <input type="text"
-                                            id="gCobbDouglasAName"
+                                            name="gCobbDouglasAName"
                                             maxLength="1"
                                             size="1"
                                             className="form-control form-control-sm"
@@ -65,7 +65,7 @@ export default class CobbDouglasEditor extends React.Component {
                                     <label htmlFor="gCobbDouglasK">
                                         {this.props.isInstructor ? (
                                             <input type="text"
-                                                id="gCobbDouglasKName"
+                                                name="gCobbDouglasKName"
                                                 maxLength="1"
                                                 size="1"
                                                 className="form-control form-control-sm"
@@ -108,7 +108,7 @@ export default class CobbDouglasEditor extends React.Component {
                                 <label htmlFor="gCobbDouglasL">
                                     {this.props.isInstructor ? (
                                         <input type="text"
-                                            id="gCobbDouglasLName"
+                                            name="gCobbDouglasLName"
                                             maxLength="1"
                                             size="1"
                                             className="form-control form-control-sm"

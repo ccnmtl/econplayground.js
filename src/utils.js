@@ -176,6 +176,13 @@ const getXIntercept = function(m, b) {
     return (-b) / m;
 };
 
+/**
+ * Given y, m, and x, return b.
+ */
+const getYIntercept = function(y, m, x) {
+    return y - (m * x);
+};
+
 /*
  * Force a value into a float that will be acceptable to the Django
  * API's DecimalFields. This is currently capped to 4 decimal places.
@@ -251,6 +258,6 @@ export {
     authedFetch, getAssessment, getGraphId, getCohortId, getTopics,
     getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
-    getOffset, getXIntercept,
+    getOffset, getXIntercept, getYIntercept,
     forceFloat, forceNumber, displayGraphType, getError
 };
