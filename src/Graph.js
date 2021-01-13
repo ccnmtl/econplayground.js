@@ -5,7 +5,7 @@
  */
 
 import { defaultGraph } from './GraphMapping';
-import { forceFloat, getOffset, getXIntercept } from './utils';
+import { forceFloat, getOffset, getXIntercept, getYIntercept } from './utils';
 import { drawPolygon, getXInterceptWithPoint } from './jsxgraphUtils';
 
 
@@ -661,30 +661,6 @@ class NonLinearDemandSupplyGraph extends Graph {
             this.showIntersection(l1fShadow, l2fShadow, true);
         }
 
-        const l1func = function(x) {
-            const slope = me.options.gLine1Slope;
-
-            let lineXPos = x - me.options.gLine1OffsetX;
-            if (me.options.gType === 12) {
-                // If this NLDS graph is a joint graph, use the cobb-douglas
-                // L value as the X offset for line 1.
-                lineXPos = x - me.options.gCobbDouglasL;
-            }
-
-            const result = lineXPos * slope;
-            return result + me.options.gLine1OffsetY;
-        };
-
-        this.l1 = this.board.create('functiongraph', [l1func, -30, 30], {
-            name: this.options.gLine1Label,
-            withLabel: true,
-            strokeWidth: 2,
-            strokeColor: this.l1Color,
-            fixed: this.areLinesFixed,
-            recursionDepthLow: 8,
-            recursionDepthHigh: 15
-        });
-
         let l2func = function(x) {
             // Apply the X offset to x before we do
             // anything else with it, to shift the graph
@@ -713,6 +689,42 @@ class NonLinearDemandSupplyGraph extends Graph {
         }
 
         this.l2func = l2func;
+
+        if (me.options.gType === 12) {
+            const x1 = me.options.gCobbDouglasL;
+            const y1 = l2func(x1);
+            const m = me.options.gLine1Slope;
+            const yIntercept = getYIntercept(y1, m, x1);
+
+            this.l1 = this.board.create('line', [
+                [x1, Math.min(300, y1)],
+                [0, Math.min(300, yIntercept)]
+            ], {
+                name: this.options.gLine1Label,
+                withLabel: true,
+                strokeWidth: 2,
+                strokeColor: this.l1Color,
+                fixed: true
+            });
+        } else {
+            const l1func = function(x) {
+                const slope = me.options.gLine1Slope;
+                let lineXPos = x - me.options.gLine1OffsetX;
+
+                const result = lineXPos * slope;
+                return result + me.options.gLine1OffsetY;
+            };
+
+            this.l1 = this.board.create('functiongraph', [l1func, -30, 30], {
+                name: this.options.gLine1Label,
+                withLabel: true,
+                strokeWidth: 2,
+                strokeColor: this.l1Color,
+                fixed: this.areLinesFixed,
+                recursionDepthLow: 8,
+                recursionDepthHigh: 15
+            });
+        }
 
         this.l2 = this.board.create('functiongraph', [l2func, -30, 30], {
             name: this.options.gLine2Label,

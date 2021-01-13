@@ -81,7 +81,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 <label htmlFor="gCobbDouglasA">
                                     {this.props.isInstructor ? (
                                         <input type="text"
-                                            id="gCobbDouglasAName"
+                                            name="gCobbDouglasAName"
                                             maxLength="1"
                                             size="1"
                                             className="form-control form-control-sm"
@@ -105,7 +105,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                     {this.props.gFunctionChoice !== 1 &&
                                      (this.props.isInstructor ? (
                                         <input type="text"
-                                               id="gCobbDouglasKName"
+                                               name="gCobbDouglasKName"
                                                maxLength="1"
                                                size="1"
                                                className="form-control form-control-sm"
