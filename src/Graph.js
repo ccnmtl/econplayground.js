@@ -27,7 +27,9 @@ const invisiblePointOptions = {
     label: {
         visible: false
     },
-    size: 0
+    size: 0,
+    showInfobox: false,
+    fixed: true
 };
 
 class Graph {
