@@ -183,8 +183,78 @@ export default class GraphEditor extends React.Component {
                     </form>
                 </div>
             );
-        } else if (this.props.gType === 13) {
-            // Horizontal Joint Graph: two Linear Demand-Supply graphs
+        } else if (this.props.gType === 13 || this.props.gType === 14) {
+            // Horizontal Joint Graphs
+            // * two Linear Demand-Supply graphs
+            // * two Non-Linear Demand-Supply graphs
+            let graphSpecificOptions;
+            if (this.props.gType === 13) {
+                graphSpecificOptions = (
+                    <DemandSupplyEditor
+                        displayLabels={true}
+                        displaySliders={true}
+                        isInstructor={true}
+                        gLine1Label={this.props.gLine1Label}
+                        gLine2Label={this.props.gLine2Label}
+                        gLine1Slope={this.props.gLine1Slope}
+                        gLine2Slope={this.props.gLine2Slope}
+                        gLine1OffsetX={this.props.gLine1OffsetX}
+                        gLine1OffsetY={this.props.gLine1OffsetY}
+                        gLine2OffsetX={this.props.gLine2OffsetX}
+                        gLine2OffsetY={this.props.gLine2OffsetY}
+                        gXAxisLabel={this.props.gXAxisLabel}
+                        gYAxisLabel={this.props.gYAxisLabel}
+                        gIntersectionLabel={this.props.gIntersectionLabel}
+                        gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                        gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                        gAreaConfiguration={this.props.gAreaConfiguration}
+                        gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                        gAreaAName={this.props.gAreaAName}
+                        gAreaBName={this.props.gAreaBName}
+                        gAreaCName={this.props.gAreaCName}
+
+                        showAUC={this.props.gType === 9}
+                        updateGraph={this.props.updateGraph}
+                    />
+                );
+            } else if (this.props.gType === 14) {
+                graphSpecificOptions = (
+                    <NonLinearDemandSupplyEditor
+                        displayLabels={true}
+                        displaySliders={true}
+                        isInstructor={true}
+                        gLine1Label={this.props.gLine1Label}
+                        gLine2Label={this.props.gLine2Label}
+                        gCobbDouglasA={this.props.gCobbDouglasA}
+                        gCobbDouglasAName={this.props.gCobbDouglasAName}
+                        gCobbDouglasK={this.props.gCobbDouglasK}
+                        gCobbDouglasKName={this.props.gCobbDouglasKName}
+                        gLine1Slope={this.props.gLine1Slope}
+                        gLine1OffsetX={this.props.gLine1OffsetX}
+                        gLine1OffsetY={this.props.gLine1OffsetY}
+                        gLine2OffsetX={this.props.gLine2OffsetX}
+                        gLine2OffsetY={this.props.gLine2OffsetY}
+                        gIntersectionLabel={this.props.gIntersectionLabel}
+                        gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                        gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                        gFunctionChoice={this.props.gFunctionChoice}
+
+                        gAreaConfiguration={this.props.gAreaConfiguration}
+                        gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                        gAreaAName={this.props.gAreaAName}
+                        gAreaBName={this.props.gAreaBName}
+                        gAreaCName={this.props.gAreaCName}
+
+                        showAUC={this.props.gType === 10}
+
+                        updateGraph={this.props.updateGraph}
+                    />
+                );
+            }
+
             return (
                 <div className="GraphEditor">
                     {this.title()}
@@ -254,34 +324,7 @@ export default class GraphEditor extends React.Component {
                                     gTopic={this.props.gTopic}
                                     updateGraph={this.props.updateGraph}
                                 />
-                                <DemandSupplyEditor
-                                    displayLabels={true}
-                                    displaySliders={true}
-                                    isInstructor={true}
-                                    gLine1Label={this.props.gLine1Label}
-                                    gLine2Label={this.props.gLine2Label}
-                                    gLine1Slope={this.props.gLine1Slope}
-                                    gLine2Slope={this.props.gLine2Slope}
-                                    gLine1OffsetX={this.props.gLine1OffsetX}
-                                    gLine1OffsetY={this.props.gLine1OffsetY}
-                                    gLine2OffsetX={this.props.gLine2OffsetX}
-                                    gLine2OffsetY={this.props.gLine2OffsetY}
-                                    gXAxisLabel={this.props.gXAxisLabel}
-                                    gYAxisLabel={this.props.gYAxisLabel}
-                                    gIntersectionLabel={this.props.gIntersectionLabel}
-                                    gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                                    gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-
-                                    gAreaConfiguration={this.props.gAreaConfiguration}
-                                    gIsAreaDisplayed={this.props.gIsAreaDisplayed}
-
-                                    gAreaAName={this.props.gAreaAName}
-                                    gAreaBName={this.props.gAreaBName}
-                                    gAreaCName={this.props.gAreaCName}
-
-                                    showAUC={this.props.gType === 9}
-                                    updateGraph={this.props.updateGraph}
-                                />
+                                {graphSpecificOptions}
                             </div>
                         </div>
                         <hr/>

@@ -152,7 +152,11 @@ export default class JXGBoard extends React.Component {
         window.board = this.board = board;
 
         let board2 = null;
-        if (options.gType === 12 || options.gType == 13) {
+        if (
+            options.gType === 12 ||
+            options.gType === 13 ||
+            options.gType === 14
+        ) {
             board2 = JXG.JSXGraph.initBoard(
                 this.id + '-2', {
                     axis: true,
@@ -298,13 +302,16 @@ export default class JXGBoard extends React.Component {
             } else if (options.gType === 13) {
                 // Render a Linear Demand-Supply graph
                 graphId = 0;
+            } else if (options.gType === 14) {
+                // Render a Non-Linear Demand-Supply graph
+                graphId = 1;
             }
 
             graphTypes[graphId](board, graphParams);
 
             // On the Cobb-Douglas NLDS joint graph type, also
             // initialize the second board to be a NLDS graph.
-            if (options.gType === 12) {
+            if (options.gType === 12 || options.gType === 14) {
                 mkNonLinearDemandSupply(board2, {
                     gType: options.gType,
                     gShowIntersection: options.gShowIntersection,
