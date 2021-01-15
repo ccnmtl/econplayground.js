@@ -6,7 +6,9 @@
 
 import { defaultGraph } from './GraphMapping';
 import { forceFloat, getOffset, getXIntercept, getYIntercept } from './utils';
-import { drawPolygon, getXInterceptWithPoint } from './jsxgraphUtils';
+import {
+    drawLabel, drawPolygon, getXInterceptWithPoint
+} from './jsxgraphUtils';
 
 
 const applyDefaults = function(obj, defaults) {
@@ -817,6 +819,24 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
             this.dataX.push(0);
             this.dataY.push(me.intersection.Y());
         };
+
+        const p1 = this.board.create(
+            'point', [
+                0,
+                this.intersection.Y() + 1
+            ],
+            invisiblePointOptions);
+
+        const p2 = this.board.create('point', [
+            0,
+            this.intersection.Y()
+        ], invisiblePointOptions);
+
+        drawLabel(
+            this.board,
+            [p1, p2, this.intersection],
+            this.options.gAreaAName)
+
         this.board.update();
     }
     drawTriangleB() {
@@ -838,7 +858,10 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p3, p2, p1];
-        return drawPolygon(this.board, points, 'B', 'lime');
+        return drawPolygon(
+            this.board,
+            points,
+            this.options.gAreaBName, 'lime');
     }
     drawTriangleC() {
         const p1 = this.board.create('point', [
@@ -857,7 +880,9 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         ], invisiblePointOptions);
 
         const points = [p3, p2, p1];
-        return drawPolygon(this.board, points, 'C', 'red');
+        return drawPolygon(
+            this.board, points,
+            this.options.gAreaCName, 'red');
     }
 
     make() {
