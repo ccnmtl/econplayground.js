@@ -1262,15 +1262,15 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
         const x = intersection.X();
         const y = intersection.Y();
 
-        const p1 = board.create(
+        const p1 = this.board.create(
             'point',
             [x, y + 6],
             invisiblePointOptions);
-        const p2 = board.create(
+        const p2 = this.board.create(
             'point',
             [x, y],
             invisiblePointOptions);
-        const p3 = board.create(
+        const p3 = this.board.create(
             'point',
             [x + 6, y],
             invisiblePointOptions);
