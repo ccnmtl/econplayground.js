@@ -16,7 +16,7 @@ jobs:
       - name: Install npm modules
         run: npm install
       - name: Apt Update
-        run: sudo apt-get --qq update
+        run: sudo apt-get -qq update
       - name: Install libgif-dev
         run: sudo apt-get install -y libgif-dev
       - name: Run eslint
