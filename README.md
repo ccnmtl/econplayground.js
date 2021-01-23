@@ -1,4 +1,4 @@
-# econplayground.js [![Build Status](https://travis-ci.org/ccnmtl/econplayground.js.svg?branch=master)](https://travis-ci.org/ccnmtl/econplayground.js)
+# econplayground.js [![Actions Status](https://github.com/ccnmtl/econplayground.js/workflows/build-and-test/badge.svg)](https://github.com/ccnmtl/econplayground.js/actions)
 
 Environment for authoring and interacting with economics graphs
 
