@@ -152,7 +152,7 @@ export default class JXGBoard extends React.Component {
         window.board = this.board = board;
 
         let board2 = null;
-        if (options.gType === 12 || options.gType == 13) {
+        if (options.gType >= 12 && options.gType <= 14) {
             board2 = JXG.JSXGraph.initBoard(
                 this.id + '-2', {
                     axis: true,
@@ -298,6 +298,9 @@ export default class JXGBoard extends React.Component {
             } else if (options.gType === 13) {
                 // Render a Linear Demand-Supply graph
                 graphId = 0;
+            } else if (options.gType === 14) {
+                // Render a Non-Linear Demand-Supply graph
+                graphId = 1;
             }
 
             graphTypes[graphId](board, graphParams);
@@ -403,6 +406,77 @@ export default class JXGBoard extends React.Component {
                     gLine2OffsetY: 0,
                     gLine2OffsetXInitial: 0,
                     gLine2OffsetYInitial: 0,
+
+                    gNeedsSubmit: options.gNeedsSubmit,
+                    l1SubmissionOffset: getL1SubmissionOffset(options.submission),
+                    l2SubmissionOffset: getL2SubmissionOffset(options.submission),
+                    submission: options.submission,
+                    isSubmitted: options.isSubmitted,
+                    locked: this.props.locked,
+                    shadow: this.props.shadow
+                });
+            } else if (options.gType === 14) {
+                mkNonLinearDemandSupply(board2, {
+                    gType: options.gType,
+                    gShowIntersection: options.gShowIntersection,
+                    gDisplayIntersection1: options.gDisplayIntersection1,
+                    gDisplayIntersection1Initial: options.gDisplayIntersection1Initial,
+                    gIntersectionLabel: options.gIntersectionLabel,
+
+                    gDisplayShadow: options.gDisplayShadow,
+                    gIntersectionHorizLineLabel: options.gIntersectionHorizLineLabel,
+                    gIntersectionVertLineLabel: options.gIntersectionVertLineLabel,
+                    gXAxisLabel: options.gXAxisLabel,
+                    gYAxisLabel: options.gYAxisLabel,
+                    gLine1Label: options.gLine1Label,
+                    gLine2Label: options.gLine2Label,
+                    gLine1Slope: options.gLine1Slope,
+                    gLine1SlopeInitial: options.gLine1SlopeInitial,
+
+                    gLine1OffsetX: options.gLine1OffsetX,
+                    gLine1OffsetY: options.gLine1OffsetY,
+                    gLine1OffsetXInitial: options.gLine1OffsetXInitial,
+                    gLine1OffsetYInitial: options.gLine1OffsetYInitial,
+
+                    // Line 2 is not draggable for now.
+                    gLine2OffsetX: 0,
+                    gLine2OffsetY: 0,
+                    gLine2OffsetXInitial: 0,
+                    gLine2OffsetYInitial: 0,
+
+                    gAlpha: options.gAlpha,
+                    gA1: options.gA1,
+                    gA1Initial: options.gA1Initial,
+                    gA2: options.gA2,
+                    gA2Initial: options.gA2Initial,
+                    gA3: options.gA3,
+                    gA3Initial: options.gA3Initial,
+                    gA4: options.gA4,
+                    gA4Initial: options.gA4Initial,
+                    gA5: options.gA5,
+                    gA: options.gA,
+                    gK: options.gK,
+                    gR: options.gR,
+                    gY1: options.gY1,
+                    gY2: options.gY2,
+                    gCobbDouglasA: options.gCobbDouglasA,
+                    gCobbDouglasAInitial: options.gCobbDouglasAInitial,
+                    gCobbDouglasAName: options.gCobbDouglasAName,
+                    gCobbDouglasL: options.gCobbDouglasL,
+                    gCobbDouglasLInitial: options.gCobbDouglasLInitial,
+                    gCobbDouglasLName: options.gCobbDouglasLName,
+                    gCobbDouglasK: options.gCobbDouglasK,
+                    gCobbDouglasKInitial: options.gCobbDouglasKInitial,
+                    gCobbDouglasKName: options.gCobbDouglasKName,
+                    gCobbDouglasAlpha: options.gCobbDouglasAlpha,
+                    gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
+                    gFunctionChoice: options.gFunctionChoice,
+                    gAreaConfiguration: options.gAreaConfiguration,
+                    gAreaConfigurationInitial: options.gAreaConfigurationInitial,
+                    gIsAreaDisplayed: options.gIsAreaDisplayed,
+                    gAreaAName: options.gAreaAName,
+                    gAreaBName: options.gAreaBName,
+                    gAreaCName: options.gAreaCName,
 
                     gNeedsSubmit: options.gNeedsSubmit,
                     l1SubmissionOffset: getL1SubmissionOffset(options.submission),
@@ -696,7 +770,7 @@ export default class JXGBoard extends React.Component {
     // called only if shouldComponentUpdate returns true
     // for rendering the JSXGraph board div and any child elements
     render() {
-        if (this.props.gType === 13) {
+        if (this.props.gType >= 13 && this.props.gType <= 14) {
             return (
                 <>
                     <div className="col-6">
