@@ -364,8 +364,8 @@ export default class GraphViewer extends React.Component {
 
                         {this.props.gType === 12 && (
                             <NonLinearDemandSupplyEditor
-                                displayLabels={true}
-                                displaySliders={true}
+                                displayLabels={displayLabels}
+                                displaySliders={displaySliders}
                                 isInstructor={isInstructor}
                                 gLine1Label={this.props.gLine1Label}
                                 gLine2Label={this.props.gLine2Label}

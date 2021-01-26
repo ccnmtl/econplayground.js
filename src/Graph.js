@@ -1005,7 +1005,6 @@ class CobbDouglasGraph extends Graph {
             showInfobox: false
         });
 
-
         this.board.create('line', [[0, p.Y()], p], {
             dash: 1,
             name: this.options.gIntersectionHorizLineLabel || '',
