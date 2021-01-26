@@ -34,6 +34,19 @@ const invisiblePointOptions = {
     fixed: true
 };
 
+const getIntersectionPointOptions = function(label, isShadow) {
+    return {
+        name: label || '',
+        withLabel: !isShadow,
+        fixed: true,
+        highlight: false,
+        showInfobox: false,
+        size: 3,
+        fillColor: isShadow ? 'rgb(150, 150, 150)' : 'red',
+        strokeColor: isShadow ? 'rgb(150, 150, 150)' : 'red'
+    };
+};
+
 class Graph {
     constructor(board, options, defaults) {
         if (typeof defaults === 'undefined') {
@@ -234,17 +247,9 @@ class Graph {
             vertLabel = this.options.gIntersectionVertLineLabel;
         }
 
-        let i = this.board.create('intersection', [l1, l2, 0], {
-            name: label || '',
-            withLabel: !isShadow,
-            fixed: true,
-            highlight: false,
-            showInfobox: false,
-            layer: 4,
-            size: 1,
-            fillColor: isShadow ? 'rgb(150, 150, 150)' : 'red',
-            strokeColor: isShadow ? 'rgb(150, 150, 150)' : 'red'
-        });
+        let i = this.board.create(
+            'intersection', [l1, l2, 0],
+            getIntersectionPointOptions(label, isShadow));
 
         let p1 = this.board.create('point', [0, i.Y()], {
             size: 0,
@@ -979,10 +984,9 @@ class CobbDouglasGraph extends Graph {
 
         const p = this.board.create('point', [
             this.options.gCobbDouglasL,
-            f(this.options.gCobbDouglasL)], {
-                name: this.options.gIntersectionLabel,
-                fixed: true
-            });
+            f(this.options.gCobbDouglasL)
+        ], getIntersectionPointOptions(
+            this.options.gIntersectionLabel, false));
 
         this.board.create('line', [p, [p.X(), 0]], {
             dash: 1,
@@ -992,8 +996,19 @@ class CobbDouglasGraph extends Graph {
             straightLast: false
         });
 
+        this.board.create('point', [p.X(), 0], {
+            size: 0,
+            name: this.options.gIntersectionVertLineLabel || '',
+            withLabel: true,
+            fixed: true,
+            highlight: false,
+            showInfobox: false
+        });
+
         this.board.create('line', [[0, p.Y()], p], {
             dash: 1,
+            name: this.options.gIntersectionHorizLineLabel || '',
+            withLabel: true,
             strokeColor: 'black',
             strokeWidth: 1,
             straightFirst: false,
