@@ -97,7 +97,7 @@ const exportGraph = function(state) {
         area_c_name: state.gAreaCName
     }
 
-    if (state.gType === 3) {
+    if (state.gType === 3 || state.gType === 12) {
         // Don't send all these cobb-douglas related fields if not
         // saving a cobb-douglas graph.
         const cobb = {
