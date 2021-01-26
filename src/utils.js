@@ -239,6 +239,9 @@ const displayGraphType = function(gType) {
         case 13:
             name = 'Linear Demand-Supply x2';
             break;
+        case 14:
+            name = 'Non-Linear Demand-Supply x2';
+            break;
         default:
             break;
     }

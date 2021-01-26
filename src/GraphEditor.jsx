@@ -289,6 +289,115 @@ export default class GraphEditor extends React.Component {
                     </form>
                 </div>
             );
+        } else if (this.props.gType === 14) {
+            // Horizontal Joint Graph: two Non-Linear Demand-Supply graphs
+            return (
+                <div className="GraphEditor">
+                    {this.title()}
+                    <form>
+                        <div className="row">
+                            <JXGBoard
+                                id={'editing-graph'}
+                                width={540}
+                                height={288}
+                                gType={this.props.gType}
+                                gLine1Label={this.props.gLine1Label}
+                                gLine2Label={this.props.gLine2Label}
+                                gXAxisLabel={this.props.gXAxisLabel}
+                                gYAxisLabel={this.props.gYAxisLabel}
+                                gLine1Slope={this.props.gLine1Slope}
+                                gLine2Slope={this.props.gLine2Slope}
+                                gLine1OffsetX={this.props.gLine1OffsetX}
+                                gLine1OffsetY={this.props.gLine1OffsetY}
+                                gLine2OffsetX={this.props.gLine2OffsetX}
+                                gLine2OffsetY={this.props.gLine2OffsetY}
+                                gShowIntersection={this.props.gShowIntersection}
+                                gIntersectionLabel={this.props.gIntersectionLabel}
+                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                            />
+
+                            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <h2>Scenario</h2>
+                                <div className="form-group">
+                                    <label htmlFor="gTitle">
+                                        Title
+                                    </label>
+                                    <input id="gTitle"
+                                           onChange={handleFormUpdate.bind(this)}
+                                           value={this.props.gTitle}
+                                           className="form-control form-control-sm"
+                                           type="text"
+                                           maxLength="140"
+                                    />
+                                </div>
+
+                                <CommonGraphEditor
+                                    gTitle={this.props.gTitle}
+                                    gSummary={this.props.gSummary}
+                                    gInstructorNotes={this.props.gInstructorNotes}
+                                    gInstructions={this.props.gInstructions}
+                                    updateGraph={this.props.updateGraph}
+                                />
+
+                                {this.props.gId &&
+                                 <div className="form-group">
+                                     <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
+                                        title="Student View"
+                                        className="btn btn-secondary">Student View</a>
+                                 </div>
+                                }
+                            </div>
+                            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <CommonGraphSettings
+                                    gAssignmentType={this.props.gAssignmentType}
+                                    gNeedsSubmit={this.props.gNeedsSubmit}
+                                    gDisplayFeedback={this.props.gDisplayFeedback}
+                                    gShowIntersection={this.props.gShowIntersection}
+                                    gDisplayShadow={this.props.gDisplayShadow}
+                                    gIsPublished={this.props.gIsPublished}
+                                    gIsFeatured={this.props.gIsFeatured}
+                                    gTopic={this.props.gTopic}
+                                    updateGraph={this.props.updateGraph}
+                                />
+                                <NonLinearDemandSupplyEditor
+                                    displayLabels={true}
+                                    displaySliders={true}
+                                    isInstructor={true}
+                                    gLine1Label={this.props.gLine1Label}
+                                    gLine2Label={this.props.gLine2Label}
+                                    gCobbDouglasA={this.props.gCobbDouglasA}
+                                    gCobbDouglasAName={this.props.gCobbDouglasAName}
+                                    gCobbDouglasK={this.props.gCobbDouglasK}
+                                    gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                    gLine1Slope={this.props.gLine1Slope}
+                                    gLine1OffsetX={this.props.gLine1OffsetX}
+                                    gLine1OffsetY={this.props.gLine1OffsetY}
+                                    gLine2OffsetX={this.props.gLine2OffsetX}
+                                    gLine2OffsetY={this.props.gLine2OffsetY}
+                                    gIntersectionLabel={this.props.gIntersectionLabel}
+                                    gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                                    gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                    gFunctionChoice={this.props.gFunctionChoice}
+
+                                    gAreaConfiguration={this.props.gAreaConfiguration}
+                                    gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                                    gAreaAName={this.props.gAreaAName}
+                                    gAreaBName={this.props.gAreaBName}
+                                    gAreaCName={this.props.gAreaCName}
+
+                                    showAUC={this.props.gType === 10}
+
+                                    updateGraph={this.props.updateGraph}
+                                />
+                            </div>
+                        </div>
+                        <hr/>
+                        {editRow}
+                    </form>
+                </div>
+            );
         } else if (this.props.gType === 1 || this.props.gType === 10) {
             // Non-Linear Demand Supply, possibly AUC (area under curve)
             return <div className="GraphEditor">
