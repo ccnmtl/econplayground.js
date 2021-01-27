@@ -379,6 +379,7 @@ export default class GraphEditor extends React.Component {
                                     gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                     gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                                     gFunctionChoice={this.props.gFunctionChoice}
+                                    hideFunctionChoice={true}
 
                                     gAreaConfiguration={this.props.gAreaConfiguration}
                                     gIsAreaDisplayed={this.props.gIsAreaDisplayed}

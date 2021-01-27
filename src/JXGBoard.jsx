@@ -262,7 +262,8 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasKInitial: options.gCobbDouglasKInitial,
                 gCobbDouglasKName: options.gCobbDouglasKName,
 
-                gFunctionChoice: options.gFunctionChoice,
+                gFunctionChoice: options.gType === 14 ?
+                    0 : options.gFunctionChoice,
 
                 gAreaConfiguration: options.gAreaConfiguration,
                 gAreaConfigurationInitial: options.gAreaConfigurationInitial,
@@ -470,7 +471,7 @@ export default class JXGBoard extends React.Component {
                     gCobbDouglasKName: options.gCobbDouglasKName,
                     gCobbDouglasAlpha: options.gCobbDouglasAlpha,
                     gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
-                    gFunctionChoice: options.gFunctionChoice,
+                    gFunctionChoice: 1,
                     gAreaConfiguration: options.gAreaConfiguration,
                     gAreaConfigurationInitial: options.gAreaConfigurationInitial,
                     gIsAreaDisplayed: options.gIsAreaDisplayed,
