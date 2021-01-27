@@ -153,6 +153,11 @@ export default class JXGBoard extends React.Component {
 
         let board2 = null;
         if (options.gType >= 12 && options.gType <= 14) {
+            let yLabel = yAxisLabel;
+            if (options.gType === 12) {
+                yLabel = 'MP<sub>N</sub>, w';
+            }
+
             board2 = JXG.JSXGraph.initBoard(
                 this.id + '-2', {
                     axis: true,
@@ -169,11 +174,11 @@ export default class JXGBoard extends React.Component {
                             layer: 9
                         },
                         y: {
-                            name: yAxisLabel,
+                            name: yLabel,
                             label: {
-                                offset: [0, 260]
+                                offset: [8, 260]
                             },
-                            withLabel: yAxisLabel ? true : false,
+                            withLabel: yLabel ? true : false,
                             ticks: {
                                 visible: false
                             },
