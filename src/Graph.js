@@ -34,7 +34,7 @@ const invisiblePointOptions = {
     fixed: true
 };
 
-const getIntersectionPointOptions = function(label, isShadow) {
+const getIntersectionPointOptions = function(label, isShadow=false) {
     return {
         name: label || '',
         withLabel: !isShadow,
@@ -236,7 +236,10 @@ class Graph {
      * i is the intersection, and p1 and p2 are its X and Y
      * intercepts.
      */
-    showIntersection(l1, l2, isShadow=false, label, horizLabel, vertLabel) {
+    showIntersection(
+        l1, l2, isShadow=false, label, horizLabel, vertLabel,
+        extendVertLine=false
+    ) {
         if (label === null || typeof label === 'undefined') {
             label = this.options.gIntersectionLabel;
         }
@@ -277,7 +280,13 @@ class Graph {
             highlight: false,
             showInfobox: false
         });
-        this.board.create('line', [p2, i], {
+
+        let i2 = i;
+        if (extendVertLine) {
+            i2 = [i.X(), 10];
+        }
+
+        this.board.create('line', [p2, i2], {
             dash: 1,
             highlight: false,
             strokeColor: 'black',
@@ -738,7 +747,7 @@ class NonLinearDemandSupplyGraph extends Graph {
             withLabel: true,
             strokeWidth: 2,
             strokeColor: this.l2Color,
-            fixed: this.areLinesFixed,
+            fixed: this.areLinesFixed || this.options.gType === 12,
             recursionDepthLow: 8,
             recursionDepthHigh: 15
         });
@@ -769,7 +778,14 @@ class NonLinearDemandSupplyGraph extends Graph {
         });
 
         if (this.options.gShowIntersection) {
-            this.showIntersection(this.l1, this.l2);
+            this.showIntersection(
+                this.l1, this.l2, false,
+                this.options.gIntersectionLabel,
+                this.options.gIntersectionHorizLineLabel,
+                this.options.gIntersectionVertLineLabel,
+                // Extend the vertical line on the joint graph
+                this.options.gType === 12
+            );
         }
     }
 }
