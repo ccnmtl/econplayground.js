@@ -21,7 +21,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
         const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} N^{1 - \alpha}`;
         return (
             <>
-                {this.props.isInstructor && (
+                {this.props.isInstructor && !this.props.hideFunctionChoice && (
                     <React.Fragment>
                         <h2>Function</h2>
                         <div className="form-row">
@@ -216,6 +216,7 @@ NonLinearDemandSupplyEditor.propTypes = {
     gLine1Slope: PropTypes.number.isRequired,
 
     gFunctionChoice: PropTypes.number.isRequired,
+    hideFunctionChoice: PropTypes.bool,
 
     gAreaConfiguration: PropTypes.number,
     gIsAreaDisplayed: PropTypes.bool,
