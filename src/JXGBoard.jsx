@@ -75,7 +75,9 @@ export default class JXGBoard extends React.Component {
                 i--
             ) {
                 let o = this.board.objectsList[i];
-                this.board.removeObject(o.id);
+                if (o && o.id) {
+                    this.board.removeObject(o.id);
+                }
             }
 
             this.board.unsuspendUpdate();
@@ -91,7 +93,9 @@ export default class JXGBoard extends React.Component {
                 j--
             ) {
                 let o = this.board2.objectsList[j];
-                this.board2.removeObject(o.id);
+                if (o && o.id) {
+                    this.board2.removeObject(o.id);
+                }
             }
 
             this.board2.unsuspendUpdate();
