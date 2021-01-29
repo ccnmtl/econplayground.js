@@ -63,135 +63,38 @@ export default class JXGBoard extends React.Component {
         }
 
         if (this.board) {
-            JXG.JSXGraph.freeBoard(this.board);
-        }
+            // Remove all the current objects from the board so we can
+            // re-render.
+            // https://jsxgraph.uni-bayreuth.de/docs/symbols/JXG.Board.html#removeObjec
+            this.board.suspendUpdate();
 
-        let xAxisLabel = '';
-        let yAxisLabel = '';
-        switch (options.gType) {
-            case 1:
-                // Non-linear demand-supply
-                xAxisLabel = 'N';
-                yAxisLabel = 'MP<sub>N</sub>';
-
-                if (options.gFunctionChoice === 1) {
-                    xAxisLabel = options.gCobbDouglasKName;
-                    yAxisLabel = `MP<sub>${options.gCobbDouglasKName}</sub>`;
-                }
-
-                if (this.props.locked) {
-                    options.gCobbDouglasA = 3.4;
-                    options.gCobbDouglasK = 2.3;
-                    options.gLine2OffsetX = 0.5;
-                    options.gLine2OffsetY = -0.8;
-                }
-                break;
-            case 3:
-                xAxisLabel = options.gCobbDouglasLName;
-                yAxisLabel = options.gYAxisLabel || options.gCobbDouglasYName;
-                break;
-            case 5:
-                if (this.props.locked) {
-                    options.gA1 = 4;
-                    options.gA2 = 1;
-                }
-                xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
-                yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
-                break;
-            case 7:
-            case 11:
-                // Consumption-Saving
-                xAxisLabel = 'c_1';
-                yAxisLabel = 'c_2';
-                if (this.props.locked) {
-                    options.gA1 = 4;
-                    options.gA2 = 1;
-                }
-                break;
-            default:
-                xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
-                yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
-                break;
-        }
-
-        let board = JXG.JSXGraph.initBoard(
-            this.id, {
-                axis: true,
-                defaultAxes: {
-                    x: {
-                        name: xAxisLabel,
-                        label: {
-                            offset: [400, -12]
-                        },
-                        withLabel: xAxisLabel ? true : false,
-                        ticks: {
-                            visible: false
-                        },
-                        layer: 9
-                    },
-                    y: {
-                        name: yAxisLabel,
-                        label: {
-                            offset: [(options.gType === 1) ? 0 : -5, 260]
-                        },
-                        withLabel: yAxisLabel ? true : false,
-                        ticks: {
-                            visible: false
-                        },
-                        layer: 9
-                    }
-                },
-                keepAspectRatio: true,
-                showCopyright: false,
-                showZoom: false,
-                showReload: false,
-                showNavigation: false,
-                boundingbox: [-0.4, 5, 5, -0.4]
-            });
-
-        window.board = this.board = board;
-
-        let board2 = null;
-        if (options.gType >= 12 && options.gType <= 14) {
-            let yLabel = yAxisLabel;
-            if (options.gType === 12) {
-                yLabel = 'MP<sub>N</sub>, w';
+            let i;
+            for (
+                i = this.board.objectsList.length - 1;
+                i >= this.board1InitObjects;
+                i--
+            ) {
+                let o = this.board.objectsList[i];
+                this.board.removeObject(o.id);
             }
 
-            board2 = JXG.JSXGraph.initBoard(
-                this.id + '-2', {
-                    axis: true,
-                    defaultAxes: {
-                        x: {
-                            name: xAxisLabel,
-                            label: {
-                                offset: [400, -12]
-                            },
-                            withLabel: xAxisLabel ? true : false,
-                            ticks: {
-                                visible: false
-                            },
-                            layer: 9
-                        },
-                        y: {
-                            name: yLabel,
-                            label: {
-                                offset: [8, 260]
-                            },
-                            withLabel: yLabel ? true : false,
-                            ticks: {
-                                visible: false
-                            },
-                            layer: 9
-                        }
-                    },
-                    keepAspectRatio: true,
-                    showCopyright: false,
-                    showZoom: false,
-                    showReload: false,
-                    showNavigation: false,
-                    boundingbox: [-0.4, 5, 5, -0.4]
-                });
+            this.board.unsuspendUpdate();
+        }
+
+        if (this.board2) {
+            this.board2.suspendUpdate();
+
+            let j;
+            for (
+                j = this.board2.objectsList.length - 1;
+                j >= this.board2InitObjects;
+                j--
+            ) {
+                let o = this.board2.objectsList[j];
+                this.board2.removeObject(o.id);
+            }
+
+            this.board2.unsuspendUpdate();
         }
 
         if (typeof options.gType === 'number') {
@@ -309,12 +212,12 @@ export default class JXGBoard extends React.Component {
                 graphId = 1;
             }
 
-            graphTypes[graphId](board, graphParams);
+            graphTypes[graphId](this.board, graphParams);
 
             // On the Cobb-Douglas NLDS joint graph type, also
             // initialize the second board to be a NLDS graph.
             if (options.gType === 12) {
-                mkNonLinearDemandSupply(board2, {
+                mkNonLinearDemandSupply(this.board2, {
                     gType: options.gType,
                     gShowIntersection: options.gShowIntersection,
                     gDisplayIntersection1: options.gDisplayIntersection1,
@@ -385,7 +288,7 @@ export default class JXGBoard extends React.Component {
                     shadow: this.props.shadow
                 });
             } else if (options.gType === 13) {
-                mkDemandSupply(board2, {
+                mkDemandSupply(this.board2, {
                     gType: options.gType,
                     gShowIntersection: options.gShowIntersection,
                     gDisplayIntersection1: options.gDisplayIntersection1,
@@ -422,7 +325,7 @@ export default class JXGBoard extends React.Component {
                     shadow: this.props.shadow
                 });
             } else if (options.gType === 14) {
-                mkNonLinearDemandSupply(board2, {
+                mkNonLinearDemandSupply(this.board2, {
                     gType: options.gType,
                     gShowIntersection: options.gShowIntersection,
                     gDisplayIntersection1: options.gDisplayIntersection1,
@@ -516,8 +419,6 @@ export default class JXGBoard extends React.Component {
             'gIntersection2VertLineLabel',
             'gIntersection3HorizLineLabel',
             'gIntersection3VertLineLabel',
-            'gXAxisLabel',
-            'gYAxisLabel',
             'gLine1Label',
             'gLine2Label',
             'gLine3Label',
@@ -616,8 +517,6 @@ export default class JXGBoard extends React.Component {
                 gLine1Label: this.props.gLine1Label,
                 gLine2Label: this.props.gLine2Label,
                 gLine3Label: this.props.gLine3Label,
-                gXAxisLabel: this.props.gXAxisLabel,
-                gYAxisLabel: this.props.gYAxisLabel,
                 gLine1Slope: this.props.gLine1Slope,
                 gLine1SlopeInitial: this.props.gLine1SlopeInitial,
                 gLine2Slope: this.props.gLine2Slope,
@@ -683,9 +582,183 @@ export default class JXGBoard extends React.Component {
                 shadow: this.props.shadow
             });
         }
+
+        if (prevProps.gXAxisLabel !== this.props.gXAxisLabel) {
+            if (this.board) {
+                this.board.defaultAxes.x.name = this.props.gXAxisLabel;
+                this.board.update();
+            }
+            if (this.board2) {
+                this.board2.defaultAxes.x.name = this.props.gXAxisLabel;
+                this.board2.update();
+            }
+        }
+
+        if (prevProps.gYAxisLabel !== this.props.gYAxisLabel) {
+            if (this.board) {
+                this.board.defaultAxes.y.name = this.props.gYAxisLabel;
+                this.board.update();
+            }
+            if (this.board2) {
+                this.board2.defaultAxes.y.name = this.props.gYAxisLabel;
+                this.board2.update();
+            }
+        }
     }
 
     componentDidMount() {
+        // Don't render JSXGraph in jest. This should be possible since I'm
+        // using jsdom, but jsxgraph can't find the element when I try and
+        // initialize it like this:
+        //
+        // const div = document.createElement('div');
+        // div.setAttribute('id', 'id-test');
+        // ReactDOM.render(
+        //     <JXGBoard
+        //          id={'id-test'}
+        //          gType={0}
+        //          gShowIntersection={true} />,
+        //     div);
+        //
+        if (typeof process !== 'undefined' &&
+            process.env.NODE_ENV === 'test'
+           ) {
+            return;
+        }
+
+        const options = this.props;
+
+        let xAxisLabel = '';
+        let yAxisLabel = '';
+        switch (options.gType) {
+            case 1:
+                // Non-linear demand-supply
+                xAxisLabel = 'N';
+                yAxisLabel = 'MP<sub>N</sub>';
+
+                if (options.gFunctionChoice === 1) {
+                    xAxisLabel = options.gCobbDouglasKName;
+                    yAxisLabel = `MP<sub>${options.gCobbDouglasKName}</sub>`;
+                }
+
+                if (this.props.locked) {
+                    options.gCobbDouglasA = 3.4;
+                    options.gCobbDouglasK = 2.3;
+                    options.gLine2OffsetX = 0.5;
+                    options.gLine2OffsetY = -0.8;
+                }
+                break;
+            case 3:
+                xAxisLabel = options.gCobbDouglasLName;
+                yAxisLabel = options.gYAxisLabel || options.gCobbDouglasYName;
+                break;
+            case 5:
+                if (this.props.locked) {
+                    options.gA1 = 4;
+                    options.gA2 = 1;
+                }
+                xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
+                yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
+                break;
+            case 7:
+            case 11:
+                // Consumption-Saving
+                xAxisLabel = 'c_1';
+                yAxisLabel = 'c_2';
+                if (this.props.locked) {
+                    options.gA1 = 4;
+                    options.gA2 = 1;
+                }
+                break;
+            default:
+                xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
+                yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
+                break;
+        }
+
+        this.board = JXG.JSXGraph.initBoard(
+            this.id, {
+                axis: true,
+                defaultAxes: {
+                    x: {
+                        name: xAxisLabel,
+                        label: {
+                            offset: [400, -12]
+                        },
+                        withLabel: xAxisLabel ? true : false,
+                        ticks: {
+                            visible: false
+                        },
+                        layer: 9
+                    },
+                    y: {
+                        name: yAxisLabel,
+                        label: {
+                            offset: [(options.gType === 1) ? 0 : -5, 260]
+                        },
+                        withLabel: yAxisLabel ? true : false,
+                        ticks: {
+                            visible: false
+                        },
+                        layer: 9
+                    }
+                },
+                keepAspectRatio: true,
+                showCopyright: false,
+                showZoom: false,
+                showReload: false,
+                showNavigation: false,
+                boundingbox: [-0.4, 5, 5, -0.4]
+            });
+        this.board1InitObjects = this.board.numObjects;
+
+        window.board = this.board;
+
+        this.board2 = null;
+        if (options.gType >= 12 && options.gType <= 14) {
+            let yLabel = yAxisLabel;
+            if (options.gType === 12) {
+                yLabel = 'MP<sub>N</sub>, w';
+            }
+
+            this.board2 = JXG.JSXGraph.initBoard(
+                this.id + '-2', {
+                    axis: true,
+                    defaultAxes: {
+                        x: {
+                            name: xAxisLabel,
+                            label: {
+                                offset: [400, -12]
+                            },
+                            withLabel: xAxisLabel ? true : false,
+                            ticks: {
+                                visible: false
+                            },
+                            layer: 9
+                        },
+                        y: {
+                            name: yLabel,
+                            label: {
+                                offset: [8, 260]
+                            },
+                            withLabel: yLabel ? true : false,
+                            ticks: {
+                                visible: false
+                            },
+                            layer: 9
+                        }
+                    },
+                    keepAspectRatio: true,
+                    showCopyright: false,
+                    showZoom: false,
+                    showReload: false,
+                    showNavigation: false,
+                    boundingbox: [-0.4, 5, 5, -0.4]
+                });
+
+            this.board2InitObjects = this.board2.numObjects;
+        }
+
         this.renderJXBoard({
             gType: this.props.gType,
             gShowIntersection: this.props.gShowIntersection,
@@ -708,8 +781,6 @@ export default class JXGBoard extends React.Component {
             gLine1Label: this.props.gLine1Label,
             gLine2Label: this.props.gLine2Label,
             gLine3Label: this.props.gLine3Label,
-            gXAxisLabel: this.props.gXAxisLabel,
-            gYAxisLabel: this.props.gYAxisLabel,
             gLine1Slope: this.props.gLine1Slope,
             gLine1SlopeInitial: this.props.gLine1SlopeInitial,
             gLine2Slope: this.props.gLine2Slope,
