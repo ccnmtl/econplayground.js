@@ -1214,10 +1214,10 @@ class ConsumptionSavingGraph extends Graph {
             }
         }
 
-        const f1 = function(x) {
+        const f1 = function(c1) {
             // c2 = y2 + (1 + r)(y1 + W - c1)
             return me.options.gA2 + (1 + me.options.gA4) *
-                (me.options.gA1 + me.options.gA3 - x);
+                (me.options.gA1 + me.options.gA3 - c1);
         };
 
         this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
@@ -1289,29 +1289,49 @@ const mkConsumptionSaving = function(board, options) {
 };
 
 class OptimalChoiceGraph extends ConsumptionSavingGraph {
-    drawArc(intersection) {
-        const x = intersection.X();
-        const y = intersection.Y();
+    U(c1, c2, beta) {
+        return Math.log(c1) + beta * Math.log(c2);
+    }
+    drawUCurve() {
+        const beta = 0.5;
 
-        const p1 = this.board.create(
-            'point',
-            [x, y + 6],
-            invisiblePointOptions);
-        const p2 = this.board.create(
-            'point',
-            [x, y],
-            invisiblePointOptions);
-        const p3 = this.board.create(
-            'point',
-            [x + 6, y],
-            invisiblePointOptions);
+        const y1 = this.options.gA1;
+        const y2 = this.options.gA2;
+        const W = this.options.gA3;
+        const r = this.options.gA4;
+        //const beta = this.options.gA5;
 
-        this.board.create('circumcirclearc', [p1, p2, p3]);
+        const c1 = -(
+            (-W - r * W - y1 - r * y1 - y2) /
+                ((1 + r) * (1 + beta))
+        );
+
+        const c2 = ((W + r * W + y1 + r * y1 + y2) * beta) /
+              (1 + beta);
+
+        const uStar = this.U(c1, c2, beta);
+
+        const f = function(x) {
+            const result = (uStar - Math.log(x)) / beta;
+            return Math.E ** result;
+        };
+
+        const arc = this.board.create('functiongraph', [f, 0, 10], {
+            withLabel: false,
+            strokeWidth: 2,
+            strokeColor: this.l2Color,
+            // This graph is only moved by its RangeEditors, not by
+            // dragging.
+            fixed: true,
+            highlight: false,
+            recursionDepthLow: 8,
+            recursionDepthHigh: 15
+        });
     }
     make() {
         super.make();
 
-        this.drawArc(this.intersection);
+        this.drawUCurve();
     }
 }
 
