@@ -9,34 +9,37 @@ export default class AreaConfiguration extends React.Component {
         return (
             <>
             <h2>Areas</h2>
+                {this.props.displayLabels && (
+                    <>
+                        <div className="form-row">
+                            <EditableControl
+                                id="gAreaAName"
+                                name="Area A label"
+                                value={this.props.gAreaAName}
+                                valueEditable={true}
+                                isInstructor={true}
+                                updateGraph={this.props.updateGraph}/>
 
-                <div className="form-row">
-                    <EditableControl
-                        id="gAreaAName"
-                        name="Area A label"
-                        value={this.props.gAreaAName}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}/>
+                            <EditableControl
+                                id="gAreaBName"
+                                name="Area B label"
+                                value={this.props.gAreaBName}
+                                valueEditable={true}
+                                isInstructor={true}
+                                updateGraph={this.props.updateGraph}/>
+                        </div>
 
-                    <EditableControl
-                        id="gAreaBName"
-                        name="Area B label"
-                        value={this.props.gAreaBName}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}/>
-                </div>
-
-                <div className="form-row">
-                    <EditableControl
-                        id="gAreaCName"
-                        name="Area C label"
-                        value={this.props.gAreaCName}
-                        valueEditable={true}
-                        isInstructor={true}
-                        updateGraph={this.props.updateGraph}/>
-                </div>
+                        <div className="form-row">
+                            <EditableControl
+                                id="gAreaCName"
+                                name="Area C label"
+                                value={this.props.gAreaCName}
+                                valueEditable={true}
+                                isInstructor={true}
+                                updateGraph={this.props.updateGraph}/>
+                        </div>
+                    </>
+                )}
 
                 <div className="form-row">
                     <div className="form-group">
@@ -82,6 +85,8 @@ export default class AreaConfiguration extends React.Component {
 }
 
 AreaConfiguration.propTypes = {
+    displayLabels: PropTypes.bool.isRequired,
+
     gAreaConfiguration: PropTypes.number.isRequired,
     gIsAreaDisplayed: PropTypes.bool.isRequired,
 
