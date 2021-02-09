@@ -123,6 +123,7 @@ export default class DemandSupplyEditor extends React.Component {
             {this.props.showAUC && (
                 <>
                     <AreaConfiguration
+                        displayLabels={this.props.displayLabels}
                         gAreaConfiguration={this.props.gAreaConfiguration}
                         gIsAreaDisplayed={this.props.gIsAreaDisplayed}
 
