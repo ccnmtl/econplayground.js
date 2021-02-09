@@ -212,6 +212,12 @@ const importGraph = function(json, obj) {
         initialStateObj[key + 'Initial'] = updateObj[key];
     }
 
+    // The beta value of the Optimal Choice graph defaults to 0.5
+    // instead of 0.
+    if (updateObj.gType === 11 && updateObj.gA5 === 0) {
+        updateObj.gA5 = 0.5;
+    }
+
     obj.setState(Object.assign({}, updateObj, initialStateObj));
 };
 
@@ -271,7 +277,7 @@ const defaultGraph = {
     gA2: 0,
     gA3: 0,
     gA4: 0,
-    gA5: 0,
+    gA5: 0.5, // Used in graph type 11 - beta value
 
     gA: 3,
     gK: 2,

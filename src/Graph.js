@@ -34,7 +34,13 @@ const invisiblePointOptions = {
     fixed: true
 };
 
-const getIntersectionPointOptions = function(label, isShadow=false) {
+const getIntersectionPointOptions = function(
+    label, isShadow=false, color='red'
+) {
+    if (isShadow) {
+        color = 'rgb(150, 150, 150)';
+    }
+
     return {
         name: label || '',
         withLabel: !isShadow,
@@ -42,8 +48,8 @@ const getIntersectionPointOptions = function(label, isShadow=false) {
         highlight: false,
         showInfobox: false,
         size: 3,
-        fillColor: isShadow ? 'rgb(150, 150, 150)' : 'red',
-        strokeColor: isShadow ? 'rgb(150, 150, 150)' : 'red'
+        fillColor: color,
+        strokeColor: color
     };
 };
 
@@ -1161,27 +1167,15 @@ class ConsumptionSavingGraph extends Graph {
             });
 
             if (this.options.gShowIntersection) {
-                const p1Shadow = this.board.create('point', [
-                    this.options.gA1Initial + this.options.gA3Initial, 0], {
-                        withLabel: false,
-                        size: 1,
-                        strokeColor: this.shadowColor,
-                        fillColor: this.shadowColor,
-                        fixed: true,
-                        highlight: false,
-                        showInfobox: false
-                    });
+                const p1Shadow = this.board.create(
+                    'point', [
+                        this.options.gA1Initial + this.options.gA3Initial,
+                        0
+                    ], invisiblePointOptions);
 
                 const p2Shadow = this.board.create('point', [
-                    0, this.options.gA2Initial], {
-                        withLabel: false,
-                        size: 1,
-                        strokeColor: this.shadowColor,
-                        fillColor: this.shadowColor,
-                        fixed: true,
-                        highlight: false,
-                        showInfobox: false
-                    });
+                    0, this.options.gA2Initial
+                ], invisiblePointOptions);
 
                 const l1Shadow = this.board.create('line', [
                     p1Shadow, [p1Shadow.X(), p2Shadow.Y()]], {
@@ -1234,21 +1228,13 @@ class ConsumptionSavingGraph extends Graph {
         });
 
         if (this.options.gShowIntersection) {
-            const p1 = this.board.create('point', [this.options.gA1 + this.options.gA3, 0], {
-                withLabel: false,
-                size: 1,
-                fixed: true,
-                highlight: false,
-                showInfobox: false
-            });
+            const p1 = this.board.create(
+                'point', [this.options.gA1 + this.options.gA3, 0],
+                invisiblePointOptions);
 
-            const p2 = this.board.create('point', [0, this.options.gA2], {
-                withLabel: false,
-                size: 1,
-                fixed: true,
-                highlight: false,
-                showInfobox: false
-            });
+            const p2 = this.board.create(
+                'point', [0, this.options.gA2],
+                invisiblePointOptions);
 
             const l1 = this.board.create('line', [p1, [p1.X(), p2.Y()]], {
                 name: this.options.gIntersectionHorizLineLabel,
@@ -1270,13 +1256,10 @@ class ConsumptionSavingGraph extends Graph {
                 strokeColor: 'black'
             });
 
-            this.intersection = this.board.create('intersection', [l1, l2], {
-                name: this.options.gIntersectionLabel,
-                size: 1,
-                fixed: true,
-                highlight: false,
-                showInfobox: false
-            });
+            this.intersection = this.board.create(
+                'intersection', [l1, l2],
+                getIntersectionPointOptions(
+                    this.options.gIntersectionLabel));
         }
     }
 }
@@ -1293,30 +1276,28 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
         return Math.log(c1) + beta * Math.log(c2);
     }
     drawUCurve() {
-        const beta = 0.5;
-
         const y1 = this.options.gA1;
         const y2 = this.options.gA2;
         const W = this.options.gA3;
         const r = this.options.gA4;
-        //const beta = this.options.gA5;
+        const beta = this.options.gA5;
 
-        const c1 = -(
+        this.c1 = -(
             (-W - r * W - y1 - r * y1 - y2) /
                 ((1 + r) * (1 + beta))
         );
 
-        const c2 = ((W + r * W + y1 + r * y1 + y2) * beta) /
-              (1 + beta);
+        this.c2 = ((W + r * W + y1 + r * y1 + y2) * beta) /
+            (1 + beta);
 
-        const uStar = this.U(c1, c2, beta);
+        const uStar = this.U(this.c1, this.c2, beta);
 
         const f = function(x) {
             const result = (uStar - Math.log(x)) / beta;
             return Math.E ** result;
         };
 
-        const arc = this.board.create('functiongraph', [f, 0, 10], {
+        this.board.create('functiongraph', [f, 0, 10], {
             withLabel: false,
             strokeWidth: 2,
             strokeColor: this.l2Color,
@@ -1328,10 +1309,43 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
             recursionDepthHigh: 15
         });
     }
+    drawOptimalPoint() {
+        const p1 = this.board.create(
+            'point', [this.c1, 0],
+            invisiblePointOptions);
+
+        const p2 = this.board.create(
+            'point', [0, this.c2],
+            invisiblePointOptions);
+
+        const l1 = this.board.create('line', [p1, [p1.X(), p2.Y()]], {
+            name: '',
+            straightFirst: false,
+            straightLast: false,
+            dash: 1,
+            highlight: false,
+            strokeColor: 'black'
+        });
+
+        const l2 = this.board.create('line', [p2, [p1.X(), p2.Y()]], {
+            name: '',
+            straightFirst: false,
+            straightLast: false,
+            dash: 1,
+            highlight: false,
+            strokeColor: 'black'
+        });
+
+        this.board.create(
+            'intersection', [l1, l2],
+            getIntersectionPointOptions('OP', false, 'blue')
+        );
+    }
     make() {
         super.make();
 
         this.drawUCurve();
+        this.drawOptimalPoint();
     }
 }
 

@@ -88,6 +88,7 @@ class Editor extends Component {
                         gA2={this.state.gA2}
                         gA3={this.state.gA3}
                         gA4={this.state.gA4}
+                        gA5={this.state.gA5}
                         gA={this.state.gA}
                         gK={this.state.gK}
                         gR={this.state.gR}
