@@ -16,21 +16,21 @@ export default class RangeEditor extends React.Component {
                 </div>
             )}
             <input
-        className="form-control-range form-control-sm"
-        id={this.props.id}
-        data-id={this.props.dataId}
-        type="range"
-        onChange={this.props.handler}
-        value={this.props.value}
-        step="0.01"
-        min={this.props.min}
-        max={this.props.max}
+                className="form-control-range form-control-sm"
+                id={this.props.id}
+                data-id={this.props.dataId}
+                type="range"
+                onChange={this.props.handler}
+                value={this.props.value}
+                step={this.props.step || 0.01}
+                min={this.props.min}
+                max={this.props.max}
             />
-            {this.props.showMinMax && (
-                <div className="ep-min-max ep-max">
-                    {this.props.max}
-                </div>
-            )}
+                {this.props.showMinMax && (
+                    <div className="ep-min-max ep-max">
+                        {this.props.max}
+                    </div>
+                )}
         </div>
             <div className="input-group">
             {this.props.showOverrideButton && (
@@ -83,6 +83,7 @@ RangeEditor.propTypes = {
     dataId: PropTypes.string.isRequired,
     handler: PropTypes.func.isRequired,
     value: PropTypes.number.isRequired,
+    step: PropTypes.number,
     min: PropTypes.number,
     max: PropTypes.number,
     showOverrideButton: PropTypes.bool,
