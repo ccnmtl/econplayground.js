@@ -753,7 +753,9 @@ class NonLinearDemandSupplyGraph extends Graph {
             withLabel: true,
             strokeWidth: 2,
             strokeColor: this.l2Color,
-            fixed: this.areLinesFixed || this.options.gType === 12,
+            fixed: this.areLinesFixed ||
+                this.options.gType === 12 ||
+                this.options.gType === 14,
             recursionDepthLow: 8,
             recursionDepthHigh: 15
         });

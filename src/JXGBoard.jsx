@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import {MathComponent} from 'mathjax-react';
 import JXG from 'jsxgraph';
 import {graphTypes, mkDemandSupply, mkNonLinearDemandSupply} from './Graph';
 import AreaDisplay from './AreaDisplay';
@@ -851,7 +852,7 @@ export default class JXGBoard extends React.Component {
     // called only if shouldComponentUpdate returns true
     // for rendering the JSXGraph board div and any child elements
     render() {
-        if (this.props.gType >= 13 && this.props.gType <= 14) {
+        if (this.props.gType === 13) {
             return (
                 <>
                     <div className="col-6">
@@ -866,6 +867,28 @@ export default class JXGBoard extends React.Component {
                                 className="jxgbox"
                                 style={this.style}>
                         </figure>
+                    </div>
+                </>
+            );
+        } else if (this.props.gType === 14) {
+            const func1 = String.raw`MP_N = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha N^{-\alpha}`;
+            const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} N^{1 - \alpha}`;
+            return (
+                <>
+                    <div className="col-6">
+                        <figure aria-label="The EconPractice graph."
+                                id={this.id} className="jxgbox" style={this.style}>
+                        </figure>
+                        <MathComponent tex={func1} />
+                    </div>
+
+                    <div className="col-6">
+                        <figure aria-label="The EconPractice graph."
+                                id={this.id + '-2'}
+                                className="jxgbox"
+                                style={this.style}>
+                        </figure>
+                        <MathComponent tex={func2} />
                     </div>
                 </>
             );

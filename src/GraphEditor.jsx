@@ -301,6 +301,10 @@ export default class GraphEditor extends React.Component {
                                 width={540}
                                 height={288}
                                 gType={this.props.gType}
+                                gCobbDouglasA={this.props.gCobbDouglasA}
+                                gCobbDouglasK={this.props.gCobbDouglasK}
+                                gCobbDouglasAName={this.props.gCobbDouglasAName}
+                                gCobbDouglasKName={this.props.gCobbDouglasKName}
                                 gLine1Label={this.props.gLine1Label}
                                 gLine2Label={this.props.gLine2Label}
                                 gXAxisLabel={this.props.gXAxisLabel}
@@ -349,17 +353,6 @@ export default class GraphEditor extends React.Component {
                                 }
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <CommonGraphSettings
-                                    gAssignmentType={this.props.gAssignmentType}
-                                    gNeedsSubmit={this.props.gNeedsSubmit}
-                                    gDisplayFeedback={this.props.gDisplayFeedback}
-                                    gShowIntersection={this.props.gShowIntersection}
-                                    gDisplayShadow={this.props.gDisplayShadow}
-                                    gIsPublished={this.props.gIsPublished}
-                                    gIsFeatured={this.props.gIsFeatured}
-                                    gTopic={this.props.gTopic}
-                                    updateGraph={this.props.updateGraph}
-                                />
                                 <NonLinearDemandSupplyEditor
                                     displayLabels={true}
                                     displaySliders={true}
@@ -390,6 +383,17 @@ export default class GraphEditor extends React.Component {
 
                                     showAUC={this.props.gType === 10}
 
+                                    updateGraph={this.props.updateGraph}
+                                />
+                                <CommonGraphSettings
+                                    gAssignmentType={this.props.gAssignmentType}
+                                    gNeedsSubmit={this.props.gNeedsSubmit}
+                                    gDisplayFeedback={this.props.gDisplayFeedback}
+                                    gShowIntersection={this.props.gShowIntersection}
+                                    gDisplayShadow={this.props.gDisplayShadow}
+                                    gIsPublished={this.props.gIsPublished}
+                                    gIsFeatured={this.props.gIsFeatured}
+                                    gTopic={this.props.gTopic}
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
