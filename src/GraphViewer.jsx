@@ -507,6 +507,8 @@ export default class GraphViewer extends React.Component {
                             gA3Initial={this.props.gA3Initial}
                             gA4={this.props.gA4}
                             gA4Initial={this.props.gA4Initial}
+                            gA5={this.props.gA5}
+                            gA5Initial={this.props.gA5Initial}
                             gLine1Label={this.props.gLine1Label}
                             gLine2Label={this.props.gLine2Label}
                             gXAxisLabel={this.props.gXAxisLabel}
@@ -529,6 +531,7 @@ export default class GraphViewer extends React.Component {
                             feedback={this.state.currentFeedback} />
 
                         <ConsumptionSavingEditor
+                            gType={this.props.gType}
                             isInstructor={isInstructor}
                             displayLabels={displayLabels}
                             displaySliders={displaySliders}
@@ -536,6 +539,7 @@ export default class GraphViewer extends React.Component {
                             gA2={this.props.gA2}
                             gA3={this.props.gA3}
                             gA4={this.props.gA4}
+                            gA5={this.props.gA5}
                             gLine1Label={this.props.gLine1Label}
                             gShowIntersection={this.props.gShowIntersection}
                             gIntersectionLabel={this.props.gIntersectionLabel}

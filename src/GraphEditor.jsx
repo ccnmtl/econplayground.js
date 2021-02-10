@@ -776,6 +776,7 @@ export default class GraphEditor extends React.Component {
                                     gA2={this.props.gA2}
                                     gA3={this.props.gA3}
                                     gA4={this.props.gA4}
+                                    gA5={this.props.gA5}
                                     gLine1Label={this.props.gLine1Label}
                                     gLine2Label={this.props.gLine2Label}
                                     gXAxisLabel={this.props.gXAxisLabel}
@@ -819,10 +820,12 @@ export default class GraphEditor extends React.Component {
                                 updateGraph={this.props.updateGraph}
                             />
                             <ConsumptionSavingEditor
+                                gType={this.props.gType}
                                 gA1={this.props.gA1}
                                 gA2={this.props.gA2}
                                 gA3={this.props.gA3}
                                 gA4={this.props.gA4}
+                                gA5={this.props.gA5}
                                 gLine1Label={this.props.gLine1Label}
                                 gShowIntersection={this.props.gShowIntersection}
                                 gIntersectionLabel={this.props.gIntersectionLabel}

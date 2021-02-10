@@ -109,8 +109,31 @@ export default class ConsumptionSavingEditor extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <hr/>
                     </React.Fragment>
+                )}
+
+                {this.props.displaySliders &&
+                 this.props.gType === 11 && (
+                        <div className="row">
+                            <div className="col-sm-4">
+                                <div className="form-group">
+                                    <label htmlFor="gA5">
+                                        β
+                                    </label>
+                                    <RangeEditor
+                                        id="gA5"
+                                        dataId="gA5"
+                                        value={this.props.gA5}
+                                        min={0.01}
+                                        max={1}
+                                        handler={handleFormUpdate.bind(this)} />
+                                </div>
+                            </div>
+                        </div>
+                )}
+
+                {this.props.displaySliders && (
+                    <hr/>
                 )}
 
                 {this.props.displayLabels && (
@@ -169,6 +192,8 @@ export default class ConsumptionSavingEditor extends React.Component {
 }
 
 ConsumptionSavingEditor.propTypes = {
+    gType: PropTypes.number.isRequired,
+
     gShowIntersection: PropTypes.bool.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
@@ -178,6 +203,7 @@ ConsumptionSavingEditor.propTypes = {
     gA2: PropTypes.number.isRequired,
     gA3: PropTypes.number.isRequired,
     gA4: PropTypes.number.isRequired,
+    gA5: PropTypes.number.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,
 
