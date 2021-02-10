@@ -7,18 +7,10 @@ import AreaConfiguration from './AreaConfiguration';
 import {handleFormUpdate} from '../utils';
 
 export default class NonLinearDemandSupplyEditor extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.mathjaxOptions = {
-            jax: ['input/TeX', 'output/CommonHTML'],
-            displayAlign: 'left',
-            messageStyle: 'none'
-        };
-    }
     render() {
         const func1 = String.raw`MP_N = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha N^{-\alpha}`;
         const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} N^{1 - \alpha}`;
+
         return (
             <>
                 {this.props.isInstructor && !this.props.hideFunctionChoice && (
