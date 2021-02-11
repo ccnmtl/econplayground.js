@@ -4,6 +4,7 @@ import * as commonmark from 'commonmark';
 import Assessment from './Assessment';
 import ADASEditor from './editors/ADASEditor';
 import CobbDouglasEditor from './editors/CobbDouglasEditor';
+import CobbDouglasNLDSEditor from './editors/CobbDouglasNLDSEditor';
 import ConsumptionLeisureEditor from './editors/ConsumptionLeisureEditor';
 import ConsumptionSavingEditor from './editors/ConsumptionSavingEditor';
 import DemandSupplyEditor from './editors/DemandSupplyEditor';
@@ -329,6 +330,8 @@ export default class GraphViewer extends React.Component {
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
+                            gFunctionChoice={this.props.gFunctionChoice}
+
                             gCobbDouglasA={this.props.gCobbDouglasA}
                             gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
                             gCobbDouglasAName={this.props.gCobbDouglasAName}
@@ -346,24 +349,26 @@ export default class GraphViewer extends React.Component {
                         <Feedback
                             feedback={this.state.currentFeedback} />
 
-                        <CobbDouglasEditor
-                            isInstructor={isInstructor}
-                            displayLabels={displayLabels}
-                            displaySliders={displaySliders}
-                            gCobbDouglasA={this.props.gCobbDouglasA}
-                            gCobbDouglasAName={this.props.gCobbDouglasAName}
-                            gCobbDouglasL={this.props.gCobbDouglasL}
-                            gCobbDouglasLName={this.props.gCobbDouglasLName}
-                            gCobbDouglasK={this.props.gCobbDouglasK}
-                            gCobbDouglasKName={this.props.gCobbDouglasKName}
-                            gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                            gCobbDouglasYName={this.props.gCobbDouglasYName}
-                            gIntersectionLabel={this.props.gIntersectionLabel}
-                            updateGraph={this.updateGraph}
-                        />
+                        {this.props.gType === 3 && (
+                            <CobbDouglasEditor
+                                isInstructor={isInstructor}
+                                displayLabels={displayLabels}
+                                displaySliders={displaySliders}
+                                gCobbDouglasA={this.props.gCobbDouglasA}
+                                gCobbDouglasAName={this.props.gCobbDouglasAName}
+                                gCobbDouglasL={this.props.gCobbDouglasL}
+                                gCobbDouglasLName={this.props.gCobbDouglasLName}
+                                gCobbDouglasK={this.props.gCobbDouglasK}
+                                gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                                gCobbDouglasYName={this.props.gCobbDouglasYName}
+                                gIntersectionLabel={this.props.gIntersectionLabel}
+                                updateGraph={this.updateGraph}
+                            />
+                        )}
 
                         {this.props.gType === 12 && (
-                            <NonLinearDemandSupplyEditor
+                            <CobbDouglasNLDSEditor
                                 displayLabels={displayLabels}
                                 displaySliders={displaySliders}
                                 isInstructor={isInstructor}
@@ -373,6 +378,10 @@ export default class GraphViewer extends React.Component {
                                 gCobbDouglasAName={this.props.gCobbDouglasAName}
                                 gCobbDouglasK={this.props.gCobbDouglasK}
                                 gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                gCobbDouglasL={this.props.gCobbDouglasL}
+                                gCobbDouglasLName={this.props.gCobbDouglasLName}
+                                gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                                gCobbDouglasYName={this.props.gCobbDouglasYName}
                                 gLine1Slope={this.props.gLine1Slope}
                                 gLine1OffsetX={this.props.gLine1OffsetX}
                                 gLine1OffsetY={this.props.gLine1OffsetY}
