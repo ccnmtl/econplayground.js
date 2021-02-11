@@ -5,9 +5,12 @@ import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
 import {handleFormUpdate} from '../utils';
 
-export default class CobbDouglasEditor extends React.Component {
+export default class CobbDouglasNLDSEditor extends React.Component {
     render() {
         let tex = String.raw`= ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha ${this.props.gCobbDouglasLName}^{1 - \alpha}`;
+
+        const func1 = String.raw`MP_N = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha N^{-\alpha}`;
+        const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} N^{1 - \alpha}`;
 
         if (!this.props.isInstructor) {
             tex = String.raw`${this.props.gCobbDouglasYName} ${tex}`;
@@ -15,7 +18,7 @@ export default class CobbDouglasEditor extends React.Component {
 
         return (
             <div>
-                <h2>Function</h2>
+                <h2>Functions</h2>
                 This is a projection of the Cobb-Douglas function
                 with {this.props.gCobbDouglasLName} plotted along
                 the X-axis.
@@ -32,6 +35,46 @@ export default class CobbDouglasEditor extends React.Component {
                     )}
                     <MathComponent tex={tex} />
                 </div>
+
+                {this.props.isInstructor && !this.props.hideFunctionChoice && (
+                    <>
+                        <h4 className="mt-3">
+                            NLDS Function
+                        </h4>
+                        <div className="form-row">
+
+                            <div className="col">
+                                <div className="form-check">
+                                    <input className="form-check-input"
+                                           type="radio"
+                                           name="gFunctionChoice"
+                                           id="gFunctionChoice1"
+                                           onChange={handleFormUpdate.bind(this)}
+                                           value={0}
+                                           checked={this.props.gFunctionChoice === 0} />
+
+                                    <label className="form-check-label" htmlFor="gFunctionChoice1">
+                                        <MathComponent tex={func1} />
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="form-check">
+                                    <input className="form-check-input"
+                                           type="radio"
+                                           name="gFunctionChoice"
+                                           id="gFunctionChoice2"
+                                           onChange={handleFormUpdate.bind(this)}
+                                           value={1}
+                                           checked={this.props.gFunctionChoice === 1} />
+                                    <label className="form-check-label" htmlFor="gFunctionChoice2">
+                                        <MathComponent tex={func2} />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
                 <hr/>
 
                 {this.props.displaySliders && (
@@ -132,31 +175,88 @@ export default class CobbDouglasEditor extends React.Component {
                                 )}
                             </div>
                         </div>
+                        <div className="form-row">
+                            <div className="col-sm-4">
+                                <label htmlFor="gLine1Slope">
+                                    Orange line slope
+                                </label>
+                                <RangeEditor
+                                    dataId="gLine1Slope"
+                                    value={this.props.gLine1Slope}
+                                    showOverrideButton={true}
+                                    overrideLabel='Vertical'
+                                    overrideValue={999}
+                                    showOverride2Button={true}
+                                    override2Label='Horizontal'
+                                    override2Value={0}
+                                    handler={handleFormUpdate.bind(this)} />
+                            </div>
+                        </div>
                         <hr/>
                     </React.Fragment>
                 )}
 
                 {this.props.displayLabels && (
                     <React.Fragment>
-                        <h2>Label</h2>
+                        <h2>Labels</h2>
                         <div className="row">
                             <EditableControl
-                                id="gIntersectionLabel"
-                                name="Intersection point label"
-                                value={this.props.gIntersectionLabel}
+                                id="gLine1Label"
+                                name="Orange line label"
+                                value={this.props.gLine1Label}
+                                valueEditable={true}
+                                isInstructor={this.props.isInstructor}
+                                updateGraph={this.props.updateGraph}
+                            />
+
+                            <EditableControl
+                                id="gLine2Label"
+                                name="Blue line label"
+                                value={this.props.gLine2Label}
                                 valueEditable={true}
                                 isInstructor={this.props.isInstructor}
                                 updateGraph={this.props.updateGraph}
                             />
                         </div>
+                        <hr/>
                     </React.Fragment>
+                )}
+
+                {this.props.displayLabels && (
+                    <div className="row">
+                        <EditableControl
+                            id="gIntersectionLabel"
+                            name="Intersection point label"
+                            value={this.props.gIntersectionLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                        <EditableControl
+                            id="gIntersectionHorizLineLabel"
+                            name="Intersection&apos;s horizontal line label"
+                            value={this.props.gIntersectionHorizLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+
+                        <EditableControl
+                            id="gIntersectionVertLineLabel"
+                            name="Intersection&apos;s vertical line label"
+                            value={this.props.gIntersectionVertLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
             </div>
         );
     }
 }
 
-CobbDouglasEditor.propTypes = {
+CobbDouglasNLDSEditor.propTypes = {
     updateGraph: PropTypes.func.isRequired,
 
     gCobbDouglasA: PropTypes.number.isRequired,
@@ -168,6 +268,17 @@ CobbDouglasEditor.propTypes = {
     gCobbDouglasAlpha: PropTypes.number.isRequired,
     gCobbDouglasYName: PropTypes.string.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
+
+    gIntersectionLabel: PropTypes.string.isRequired,
+    gIntersectionHorizLineLabel: PropTypes.string.isRequired,
+    gIntersectionVertLineLabel: PropTypes.string.isRequired,
+
+    gLine1Label: PropTypes.string.isRequired,
+    gLine2Label: PropTypes.string.isRequired,
+    gLine1Slope: PropTypes.number.isRequired,
+
+    gFunctionChoice: PropTypes.number.isRequired,
+    hideFunctionChoice: PropTypes.bool,
 
     displayLabels: PropTypes.bool.isRequired,
     displaySliders: PropTypes.bool.isRequired,
