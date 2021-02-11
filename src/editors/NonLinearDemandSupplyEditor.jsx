@@ -88,8 +88,9 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                     dataId="gCobbDouglasA"
                                     value={this.props.gCobbDouglasA}
                                     handler={handleFormUpdate.bind(this)}
+                                    step={0.1}
                                     min={0.1}
-                                    max={5} />
+                                    max={18} />
                             </div>
                             <div className="col-sm-4">
                                 <label htmlFor="gCobbDouglasK">
