@@ -20,7 +20,7 @@
     "react-dom": "~16.14.0",
     "webpack": "~5.21.1",
     "webpack-cli": "~4.5.0",
-    "whatwg-fetch": "~3.5.0"
+    "whatwg-fetch": "~3.6.0"
   },
   "scripts": {
     "dev": "webpack --mode development --watch --config config/webpack.config.dev.js",
