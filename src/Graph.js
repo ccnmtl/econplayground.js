@@ -1277,22 +1277,37 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
     U(c1, c2, beta) {
         return Math.log(c1) + beta * Math.log(c2);
     }
-    drawUCurve() {
-        const y1 = this.options.gA1;
-        const y2 = this.options.gA2;
-        const W = this.options.gA3;
-        const r = this.options.gA4;
-        const beta = this.options.gA5;
-
-        this.c1 = -(
+    getC1(y1, y2, W, r, beta) {
+        return -(
             (-W - r * W - y1 - r * y1 - y2) /
                 ((1 + r) * (1 + beta))
         );
+    }
+    getC2(y1, y2, W, r, beta) {
+        return ((W + r * W + y1 + r * y1 + y2) * beta) /
+              (1 + beta);
+    }
+    drawUCurve(isShadow=false) {
+        let y1, y2, W, r, beta;
 
-        this.c2 = ((W + r * W + y1 + r * y1 + y2) * beta) /
-            (1 + beta);
+        if (isShadow) {
+            y1 = this.options.gA1Initial;
+            y2 = this.options.gA2Initial;
+            W = this.options.gA3Initial;
+            r = this.options.gA4Initial;
+            beta = this.options.gA5Initial;
+        } else {
+            y1 = this.options.gA1;
+            y2 = this.options.gA2;
+            W = this.options.gA3;
+            r = this.options.gA4;
+            beta = this.options.gA5;
+        }
 
-        const uStar = this.U(this.c1, this.c2, beta);
+        const c1 = this.getC1(y1, y2, W, r, beta);
+        const c2 = this.getC2(y1, y2, W, r, beta);
+
+        const uStar = this.U(c1, c2, beta);
 
         const f = function(x) {
             const result = (uStar - Math.log(x)) / beta;
@@ -1302,7 +1317,7 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
         this.board.create('functiongraph', [f, 0, 10], {
             withLabel: false,
             strokeWidth: 2,
-            strokeColor: this.l2Color,
+            strokeColor: isShadow ? this.shadowColor : this.l2Color,
             // This graph is only moved by its RangeEditors, not by
             // dragging.
             fixed: true,
@@ -1310,14 +1325,16 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
             recursionDepthLow: 8,
             recursionDepthHigh: 15
         });
+
+        return [c1, c2];
     }
-    drawOptimalPoint() {
+    drawOptimalPoint(isShadow=false, c1, c2) {
         const p1 = this.board.create(
-            'point', [this.c1, 0],
+            'point', [c1, 0],
             invisiblePointOptions);
 
         const p2 = this.board.create(
-            'point', [0, this.c2],
+            'point', [0, c2],
             invisiblePointOptions);
 
         const l1 = this.board.create('line', [p1, [p1.X(), p2.Y()]], {
@@ -1326,7 +1343,7 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
             straightLast: false,
             dash: 1,
             highlight: false,
-            strokeColor: 'black'
+            strokeColor: isShadow ? this.shadowColor : 'black'
         });
 
         const l2 = this.board.create('line', [p2, [p1.X(), p2.Y()]], {
@@ -1335,19 +1352,23 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
             straightLast: false,
             dash: 1,
             highlight: false,
-            strokeColor: 'black'
+            strokeColor: isShadow ? this.shadowColor : 'black'
         });
 
         this.board.create(
             'intersection', [l1, l2],
-            getIntersectionPointOptions('OP', false, 'blue')
+            getIntersectionPointOptions('OP', isShadow, 'blue')
         );
     }
     make() {
         super.make();
 
-        this.drawUCurve();
-        this.drawOptimalPoint();
+        // Shadow curve and point
+        const [shadowC1, shadowC2] = this.drawUCurve(true);
+        this.drawOptimalPoint(true, shadowC1, shadowC2);
+
+        const [c1, c2] = this.drawUCurve();
+        this.drawOptimalPoint(false, c1, c2);
     }
 }
 

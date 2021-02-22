@@ -960,6 +960,8 @@ GraphViewer.propTypes = {
     gA3Initial: PropTypes.number,
     gA4: PropTypes.number,
     gA4Initial: PropTypes.number,
+    gA5: PropTypes.number,
+    gA5Initial: PropTypes.number,
 
     gA: PropTypes.number,
     gK: PropTypes.number,
