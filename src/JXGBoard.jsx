@@ -8,6 +8,16 @@ import {graphTypes, mkDemandSupply, mkNonLinearDemandSupply} from './Graph';
 import AreaDisplay from './AreaDisplay';
 import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 
+const getNLDSYLabel = function(functionChoice, kName) {
+    let label = 'MP<sub>N</sub>';
+
+    if (functionChoice === 1) {
+        label = `MP<sub>${kName}</sub>`;
+    }
+
+    return label;
+};
+
 /**
  * The JXGBoard component manages JSXGraph's Board class, which
  * is used to create the graph scene.
@@ -604,8 +614,30 @@ export default class JXGBoard extends React.Component {
                 this.board.defaultAxes.y.name = this.props.gYAxisLabel;
                 this.board.update();
             }
+        }
+
+        if (
+            this.props.gType === 1 &&
+                prevProps.gFunctionChoice !== this.props.gFunctionChoice
+        ) {
+            if (this.board) {
+                const yLabel = getNLDSYLabel(
+                    this.props.gFunctionChoice,
+                    this.props.gCobbDouglasKName);
+                this.board.defaultAxes.y.name = yLabel;
+                this.board.update();
+            }
+        }
+
+        if (
+            this.props.gType === 12 &&
+                prevProps.gFunctionChoice !== this.props.gFunctionChoice
+        ) {
             if (this.board2) {
-                this.board2.defaultAxes.y.name = this.props.gYAxisLabel;
+                const yLabel = getNLDSYLabel(
+                    this.props.gFunctionChoice,
+                    this.props.gCobbDouglasKName);
+                this.board2.defaultAxes.y.name = yLabel + ', w';
                 this.board2.update();
             }
         }
@@ -639,12 +671,13 @@ export default class JXGBoard extends React.Component {
             case 1:
                 // Non-linear demand-supply
                 xAxisLabel = 'N';
-                yAxisLabel = 'MP<sub>N</sub>';
 
                 if (options.gFunctionChoice === 1) {
                     xAxisLabel = options.gCobbDouglasKName;
-                    yAxisLabel = `MP<sub>${options.gCobbDouglasKName}</sub>`;
                 }
+
+                yAxisLabel = getNLDSYLabel(
+                    options.gFunctionChoice, options.gCobbDouglasKName);
 
                 if (this.props.locked) {
                     options.gCobbDouglasA = 3.4;
@@ -723,7 +756,9 @@ export default class JXGBoard extends React.Component {
         if (options.gType >= 12 && options.gType <= 14) {
             let yLabel = yAxisLabel;
             if (options.gType === 12) {
-                yLabel = 'MP<sub>N</sub>, w';
+                yLabel = getNLDSYLabel(
+                    options.gFunctionChoice, options.gCobbDouglasKName);
+                yLabel += ', w';
             }
 
             this.board2 = JXG.JSXGraph.initBoard(
