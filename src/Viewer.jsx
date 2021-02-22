@@ -205,6 +205,8 @@ class Viewer extends Component {
             gA3Initial={this.state.gA3Initial}
             gA4={this.state.gA4}
             gA4Initial={this.state.gA4Initial}
+            gA5={this.state.gA5}
+            gA5Initial={this.state.gA5Initial}
 
             gA={this.state.gA}
             gK={this.state.gK}
