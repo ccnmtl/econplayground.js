@@ -183,6 +183,7 @@ export default class CobbDouglasNLDSEditor extends React.Component {
                                 <RangeEditor
                                     dataId="gLine1Slope"
                                     value={this.props.gLine1Slope}
+                                    min={0}
                                     showOverrideButton={true}
                                     overrideLabel='Vertical'
                                     overrideValue={999}
