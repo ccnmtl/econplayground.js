@@ -53,6 +53,10 @@ const getIntersectionPointOptions = function(
     };
 };
 
+const AREA_A_COLOR = 'purple';
+const AREA_B_COLOR = 'lime';
+const AREA_C_COLOR = 'red';
+
 class Graph {
     constructor(board, options, defaults) {
         if (typeof defaults === 'undefined') {
@@ -432,9 +436,9 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         return drawPolygon(
             this.board, points,
             shadow ? null : this.options.gAreaAName,
-            shadow ? this.shadowAreaColor : 'purple');
+            shadow ? this.shadowAreaColor : AREA_A_COLOR);
     }
-    drawTriangleB(shadow=false, areaConf=null, intersection, l1) {
+    drawTriangleB(shadow=false, areaConf, intersection, l1) {
         const yIntercept = l1.getRise();
         let points = [];
 
@@ -470,7 +474,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             points.push(p4);
         }
 
-        let color = areaConf === 3 ? 'purple' : 'lime';
+        let color = AREA_B_COLOR;
         if (shadow) {
             color = this.shadowAreaColor;
         }
@@ -480,7 +484,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             shadow ? null : this.options.gAreaBName,
             color);
     }
-    drawTriangleC(shadow=false, areaConf=null, intersection, l1) {
+    drawTriangleC(shadow=false, areaConf, intersection, l1) {
         const yIntercept = l1.getRise();
         let points = [];
 
@@ -517,7 +521,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             points.push(p3);
         }
 
-        let color = areaConf === 4 ? 'lime' : 'red';
+        let color = AREA_C_COLOR;
         if (shadow) {
             color = this.shadowAreaColor;
         }
@@ -531,22 +535,29 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         let triangleA = null;
         let triangleB = null;
         let triangleC = null;
+        // let rect = null;
 
         const areaConf = this.options.gAreaConfiguration;
 
         // Turn on and off certain triangles based on the "area
         // configuration".
-        if (areaConf === 0 || areaConf === 3) {
+        if (areaConf === 0 || areaConf === 3 || areaConf === 5) {
             triangleA = this.drawTriangleA(
                 false, this.intersection, this.l2);
         }
-        if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
+        if (
+            areaConf === 1 || areaConf === 3 || areaConf === 4 ||
+                areaConf === 5
+           ) {
             triangleB = this.drawTriangleB(
                 false, areaConf, this.intersection, this.l1);
         }
         if (areaConf === 2 || areaConf === 4) {
             triangleC = this.drawTriangleC(
                 false, areaConf, this.intersection, this.l1);
+        }
+        if (areaConf === 6) {
+            // TODO
         }
 
         this.options.handleAreaUpdate(
@@ -819,7 +830,7 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         const curve = this.board.create(
             'curve', [[], []], {
                 strokeWidth: 0,
-                fillColor: 'yellow',
+                fillColor: AREA_A_COLOR,
                 fillOpacity: 0.3,
                 isDraggable: false,
                 draggable: false
@@ -890,7 +901,8 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         return drawPolygon(
             this.board,
             points,
-            this.options.gAreaBName, 'lime');
+            this.options.gAreaBName,
+            AREA_B_COLOR);
     }
     drawTriangleC() {
         const p1 = this.board.create('point', [
@@ -911,7 +923,8 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         const points = [p3, p2, p1];
         return drawPolygon(
             this.board, points,
-            this.options.gAreaCName, 'red');
+            this.options.gAreaCName,
+            AREA_C_COLOR);
     }
 
     make() {

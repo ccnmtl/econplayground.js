@@ -43,24 +43,25 @@ export default class AreaConfiguration extends React.Component {
 
                 <div className="form-row">
                     <div className="form-group">
-                        {['A', 'B', 'C', 'A + B', 'B + C'].map(function(el, idx) {
-                            return (
-                                <div className="form-check form-check-inline" key={idx}>
-                                    <label className="form-check-label">
-                                        <input
-                                            className="form-check-input"
-                                            type="radio"
-                                            id={`gAreaConfiguration-${idx}`}
-                                            name="gAreaConfiguration"
-                                            onChange={handleFormUpdate.bind(me)}
-                                            checked={me.props.gAreaConfiguration === idx}
-                                            value={idx}
-                                        />
-                                        {el}
-                                    </label>
-                                </div>
-                            );
-                        })}
+                        {['A', 'B', 'C', 'A + B', 'B + C', 'A ∪ B', 'B ∪ C'].map(
+                            function(el, idx) {
+                                return (
+                                    <div className="form-check form-check-inline" key={idx}>
+                                        <label className="form-check-label">
+                                            <input
+                                                className="form-check-input"
+                                                type="radio"
+                                                id={`gAreaConfiguration-${idx}`}
+                                                name="gAreaConfiguration"
+                                                onChange={handleFormUpdate.bind(me)}
+                                                checked={me.props.gAreaConfiguration === idx}
+                                                value={idx}
+                                            />
+                                            {el}
+                                        </label>
+                                    </div>
+                                );
+                            })}
                     </div>
                 </div>
 
