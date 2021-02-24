@@ -18,6 +18,16 @@ const getNLDSYLabel = function(functionChoice, kName) {
     return label;
 };
 
+const getNLDSXLabel = function(functionChoice, kName) {
+    let label = 'N';
+
+    if (functionChoice === 1) {
+        label = kName;
+    }
+
+    return label;
+};
+
 /**
  * The JXGBoard component manages JSXGraph's Board class, which
  * is used to create the graph scene.
@@ -621,14 +631,18 @@ export default class JXGBoard extends React.Component {
         }
 
         if (
-            this.props.gType === 1 &&
+            (this.props.gType === 1 || this.props.gType === 10) &&
                 prevProps.gFunctionChoice !== this.props.gFunctionChoice
         ) {
             if (this.board) {
                 const yLabel = getNLDSYLabel(
                     this.props.gFunctionChoice,
                     this.props.gCobbDouglasKName);
+                const xLabel = getNLDSXLabel(
+                    this.props.gFunctionChoice,
+                    this.props.gCobbDouglasKName);
                 this.board.defaultAxes.y.name = yLabel;
+                this.board.defaultAxes.x.name = xLabel;
                 this.board.update();
             }
         }
@@ -673,13 +687,10 @@ export default class JXGBoard extends React.Component {
         let yAxisLabel = '';
         switch (options.gType) {
             case 1:
+            case 10:
                 // Non-linear demand-supply
-                xAxisLabel = 'N';
-
-                if (options.gFunctionChoice === 1) {
-                    xAxisLabel = options.gCobbDouglasKName;
-                }
-
+                xAxisLabel = getNLDSXLabel(
+                    options.gFunctionChoice, options.gCobbDouglasKName);
                 yAxisLabel = getNLDSYLabel(
                     options.gFunctionChoice, options.gCobbDouglasKName);
 

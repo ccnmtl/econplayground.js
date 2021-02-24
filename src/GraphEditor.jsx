@@ -432,8 +432,6 @@ export default class GraphEditor extends React.Component {
                                     gType={this.props.gType}
                                     gLine1Label={this.props.gLine1Label}
                                     gLine2Label={this.props.gLine2Label}
-                                    gXAxisLabel={'L' || this.props.gCobbDouglasKName}
-                                    gYAxisLabel={'Y'}
                                     gLine1Slope={this.props.gLine1Slope}
                                     gLine2Slope={this.props.gLine2Slope}
                                     gLine1OffsetX={this.props.gLine1OffsetX}
