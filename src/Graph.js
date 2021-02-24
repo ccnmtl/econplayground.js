@@ -248,7 +248,7 @@ class Graph {
      */
     showIntersection(
         l1, l2, isShadow=false, label, horizLabel, vertLabel,
-        extendVertLine=false
+        extendVertLine=false, color='red'
     ) {
         if (label === null || typeof label === 'undefined') {
             label = this.options.gIntersectionLabel;
@@ -262,7 +262,8 @@ class Graph {
 
         let i = this.board.create(
             'intersection', [l1, l2, 0],
-            getIntersectionPointOptions(label, isShadow));
+            getIntersectionPointOptions(label, isShadow, color)
+        );
 
         let p1 = this.board.create('point', [0, i.Y()], {
             size: 0,
@@ -322,6 +323,8 @@ class Graph {
                 me.updateIntersection(i, p1, p2);
             });
         }
+
+        return i;
     }
     make() {
         // unimplemented
@@ -1192,13 +1195,16 @@ class ConsumptionSavingGraph extends Graph {
                     0, this.options.gA2Initial
                 ], invisiblePointOptions);
 
+                // Make these lines invisible - actually rendered from
+                // this.showIntersection().
                 const l1Shadow = this.board.create('line', [
                     p1Shadow, [p1Shadow.X(), p2Shadow.Y()]], {
                         withLabel: false,
                         straightFirst: false,
                         straightLast: false,
                         dash: 1,
-                        strokeColor: this.shadowColor,
+                        visible: false,
+                        strokeWidth: 0,
                         highlight: false
                     });
                 const l2Shadow = this.board.create('line', [
@@ -1207,19 +1213,12 @@ class ConsumptionSavingGraph extends Graph {
                         straightFirst: false,
                         straightLast: false,
                         dash: 1,
-                        strokeColor: this.shadowColor,
+                        visible: false,
+                        strokeWidth: 0,
                         highlight: false
                     });
 
-                this.board.create('intersection', [l1Shadow, l2Shadow], {
-                    withLabel: false,
-                    size: 1,
-                    strokeColor: this.shadowColor,
-                    fillColor: this.shadowColor,
-                    fixed: true,
-                    highlight: false,
-                    showInfobox: false
-                });
+                this.showIntersection(l1Shadow, l2Shadow, true);
             }
         }
 
@@ -1251,30 +1250,23 @@ class ConsumptionSavingGraph extends Graph {
                 'point', [0, this.options.gA2],
                 invisiblePointOptions);
 
-            const l1 = this.board.create('line', [p1, [p1.X(), p2.Y()]], {
-                name: this.options.gIntersectionHorizLineLabel,
-                withLabel: true,
-                straightFirst: false,
-                straightLast: false,
-                dash: 1,
-                highlight: false,
-                strokeColor: 'black'
-            });
-
+            // Make this line invisible - it's actually rendered from
+            // this.showIntersection().
             const l2 = this.board.create('line', [p2, [p1.X(), p2.Y()]], {
-                name: this.options.gIntersectionVertLineLabel,
-                withLabel: true,
+                withLabel: false,
                 straightFirst: false,
                 straightLast: false,
                 dash: 1,
                 highlight: false,
-                strokeColor: 'black'
+                visible: false,
+                strokeWidth: 0
             });
 
-            this.intersection = this.board.create(
-                'intersection', [l1, l2],
-                getIntersectionPointOptions(
-                    this.options.gIntersectionLabel));
+            this.intersection = this.showIntersection(
+                this.l1, l2, false,
+                this.options.gIntersectionLabel,
+                this.options.gIntersectionHorizLineLabel,
+                this.options.gIntersectionVertLineLabel);
         }
     }
 }
@@ -1328,7 +1320,8 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
         };
 
         this.board.create('functiongraph', [f, 0, 10], {
-            withLabel: false,
+            name: this.options.gLine2Label,
+            withLabel: !isShadow,
             strokeWidth: 2,
             strokeColor: isShadow ? this.shadowColor : this.l2Color,
             // This graph is only moved by its RangeEditors, not by
@@ -1351,26 +1344,29 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
             invisiblePointOptions);
 
         const l1 = this.board.create('line', [p1, [p1.X(), p2.Y()]], {
-            name: '',
             straightFirst: false,
             straightLast: false,
             dash: 1,
             highlight: false,
-            strokeColor: isShadow ? this.shadowColor : 'black'
+            visible: false,
+            strokeWidth: 0
         });
 
         const l2 = this.board.create('line', [p2, [p1.X(), p2.Y()]], {
-            name: '',
             straightFirst: false,
             straightLast: false,
             dash: 1,
             highlight: false,
-            strokeColor: isShadow ? this.shadowColor : 'black'
+            visible: false,
+            strokeWidth: 0
         });
 
-        this.board.create(
-            'intersection', [l1, l2],
-            getIntersectionPointOptions('OP', isShadow, 'blue')
+        this.showIntersection(
+            l1, l2, isShadow,
+            this.options.gIntersection2Label,
+            this.options.gIntersection2HorizLineLabel,
+            this.options.gIntersection2VertLineLabel,
+            false, 'blue'
         );
     }
     make() {

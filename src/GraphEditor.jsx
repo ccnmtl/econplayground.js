@@ -801,6 +801,9 @@ export default class GraphEditor extends React.Component {
                                     gIntersectionLabel={this.props.gIntersectionLabel}
                                     gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                     gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                    gIntersection2Label={this.props.gIntersection2Label}
+                                    gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                                    gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
                                     gShowIntersection={this.props.gShowIntersection}
                                 />
                                 <CommonGraphEditor
@@ -838,10 +841,15 @@ export default class GraphEditor extends React.Component {
                                 gA4={this.props.gA4}
                                 gA5={this.props.gA5}
                                 gLine1Label={this.props.gLine1Label}
+                                gLine2Label={this.props.gLine2Label}
                                 gShowIntersection={this.props.gShowIntersection}
                                 gIntersectionLabel={this.props.gIntersectionLabel}
                                 gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                 gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                                gIntersection2Label={this.props.gIntersection2Label}
+                                gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                                gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
 
                                 displayLabels={true}
                                 displaySliders={true}

@@ -148,6 +148,17 @@ export default class ConsumptionSavingEditor extends React.Component {
                                 isInstructor={this.props.isInstructor}
                                 updateGraph={this.props.updateGraph}
                             />
+
+                            {this.props.gType === 11 && (
+                                <EditableControl
+                                    id="gLine2Label"
+                                    name="Blue line label"
+                                    value={this.props.gLine2Label}
+                                    valueEditable={true}
+                                    isInstructor={this.props.isInstructor}
+                                    updateGraph={this.props.updateGraph}
+                                />
+                             )}
                         </div>
                     </React.Fragment>
                 )}
@@ -186,6 +197,41 @@ export default class ConsumptionSavingEditor extends React.Component {
                     />
                 </div>
                 )}
+
+                {this.props.gType === 11 && this.props.displayLabels && (
+                    <div className="row">
+                        <EditableControl
+                            id="gIntersection2Label"
+                            name="Optimal point label"
+                            value={this.props.gIntersection2Label}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
+                )}
+
+                {this.props.gType === 11 && this.props.displayLabels && (
+                    <div className="row">
+                        <EditableControl
+                            id="gIntersection2HorizLineLabel"
+                            name="Optimal point&apos;s horizontal line label"
+                            value={this.props.gIntersection2HorizLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+
+                    <EditableControl
+                        id="gIntersection2VertLineLabel"
+                        name="Optimal point&apos;s vertical line label"
+                        value={this.props.gIntersection2VertLineLabel}
+                        valueEditable={true}
+                        isInstructor={this.props.isInstructor}
+                        updateGraph={this.props.updateGraph}
+                    />
+                </div>
+                )}
             </div>
         );
     }
@@ -199,6 +245,10 @@ ConsumptionSavingEditor.propTypes = {
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
 
+    gIntersection2Label: PropTypes.string,
+    gIntersection2HorizLineLabel: PropTypes.string,
+    gIntersection2VertLineLabel: PropTypes.string,
+
     gA1: PropTypes.number.isRequired,
     gA2: PropTypes.number.isRequired,
     gA3: PropTypes.number.isRequired,
@@ -206,6 +256,7 @@ ConsumptionSavingEditor.propTypes = {
     gA5: PropTypes.number.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,
+    gLine2Label: PropTypes.string,
 
     displayLabels: PropTypes.bool.isRequired,
     displaySliders: PropTypes.bool.isRequired,
