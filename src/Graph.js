@@ -949,7 +949,16 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
             // Close the curve by adding (0,0)
             this.dataX.push(0);
             this.dataY.push(me.intersection.Y());
+
+            // Remove problematic NaN points
+            this.dataX.splice(0, 2);
+            this.dataY.splice(0, 2);
+
+            // Start the curve off at the top left part of the graph.
+            this.dataX.unshift(0);
+            this.dataY.unshift(Infinity);
         };
+        console.log('curve', curve);
 
         const p1 = this.board.create(
             'point', [
