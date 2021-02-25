@@ -57,6 +57,37 @@ const AREA_A_COLOR = 'purple';
 const AREA_B_COLOR = 'lime';
 const AREA_C_COLOR = 'red';
 
+
+const drawAreaBC = function(
+    board, options, shadowAreaColor, shadow=false, intersection
+) {
+    const p1 = board.create('point', [
+        0,
+        intersection.Y()
+    ], invisiblePointOptions);
+
+    const p2 = board.create('point', [
+        intersection.X(),
+        0
+    ], invisiblePointOptions);
+
+    const p3 = board.create('point', [
+        0, 0
+    ], invisiblePointOptions);
+
+    const points = [p1, intersection, p2, p3];
+
+    let color = AREA_B_COLOR;
+    if (shadow) {
+        color = shadowAreaColor;
+    }
+
+    return drawPolygon(
+        board, points,
+        shadow ? null : options.gAreaBName,
+        color);
+};
+
 class Graph {
     constructor(board, options, defaults) {
         if (typeof defaults === 'undefined') {
@@ -411,7 +442,7 @@ export const mkDemandSupply = function(board, options) {
 };
 
 class DemandSupplyGraphAUC extends DemandSupplyGraph {
-    drawTriangleA(shadow=false, intersection, l2) {
+    drawAreaA(shadow=false, intersection, l2) {
         const p1 = this.board.create('point', [
             0,
             // getRise() returns the y-intercept
@@ -438,7 +469,52 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             shadow ? null : this.options.gAreaAName,
             shadow ? this.shadowAreaColor : AREA_A_COLOR);
     }
-    drawTriangleB(shadow=false, areaConf, intersection, l1) {
+    drawAreaAB(shadow=false, intersection, l1, l2) {
+        const yIntercept = l1.getRise();
+        let points = [];
+
+        const p1 = this.board.create('point', [
+            0,
+            // getRise() returns the y-intercept
+            l2.getRise()
+        ], invisiblePointOptions);
+        points.push(p1);
+
+        const p2 = this.board.create('point', [
+            Math.min(
+                intersection.X(),
+                getXInterceptWithPoint(intersection, l2.getSlope())
+            ),
+            Math.max(intersection.Y(), 0)
+        ], invisiblePointOptions);
+        points.push(p2);
+
+        if (yIntercept >= 0) {
+            // If the y intercept is 0 or more, the shape is a
+            // triangle.
+            const p3 = this.board.create('point', [
+                0, yIntercept
+            ], invisiblePointOptions);
+            points.push(p3);
+        } else {
+            const p3 = this.board.create('point', [
+                getXIntercept(l1.getSlope(), yIntercept),
+                0
+            ], invisiblePointOptions);
+            points.push(p3);
+
+            const p4 = this.board.create('point', [
+                0, 0
+            ], invisiblePointOptions);
+            points.push(p4);
+        }
+
+        return drawPolygon(
+            this.board, points,
+            shadow ? null : this.options.gAreaAName,
+            shadow ? this.shadowAreaColor : AREA_A_COLOR);
+    }
+    drawAreaB(shadow=false, areaConf, intersection, l1) {
         const yIntercept = l1.getRise();
         let points = [];
 
@@ -484,7 +560,8 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             shadow ? null : this.options.gAreaBName,
             color);
     }
-    drawTriangleC(shadow=false, areaConf, intersection, l1) {
+
+    drawAreaC(shadow=false, areaConf, intersection, l1) {
         const yIntercept = l1.getRise();
         let points = [];
 
@@ -532,57 +609,71 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
     }
 
     drawAreas() {
-        let triangleA = null;
-        let triangleB = null;
-        let triangleC = null;
-        // let rect = null;
+        let areaA = null;
+        let areaB = null;
+        let areaC = null;
 
         const areaConf = this.options.gAreaConfiguration;
 
         // Turn on and off certain triangles based on the "area
         // configuration".
-        if (areaConf === 0 || areaConf === 3 || areaConf === 5) {
-            triangleA = this.drawTriangleA(
+        if (areaConf === 0 || areaConf === 3) {
+            areaA = this.drawAreaA(
                 false, this.intersection, this.l2);
         }
         if (
-            areaConf === 1 || areaConf === 3 || areaConf === 4 ||
-                areaConf === 5
+            areaConf === 1 || areaConf === 3 || areaConf === 4
            ) {
-            triangleB = this.drawTriangleB(
+            areaB = this.drawAreaB(
                 false, areaConf, this.intersection, this.l1);
         }
         if (areaConf === 2 || areaConf === 4) {
-            triangleC = this.drawTriangleC(
+            areaC = this.drawAreaC(
                 false, areaConf, this.intersection, this.l1);
         }
+        if (areaConf === 5) {
+            areaA = this.drawAreaAB(
+                false, this.intersection, this.l1, this.l2);
+        }
         if (areaConf === 6) {
-            // TODO
+            areaB = drawAreaBC(
+                this.board, this.options, this.shadowAreaColor,
+                false, this.intersection);
         }
 
         this.options.handleAreaUpdate(
-            triangleA ? forceFloat(triangleA.Area()) : null,
-            triangleB ? forceFloat(triangleB.Area()) : null,
-            triangleC ? forceFloat(triangleC.Area()) : null
+            areaA ? forceFloat(areaA.Area()) : null,
+            areaB ? forceFloat(areaB.Area()) : null,
+            areaC ? forceFloat(areaC.Area()) : null
         );
     }
 
     drawShadowAreas() {
         const areaConf = this.options.gAreaConfigurationInitial;
 
-        // Turn on and off certain triangles based on the "area
+        // Turn on and off certain areas based on the "area
         // configuration".
         if (areaConf === 0 || areaConf === 3) {
-            this.drawTriangleA(
+            this.drawAreaA(
                 true, this.shadowIntersection, this.l2fShadow);
         }
         if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
-            this.drawTriangleB(
+            this.drawAreaB(
                 true, areaConf, this.shadowIntersection, this.l1fShadow);
         }
         if (areaConf === 2 || areaConf === 4) {
-            this.drawTriangleC(
+            this.drawAreaC(
                 true, areaConf, this.shadowIntersection, this.l1fShadow);
+        }
+        if (areaConf === 5) {
+            this.drawAreaAB(
+                true, this.shadowIntersection,
+                this.l1fShadow, this.l2fShadow);
+        }
+        if (areaConf === 6) {
+            drawAreaBC(
+                this.board, this.options, this.shadowAreaColor,
+                true, this.shadowIntersection);
         }
     }
 
@@ -817,7 +908,7 @@ export const mkNonLinearDemandSupply = function(board, options) {
 };
 
 class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
-    drawAreaA() {
+    drawAreaA(areaConf) {
         const invisibleFunc = this.board.create(
             'functiongraph', [this.l2func, 0, this.intersection.X()], {
                 visible: false,
@@ -872,14 +963,16 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
             this.intersection.Y()
         ], invisiblePointOptions);
 
-        drawLabel(
-            this.board,
-            [p1, p2, this.intersection],
-            this.options.gAreaAName)
+        if (areaConf !== 5) {
+            drawLabel(
+                this.board,
+                [p1, p2, this.intersection],
+                this.options.gAreaAName)
+        }
 
         this.board.update();
     }
-    drawTriangleB() {
+    drawAreaB(areaConf) {
         const p1 = this.board.create('point', [
             0,
             this.intersection.Y()
@@ -901,10 +994,10 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         return drawPolygon(
             this.board,
             points,
-            this.options.gAreaBName,
-            AREA_B_COLOR);
+            areaConf === 5 ? null : this.options.gAreaBName,
+            areaConf === 5 ? AREA_A_COLOR : AREA_B_COLOR);
     }
-    drawTriangleC() {
+    drawAreaC() {
         const p1 = this.board.create('point', [
             this.intersection.X(),
             0
@@ -942,27 +1035,47 @@ class NonLinearDemandSupplyGraphAUC extends NonLinearDemandSupplyGraph {
         });
 
         let areaA = null;
-        let triangleB = null;
-        let triangleC = null;
+        let areaB = null;
+        let areaC = null;
 
         const areaConf = this.options.gAreaConfiguration;
-        // Turn on and off certain triangles based on the "area
+        // Turn on and off certain areas based on the "area
         // configuration".
         if (areaConf === 0 || areaConf === 3) {
             areaA = this.drawAreaA();
         }
         if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
-            triangleB = this.drawTriangleB();
+            areaB = this.drawAreaB();
         }
         if (areaConf === 2 || areaConf === 4) {
-            triangleC = this.drawTriangleC();
+            areaC = this.drawAreaC();
+        }
+        if (areaConf === 5) {
+            // Draw area A and B with the same color and label.
+            areaA = this.drawAreaA(areaConf);
+            areaB = this.drawAreaB(areaConf);
+            const p1 = this.board.create(
+                'point', [0, 0],
+                invisiblePointOptions);
+            const p2 = this.board.create(
+                'point', [0, this.intersection.Y()],
+                invisiblePointOptions);
+            drawLabel(
+                this.board,
+                [p1, p2, this.intersection],
+                this.options.gAreaAName)
+        }
+        if (areaConf === 6) {
+            areaB = drawAreaBC(
+                this.board, this.options, this.shadowAreaColor,
+                false, this.intersection);
         }
 
         this.options.handleAreaUpdate(
             // TODO
             areaA ? forceFloat(areaA.Area()) : null,
-            triangleB ? forceFloat(triangleB.Area()) : null,
-            triangleC ? forceFloat(triangleC.Area()) : null
+            areaB ? forceFloat(areaB.Area()) : null,
+            areaC ? forceFloat(areaC.Area()) : null
         );
     }
 }
