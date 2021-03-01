@@ -33,14 +33,17 @@ const drawLabel = function(board, points, text) {
  *
  * Returns the new polygon
  */
-const drawPolygon = function(board, points, name, color) {
+const drawPolygon = function(board, points, name, color, visible=true) {
     const p = board.create('polygon', points, {
         fillColor: color,
         highlightFillColor: color,
+        visible: visible,
         ...shapeOptions
     });
 
-    drawLabel(board, points, name);
+    if (visible) {
+        drawLabel(board, points, name);
+    }
 
     return p;
 };

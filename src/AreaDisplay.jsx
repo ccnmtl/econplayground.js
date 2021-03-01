@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {forceFloat} from './utils';
 
 export default class AreaDisplay extends React.Component {
     render() {
@@ -7,29 +8,31 @@ export default class AreaDisplay extends React.Component {
             return null;
         }
 
-        if (
-            typeof this.props.areaA === 'number' &&
-                typeof this.props.areaB === 'number'
-        ) {
+        if (this.props.areaConf === 5) {
             return (
                 <div>
                     <span className="mr-2">
-                        Area A+B: <strong>{
-                            this.props.areaA + this.props.areaB
-                        }</strong>
+                        Area A ∪ B: <strong>
+                                        {forceFloat(
+                                            this.props.areaA + this.props.areaB)}
+                                    </strong>
+                    </span>
+                    <span>
+                        Area C: <strong>{this.props.areaC}</strong>
                     </span>
                 </div>
             );
-        } else if (
-            typeof this.props.areaB === 'number' &&
-                typeof this.props.areaC === 'number'
-        ) {
+        } else if (this.props.areaConf === 6) {
             return (
                 <div>
                     <span className="mr-2">
-                        Area B+C: <strong>{
-                            this.props.areaB + this.props.areaC
-                        }</strong>
+                        Area A: <strong>{this.props.areaA}</strong>
+                    </span>
+                    <span className="mr-2">
+                        Area B ∪ C: <strong>
+                                        {forceFloat(
+                                            this.props.areaB + this.props.areaC)}
+                                    </strong>
                     </span>
                 </div>
             );
@@ -37,28 +40,23 @@ export default class AreaDisplay extends React.Component {
 
         return (
             <div>
-                {typeof this.props.areaA === 'number' && (
-                    <span className="mr-2">
-                        Area A: <strong>{this.props.areaA}</strong>
-                    </span>
-                )}
-                {typeof this.props.areaB === 'number' && (
-                    <span className="mr-2">
-                        Area B: <strong>{this.props.areaB}</strong>
-                    </span>
-                )}
-                {typeof this.props.areaC === 'number' && (
-                    <span>
-                        Area C: <strong>{this.props.areaC}</strong>
-                    </span>
-                )}
+                <span className="mr-2">
+                    Area A: <strong>{this.props.areaA}</strong>
+                </span>
+                <span className="mr-2">
+                    Area B: <strong>{this.props.areaB}</strong>
+                </span>
+                <span>
+                    Area C: <strong>{this.props.areaC}</strong>
+                </span>
             </div>
         );
     }
 }
 
 AreaDisplay.propTypes = {
-    areaA: PropTypes.number,
-    areaB: PropTypes.number,
-    areaC: PropTypes.number
-}
+    areaConf: PropTypes.number.isRequired,
+    areaA: PropTypes.number.isRequired,
+    areaB: PropTypes.number.isRequired,
+    areaC: PropTypes.number.isRequired
+};

@@ -39,9 +39,9 @@ export default class JXGBoard extends React.Component {
         super(props);
 
         this.state = {
-            areaA: null,
-            areaB: null,
-            areaC: null,
+            areaA: 0,
+            areaB: 0,
+            areaC: 0,
         };
 
         this.id = this.props.id;
@@ -961,6 +961,7 @@ export default class JXGBoard extends React.Component {
 
                 {(this.props.gType === 9 || this.props.gType === 10) && (
                     <AreaDisplay
+                        areaConf={this.props.gAreaConfiguration}
                         areaA={this.state.areaA}
                         areaB={this.state.areaB}
                         areaC={this.state.areaC} />
