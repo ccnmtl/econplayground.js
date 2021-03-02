@@ -16,7 +16,7 @@
     "mathjax-react": "^1.0.6",
     "object-assign": "~4.1.1",
     "promise": "~8.1.0",
-    "react": "~16.14.0",
+    "react": "~17.0.1",
     "react-dom": "~16.14.0",
     "webpack": "~5.27.2",
     "webpack-cli": "~4.5.0",
