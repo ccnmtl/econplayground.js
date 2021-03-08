@@ -47,17 +47,20 @@ export default class GraphPicker extends React.Component {
 
         const me = this;
         const graphs = [
-            [1, 'non-linear_demand_supply.png', false],
             [8, 'ADAS.png', false],
-            [3, 'cobb_douglas.png', false],
-            [7, 'consumption_saving.png', false],
-            [5, 'consumption_leisure.png', false],
             [9, 'linear_demand_supply.png', true],
-            [10, 'non-linear_demand_supply.png', true],
-            [11, 'consumption_saving.png', true],
-            [12, 'cobb_douglas.png', true],
             [13, 'linear_demand_supply.png', true],
+
+            [3, 'cobb_douglas.png', false],
+            [1, 'non-linear_demand_supply.png', false],
+            [10, 'non-linear_demand_supply.png', true],
             [14, 'non-linear_demand_supply.png', true],
+
+            [12, 'cobb_douglas.png', true],
+
+            [5, 'consumption_leisure.png', false],
+            [7, 'consumption_saving.png', false],
+            [11, 'consumption_saving.png', true],
         ];
 
         return (
@@ -75,7 +78,7 @@ export default class GraphPicker extends React.Component {
                         <div className="card-body">
                             <h5 className="card-title">
                                 <a href="#"
-                                   title="Linear Demand and Supply"
+                                   title={displayGraphType(0)}
                                    onClick={() => this.props.onSelectGraph(0)}>
                                     {displayGraphType(0)}
                                 </a>
