@@ -35,7 +35,7 @@ const invisiblePointOptions = {
 };
 
 const getIntersectionPointOptions = function(
-    label, isShadow=false, color='red'
+    label, isShadow=false, color='red', size=3
 ) {
     if (isShadow) {
         color = 'rgb(150, 150, 150)';
@@ -47,7 +47,7 @@ const getIntersectionPointOptions = function(
         fixed: true,
         highlight: false,
         showInfobox: false,
-        size: 3,
+        size: size,
         fillColor: color,
         strokeColor: color
     };
@@ -1501,6 +1501,29 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
             false, 'blue'
         );
     }
+    /**
+     * Draw intercept labels for the orange line, when it intercepts
+     * with the X and Y axes.
+     */
+    drawLineIntercepts() {
+        if (this.options.gIntersection3VertLineLabel) {
+            this.board.create('intersection', [
+                this.l1, this.board.defaultAxes.y
+            ], getIntersectionPointOptions(
+                this.options.gIntersection3VertLineLabel,
+                false, 'black', 1
+            ));
+        }
+
+        if (this.options.gIntersection3VertLineLabel) {
+            this.board.create('intersection', [
+                this.board.defaultAxes.x, this.l1
+            ], getIntersectionPointOptions(
+                this.options.gIntersection3HorizLineLabel,
+                false, 'black', 1
+            ));
+        }
+    }
     make() {
         super.make();
 
@@ -1510,6 +1533,8 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
 
         const [c1, c2] = this.drawUCurve();
         this.drawOptimalPoint(false, c1, c2);
+
+        this.drawLineIntercepts();
     }
 }
 

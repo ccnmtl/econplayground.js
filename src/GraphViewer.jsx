@@ -534,6 +534,11 @@ export default class GraphViewer extends React.Component {
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                            gIntersection2Label={this.props.gIntersection2Label}
+                            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+                            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+                            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
                             />
 
                         <Feedback
@@ -554,6 +559,11 @@ export default class GraphViewer extends React.Component {
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                             gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                            gIntersection2Label={this.props.gIntersection2Label}
+                            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+                            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+                            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
 
                             updateGraph={this.updateGraph}
                             />
