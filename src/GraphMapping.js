@@ -86,6 +86,8 @@ const exportGraph = function(state) {
         cobb_douglas_a_name: state.gCobbDouglasAName,
         cobb_douglas_k_name: state.gCobbDouglasKName,
 
+        n_name: state.gNName,
+
         function_choice: forceNumber(state.gFunctionChoice),
 
         // AUC features
@@ -190,6 +192,8 @@ const importGraph = function(json, obj) {
         gCobbDouglasAlpha: window.parseFloat(json.cobb_douglas_alpha),
         gCobbDouglasYName: json.cobb_douglas_y_name,
 
+        gNName: json.n_name,
+
         gFunctionChoice: json.function_choice,
 
         // AUC features
@@ -293,6 +297,8 @@ const defaultGraph = {
     gCobbDouglasKName: 'K',
     gCobbDouglasAlpha: 0.65,
     gCobbDouglasYName: 'Y',
+
+    gNName: 'N',
 
     gFunctionChoice: 0,
 

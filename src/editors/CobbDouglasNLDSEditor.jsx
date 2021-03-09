@@ -9,8 +9,8 @@ export default class CobbDouglasNLDSEditor extends React.Component {
     render() {
         let tex = String.raw`= ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha ${this.props.gCobbDouglasLName}^{1 - \alpha}`;
 
-        const func1 = String.raw`MP_N = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha N^{-\alpha}`;
-        const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} N^{1 - \alpha}`;
+        const func1 = String.raw`MP_${this.props.gNName} = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha ${this.props.gNName}^{-\alpha}`;
+        const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} ${this.props.gNName}^{1 - \alpha}`;
 
         if (!this.props.isInstructor) {
             tex = String.raw`${this.props.gCobbDouglasYName} ${tex}`;
@@ -269,6 +269,8 @@ CobbDouglasNLDSEditor.propTypes = {
     gCobbDouglasAlpha: PropTypes.number.isRequired,
     gCobbDouglasYName: PropTypes.string.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
+
+    gNName: PropTypes.string.isRequired,
 
     gIntersectionLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
