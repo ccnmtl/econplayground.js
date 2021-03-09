@@ -210,10 +210,10 @@ const displayGraphType = function(gType) {
             name = 'Linear Demand and Supply';
             break;
         case 1:
-            name = 'Non-Linear Demand and Supply';
+            name = 'Input Markets';
             break;
         case 3:
-            name = 'Cobb-Douglas Production Function';
+            name = 'Cobb-Douglas Production Graph';
             break;
         case 5:
             name = 'Consumption-Leisure: Constraint';
@@ -225,22 +225,22 @@ const displayGraphType = function(gType) {
             name = 'Linear Demand and Supply: 3 Functions';
             break;
         case 9:
-            name = 'Linear Demand and Supply: AUC';
+            name = 'Linear Demand and Supply: Areas';
             break;
         case 10:
-            name = 'Non-Linear Demand and Supply: AUC';
+            name = 'Input Markets: Areas';
             break;
         case 11:
-            name = 'Optimal Choice and Budget Constraints';
+            name = 'Consumption-Saving: Optimal Choice';
             break;
         case 12:
-            name = 'Cobb-Douglas NLDS';
+            name = 'Input-Output Illustrations';
             break;
         case 13:
-            name = 'Linear Demand-Supply x2';
+            name = 'Linear Demand and Supply: 2 Diagrams';
             break;
         case 14:
-            name = 'Non-Linear Demand-Supply x2';
+            name = 'Input Markets: 2 Diagrams';
             break;
         default:
             break;
