@@ -1545,6 +1545,16 @@ const mkOptimalChoice = function(board, options) {
     return g;
 };
 
+class ConsumptionLeisureOptimalChoiceGraph extends ConsumptionLeisureGraph {
+}
+
+const mkConsumptionLeisureOptimalChoice = function(board, options) {
+    let g = new ConsumptionLeisureOptimalChoiceGraph(board, options);
+    g.make();
+    g.postMake();
+    return g;
+};
+
 /**
  * Aggregate Demand - Aggregate Supply graph.
  */
@@ -1784,6 +1794,15 @@ export const graphTypes = [
     null, mkConsumptionLeisure,
     null, mkConsumptionSaving,
     mkADAS,
-    mkDemandSupplyAUC, mkNonLinearDemandSupplyAUC,
-    mkOptimalChoice
+    mkDemandSupplyAUC,
+    mkNonLinearDemandSupplyAUC,
+    mkOptimalChoice,
+
+    // Joint graphs are null here. They don't have their own
+    // constructors. Rather, combinations of existing constructors.
+    null,
+    null,
+    null,
+
+    mkConsumptionLeisureOptimalChoice
 ];

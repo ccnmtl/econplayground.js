@@ -242,6 +242,9 @@ const displayGraphType = function(gType) {
         case 14:
             name = 'Input Markets: 2 Diagrams';
             break;
+        case 15:
+            name = 'Consumption-Leisure: Optimal Choice';
+            break;
         default:
             break;
     }

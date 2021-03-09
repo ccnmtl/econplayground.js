@@ -414,8 +414,8 @@ export default class GraphViewer extends React.Component {
                     </form>
                 </div>
             );
-        } else if (this.props.gType === 5) {
-
+        } else if (this.props.gType === 5 || this.props.gType === 15) {
+            // Consumption Leisure: Contraint and Optimal Choice
             return (
                 <div className="GraphViewer">
                     {titleEl}

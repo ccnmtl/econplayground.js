@@ -658,8 +658,8 @@ export default class GraphEditor extends React.Component {
                     {editRow}
                 </form>
             </div>;
-        } else if (this.props.gType === 5) {
-            // Consumption Leisure
+        } else if (this.props.gType === 5 || this.props.gType === 15) {
+            // Consumption Leisure: Contraint and Optimal Choice
             return <div className="GraphEditor">
                 {this.title()}
                 <form>
