@@ -222,15 +222,37 @@ export default class ConsumptionSavingEditor extends React.Component {
                             updateGraph={this.props.updateGraph}
                         />
 
-                    <EditableControl
-                        id="gIntersection2VertLineLabel"
-                        name="Optimal point&apos;s vertical line label"
-                        value={this.props.gIntersection2VertLineLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                        <EditableControl
+                            id="gIntersection2VertLineLabel"
+                            name="Optimal point&apos;s vertical line label"
+                            value={this.props.gIntersection2VertLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
+                )}
+
+                {this.props.gType === 11 && this.props.displayLabels && (
+                    <div className="row">
+                        <EditableControl
+                            id="gIntersection3HorizLineLabel"
+                            name="Orange line&apos;s horizontal intercept label"
+                            value={this.props.gIntersection3HorizLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+
+                        <EditableControl
+                            id="gIntersection3VertLineLabel"
+                            name="Orange line&apos;s vertical intercept label"
+                            value={this.props.gIntersection3VertLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
             </div>
         );
