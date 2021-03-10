@@ -306,6 +306,8 @@ export default class GraphEditor extends React.Component {
                                 gCobbDouglasK={this.props.gCobbDouglasK}
                                 gCobbDouglasAName={this.props.gCobbDouglasAName}
                                 gCobbDouglasKName={this.props.gCobbDouglasKName}
+
+                                gNName={this.props.gNName}
                                 gLine1Label={this.props.gLine1Label}
                                 gLine2Label={this.props.gLine2Label}
                                 gXAxisLabel={this.props.gXAxisLabel}
@@ -364,6 +366,7 @@ export default class GraphEditor extends React.Component {
                                     gCobbDouglasAName={this.props.gCobbDouglasAName}
                                     gCobbDouglasK={this.props.gCobbDouglasK}
                                     gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                    gNName={this.props.gNName}
                                     gLine1Slope={this.props.gLine1Slope}
                                     gLine1OffsetX={this.props.gLine1OffsetX}
                                     gLine1OffsetY={this.props.gLine1OffsetY}
@@ -450,6 +453,7 @@ export default class GraphEditor extends React.Component {
                                     gCobbDouglasLName={this.props.gCobbDouglasLName}
                                     gCobbDouglasK={this.props.gCobbDouglasK}
                                     gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                    gNName={this.props.gNName}
                                     gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                                     gCobbDouglasYName={this.props.gCobbDouglasYName}
                                     gFunctionChoice={this.props.gFunctionChoice}
@@ -497,6 +501,9 @@ export default class GraphEditor extends React.Component {
                                 gCobbDouglasAName={this.props.gCobbDouglasAName}
                                 gCobbDouglasK={this.props.gCobbDouglasK}
                                 gCobbDouglasKName={this.props.gCobbDouglasKName}
+
+                                gNName={this.props.gNName}
+
                                 gLine1Slope={this.props.gLine1Slope}
                                 gLine1OffsetX={this.props.gLine1OffsetX}
                                 gLine1OffsetY={this.props.gLine1OffsetY}
@@ -572,6 +579,7 @@ export default class GraphEditor extends React.Component {
                                     gCobbDouglasLName={this.props.gCobbDouglasLName}
                                     gCobbDouglasK={this.props.gCobbDouglasK}
                                     gCobbDouglasKName={this.props.gCobbDouglasKName}
+                                    gNName={this.props.gNName}
                                     gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                                 />
                                 <CommonGraphEditor
@@ -635,6 +643,7 @@ export default class GraphEditor extends React.Component {
                                     gCobbDouglasLName={this.props.gCobbDouglasLName}
                                     gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                                     gCobbDouglasYName={this.props.gCobbDouglasYName}
+                                    gNName={this.props.gNName}
                                     gLine1Slope={this.props.gLine1Slope}
                                     gLine1OffsetX={this.props.gLine1OffsetX}
                                     gLine1OffsetY={this.props.gLine1OffsetY}
@@ -1073,6 +1082,8 @@ GraphEditor.propTypes = {
     gCobbDouglasKName: PropTypes.string,
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasYName: PropTypes.string,
+
+    gNName: PropTypes.string,
 
     gFunctionChoice: PropTypes.number,
 

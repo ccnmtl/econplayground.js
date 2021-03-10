@@ -236,6 +236,8 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                             gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
                             gCobbDouglasYName={this.props.gCobbDouglasYName}
+
+                            gNName={this.props.gNName}
                             gFunctionChoice={this.props.gFunctionChoice}
 
                             gAreaConfiguration={this.props.gAreaConfiguration}
@@ -263,6 +265,7 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasK={this.props.gCobbDouglasK}
                             gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
                             gCobbDouglasKName={this.props.gCobbDouglasKName}
+                            gNName={this.props.gNName}
                             gLine1Slope={this.props.gLine1Slope}
                             gLine1OffsetX={this.props.gLine1OffsetX}
                             gLine1OffsetY={this.props.gLine1OffsetY}
@@ -344,6 +347,7 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                             gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
                             gCobbDouglasYName={this.props.gCobbDouglasYName}
+                            gNName={this.props.gNName}
                             />
 
                         <Feedback
@@ -382,6 +386,7 @@ export default class GraphViewer extends React.Component {
                                 gCobbDouglasLName={this.props.gCobbDouglasLName}
                                 gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                                 gCobbDouglasYName={this.props.gCobbDouglasYName}
+                                gNName={this.props.gNName}
                                 gLine1Slope={this.props.gLine1Slope}
                                 gLine1OffsetX={this.props.gLine1OffsetX}
                                 gLine1OffsetY={this.props.gLine1OffsetY}
@@ -756,6 +761,7 @@ export default class GraphViewer extends React.Component {
                                 gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
                                 gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
                                 gCobbDouglasYName={this.props.gCobbDouglasYName}
+                                gNName={this.props.gNName}
                                 gFunctionChoice={this.props.gFunctionChoice}
 
                                 gAreaConfiguration={this.props.gAreaConfiguration}
@@ -784,6 +790,7 @@ export default class GraphViewer extends React.Component {
                             gCobbDouglasK={this.props.gCobbDouglasK}
                             gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
                             gCobbDouglasKName={this.props.gCobbDouglasKName}
+                            gNName={this.props.gNName}
                             gLine1Slope={this.props.gLine1Slope}
                             gLine1OffsetX={this.props.gLine1OffsetX}
                             gLine1OffsetY={this.props.gLine1OffsetY}
@@ -991,6 +998,8 @@ GraphViewer.propTypes = {
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasAlphaInitial: PropTypes.number,
     gCobbDouglasYName: PropTypes.string,
+
+    gNName: PropTypes.string,
 
     gFunctionChoice: PropTypes.number,
 

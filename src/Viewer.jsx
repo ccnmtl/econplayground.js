@@ -106,6 +106,8 @@ class Viewer extends Component {
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
             gCobbDouglasYName={this.state.gCobbDouglasYName}
 
+            gNName={this.state.gNName}
+
             gFunctionChoice={this.state.gFunctionChoice}
 
             gAreaConfiguration={this.state.gAreaConfiguration}
@@ -226,6 +228,8 @@ class Viewer extends Component {
             gCobbDouglasAlpha={this.state.gCobbDouglasAlpha}
             gCobbDouglasAlphaInitial={this.state.gCobbDouglasAlphaInitial}
             gCobbDouglasYName={this.state.gCobbDouglasYName}
+
+            gNName={this.state.gNName}
 
             gFunctionChoice={this.state.gFunctionChoice}
 

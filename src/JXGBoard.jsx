@@ -8,18 +8,18 @@ import {graphTypes, mkDemandSupply, mkNonLinearDemandSupply} from './Graph';
 import AreaDisplay from './AreaDisplay';
 import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 
-const getNLDSYLabel = function(functionChoice, kName) {
-    let label = 'MP<sub>N</sub>';
+const getNLDSYLabel = function(functionChoice, kName, nName) {
+    let label = `MP<sub>${nName}</sub>, r<sub>${nName}</sub>`;
 
     if (functionChoice === 1) {
-        label = `MP<sub>${kName}</sub>`;
+        label = `MP<sub>${kName}</sub>, r<sub>${kName}</sub>`;
     }
 
     return label;
 };
 
-const getNLDSXLabel = function(functionChoice, kName) {
-    let label = 'N';
+const getNLDSXLabel = function(functionChoice, kName, nName) {
+    let label = nName;
 
     if (functionChoice === 1) {
         label = kName;
@@ -196,6 +196,8 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasKInitial: options.gCobbDouglasKInitial,
                 gCobbDouglasKName: options.gCobbDouglasKName,
 
+                gNName: options.gNName,
+
                 gFunctionChoice: options.gType === 14 ?
                     0 : options.gFunctionChoice,
 
@@ -298,6 +300,7 @@ export default class JXGBoard extends React.Component {
                     gCobbDouglasKName: options.gCobbDouglasKName,
                     gCobbDouglasAlpha: options.gCobbDouglasAlpha,
                     gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
+                    gNName: options.gNName,
                     gFunctionChoice: options.gFunctionChoice,
                     gAreaConfiguration: options.gAreaConfiguration,
                     gAreaConfigurationInitial: options.gAreaConfigurationInitial,
@@ -407,6 +410,7 @@ export default class JXGBoard extends React.Component {
                     gCobbDouglasKName: options.gCobbDouglasKName,
                     gCobbDouglasAlpha: options.gCobbDouglasAlpha,
                     gCobbDouglasAlphaInitial: options.gCobbDouglasAlphaInitial,
+                    gNName: options.gNName,
                     gFunctionChoice: 1,
                     gAreaConfiguration: options.gAreaConfiguration,
                     gAreaConfigurationInitial: options.gAreaConfigurationInitial,
@@ -491,6 +495,7 @@ export default class JXGBoard extends React.Component {
             'gCobbDouglasKName',
             'gCobbDouglasAlpha',
             'gCobbDouglasAlphaInitial',
+            'gNName',
             'gFunctionChoice',
             'gAreaConfiguration',
             'gAreaConfigurationInitial',
@@ -593,6 +598,7 @@ export default class JXGBoard extends React.Component {
                 gCobbDouglasKName: this.props.gCobbDouglasKName,
                 gCobbDouglasAlpha: this.props.gCobbDouglasAlpha,
                 gCobbDouglasAlphaInitial: this.props.gCobbDouglasAlphaInitial,
+                gNName: this.props.gNName,
                 gFunctionChoice: this.props.gFunctionChoice,
                 gAreaConfiguration: this.props.gAreaConfiguration,
                 gAreaConfigurationInitial: this.props.gAreaConfigurationInitial,
@@ -631,32 +637,29 @@ export default class JXGBoard extends React.Component {
         }
 
         if (
-            (this.props.gType === 1 || this.props.gType === 10) &&
-                prevProps.gFunctionChoice !== this.props.gFunctionChoice
+            (this.props.gType === 1 ||
+             this.props.gType === 10 ||
+             this.props.gType === 12
+            ) && (
+                prevProps.gFunctionChoice !== this.props.gFunctionChoice ||
+                    prevProps.gCobbDouglasKName !== this.props.gCobbDouglasKName ||
+                    prevProps.gNName !== this.props.gNName
+            )
         ) {
             if (this.board) {
                 const yLabel = getNLDSYLabel(
                     this.props.gFunctionChoice,
-                    this.props.gCobbDouglasKName);
+                    this.props.gCobbDouglasKName,
+                    this.props.gNName
+                );
                 const xLabel = getNLDSXLabel(
                     this.props.gFunctionChoice,
-                    this.props.gCobbDouglasKName);
+                    this.props.gCobbDouglasKName,
+                    this.props.gNName
+                );
                 this.board.defaultAxes.y.name = yLabel;
                 this.board.defaultAxes.x.name = xLabel;
                 this.board.update();
-            }
-        }
-
-        if (
-            this.props.gType === 12 &&
-                prevProps.gFunctionChoice !== this.props.gFunctionChoice
-        ) {
-            if (this.board2) {
-                const yLabel = getNLDSYLabel(
-                    this.props.gFunctionChoice,
-                    this.props.gCobbDouglasKName);
-                this.board2.defaultAxes.y.name = yLabel + ', w';
-                this.board2.update();
             }
         }
     }
@@ -690,9 +693,14 @@ export default class JXGBoard extends React.Component {
             case 10:
                 // Non-linear demand-supply
                 xAxisLabel = getNLDSXLabel(
-                    options.gFunctionChoice, options.gCobbDouglasKName);
+                    options.gFunctionChoice,
+                    options.gCobbDouglasKName,
+                    options.gNName
+                );
                 yAxisLabel = getNLDSYLabel(
-                    options.gFunctionChoice, options.gCobbDouglasKName);
+                    options.gFunctionChoice,
+                    options.gCobbDouglasKName,
+                    options.gNName);
 
                 if (this.props.locked) {
                     options.gCobbDouglasA = 3.4;
@@ -772,7 +780,10 @@ export default class JXGBoard extends React.Component {
             let yLabel = yAxisLabel;
             if (options.gType === 12) {
                 yLabel = getNLDSYLabel(
-                    options.gFunctionChoice, options.gCobbDouglasKName);
+                    options.gFunctionChoice,
+                    options.gCobbDouglasKName,
+                    options.gNName
+                );
                 yLabel += ', w';
             }
 
@@ -922,8 +933,8 @@ export default class JXGBoard extends React.Component {
                 </>
             );
         } else if (this.props.gType === 14) {
-            const func1 = String.raw`MP_N = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha N^{-\alpha}`;
-            const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} N^{1 - \alpha}`;
+            const func1 = String.raw`MP_${this.props.gNName} = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha ${this.props.gNName}^{-\alpha}`;
+            const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} ${this.props.gNName}^{1 - \alpha}`;
             return (
                 <>
                     <div className="col-6">
@@ -1055,6 +1066,8 @@ JXGBoard.propTypes = {
     gCobbDouglasYName: PropTypes.string,
     gCobbDouglasAlpha: PropTypes.number,
     gCobbDouglasAlphaInitial: PropTypes.number,
+
+    gNName: PropTypes.string,
 
     gFunctionChoice: PropTypes.number,
 

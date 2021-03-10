@@ -8,8 +8,8 @@ import {handleFormUpdate} from '../utils';
 
 export default class NonLinearDemandSupplyEditor extends React.Component {
     render() {
-        const func1 = String.raw`MP_N = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha N^{-\alpha}`;
-        const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} N^{1 - \alpha}`;
+        const func1 = String.raw`MP_${this.props.gNName} = (1 - \alpha)${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^\alpha ${this.props.gNName}^{-\alpha}`;
+        const func2 = String.raw`MP_${this.props.gCobbDouglasKName} = \alpha ${this.props.gCobbDouglasAName}${this.props.gCobbDouglasKName}^{\alpha - 1} ${this.props.gNName}^{1 - \alpha}`;
 
         return (
             <>
@@ -94,9 +94,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                             </div>
                             <div className="col-sm-4">
                                 <label htmlFor="gCobbDouglasK">
-                                    {this.props.gFunctionChoice === 1 && 'N'}
-                                    {this.props.gFunctionChoice !== 1 &&
-                                     (this.props.isInstructor ? (
+                                    {(this.props.isInstructor ? (
                                         <input type="text"
                                                name="gCobbDouglasKName"
                                                maxLength="1"
@@ -105,9 +103,7 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                                value={this.props.gCobbDouglasKName}
                                                onChange={handleFormUpdate.bind(this)}
                                         />
-                                    ) : (
-                                        this.props.gCobbDouglasKName
-                                    ))}
+                                    ) : this.props.gCobbDouglasKName)}
                                 </label>
                                 <RangeEditor
                                     dataId="gCobbDouglasK"
@@ -116,6 +112,25 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                     min={0.1}
                                     max={5} />
                             </div>
+                        </div>
+                        <div className="form-row">
+                            <div className="col-sm-4"></div>
+                            <div className="col-sm-4"></div>
+                            <div className="col-sm-4">
+                                <label htmlFor="gNName">
+                                    {(this.props.isInstructor ? (
+                                        <input type="text"
+                                               name="gNName"
+                                               maxLength="1"
+                                               size="1"
+                                               className="form-control form-control-sm"
+                                               value={this.props.gNName}
+                                               onChange={handleFormUpdate.bind(this)}
+                                        />
+                                    ) : this.props.gNName)}
+                                </label>
+                            </div>
+
                         </div>
                         <hr/>
                     </React.Fragment>
@@ -204,6 +219,8 @@ NonLinearDemandSupplyEditor.propTypes = {
     gCobbDouglasAName: PropTypes.string.isRequired,
     gCobbDouglasK: PropTypes.number.isRequired,
     gCobbDouglasKName: PropTypes.string.isRequired,
+
+    gNName: PropTypes.string.isRequired,
 
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
