@@ -12,6 +12,9 @@ import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
 import {displayGraphType, handleFormUpdate, getCohortId} from './utils';
 
+const BOARD_WIDTH = 540;
+const BOARD_HEIGHT = 300;
+
 export default class GraphEditor extends React.Component {
     title() {
         return (
@@ -73,8 +76,8 @@ export default class GraphEditor extends React.Component {
             leftSide = <>
                            <JXGBoard
                                id={'editing-graph'}
-                               width={540}
-                               height={288}
+                               width={BOARD_WIDTH}
+                               height={BOARD_HEIGHT}
                                gType={this.props.gType}
                                gLine1Label={this.props.gLine1Label}
                                gLine2Label={this.props.gLine2Label}
@@ -158,8 +161,8 @@ export default class GraphEditor extends React.Component {
                         <div className="row">
                             <JXGBoard
                                 id={'editing-graph'}
-                                width={540}
-                                height={288}
+                                width={BOARD_WIDTH}
+                                height={BOARD_HEIGHT}
                                 gType={this.props.gType}
                                 gLine1Label={this.props.gLine1Label}
                                 gLine2Label={this.props.gLine2Label}
@@ -264,8 +267,8 @@ export default class GraphEditor extends React.Component {
                         <div className="row">
                             <JXGBoard
                                 id={'editing-graph'}
-                                width={540}
-                                height={288}
+                                width={BOARD_WIDTH}
+                                height={BOARD_HEIGHT}
                                 gType={this.props.gType}
                                 gCobbDouglasA={this.props.gCobbDouglasA}
                                 gCobbDouglasK={this.props.gCobbDouglasK}
@@ -377,8 +380,8 @@ export default class GraphEditor extends React.Component {
             leftSide = <>
                            <JXGBoard
                                id={'editing-graph'}
-                               width={540}
-                               height={288}
+                               width={BOARD_WIDTH}
+                               height={BOARD_HEIGHT}
                                gType={this.props.gType}
                                gLine1Label={this.props.gLine1Label}
                                gLine2Label={this.props.gLine2Label}
@@ -464,8 +467,8 @@ export default class GraphEditor extends React.Component {
             leftSide = <>
                            <JXGBoard
                                id={'editing-graph'}
-                               width={540}
-                               height={288}
+                               width={BOARD_WIDTH}
+                               height={BOARD_HEIGHT}
                                gType={this.props.gType}
                                gLine1Label={this.props.gLine1Label}
                                gLine2Label={this.props.gLine2Label}
@@ -563,8 +566,8 @@ export default class GraphEditor extends React.Component {
             leftSide = <>
                            <JXGBoard
                                id={'editing-graph'}
-                               width={540}
-                               height={288}
+                               width={BOARD_WIDTH}
+                               height={BOARD_HEIGHT}
                                gType={this.props.gType}
                                gA1={this.props.gA1}
                                gA2={this.props.gA2}
@@ -625,8 +628,8 @@ export default class GraphEditor extends React.Component {
             leftSide = <>
                            <JXGBoard
                                id={'editing-graph'}
-                               width={540}
-                               height={288}
+                               width={BOARD_WIDTH}
+                               height={BOARD_HEIGHT}
                                gType={this.props.gType}
                                gA1={this.props.gA1}
                                gA2={this.props.gA2}
@@ -697,8 +700,8 @@ export default class GraphEditor extends React.Component {
             leftSide = <>
                            <JXGBoard
                                id={'editing-graph'}
-                               width={540}
-                               height={288}
+                               width={BOARD_WIDTH}
+                               height={BOARD_HEIGHT}
                                gType={this.props.gType}
                                gA1={this.props.gA1}
                                gA2={this.props.gA2}

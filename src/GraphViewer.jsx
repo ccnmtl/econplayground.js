@@ -16,6 +16,9 @@ import JXGBoard from './JXGBoard';
 import Feedback from './Feedback';
 import {forceFloat, getOrCreateSubmission} from './utils';
 
+const BOARD_WIDTH = 540;
+const BOARD_HEIGHT = 300;
+
 /**
  * This component is used to view an econgraph object.
  */
@@ -87,61 +90,52 @@ export default class GraphViewer extends React.Component {
             instructionsEl = <p className="lead text-secondary" dangerouslySetInnerHTML={{__html:instructions}}></p>;
         }
 
+        let leftSide = null;
+        let rightSide = null;
+
         if (this.props.gType === 0 || this.props.gType === 9) {
             // Demand-Supply, possibly AUC (area under curve)
-            return (
-                <div className="GraphViewer">
-                    {titleEl}
-                    {instructionsEl}
-                    <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
-                        <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.state.score} />
-                        <input type="hidden" name="next" value={successUrl} />
-                        <input type="hidden" name="launchUrl" value={launchUrl} />
-                        <JXGBoard
-                            id={'editing-graph'}
-                            width={562.5}
-                            height={300}
-                            shadow={!isInstructor}
+            leftSide = <JXGBoard
+                           id={'editing-graph'}
+                           width={BOARD_WIDTH}
+                           height={BOARD_HEIGHT}
+                           shadow={!isInstructor}
 
-                            gType={this.props.gType}
-                            gLine1Label={this.props.gLine1Label}
-                            gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={this.props.gXAxisLabel}
-                            gYAxisLabel={this.props.gYAxisLabel}
-                            gLine1Slope={this.props.gLine1Slope}
-                            gLine1SlopeInitial={this.props.gLine1SlopeInitial}
-                            gLine2Slope={this.props.gLine2Slope}
-                            gLine2SlopeInitial={this.props.gLine2SlopeInitial}
-                            gLine1OffsetX={this.props.gLine1OffsetX}
-                            gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
-                            gLine1OffsetY={this.props.gLine1OffsetY}
-                            gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
-                            gLine2OffsetX={this.props.gLine2OffsetX}
-                            gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
-                            gLine2OffsetY={this.props.gLine2OffsetY}
-                            gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            gShowIntersection={this.props.gShowIntersection}
-                            gDisplayShadow={this.props.gDisplayShadow}
-                            gIntersectionLabel={this.props.gIntersectionLabel}
-                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                           gType={this.props.gType}
+                           gLine1Label={this.props.gLine1Label}
+                           gLine2Label={this.props.gLine2Label}
+                           gXAxisLabel={this.props.gXAxisLabel}
+                           gYAxisLabel={this.props.gYAxisLabel}
+                           gLine1Slope={this.props.gLine1Slope}
+                           gLine1SlopeInitial={this.props.gLine1SlopeInitial}
+                           gLine2Slope={this.props.gLine2Slope}
+                           gLine2SlopeInitial={this.props.gLine2SlopeInitial}
+                           gLine1OffsetX={this.props.gLine1OffsetX}
+                           gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
+                           gLine1OffsetY={this.props.gLine1OffsetY}
+                           gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
+                           gLine2OffsetX={this.props.gLine2OffsetX}
+                           gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
+                           gLine2OffsetY={this.props.gLine2OffsetY}
+                           gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
+                           gNeedsSubmit={this.props.gNeedsSubmit}
+                           gShowIntersection={this.props.gShowIntersection}
+                           gDisplayShadow={this.props.gDisplayShadow}
+                           gIntersectionLabel={this.props.gIntersectionLabel}
+                           gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                           gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
-                            gAreaConfiguration={this.props.gAreaConfiguration}
-                            gAreaConfigurationInitial={
-                                this.props.gAreaConfigurationInitial}
-                            gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                           gAreaConfiguration={this.props.gAreaConfiguration}
+                           gAreaConfigurationInitial={
+                               this.props.gAreaConfigurationInitial}
+                           gIsAreaDisplayed={this.props.gIsAreaDisplayed}
 
-                            gAreaAName={this.props.gAreaAName}
-                            gAreaBName={this.props.gAreaBName}
-                            gAreaCName={this.props.gAreaCName}
-                            />
+                           gAreaAName={this.props.gAreaAName}
+                           gAreaBName={this.props.gAreaBName}
+                           gAreaCName={this.props.gAreaCName}
+                       />;
 
-                        <Feedback
-                            feedback={this.state.currentFeedback} />
-
-                        <DemandSupplyEditor
+            rightSide = <DemandSupplyEditor
                             isInstructor={isInstructor}
                             displayLabels={displayLabels}
                             displaySliders={displaySliders}
@@ -166,94 +160,66 @@ export default class GraphViewer extends React.Component {
 
                             showAUC={this.props.gType === 9}
                             updateGraph={this.updateGraph}
-                            />
-
-                        <ResetGraphButton
-                            initialState={initialState}
-                            updateGraph={this.updateGraph} />
-
-                        <ExportGraphButton />
-
-                        <SubmitButton
-                            assessment={this.props.assessment}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            submission={this.props.submission}
-                            isInstructor={isInstructor} />
-                    </form>
-                </div>
-            );
+                        />;
         } else if (this.props.gType === 1 || this.props.gType === 10) {
             // Non-Linear Demand Supply, possibly AUC (area under curve)
-            return (
-                <div className="GraphViewer">
-                        {titleEl}
-                        {instructionsEl}
-                    <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
-                        <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.state.score} />
-                        <input type="hidden" name="next" value={successUrl} />
-                        <input type="hidden" name="launchUrl" value={launchUrl} />
-                        <JXGBoard
-                            id={'editing-graph'}
-                            width={562.5}
-                            height={300}
-                            submission={this.props.submission}
-                            shadow={!isInstructor}
+            leftSide = <JXGBoard
+                           id={'editing-graph'}
+                           width={BOARD_WIDTH}
+                           height={BOARD_HEIGHT}
+                           submission={this.props.submission}
+                           shadow={!isInstructor}
 
-                            gType={this.props.gType}
-                            gLine1Label={this.props.gLine1Label}
-                            gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={this.props.gXAxisLabel}
-                            gYAxisLabel={this.props.gYAxisLabel}
-                            gLine1Slope={this.props.gLine1Slope}
-                            gLine1SlopeInitial={this.props.gLine1SlopeInitial}
-                            gLine2Slope={this.props.gLine2Slope}
-                            gLine2SlopeInitial={this.props.gLine2SlopeInitial}
-                            gLine1OffsetX={this.props.gLine1OffsetX}
-                            gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
-                            gLine1OffsetY={this.props.gLine1OffsetY}
-                            gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
-                            gLine2OffsetX={this.props.gLine2OffsetX}
-                            gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
-                            gLine2OffsetY={this.props.gLine2OffsetY}
-                            gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            gShowIntersection={this.props.gShowIntersection}
-                            gDisplayShadow={this.props.gDisplayShadow}
-                            gIntersectionLabel={this.props.gIntersectionLabel}
-                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                           gType={this.props.gType}
+                           gLine1Label={this.props.gLine1Label}
+                           gLine2Label={this.props.gLine2Label}
+                           gXAxisLabel={this.props.gXAxisLabel}
+                           gYAxisLabel={this.props.gYAxisLabel}
+                           gLine1Slope={this.props.gLine1Slope}
+                           gLine1SlopeInitial={this.props.gLine1SlopeInitial}
+                           gLine2Slope={this.props.gLine2Slope}
+                           gLine2SlopeInitial={this.props.gLine2SlopeInitial}
+                           gLine1OffsetX={this.props.gLine1OffsetX}
+                           gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
+                           gLine1OffsetY={this.props.gLine1OffsetY}
+                           gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
+                           gLine2OffsetX={this.props.gLine2OffsetX}
+                           gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
+                           gLine2OffsetY={this.props.gLine2OffsetY}
+                           gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
+                           gNeedsSubmit={this.props.gNeedsSubmit}
+                           gShowIntersection={this.props.gShowIntersection}
+                           gDisplayShadow={this.props.gDisplayShadow}
+                           gIntersectionLabel={this.props.gIntersectionLabel}
+                           gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                           gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
-                            gCobbDouglasA={this.props.gCobbDouglasA}
-                            gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
-                            gCobbDouglasAName={this.props.gCobbDouglasAName}
-                            gCobbDouglasL={this.props.gCobbDouglasL}
-                            gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
-                            gCobbDouglasLName={this.props.gCobbDouglasLName}
-                            gCobbDouglasK={this.props.gCobbDouglasK}
-                            gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
-                            gCobbDouglasKName={this.props.gCobbDouglasKName}
-                            gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                            gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
-                            gCobbDouglasYName={this.props.gCobbDouglasYName}
+                           gCobbDouglasA={this.props.gCobbDouglasA}
+                           gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
+                           gCobbDouglasAName={this.props.gCobbDouglasAName}
+                           gCobbDouglasL={this.props.gCobbDouglasL}
+                           gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
+                           gCobbDouglasLName={this.props.gCobbDouglasLName}
+                           gCobbDouglasK={this.props.gCobbDouglasK}
+                           gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
+                           gCobbDouglasKName={this.props.gCobbDouglasKName}
+                           gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                           gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
+                           gCobbDouglasYName={this.props.gCobbDouglasYName}
 
-                            gNName={this.props.gNName}
-                            gFunctionChoice={this.props.gFunctionChoice}
+                           gNName={this.props.gNName}
+                           gFunctionChoice={this.props.gFunctionChoice}
 
-                            gAreaConfiguration={this.props.gAreaConfiguration}
-                            gAreaConfigurationInitial={
-                                this.props.gAreaConfigurationInitial}
-                            gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                           gAreaConfiguration={this.props.gAreaConfiguration}
+                           gAreaConfigurationInitial={
+                               this.props.gAreaConfigurationInitial}
+                           gIsAreaDisplayed={this.props.gIsAreaDisplayed}
 
-                            gAreaAName={this.props.gAreaAName}
-                            gAreaBName={this.props.gAreaBName}
-                            gAreaCName={this.props.gAreaCName}
-                            />
-
-                        <Feedback
-                            feedback={this.state.currentFeedback} />
-
-                        <NonLinearDemandSupplyEditor
+                           gAreaAName={this.props.gAreaAName}
+                           gAreaBName={this.props.gAreaBName}
+                           gAreaCName={this.props.gAreaCName}
+                       />;
+            rightSide = <NonLinearDemandSupplyEditor
                             isInstructor={isInstructor}
                             displayLabels={displayLabels}
                             displaySliders={displaySliders}
@@ -282,97 +248,67 @@ export default class GraphViewer extends React.Component {
                             gAreaCName={this.props.gAreaCName}
                             showAUC={this.props.gType === 10}
                             updateGraph={this.updateGraph}
-                            />
-
-                        <ResetGraphButton
-                            initialState={initialState}
-                            updateGraph={this.updateGraph} />
-
-                        <ExportGraphButton />
-
-                        <SubmitButton
-                            assessment={this.props.assessment}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            submission={this.props.submission}
-                            isInstructor={isInstructor} />
-                    </form>
-                </div>
-            );
+                        />;
         } else if (this.props.gType === 3 || this.props.gType === 12) {
-            return (
-                <div className="GraphViewer">
-                    {titleEl}
-                    {instructionsEl}
-                    <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
-                        <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.state.score} />
-                        <input type="hidden" name="next" value={successUrl} />
-                        <input type="hidden" name="launchUrl" value={launchUrl} />
-                        <JXGBoard
-                            id={'editing-graph'}
-                            width={562.5}
-                            height={300}
-                            submission={this.props.submission}
-                            shadow={!isInstructor}
+            leftSide = <JXGBoard
+                           id={'editing-graph'}
+                           width={BOARD_WIDTH}
+                           height={BOARD_HEIGHT}
+                           submission={this.props.submission}
+                           shadow={!isInstructor}
 
-                            gType={this.props.gType}
-                            gLine1Label={this.props.gLine1Label}
-                            gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={this.props.gCobbDouglasLName}
-                            gYAxisLabel={this.props.gCobbDouglasYName}
-                            gLine1Slope={this.props.gLine1Slope}
-                            gLine2Slope={this.props.gLine2Slope}
-                            gLine1OffsetX={this.props.gLine1OffsetX}
-                            gLine1OffsetY={this.props.gLine1OffsetY}
-                            gLine2OffsetX={this.props.gLine2OffsetX}
-                            gLine2OffsetY={this.props.gLine2OffsetY}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            gShowIntersection={this.props.gShowIntersection}
-                            gDisplayShadow={this.props.gDisplayShadow}
-                            gIntersectionLabel={this.props.gIntersectionLabel}
-                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                           gType={this.props.gType}
+                           gLine1Label={this.props.gLine1Label}
+                           gLine2Label={this.props.gLine2Label}
+                           gXAxisLabel={this.props.gCobbDouglasLName}
+                           gYAxisLabel={this.props.gCobbDouglasYName}
+                           gLine1Slope={this.props.gLine1Slope}
+                           gLine2Slope={this.props.gLine2Slope}
+                           gLine1OffsetX={this.props.gLine1OffsetX}
+                           gLine1OffsetY={this.props.gLine1OffsetY}
+                           gLine2OffsetX={this.props.gLine2OffsetX}
+                           gLine2OffsetY={this.props.gLine2OffsetY}
+                           gNeedsSubmit={this.props.gNeedsSubmit}
+                           gShowIntersection={this.props.gShowIntersection}
+                           gDisplayShadow={this.props.gDisplayShadow}
+                           gIntersectionLabel={this.props.gIntersectionLabel}
+                           gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                           gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
-                            gFunctionChoice={this.props.gFunctionChoice}
+                           gFunctionChoice={this.props.gFunctionChoice}
 
-                            gCobbDouglasA={this.props.gCobbDouglasA}
-                            gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
-                            gCobbDouglasAName={this.props.gCobbDouglasAName}
-                            gCobbDouglasL={this.props.gCobbDouglasL}
-                            gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
-                            gCobbDouglasLName={this.props.gCobbDouglasLName}
-                            gCobbDouglasK={this.props.gCobbDouglasK}
-                            gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
-                            gCobbDouglasKName={this.props.gCobbDouglasKName}
-                            gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                            gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
-                            gCobbDouglasYName={this.props.gCobbDouglasYName}
-                            gNName={this.props.gNName}
-                            />
-
-                        <Feedback
-                            feedback={this.state.currentFeedback} />
-
-                        {this.props.gType === 3 && (
-                            <CobbDouglasEditor
-                                isInstructor={isInstructor}
-                                displayLabels={displayLabels}
-                                displaySliders={displaySliders}
-                                gCobbDouglasA={this.props.gCobbDouglasA}
-                                gCobbDouglasAName={this.props.gCobbDouglasAName}
-                                gCobbDouglasL={this.props.gCobbDouglasL}
-                                gCobbDouglasLName={this.props.gCobbDouglasLName}
-                                gCobbDouglasK={this.props.gCobbDouglasK}
-                                gCobbDouglasKName={this.props.gCobbDouglasKName}
-                                gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                                gCobbDouglasYName={this.props.gCobbDouglasYName}
-                                gIntersectionLabel={this.props.gIntersectionLabel}
-                                updateGraph={this.updateGraph}
-                            />
-                        )}
-
-                        {this.props.gType === 12 && (
-                            <CobbDouglasNLDSEditor
+                           gCobbDouglasA={this.props.gCobbDouglasA}
+                           gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
+                           gCobbDouglasAName={this.props.gCobbDouglasAName}
+                           gCobbDouglasL={this.props.gCobbDouglasL}
+                           gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
+                           gCobbDouglasLName={this.props.gCobbDouglasLName}
+                           gCobbDouglasK={this.props.gCobbDouglasK}
+                           gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
+                           gCobbDouglasKName={this.props.gCobbDouglasKName}
+                           gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                           gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
+                           gCobbDouglasYName={this.props.gCobbDouglasYName}
+                           gNName={this.props.gNName}
+                       />;
+            if (this.props.gType === 3) {
+                rightSide = <CobbDouglasEditor
+                    isInstructor={isInstructor}
+                    displayLabels={displayLabels}
+                    displaySliders={displaySliders}
+                    gCobbDouglasA={this.props.gCobbDouglasA}
+                    gCobbDouglasAName={this.props.gCobbDouglasAName}
+                    gCobbDouglasL={this.props.gCobbDouglasL}
+                    gCobbDouglasLName={this.props.gCobbDouglasLName}
+                    gCobbDouglasK={this.props.gCobbDouglasK}
+                    gCobbDouglasKName={this.props.gCobbDouglasKName}
+                    gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                    gCobbDouglasYName={this.props.gCobbDouglasYName}
+                    gIntersectionLabel={this.props.gIntersectionLabel}
+                    updateGraph={this.updateGraph}
+                            />;
+            } else if (this.props.gType === 12) {
+                rightSide = <CobbDouglasNLDSEditor
                                 displayLabels={displayLabels}
                                 displaySliders={displaySliders}
                                 isInstructor={isInstructor}
@@ -402,68 +338,40 @@ export default class GraphViewer extends React.Component {
                                 showAUC={false}
 
                                 updateGraph={this.updateGraph}
-                            />
-                        )}
-
-                        <ResetGraphButton
-                            initialState={initialState}
-                            updateGraph={this.updateGraph} />
-
-                        <ExportGraphButton />
-
-                        <SubmitButton
-                            assessment={this.props.assessment}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            submission={this.props.submission}
-                            isInstructor={isInstructor} />
-                    </form>
-                </div>
-            );
+                            />;
+            }
         } else if (this.props.gType === 5 || this.props.gType === 15) {
             // Consumption Leisure: Contraint and Optimal Choice
-            return (
-                <div className="GraphViewer">
-                    {titleEl}
-                    {instructionsEl}
-                    <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
-                        <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.state.score} />
-                        <input type="hidden" name="next" value={successUrl} />
-                        <input type="hidden" name="launchUrl" value={launchUrl} />
-                        <JXGBoard
-                            id={'editing-graph'}
-                            width={562.5}
-                            height={300}
-                            submission={this.props.submission}
-                            shadow={!isInstructor}
+            leftSide = <JXGBoard
+                           id={'editing-graph'}
+                           width={BOARD_WIDTH}
+                           height={BOARD_HEIGHT}
+                           submission={this.props.submission}
+                           shadow={!isInstructor}
 
-                            gType={this.props.gType}
-                            gA1={this.props.gA1}
-                            gA1Initial={this.props.gA1Initial}
-                            gA2={this.props.gA2}
-                            gA2Initial={this.props.gA2Initial}
-                            gLine1Label={this.props.gLine1Label}
-                            gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={this.props.gXAxisLabel}
-                            gYAxisLabel={this.props.gYAxisLabel}
-                            gLine1Slope={this.props.gLine1Slope}
-                            gLine2Slope={this.props.gLine2Slope}
-                            gLine1OffsetX={this.props.gLine1OffsetX}
-                            gLine1OffsetY={this.props.gLine1OffsetY}
-                            gLine2OffsetX={this.props.gLine2OffsetX}
-                            gLine2OffsetY={this.props.gLine2OffsetY}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            gShowIntersection={this.props.gShowIntersection}
-                            gDisplayShadow={this.props.gDisplayShadow}
-                            gIntersectionLabel={this.props.gIntersectionLabel}
-                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                            />
-
-                        <Feedback
-                            feedback={this.state.currentFeedback} />
-
-                        <ConsumptionLeisureEditor
+                           gType={this.props.gType}
+                           gA1={this.props.gA1}
+                           gA1Initial={this.props.gA1Initial}
+                           gA2={this.props.gA2}
+                           gA2Initial={this.props.gA2Initial}
+                           gLine1Label={this.props.gLine1Label}
+                           gLine2Label={this.props.gLine2Label}
+                           gXAxisLabel={this.props.gXAxisLabel}
+                           gYAxisLabel={this.props.gYAxisLabel}
+                           gLine1Slope={this.props.gLine1Slope}
+                           gLine2Slope={this.props.gLine2Slope}
+                           gLine1OffsetX={this.props.gLine1OffsetX}
+                           gLine1OffsetY={this.props.gLine1OffsetY}
+                           gLine2OffsetX={this.props.gLine2OffsetX}
+                           gLine2OffsetY={this.props.gLine2OffsetY}
+                           gNeedsSubmit={this.props.gNeedsSubmit}
+                           gShowIntersection={this.props.gShowIntersection}
+                           gDisplayShadow={this.props.gDisplayShadow}
+                           gIntersectionLabel={this.props.gIntersectionLabel}
+                           gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                           gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                       />;
+            rightSide = <ConsumptionLeisureEditor
                             isInstructor={isInstructor}
                             displayLabels={displayLabels}
                             displaySliders={displaySliders}
@@ -478,78 +386,50 @@ export default class GraphViewer extends React.Component {
                             gYAxisLabel={this.props.gYAxisLabel}
 
                             updateGraph={this.updateGraph}
-                            />
-
-                        <ResetGraphButton
-                            initialState={initialState}
-                            updateGraph={this.updateGraph} />
-
-                        <ExportGraphButton />
-
-                        <SubmitButton
-                            assessment={this.props.assessment}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            submission={this.props.submission}
-                            isInstructor={isInstructor} />
-                    </form>
-                </div>
-            );
+                        />;
         } else if (this.props.gType === 7 || this.props.gType === 11) {
             // Consumption-Saving
-            return (
-                <div className="GraphViewer">
-                    {titleEl}
-                    {instructionsEl}
-                    <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
-                        <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.state.score} />
-                        <input type="hidden" name="next" value={successUrl} />
-                        <input type="hidden" name="launchUrl" value={launchUrl} />
-                        <JXGBoard
-                            id={'editing-graph'}
-                            width={562.5}
-                            height={300}
-                            submission={this.props.submission}
-                            shadow={!isInstructor}
+            leftSide = <JXGBoard
+                           id={'editing-graph'}
+                           width={BOARD_WIDTH}
+                           height={BOARD_HEIGHT}
+                           submission={this.props.submission}
+                           shadow={!isInstructor}
 
-                            gType={this.props.gType}
-                            gA1={this.props.gA1}
-                            gA1Initial={this.props.gA1Initial}
-                            gA2={this.props.gA2}
-                            gA2Initial={this.props.gA2Initial}
-                            gA3={this.props.gA3}
-                            gA3Initial={this.props.gA3Initial}
-                            gA4={this.props.gA4}
-                            gA4Initial={this.props.gA4Initial}
-                            gA5={this.props.gA5}
-                            gA5Initial={this.props.gA5Initial}
-                            gLine1Label={this.props.gLine1Label}
-                            gLine2Label={this.props.gLine2Label}
-                            gXAxisLabel={this.props.gXAxisLabel}
-                            gYAxisLabel={this.props.gYAxisLabel}
-                            gLine1Slope={this.props.gLine1Slope}
-                            gLine2Slope={this.props.gLine2Slope}
-                            gLine1OffsetX={this.props.gLine1OffsetX}
-                            gLine1OffsetY={this.props.gLine1OffsetY}
-                            gLine2OffsetX={this.props.gLine2OffsetX}
-                            gLine2OffsetY={this.props.gLine2OffsetY}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            gShowIntersection={this.props.gShowIntersection}
-                            gDisplayShadow={this.props.gDisplayShadow}
-                            gIntersectionLabel={this.props.gIntersectionLabel}
-                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-                            gIntersection2Label={this.props.gIntersection2Label}
-                            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
-                            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
-                            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
-                            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
-                            />
-
-                        <Feedback
-                            feedback={this.state.currentFeedback} />
-
-                        <ConsumptionSavingEditor
+                           gType={this.props.gType}
+                           gA1={this.props.gA1}
+                           gA1Initial={this.props.gA1Initial}
+                           gA2={this.props.gA2}
+                           gA2Initial={this.props.gA2Initial}
+                           gA3={this.props.gA3}
+                           gA3Initial={this.props.gA3Initial}
+                           gA4={this.props.gA4}
+                           gA4Initial={this.props.gA4Initial}
+                           gA5={this.props.gA5}
+                           gA5Initial={this.props.gA5Initial}
+                           gLine1Label={this.props.gLine1Label}
+                           gLine2Label={this.props.gLine2Label}
+                           gXAxisLabel={this.props.gXAxisLabel}
+                           gYAxisLabel={this.props.gYAxisLabel}
+                           gLine1Slope={this.props.gLine1Slope}
+                           gLine2Slope={this.props.gLine2Slope}
+                           gLine1OffsetX={this.props.gLine1OffsetX}
+                           gLine1OffsetY={this.props.gLine1OffsetY}
+                           gLine2OffsetX={this.props.gLine2OffsetX}
+                           gLine2OffsetY={this.props.gLine2OffsetY}
+                           gNeedsSubmit={this.props.gNeedsSubmit}
+                           gShowIntersection={this.props.gShowIntersection}
+                           gDisplayShadow={this.props.gDisplayShadow}
+                           gIntersectionLabel={this.props.gIntersectionLabel}
+                           gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                           gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                           gIntersection2Label={this.props.gIntersection2Label}
+                           gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                           gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+                           gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+                           gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
+                       />;
+            rightSide = <ConsumptionSavingEditor
                             gType={this.props.gType}
                             isInstructor={isInstructor}
                             displayLabels={displayLabels}
@@ -571,214 +451,158 @@ export default class GraphViewer extends React.Component {
                             gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
 
                             updateGraph={this.updateGraph}
-                            />
-
-                        <ResetGraphButton
-                            initialState={initialState}
-                            updateGraph={this.updateGraph} />
-
-                        <ExportGraphButton />
-
-                        <SubmitButton
-                            assessment={this.props.assessment}
-                            gNeedsSubmit={this.props.gNeedsSubmit}
-                            submission={this.props.submission}
-                            isInstructor={isInstructor} />
-                    </form>
-                </div>
-            );
+                        />;
         } else if (this.props.gType === 8) {
             // Aggregate Demand - Aggregate Supply
-            return <div className="GraphViewer">
-                    {titleEl}
-                    {instructionsEl}
-                <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
-                <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                <input type="hidden" name="score" value={this.state.score} />
-                <input type="hidden" name="next" value={successUrl} />
-                <input type="hidden" name="launchUrl" value={launchUrl} />
-                <JXGBoard
-            id={'editing-graph'}
-            shadow={!isInstructor}
-            width={562.5}
-            height={300}
-            gType={this.props.gType}
-            gA1={this.props.gA1}
-            gA2={this.props.gA2}
-            gA3={this.props.gA3}
-            gA4={this.props.gA4}
-            gLine1Label={this.props.gLine1Label}
-            gLine2Label={this.props.gLine2Label}
-            gLine3Label={this.props.gLine3Label}
-            gLine1Dashed={this.props.gLine1Dashed}
-            gLine2Dashed={this.props.gLine2Dashed}
-            gLine3Dashed={this.props.gLine3Dashed}
-            gXAxisLabel={this.props.gXAxisLabel}
-            gYAxisLabel={this.props.gYAxisLabel}
-            gLine1Slope={this.props.gLine1Slope}
-            gLine1SlopeInitial={this.props.gLine1SlopeInitial}
-            gLine2Slope={this.props.gLine2Slope}
-            gLine2SlopeInitial={this.props.gLine2SlopeInitial}
-            gLine3Slope={this.props.gLine3Slope}
-            gLine3SlopeInitial={this.props.gLine3SlopeInitial}
-            gLine1OffsetX={this.props.gLine1OffsetX}
-            gLine1OffsetY={this.props.gLine1OffsetY}
-            gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
-            gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
-            gLine2OffsetX={this.props.gLine2OffsetX}
-            gLine2OffsetY={this.props.gLine2OffsetY}
-            gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
-            gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
-            gLine3OffsetX={this.props.gLine3OffsetX}
-            gLine3OffsetY={this.props.gLine3OffsetY}
-            gLine3OffsetXInitial={this.props.gLine3OffsetXInitial}
-            gLine3OffsetYInitial={this.props.gLine3OffsetYInitial}
-            gDisplayIntersection1={this.props.gDisplayIntersection1}
-            gDisplayIntersection1Initial={this.props.gDisplayIntersection1Initial}
-            gIntersectionLabel={this.props.gIntersectionLabel}
-            gDisplayIntersection2={this.props.gDisplayIntersection2}
-            gDisplayIntersection2Initial={this.props.gDisplayIntersection2Initial}
-            gIntersection2Label={this.props.gIntersection2Label}
-            gDisplayIntersection3={this.props.gDisplayIntersection3}
-            gDisplayIntersection3Initial={this.props.gDisplayIntersection3Initial}
-            gIntersection3Label={this.props.gIntersection3Label}
+            leftSide = <JXGBoard
+                           id={'editing-graph'}
+                           shadow={!isInstructor}
+                           width={BOARD_WIDTH}
+                           height={BOARD_HEIGHT}
+                           gType={this.props.gType}
+                           gA1={this.props.gA1}
+                           gA2={this.props.gA2}
+                           gA3={this.props.gA3}
+                           gA4={this.props.gA4}
+                           gLine1Label={this.props.gLine1Label}
+                           gLine2Label={this.props.gLine2Label}
+                           gLine3Label={this.props.gLine3Label}
+                           gLine1Dashed={this.props.gLine1Dashed}
+                           gLine2Dashed={this.props.gLine2Dashed}
+                           gLine3Dashed={this.props.gLine3Dashed}
+                           gXAxisLabel={this.props.gXAxisLabel}
+                           gYAxisLabel={this.props.gYAxisLabel}
+                           gLine1Slope={this.props.gLine1Slope}
+                           gLine1SlopeInitial={this.props.gLine1SlopeInitial}
+                           gLine2Slope={this.props.gLine2Slope}
+                           gLine2SlopeInitial={this.props.gLine2SlopeInitial}
+                           gLine3Slope={this.props.gLine3Slope}
+                           gLine3SlopeInitial={this.props.gLine3SlopeInitial}
+                           gLine1OffsetX={this.props.gLine1OffsetX}
+                           gLine1OffsetY={this.props.gLine1OffsetY}
+                           gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
+                           gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
+                           gLine2OffsetX={this.props.gLine2OffsetX}
+                           gLine2OffsetY={this.props.gLine2OffsetY}
+                           gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
+                           gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
+                           gLine3OffsetX={this.props.gLine3OffsetX}
+                           gLine3OffsetY={this.props.gLine3OffsetY}
+                           gLine3OffsetXInitial={this.props.gLine3OffsetXInitial}
+                           gLine3OffsetYInitial={this.props.gLine3OffsetYInitial}
+                           gDisplayIntersection1={this.props.gDisplayIntersection1}
+                           gDisplayIntersection1Initial={this.props.gDisplayIntersection1Initial}
+                           gIntersectionLabel={this.props.gIntersectionLabel}
+                           gDisplayIntersection2={this.props.gDisplayIntersection2}
+                           gDisplayIntersection2Initial={this.props.gDisplayIntersection2Initial}
+                           gIntersection2Label={this.props.gIntersection2Label}
+                           gDisplayIntersection3={this.props.gDisplayIntersection3}
+                           gDisplayIntersection3Initial={this.props.gDisplayIntersection3Initial}
+                           gIntersection3Label={this.props.gIntersection3Label}
 
-            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
-            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
-            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
-            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
+                           gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                           gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                           gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                           gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+                           gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+                           gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
 
-            gShowIntersection={this.props.gShowIntersection}
-                />
+                           gShowIntersection={this.props.gShowIntersection}
+                       />;
+            rightSide = <ADASEditor
+                            gXAxisLabel={this.props.gXAxisLabel}
+                            gYAxisLabel={this.props.gYAxisLabel}
+                            gA1={this.props.gA1}
+                            gA2={this.props.gA2}
+                            gA3={this.props.gA3}
+                            gA4={this.props.gA4}
+                            gLine1Slope={this.props.gLine1Slope}
+                            gLine1Label={this.props.gLine1Label}
+                            gLine2Slope={this.props.gLine2Slope}
+                            gLine2Label={this.props.gLine2Label}
+                            gLine3Slope={this.props.gLine3Slope}
+                            gLine3Label={this.props.gLine3Label}
+                            gShowIntersection={this.props.gShowIntersection}
+                            gDisplayIntersection1={this.props.gDisplayIntersection1}
+                            gIntersectionLabel={this.props.gIntersectionLabel}
+                            gDisplayIntersection2={this.props.gDisplayIntersection2}
+                            gIntersection2Label={this.props.gIntersection2Label}
+                            gDisplayIntersection3={this.props.gDisplayIntersection3}
+                            gIntersection3Label={this.props.gIntersection3Label}
+                            gLine1Dashed={this.props.gLine1Dashed}
+                            gLine2Dashed={this.props.gLine2Dashed}
+                            gLine3Dashed={this.props.gLine3Dashed}
 
-                <Feedback
-            feedback={this.state.currentFeedback} />
+                            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+                            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
+                            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
 
-                <ADASEditor
-            gXAxisLabel={this.props.gXAxisLabel}
-            gYAxisLabel={this.props.gYAxisLabel}
-            gA1={this.props.gA1}
-            gA2={this.props.gA2}
-            gA3={this.props.gA3}
-            gA4={this.props.gA4}
-            gLine1Slope={this.props.gLine1Slope}
-            gLine1Label={this.props.gLine1Label}
-            gLine2Slope={this.props.gLine2Slope}
-            gLine2Label={this.props.gLine2Label}
-            gLine3Slope={this.props.gLine3Slope}
-            gLine3Label={this.props.gLine3Label}
-            gShowIntersection={this.props.gShowIntersection}
-            gDisplayIntersection1={this.props.gDisplayIntersection1}
-            gIntersectionLabel={this.props.gIntersectionLabel}
-            gDisplayIntersection2={this.props.gDisplayIntersection2}
-            gIntersection2Label={this.props.gIntersection2Label}
-            gDisplayIntersection3={this.props.gDisplayIntersection3}
-            gIntersection3Label={this.props.gIntersection3Label}
-            gLine1Dashed={this.props.gLine1Dashed}
-            gLine2Dashed={this.props.gLine2Dashed}
-            gLine3Dashed={this.props.gLine3Dashed}
-
-            gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
-            gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
-            gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
-            gIntersection3HorizLineLabel={this.props.gIntersection3HorizLineLabel}
-            gIntersection3VertLineLabel={this.props.gIntersection3VertLineLabel}
-
-            displayLabels={displayLabels}
-            displaySliders={displaySliders}
-            isInstructor={isInstructor}
-            updateGraph={this.updateGraph}
-                />
-
-                <ResetGraphButton
-            initialState={initialState}
-            updateGraph={this.updateGraph} />
-
-                <ExportGraphButton />
-
-                <SubmitButton
-            assessment={this.props.assessment}
-            gNeedsSubmit={this.props.gNeedsSubmit}
-            submission={this.props.submission}
-            isInstructor={isInstructor} />
-                </form>
-                   </div>;
+                            displayLabels={displayLabels}
+                            displaySliders={displaySliders}
+                            isInstructor={isInstructor}
+                            updateGraph={this.updateGraph}
+                        />;
         } else if (this.props.gType === 14) {
             // Non-Linear Demand Supply horiz. joint graph
-            return (
-                <div className="GraphViewer">
-                        {titleEl}
-                        {instructionsEl}
-                    <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
-                        <input type="hidden" name="csrfmiddlewaretoken" value={token} />
-                        <input type="hidden" name="score" value={this.state.score} />
-                        <input type="hidden" name="next" value={successUrl} />
-                        <input type="hidden" name="launchUrl" value={launchUrl} />
-                        <div className="row">
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={540}
-                                height={288}
-                                submission={this.props.submission}
-                                shadow={!isInstructor}
+            leftSide = <JXGBoard
+                           id={'editing-graph'}
+                           width={540}
+                           height={288}
+                           submission={this.props.submission}
+                           shadow={!isInstructor}
 
-                                gType={this.props.gType}
-                                gLine1Label={this.props.gLine1Label}
-                                gLine2Label={this.props.gLine2Label}
-                                gXAxisLabel={this.props.gXAxisLabel}
-                                gYAxisLabel={this.props.gYAxisLabel}
-                                gLine1Slope={this.props.gLine1Slope}
-                                gLine1SlopeInitial={this.props.gLine1SlopeInitial}
-                                gLine2Slope={this.props.gLine2Slope}
-                                gLine2SlopeInitial={this.props.gLine2SlopeInitial}
-                                gLine1OffsetX={this.props.gLine1OffsetX}
-                                gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
-                                gLine1OffsetY={this.props.gLine1OffsetY}
-                                gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
-                                gLine2OffsetX={this.props.gLine2OffsetX}
-                                gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
-                                gLine2OffsetY={this.props.gLine2OffsetY}
-                                gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
-                                gNeedsSubmit={this.props.gNeedsSubmit}
-                                gShowIntersection={this.props.gShowIntersection}
-                                gDisplayShadow={this.props.gDisplayShadow}
-                                gIntersectionLabel={this.props.gIntersectionLabel}
-                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
-                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                           gType={this.props.gType}
+                           gLine1Label={this.props.gLine1Label}
+                           gLine2Label={this.props.gLine2Label}
+                           gXAxisLabel={this.props.gXAxisLabel}
+                           gYAxisLabel={this.props.gYAxisLabel}
+                           gLine1Slope={this.props.gLine1Slope}
+                           gLine1SlopeInitial={this.props.gLine1SlopeInitial}
+                           gLine2Slope={this.props.gLine2Slope}
+                           gLine2SlopeInitial={this.props.gLine2SlopeInitial}
+                           gLine1OffsetX={this.props.gLine1OffsetX}
+                           gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
+                           gLine1OffsetY={this.props.gLine1OffsetY}
+                           gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
+                           gLine2OffsetX={this.props.gLine2OffsetX}
+                           gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
+                           gLine2OffsetY={this.props.gLine2OffsetY}
+                           gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
+                           gNeedsSubmit={this.props.gNeedsSubmit}
+                           gShowIntersection={this.props.gShowIntersection}
+                           gDisplayShadow={this.props.gDisplayShadow}
+                           gIntersectionLabel={this.props.gIntersectionLabel}
+                           gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                           gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
-                                gCobbDouglasA={this.props.gCobbDouglasA}
-                                gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
-                                gCobbDouglasAName={this.props.gCobbDouglasAName}
-                                gCobbDouglasL={this.props.gCobbDouglasL}
-                                gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
-                                gCobbDouglasLName={this.props.gCobbDouglasLName}
-                                gCobbDouglasK={this.props.gCobbDouglasK}
-                                gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
-                                gCobbDouglasKName={this.props.gCobbDouglasKName}
-                                gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
-                                gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
-                                gCobbDouglasYName={this.props.gCobbDouglasYName}
-                                gNName={this.props.gNName}
-                                gFunctionChoice={this.props.gFunctionChoice}
+                           gCobbDouglasA={this.props.gCobbDouglasA}
+                           gCobbDouglasAInitial={this.props.gCobbDouglasAInitial}
+                           gCobbDouglasAName={this.props.gCobbDouglasAName}
+                           gCobbDouglasL={this.props.gCobbDouglasL}
+                           gCobbDouglasLInitial={this.props.gCobbDouglasLInitial}
+                           gCobbDouglasLName={this.props.gCobbDouglasLName}
+                           gCobbDouglasK={this.props.gCobbDouglasK}
+                           gCobbDouglasKInitial={this.props.gCobbDouglasKInitial}
+                           gCobbDouglasKName={this.props.gCobbDouglasKName}
+                           gCobbDouglasAlpha={this.props.gCobbDouglasAlpha}
+                           gCobbDouglasAlphaInitial={this.props.gCobbDouglasAlphaInitial}
+                           gCobbDouglasYName={this.props.gCobbDouglasYName}
+                           gNName={this.props.gNName}
+                           gFunctionChoice={this.props.gFunctionChoice}
 
-                                gAreaConfiguration={this.props.gAreaConfiguration}
-                                gAreaConfigurationInitial={
-                                    this.props.gAreaConfigurationInitial}
-                                gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                           gAreaConfiguration={this.props.gAreaConfiguration}
+                           gAreaConfigurationInitial={
+                               this.props.gAreaConfigurationInitial}
+                           gIsAreaDisplayed={this.props.gIsAreaDisplayed}
 
-                                gAreaAName={this.props.gAreaAName}
-                                gAreaBName={this.props.gAreaBName}
-                                gAreaCName={this.props.gAreaCName}
-                            />
-                        </div>
-
-                        <Feedback
-                            feedback={this.state.currentFeedback} />
-
-                        <NonLinearDemandSupplyEditor
+                           gAreaAName={this.props.gAreaAName}
+                           gAreaBName={this.props.gAreaBName}
+                           gAreaCName={this.props.gAreaCName}
+                       />;
+            rightSide = <NonLinearDemandSupplyEditor
                             isInstructor={isInstructor}
                             displayLabels={displayLabels}
                             displaySliders={displaySliders}
@@ -807,7 +631,26 @@ export default class GraphViewer extends React.Component {
                             gAreaCName={this.props.gAreaCName}
                             showAUC={this.props.gType === 10}
                             updateGraph={this.updateGraph}
-                            />
+                        />;
+
+            // Show side-by-side view here.
+            return (
+                <div className="GraphViewer">
+                    {titleEl}
+                    {instructionsEl}
+                    <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
+                        <input type="hidden" name="csrfmiddlewaretoken" value={token} />
+                        <input type="hidden" name="score" value={this.state.score} />
+                        <input type="hidden" name="next" value={successUrl} />
+                        <input type="hidden" name="launchUrl" value={launchUrl} />
+
+                        <div className="row">
+                            {leftSide}
+                        </div>
+
+                        <Feedback feedback={this.state.currentFeedback} />
+
+                        {rightSide}
 
                         <ResetGraphButton
                             initialState={initialState}
@@ -823,9 +666,46 @@ export default class GraphViewer extends React.Component {
                     </form>
                 </div>
             );
-        } else {
-            return null;
         }
+
+        return (
+            <div className="GraphViewer">
+                {titleEl}
+                {instructionsEl}
+                <form onSubmit={this.handleSubmit.bind(this)} action={action} method="post">
+                    <input type="hidden" name="csrfmiddlewaretoken" value={token} />
+                    <input type="hidden" name="score" value={this.state.score} />
+                    <input type="hidden" name="next" value={successUrl} />
+                    <input type="hidden" name="launchUrl" value={launchUrl} />
+
+                    <div className="row">
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <div className="sticky-top">
+                                {leftSide}
+
+                                <Feedback feedback={this.state.currentFeedback} />
+                            </div>
+                        </div>
+
+                        <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            {rightSide}
+
+                            <ResetGraphButton
+                                initialState={initialState}
+                                updateGraph={this.updateGraph} />
+
+                            <ExportGraphButton />
+
+                            <SubmitButton
+                                assessment={this.props.assessment}
+                                gNeedsSubmit={this.props.gNeedsSubmit}
+                                submission={this.props.submission}
+                                isInstructor={isInstructor} />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        );
     }
     // When the submission is loaded by the Viewer, see if
     // this.state.currentFeedback should be updated.
