@@ -1515,7 +1515,7 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
             ));
         }
 
-        if (this.options.gIntersection3VertLineLabel) {
+        if (this.options.gIntersection3HorizLineLabel) {
             this.board.create('intersection', [
                 this.board.defaultAxes.x, this.l1
             ], getIntersectionPointOptions(
