@@ -139,6 +139,7 @@ class Editor extends Component {
             case 5:
             case 7:
             case 11:
+            case 15:
                 gA1default = 4;
                 gA2default = 1;
                 break;

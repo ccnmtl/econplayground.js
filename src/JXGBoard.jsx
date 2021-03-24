@@ -714,6 +714,9 @@ export default class JXGBoard extends React.Component {
                 yAxisLabel = options.gYAxisLabel || options.gCobbDouglasYName;
                 break;
             case 5:
+            case 15:
+                // Consumption-Leisure graphs (optimal choice and
+                // otherwise)
                 if (this.props.locked) {
                     options.gA1 = 4;
                     options.gA2 = 1;
