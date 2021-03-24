@@ -372,11 +372,14 @@ export default class GraphViewer extends React.Component {
                            gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                        />;
             rightSide = <ConsumptionLeisureEditor
+                            gType={this.props.gType}
                             isInstructor={isInstructor}
                             displayLabels={displayLabels}
                             displaySliders={displaySliders}
                             gA1={this.props.gA1}
                             gA2={this.props.gA2}
+                            gA3={this.props.gA3}
+                            gA4={this.props.gA4}
                             gLine1Label={this.props.gLine1Label}
                             gIntersectionLabel={this.props.gIntersectionLabel}
                             gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}

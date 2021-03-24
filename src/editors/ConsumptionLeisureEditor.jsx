@@ -23,7 +23,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
 
                 {this.props.displaySliders && (
                     <React.Fragment>
-                            <h2>Slope</h2>
+                        <h2>Slope</h2>
                         <div className="row">
                             <div className="col-sm-4">
                                 <div className="form-group">
@@ -55,6 +55,40 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        {this.props.gType === 15 && (
+                            <div className="row">
+                                <div className="col-sm-4">
+                                    <div className="form-group">
+                                        <label htmlFor="gA3">
+                                            Rel. Preference (α)
+                                        </label>
+                                        <RangeEditor
+                                            id="gA3"
+                                            dataId="gA3"
+                                            value={this.props.gA3}
+                                            min={0}
+                                            max={9}
+                                            handler={handleFormUpdate.bind(this)} />
+                                    </div>
+                                </div>
+
+                                <div className="col-sm-4">
+                                    <div className="form-group">
+                                        <label htmlFor="gA4">
+                                            Tax Rate (t)
+                                        </label>
+                                        <RangeEditor
+                                            id="gA4"
+                                            dataId="gA4"
+                                            value={this.props.gA4}
+                                            min={0.01}
+                                            max={5}
+                                            handler={handleFormUpdate.bind(this)} />
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                         <hr/>
                     </React.Fragment>
                 )}
@@ -125,6 +159,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
 }
 
 ConsumptionLeisureEditor.propTypes = {
+    gType: PropTypes.number.isRequired,
     gIntersectionLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
@@ -134,6 +169,8 @@ ConsumptionLeisureEditor.propTypes = {
 
     gA1: PropTypes.number.isRequired,
     gA2: PropTypes.number.isRequired,
+    gA3: PropTypes.number,
+    gA4: PropTypes.number,
 
     gLine1Label: PropTypes.string.isRequired,
 
