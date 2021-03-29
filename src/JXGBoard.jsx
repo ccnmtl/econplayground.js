@@ -9,7 +9,7 @@ import AreaDisplay from './AreaDisplay';
 import {getL1SubmissionOffset, getL2SubmissionOffset} from './utils';
 
 const getNLDSYLabel = function(functionChoice, kName, nName) {
-    let label = `MP<sub>${nName}</sub>, r<sub>${nName}</sub>`;
+    let label = `MP<sub>${nName}</sub>, w`;
 
     if (functionChoice === 1) {
         label = `MP<sub>${kName}</sub>, r<sub>${kName}</sub>`;
@@ -639,28 +639,38 @@ export default class JXGBoard extends React.Component {
         if (
             (this.props.gType === 1 ||
              this.props.gType === 10 ||
-             this.props.gType === 12
+             this.props.gType === 12 ||
+             this.props.gType === 14
             ) && (
                 prevProps.gFunctionChoice !== this.props.gFunctionChoice ||
                     prevProps.gCobbDouglasKName !== this.props.gCobbDouglasKName ||
                     prevProps.gNName !== this.props.gNName
             )
         ) {
+            const yLabel = getNLDSYLabel(
+                this.props.gType === 14 ? 1 : this.props.gFunctionChoice,
+                this.props.gCobbDouglasKName,
+                this.props.gNName
+            );
+            const xLabel = getNLDSXLabel(
+                this.props.gType === 14 ? 1 : this.props.gFunctionChoice,
+                this.props.gCobbDouglasKName,
+                this.props.gNName
+            );
+
+            let board;
             if (this.board) {
-                const yLabel = getNLDSYLabel(
-                    this.props.gFunctionChoice,
-                    this.props.gCobbDouglasKName,
-                    this.props.gNName
-                );
-                const xLabel = getNLDSXLabel(
-                    this.props.gFunctionChoice,
-                    this.props.gCobbDouglasKName,
-                    this.props.gNName
-                );
-                this.board.defaultAxes.y.name = yLabel;
-                this.board.defaultAxes.x.name = xLabel;
-                this.board.update();
+                let board = this.board;
             }
+
+            if (this.board2 && (
+                this.props.gType === 12 || this.props.gType === 14
+            )) {
+                board = this.board2;
+            }
+            board.defaultAxes.y.name = yLabel;
+            board.defaultAxes.x.name = xLabel;
+            board.update();
         }
     }
 
@@ -734,6 +744,14 @@ export default class JXGBoard extends React.Component {
                     options.gA2 = 1;
                 }
                 break;
+            case 14:
+                // Horizontal NLDS joint graph. Left graph is function
+                // choice 0.
+                xAxisLabel = getNLDSXLabel(
+                    0, options.gCobbDouglasKName, options.gNName);
+                yAxisLabel = getNLDSYLabel(
+                    0, options.gCobbDouglasKName, options.gNName);
+                break;
             default:
                 xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
                 yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
@@ -781,13 +799,18 @@ export default class JXGBoard extends React.Component {
         this.board2 = null;
         if (options.gType >= 12 && options.gType <= 14) {
             let yLabel = yAxisLabel;
-            if (options.gType === 12) {
+            let xLabel = xAxisLabel;
+            if (options.gType === 12 || options.gType === 14) {
                 yLabel = getNLDSYLabel(
-                    options.gFunctionChoice,
+                    options.gType === 14 ? 1 : options.gFunctionChoice,
                     options.gCobbDouglasKName,
                     options.gNName
                 );
-                yLabel += ', w';
+                xLabel = getNLDSXLabel(
+                    options.gType === 14 ? 1 : options.gFunctionChoice,
+                    options.gCobbDouglasKName,
+                    options.gNName
+                );
             }
 
             this.board2 = JXG.JSXGraph.initBoard(
@@ -795,11 +818,11 @@ export default class JXGBoard extends React.Component {
                     axis: true,
                     defaultAxes: {
                         x: {
-                            name: xAxisLabel,
+                            name: xLabel,
                             label: {
                                 offset: [400, -12]
                             },
-                            withLabel: xAxisLabel ? true : false,
+                            withLabel: xLabel ? true : false,
                             ticks: {
                                 visible: false
                             },
