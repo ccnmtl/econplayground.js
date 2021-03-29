@@ -1546,6 +1546,12 @@ const mkOptimalChoice = function(board, options) {
 };
 
 class ConsumptionLeisureOptimalChoiceGraph extends ConsumptionLeisureGraph {
+    /**
+     * U(f,c) = f^α * c^(1 - α)
+     */
+    U(f, c, alpha) {
+        return (f ** alpha) * c ** (1 - alpha);
+    }
 }
 
 const mkConsumptionLeisureOptimalChoice = function(board, options) {
