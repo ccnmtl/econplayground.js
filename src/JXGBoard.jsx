@@ -619,18 +619,18 @@ export default class JXGBoard extends React.Component {
         }
 
         if (prevProps.gXAxisLabel !== this.props.gXAxisLabel) {
-            if (this.board) {
+            if (this.board && this.board.defaultAxes) {
                 this.board.defaultAxes.x.name = this.props.gXAxisLabel;
                 this.board.update();
             }
-            if (this.board2) {
+            if (this.board2 && this.board2.defaultAxes) {
                 this.board2.defaultAxes.x.name = this.props.gXAxisLabel;
                 this.board2.update();
             }
         }
 
         if (prevProps.gYAxisLabel !== this.props.gYAxisLabel) {
-            if (this.board) {
+            if (this.board && this.board.defaultAxes) {
                 this.board.defaultAxes.y.name = this.props.gYAxisLabel;
                 this.board.update();
             }
@@ -660,7 +660,7 @@ export default class JXGBoard extends React.Component {
 
             let board;
             if (this.board) {
-                let board = this.board;
+                board = this.board;
             }
 
             if (this.board2 && (
@@ -668,9 +668,12 @@ export default class JXGBoard extends React.Component {
             )) {
                 board = this.board2;
             }
-            board.defaultAxes.y.name = yLabel;
-            board.defaultAxes.x.name = xLabel;
-            board.update();
+
+            if (board.defaultAxes) {
+                board.defaultAxes.y.name = yLabel;
+                board.defaultAxes.x.name = xLabel;
+                board.update();
+            }
         }
     }
 
