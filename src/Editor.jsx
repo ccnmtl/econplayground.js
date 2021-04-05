@@ -69,9 +69,11 @@ class Editor extends Component {
                         gLine1Label={this.state.gLine1Label}
                         gLine2Label={this.state.gLine2Label}
                         gLine3Label={this.state.gLine3Label}
+                        gLine4Label={this.state.gLine4Label}
                         gLine1Slope={this.state.gLine1Slope}
                         gLine2Slope={this.state.gLine2Slope}
                         gLine3Slope={this.state.gLine3Slope}
+                        gLine4Slope={this.state.gLine4Slope}
                         gLine1Dashed={this.state.gLine1Dashed}
                         gLine2Dashed={this.state.gLine2Dashed}
                         gLine3Dashed={this.state.gLine3Dashed}
@@ -83,6 +85,8 @@ class Editor extends Component {
                         gLine2OffsetY={this.state.gLine2OffsetY}
                         gLine3OffsetX={this.state.gLine3OffsetX}
                         gLine3OffsetY={this.state.gLine3OffsetY}
+                        gLine4OffsetX={this.state.gLine4OffsetX}
+                        gLine4OffsetY={this.state.gLine4OffsetY}
                         gAlpha={this.state.gAlpha}
                         gA1={this.state.gA1}
                         gA2={this.state.gA2}
@@ -207,16 +211,24 @@ class Editor extends Component {
         const me = this;
         document.addEventListener('l1offset', function(e) {
             const offset = e.detail;
+            let line = 1;
+            if (e.detail.line) {
+                line = e.detail.line;
+            }
             me.setState({
-                gLine1OffsetX: offset.x,
-                gLine1OffsetY: offset.y
+                [`gLine${line}OffsetX`]: offset.x,
+                [`gLine${line}OffsetY`]: offset.y
             });
         });
         document.addEventListener('l2offset', function(e) {
             const offset = e.detail;
+            let line = 2;
+            if (e.detail.line) {
+                line = e.detail.line;
+            }
             me.setState({
-                gLine2OffsetX: offset.x,
-                gLine2OffsetY: offset.y
+                [`gLine${line}OffsetX`]: offset.x,
+                [`gLine${line}OffsetY`]: offset.y
             });
         });
         document.addEventListener('l3offset', function(e) {

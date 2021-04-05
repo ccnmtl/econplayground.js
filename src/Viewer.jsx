@@ -69,9 +69,11 @@ class Viewer extends Component {
             gLine1Label={this.state.gLine1Label}
             gLine2Label={this.state.gLine2Label}
             gLine3Label={this.state.gLine3Label}
+            gLine4Label={this.state.gLine4Label}
             gLine1Slope={this.state.gLine1Slope}
             gLine2Slope={this.state.gLine2Slope}
             gLine3Slope={this.state.gLine3Slope}
+            gLine4Slope={this.state.gLine4Slope}
             gLine1Dashed={this.state.gLine1Dashed}
             gLine2Dashed={this.state.gLine2Dashed}
             gLine3Dashed={this.state.gLine3Dashed}
@@ -83,6 +85,8 @@ class Viewer extends Component {
             gLine2OffsetY={this.state.gLine2OffsetY}
             gLine3OffsetX={this.state.gLine3OffsetX}
             gLine3OffsetY={this.state.gLine3OffsetY}
+            gLine4OffsetX={this.state.gLine4OffsetX}
+            gLine4OffsetY={this.state.gLine4OffsetY}
             gAlpha={this.state.gAlpha}
 
             gA1={this.state.gA1}
@@ -169,15 +173,19 @@ class Viewer extends Component {
             gLine1Label={this.state.gLine1Label}
             gLine2Label={this.state.gLine2Label}
             gLine3Label={this.state.gLine3Label}
+            gLine4Label={this.state.gLine4Label}
             gLine1LabelInitial={this.state.gLine1LabelInitial}
             gLine2LabelInitial={this.state.gLine2LabelInitial}
             gLine3LabelInitial={this.state.gLine3LabelInitial}
+            gLine4LabelInitial={this.state.gLine4LabelInitial}
             gLine1Slope={this.state.gLine1Slope}
             gLine1SlopeInitial={this.state.gLine1SlopeInitial}
             gLine2Slope={this.state.gLine2Slope}
             gLine2SlopeInitial={this.state.gLine2SlopeInitial}
             gLine3Slope={this.state.gLine3Slope}
             gLine3SlopeInitial={this.state.gLine3SlopeInitial}
+            gLine4Slope={this.state.gLine4Slope}
+            gLine4SlopeInitial={this.state.gLine4SlopeInitial}
             gLine1Dashed={this.state.gLine1Dashed}
             gLine2Dashed={this.state.gLine2Dashed}
             gLine3Dashed={this.state.gLine3Dashed}
@@ -197,6 +205,10 @@ class Viewer extends Component {
             gLine3OffsetY={this.state.gLine3OffsetY}
             gLine3OffsetXInitial={this.state.gLine3OffsetXInitial}
             gLine3OffsetYInitial={this.state.gLine3OffsetYInitial}
+            gLine4OffsetX={this.state.gLine4OffsetX}
+            gLine4OffsetY={this.state.gLine4OffsetY}
+            gLine4OffsetXInitial={this.state.gLine4OffsetXInitial}
+            gLine4OffsetYInitial={this.state.gLine4OffsetYInitial}
             gAlpha={this.state.gAlpha}
 
             gA1={this.state.gA1}
@@ -309,16 +321,24 @@ class Viewer extends Component {
 
         document.addEventListener('l1offset', function(e) {
             const offset = e.detail;
+            let line = 1;
+            if (e.detail.line) {
+                line = e.detail.line;
+            }
             me.setState({
-                gLine1OffsetX: offset.x,
-                gLine1OffsetY: offset.y
+                [`gLine${line}OffsetX`]: offset.x,
+                [`gLine${line}OffsetY`]: offset.y
             });
         });
         document.addEventListener('l2offset', function(e) {
             const offset = e.detail;
+            let line = 2;
+            if (e.detail.line) {
+                line = e.detail.line;
+            }
             me.setState({
-                gLine2OffsetX: offset.x,
-                gLine2OffsetY: offset.y
+                [`gLine${line}OffsetX`]: offset.x,
+                [`gLine2OffsetY`]: offset.y
             });
         });
         document.addEventListener('l3offset', function(e) {

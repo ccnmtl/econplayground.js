@@ -178,10 +178,17 @@ class Graph {
                 this.l1.on('up', function() {
                     const offset = getOffset(
                         me.l1.getSlope(), me.l1.getRise(), 2.5);
+
+                    let line = 1;
+                    if (me.options.isBoard2) {
+                        line += 2;
+                    }
+
                     const offsetEvt = new CustomEvent('l1offset', {
                         detail: {
                             x: 0,
-                            y: offset
+                            y: offset,
+                            line: line
                         }
                     });
                     document.dispatchEvent(offsetEvt);
@@ -205,10 +212,17 @@ class Graph {
 
                     const offset = getOffset(
                         me.l1.getSlope(), me.l1.getRise(), 2.5);
+
+                    let line = 1;
+                    if (me.options.isBoard2) {
+                        line += 2;
+                    }
+
                     const offsetEvt = new CustomEvent('l1offset', {
                         detail: {
                             x: 0,
-                            y: offset
+                            y: offset,
+                            line: line
                         }
                     });
                     document.dispatchEvent(offsetEvt);
@@ -226,10 +240,16 @@ class Graph {
                 this.l2.on('up', function() {
                     const offset = getOffset(
                         me.l2.getSlope(), me.l2.getRise(), 2.5);
+
+                    let line = 1;
+                    if (me.options.isBoard2) {
+                        line += 2;
+                    }
                     const offsetEvt = new CustomEvent('l2offset', {
                         detail: {
                             x: 0,
-                            y: offset
+                            y: offset,
+                            line: line
                         }
                     });
                     document.dispatchEvent(offsetEvt);
@@ -253,10 +273,15 @@ class Graph {
 
                     const offset = getOffset(
                         me.l2.getSlope(), me.l2.getRise(), 2.5);
+                    let line = 1;
+                    if (me.options.isBoard2) {
+                        line += 2;
+                    }
                     const offsetEvt = new CustomEvent('l2offset', {
                         detail: {
                             x: 0,
-                            y: offset
+                            y: offset,
+                            line: line
                         }
                     });
                     document.dispatchEvent(offsetEvt);
