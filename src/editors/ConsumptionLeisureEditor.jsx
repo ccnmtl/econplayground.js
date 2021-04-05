@@ -28,7 +28,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                             <div className="col-sm-4">
                                 <div className="form-group">
                                     <label htmlFor="gA1">
-                                        Horizontal intercept value
+                                        Horizontal intercept value <strong>T</strong>
                                     </label>
                                     <RangeEditor
                                         id="gA1"
@@ -43,7 +43,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                             <div className="col-sm-4">
                                 <div className="form-group">
                                     <label htmlFor="gA2">
-                                        Real Wage w
+                                        Real Wage <strong>w</strong>
                                     </label>
                                     <RangeEditor
                                         id="gA2"
@@ -61,14 +61,14 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                 <div className="col-sm-4">
                                     <div className="form-group">
                                         <label htmlFor="gA3">
-                                            Rel. Preference (α)
+                                            Rel. Preference <strong>α</strong>
                                         </label>
                                         <RangeEditor
                                             id="gA3"
                                             dataId="gA3"
                                             value={this.props.gA3}
-                                            min={0}
-                                            max={9}
+                                            min={0.00001}
+                                            max={0.99999}
                                             handler={handleFormUpdate.bind(this)} />
                                     </div>
                                 </div>
@@ -76,14 +76,14 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                 <div className="col-sm-4">
                                     <div className="form-group">
                                         <label htmlFor="gA4">
-                                            Tax Rate (t)
+                                            Tax Rate <strong>t</strong>
                                         </label>
                                         <RangeEditor
                                             id="gA4"
                                             dataId="gA4"
                                             value={this.props.gA4}
-                                            min={0.01}
-                                            max={5}
+                                            min={0}
+                                            max={0.99999}
                                             handler={handleFormUpdate.bind(this)} />
                                     </div>
                                 </div>

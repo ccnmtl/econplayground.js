@@ -231,6 +231,11 @@ const importGraph = function(json, obj) {
     if (updateObj.gType === 11 && updateObj.gA5 === 0) {
         updateObj.gA5 = 0.5;
     }
+    // The alpha value of the C-L Optimal Choice graph defaults to 0.5
+    // instead of 0.
+    if (updateObj.gType === 15 && updateObj.gA3 === 0) {
+        updateObj.gA3 = 0.5;
+    }
 
     obj.setState(Object.assign({}, updateObj, initialStateObj));
 };

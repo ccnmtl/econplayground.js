@@ -744,8 +744,8 @@ export default class JXGBoard extends React.Component {
                     options.gA1 = 4;
                     options.gA2 = 1;
                 }
-                xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'x';
-                yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'y';
+                xAxisLabel = options.gXAxisLabel ? options.gXAxisLabel : 'f';
+                yAxisLabel = options.gYAxisLabel ? options.gYAxisLabel : 'c';
                 break;
             case 7:
             case 11:
