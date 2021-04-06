@@ -548,7 +548,97 @@ export default class GraphViewer extends React.Component {
                             isInstructor={isInstructor}
                             updateGraph={this.updateGraph}
                         />;
-        } else if (this.props.gType === 14) {
+        } else if (this.props.gType === 13 || this.props.gType === 14) {
+            if (this.props.gType === 13) {
+                leftSide = <JXGBoard
+                               id={'editing-graph'}
+                               width={BOARD_WIDTH}
+                               height={BOARD_HEIGHT}
+                               shadow={!isInstructor}
+
+                               gType={this.props.gType}
+                               gLine1Label={this.props.gLine1Label}
+                               gLine2Label={this.props.gLine2Label}
+                               gLine3Label={this.props.gLine3Label}
+                               gLine4Label={this.props.gLine4Label}
+                               gXAxisLabel={this.props.gXAxisLabel}
+                               gYAxisLabel={this.props.gYAxisLabel}
+                               gLine1Slope={this.props.gLine1Slope}
+                               gLine1SlopeInitial={this.props.gLine1SlopeInitial}
+                               gLine2Slope={this.props.gLine2Slope}
+                               gLine2SlopeInitial={this.props.gLine2SlopeInitial}
+                               gLine3Slope={this.props.gLine3Slope}
+                               gLine3SlopeInitial={this.props.gLine3SlopeInitial}
+                               gLine4Slope={this.props.gLine4Slope}
+                               gLine4SlopeInitial={this.props.gLine4SlopeInitial}
+                               gLine1OffsetX={this.props.gLine1OffsetX}
+                               gLine1OffsetXInitial={this.props.gLine1OffsetXInitial}
+                               gLine1OffsetY={this.props.gLine1OffsetY}
+                               gLine1OffsetYInitial={this.props.gLine1OffsetYInitial}
+                               gLine2OffsetX={this.props.gLine2OffsetX}
+                               gLine2OffsetXInitial={this.props.gLine2OffsetXInitial}
+                               gLine2OffsetY={this.props.gLine2OffsetY}
+                               gLine2OffsetYInitial={this.props.gLine2OffsetYInitial}
+                               gLine3OffsetX={this.props.gLine3OffsetX}
+                               gLine3OffsetXInitial={this.props.gLine3OffsetXInitial}
+                               gLine3OffsetY={this.props.gLine3OffsetY}
+                               gLine3OffsetYInitial={this.props.gLine3OffsetYInitial}
+                               gLine4OffsetX={this.props.gLine4OffsetX}
+                               gLine4OffsetXInitial={this.props.gLine4OffsetXInitial}
+                               gLine4OffsetY={this.props.gLine4OffsetY}
+                               gLine4OffsetYInitial={this.props.gLine4OffsetYInitial}
+                               gNeedsSubmit={this.props.gNeedsSubmit}
+                               gShowIntersection={this.props.gShowIntersection}
+                               gDisplayShadow={this.props.gDisplayShadow}
+                               gIntersectionLabel={this.props.gIntersectionLabel}
+                               gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                               gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                               gAreaConfiguration={this.props.gAreaConfiguration}
+                               gAreaConfigurationInitial={
+                                   this.props.gAreaConfigurationInitial}
+                               gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+
+                               gAreaAName={this.props.gAreaAName}
+                               gAreaBName={this.props.gAreaBName}
+                               gAreaCName={this.props.gAreaCName}
+                           />;
+
+                rightSide = <DemandSupplyEditor
+                               isInstructor={isInstructor}
+                               displayLabels={displayLabels}
+                               displaySliders={displaySliders}
+                               gLine1Label={this.props.gLine1Label}
+                               gLine2Label={this.props.gLine2Label}
+                               gLine3Label={this.props.gLine3Label}
+                               gLine4Label={this.props.gLine4Label}
+                               gLine1Slope={this.props.gLine1Slope}
+                               gLine2Slope={this.props.gLine2Slope}
+                               gLine3Slope={this.props.gLine3Slope}
+                               gLine4Slope={this.props.gLine4Slope}
+                               gLine1OffsetX={this.props.gLine1OffsetX}
+                               gLine1OffsetY={this.props.gLine1OffsetY}
+                               gLine2OffsetX={this.props.gLine2OffsetX}
+                               gLine2OffsetY={this.props.gLine2OffsetY}
+                               gLine3OffsetX={this.props.gLine3OffsetX}
+                               gLine3OffsetY={this.props.gLine3OffsetY}
+                               gLine4OffsetX={this.props.gLine4OffsetX}
+                               gLine4OffsetY={this.props.gLine4OffsetY}
+                               gXAxisLabel={this.props.gXAxisLabel}
+                               gYAxisLabel={this.props.gYAxisLabel}
+                               gIntersectionLabel={this.props.gIntersectionLabel}
+                               gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                               gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                               gAreaConfiguration={this.props.gAreaConfiguration}
+                               gIsAreaDisplayed={this.props.gIsAreaDisplayed}
+                               gAreaAName={this.props.gAreaAName}
+                               gAreaBName={this.props.gAreaBName}
+                               gAreaCName={this.props.gAreaCName}
+
+                               showAUC={this.props.gType === 9}
+                               updateGraph={this.updateGraph}
+                                                          />;
+            } else if (this.props.gType === 14) {
             // Non-Linear Demand Supply horiz. joint graph
             leftSide = <JXGBoard
                            id={'editing-graph'}
@@ -635,6 +725,7 @@ export default class GraphViewer extends React.Component {
                             showAUC={this.props.gType === 10}
                             updateGraph={this.updateGraph}
                         />;
+            }
 
             // Show side-by-side view here.
             return (
