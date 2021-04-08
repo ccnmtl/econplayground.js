@@ -338,7 +338,7 @@ class Viewer extends Component {
             }
             me.setState({
                 [`gLine${line}OffsetX`]: offset.x,
-                [`gLine2OffsetY`]: offset.y
+                [`gLine${line}OffsetY`]: offset.y
             });
         });
         document.addEventListener('l3offset', function(e) {

@@ -183,7 +183,6 @@ class Graph {
                     if (me.options.isBoard2) {
                         line += 2;
                     }
-
                     const offsetEvt = new CustomEvent('l1offset', {
                         detail: {
                             x: 0,
@@ -217,7 +216,6 @@ class Graph {
                     if (me.options.isBoard2) {
                         line += 2;
                     }
-
                     const offsetEvt = new CustomEvent('l1offset', {
                         detail: {
                             x: 0,
@@ -241,7 +239,7 @@ class Graph {
                     const offset = getOffset(
                         me.l2.getSlope(), me.l2.getRise(), 2.5);
 
-                    let line = 1;
+                    let line = 2;
                     if (me.options.isBoard2) {
                         line += 2;
                     }
@@ -273,7 +271,7 @@ class Graph {
 
                     const offset = getOffset(
                         me.l2.getSlope(), me.l2.getRise(), 2.5);
-                    let line = 1;
+                    let line = 2;
                     if (me.options.isBoard2) {
                         line += 2;
                     }
