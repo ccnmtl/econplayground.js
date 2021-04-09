@@ -1469,10 +1469,10 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
         const c1 = this.getC1(y1, y2, W, r, beta);
         const c2 = this.getC2(y1, y2, W, r, beta);
 
-        const uStar = this.U(c1, c2, beta);
+        const Ustar = this.U(c1, c2, beta);
 
         const f = function(x) {
-            const result = (uStar - Math.log(x)) / beta;
+            const result = (Ustar - Math.log(x)) / beta;
             return Math.E ** result;
         };
 
@@ -1576,6 +1576,43 @@ class ConsumptionLeisureOptimalChoiceGraph extends ConsumptionLeisureGraph {
      */
     U(f, c, alpha) {
         return (f ** alpha) * c ** (1 - alpha);
+    }
+    drawUCurve(isShadow=false) {
+        const T = this.options.gA1;
+        const w = this.options.gA2;
+        const alpha = this.options.gA3;
+        const t = this.options.gA4;
+
+        const f = T * alpha;
+        const c = T * (-w + (t * w)) * (-1 + alpha);
+
+        const Ustar = this.U(f, c, alpha);
+
+        const cFunc = function(x) {
+            // TODO: fix this function
+            //const Ustar = me.U(x, c, alpha);
+            //const result = ((x ** (-alpha)) * Ustar) ** (1 / (1 - alpha));
+            const result = (Ustar - Math.log(x)) / alpha;
+            return result;
+        };
+
+        this.board.create('functiongraph', [cFunc, 0, 10], {
+            name: this.options.gLine2Label,
+            withLabel: !isShadow,
+            strokeWidth: 2,
+            strokeColor: isShadow ? this.shadowColor : this.l2Color,
+            // This graph is only moved by its RangeEditors, not by
+            // dragging.
+            fixed: true,
+            highlight: false,
+            recursionDepthLow: 8,
+            recursionDepthHigh: 15
+        });
+    }
+    make() {
+        super.make();
+
+        this.drawUCurve();
     }
 }
 
