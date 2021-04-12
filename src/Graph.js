@@ -469,6 +469,11 @@ export const mkDemandSupply = function(board, options) {
 
 class DemandSupplyGraphAUC extends DemandSupplyGraph {
     drawAreaA(shadow=false, areaConf, intersection, l2) {
+        if (!l2) {
+            console.error('error: l2 is missing!');
+            return;
+        }
+
         const p1 = this.board.create('point', [
             0,
             // getRise() returns the y-intercept
@@ -498,6 +503,15 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         );
     }
     drawAreaAB(shadow=false, intersection, l1, l2) {
+        if (!l1) {
+            console.error('error: l1 is missing!');
+            return;
+        }
+        if (!l2) {
+            console.error('error: l2 is missing!');
+            return;
+        }
+
         const yIntercept = l1.getRise();
         let points = [];
 
@@ -543,6 +557,11 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
             shadow ? this.shadowAreaColor : AREA_A_COLOR);
     }
     drawAreaB(shadow=false, areaConf, intersection, l1) {
+        if (!l1) {
+            console.error('error: l1 is missing!');
+            return;
+        }
+
         const yIntercept = l1.getRise();
         let points = [];
 
@@ -592,6 +611,11 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
     }
 
     drawAreaC(shadow=false, areaConf, intersection, l1) {
+        if (!l1) {
+            console.error('error: l1 is missing!');
+            return;
+        }
+
         const yIntercept = l1.getRise();
         let points = [];
 
@@ -677,7 +701,7 @@ class DemandSupplyGraphAUC extends DemandSupplyGraph {
         // configuration".
         if (areaConf === 0 || areaConf === 3) {
             this.drawAreaA(
-                true, this.shadowIntersection, this.l2fShadow);
+                true, areaConf, this.shadowIntersection, this.l2fShadow);
         }
         if (areaConf === 1 || areaConf === 3 || areaConf === 4) {
             this.drawAreaB(
