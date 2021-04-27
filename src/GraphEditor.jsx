@@ -220,25 +220,19 @@ export default class GraphEditor extends React.Component {
                                 }
                             </div>
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <CommonGraphSettings
-                                    gAssignmentType={this.props.gAssignmentType}
-                                    gNeedsSubmit={this.props.gNeedsSubmit}
-                                    gDisplayFeedback={this.props.gDisplayFeedback}
-                                    gShowIntersection={this.props.gShowIntersection}
-                                    gDisplayShadow={this.props.gDisplayShadow}
-                                    gIsPublished={this.props.gIsPublished}
-                                    gIsFeatured={this.props.gIsFeatured}
-                                    gTopic={this.props.gTopic}
-                                    updateGraph={this.props.updateGraph}
-                                />
                                 <DemandSupplyEditor
                                     displayLabels={true}
                                     displaySliders={true}
                                     isInstructor={true}
+                                    gType={this.props.gType}
                                     gLine1Label={this.props.gLine1Label}
                                     gLine2Label={this.props.gLine2Label}
+                                    gLine3Label={this.props.gLine3Label}
+                                    gLine4Label={this.props.gLine4Label}
                                     gLine1Slope={this.props.gLine1Slope}
                                     gLine2Slope={this.props.gLine2Slope}
+                                    gLine3Slope={this.props.gLine3Slope}
+                                    gLine4Slope={this.props.gLine4Slope}
                                     gLine1OffsetX={this.props.gLine1OffsetX}
                                     gLine1OffsetY={this.props.gLine1OffsetY}
                                     gLine2OffsetX={this.props.gLine2OffsetX}
@@ -257,6 +251,17 @@ export default class GraphEditor extends React.Component {
                                     gAreaCName={this.props.gAreaCName}
 
                                     showAUC={this.props.gType === 9}
+                                    updateGraph={this.props.updateGraph}
+                                />
+                                <CommonGraphSettings
+                                    gAssignmentType={this.props.gAssignmentType}
+                                    gNeedsSubmit={this.props.gNeedsSubmit}
+                                    gDisplayFeedback={this.props.gDisplayFeedback}
+                                    gShowIntersection={this.props.gShowIntersection}
+                                    gDisplayShadow={this.props.gDisplayShadow}
+                                    gIsPublished={this.props.gIsPublished}
+                                    gIsFeatured={this.props.gIsFeatured}
+                                    gTopic={this.props.gTopic}
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
@@ -888,12 +893,15 @@ GraphEditor.propTypes = {
     gLine1Slope: PropTypes.number.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
     gLine3Slope: PropTypes.number.isRequired,
+    gLine4Slope: PropTypes.number.isRequired,
     gLine1OffsetX: PropTypes.number.isRequired,
     gLine1OffsetY: PropTypes.number.isRequired,
     gLine2OffsetX: PropTypes.number.isRequired,
     gLine2OffsetY: PropTypes.number.isRequired,
     gLine3OffsetX: PropTypes.number.isRequired,
     gLine3OffsetY: PropTypes.number.isRequired,
+    gLine4OffsetX: PropTypes.number,
+    gLine4OffsetY: PropTypes.number,
     gLine1Dashed: PropTypes.bool.isRequired,
     gLine2Dashed: PropTypes.bool.isRequired,
     gLine3Dashed: PropTypes.bool.isRequired,

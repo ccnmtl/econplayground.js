@@ -927,6 +927,8 @@ GraphViewer.propTypes = {
     gLine2SlopeInitial: PropTypes.number,
     gLine3Slope: PropTypes.number,
     gLine3SlopeInitial: PropTypes.number,
+    gLine4Slope: PropTypes.number,
+    gLine4SlopeInitial: PropTypes.number,
 
     gLine1OffsetX: PropTypes.number.isRequired,
     gLine1OffsetY: PropTypes.number.isRequired,
