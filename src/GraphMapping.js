@@ -237,7 +237,7 @@ const importGraph = function(json, obj) {
         updateObj.gA3 = 0.5;
     }
 
-    obj.setState(Object.assign({}, updateObj, initialStateObj));
+    return obj.setState(Object.assign({}, updateObj, initialStateObj));
 };
 
 const defaultGraph = {
@@ -274,15 +274,20 @@ const defaultGraph = {
     gLine1Slope: 1,
     gLine2Slope: -1,
     gLine3Slope: 999,
-    gLine3Label: '',
+    gLine4Slope: -1,
+
     gLine1OffsetX: 0,
     gLine1OffsetY: 0,
     gLine2OffsetX: 0,
     gLine2OffsetY: 0,
     gLine3OffsetX: 0,
     gLine3OffsetY: 0,
+    gLine4OffsetX: 0,
+    gLine4OffsetY: 0,
     gLine1Label: '',
     gLine2Label: '',
+    gLine3Label: '',
+    gLine4Label: '',
     gLine1Dashed: false,
     gLine2Dashed: false,
     gLine3Dashed: false,
