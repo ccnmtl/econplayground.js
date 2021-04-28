@@ -163,6 +163,72 @@ export default class DemandSupplyEditor extends React.Component {
                 </React.Fragment>
             )}
 
+                   {this.props.displayLabels && this.props.gType === 13 && (
+                       <>
+                           <h4>Right-hand graph labels</h4>
+                           <div className="row">
+                               <EditableControl
+                                   id="gLine3Label"
+                                   name="Orange line label"
+                                   value={this.props.gLine3Label}
+                                   valueEditable={true}
+                                   isInstructor={true}
+                                   updateGraph={this.props.updateGraph}/>
+                               <EditableControl
+                                   id="gLine4Label"
+                                   name="Blue line label"
+                                   value={this.props.gLine4Label}
+                                   valueEditable={true}
+                                   isInstructor={true}
+                                   updateGraph={this.props.updateGraph}/>
+                           </div>
+
+                           <div className="row">
+                               <EditableControl
+                                   id="gXAxis2Label"
+                                   name="X-axis label"
+                                   value={this.props.gXAxis2Label}
+                                   valueEditable={true}
+                                   isInstructor={true}
+                                   updateGraph={this.props.updateGraph}/>
+                               <EditableControl
+                                   id="gYAxis2Label"
+                                   name="Y-axis label"
+                                   value={this.props.gYAxis2Label}
+                                   valueEditable={true}
+                                   isInstructor={true}
+                                   updateGraph={this.props.updateGraph}/>
+                           </div>
+
+                           <div className="row">
+                               <EditableControl
+                                   id="gIntersection2Label"
+                                   name="Intersection point label"
+                                   value={this.props.gIntersection2Label}
+                                   valueEditable={true}
+                                   isInstructor={true}
+                                   updateGraph={this.props.updateGraph}/>
+                           </div>
+
+                           <div className="row">
+                               <EditableControl
+                                   id="gIntersection2HorizLineLabel"
+                                   name="Intersection&apos;s horizontal line label"
+                                   value={this.props.gIntersection2HorizLineLabel}
+                                   valueEditable={true}
+                                   isInstructor={true}
+                                   updateGraph={this.props.updateGraph}/>
+                               <EditableControl
+                                   id="gIntersection2VertLineLabel"
+                                   name="Intersection&apos;s vertical line label"
+                                   value={this.props.gIntersection2VertLineLabel}
+                                   valueEditable={true}
+                                   isInstructor={true}
+                                   updateGraph={this.props.updateGraph}/>
+                           </div>
+                       </>
+                   )}
+
             {this.props.showAUC && (
                 <>
                     <AreaConfiguration
@@ -190,8 +256,15 @@ DemandSupplyEditor.propTypes = {
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
 
+    gIntersection2Label: PropTypes.string,
+    gIntersection2HorizLineLabel: PropTypes.string,
+    gIntersection2VertLineLabel: PropTypes.string,
+
     gXAxisLabel: PropTypes.string.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,
+
+    gXAxis2Label: PropTypes.string,
+    gYAxis2Label: PropTypes.string,
 
     gLine1Slope: PropTypes.number.isRequired,
     gLine1Label: PropTypes.string.isRequired,

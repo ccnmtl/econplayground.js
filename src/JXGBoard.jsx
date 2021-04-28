@@ -145,6 +145,8 @@ export default class JXGBoard extends React.Component {
                 gIntersection3VertLineLabel: options.gIntersection3VertLineLabel,
                 gXAxisLabel: options.gXAxisLabel,
                 gYAxisLabel: options.gYAxisLabel,
+                gXAxis2Label: options.gXAxis2Label,
+                gYAxis2Label: options.gYAxis2Label,
                 gLine1Label: options.gLine1Label,
                 gLine2Label: options.gLine2Label,
                 gLine3Label: options.gLine3Label,
@@ -325,20 +327,22 @@ export default class JXGBoard extends React.Component {
                     shadow: this.props.shadow
                 });
             } else if (options.gType === 13) {
-                // LDS Horizontal Joint graph
+                // LDS Horizontal Joint graph, right-side graph
                 mkDemandSupply(this.board2, {
                     isBoard2: true,
                     gType: options.gType,
                     gShowIntersection: options.gShowIntersection,
                     gDisplayIntersection1: options.gDisplayIntersection1,
                     gDisplayIntersection1Initial: options.gDisplayIntersection1Initial,
-                    gIntersectionLabel: options.gIntersectionLabel,
 
                     gDisplayShadow: options.gDisplayShadow,
-                    gIntersectionHorizLineLabel: options.gIntersectionHorizLineLabel,
-                    gIntersectionVertLineLabel: options.gIntersectionVertLineLabel,
-                    gXAxisLabel: options.gXAxisLabel,
-                    gYAxisLabel: options.gYAxisLabel,
+
+                    gIntersectionLabel: options.gIntersection2Label,
+                    gIntersectionHorizLineLabel: options.gIntersection2HorizLineLabel,
+                    gIntersectionVertLineLabel: options.gIntersection2VertLineLabel,
+
+                    gXAxisLabel: options.gXAxis2Label,
+                    gYAxisLabel: options.gYAxis2Label,
                     gLine1Label: options.gLine3Label,
                     gLine2Label: options.gLine4Label,
                     gLine1Slope: options.gLine3Slope,
@@ -646,7 +650,10 @@ export default class JXGBoard extends React.Component {
                 this.board.defaultAxes.x.name = this.props.gXAxisLabel;
                 this.board.update();
             }
-            if (this.board2 && this.board2.defaultAxes) {
+            if (
+                this.board2 && this.board2.defaultAxes
+                    && this.props.gType !== 13
+            ) {
                 this.board2.defaultAxes.x.name = this.props.gXAxisLabel;
                 this.board2.update();
             }
@@ -837,6 +844,9 @@ export default class JXGBoard extends React.Component {
                     options.gCobbDouglasKName,
                     options.gNName
                 );
+            } else if (options.gType === 13) {
+                xLabel = options.gXAxis2Label;
+                yLabel = options.gYAxis2Label;
             }
 
             this.board2 = JXG.JSXGraph.initBoard(
@@ -1064,6 +1074,8 @@ JXGBoard.propTypes = {
     gLine4Label: PropTypes.string,
     gXAxisLabel: PropTypes.string,
     gYAxisLabel: PropTypes.string,
+    gXAxis2Label: PropTypes.string,
+    gYAxis2Label: PropTypes.string,
     gLine1Slope: PropTypes.number,
     gLine1SlopeInitial: PropTypes.number,
     gLine2Slope: PropTypes.number,
