@@ -567,6 +567,8 @@ export default class GraphViewer extends React.Component {
                                gLine4Label={this.props.gLine4Label}
                                gXAxisLabel={this.props.gXAxisLabel}
                                gYAxisLabel={this.props.gYAxisLabel}
+                               gXAxis2Label={this.props.gXAxis2Label}
+                               gYAxis2Label={this.props.gYAxis2Label}
                                gLine1Slope={this.props.gLine1Slope}
                                gLine1SlopeInitial={this.props.gLine1SlopeInitial}
                                gLine2Slope={this.props.gLine2Slope}
@@ -630,8 +632,13 @@ export default class GraphViewer extends React.Component {
                                gLine4OffsetY={this.props.gLine4OffsetY}
                                gXAxisLabel={this.props.gXAxisLabel}
                                gYAxisLabel={this.props.gYAxisLabel}
+                               gXAxis2Label={this.props.gXAxis2Label}
+                               gYAxis2Label={this.props.gYAxis2Label}
                                gIntersectionLabel={this.props.gIntersectionLabel}
                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
+                               gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                               gIntersection2Label={this.props.gIntersection2Label}
+                               gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
                                gAreaConfiguration={this.props.gAreaConfiguration}
                                gIsAreaDisplayed={this.props.gIsAreaDisplayed}

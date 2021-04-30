@@ -170,6 +170,8 @@ export default class GraphEditor extends React.Component {
                                 gLine4Label={this.props.gLine4Label}
                                 gXAxisLabel={this.props.gXAxisLabel}
                                 gYAxisLabel={this.props.gYAxisLabel}
+                                gXAxis2Label={this.props.gXAxis2Label}
+                                gYAxis2Label={this.props.gYAxis2Label}
                                 gLine1Slope={this.props.gLine1Slope}
                                 gLine2Slope={this.props.gLine2Slope}
                                 gLine3Slope={this.props.gLine3Slope}
@@ -186,6 +188,9 @@ export default class GraphEditor extends React.Component {
                                 gIntersectionLabel={this.props.gIntersectionLabel}
                                 gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                 gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+                                gIntersection2Label={this.props.gIntersection2Label}
+                                gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                                gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
                             />
 
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -239,9 +244,15 @@ export default class GraphEditor extends React.Component {
                                     gLine2OffsetY={this.props.gLine2OffsetY}
                                     gXAxisLabel={this.props.gXAxisLabel}
                                     gYAxisLabel={this.props.gYAxisLabel}
+                                    gXAxis2Label={this.props.gXAxis2Label}
+                                    gYAxis2Label={this.props.gYAxis2Label}
                                     gIntersectionLabel={this.props.gIntersectionLabel}
                                     gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                     gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
+
+                                    gIntersection2Label={this.props.gIntersection2Label}
+                                    gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                                    gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
 
                                     gAreaConfiguration={this.props.gAreaConfiguration}
                                     gIsAreaDisplayed={this.props.gIsAreaDisplayed}

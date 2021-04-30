@@ -79,6 +79,8 @@ class Editor extends Component {
                         gLine3Dashed={this.state.gLine3Dashed}
                         gXAxisLabel={this.state.gXAxisLabel}
                         gYAxisLabel={this.state.gYAxisLabel}
+                        gXAxis2Label={this.state.gXAxis2Label}
+                        gYAxis2Label={this.state.gYAxis2Label}
                         gLine1OffsetX={this.state.gLine1OffsetX}
                         gLine1OffsetY={this.state.gLine1OffsetY}
                         gLine2OffsetX={this.state.gLine2OffsetX}

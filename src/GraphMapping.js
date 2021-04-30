@@ -81,6 +81,9 @@ const exportGraph = function(state) {
         x_axis_label: state.gXAxisLabel,
         y_axis_label: state.gYAxisLabel,
 
+        x_axis_2_label: state.gXAxis2Label,
+        y_axis_2_label: state.gYAxis2Label,
+
         // I'm using these A and K fields for the non-linear
         // demand-supply graph and the cobb-douglas graph. The names
         // should be generalized.
@@ -193,6 +196,9 @@ const importGraph = function(json, obj) {
         gXAxisLabel: json.x_axis_label,
         gYAxisLabel: json.y_axis_label,
 
+        gXAxis2Label: json.x_axis_2_label,
+        gYAxis2Label: json.y_axis_2_label,
+
         gCobbDouglasA: window.parseFloat(json.cobb_douglas_a),
         gCobbDouglasAName: json.cobb_douglas_a_name,
         gCobbDouglasL: window.parseFloat(json.cobb_douglas_l),
@@ -293,6 +299,8 @@ const defaultGraph = {
     gLine3Dashed: false,
     gXAxisLabel: '',
     gYAxisLabel: '',
+    gXAxis2Label: '',
+    gYAxis2Label: '',
 
     gAlpha: 0.3,
     gOmega: 1,
