@@ -1606,16 +1606,12 @@ class ConsumptionLeisureOptimalChoiceGraph extends ConsumptionLeisureGraph {
         const t = this.options.gA4;
 
         const f = T * alpha;
-        const c = T * (-w + (t * w)) * (-1 + alpha);
+        const c = (T - f) * (1 - t) * w;
 
         const Ustar = this.U(f, c, alpha);
 
         const cFunc = function(x) {
-            // TODO: fix this function
-            //const Ustar = me.U(x, c, alpha);
-            //const result = ((x ** (-alpha)) * Ustar) ** (1 / (1 - alpha));
-            const result = (Ustar - Math.log(x)) / alpha;
-            return result;
+            return (x ** (-alpha) * Ustar) ** (1 / (1 - alpha))
         };
 
         this.board.create('functiongraph', [cFunc, 0, 10], {
