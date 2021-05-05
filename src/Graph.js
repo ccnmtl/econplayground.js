@@ -1275,8 +1275,16 @@ class ConsumptionLeisureGraph extends Graph {
             });
         }
 
+        const T = this.options.gA1;
+        const w = this.options.gA2;
+        const t = this.options.gA4;
+
         const f1 = function(x) {
-            return (me.options.gA1 - x) * me.options.gA2;
+            if (me.options.gType === 15) {
+                return (T - x) * w * (1 - t);
+            } else {
+                return (T - t - x) * w;
+            }
         };
 
         this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
@@ -1626,11 +1634,50 @@ class ConsumptionLeisureOptimalChoiceGraph extends ConsumptionLeisureGraph {
             recursionDepthLow: 8,
             recursionDepthHigh: 15
         });
+
+        return [f, c];
+    }
+    drawOptimalPoint(isShadow=false, f, c) {
+        const p1 = this.board.create(
+            'point', [f, 0],
+            invisiblePointOptions);
+
+        const p2 = this.board.create(
+            'point', [0, c],
+            invisiblePointOptions);
+
+        const l1 = this.board.create('line', [p1, [p1.X(), p2.Y()]], {
+            straightFirst: false,
+            straightLast: false,
+            dash: 1,
+            highlight: false,
+            visible: false,
+            strokeWidth: 0
+        });
+
+        const l2 = this.board.create('line', [p2, [p1.X(), p2.Y()]], {
+            straightFirst: false,
+            straightLast: false,
+            dash: 1,
+            highlight: false,
+            visible: false,
+            strokeWidth: 0
+        });
+
+        this.showIntersection(
+            l1, l2, isShadow,
+            this.options.gIntersectionLabel,
+            this.options.gIntersection2HorizLineLabel,
+            this.options.gIntersection2VertLineLabel,
+            false, 'blue'
+        );
     }
     make() {
         super.make();
 
-        this.drawUCurve();
+        const [f, c] = this.drawUCurve();
+
+        this.drawOptimalPoint(false, f, c);
     }
 }
 
