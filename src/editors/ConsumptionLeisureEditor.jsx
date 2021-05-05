@@ -105,6 +105,16 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                 isInstructor={this.props.isInstructor}
                                 updateGraph={this.props.updateGraph}
                             />
+                            {this.props.gType === 15 && (
+                                <EditableControl
+                                    id="gIntersectionLabel"
+                                    name="Optimal point label"
+                                    value={this.props.gIntersectionLabel}
+                                    valueEditable={true}
+                                    isInstructor={this.props.isInstructor}
+                                    updateGraph={this.props.updateGraph}
+                                />
+                            )}
                         </div>
                     </React.Fragment>
                 )}
@@ -153,6 +163,28 @@ export default class ConsumptionLeisureEditor extends React.Component {
                 </div>
                 )}
 
+                {this.props.gType === 15 && this.props.displayLabels && (
+                    <div className="row">
+                        <EditableControl
+                            id="gIntersection2HorizLineLabel"
+                            name="Optimal point&apos;s horizontal line label"
+                            value={this.props.gIntersection2HorizLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+
+                        <EditableControl
+                            id="gIntersection2VertLineLabel"
+                            name="Optimal point&apos;s vertical line label"
+                            value={this.props.gIntersection2VertLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
+                )}
+
             </div>
         );
     }
@@ -163,6 +195,9 @@ ConsumptionLeisureEditor.propTypes = {
     gIntersectionLabel: PropTypes.string.isRequired,
     gIntersectionHorizLineLabel: PropTypes.string.isRequired,
     gIntersectionVertLineLabel: PropTypes.string.isRequired,
+
+    gIntersection2HorizLineLabel: PropTypes.string,
+    gIntersection2VertLineLabel: PropTypes.string,
 
     gXAxisLabel: PropTypes.string.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,
