@@ -302,7 +302,7 @@ class Graph {
      */
     showIntersection(
         l1, l2, isShadow=false, label, horizLabel, vertLabel,
-        extendVertLine=false, color='red'
+        extendVertLine=false, extendHorizLine=false, color='red'
     ) {
         if (label === null || typeof label === 'undefined') {
             label = this.options.gIntersectionLabel;
@@ -319,6 +319,11 @@ class Graph {
             getIntersectionPointOptions(label, isShadow, color)
         );
 
+        let i3 = i;
+        if (extendHorizLine) {
+            i3 = [10, i.Y()];
+        }
+
         let p1 = this.board.create('point', [0, i.Y()], {
             size: 0,
             name: horizLabel || '',
@@ -327,7 +332,7 @@ class Graph {
             highlight: false,
             showInfobox: false
         });
-        this.board.create('line', [p1, i], {
+        this.board.create('line', [p1, i3], {
             dash: 1,
             highlight: false,
             strokeColor: 'black',
@@ -455,7 +460,15 @@ class DemandSupplyGraph extends Graph {
             });
 
         if (this.options.gShowIntersection) {
-            this.showIntersection(this.l1, this.l2);
+            if (this.options.gType === 13 && !this.options.isBoard2) {
+                this.showIntersection(
+                    this.l1, this.l2, false,
+                    null, null, null, false,
+                    // extend horizontal line
+                    true);
+            } else {
+                this.showIntersection(this.l1, this.l2);
+            }
         }
     }
 }
@@ -1553,7 +1566,7 @@ class OptimalChoiceGraph extends ConsumptionSavingGraph {
             this.options.gIntersection2Label,
             this.options.gIntersection2HorizLineLabel,
             this.options.gIntersection2VertLineLabel,
-            false, 'blue'
+            false, false, 'blue'
         );
     }
     /**
@@ -1669,7 +1682,7 @@ class ConsumptionLeisureOptimalChoiceGraph extends ConsumptionLeisureGraph {
             this.options.gIntersectionLabel,
             this.options.gIntersection2HorizLineLabel,
             this.options.gIntersection2VertLineLabel,
-            false, 'blue'
+            false, false, 'blue'
         );
     }
     make() {
