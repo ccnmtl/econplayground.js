@@ -1279,13 +1279,16 @@ class ConsumptionLeisureGraph extends Graph {
         const w = this.options.gA2;
         const t = this.options.gA4;
 
-        const f1 = function(x) {
-            if (me.options.gType === 15) {
+        let f1;
+        if (me.options.gType === 15) {
+            f1 = function(x) {
                 return (T - x) * w * (1 - t);
-            } else {
+            };
+        } else {
+            f1 = function(x) {
                 return (T - t - x) * w;
-            }
-        };
+            };
+        }
 
         this.l1 = this.board.create('functiongraph', [f1, -30, 30], {
             name: this.options.gLine1Label,
