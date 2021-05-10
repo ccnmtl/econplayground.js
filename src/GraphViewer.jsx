@@ -605,6 +605,10 @@ export default class GraphViewer extends React.Component {
                                gIntersectionHorizLineLabel={this.props.gIntersectionHorizLineLabel}
                                gIntersectionVertLineLabel={this.props.gIntersectionVertLineLabel}
 
+                               gIntersection2Label={this.props.gIntersection2Label}
+                               gIntersection2HorizLineLabel={this.props.gIntersection2HorizLineLabel}
+                               gIntersection2VertLineLabel={this.props.gIntersection2VertLineLabel}
+
                                gAreaConfiguration={this.props.gAreaConfiguration}
                                gAreaConfigurationInitial={
                                    this.props.gAreaConfigurationInitial}
@@ -930,9 +934,12 @@ GraphViewer.propTypes = {
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
     gLine3Label: PropTypes.string.isRequired,
+    gLine4Label: PropTypes.string,
 
     gXAxisLabel: PropTypes.string,
     gYAxisLabel: PropTypes.string,
+    gXAxis2Label: PropTypes.string,
+    gYAxis2Label: PropTypes.string,
     gLine1Slope: PropTypes.number.isRequired,
     gLine1SlopeInitial: PropTypes.number,
     gLine2Slope: PropTypes.number,

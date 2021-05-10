@@ -666,6 +666,21 @@ export default class JXGBoard extends React.Component {
             }
         }
 
+        if (this.props.gType === 13) {
+            if (this.board2 &&
+                prevProps.gXAxis2Label !== this.props.gXAxis2Label
+               ) {
+                this.board2.defaultAxes.x.name = this.props.gXAxis2Label;
+                this.board2.update();
+            }
+            if (this.board2 &&
+                prevProps.gYAxis2Label !== this.props.gYAxis2Label
+               ) {
+                this.board2.defaultAxes.y.name = this.props.gYAxis2Label;
+                this.board2.update();
+            }
+        }
+
         if (
             (this.props.gType === 1 ||
              this.props.gType === 10 ||
@@ -909,6 +924,7 @@ export default class JXGBoard extends React.Component {
             gLine1Label: this.props.gLine1Label,
             gLine2Label: this.props.gLine2Label,
             gLine3Label: this.props.gLine3Label,
+            gLine4Label: this.props.gLine4Label,
             gLine1Slope: this.props.gLine1Slope,
             gLine1SlopeInitial: this.props.gLine1SlopeInitial,
             gLine2Slope: this.props.gLine2Slope,

@@ -905,6 +905,7 @@ GraphEditor.propTypes = {
     gLine1Label: PropTypes.string.isRequired,
     gLine2Label: PropTypes.string.isRequired,
     gLine3Label: PropTypes.string.isRequired,
+    gLine4Label: PropTypes.string,
     gLine1Slope: PropTypes.number.isRequired,
     gLine2Slope: PropTypes.number.isRequired,
     gLine3Slope: PropTypes.number.isRequired,
@@ -923,6 +924,8 @@ GraphEditor.propTypes = {
 
     gXAxisLabel: PropTypes.string.isRequired,
     gYAxisLabel: PropTypes.string.isRequired,
+    gXAxis2Label: PropTypes.string.isRequired,
+    gYAxis2Label: PropTypes.string.isRequired,
     gType: PropTypes.number,
     gAssignmentType: PropTypes.number,
     gNeedsSubmit: PropTypes.bool,
