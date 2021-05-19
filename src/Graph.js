@@ -1624,10 +1624,19 @@ class ConsumptionLeisureOptimalChoiceGraph extends ConsumptionLeisureGraph {
         return (f ** alpha) * c ** (1 - alpha);
     }
     drawUCurve(isShadow=false) {
-        const T = this.options.gA1;
-        const w = this.options.gA2;
-        const alpha = this.options.gA3;
-        const t = this.options.gA4;
+        let T, w, alpha, t;
+
+        if (isShadow) {
+            T = this.options.gA1Initial;
+            w = this.options.gA2Initial;
+            alpha = this.options.gA3Initial;
+            t = this.options.gA4Initial;
+        } else {
+            T = this.options.gA1;
+            w = this.options.gA2;
+            alpha = this.options.gA3;
+            t = this.options.gA4;
+        }
 
         const f = T * alpha;
         const c = (T - f) * (1 - t) * w;
@@ -1690,6 +1699,10 @@ class ConsumptionLeisureOptimalChoiceGraph extends ConsumptionLeisureGraph {
     }
     make() {
         super.make();
+
+        // Shadow curve and point
+        const [shadowF, shadowC] = this.drawUCurve(true);
+        this.drawOptimalPoint(true, shadowF, shadowC);
 
         const [f, c] = this.drawUCurve();
 
