@@ -134,6 +134,7 @@ class Editor extends Component {
     onSelectGraph(type) {
         let gA1default = 0;
         let gA2default = 0;
+        let gA3default = 0;
 
         // Initialize different graph types with their own default
         // values.
@@ -148,6 +149,7 @@ class Editor extends Component {
             case 15:
                 gA1default = 4;
                 gA2default = 1;
+                gA3default = 0.5;
                 break;
             default:
                 break;
@@ -157,7 +159,8 @@ class Editor extends Component {
             step: 1,
             gType: type,
             gA1: gA1default,
-            gA2: gA2default
+            gA2: gA2default,
+            gA3: gA3default
         });
     }
     /**
