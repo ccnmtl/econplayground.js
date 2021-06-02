@@ -9,7 +9,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
     render() {
         let tex = '';
         if (this.props.gType === 15) {
-            tex = String.raw`c = (${this.props.gA1} - x)w(1 - ${this.props.gA4})`;
+            tex = String.raw`c = (${this.props.gA1} - f)w(1 - ${this.props.gA4})`;
         } else {
             tex = String.raw`c = (${this.props.gA1} - x)w`;
         }
@@ -104,7 +104,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                         <div className="row">
                             <EditableControl
                                 id="gLine1Label"
-                                name="Orange line label"
+                                name={'Budget line label'}
                                 value={this.props.gLine1Label}
                                 valueEditable={true}
                                 isInstructor={this.props.isInstructor}
