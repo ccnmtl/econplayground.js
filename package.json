@@ -38,7 +38,7 @@
     "babel-loader": "~8.2.1",
     "bfj": "^7.0.2",
     "canvas": "~2.8.0",
-    "eslint": "~7.28.0",
+    "eslint": "~7.29.0",
     "eslint-config-react-app": "~6.0.0",
     "eslint-loader": "~4.0.0",
     "eslint-plugin-import": "~2.23.2",
