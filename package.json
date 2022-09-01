@@ -15,7 +15,7 @@
     "mathjax-full": "^3.1.2",
     "mathjax-react": "CharlieMcVicker/mathjax-react",
     "object-assign": "~4.1.1",
-    "promise": "~8.1.0",
+    "promise": "~8.2.0",
     "react": "~17.0.1",
     "react-dom": "~17.0.1",
     "webpack": "~5.74.0",
