@@ -148,6 +148,9 @@ const handleFormUpdate = function(e) {
         case 'button':
             obj[id] = forceNumber(e.target.value);
             break;
+        case 'button':
+            obj[id] = Number(e.target.value).toFixed(2)
+            break;
         default:
             obj[id] = e.target.value;
     }
