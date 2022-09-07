@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isNumber } from 'lodash';
+import { btnStep } from '../utils';
 
 /**
  * RangeEditor is a re-usable component that creates an <input> with
@@ -38,23 +38,21 @@ export default class RangeEditor extends React.Component {
                                 {this.props.max}
                             </div>
                         )}
-                        <input
-                            className=""
-                            data-id={this.props.dataId}
-                            type="number"
-                            onChange={this.props.handler}
-                            value={this.props.value}
-                            step={this.props.step || 0.01}
-                            min={this.props.min}
-                            max={this.props.max}
-                        />
+                    </div>
+                    <div className='ml-2 row'>
                         <button
                             className="btn btn-primary ml-2"
                             id={this.props.id}
                             data-id={this.props.dataId}
                             type="button"
                             onClick={this.props.handler}
-                            value={this.btnStep(-1, Number(this.props.step) * 10 || 0.1)}
+                            value={
+                                btnStep(
+                                    Number(this.props.value), 
+                                    -1, 
+                                    Number(this.props.step) * 10 || 0.1, 
+                                    Number(this.props.min),
+                                    Number(this.props.max))}
                         >&lt;&lt;&lt;</button>
                         <button
                             className="btn btn-primary ml-2"
@@ -62,7 +60,13 @@ export default class RangeEditor extends React.Component {
                             data-id={this.props.dataId}
                             type="button"
                             onClick={this.props.handler}
-                            value={this.btnStep(-1, Number(this.props.step) || 0.01)}
+                            value={
+                                btnStep(
+                                    Number(this.props.value), 
+                                    -1, 
+                                    Number(this.props.step) || 0.01, 
+                                    Number(this.props.min),
+                                    Number(this.props.max))}
                         >&lt;</button>
                         <button
                             className="btn btn-primary ml-2"
@@ -70,7 +74,13 @@ export default class RangeEditor extends React.Component {
                             data-id={this.props.dataId}
                             type="button"
                             onClick={this.props.handler}
-                            value={this.btnStep(1, Number(this.props.step) || 0.01)}
+                            value={
+                                btnStep(
+                                    Number(this.props.value), 
+                                    1, 
+                                    Number(this.props.step) || 0.01, 
+                                    Number(this.props.min),
+                                    Number(this.props.max))}
                         >&gt;</button>
                         <button
                             className="btn btn-primary ml-2"
@@ -78,7 +88,13 @@ export default class RangeEditor extends React.Component {
                             data-id={this.props.dataId}
                             type="button"
                             onClick={this.props.handler}
-                            value={this.btnStep(1, Number(this.props.step) * 10 || 0.1)}
+                            value={
+                                btnStep(
+                                    Number(this.props.value), 
+                                    1, 
+                                    Number(this.props.step) * 10 || 0.1, 
+                                    Number(this.props.min),
+                                    Number(this.props.max))}
                         >&gt;&gt;&gt;</button>
                     </div>
                 </div>
@@ -114,16 +130,6 @@ export default class RangeEditor extends React.Component {
                 </div>
             </div>
         </React.Fragment>;
-    }
-    btnStep(sign, strength) {
-        let min = Number(this.props.min);
-        min = !isNaN(min) ? min : -999;
-        let max = Number(this.props.max);
-        max = !isNaN(max) ? max : 999;
-        let val = Number(this.props.value) + (sign * strength);
-        val = val < min ? min : val;
-        val = val > max ? max : val;
-        return Number(val);
     }
 }
 
