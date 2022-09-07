@@ -136,16 +136,6 @@ export default class RangeEditor extends React.Component {
             </div>
         </React.Fragment>;
     }
-    btnStep(sign, strength) {
-        let min = Number(this.props.min);
-        min = !isNaN(min) ? min : -999;
-        let max = Number(this.props.max);
-        max = !isNaN(max) ? max : 999;
-        let val = Number(this.props.value) + (sign * strength);
-        val = val < min ? min : val;
-        val = val > max ? max : val;
-        return Number(val);
-    }
 }
 
 RangeEditor.defaultProps = {
