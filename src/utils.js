@@ -144,7 +144,7 @@ const handleFormUpdate = function(e) {
             obj[id] = parseInt(e.target.value, 10);
             break;
         case 'textarea':
-            obj[id] = parseFloat(e.target.value);
+            obj[id] = e.target.value;
             break;
         default:
             obj[id] = e.target.value;
