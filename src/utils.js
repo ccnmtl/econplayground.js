@@ -163,21 +163,6 @@ const handleFormUpdate = function(e) {
 };
 
 /**
- * Processes step buttons for the slope in RangeEditor
- */
-const btnStep = function(val, sign, strength, min, max) {
-    min = isNaN(min) ? -999 : min;
-    max = isNaN(max) ? 999 : max;
-    if (min > max) {
-        return NaN;
-    }
-    val = val + (sign * strength);
-    val = val < min ? min : val;
-    val = val > max ? max : val;
-    return Number(val);
-}
-
-/**
  * Given a line's slope and y-intercept, return its
  * y-offset at x-value n.
  */
