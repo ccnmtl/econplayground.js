@@ -143,10 +143,10 @@ const handleFormUpdate = function(e) {
             obj[id] = parseInt(e.target.value, 10);
             break;
         case 'textarea':
-            obj[id] = e.target.value;
+            obj[id] = parseFloat(e.target.value);
             break;
         case 'button':
-            obj[id] = Number(e.target.value).toFixed(2)
+            obj[id] = forceNumber(e.target.value);
             break;
         default:
             obj[id] = e.target.value;
