@@ -15,6 +15,7 @@ export default class RangeEditor extends React.Component {
                     <em>{this.props.itemlabel}</em>
                     <div className="d-inline w-100">
                         {this.props.showMinMax && (
+<<<<<<< HEAD
                         <div className="position-absolute l-0">
                             {this.props.min}
                         </div>
@@ -36,6 +37,94 @@ export default class RangeEditor extends React.Component {
                             {this.props.max}
                         </div>
                         )}
+=======
+                            <div className="d-inline">
+                                {this.props.min}
+                            </div>
+                        )}
+                        <label className="mb-0" htmlFor={this.props.id}>
+
+                            <em>{this.props.itemlabel}</em>
+                            <input
+                                className="d-inline form-control-range form-control-sm"
+                                id={this.props.id}
+                                data-id={this.props.dataId}
+                                type="range"
+                                onChange={this.props.handler}
+                                value={this.props.value}
+                                step={this.props.step || 0.01}
+                                min={this.props.min}
+                                max={this.props.max}
+                            />
+                        </label>
+                        {this.props.showMinMax && (
+                            <div className="d-inline">
+                                {this.props.max}
+                            </div>
+                        )}
+                    </div>
+                    <div className='ml-1 row'>
+                        <button
+                            className="btn btn-primary"
+                            id={this.props.id}
+                            data-id={this.props.dataId}
+                            type="button"
+                            onClick={this.props.handler}
+                            value={
+                                btnStep(
+                                    this.props.value,
+                                    -1,
+                                    this.props.step * 10 || 0.1,
+                                    this.props.min,
+                                    this.props.max)
+                            }
+                        >&lt;&lt;&lt;</button>
+                        <button
+                            className="btn btn-info ml-2"
+                            id={this.props.id}
+                            data-id={this.props.dataId}
+                            type="button"
+                            onClick={this.props.handler}
+                            value={
+                                btnStep(
+                                    this.props.value,
+                                    -1,
+                                    this.props.step || 0.01,
+                                    this.props.min,
+                                    this.props.max)
+                            }
+                        >&lt;</button>
+                        <button
+                            className="btn btn-info ml-2"
+                            id={this.props.id}
+                            data-id={this.props.dataId}
+                            type="button"
+                            onClick={this.props.handler}
+                            value={
+                                btnStep(
+                                    this.props.value,
+                                    1,
+                                    this.props.step || 0.01,
+                                    this.props.min,
+                                    this.props.max)
+                            }
+                        >&gt;</button>
+                        <button
+                            className="btn btn-primary ml-2"
+                            id={this.props.id}
+                            data-id={this.props.dataId}
+                            type="button"
+                            onClick={this.props.handler}
+                            value={
+                                btnStep(
+                                    this.props.value,
+                                    1,
+                                    this.props.step * 10 || 0.1,
+                                    this.props.min,
+                                    this.props.max)
+                            }
+                        >&gt;&gt;&gt;</button>
+>>>>>>> 4627406 (A few changes for new button format)
                     </div>
                 </label>
                 <div className='ml-2 mb-2 row shift-up'>
@@ -48,14 +137,15 @@ export default class RangeEditor extends React.Component {
                         onClick={this.props.handler}
                         value={
                             btnStep(
-                                Number(this.props.value), 
-                                -1, 
-                                Number(this.props.step) * 10 || 0.1, 
-                                Number(this.props.min),
-                                Number(this.props.max))}
+                                this.props.value,
+                                -1,
+                                this.props.step * 10 || 0.1,
+                                this.props.min,
+                                this.props.max)
+                        }
                     >&lt;&lt;&lt;</button>
                     <button
-                        className="btn btn-primary ml-2 w-20"
+                        className="btn btn-info ml-2 w-20"
                         aria-label={"Decrease by " + (Number(this.props.step) || 0.01)}
                         id={this.props.id}
                         data-id={this.props.dataId}
@@ -63,14 +153,15 @@ export default class RangeEditor extends React.Component {
                         onClick={this.props.handler}
                         value={
                             btnStep(
-                                Number(this.props.value), 
-                                -1, 
-                                Number(this.props.step) || 0.01, 
-                                Number(this.props.min),
-                                Number(this.props.max))}
+                                this.props.value,
+                                -1,
+                                this.props.step || 0.01,
+                                this.props.min,
+                                this.props.max)
+                        }
                     >&lt;</button>
                     <button
-                        className="btn btn-primary ml-2 w-20"
+                        className="btn btn-info ml-2 w-20"
                         aria-label={"Increase by " + (Number(this.props.step) || 0.01)}
                         id={this.props.id}
                         data-id={this.props.dataId}
@@ -78,11 +169,12 @@ export default class RangeEditor extends React.Component {
                         onClick={this.props.handler}
                         value={
                             btnStep(
-                                Number(this.props.value), 
-                                1, 
-                                Number(this.props.step) || 0.01, 
-                                Number(this.props.min),
-                                Number(this.props.max))}
+                                this.props.value,
+                                1,
+                                this.props.step || 0.01,
+                                this.props.min,
+                                this.props.max)
+                        }
                     >&gt;</button>
                     <button
                         className="btn btn-primary ml-2 w-20"
@@ -93,11 +185,12 @@ export default class RangeEditor extends React.Component {
                         onClick={this.props.handler}
                         value={
                             btnStep(
-                                Number(this.props.value), 
-                                1, 
-                                Number(this.props.step) * 10 || 0.1, 
-                                Number(this.props.min),
-                                Number(this.props.max))}
+                                this.props.value,
+                                1,
+                                this.props.step * 10 || 0.1,
+                                this.props.min,
+                                this.props.max)
+                        }
                     >&gt;&gt;&gt;</button>
                 </div>
                 <div className="input-group">
@@ -148,7 +241,7 @@ RangeEditor.defaultProps = {
     showOverride2Button: false,
     override2Label: '',
     override2Value: 0,
-    showMinMax: true
+    showMinMax: false
 };
 
 RangeEditor.propTypes = {
