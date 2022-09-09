@@ -833,7 +833,7 @@ export default class JXGBoard extends React.Component {
                         layer: 9
                     }
                 },
-                keepAspectRatio: true,
+                keepaspectratio: false,
                 showCopyright: false,
                 showZoom: false,
                 showReload: false,
@@ -891,7 +891,7 @@ export default class JXGBoard extends React.Component {
                             layer: 9
                         }
                     },
-                    keepAspectRatio: true,
+                    keepaspectratio: false,
                     showCopyright: false,
                     showZoom: false,
                     showReload: false,
