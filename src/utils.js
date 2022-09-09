@@ -146,9 +146,6 @@ const handleFormUpdate = function(e) {
         case 'textarea':
             obj[id] = parseFloat(e.target.value);
             break;
-        case 'button':
-            obj[id] = forceNumber(e.target.value);
-            break;
         default:
             obj[id] = e.target.value;
     }
