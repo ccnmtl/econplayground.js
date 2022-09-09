@@ -48,14 +48,15 @@ export default class RangeEditor extends React.Component {
                         onClick={this.props.handler}
                         value={
                             btnStep(
-                                Number(this.props.value), 
-                                -1, 
-                                Number(this.props.step) * 10 || 0.1, 
-                                Number(this.props.min),
-                                Number(this.props.max))}
+                                this.props.value,
+                                -1,
+                                this.props.step * 10 || 0.1,
+                                this.props.min,
+                                this.props.max)
+                        }
                     >&lt;&lt;&lt;</button>
                     <button
-                        className="btn btn-primary ml-2 w-20"
+                        className="btn btn-info ml-2 w-20"
                         aria-label={"Decrease by " + (Number(this.props.step) || 0.01)}
                         id={this.props.id}
                         data-id={this.props.dataId}
@@ -63,14 +64,15 @@ export default class RangeEditor extends React.Component {
                         onClick={this.props.handler}
                         value={
                             btnStep(
-                                Number(this.props.value), 
-                                -1, 
-                                Number(this.props.step) || 0.01, 
-                                Number(this.props.min),
-                                Number(this.props.max))}
+                                this.props.value,
+                                -1,
+                                this.props.step || 0.01,
+                                this.props.min,
+                                this.props.max)
+                        }
                     >&lt;</button>
                     <button
-                        className="btn btn-primary ml-2 w-20"
+                        className="btn btn-info ml-2 w-20"
                         aria-label={"Increase by " + (Number(this.props.step) || 0.01)}
                         id={this.props.id}
                         data-id={this.props.dataId}
@@ -78,11 +80,12 @@ export default class RangeEditor extends React.Component {
                         onClick={this.props.handler}
                         value={
                             btnStep(
-                                Number(this.props.value), 
-                                1, 
-                                Number(this.props.step) || 0.01, 
-                                Number(this.props.min),
-                                Number(this.props.max))}
+                                this.props.value,
+                                1,
+                                this.props.step || 0.01,
+                                this.props.min,
+                                this.props.max)
+                        }
                     >&gt;</button>
                     <button
                         className="btn btn-primary ml-2 w-20"
@@ -93,11 +96,12 @@ export default class RangeEditor extends React.Component {
                         onClick={this.props.handler}
                         value={
                             btnStep(
-                                Number(this.props.value), 
-                                1, 
-                                Number(this.props.step) * 10 || 0.1, 
-                                Number(this.props.min),
-                                Number(this.props.max))}
+                                this.props.value,
+                                1,
+                                this.props.step * 10 || 0.1,
+                                this.props.min,
+                                this.props.max)
+                        }
                     >&gt;&gt;&gt;</button>
                 </div>
                 <div className="input-group">

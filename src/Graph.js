@@ -782,7 +782,8 @@ const mkDemandSupplyAUC = function(board, options) {
 class NonLinearDemandSupplyGraph extends Graph {
     make() {
         const me = this;
-        const alpha = this.options.gCobbDouglasAlpha ?
+        const alpha =
+              typeof this.options.gCobbDouglasAlpha !== 'undefined' ?
               this.options.gCobbDouglasAlpha : 0.3;
 
         if (this.options.shadow && this.options.gDisplayShadow) {
