@@ -131,7 +131,7 @@ export default class ADASEditor extends React.Component {
                 {this.props.displayLabels && (
                     <React.Fragment>
                         <h2>Labels</h2>
-                        <div className="d-flex flex-wrap justify-content-between align-items-end">
+                        <div className="d-flex justify-content-between align-items-end">
                             <div className="col-4">
                                 <EditableControl
                                     id="gLine1Label"
@@ -142,7 +142,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-4">
                                 <EditableControl
                                     id="gLine2Label"
@@ -153,7 +152,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-4">
                                 <EditableControl
                                     id="gLine3Label"
@@ -165,7 +163,6 @@ export default class ADASEditor extends React.Component {
                                 />
                             </div>
                         </div>
-
                         <div className="d-flex flex-wrap justify-content-between align-items-end">
                             <div className="col-6">
                                 <EditableControl
@@ -177,7 +174,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-6">
                                 <EditableControl
                                     id="gYAxisLabel"
@@ -189,7 +185,6 @@ export default class ADASEditor extends React.Component {
                                 />
                             </div>
                         </div>
-
                         <div className="d-flex flex-wrap justify-content-between align-items-end">
                             <div className="col-4">
                                 <EditableControl
@@ -201,7 +196,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-4">
                                 <EditableControl
                                     id="gIntersection2Label"
@@ -212,7 +206,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-4">
                                 <EditableControl
                                     id="gIntersection3Label"
@@ -224,7 +217,6 @@ export default class ADASEditor extends React.Component {
                                 />
                             </div>
                         </div>
-
                         <div className="d-flex flex-wrap justify-content-between align-items-end">
                             <div className="col-6">
                                 <EditableControl
@@ -236,7 +228,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-6">
                                 <EditableControl
                                     id="gIntersectionVertLineLabel"
@@ -247,7 +238,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-6">
                                 <EditableControl
                                     id="gIntersection2HorizLineLabel"
@@ -258,7 +248,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-6">
                                 <EditableControl
                                     id="gIntersection2VertLineLabel"
@@ -269,7 +258,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-6">
                                 <EditableControl
                                     id="gIntersection3HorizLineLabel"
@@ -280,7 +268,6 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
                             <div className="col-6">
                                 <EditableControl
                                     id="gIntersection3VertLineLabel"

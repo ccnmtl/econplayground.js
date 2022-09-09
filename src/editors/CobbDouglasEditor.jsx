@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {MathComponent} from 'mathjax-react';
+import { MathComponent } from 'mathjax-react';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
-import {handleFormUpdate} from '../utils';
+import { handleFormUpdate } from '../utils';
 
 export default class CobbDouglasEditor extends React.Component {
     render() {
@@ -16,12 +16,15 @@ export default class CobbDouglasEditor extends React.Component {
         return (
             <div>
                 <h2>Function</h2>
-                This is a projection of the Cobb-Douglas function
-                with {this.props.gCobbDouglasLName} plotted along
-                the X-axis.
+                <blockquote className="ml-2"><em>
+                    This is a projection of the Cobb-Douglas function
+                    with {this.props.gCobbDouglasLName} plotted along
+                    the X-axis.
+                </em></blockquote>
                 <div className="form-inline">
                     {this.props.isInstructor && (
                         <input type="text"
+                            aria-label={"Function variable for " + tex}
                             className="form-control form-control-sm mr-2"
                             name="gCobbDouglasYName"
                             value={this.props.gCobbDouglasYName}
@@ -32,126 +35,113 @@ export default class CobbDouglasEditor extends React.Component {
                     )}
                     <MathComponent tex={tex} />
                 </div>
-                <hr/>
+                <hr />
 
                 {this.props.displaySliders && (
                     <React.Fragment>
                         <h2>Slope</h2>
-                        <div className="row">
-                            <div className="col-sm-4">
-                                <label htmlFor="gCobbDouglasA">
-                                    {this.props.isInstructor ? (
-                                        <input type="text"
-                                            name="gCobbDouglasAName"
-                                            maxLength="1"
-                                            size="1"
-                                            className="form-control form-control-sm"
-                                            value={this.props.gCobbDouglasAName}
-                                            onChange={handleFormUpdate.bind(this)}
-                                        />
-                                    ) : (
-                                        this.props.gCobbDouglasAName
-                                    )}
-                                </label>
-                                <RangeEditor
-                                    dataId="gCobbDouglasA"
-                                    value={this.props.gCobbDouglasA}
-                                    handler={handleFormUpdate.bind(this)}
-                                    min={0} />
-                            </div>
-
-                            <div className="col-sm-4">
-                                <div className="form-group">
-                                    <label htmlFor="gCobbDouglasK">
-                                        {this.props.isInstructor ? (
-                                            <input type="text"
-                                                name="gCobbDouglasKName"
-                                                maxLength="1"
-                                                size="1"
-                                                className="form-control form-control-sm"
-                                                value={this.props.gCobbDouglasKName}
-                                                onChange={handleFormUpdate.bind(this)}
-                                            />
-                                        ) : (
-                                            this.props.gCobbDouglasKName
-                                        )}
-                                    </label>
-                                    <RangeEditor
-                                        dataId="gCobbDouglasK"
-                                        value={this.props.gCobbDouglasK}
-                                        handler={handleFormUpdate.bind(this)}
-                                        min={0} />
-                                </div>
-                            </div>
-                        </div>
+                        <label className="m-0" htmlFor="gCobbDouglasA">
+                            {this.props.isInstructor ? (
+                                <input type="text"
+                                    name="gCobbDouglasAName"
+                                    maxLength="1"
+                                    size="1"
+                                    className="form-control form-control-sm"
+                                    value={this.props.gCobbDouglasAName}
+                                    onChange={handleFormUpdate.bind(this)}
+                                />
+                            ) : (
+                                this.props.gCobbDouglasAName
+                            )}
+                        </label>
+                        <RangeEditor
+                            dataId="gCobbDouglasA"
+                            value={this.props.gCobbDouglasA}
+                            handler={handleFormUpdate.bind(this)}
+                            min={0} />
+                        <label className="m-0" htmlFor="gCobbDouglasK">
+                            {this.props.isInstructor ? (
+                                <input type="text"
+                                    name="gCobbDouglasKName"
+                                    maxLength="1"
+                                    size="1"
+                                    className="form-control form-control-sm"
+                                    value={this.props.gCobbDouglasKName}
+                                    onChange={handleFormUpdate.bind(this)}
+                                />
+                            ) : (
+                                this.props.gCobbDouglasKName
+                            )}
+                        </label>
+                        <RangeEditor
+                            dataId="gCobbDouglasK"
+                            value={this.props.gCobbDouglasK}
+                            handler={handleFormUpdate.bind(this)}
+                            min={0} />
+                        <RangeEditor
+                            itemlabel="&alpha;"
+                            dataId="gCobbDouglasAlpha"
+                            value={this.props.gCobbDouglasAlpha}
+                            handler={handleFormUpdate.bind(this)}
+                            min={0}
+                            max={1}
+                            showMinMax={true}
+                        />
+                        <label className="m-0" htmlFor="gCobbDouglasL">
+                            {this.props.isInstructor ? (
+                                <input type="text"
+                                    name="gCobbDouglasLName"
+                                    maxLength="1"
+                                    size="1"
+                                    className="form-control form-control-sm"
+                                    value={this.props.gCobbDouglasLName}
+                                    onChange={handleFormUpdate.bind(this)}
+                                />
+                            ) : (
+                                this.props.gCobbDouglasLName
+                            )}
+                        </label>
+                        <RangeEditor
+                            dataId="gCobbDouglasL"
+                            value={this.props.gCobbDouglasL}
+                            handler={handleFormUpdate.bind(this)}
+                            min={0}
+                            max={10}
+                            note="This variable is plotted along the X-axis."
+                            showNote={this.props.isInstructor} />
                     </React.Fragment>
-                )}
+                )
+                }
 
-                {this.props.displaySliders && (
-                    <React.Fragment>
-                        <div className="row">
-                            <div className="col-sm-4">
-                                <label htmlFor="gCobbDouglasAlpha">
-                                    &alpha;
-                                </label>
-                                <RangeEditor
-                                    dataId="gCobbDouglasAlpha"
-                                    value={this.props.gCobbDouglasAlpha}
-                                    handler={handleFormUpdate.bind(this)}
-                                    min={0}
-                                    max={1}
-                                    showMinMax={true}
+                {
+                    this.props.displaySliders && (
+                        <React.Fragment>
+                            <div className="row">
+
+                            </div>
+                            <hr />
+                        </React.Fragment>
+                    )
+                }
+
+                {
+                    this.props.displayLabels && (
+                        <React.Fragment>
+                            <h2>Label</h2>
+                            <div className="row">
+                                <EditableControl
+                                    id="gIntersectionLabel"
+                                    name="Intersection point label"
+                                    value={this.props.gIntersectionLabel}
+                                    valueEditable={true}
+                                    isInstructor={this.props.isInstructor}
+                                    updateGraph={this.props.updateGraph}
                                 />
                             </div>
-
-                            <div className="col-sm-4">
-                                <label htmlFor="gCobbDouglasL">
-                                    {this.props.isInstructor ? (
-                                        <input type="text"
-                                            name="gCobbDouglasLName"
-                                            maxLength="1"
-                                            size="1"
-                                            className="form-control form-control-sm"
-                                            value={this.props.gCobbDouglasLName}
-                                            onChange={handleFormUpdate.bind(this)}
-                                        />
-                                    ) : (
-                                        this.props.gCobbDouglasLName
-                                    )}
-                                </label>
-                                <RangeEditor
-                                    dataId="gCobbDouglasL"
-                                    value={this.props.gCobbDouglasL}
-                                    handler={handleFormUpdate.bind(this)}
-                                    min={0}
-                                    max={10} />
-                                {this.props.isInstructor && (
-                                    <small className="form-text text-muted ml-sm-2">
-                                        This variable is plotted along the X-axis.
-                                    </small>
-                                )}
-                            </div>
-                        </div>
-                        <hr/>
-                    </React.Fragment>
-                )}
-
-                {this.props.displayLabels && (
-                    <React.Fragment>
-                        <h2>Label</h2>
-                        <div className="row">
-                            <EditableControl
-                                id="gIntersectionLabel"
-                                name="Intersection point label"
-                                value={this.props.gIntersectionLabel}
-                                valueEditable={true}
-                                isInstructor={this.props.isInstructor}
-                                updateGraph={this.props.updateGraph}
-                            />
-                        </div>
-                    </React.Fragment>
-                )}
-            </div>
+                        </React.Fragment>
+                    )
+                }
+            </div >
         );
     }
 }

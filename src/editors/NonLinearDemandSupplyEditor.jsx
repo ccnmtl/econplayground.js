@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {MathComponent} from 'mathjax-react';
+import { MathComponent } from 'mathjax-react';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
 import AreaConfiguration from './AreaConfiguration';
-import {handleFormUpdate} from '../utils';
+import { handleFormUpdate } from '../utils';
 
 export default class NonLinearDemandSupplyEditor extends React.Component {
     render() {
@@ -16,38 +16,32 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                 {this.props.isInstructor && !this.props.hideFunctionChoice && (
                     <React.Fragment>
                         <h2>Function</h2>
-                        <div className="form-row">
-                            <div className="col">
-                                <div className="form-check">
-                                    <input className="form-check-input"
-                                           type="radio"
-                                           name="gFunctionChoice"
-                                           id="gFunctionChoice1"
-                                           onChange={handleFormUpdate.bind(this)}
-                                           value={0}
-                                           checked={this.props.gFunctionChoice === 0} />
+                        <div className="form-check">
+                            <input className="form-check-input"
+                                type="radio"
+                                name="gFunctionChoice"
+                                id="gFunctionChoice1"
+                                onChange={handleFormUpdate.bind(this)}
+                                value={0}
+                                checked={this.props.gFunctionChoice === 0} />
 
-                                    <label className="form-check-label" htmlFor="gFunctionChoice1">
-                                        <MathComponent tex={func1} />
-                                    </label>
-                                </div>
-                            </div>
-                            <div className="col">
-                                <div className="form-check">
-                                    <input className="form-check-input"
-                                           type="radio"
-                                           name="gFunctionChoice"
-                                           id="gFunctionChoice2"
-                                           onChange={handleFormUpdate.bind(this)}
-                                           value={1}
-                                           checked={this.props.gFunctionChoice === 1} />
-                                    <label className="form-check-label" htmlFor="gFunctionChoice2">
-                                        <MathComponent tex={func2} />
-                                    </label>
-                                </div>
-                            </div>
+                            <label className="form-check-label" htmlFor="gFunctionChoice1">
+                                <MathComponent tex={func1} />
+                            </label>
                         </div>
-                        <hr/>
+                        <div className="form-check">
+                            <input className="form-check-input"
+                                type="radio"
+                                name="gFunctionChoice"
+                                id="gFunctionChoice2"
+                                onChange={handleFormUpdate.bind(this)}
+                                value={1}
+                                checked={this.props.gFunctionChoice === 1} />
+                            <label className="form-check-label" htmlFor="gFunctionChoice2">
+                                <MathComponent tex={func2} />
+                            </label>
+                        </div>
+                        <hr />
                     </React.Fragment>
                 )}
                 {this.props.displaySliders && (
@@ -55,10 +49,8 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                         <h2>Slope</h2>
                         <div className="form-row">
                             <div className="col-sm-4">
-                                <label htmlFor="gLine1Slope">
-                                    Orange line slope
-                                </label>
                                 <RangeEditor
+                                    itemlabel="Orange line slope"
                                     dataId="gLine1Slope"
                                     value={this.props.gLine1Slope}
                                     showOverrideButton={true}
@@ -96,12 +88,12 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 <label htmlFor="gCobbDouglasK">
                                     {(this.props.isInstructor ? (
                                         <input type="text"
-                                               name="gCobbDouglasKName"
-                                               maxLength="1"
-                                               size="1"
-                                               className="form-control form-control-sm"
-                                               value={this.props.gCobbDouglasKName}
-                                               onChange={handleFormUpdate.bind(this)}
+                                            name="gCobbDouglasKName"
+                                            maxLength="1"
+                                            size="1"
+                                            className="form-control form-control-sm"
+                                            value={this.props.gCobbDouglasKName}
+                                            onChange={handleFormUpdate.bind(this)}
                                         />
                                     ) : this.props.gCobbDouglasKName)}
                                 </label>
@@ -120,25 +112,25 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 <label htmlFor="gNName">
                                     {(this.props.isInstructor ? (
                                         <input type="text"
-                                               name="gNName"
-                                               maxLength="1"
-                                               size="1"
-                                               className="form-control form-control-sm"
-                                               value={this.props.gNName}
-                                               onChange={handleFormUpdate.bind(this)}
+                                            name="gNName"
+                                            maxLength="1"
+                                            size="1"
+                                            className="form-control form-control-sm"
+                                            value={this.props.gNName}
+                                            onChange={handleFormUpdate.bind(this)}
                                         />
                                     ) : this.props.gNName)}
                                 </label>
                             </div>
 
                         </div>
-                        <hr/>
+                        <hr />
                     </React.Fragment>
                 )}
                 {this.props.displayLabels && (
                     <React.Fragment>
                         <h2>Labels</h2>
-                        <div className="row">
+                        <div className="form-row">
                             <EditableControl
                                 id="gLine1Label"
                                 name="Orange line label"
@@ -147,7 +139,6 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 isInstructor={this.props.isInstructor}
                                 updateGraph={this.props.updateGraph}
                             />
-
                             <EditableControl
                                 id="gLine2Label"
                                 name="Blue line label"
@@ -157,12 +148,12 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                                 updateGraph={this.props.updateGraph}
                             />
                         </div>
-                        <hr/>
+                        <hr />
                     </React.Fragment>
                 )}
 
                 {this.props.displayLabels && (
-                    <div className="row">
+                    <div className="form-row">
                         <EditableControl
                             id="gIntersectionLabel"
                             name="Intersection point label"
@@ -180,15 +171,15 @@ export default class NonLinearDemandSupplyEditor extends React.Component {
                             updateGraph={this.props.updateGraph}
                         />
 
-                    <EditableControl
-                        id="gIntersectionVertLineLabel"
-                        name="Intersection&apos;s vertical line label"
-                        value={this.props.gIntersectionVertLineLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                        <EditableControl
+                            id="gIntersectionVertLineLabel"
+                            name="Intersection&apos;s vertical line label"
+                            value={this.props.gIntersectionVertLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
 
                 {this.props.showAUC && (
