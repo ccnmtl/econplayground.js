@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {MathComponent} from 'mathjax-react';
+import { MathComponent } from 'mathjax-react';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
-import {handleFormUpdate} from '../utils';
+import { handleFormUpdate } from '../utils';
 
 export default class ConsumptionLeisureEditor extends React.Component {
     render() {
@@ -17,84 +17,51 @@ export default class ConsumptionLeisureEditor extends React.Component {
         return (
             <div>
                 {this.props.isInstructor &&
-                        <React.Fragment>
-                            <h2>Function</h2>
-                            <div className="row">
-                                <MathComponent tex={tex} />
-                            </div>
-                            <hr/>
-                        </React.Fragment>
+                    <React.Fragment>
+                        <h2>Function</h2>
+                        <div className="row">
+                            <MathComponent tex={tex} />
+                        </div>
+                        <hr />
+                    </React.Fragment>
                 }
 
                 {this.props.displaySliders && (
                     <React.Fragment>
                         <h2>Slope</h2>
-                        <div className="row">
-                            <div className="col-sm-4">
-                                <div className="form-group">
-                                    <label htmlFor="gA1">
-                                        Horizontal intercept value <strong>T</strong>
-                                    </label>
-                                    <RangeEditor
-                                        id="gA1"
-                                        dataId="gA1"
-                                        value={this.props.gA1}
-                                        min={0}
-                                        max={9}
-                                        handler={handleFormUpdate.bind(this)} />
-                                </div>
-                            </div>
-
-                            <div className="col-sm-4">
-                                <div className="form-group">
-                                    <label htmlFor="gA2">
-                                        Real Wage <strong>w</strong>
-                                    </label>
-                                    <RangeEditor
-                                        id="gA2"
-                                        dataId="gA2"
-                                        value={this.props.gA2}
-                                        min={0.01}
-                                        max={5}
-                                        handler={handleFormUpdate.bind(this)} />
-                                </div>
-                            </div>
-                        </div>
-
-                        {this.props.gType === 15 && (
-                            <div className="row">
-                                <div className="col-sm-4">
-                                    <div className="form-group">
-                                        <label htmlFor="gA3">
-                                            Rel. Preference <strong>α</strong>
-                                        </label>
-                                        <RangeEditor
-                                            id="gA3"
-                                            dataId="gA3"
-                                            value={this.props.gA3}
-                                            min={0.00001}
-                                            max={0.99999}
-                                            handler={handleFormUpdate.bind(this)} />
-                                    </div>
-                                </div>
-
-                                <div className="col-sm-4">
-                                    <div className="form-group">
-                                        <label htmlFor="gA4">
-                                            Tax Rate <strong>t</strong>
-                                        </label>
-                                        <RangeEditor
-                                            id="gA4"
-                                            dataId="gA4"
-                                            value={this.props.gA4}
-                                            min={0}
-                                            max={0.99999}
-                                            handler={handleFormUpdate.bind(this)} />
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                        <hr/>
+                        <RangeEditor
+                            itemlabel="Horizontal intercept value <strong>T</strong>"
+                            id="gA1"
+                            dataId="gA1"
+                            value={this.props.gA1}
+                            min={0}
+                            max={9}
+                            handler={handleFormUpdate.bind(this)} />
+                        <RangeEditor
+                            itemlabel="Real Wage <strong>w</strong>"
+                            id="gA2"
+                            dataId="gA2"
+                            value={this.props.gA2}
+                            min={0.01}
+                            max={5}
+                            handler={handleFormUpdate.bind(this)} />
+                        <RangeEditor
+                            itemlabel={["Rel. Preference", <strong>α</strong>]}
+                            id="gA3"
+                            dataId="gA3"
+                            value={this.props.gA3}
+                            min={0.00001}
+                            max={0.99999}
+                            handler={handleFormUpdate.bind(this)} />
+                        <RangeEditor
+                            itemlabel="Tax Rate <strong>t</strong>"
+                            id="gA4"
+                            dataId="gA4"
+                            value={this.props.gA4}
+                            min={0}
+                            max={0.99999}
+                            handler={handleFormUpdate.bind(this)} />
+                        <hr />
                     </React.Fragment>
                 )}
 
@@ -135,15 +102,15 @@ export default class ConsumptionLeisureEditor extends React.Component {
                             updateGraph={this.props.updateGraph}
                         />
 
-                    <EditableControl
-                        id="gYAxisLabel"
-                        name="Y-axis label"
-                        value={this.props.gYAxisLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                        <EditableControl
+                            id="gYAxisLabel"
+                            name="Y-axis label"
+                            value={this.props.gYAxisLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
 
                 {this.props.displayLabels && (
@@ -157,15 +124,15 @@ export default class ConsumptionLeisureEditor extends React.Component {
                             updateGraph={this.props.updateGraph}
                         />
 
-                    <EditableControl
-                        id="gIntersectionVertLineLabel"
-                        name="Vertical intersection label"
-                        value={this.props.gIntersectionVertLineLabel}
-                        valueEditable={true}
-                        isInstructor={this.props.isInstructor}
-                        updateGraph={this.props.updateGraph}
-                    />
-                </div>
+                        <EditableControl
+                            id="gIntersectionVertLineLabel"
+                            name="Vertical intersection label"
+                            value={this.props.gIntersectionVertLineLabel}
+                            valueEditable={true}
+                            isInstructor={this.props.isInstructor}
+                            updateGraph={this.props.updateGraph}
+                        />
+                    </div>
                 )}
 
                 {this.props.gType === 15 && this.props.displayLabels && (
