@@ -137,6 +137,7 @@ const handleFormUpdate = function(e) {
             break;
         case 'number':
         case 'range':
+        case 'button':
             obj[id] = parseFloat(e.target.value);
             break;
         case 'select-one':
@@ -144,9 +145,6 @@ const handleFormUpdate = function(e) {
             break;
         case 'textarea':
             obj[id] = e.target.value;
-            break;
-        case 'button':
-            obj[id] = Number(e.target.value).toFixed(2)
             break;
         default:
             obj[id] = e.target.value;
@@ -160,21 +158,6 @@ const handleFormUpdate = function(e) {
 
     this.props.updateGraph(obj);
 };
-
-/**
- * Processes step buttons for the slope in RangeEditor
- */
-const btnStep = function(val, sign, strength, min, max) {
-    min = isNaN(min) ? -999 : min;
-    max = isNaN(max) ? 999 : max;
-    if (min > max) {
-        return NaN;
-    }
-    val = val + (sign * strength);
-    val = val < min ? min : val;
-    val = val > max ? max : val;
-    return Number(val);
-}
 
 /**
  * Given a line's slope and y-intercept, return its
@@ -277,6 +260,23 @@ const getError = function(obj) {
 
     return 'An error occurred.';
 };
+
+/**
+ * Processes step buttons for the slope in RangeEditor.
+ *
+ * Returns a number.
+ */
+const btnStep = function(val, sign, strength, min, max) {
+    min = isNaN(min) ? -999 : min;
+    max = isNaN(max) ? 999 : max;
+    if (min > max) {
+        return NaN;
+    }
+    val = val + (sign * strength);
+    val = val < min ? min : val;
+    val = val > max ? max : val;
+    return forceFloat(val);
+}
 
 export {
     authedFetch, getAssessment, getGraphId, getCohortId, getTopics,
