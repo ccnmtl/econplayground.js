@@ -137,6 +137,7 @@ const handleFormUpdate = function(e) {
             break;
         case 'number':
         case 'range':
+        case 'button':
             obj[id] = parseFloat(e.target.value);
             break;
         case 'select-one':
@@ -260,10 +261,27 @@ const getError = function(obj) {
     return 'An error occurred.';
 };
 
+/**
+ * Processes step buttons for the slope in RangeEditor.
+ *
+ * Returns a number.
+ */
+const btnStep = function(val, sign, strength, min, max) {
+    min = isNaN(min) ? -999 : min;
+    max = isNaN(max) ? 999 : max;
+    if (min > max) {
+        return NaN;
+    }
+    val = val + (sign * strength);
+    val = val < min ? min : val;
+    val = val > max ? max : val;
+    return forceFloat(val);
+}
+
 export {
     authedFetch, getAssessment, getGraphId, getCohortId, getTopics,
     getSubmission, createSubmission, getOrCreateSubmission,
     getL1SubmissionOffset, getL2SubmissionOffset, handleFormUpdate,
     getOffset, getXIntercept, getYIntercept,
-    forceFloat, forceNumber, displayGraphType, getError
+    forceFloat, forceNumber, displayGraphType, getError, btnStep
 };

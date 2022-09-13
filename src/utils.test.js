@@ -2,7 +2,8 @@
 
 import {
     forceFloat, getOffset,
-    getGraphId, getCohortId
+    getGraphId, getCohortId,
+    btnStep
 } from './utils';
 
 it('allows many values for floats', () => {
@@ -57,4 +58,17 @@ it('gets the cohort ID', () => {
     expect(getCohortId('course/21/edit/')).toBe(21);
 
     expect(getCohortId('')).toBe(null);
+});
+
+it('get Slope value', () => {
+    expect(btnStep(4, -1, 0.1, 0, 5)).toBe(3.9);
+    expect(btnStep(0.01, -1, 0.1, 0, 5)).toBe(0);
+    expect(btnStep(4, 1, 12, 0, 5)).toBe(5);
+
+    expect(btnStep(-990, -1, 12, NaN, NaN)).toBe(-999);
+    expect(btnStep(-990, -1, 12, -1000, NaN)).toBe(-1000);
+    expect(btnStep(990, 1, 12, NaN, NaN)).toBe(999);
+    expect(btnStep(990, 1, 12, NaN, 1000)).toBe(1000);
+
+    expect(btnStep(NaN, NaN, NaN, 2, 1)).toBe(NaN);
 });
