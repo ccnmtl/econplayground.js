@@ -14,11 +14,9 @@ it('renders without crashing', () => {
 it('renders with children in the expected visibility state', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Editor />, div, function() {
-        expect(this.backbutton.current.props.showing).toBe(false);
         expect(this.gp.current.props.showing).toBe(true);
         expect(this.ge.current.props.showing).toBe(false);
 
-        expect(ReactTestUtils.isCompositeComponent(this.backbutton.current)).toBe(true);
         expect(ReactTestUtils.isCompositeComponent(this.gp.current)).toBe(true);
         expect(ReactTestUtils.isCompositeComponent(this.ge.current)).toBe(true);
 
