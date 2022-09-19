@@ -11,8 +11,8 @@ export default class RangeEditor extends React.Component {
     render() {
         return <React.Fragment>
             <div className="form-row slider-wrapper">
-                <label className="mb-0 w-100" htmlFor={this.props.id}>
-                    <em>{this.props.itemlabel}</em>
+                <label key="dataId" className="mb-0 w-100" htmlFor={this.props.id}>
+                    {this.props.itemlabel.map((value, index) => <em key={index}>{value}</em>)}
                     <div className="d-inline w-100">
                         {this.props.showMinMax && (
                         <div className="position-absolute l-0">
@@ -38,7 +38,7 @@ export default class RangeEditor extends React.Component {
                         )}
                     </div>
                 </label>
-                <div className='ml-2 mb-2 row shift-up'>
+                <div className='ml-2 mb-2  form-inline shift-up'>
                     <button
                         className="btn btn-primary ml-2 w-20"
                         aria-label={"Decrease by " + (Number(this.props.step) * 10 || 0.1)}
@@ -103,6 +103,17 @@ export default class RangeEditor extends React.Component {
                                 this.props.max)
                         }
                     >&gt;&gt;&gt;</button>
+                    <input
+                        className="form-control ml-4"
+                        type="number"
+                        id={this.props.id}
+                        data-id={this.props.dataId}
+                        value={this.props.value}
+                        step={Number(this.props.step) || 0.01}
+                        onChange={this.props.handler}
+                        min={this.props.min}
+                        max={this.props.max}>
+                    </input>
                 </div>
                 <div className="input-group">
                     {this.props.showOverrideButton && (
@@ -143,7 +154,7 @@ export default class RangeEditor extends React.Component {
 }
 
 RangeEditor.defaultProps = {
-    itemlabel: '',
+    itemlabel: [],
     min: -5,
     max: 5,
     showOverrideButton: false,
@@ -152,7 +163,8 @@ RangeEditor.defaultProps = {
     showOverride2Button: false,
     override2Label: '',
     override2Value: 0,
-    showMinMax: false
+    showMinMax: false,
+    showValue: true
 };
 
 RangeEditor.propTypes = {
@@ -164,7 +176,7 @@ RangeEditor.propTypes = {
     min: PropTypes.number,
     max: PropTypes.number,
     showOverrideButton: PropTypes.bool,
-    itemlabel: PropTypes.string,
+    itemlabel: PropTypes.array,
     overrideLabel: PropTypes.string,
     overrideValue: PropTypes.number,
     showOverride2Button: PropTypes.bool,
@@ -172,5 +184,6 @@ RangeEditor.propTypes = {
     override2Value: PropTypes.number,
     showMinMax: PropTypes.bool,
     note: PropTypes.string,
-    showNote: PropTypes.bool
+    showNote: PropTypes.bool,
+    showValue: PropTypes.bool
 };

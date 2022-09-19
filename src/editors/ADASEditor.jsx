@@ -12,7 +12,7 @@ export default class ADASEditor extends React.Component {
                     <React.Fragment>
                         <h2>Slope</h2>
                         <RangeEditor
-                            itemlabel="Orange line slope"
+                            itemlabel={["Orange line slope"]}
                             dataId="gLine1Slope"
                             value={this.props.gLine1Slope}
                             min={0}
@@ -25,7 +25,7 @@ export default class ADASEditor extends React.Component {
                             override2Value={0}
                             handler={handleFormUpdate.bind(this)} />
                         <RangeEditor
-                            itemlabel="Blue line slope"
+                            itemlabel={["Blue line slope"]}
                             dataId="gLine2Slope"
                             min={-5}
                             max={0}
@@ -38,7 +38,7 @@ export default class ADASEditor extends React.Component {
                             override2Value={0}
                             handler={handleFormUpdate.bind(this)} />
                         <RangeEditor
-                            itemlabel="Red line slope"
+                            itemlabel={["Red line slope"]}
                             dataId="gLine3Slope"
                             value={this.props.gLine3Slope}
                             min={-5}
@@ -164,9 +164,7 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-                        </div>
 
-                        <div className="d-flex flex-wrap justify-content-between align-items-end">
                             <div className="col-6">
                                 <EditableControl
                                     id="gXAxisLabel"
@@ -188,9 +186,7 @@ export default class ADASEditor extends React.Component {
                                     updateGraph={this.props.updateGraph}
                                 />
                             </div>
-                        </div>
 
-                        <div className="d-flex flex-wrap justify-content-between align-items-end">
                             <div className="col-4">
                                 <EditableControl
                                     id="gIntersectionLabel"

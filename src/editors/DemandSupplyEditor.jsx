@@ -13,7 +13,7 @@ export default class DemandSupplyEditor extends React.Component {
                 <div>
                     <h2>Slope</h2>
                     <RangeEditor
-                        itemlabel="Orange line slope"
+                        itemlabel={["Orange line slope"]}
                         dataId="gLine1Slope"
                         value={this.props.gLine1Slope}
                         min={0}
@@ -26,7 +26,7 @@ export default class DemandSupplyEditor extends React.Component {
                         override2Value={0}
                         handler={handleFormUpdate.bind(this)} />
                     <RangeEditor
-                        itemlabel="Blue line slope"
+                        itemlabel={["Blue line slope"]}
                         dataId="gLine2Slope"
                         min={-5}
                         max={0}
@@ -41,7 +41,7 @@ export default class DemandSupplyEditor extends React.Component {
                     {this.props.gType === 13 && (
                         <>
                             <RangeEditor
-                                itemlabel="Right graph: Orange line slope"
+                                itemlabel={["Right graph: Orange line slope"]}
                                 dataId="gLine3Slope"
                                 value={this.props.gLine3Slope}
                                 min={0}
@@ -54,7 +54,7 @@ export default class DemandSupplyEditor extends React.Component {
                                 override2Value={0}
                                 handler={handleFormUpdate.bind(this)} />
                             <RangeEditor
-                                itemlabel="Right graph: Blue line slope"
+                                itemlabel={["Right graph: Blue line slope"]}
                                 dataId="gLine4Slope"
                                 min={-5}
                                 max={0}
@@ -74,7 +74,7 @@ export default class DemandSupplyEditor extends React.Component {
             {this.props.displayLabels && (
                 <React.Fragment>
                     <h2>Labels</h2>
-                    <div className="d-flex justify-content-between align-items-end">
+                    <div className="d-flex flex-wrap justify-content-between align-items-end">
                         <div className="col-6">
                             <EditableControl
                                 id="gLine1Label"
@@ -93,8 +93,6 @@ export default class DemandSupplyEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph} />
                         </div>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-end">
                         <div className="col-6">
                             <EditableControl
                                 id="gXAxisLabel"
@@ -113,10 +111,7 @@ export default class DemandSupplyEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph} />
                         </div>
-                    </div>
-
-                    <div className="d-flex justify-content-between align-items-end">
-                        <div className="col-6">
+                        <div className="col-4">
                             <EditableControl
                                 id="gIntersectionLabel"
                                 name="Intersection point label"
@@ -125,10 +120,7 @@ export default class DemandSupplyEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph} />
                         </div>
-                    </div>
-
-                    <div className="d-flex justify-content-between align-items-end">
-                        <div className="col-6">
+                        <div className="col-4">
                             <EditableControl
                                 id="gIntersectionHorizLineLabel"
                                 name="Intersection&apos;s horizontal line label"
@@ -137,7 +129,7 @@ export default class DemandSupplyEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph} />
                         </div>
-                        <div className="col-6">
+                        <div className="col-4">
                             <EditableControl
                                 id="gIntersectionVertLineLabel"
                                 name="Intersection&apos;s vertical line label"
@@ -152,8 +144,8 @@ export default class DemandSupplyEditor extends React.Component {
 
             {this.props.displayLabels && this.props.gType === 13 && (
                 <>
-                    <h4>Right-hand graph labels</h4>
-                    <div className="d-flex justify-content-between align-items-end">
+                    <h2>Right-hand graph labels</h2>
+                    <div className="d-flex flex-wrap justify-content-between align-items-end">
                         <div className="col-6">
                             <EditableControl
                                 id="gLine3Label"
@@ -172,9 +164,6 @@ export default class DemandSupplyEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph} />
                         </div>
-                    </div>
-
-                    <div className="d-flex justify-content-between align-items-end">
                         <div className="col-6">
                             <EditableControl
                                 id="gXAxis2Label"
@@ -193,10 +182,7 @@ export default class DemandSupplyEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph} />
                         </div>
-                    </div>
-
-                    <div className="d-flex justify-content-between align-items-end">
-                        <div className="col-6">
+                        <div className="col-4">
                             <EditableControl
                                 id="gIntersection2Label"
                                 name="Intersection point label"
@@ -205,10 +191,7 @@ export default class DemandSupplyEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph} />
                         </div>
-                    </div>
-
-                    <div className="d-flex justify-content-between align-items-end">
-                        <div className="col-6">
+                        <div className="col-4">
                             <EditableControl
                                 id="gIntersection2HorizLineLabel"
                                 name="Intersection&apos;s horizontal line label"
@@ -217,7 +200,7 @@ export default class DemandSupplyEditor extends React.Component {
                                 isInstructor={true}
                                 updateGraph={this.props.updateGraph} />
                         </div>
-                        <div className="col-6">
+                        <div className="col-4">
                             <EditableControl
                                 id="gIntersection2VertLineLabel"
                                 name="Intersection&apos;s vertical line label"
