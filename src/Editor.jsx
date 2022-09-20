@@ -17,7 +17,6 @@ class Editor extends Component {
 
         Object.assign(this.state, defaultGraph);
 
-        this.backbutton = React.createRef();
         this.gp = React.createRef();
         this.ge = React.createRef();
 
