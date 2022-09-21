@@ -195,7 +195,7 @@ class Editor extends Component {
 
         const me = this;
         return authedFetch('/api/graphs/', 'post', JSON.stringify(data))
-            .then(function (response) {
+            .then(function(response) {
                 if (chain) {
                     return response.json();
                 }
@@ -206,13 +206,13 @@ class Editor extends Component {
                         step: 2
                     });
 
-                    response.json().then(function (graph) {
+                    response.json().then(function(graph) {
                         const courseId = getCohortId(window.location.pathname);
                         const url = `/course/${courseId}/graph/${graph.id}/`;
                         window.location.href = url;
                     });
                 } else {
-                    response.json().then(function (d) {
+                    response.json().then(function(d) {
                         me.setState({
                             alertText: getError(d)
                         });
@@ -222,7 +222,7 @@ class Editor extends Component {
             });
     }
     handleSaveAndViewGraph() {
-        return this.handleSaveGraph(true).then(function (graph) {
+        return this.handleSaveGraph(true).then(function(graph) {
             const courseId = getCohortId(window.location.pathname);
             const url = `/course/${courseId}/graph/${graph.id}/public/`;
             window.location.href = url;
@@ -234,7 +234,7 @@ class Editor extends Component {
     }
     componentDidMount() {
         const me = this;
-        document.addEventListener('l1offset', function (e) {
+        document.addEventListener('l1offset', function(e) {
             const offset = e.detail;
             let line = 1;
             if (e.detail.line) {
@@ -245,7 +245,7 @@ class Editor extends Component {
                 [`gLine${line}OffsetY`]: offset.y
             });
         });
-        document.addEventListener('l2offset', function (e) {
+        document.addEventListener('l2offset', function(e) {
             const offset = e.detail;
             let line = 2;
             if (e.detail.line) {
@@ -256,7 +256,7 @@ class Editor extends Component {
                 [`gLine${line}OffsetY`]: offset.y
             });
         });
-        document.addEventListener('l3offset', function (e) {
+        document.addEventListener('l3offset', function(e) {
             const offset = e.detail;
             me.setState({
                 gLine3OffsetX: offset.x,
