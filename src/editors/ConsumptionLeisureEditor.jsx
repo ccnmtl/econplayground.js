@@ -20,7 +20,9 @@ export default class ConsumptionLeisureEditor extends React.Component {
                     <React.Fragment>
                         <h2>Function</h2>
                         <div className="row">
-                            <MathComponent tex={tex} />
+                            <div className="col-auto">
+                                <MathComponent tex={tex} />
+                            </div>
                         </div>
                         <hr />
                     </React.Fragment>
@@ -30,7 +32,7 @@ export default class ConsumptionLeisureEditor extends React.Component {
                     <React.Fragment>
                         <h2>Slope</h2>
                         <RangeEditor
-                            itemlabel="Horizontal intercept value <strong>T</strong>"
+                            itemlabel={["Horizontal intercept value: ", <strong>T</strong>]}
                             id="gA1"
                             dataId="gA1"
                             value={this.props.gA1}
@@ -38,23 +40,25 @@ export default class ConsumptionLeisureEditor extends React.Component {
                             max={9}
                             handler={handleFormUpdate.bind(this)} />
                         <RangeEditor
-                            itemlabel="Real Wage <strong>w</strong>"
+                            itemlabel={["Real Wage: ", <strong>w</strong>]}
                             id="gA2"
                             dataId="gA2"
                             value={this.props.gA2}
                             min={0.01}
                             max={5}
                             handler={handleFormUpdate.bind(this)} />
+                        {this.props.gType === 15 && (
+                            <RangeEditor
+                                itemlabel={["Rel. Preference: ", <strong>α</strong>]}
+                                id="gA3"
+                                dataId="gA3"
+                                value={this.props.gA3}
+                                min={0.00001}
+                                max={0.99999}
+                                handler={handleFormUpdate.bind(this)} />
+                        )}
                         <RangeEditor
-                            itemlabel={["Rel. Preference", <strong>α</strong>]}
-                            id="gA3"
-                            dataId="gA3"
-                            value={this.props.gA3}
-                            min={0.00001}
-                            max={0.99999}
-                            handler={handleFormUpdate.bind(this)} />
-                        <RangeEditor
-                            itemlabel="Tax Rate <strong>t</strong>"
+                            itemlabel={["Tax Rate: ", <strong>t</strong>]}
                             id="gA4"
                             dataId="gA4"
                             value={this.props.gA4}
@@ -66,9 +70,8 @@ export default class ConsumptionLeisureEditor extends React.Component {
                 )}
 
                 {this.props.displayLabels && (
-                    <React.Fragment>
-                        <h2>Labels</h2>
-                        <div className="row">
+                    <div className="d-flex flex-wrap justify-content-between align-items-end">
+                        <div className="col-6">
                             <EditableControl
                                 id="gLine1Label"
                                 name={'Budget line label'}
@@ -77,6 +80,8 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                 isInstructor={this.props.isInstructor}
                                 updateGraph={this.props.updateGraph}
                             />
+                        </div>
+                        <div className="col-6">
                             {this.props.gType === 15 && (
                                 <EditableControl
                                     id="gIntersectionLabel"
@@ -88,76 +93,77 @@ export default class ConsumptionLeisureEditor extends React.Component {
                                 />
                             )}
                         </div>
-                    </React.Fragment>
-                )}
-
-                {this.props.displayLabels && (
-                    <div className="row">
-                        <EditableControl
-                            id="gXAxisLabel"
-                            name="X-axis label"
-                            value={this.props.gXAxisLabel}
-                            valueEditable={true}
-                            isInstructor={this.props.isInstructor}
-                            updateGraph={this.props.updateGraph}
-                        />
-
-                        <EditableControl
-                            id="gYAxisLabel"
-                            name="Y-axis label"
-                            value={this.props.gYAxisLabel}
-                            valueEditable={true}
-                            isInstructor={this.props.isInstructor}
-                            updateGraph={this.props.updateGraph}
-                        />
+                        <div className="col-6">
+                            <EditableControl
+                                id="gXAxisLabel"
+                                name="X-axis label"
+                                value={this.props.gXAxisLabel}
+                                valueEditable={true}
+                                isInstructor={this.props.isInstructor}
+                                updateGraph={this.props.updateGraph}
+                            />
+                        </div>
+                        <div className="col-6">
+                            <EditableControl
+                                id="gYAxisLabel"
+                                name="Y-axis label"
+                                value={this.props.gYAxisLabel}
+                                valueEditable={true}
+                                isInstructor={this.props.isInstructor}
+                                updateGraph={this.props.updateGraph}
+                            />
+                        </div>
+                        <div className="col-6">
+                            <EditableControl
+                                id="gIntersectionHorizLineLabel"
+                                name="Horizontal intersection label"
+                                value={this.props.gIntersectionHorizLineLabel}
+                                valueEditable={true}
+                                isInstructor={this.props.isInstructor}
+                                updateGraph={this.props.updateGraph}
+                            />
+                        </div>
+                        <div className="col-6">
+                            <EditableControl
+                                id="gIntersectionVertLineLabel"
+                                name="Vertical intersection label"
+                                value={this.props.gIntersectionVertLineLabel}
+                                valueEditable={true}
+                                isInstructor={this.props.isInstructor}
+                                updateGraph={this.props.updateGraph}
+                            />
+                        </div>
                     </div>
                 )}
 
-                {this.props.displayLabels && (
-                    <div className="row">
-                        <EditableControl
-                            id="gIntersectionHorizLineLabel"
-                            name="Horizontal intersection label"
-                            value={this.props.gIntersectionHorizLineLabel}
-                            valueEditable={true}
-                            isInstructor={this.props.isInstructor}
-                            updateGraph={this.props.updateGraph}
-                        />
+                {
+                    this.props.gType === 15 && this.props.displayLabels && (
+                        <div className="d-flex flex-wrap justify-content-between align-items-end">
+                            <div className="col-6">
+                                <EditableControl
+                                    id="gIntersection2HorizLineLabel"
+                                    name="Optimal point&apos;s horizontal line label"
+                                    value={this.props.gIntersection2HorizLineLabel}
+                                    valueEditable={true}
+                                    isInstructor={this.props.isInstructor}
+                                    updateGraph={this.props.updateGraph}
+                                />
+                            </div>
+                            <div className="col-6">
+                                <EditableControl
+                                    id="gIntersection2VertLineLabel"
+                                    name="Optimal point&apos;s vertical line label"
+                                    value={this.props.gIntersection2VertLineLabel}
+                                    valueEditable={true}
+                                    isInstructor={this.props.isInstructor}
+                                    updateGraph={this.props.updateGraph}
+                                />
+                            </div>
+                        </div>
+                    )
+                }
 
-                        <EditableControl
-                            id="gIntersectionVertLineLabel"
-                            name="Vertical intersection label"
-                            value={this.props.gIntersectionVertLineLabel}
-                            valueEditable={true}
-                            isInstructor={this.props.isInstructor}
-                            updateGraph={this.props.updateGraph}
-                        />
-                    </div>
-                )}
-
-                {this.props.gType === 15 && this.props.displayLabels && (
-                    <div className="row">
-                        <EditableControl
-                            id="gIntersection2HorizLineLabel"
-                            name="Optimal point&apos;s horizontal line label"
-                            value={this.props.gIntersection2HorizLineLabel}
-                            valueEditable={true}
-                            isInstructor={this.props.isInstructor}
-                            updateGraph={this.props.updateGraph}
-                        />
-
-                        <EditableControl
-                            id="gIntersection2VertLineLabel"
-                            name="Optimal point&apos;s vertical line label"
-                            value={this.props.gIntersection2VertLineLabel}
-                            valueEditable={true}
-                            isInstructor={this.props.isInstructor}
-                            updateGraph={this.props.updateGraph}
-                        />
-                    </div>
-                )}
-
-            </div>
+            </div >
         );
     }
 }

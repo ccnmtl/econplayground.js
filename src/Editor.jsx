@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import BackButton from './buttons/BackButton';
 import GraphEditor from './GraphEditor';
 import GraphPicker from './GraphPicker';
 import { exportGraph, defaultGraph } from './GraphMapping';
@@ -11,28 +10,49 @@ class Editor extends Component {
         this.state = {
             step: 0,
             user: null,
-            alertText: null
+            alertText: null,
+            inGraph: null,
+            lastGraphVisited: null,
         };
 
         Object.assign(this.state, defaultGraph);
 
-        this.backbutton = React.createRef();
         this.gp = React.createRef();
         this.ge = React.createRef();
+
+        // Back/Forward navigation work-around
+        //      Refresh still messes with the state,
+        //      but it's much less of a problem
+        window.addEventListener('hashchange', () => {
+            if (this.state.gType === null) {
+                this.setState({
+                    step: 0,
+                    inGraph: false,
+                });
+            } else if (this.state.inGraph) {
+                this.setState({
+                    lastGraphVisited: this.state.gType,
+                    step: 0,
+                    inGraph: false,
+                });
+            } else {
+                this.setState({
+                    step: 1,
+                    gType: (this.state.gType !== null ? this.state.gType : this.state.lastGraphVisited),
+                    inGraph: true,
+                });
+            }
+        });
     }
     render() {
         return (
             <div className="Editor">
                 <div className="Editor-container">
                     <div className="alert alert-danger"
-                         hidden={this.state.alertText ? false : true}
-                         role="alert">
+                        hidden={this.state.alertText ? false : true}
+                        role="alert">
                         {this.state.alertText}
                     </div>
-                    <BackButton
-                        ref={this.backbutton}
-                        showing={this.state.step !== 0}
-                        onClick={this.reset.bind(this)} />
                     <GraphPicker
                         ref={this.gp}
                         showing={this.state.step === 0}
@@ -129,7 +149,7 @@ class Editor extends Component {
         );
     }
     reset() {
-        this.setState({step: 0});
+        this.setState({ step: 0 });
     }
     onSelectGraph(type) {
         let gA1default = 0;

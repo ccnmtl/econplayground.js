@@ -40,27 +40,27 @@ export default class GraphPicker extends React.Component {
         const me = this;
         const graphs = [
             [8, 'ADAS.png', false],
-            [9, 'linear_demand_supply.png', true],
+            [9, 'linear_demand_supply_area.png', true],
             [13, 'linear_demand_supply.png', true],
 
             [3, 'cobb_douglas.png', false],
             [1, 'non-linear_demand_supply.png', false],
-            [10, 'non-linear_demand_supply.png', true],
+            [10, 'non-linear_demand_supply_area.png', true],
             [14, 'non-linear_demand_supply.png', true],
 
             [12, 'cobb_douglas.png', true],
 
             [5, 'consumption_leisure.png', false],
-            [15, 'consumption_leisure.png', true],
+            [15, 'consumption_leisure_optimal.png', true],
 
             [7, 'consumption_saving.png', false],
-            [11, 'consumption_saving.png', true],
+            [11, 'consumption_saving_optimal.png', true],
         ];
 
         return (
             <div className="GraphPicker container">
                 <h1>Create a Graph</h1>
-                <p className="lead text-secondary">Build illustrations or assignments for EconPractice assessment (local) or CourseWorks assessment (LTI).</p>
+                <p className="lead text-secondary mb-4">Build illustrations or assignments for EconPractice assessment (local) or CourseWorks assessment (LTI).</p>
                 <div className="card-deck">
                     <a href="#" className="card"
                         title="Linear Demand and Supply"

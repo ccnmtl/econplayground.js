@@ -79,7 +79,7 @@ export default class CobbDouglasEditor extends React.Component {
                             handler={handleFormUpdate.bind(this)}
                             min={0} />
                         <RangeEditor
-                            itemlabel="&alpha;"
+                            itemlabel={["ɑ"]}
                             dataId="gCobbDouglasAlpha"
                             value={this.props.gCobbDouglasAlpha}
                             handler={handleFormUpdate.bind(this)}
@@ -111,17 +111,6 @@ export default class CobbDouglasEditor extends React.Component {
                             showNote={this.props.isInstructor} />
                     </React.Fragment>
                 )
-                }
-
-                {
-                    this.props.displaySliders && (
-                        <React.Fragment>
-                            <div className="row">
-
-                            </div>
-                            <hr />
-                        </React.Fragment>
-                    )
                 }
 
                 {

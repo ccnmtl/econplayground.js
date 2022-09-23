@@ -43,8 +43,8 @@ export default class CobbDouglasNLDSEditor extends React.Component {
                         <h3 className="mt-3">
                             NLDS Function
                         </h3>
-                        <div className="form-row d-flex">
-                            <div className="form-check col-auto mr-4">
+                        <div className="form-check ml-4">
+                            <div className="row mb-4">
                                 <input className="form-check-input"
                                     aria-label={func1}
                                     type="radio"
@@ -57,8 +57,8 @@ export default class CobbDouglasNLDSEditor extends React.Component {
                                     <MathComponent tex={func1} />
                                 </label>
                             </div>
-                            <div className="form-check">
-                                <input className="form-check-input col-auto"
+                            <div className="row">
+                                <input className="form-check-input"
                                     aria-label={func2}
                                     type="radio"
                                     name="gFunctionChoice"
@@ -118,15 +118,8 @@ export default class CobbDouglasNLDSEditor extends React.Component {
                                 value={this.props.gCobbDouglasK}
                                 handler={handleFormUpdate.bind(this)}
                                 min={0} />
-                        </React.Fragment>
-                    )
-                }
-
-                {
-                    this.props.displaySliders && (
-                        <React.Fragment>
                             <RangeEditor
-                                itemlabel="&alpha;"
+                                itemlabel={["ɑ"]}
                                 dataId="gCobbDouglasAlpha"
                                 value={this.props.gCobbDouglasAlpha}
                                 handler={handleFormUpdate.bind(this)}
@@ -155,7 +148,7 @@ export default class CobbDouglasNLDSEditor extends React.Component {
                                 min={0}
                                 max={10} />
                             <RangeEditor
-                                itemlabel="Orange line slope"
+                                itemlabel={["Orange line slope"]}
                                 dataId="gLine1Slope"
                                 value={this.props.gLine1Slope}
                                 min={0}
