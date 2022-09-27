@@ -41,7 +41,7 @@ export default class GraphPicker extends React.Component {
         const graphs = [
             [8, 'ADAS.png', false],
             [9, 'linear_demand_supply_area.png', true],
-            [13, 'linear_demand_supply.png', true],
+            [13, 'linear_demand_supply_2.png', true],
 
             [3, 'cobb_douglas.png', false],
             [1, 'non-linear_demand_supply.png', false],
