@@ -1,19 +1,21 @@
 /* eslint-env jest */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import Editor from './Editor';
 import ReactTestUtils from 'react-dom/test-utils';
 import { exportGraph } from './GraphMapping';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Editor />, div);
+    const root = createRoot(div);
+    root.render(<Editor />);
 });
 
 it('renders with children in the expected visibility state', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Editor />, div, function() {
+    const root = createRoot(div);
+    root.render(<Editor />, function() {
         expect(this.gp.current.props.showing).toBe(true);
         expect(this.ge.current.props.showing).toBe(false);
 
@@ -29,7 +31,8 @@ it('renders with children in the expected visibility state', () => {
 
 it('exports its graph state', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Editor />, div, function() {
+    const root = createRoot(div);
+    root.render(<Editor />, function() {
         let o = exportGraph(this.state);
         expect(o.graph_type).toBe(null);
         expect(o.show_intersection).toBe(true);
