@@ -16,8 +16,8 @@
     "mathjax-react": "CharlieMcVicker/mathjax-react",
     "object-assign": "~4.1.1",
     "promise": "~8.2.0",
-    "react": "~17.0.1",
-    "react-dom": "~17.0.1",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
     "webpack": "~5.74.0",
     "webpack-cli": "~4.10.0",
     "whatwg-fetch": "~3.6.1"
@@ -48,7 +48,7 @@
     "jsdom": "~20.0.0",
     "lodash": "^4.17.20",
     "react-dev-utils": "~12.0.0",
-    "react-test-renderer": "~17.0.1",
+    "react-test-renderer": "~18.2.0",
     "style-loader": "~3.3.0",
     "url-loader": "~4.1.0"
   },
