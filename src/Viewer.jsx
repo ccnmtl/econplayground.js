@@ -304,7 +304,7 @@ class Viewer extends Component {
         const me = this;
 
         this.getGraph().then(function() {
-            me.loadAssessment(me.state.gId);
+            me.loadAssessment(me.graphId);
             if (me.state.gNeedsSubmit) {
                 me.loadSubmission(me.state.gId);
             }
