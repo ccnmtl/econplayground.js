@@ -1,6 +1,6 @@
 # econplayground.js [![Actions Status](https://github.com/ccnmtl/econplayground.js/workflows/build-and-test/badge.svg)](https://github.com/ccnmtl/econplayground.js/actions)
 
-Environment for authoring and interacting with economics graphs. This React app is intended to be used with the Django back-end found here: https://github.com/ccnmtl/econplayground 
+Environment for authoring and interacting with economics graphs. This React application is intended to be used with the Django back-end found here: https://github.com/ccnmtl/econplayground 
 
 ## Requirements
 You need to install these packages in order to build
