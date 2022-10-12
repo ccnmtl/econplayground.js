@@ -18,7 +18,7 @@ export default class GraphPicker extends React.Component {
                 title={displayGraphType(n)}
                 onClick={() => this.props.onSelectGraph(n)}>
                 <div className="card-img-top">
-                    <img className="img-fluid" src={this.mediaPrefix + imgname} />
+                    <img className="img-fluid" alt="" src={this.mediaPrefix + imgname} />
                 </div>
                 <h2 className="card-title ml-4 mb-4 mr-4">
                     {isBeta && (
