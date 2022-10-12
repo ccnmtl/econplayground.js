@@ -243,7 +243,6 @@ export default class JXGBoard extends React.Component {
             this.renderJXBoard({
                 l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
                 l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
-                submission: this.props.submission,
                 isSubmitted: !!this.props.submission,
                 ...this.props
             });
@@ -509,7 +508,6 @@ export default class JXGBoard extends React.Component {
         this.renderJXBoard({
             l1SubmissionOffset: getL1SubmissionOffset(this.props.submission),
             l2SubmissionOffset: getL2SubmissionOffset(this.props.submission),
-            submission: this.props.submission,
             isSubmitted: !!this.props.submission,
             ...this.props
         });
