@@ -33,7 +33,7 @@ export default class CobbDouglasEditor extends React.Component {
                             onChange={handleFormUpdate.bind(this)}
                         />
                     )}
-                    <MathComponent tex={tex} />
+                    <MathComponent tex={tex}/>
                 </div>
                 <hr />
 
