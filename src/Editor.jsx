@@ -36,11 +36,13 @@ class Editor extends Component {
                     inGraph: false,
                 });
             } else {
-                this.setState({
-                    step: 1,
-                    gType: (this.state.gType !== null ? this.state.gType : this.state.lastGraphVisited),
-                    inGraph: true,
-                });
+                // Copy defaultGraph object
+                let newState = Object.assign({}, defaultGraph);
+                newState.step = 1;
+                newState.gType = (this.state.gType !== null ? this.state.gType : this.state.lastGraphVisited);
+                newState.inGraph = true;
+
+                this.setState(newState);
             }
         });
     }
