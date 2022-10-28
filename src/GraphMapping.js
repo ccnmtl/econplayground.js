@@ -305,9 +305,9 @@ const defaultGraph = {
     gAlpha: 0.3,
     gOmega: 1,
 
-    gA1: 0,
-    gA2: 0,
-    gA3: 0,
+    gA1: 2.5,
+    gA2: 2,
+    gA3: 0.5,
     gA4: 0,
     gA5: 0.5, // Used in graph type 11 - beta value
 

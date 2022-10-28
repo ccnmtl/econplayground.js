@@ -174,13 +174,46 @@ export default class JXGBoard extends React.Component {
                 });
             } else if (options.gType === 13) {
                 // LDS Horizontal Joint graph, right-side graph
+                // Can't handle the spread operator for some reason
                 mkDemandSupply(this.board2, {
                     isBoard2: true,
+                    gType: options.gType,
+                    gShowIntersection: options.gShowIntersection,
+                    gDisplayIntersection1: options.gDisplayIntersection1,
+                    gDisplayIntersection1Initial: options.gDisplayIntersection1Initial,
+
+                    gDisplayShadow: options.gDisplayShadow,
+
+                    gIntersectionLabel: options.gIntersection2Label,
+                    gIntersectionHorizLineLabel: options.gIntersection2HorizLineLabel,
+                    gIntersectionVertLineLabel: options.gIntersection2VertLineLabel,
+
+                    gXAxisLabel: options.gXAxis2Label,
+                    gYAxisLabel: options.gYAxis2Label,
+                    gLine1Label: options.gLine3Label,
+                    gLine2Label: options.gLine4Label,
+                    gLine1Slope: options.gLine3Slope,
+                    gLine1SlopeInitial: options.gLine3SlopeInitial,
+                    gLine2Slope: options.gLine4Slope,
+                    gLine2SlopeInitial: options.gLine4SlopeInitial,
+
+                    gLine1OffsetX: options.gLine3OffsetX,
+                    gLine1OffsetY: options.gLine3OffsetY,
+                    gLine1OffsetXInitial: options.gLine3OffsetXInitial,
+                    gLine1OffsetYInitial: options.gLine3OffsetYInitial,
+
+                    gLine2OffsetX: options.gLine4OffsetX,
+                    gLine2OffsetY: options.gLine4OffsetY,
+                    gLine2OffsetXInitial: options.gLine4OffsetXInitial,
+                    gLine2OffsetYInitial: options.gLine4OffsetYInitial,
+
+                    gNeedsSubmit: options.gNeedsSubmit,
                     l1SubmissionOffset: getL1SubmissionOffset(options.submission),
                     l2SubmissionOffset: getL2SubmissionOffset(options.submission),
+                    submission: options.submission,
+                    isSubmitted: options.isSubmitted,
                     locked: this.props.locked,
                     shadow: this.props.shadow,
-                    ...options
                 });
             } else if (options.gType === 14) {
                 mkNonLinearDemandSupply(this.board2, {
