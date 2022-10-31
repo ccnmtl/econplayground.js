@@ -3,8 +3,25 @@ import PropTypes from 'prop-types';
 import RangeEditor from '../form-components/RangeEditor';
 import EditableControl from '../form-components/EditableControl';
 import { handleFormUpdate } from '../utils';
+import Checkbox from '../form-components/Checkbox';
 
 export default class ADASEditor extends React.Component {
+
+    formatControlStd(containerClass, id, name, value) {
+        return (
+            <div className={containerClass}>
+                <EditableControl
+                    id={id}
+                    name={name}
+                    value={value}
+                    valueEditable={true}
+                    isInstructor={this.props.isInstructor}
+                    updateGraph={this.props.updateGraph}
+                />
+            </div>
+        );
+    }
+
     render() {
         return (
             <div>
@@ -55,75 +72,39 @@ export default class ADASEditor extends React.Component {
                 )}
 
                 <h2>Lines</h2>
-                <div className="form-check">
-                    <label className="form-check-label">
-                        <input
-                            id="gDisplayIntersection1"
-                            className="form-check-input"
-                            type="checkbox"
-                            onChange={handleFormUpdate.bind(this)}
-                            checked={this.props.gDisplayIntersection1} />
-                        Show Orange-Blue intersection
-                    </label>
-                </div>
-                <div className="form-check">
-                    <label className="form-check-label">
-                        <input
-                            id="gDisplayIntersection2"
-                            className="form-check-input"
-                            type="checkbox"
-                            onChange={handleFormUpdate.bind(this)}
-                            checked={this.props.gDisplayIntersection2} />
-                        Show Blue-Red intersection
-                    </label>
-                </div>
-                <div className="form-check">
-                    <label className="form-check-label">
-                        <input
-                            id="gDisplayIntersection3"
-                            className="form-check-input"
-                            type="checkbox"
-                            onChange={handleFormUpdate.bind(this)}
-                            checked={this.props.gDisplayIntersection3} />
-                        Show Orange-Red intersection
-                    </label>
-                </div>
+                <Checkbox id="gDisplayIntersection1"
+                          checked={this.props.gDisplayIntersection1}
+                          onChange={handleFormUpdate.bind(this)}
+                          text="Show Orange-Blue intersection"
+                />
+                <Checkbox id="gDisplayIntersection2"
+                          checked={this.props.gDisplayIntersection2}
+                          onChange={handleFormUpdate.bind(this)}
+                          text="Show Blue-Red intersection"
+                />
+                <Checkbox id="gDisplayIntersection3"
+                          checked={this.props.gDisplayIntersection3}
+                          onChange={handleFormUpdate.bind(this)}
+                          text="Show Orange-Red intersection"
+                />
 
                 {this.props.isInstructor && (
                     <React.Fragment>
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine1Dashed"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine1Dashed} />
-                                Orange line dashed?
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine2Dashed"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine2Dashed} />
-                                Blue line dashed?
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input
-                                    id="gLine3Dashed"
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    onChange={handleFormUpdate.bind(this)}
-                                    checked={this.props.gLine3Dashed} />
-                                Red line dashed?
-                            </label>
-                        </div>
+                        <Checkbox id="gLine1Dashed"
+                                  checked={this.props.gLine1Dashed}
+                                  onChange={handleFormUpdate.bind(this)}
+                                  text="Orange line dashed?"
+                        />
+                        <Checkbox id="gLine2Dashed"
+                                  checked={this.props.gLine2Dashed}
+                                  onChange={handleFormUpdate.bind(this)}
+                                  text="Blue line dashed?"
+                        />
+                        <Checkbox id="gLine3Dashed"
+                                  checked={this.props.gLine3Dashed}
+                                  onChange={handleFormUpdate.bind(this)}
+                                  text="Red line dashed?"
+                        />
                         <hr />
                     </React.Fragment>
                 )}
@@ -132,161 +113,90 @@ export default class ADASEditor extends React.Component {
                     <React.Fragment>
                         <h2>Labels</h2>
                         <div className="d-flex flex-wrap justify-content-between align-items-end">
-                            <div className="col-4">
-                                <EditableControl
-                                    id="gLine1Label"
-                                    name="Orange line"
-                                    value={this.props.gLine1Label}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-4">
-                                <EditableControl
-                                    id="gLine2Label"
-                                    name="Blue line"
-                                    value={this.props.gLine2Label}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-4">
-                                <EditableControl
-                                    id="gLine3Label"
-                                    name="Red line"
-                                    value={this.props.gLine3Label}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-6">
-                                <EditableControl
-                                    id="gXAxisLabel"
-                                    name="X-axis"
-                                    value={this.props.gXAxisLabel}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-6">
-                                <EditableControl
-                                    id="gYAxisLabel"
-                                    name="Y-axis"
-                                    value={this.props.gYAxisLabel}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-4">
-                                <EditableControl
-                                    id="gIntersectionLabel"
-                                    name="Orange-Blue intersection"
-                                    value={this.props.gIntersectionLabel}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-4">
-                                <EditableControl
-                                    id="gIntersection2Label"
-                                    name="Blue-Red intersection"
-                                    value={this.props.gIntersection2Label}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-4">
-                                <EditableControl
-                                    id="gIntersection3Label"
-                                    name="Orange-Red intersection"
-                                    value={this.props.gIntersection3Label}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="d-flex flex-wrap justify-content-between align-items-end">
-                            <div className="col-6">
-                                <EditableControl
-                                    id="gIntersectionHorizLineLabel"
-                                    name="Orange-Blue intersection horizontal"
-                                    value={this.props.gIntersectionHorizLineLabel}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-6">
-                                <EditableControl
-                                    id="gIntersectionVertLineLabel"
-                                    name="Orange-Blue intersection vertical"
-                                    value={this.props.gIntersectionVertLineLabel}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-6">
-                                <EditableControl
-                                    id="gIntersection2HorizLineLabel"
-                                    name="Blue-Red intersection horizontal"
-                                    value={this.props.gIntersection2HorizLineLabel}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-6">
-                                <EditableControl
-                                    id="gIntersection2VertLineLabel"
-                                    name="Blue-Red intersection vertical"
-                                    value={this.props.gIntersection2VertLineLabel}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-6">
-                                <EditableControl
-                                    id="gIntersection3HorizLineLabel"
-                                    name="Orange-Red intersection horizontal"
-                                    value={this.props.gIntersection3HorizLineLabel}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
-
-                            <div className="col-6">
-                                <EditableControl
-                                    id="gIntersection3VertLineLabel"
-                                    name="Orange-Red intersection vertical"
-                                    value={this.props.gIntersection3VertLineLabel}
-                                    valueEditable={true}
-                                    isInstructor={this.props.isInstructor}
-                                    updateGraph={this.props.updateGraph}
-                                />
-                            </div>
+                            {this.formatControlStd(/* className, id, name, value */
+                                'col-4',
+                                'gLine1Label',
+                                'Orange line',
+                                this.props.gLine1Label
+                            )}
+                            {this.formatControlStd(
+                                'col-4',
+                                'gLine2Label',
+                                'Blue line',
+                                this.props.gLine2Label
+                            )}
+                            {this.formatControlStd(
+                                'col-4',
+                                'gLine3Label',
+                                'Red line',
+                                this.props.gLine3Label
+                            )}
+                            {this.formatControlStd(
+                                'col-6',
+                                'gXAxisLabel',
+                                'X-Axis',
+                                this.props.gXAxisLabel
+                            )}
+                            {this.formatControlStd(
+                                'col-6',
+                                'gYAxisLabel',
+                                'Y-Axis',
+                                this.props.gYAxisLabel
+                            )}
+                            {this.formatControlStd(
+                                'col-4',
+                                'gIntersectionLabel',
+                                'Orange-Blue intersection',
+                                this.props.gIntersectionLabel
+                            )}
+                            {this.formatControlStd(
+                                'col-4',
+                                'gIntersection2Label',
+                                'Blue-Red intersection',
+                                this.props.gIntersection2Label
+                            )}
+                            {this.formatControlStd(
+                                'col-4',
+                                'gIntersection3Label',
+                                'Orange-Red intersection',
+                                this.props.gIntersection3Label
+                            )}
+                            {this.formatControlStd(
+                                'col-6',
+                                'gIntersectionHorizLineLabel',
+                                'Orange-Blue intersection horizontal',
+                                this.props.gIntersectionHorizLineLabel
+                            )}
+                            {this.formatControlStd(
+                                'col-6',
+                                'gIntersectionVertLineLabel',
+                                'Orange-Blue intersection vertical',
+                                this.props.gIntersectionVertLineLabel
+                            )}
+                            {this.formatControlStd(
+                                'col-6',
+                                'gIntersection2HorizLineLabel',
+                                'Blue-Red intersection horizontal',
+                                this.props.gIntersection2HorizLineLabel
+                            )}
+                            {this.formatControlStd(
+                                'col-6',
+                                'gIntersection2VertLineLabel',
+                                'Blue-Red intersection vertical',
+                                this.props.gIntersection2VertLineLabel
+                            )}
+                            {this.formatControlStd(
+                                'col-6',
+                                'gIntersection3HorizLineLabel',
+                                'Orange-Red intersection horizontal',
+                                this.props.gIntersection3HorizLineLabel
+                            )}
+                            {this.formatControlStd(
+                                'col-6',
+                                'gIntersection3VertLineLabel',
+                                'Orange-Red intersection vertical',
+                                this.props.gIntersection3VertLineLabel
+                            )}
                         </div>
                     </React.Fragment>
                 )}
