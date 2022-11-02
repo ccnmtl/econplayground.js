@@ -10,17 +10,17 @@ import DemandSupplyEditor from './editors/DemandSupplyEditor';
 import CommonGraphEditor from './editors/CommonGraphEditor';
 import CommonGraphSettings from './editors/CommonGraphSettings';
 import JXGBoard from './JXGBoard';
-import {displayGraphType, handleFormUpdate, getCohortId} from './utils';
+import {
+    displayGraphType, handleFormUpdate, getCohortId, BOARD_HEIGHT, BOARD_WIDTH
+} from './utils';
 
-const BOARD_WIDTH = 540;
-const BOARD_HEIGHT = 300;
 
 export default class GraphEditor extends React.Component {
     title() {
         return (
             <div>
                 <h1>{displayGraphType(this.props.gType)}</h1>
-                <p className="lead text-secondary">
+                <p className="lead">
                     Add and modify the information of your graph.
                 </p>
             </div>
@@ -75,37 +75,72 @@ export default class GraphEditor extends React.Component {
             </div>
         );
 
-        let leftSide = null;
         let rightSide = null;
+
+        const commonEditorProps = {
+            displayLabels: true,
+            displaySliders: true,
+            isInstructor: true
+        };
+
+        let jxgBoard = (
+            <p>Loading...</p>
+        );
+        if (this.props.gType) {
+            jxgBoard = (
+                <JXGBoard
+                    id={'editing-graph'}
+                    width={BOARD_WIDTH}
+                    height={BOARD_HEIGHT}
+                    {...this.props}
+                />
+            );
+        }
+
+        const common2Graph = (
+            <>
+                {jxgBoard}
+
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <h2>Scenario</h2>
+                    <div className="form-group">
+                        <label htmlFor="gTitle">
+                            Title
+                        </label>
+                        <input id="gTitle"
+                                onChange={handleFormUpdate.bind(this)}
+                                value={this.props.gTitle}
+                                className="form-control form-control-sm"
+                                type="text"
+                                maxLength="140"
+                        />
+                    </div>
+
+                    <CommonGraphEditor
+                        {...this.props}
+                    />
+
+                    {this.props.gId &&
+                    <div className="form-group">
+                        <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
+                            title="Student View"
+                            className="btn btn-secondary"
+                        >
+                            Student View
+                        </a>
+                    </div>
+                    }
+                </div>
+            </>
+        );
 
         if (this.props.gType === 0 || this.props.gType === 9) {
             // Demand-Supply, possibly AUC (area under curve)
-            leftSide = <>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={BOARD_WIDTH}
-                                height={BOARD_HEIGHT}
-                                {...this.props}
-                            />
-                            <CommonGraphEditor
-                                {...this.props}
-                            />
-                            {this.props.gId &&
-                                <div className="form-group">
-                                    <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
-                                       title="Student View"
-                                       className="btn btn-secondary">Student View</a>
-                                </div>
-                            }
-                       </>;
-
             rightSide = <DemandSupplyEditor
-                            displayLabels={true}
-                            displaySliders={true}
-                            isInstructor={true}
                             showAUC={this.props.gType === 9}
+                            {...commonEditorProps}
                             {...this.props}
-                />;
+                        />;
         } else if (this.props.gType === 13) {
             // Horizontal Joint Graph: two Linear Demand-Supply graphs
             return (
@@ -113,46 +148,11 @@ export default class GraphEditor extends React.Component {
                     {this.title()}
                     <form>
                         <div className="row">
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={BOARD_WIDTH}
-                                height={BOARD_HEIGHT}
-                                {...this.props}
-                            />
-
-                            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h2>Scenario</h2>
-                                <div className="form-group">
-                                    <label htmlFor="gTitle">
-                                        Title
-                                    </label>
-                                    <input id="gTitle"
-                                           onChange={handleFormUpdate.bind(this)}
-                                           value={this.props.gTitle}
-                                           className="form-control form-control-sm"
-                                           type="text"
-                                           maxLength="140"
-                                    />
-                                </div>
-
-                                <CommonGraphEditor
-                                    {...this.props}
-                                />
-
-                                {this.props.gId &&
-                                <div className="form-group">
-                                    <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
-                                       title="Student View"
-                                       className="btn btn-secondary">Student View</a>
-                                </div>
-                                }
-                            </div>
+                            {common2Graph}
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <DemandSupplyEditor
-                                    displayLabels={true}
-                                    displaySliders={true}
-                                    isInstructor={true}
                                     showAUC={this.props.gType === 9}
+                                    {...commonEditorProps}
                                     {...this.props}
                                 />
                                 <CommonGraphSettings
@@ -172,47 +172,12 @@ export default class GraphEditor extends React.Component {
                     {this.title()}
                     <form>
                         <div className="row">
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={BOARD_WIDTH}
-                                height={BOARD_HEIGHT}
-                                {...this.props}
-                            />
-
-                            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <h2>Scenario</h2>
-                                <div className="form-group">
-                                    <label htmlFor="gTitle">
-                                        Title
-                                    </label>
-                                    <input id="gTitle"
-                                           onChange={handleFormUpdate.bind(this)}
-                                           value={this.props.gTitle}
-                                           className="form-control form-control-sm"
-                                           type="text"
-                                           maxLength="140"
-                                    />
-                                </div>
-
-                                <CommonGraphEditor
-                                    {...this.props}
-                                />
-
-                                {this.props.gId &&
-                                <div className="form-group">
-                                    <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
-                                       title="Student View"
-                                       className="btn btn-secondary">Student View</a>
-                                </div>
-                                }
-                            </div>
+                            {common2Graph}
                             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <NonLinearDemandSupplyEditor
-                                    displayLabels={true}
-                                    displaySliders={true}
-                                    isInstructor={true}
                                     hideFunctionChoice={true}
                                     showAUC={this.props.gType === 10}
+                                    {...commonEditorProps}
                                     {...this.props}
                                 />
                                 <CommonGraphSettings
@@ -227,143 +192,44 @@ export default class GraphEditor extends React.Component {
             );
         } else if (this.props.gType === 1 || this.props.gType === 10) {
             // Non-Linear Demand Supply, possibly AUC (area under curve)
-            leftSide = <>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={BOARD_WIDTH}
-                                height={BOARD_HEIGHT}
-                                {...this.props}
-                            />
-                            <CommonGraphEditor
-                                {...this.props}
-                                />
-                            {this.props.gId &&
-                                <div className="form-group">
-                                    <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
-                                       title="Student View"
-                                       className="btn btn-secondary">Student View</a>
-                                </div>
-                            }
-                       </>;
             rightSide = <NonLinearDemandSupplyEditor
-                            displayLabels={true}
-                            displaySliders={true}
-                            isInstructor={true}
                             showAUC={this.props.gType === 10}
+                            {...commonEditorProps}
                             {...this.props}
                         />;
         } else if (this.props.gType === 3 || this.props.gType === 12) {
             // Cobb-Douglas
-            leftSide = <>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={BOARD_WIDTH}
-                                height={BOARD_HEIGHT}
-                                {...this.props}
-                            />
-                            <CommonGraphEditor
-                                {...this.props}
-                            />
-                            {this.props.gId &&
-                                <div className="form-group">
-                                    <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
-                                       title="Student View"
-                                       className="btn btn-secondary">Student View</a>
-                                </div>
-                            }
-                       </>;
             rightSide = <>
                             {this.props.gType === 3 && (
                                 <CobbDouglasEditor
-                                    displayLabels={true}
-                                    displaySliders={true}
-                                    isInstructor={true}
+                                    {...commonEditorProps}
                                     {...this.props}
                                 />
                             )}
                             {this.props.gType === 12 && (
                                 <CobbDouglasNLDSEditor
-                                    displayLabels={true}
-                                    displaySliders={true}
-                                    isInstructor={true}
                                     showAUC={false}
+                                    {...commonEditorProps}
                                     {...this.props}
                                 />
                             )}
                         </>;
         } else if (this.props.gType === 5 || this.props.gType === 15) {
             // Consumption Leisure: Contraint and Optimal Choice
-            leftSide = <>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={BOARD_WIDTH}
-                                height={BOARD_HEIGHT}
-                                {...this.props}
-                            />
-                            <CommonGraphEditor
-                                {...this.props} />
-                            {this.props.gId &&
-                            <div className="form-group">
-                                <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
-                                   title="Student View"
-                                   className="btn btn-secondary">Student View</a>
-                            </div>
-                            }
-                       </>;
             rightSide = <ConsumptionLeisureEditor
-                            displayLabels={true}
-                            displaySliders={true}
-                            isInstructor={true}
+                            {...commonEditorProps}
                             {...this.props}
                         />;
         } else if (this.props.gType === 7 || this.props.gType === 11) {
             // Consumption Savings
-            leftSide = <>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={BOARD_WIDTH}
-                                height={BOARD_HEIGHT}
-                                {...this.props}
-                            />
-                            <CommonGraphEditor
-                                {...this.props} />
-                            {this.props.gId &&
-                            <div className="form-group">
-                                <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
-                                   title="Student View"
-                                   className="btn btn-secondary">Student View</a>
-                            </div>
-                           }
-                       </>;
             rightSide = <ConsumptionSavingEditor
-                            displayLabels={true}
-                            displaySliders={true}
-                            isInstructor={true}
+                            {...commonEditorProps}
                             {...this.props}
                         />;
         } else if (this.props.gType === 8) {
             // Aggregate Demand - Aggregate Supply
-            leftSide = <>
-                            <JXGBoard
-                                id={'editing-graph'}
-                                width={BOARD_WIDTH}
-                                height={BOARD_HEIGHT}
-                                {...this.props}
-                            />
-                            <CommonGraphEditor
-                                {...this.props} />
-                            {this.props.gId &&
-                            <div className="form-group">
-                                <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
-                                   title="Student View"
-                                   className="btn btn-secondary">Student View</a>
-                            </div>
-                           }
-                       </>;
             rightSide = <ADASEditor
-                            displayLabels={true}
-                            displaySliders={true}
-                            isInstructor={true}
+                            {...commonEditorProps}
                             {...this.props}
                         />;
         }
@@ -388,7 +254,21 @@ export default class GraphEditor extends React.Component {
                                            maxLength="140"
                                     />
                                 </div>
-                                {leftSide}
+                                {/* leftSide */}
+                                {jxgBoard}
+                                <CommonGraphEditor
+                                    {...this.props}
+                                />
+                                {this.props.gId &&
+                                    <div className="form-group">
+                                        <a href={`/course/${courseId}/graph/` + this.props.gId + "/public/"}
+                                            title="Student View"
+                                            className="btn btn-secondary"
+                                        >
+                                            Student View
+                                        </a>
+                                    </div>
+                                }
                             </div>
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
