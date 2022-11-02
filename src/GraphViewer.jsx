@@ -98,14 +98,19 @@ export default class GraphViewer extends React.Component {
         }
 
         let leftSide = (
-            <JXGBoard
-                id={'editing-graph'}
-                width={BOARD_WIDTH}
-                height={BOARD_HEIGHT}
-                shadow={!isInstructor}
-                {...this.props}
-            />
+            <p>Loading...</p>
         );
+        if (this.props.gType) {
+            leftSide = (
+                <JXGBoard
+                    id={'editing-graph'}
+                    width={BOARD_WIDTH}
+                    height={BOARD_HEIGHT}
+                    shadow={!isInstructor}
+                    {...this.props}
+                />
+            );
+        }
         let rightSide = null;
 
         if (this.props.gType === 0 || this.props.gType === 9) {
