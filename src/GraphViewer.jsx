@@ -95,7 +95,7 @@ export default class GraphViewer extends React.Component {
             displayLabels: displayLabels,
             displaySliders: displaySliders,
             updateGraph: this.updateGraph,
-        }
+        };
 
         let leftSide = (
             <p>Loading...</p>

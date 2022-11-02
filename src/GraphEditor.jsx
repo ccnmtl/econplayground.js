@@ -76,21 +76,30 @@ export default class GraphEditor extends React.Component {
         );
 
         let rightSide = null;
-        
+
         const commonEditorProps = {
             displayLabels: true,
             displaySliders: true,
             isInstructor: true
         };
 
-        const common2Graph = (
-            <>
+        let jxgBoard = (
+            <p>Loading...</p>
+        );
+        if (this.props.gType) {
+            jxgBoard = (
                 <JXGBoard
                     id={'editing-graph'}
                     width={BOARD_WIDTH}
                     height={BOARD_HEIGHT}
                     {...this.props}
                 />
+            );
+        }
+
+        const common2Graph = (
+            <>
+                {jxgBoard}
 
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                     <h2>Scenario</h2>
@@ -246,12 +255,7 @@ export default class GraphEditor extends React.Component {
                                     />
                                 </div>
                                 {/* leftSide */}
-                                <JXGBoard
-                                    id={'editing-graph'}
-                                    width={BOARD_WIDTH}
-                                    height={BOARD_HEIGHT}
-                                    {...this.props}
-                                />
+                                {jxgBoard}
                                 <CommonGraphEditor
                                     {...this.props}
                                 />
