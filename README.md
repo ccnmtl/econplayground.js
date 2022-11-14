@@ -1,3 +1,6 @@
+Nov 14, 2022:
+This code is now managed in the Django project's repository here: https://github.com/ccnmtl/econplayground
+
 # econplayground.js [![Actions Status](https://github.com/ccnmtl/econplayground.js/workflows/build-and-test/badge.svg)](https://github.com/ccnmtl/econplayground.js/actions)
 
 Environment for authoring and interacting with economics graphs. This React application is intended to be used with the Django back-end found here: https://github.com/ccnmtl/econplayground 
